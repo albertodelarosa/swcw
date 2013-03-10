@@ -1,0 +1,373 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Grays
+// -------------------------
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
+
+
+// Accent colors
+// ----------------------------
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+// SitelerWash Blue
+// ----------------------------
+$sitelerBlueDarker9:    #060A0F !default;
+$sitelerBlueDarker8:    #0B141E !default;
+$sitelerBlueDarker7:    #111F2D !default;
+$sitelerBlueDarker6:    #16293C !default;
+$sitelerBlueDarker5:    #1C334C !default;
+$sitelerBlueDarker4:    #223D5B !default;
+$sitelerBlueDarker3:    #27476A !default;
+$sitelerBlueDarker2:    #2D5279 !default;
+$sitelerBlueDarker1:    #325C88 !default;
+$sitelerBlue:           #386697 !default;
+$sitelerBlueLighter1:   #4C75A1 !default;
+$sitelerBlueLighter2:   #6085AC !default;
+$sitelerBlueLighter3:   #7494B6 !default;
+$sitelerBlueLighter4:   #88A3C1 !default;
+$sitelerBlueLighter5:   #9CB2CB !default;
+$sitelerBlueLighter6:   #AFC2D5 !default;
+$sitelerBlueLighter7:   #C3D1E0 !default;
+$sitelerBlueLighter8:   #D7E0EA !default;
+$sitelerBlueLighter9:   #EBF0F5 !default;
+
+// SitelerWash Green
+// ----------------------------
+$sitelerGreenDarker9:   #000F01 !default;
+$sitelerGreenDarker8:   #001E02 !default;
+$sitelerGreenDarker7:   #002D02 !default;
+$sitelerGreenDarker6:   #003C03 !default;
+$sitelerGreenDarker5:   #004B04 !default;
+$sitelerGreenDarker4:   #005A05 !default;
+$sitelerGreenDarker3:   #006906 !default;
+$sitelerGreenDarker2:   #007806 !default;
+$sitelerGreenDarker1:   #008707 !default;
+$sitelerGreen:          #009608 !default;
+$sitelerGreenLigheter1: #19A021 !default;
+$sitelerGreenLigheter2: #33AB39 !default;
+$sitelerGreenLigheter3: #4DB652 !default;
+$sitelerGreenLigheter4: #66C06B !default;
+$sitelerGreenLigheter5: #80CA84 !default;
+$sitelerGreenLigheter6: #99D59C !default;
+$sitelerGreenLigheter7: #B2E0B5 !default;
+$sitelerGreenLigheter8: #CCEACE !default;
+$sitelerGreenLigheter9: #E6F4E6 !default;
+
+// SitelerWash Lime
+// ----------------------------
+$sitelerLimeLighter9:   #E6FAE8 !default;
+$sitelerLimeLighter8:   #CDF5D1 !default;
+$sitelerLimeLighter7:   #B4F0BA !default;
+$sitelerLimeLighter6:   #9BEBA3 !default;
+$sitelerLimeLighter5:   #82E68C !default;
+$sitelerLimeLighter4:   #68E176 !default;
+$sitelerLimeLighter3:   #4FDC5F !default;
+$sitelerLimeLighter2:   #36D748 !default;
+$sitelerLimeLighter1:   #1DD231 !default;
+$sitelerLime:           #04CD1A !default;
+$sitelerLimeDarker1:    #04B817 !default;
+$sitelerLimeDarker2:    #03A415 !default;
+$sitelerLimeDarker3:    #039012 !default;
+$sitelerLimeDarker4:    #027B10 !default;
+$sitelerLimeDarker5:    #02660D !default;
+$sitelerLimeDarker6:    #02520A !default;
+$sitelerLimeDarker7:    #013E08 !default;
+$sitelerLimeDarker8:    #012905 !default;
+$sitelerLimeDarker9:    #001403 !default;
+// Scaffolding
+// -------------------------
+$bodyBackground:        $sitelerBlue !default;
+$textColor:             $grayDark !default;
+
+// Links
+// -------------------------
+$linkColor:             #08c !default;
+$linkColorHover:        darken($linkColor, 15%) !default;
+
+// Typography
+// -------------------------
+$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif !default;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+$baseFontSize:          13px !default;
+$baseFontFamily:        $sansFontFamily !default;
+$baseLineHeight:        18px !default;
+$altFontFamily:         $serifFontFamily !default;
+
+$headingsFontFamily:    inherit !default; // empty to use BS default, @baseFontFamily
+$headingsFontWeight:    bold !default;    // instead of browser default, bold
+$headingsColor:         inherit !default; // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+$tableBackground:                   transparent !default; // overall background-color
+$tableBackgroundAccent:             #f9f9f9 !default; // for striping
+$tableBackgroundHover:              #f5f5f5 !default; // for hover
+$tableBorder:                       #ddd !default; // table and cell border
+
+// Buttons
+// -------------------------
+$btnBackground:                     $white !default;
+$btnBackgroundHighlight:            darken($white, 10%) !default;
+$btnBorder:                         #ccc !default;
+
+$btnPrimaryBackground:              $linkColor !default;
+$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15%) !default;
+
+$btnInfoBackground:                 #5bc0de !default;
+$btnInfoBackgroundHighlight:        #2f96b4 !default;
+
+$btnSuccessBackground:              #62c462 !default;
+$btnSuccessBackgroundHighlight:     #51a351 !default;
+
+$btnWarningBackground:              lighten($orange, 15%) !default;
+$btnWarningBackgroundHighlight:     $orange !default;
+
+$btnDangerBackground:               #ee5f5b !default;
+$btnDangerBackgroundHighlight:      #bd362f !default;
+
+$btnInverseBackground:              $gray !default;
+$btnInverseBackgroundHighlight:     $grayDarker !default;
+
+// Forms
+// -------------------------
+$inputBackground:               $white !default;
+$inputBorder:                   #ccc !default;
+$inputBorderRadius:             3px !default;
+$inputDisabledBackground:       $grayLighter !default;
+$formActionsBackground:         #f5f5f5 !default;
+
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white !default;
+$dropdownBorder:                rgba(0,0,0,.2) !default;
+$dropdownLinkColor:             $grayDark !default;
+$dropdownLinkColorHover:        $white !default;
+$dropdownLinkBackgroundHover:   $linkColor !default;
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+$zindexDropdown:          1000;
+$zindexPopover:           1010;
+$zindexTooltip:           1020;
+$zindexFixedNavbar:       1030;
+$zindexModalBackdrop:     1040;
+$zindexModal:             1050;
+
+
+// Sprite icons path
+// -------------------------
+$iconSpritePath:          asset-url("glyphicons-halflings.png", image) !default;
+$iconWhiteSpritePath:     asset-url("glyphicons-halflings-white.png", image) !default;
+
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:         $grayLight !default;
+
+
+// Hr border color
+// -------------------------
+$hrBorder:                $grayLighter !default;
+
+
+// Navbar
+// -------------------------
+$navbarHeight:                    60px !default;
+$navbarBackground:                $sitelerGreenDarker3 !default;
+$navbarBackgroundHighlight:       $sitelerGreenLigheter3 !default;
+
+$navbarText:                      $grayLight !default;
+$navbarLinkColor:                 $sitelerGreenDarker6 !default;
+$navbarLinkColorHover:            $white !default;
+$navbarLinkColorActive:           $navbarLinkColorHover !default;
+$navbarLinkBackgroundHover:       transparent !default;
+$navbarLinkBackgroundActive:      $navbarBackground !default;
+
+$navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
+$navbarSearchBackgroundFocus:     $white !default;
+$navbarSearchBorder:              darken($navbarSearchBackground, 30%) !default;
+$navbarSearchPlaceholderColor:    #ccc !default;
+$navbarBrandColor:                $navbarLinkColor !default;
+
+
+// Hero unit
+// -------------------------
+$heroUnitBackground:              $grayLight !default;
+$heroUnitHeadingColor:            inherit !default;
+$heroUnitLeadColor:               inherit !default;
+
+
+// Form states and alerts
+// -------------------------
+$warningText:             #c09853 !default;
+$warningBackground:       #fcf8e3 !default;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%) !default;
+
+$errorText:               #b94a48 !default;
+$errorBackground:         #f2dede !default;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%) !default;
+
+$successText:             #468847 !default;
+$successBackground:       #dff0d8 !default;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%) !default;
+
+$infoText:                #3a87ad !default;
+$infoBackground:          #d9edf7 !default;
+$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
+
+
+// FIXED GRID
+// --------------------------------------------------
+
+// Default, 940px
+// -------------------------
+$gridColumns:             12 !default;
+$gridColumnWidth:         60px !default;
+$gridGutterWidth:         20px !default;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1)) !default;
+
+// Portrait tablet to default desktop
+// -------------------------
+$gridColumnWidthTablet:   42px !default;
+$gridGutterWidthTablet:   20px !default;
+
+// Large desktop and up
+// -------------------------
+$gridColumnWidthLarge:    70px !default;
+$gridGutterWidthLarge:    30px !default;
+
+
+// FLUID GRID
+// --------------------------------------------------
+
+// Default
+// -------------------------
+$fluidGridColumnWidth:         6.382978723% !default;
+$fluidGridGutterWidth:         2.127659574% !default;
+
+// Portrait tablet to default desktop
+// -------------------------
+$fluidGridColumnWidthTablet:   5.801104972% !default;
+$fluidGridGutterWidthTablet:   2.762430939% !default;
+
+// Large desktop and up
+// -------------------------
+$fluidGridColumnWidthLarge:    5.982905983% !default;
+$fluidGridGutterWidthLarge:    2.564102564% !default;
+
+
+
+// RESPONSIVE DESIGN
+// --------------------------------------------------
+
+// Media widths
+// -------------------------
+// Not supported Sass < 3.2 :(
+// $mediaPhone:              480px !default;
+// $mediaTablet:             768px !default;
+// $mediaDesktop:            980px !default;
+// $mediaLarge:              1200px !default; // and upper
+
+@import "bootstrap";
+@import "bootstrap/responsive";
+
+// Set the correct sprite paths
+$iconSpritePath: asset-url('glyphicons-halflings.png', image);
+$iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+
+// @fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
+// @fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
+// @fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
+// @fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
+
+// Font Awesome
+@import 'font-awesome';
+// @import "fontawesome";
+
+body{
+  font-family: Verdana,Helvetica,Arial;
+  font-size: 14px;
+}
+.header-background, .body-background{
+  background:white;
+}
+.body-background{
+  /*background-image: url('wash.jpg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center top;*/
+  /*background-size: 452px 400px;*/
+  min-height:800px;
+  padding:25px 0px 0px 0px;
+}
+.navbar.navbar-inverse.navbar-static-top .navbar-inner{
+  min-height:45px;
+}
+.top{
+  position: relative;
+  .logo{
+    margin-top: 40px;
+    margin-left: 100px;
+    padding-bottom: 10px;
+    .a{
+      color: #1B97F2;
+      text-decoration: none;
+    }
+  }
+  .login_register{
+    margin:15px 20px 0px 0px;
+  }
+}
+
+.hero-unit{
+  -webkit-border-radius:20px;
+  -moz-border-radius:20px;
+  border-radius:20px;
+  -webkit-box-shadow:3px 3px 7px $sitelerGreenDarker6;
+  -moz-box-shadow:3px 3px 7px $sitelerGreenDarker6;
+  box-shadow:3px 3px 7px $sitelerGreenDarker6;
+}
+
+.myform-wrapper{
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  -webkit-box-shadow:3px 3px 7px $grayLight;
+  -moz-box-shadow:3px 3px 7px $grayLight;
+  box-shadow:3px 3px 7px $grayLight;
+  border:1px solid $sitelerBlueLighter6;
+  padding:20px;
+}
