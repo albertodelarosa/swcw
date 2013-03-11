@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311225710) do
+ActiveRecord::Schema.define(:version => 20130311230521) do
 
   create_table "addresses", :force => true do |t|
     t.string   "first_name"
@@ -53,6 +53,39 @@ ActiveRecord::Schema.define(:version => 20130311225710) do
   add_index "appointments_customers", ["appointment_id"], :name => "index_appointments_customers_on_appointment_id"
   add_index "appointments_customers", ["user_id", "appointment_id"], :name => "index_appointments_customers_on_user_id_and_appointment_id", :unique => true
   add_index "appointments_customers", ["user_id"], :name => "index_appointments_customers_on_user_id"
+
+  create_table "customer_managers_customers", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "customer_id"
+  end
+
+  add_index "customer_managers_customers", ["customer_id"], :name => "index_customer_managers_customers_on_customer_id"
+  add_index "customer_managers_customers", ["user_id", "customer_id"], :name => "index_customer_managers_customers_on_user_id_and_customer_id", :unique => true
+  add_index "customer_managers_customers", ["user_id"], :name => "index_customer_managers_customers_on_user_id"
+
+  create_table "customers", :force => true do |t|
+    t.string   "customer_no"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "site_locations", :force => true do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "location_no"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "site_managers_van_managers", :id => false, :force => true do |t|
+    t.integer "site_manager_id"
+    t.integer "van_manager_id"
+  end
+
+  add_index "site_managers_van_managers", ["site_manager_id", "van_manager_id"], :name => "site_mgrs_van_mgrs", :unique => true
+  add_index "site_managers_van_managers", ["site_manager_id"], :name => "index_site_managers_van_managers_on_site_manager_id"
+  add_index "site_managers_van_managers", ["van_manager_id"], :name => "index_site_managers_van_managers_on_van_manager_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
