@@ -11,7 +11,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222232554) do
+ActiveRecord::Schema.define(:version => 20130311225710) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "work1"
+    t.string   "work2"
+    t.string   "fax"
+    t.string   "mobile"
+    t.string   "title"
+    t.string   "salutation"
+    t.string   "child_class"
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "addresses", ["addressable_id"], :name => "index_addresses_on_addressable_id"
+
+  create_table "appointments", :force => true do |t|
+    t.datetime "date"
+    t.string   "appointment_no"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "appointments", ["date"], :name => "index_appointments_on_date"
+
+  create_table "appointments_customers", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "appointment_id"
+  end
+
+  add_index "appointments_customers", ["appointment_id"], :name => "index_appointments_customers_on_appointment_id"
+  add_index "appointments_customers", ["user_id", "appointment_id"], :name => "index_appointments_customers_on_user_id_and_appointment_id", :unique => true
+  add_index "appointments_customers", ["user_id"], :name => "index_appointments_customers_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
