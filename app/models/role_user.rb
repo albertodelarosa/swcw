@@ -1,0 +1,8 @@
+class RoleUser < ActiveRecord::Base
+  attr_accessible :appointment_id, :role_id, :user_id
+
+  belongs_to :user
+  belongs_to :role
+  belongs_to :appointment_id
+
+end
