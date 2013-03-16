@@ -10,7 +10,7 @@ class CreateRoleUsers < ActiveRecord::Migration
 
     add_index :role_users, :role_id
     add_index :role_users, :user_id
-    add_index :role_users, :status_id
+    add_index :role_users, :appointment_id
 
   end
 end

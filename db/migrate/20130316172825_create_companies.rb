@@ -29,19 +29,19 @@ class CreateCompanies < ActiveRecord::Migration
 
     add_index :companies_customers, :company_id
     add_index :companies_customers, :customer_id
-    add_index :companies_customers, [:company_id, :customer_id], :unique => true
+    add_index :companies_customers, [:company_id, :customer_id], :unique => true, :name => 'cos_custs'
 
     add_index :companies_site_locations, :company_id
     add_index :companies_site_locations, :site_location_id
-    add_index :companies_site_locations, [:company_id, :site_location_id], :unique => true
+    add_index :companies_site_locations, [:company_id, :site_location_id], :unique => true, :name => 'cos_site_locs'
 
     add_index :companies_site_managers, :company_id
     add_index :companies_site_managers, :site_manager_id
-    add_index :companies_site_managers, [:company_id, :site_manager_id], :unique => true
+    add_index :companies_site_managers, [:company_id, :site_manager_id], :unique => true, :name => 'cos_site_mgrs'
 
     add_index :companies_van_managers, :company_id
     add_index :companies_van_managers, :van_managers_id
-    add_index :companies_van_managers, [:company_id, :van_managers_id], :unique => true
+    add_index :companies_van_managers, [:company_id, :van_managers_id], :unique => true, :name => 'cos_van_mgrs'
 
   end
 end
