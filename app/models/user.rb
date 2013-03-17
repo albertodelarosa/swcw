@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :managing_customers, :class_name => 'Customer',  :join_table => :customer_managers_customers
 
-  has_many :manager_relationships, foreign_key: "site_manager_id", dependent: :destroy
-  has_many :site_managers, through: :manager_relationships, source: :employee_manager
+  has_many :management, foreign_key: "site_manager_id", dependent: :destroy
+  has_many :site_managers, through: :management, source: :supervisor
 
-  has_many :reverse_manager_relationships, foreign_key: "van_manager_id", class_name: "ManagerRelationship", dependent: :destroy
-  has_many :van_managers, through: :reverse_manager_relationships, source: :employee_subordinate
+  has_many :subordination, foreign_key: "van_manager_id", class_name: "Management", dependent: :destroy
+  has_many :van_managers, through: :subordination, source: :subordinate
 
  #def following?(other_user)
     #relationships.find_by_followed_id(other_user.id)
@@ -28,17 +28,6 @@ class User < ActiveRecord::Base
 
 
 
-  #has_and_belongs_to_many :managing_van_managers,   
-                          #:class_name => 'User', 
-                          #:foreign_key => :site_manager_id, 
-                          #:association_foreign_key => :van_manager_id,   
-                          #:join_table => :site_managers_van_managers
-
-  #has_and_belongs_to_many :managing_site_managers,  
-                          #:class_name => 'User', 
-                          #:foreign_key => :van_manager_id,  
-                          #:association_foreign_key => :site_manager_id,  
-                          #:join_table => :site_managers_van_managers
 
   has_many :role_users
   has_many :roles, :through => :role_users
