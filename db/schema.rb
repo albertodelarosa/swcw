@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316235354) do
+ActiveRecord::Schema.define(:version => 20130317061917) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street1"
@@ -74,24 +74,6 @@ ActiveRecord::Schema.define(:version => 20130316235354) do
   add_index "companies_site_locations", ["company_id"], :name => "index_companies_site_locations_on_company_id"
   add_index "companies_site_locations", ["site_location_id"], :name => "index_companies_site_locations_on_site_location_id"
 
-  create_table "companies_site_managers", :id => false, :force => true do |t|
-    t.integer "company_id"
-    t.integer "site_manager_id"
-  end
-
-  add_index "companies_site_managers", ["company_id", "site_manager_id"], :name => "cos_site_mgrs", :unique => true
-  add_index "companies_site_managers", ["company_id"], :name => "index_companies_site_managers_on_company_id"
-  add_index "companies_site_managers", ["site_manager_id"], :name => "index_companies_site_managers_on_site_manager_id"
-
-  create_table "companies_van_managers", :id => false, :force => true do |t|
-    t.integer "company_id"
-    t.integer "van_manager_id"
-  end
-
-  add_index "companies_van_managers", ["company_id", "van_manager_id"], :name => "cos_van_mgrs", :unique => true
-  add_index "companies_van_managers", ["company_id"], :name => "index_companies_van_managers_on_company_id"
-  add_index "companies_van_managers", ["van_manager_id"], :name => "index_companies_van_managers_on_van_manager_id"
-
   create_table "customer_managers_customers", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "customer_id"
@@ -111,14 +93,16 @@ ActiveRecord::Schema.define(:version => 20130316235354) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "manager_relationships", :id => false, :force => true do |t|
-    t.integer "site_manager_id"
-    t.integer "van_manager_id"
+  create_table "managements", :force => true do |t|
+    t.integer  "site_manager_id"
+    t.integer  "van_manager_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "manager_relationships", ["site_manager_id", "van_manager_id"], :name => "mgr_rel", :unique => true
-  add_index "manager_relationships", ["site_manager_id"], :name => "index_manager_relationships_on_site_manager_id"
-  add_index "manager_relationships", ["van_manager_id"], :name => "index_manager_relationships_on_van_manager_id"
+  add_index "managements", ["site_manager_id", "van_manager_id"], :name => "index_managements_on_site_manager_id_and_van_manager_id", :unique => true
+  add_index "managements", ["site_manager_id"], :name => "index_managements_on_site_manager_id"
+  add_index "managements", ["van_manager_id"], :name => "index_managements_on_van_manager_id"
 
   create_table "role_users", :force => true do |t|
     t.integer  "role_id"
@@ -146,6 +130,17 @@ ActiveRecord::Schema.define(:version => 20130316235354) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "staffs", :force => true do |t|
+    t.integer  "site_location_id"
+    t.integer  "site_manager_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "staffs", ["site_location_id", "site_manager_id"], :name => "index_staffs_on_site_location_id_and_site_manager_id", :unique => true
+  add_index "staffs", ["site_location_id"], :name => "index_staffs_on_site_location_id"
+  add_index "staffs", ["site_manager_id"], :name => "index_staffs_on_site_manager_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",               :default => "", :null => false

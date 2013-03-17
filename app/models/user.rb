@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :subordination, foreign_key: "van_manager_id", class_name: "Management", dependent: :destroy
   has_many :van_managers, through: :subordination, source: :subordinate
 
+  has_many :staffs
+  has_many :site_locaitons, through: :staffs
  #def following?(other_user)
     #relationships.find_by_followed_id(other_user.id)
   #end

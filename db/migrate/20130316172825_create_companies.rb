@@ -17,16 +17,6 @@ class CreateCompanies < ActiveRecord::Migration
       t.integer :site_location_id
     end
 
-    #create_table :companies_site_managers, :id => false do |t|
-      #t.integer :company_id
-      #t.integer :site_manager_id
-    #end
-
-    #create_table :companies_van_managers, :id => false do |t|
-      #t.integer :company_id
-      #t.integer :van_manager_id
-    #end
-
     add_index :companies_customers, :company_id
     add_index :companies_customers, :customer_id
     add_index :companies_customers, [:company_id, :customer_id], :unique => true, :name => 'cos_custs'
@@ -34,14 +24,6 @@ class CreateCompanies < ActiveRecord::Migration
     add_index :companies_site_locations, :company_id
     add_index :companies_site_locations, :site_location_id
     add_index :companies_site_locations, [:company_id, :site_location_id], :unique => true, :name => 'cos_site_locs'
-
-    #add_index :companies_site_managers, :company_id
-    #add_index :companies_site_managers, :site_manager_id
-    #add_index :companies_site_managers, [:company_id, :site_manager_id], :unique => true, :name => 'cos_site_mgrs'
-
-    #add_index :companies_van_managers, :company_id
-    #add_index :companies_van_managers, :van_manager_id
-    #add_index :companies_van_managers, [:company_id, :van_manager_id], :unique => true, :name => 'cos_van_mgrs'
 
   end
 end
