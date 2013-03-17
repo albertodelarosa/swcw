@@ -1,8 +1,8 @@
 class RoleUser < ActiveRecord::Base
-  attr_accessible :appointment_id, :role_id, :user_id
+  attr_accessible :appointment, :role, :user
 
   belongs_to :user
   belongs_to :role
-  belongs_to :appointment_id
+  belongs_to :appointment
 
 end

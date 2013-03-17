@@ -1,13 +1,15 @@
 class CreateAppointments < ActiveRecord::Migration
   def change
-    create_table :appointments do |t|
-      t.datetime :date
-      t.string :appointment_no
-
+    create_table  :appointments do |t|
+      t.datetime  :date
+      t.string    :appointment_no
+      t.string    :status
       t.timestamps
     end
 
   add_index :appointments, :date
+  add_index :appointments, :appointment_no
+  add_index :appointments, :status
 
   create_table :appointments_customers, :id => false do |t|
     t.integer :user_id

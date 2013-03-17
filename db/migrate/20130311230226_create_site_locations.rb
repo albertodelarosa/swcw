@@ -8,13 +8,5 @@ class CreateSiteLocations < ActiveRecord::Migration
 
       t.timestamps
     end
-    create_table :site_managers_van_managers, :id => false do |t|
-      t.integer :site_manager_id
-      t.integer :van_manager_id
-    end
-
-    add_index :site_managers_van_managers, :site_manager_id
-    add_index :site_managers_van_managers, :van_manager_id
-    add_index :site_managers_van_managers, [:site_manager_id, :van_manager_id], :unique => true, :name => 'site_mgrs_van_mgrs'
   end
 end
