@@ -38,4 +38,8 @@
     .container.body-background
       - flash.each do |name, msg|
         = content_tag :div, msg, id: "flash_#{name}"
+      %p.notice
+        = notice
+      %p.alert
+        = alert
       = yield

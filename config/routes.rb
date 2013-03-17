@@ -1,4 +1,8 @@
 Sitelerwash::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "welcome/index"
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
