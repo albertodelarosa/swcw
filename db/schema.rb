@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317061917) do
+ActiveRecord::Schema.define(:version => 20130317074342) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street1"
@@ -141,6 +141,17 @@ ActiveRecord::Schema.define(:version => 20130317061917) do
   add_index "staffs", ["site_location_id", "site_manager_id"], :name => "index_staffs_on_site_location_id_and_site_manager_id", :unique => true
   add_index "staffs", ["site_location_id"], :name => "index_staffs_on_site_location_id"
   add_index "staffs", ["site_manager_id"], :name => "index_staffs_on_site_manager_id"
+
+  create_table "supervisions", :force => true do |t|
+    t.integer  "site_location_id"
+    t.integer  "van_manager_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "supervisions", ["site_location_id", "van_manager_id"], :name => "index_supervisions_on_site_location_id_and_van_manager_id", :unique => true
+  add_index "supervisions", ["site_location_id"], :name => "index_supervisions_on_site_location_id"
+  add_index "supervisions", ["van_manager_id"], :name => "index_supervisions_on_van_manager_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",               :default => "", :null => false

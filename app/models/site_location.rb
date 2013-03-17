@@ -3,4 +3,7 @@ class SiteLocation < ActiveRecord::Base
 
   has_many :staffs
   has_many :washers, through: :staffs, source: :washer
+
+  has_many :supervisions
+  has_many :supervisors, through: :supervisions, source: :supervisor
 end
