@@ -1,9 +1,22 @@
 Sitelerwash::Application.routes.draw do
+
+  get "customers/index"
+
+  get "customers/notacustomer"
+
+  match "/", to: 'welcome#index', as: 'home', via: :get
+
+  namespace :customers do
+    match "/" => "customer#index"    
+    get :notacustomer, :to => "customers"
+    #match "notacustomer", to: 'customer#notacustomer',  as: 'notacustomer', via: :get
+    #match "/",            to: 'customer#index',         as: 'root',         via: :get
+    resources :appointments
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-
-  get "welcome/index"
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 

@@ -1,0 +1,17 @@
+%h1 Listing customers_appointments
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @customers_appointments.each do |customers_appointment|
+    %tr
+      %td= link_to 'Show', customers_appointment
+      %td= link_to 'Edit', edit_customers_appointment_path(customers_appointment)
+      %td= link_to 'Destroy', customers_appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Appointment', new_customers_appointment_path
