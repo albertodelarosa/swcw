@@ -1,27 +1,19 @@
 !!!
 %html{lang: "en"}
   %head
-    %title Sitelerwash
+    %title Siteler Wash
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
+
     .container.header-background
       .top
         .logo
           = link_to '', root_path
-          = image_tag("logo.jpg")
-          .login_register.pull-right
-            - if user_signed_in?
-              Welcome
-              = succeed "." do
-                %strong= current_user.username
-              = link_to 'Edit profile', edit_user_registration_path, class: 'btn'
-              = link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn'
-            - else
-              = link_to "Sign up", new_user_registration_path, class: 'btn'
-              = link_to "Login", new_user_session_path, class: 'btn'
+          = image_tag("logo.png")
+          = render "shared/sign_up_in"
     .navbar.navbar-static-top
       .navbar-inner
         .container
@@ -31,15 +23,428 @@
             %span.icon-bar
           .nav-collapse
             %ul.nav
-              %li= link_to "Home"
+              %li= link_to "Home", root_path()
               %li= link_to "About"
               %li= link_to "Services"
               %li= link_to "Contact"
     .container.body-background
       - flash.each do |name, msg|
-        = content_tag :div, msg, id: "flash_#{name}"
-      %p.notice
-        = notice
-      %p.alert
-        = alert
+        = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"
       = yield
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    -#.wrapper
+      -#.navbar.navbar-fixed-top
+        -#.navbar-inner
+          -#.container
+            -#%a.brand{:href => "/web/en"}
+              -#%img{:src => "/web/img/logo_leanix.png"}/
+            -#.header-menu
+              -#%ul.pull-right.header-topmenu.hidden-phone.nav
+                -#%li
+                  -#%a{:href => "/web/en/product/index"} Product
+                -#%li
+                  -#%a{:href => "/web/en/company/index"} Company
+                -#%li
+                  -#%a{:href => "/web/en/site/blog"} Blog
+                -#%li
+                  -#%a{:href => "/web/en/site/contact"} Contact
+                -#%li
+                  -#%a#login-link{:href => "/web/en/site/login", :target => "_blank"} Login
+      -#.hero-row.hero-row-welcome
+        -#.container
+          -#.row-fluid
+            -#.span12.welcome-image
+              -##myVideo.carousel.slide
+                -#%div
+                  -#.carousel-inner
+                    -#/ Carousel items
+                    -#.active.item
+                      -#.span6
+                        -#%h1 The most pragmatic tool for Enterprise Architecture Management (EAM)
+                        -#%p leanIX was developed in the practice and considers the experience of many project situations. The modern Software-as-a-Service impresses users with its ease of use and involvement of many user groups.
+                      -#.span6.carousel-image
+                        -#.row-fluid.hero-video.teaser-video
+                          -#%a.icon-play.play-desktop{"data-height" => "500", "data-url" => "https://www.youtube.com/embed/VOdEz4sIXJQ?rel=0&autoplay=1&controls=1&showinfo=0&color=white", "data-width" => "900", :href => "http://youtu.be/VOdEz4sIXJQ", :target => "_blank"}
+                          -#%a.icon-play.play-phone{:href => "http://youtu.be/VOdEz4sIXJQ", :target => "_blank"}
+                  -#.carousel-caption.hidden-phone{:style => "background: none transparent;"}
+                    -#.span7
+                      -#%a.btn.btn-signup.btn-large.btn-left{:href => "/web/en/site/signup"} Ask for a demo
+      -#.hero-row-sub.spacing
+        -#.container
+          -#.row-fluid
+            -#.span12.hook
+              -#%h3
+                -#NEWS:
+                -#%a{:href => "/web/en/product/changelog"} leanIX Version 1.3 is out! Check out new planning of roadmaps
+      -#.container.container-main
+        -##yw0
+        -#.row-fluid
+          -#.span12
+            -#.row-fluid.welcome-catchy-topic.spacing
+              -#.span4
+                -#.jumbotron.clickable-item{"data-href" => "/web/en/product/implementation"}
+                  -#.row-fluid
+                    -#.span2.hidden-phone
+                      -#%img{:src => "/web/assets/3417187e/img/icons/40_landing.png"}/
+                    -#.span10
+                      -#%h4 Fast and easy use
+                      -#%p
+                        -#A best practice data model offers an easy starting point without need for comprehensive adjustment. The user interface is comfortable and easy-to-use, so you can understand and work with leanIX in less half an hour.
+                        -#%a{:href => "/web/en/product/implementation"} see more
+              -#.span4
+                -#.jumbotron.clickable-item{"data-href" => "/web/en/product/portfolio"}
+                  -#.row-fluid
+                    -#.span2.hidden-phone
+                      -#%img{:src => "/web/assets/3417187e/img/icons/20_landing.png"}/
+                    -#.span10
+                      -#%h4 Stay on top
+                      -#%p
+                        -#leanIX focuses on the analysis of logical connections instead of details. Thus, new potentials of cost reduction in IT are exposed. Start with the analysis of your IT portfolio right now.
+                        -#%a{:href => "/web/en/product/portfolio"} see more
+              -#.span4
+                -#.jumbotron.clickable-item{"data-href" => "/web/en/product/knowledge"}
+                  -#.row-fluid
+                    -#.span2.hidden-phone
+                      -#%img{:src => "/web/assets/3417187e/img/icons/30_landing.png"}/
+                    -#.span10
+                      -#%h4 Speed up
+                      -#%p
+                        -#Studies show that the application of social media in enterprises accelerates the access to information and makes it easy to find experts. Process costs can be reduced effectively.
+                        -#%a{:href => "/web/en/product/knowledge"} see more
+      -#.hero-row-slider-sub.spacing
+        -#.container
+          -#.row-fluid
+            -#.span12
+              -##myCarousel.carousel.slide.carousel-fade
+                -#%div
+                  -#.carousel-inner
+                    -#/ Carousel items
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_arch.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#I can now better focus on supporting my internal clients
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#IT Architect
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_cio.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#I have never reduced my IT complexity that fast
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#Chief Information Officer
+                    -#.item.active
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_strategy2.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#Without sending a single E-Mail all employees are informed
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#Head of Strategy and Planning
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_business.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#Thanks to the transparency I have trust in my IT provider
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#Business Manager
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_cfo2.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#Now, the CIO is demonstrating his budget clearly
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#Chief Financial Officer (CFO)
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_pmo.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#I am always aware of the budget and status of IT projects
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#Head of PMO
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_project.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#My status reports are not scattered across different files
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#Project Lead
+                    -#.item
+                      -#.span6.carousel-image
+                        -#%a{:href => "/web/en/welcome/teaser/type/"}
+                          -#%img{:src => "/web/img/welcome/teaser_infra1.jpg"}/
+                      -#.span6.carousel-contents
+                        -#.row-fluid
+                          -#.span12.hook-cap
+                            -#%h1
+                              -#We can see the impact of new software releases on our IT landscape
+                        -#.row-fluid
+                          -#.span12.hook-source
+                            -#%h4
+                              -#IT Infrastructure Manager
+                  -#.carousel-caption.hidden-phone{:style => "background: none transparent;"}
+                    -#.span5
+                    -#.span7
+                      -#%ol.carousel-indicators.dark
+                        -#%li{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+                        -#%li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+                        -#%li.active{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+                        -#%li{"data-slide-to" => "3", "data-target" => "#myCarousel"}
+                        -#%li{"data-slide-to" => "4", "data-target" => "#myCarousel"}
+                        -#%li{"data-slide-to" => "5", "data-target" => "#myCarousel"}
+                        -#%li{"data-slide-to" => "6", "data-target" => "#myCarousel"}
+                        -#%li{"data-slide-to" => "7", "data-target" => "#myCarousel"}
+                -#/ Carousel nav
+                -#/
+                  -#<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                  -#<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      -#.container.container-main
+        -#.row-fluid
+          -#.span12
+            -#.row-fluid.citation.spacing
+              -#.span2
+                -#%a{:href => "http://www.bluchip.ch/news-events/news-presentations.html", :target => "_blank"}
+                  -#%img{:src => "/web/img/logo/bluchip.png"}/
+              -#.span8.citation-text
+                -#%h3 "leanIX is THE most comfortable management software for IT managers to analyze their IT portfolio, plan changes and track their implementation"
+            -#.row-fluid.spacing-shadow
+              -#%img{:src => "/web/assets/3417187e/img/shadow.png"}/
+            -#.row-fluid
+              -#.trynow
+                -#%h3 Not convinced yet? Let us show you how leanIX works during an individual WebEx session
+                -#%a.btn.btn-signup.btn-large.btn-left{:href => "/web/en/site/signup"} Ask for a demo
+        -#.footer-push
+    -#.footer-row
+      -#.container
+        -#.row-fluid
+          -#.span8
+            -#.row-fluid
+              -#.span4
+                -#.footer-box
+                  -#.row-fluid.footer-box-caption
+                    -#.pull-left
+                      -#%h4 Product
+                  -#.row-fluid
+                    -#%ul.nav-tabs.nav-stacked.nav
+                      -#%li
+                        -#%a{:href => "/web/en/product/knowledge"} Information Management
+                      -#%li
+                        -#%a{:href => "/web/en/product/portfolio"} Reporting &amp; Analysis
+                      -#%li
+                        -#%a{:href => "/web/en/product/collaboration"} Teamwork
+                      -#%li
+                        -#%a{:href => "/web/en/product/implementation"} Prerequisite
+                      -#%li
+                        -#%a{:href => "/web/data/leanIX_Datasheet_EN.pdf", :target => "_blank"} Datasheet (PDF)
+              -#.span4
+                -#.footer-box
+                  -#.row-fluid.footer-box-caption
+                    -#.pull-left
+                      -#%h4 Company
+                  -#.row-fluid
+                    -#%ul.nav-tabs.nav-stacked.nav
+                      -#%li
+                        -#%a{:href => "/web/en/company/team"} Management team
+                      -#%li
+                        -#%a{:href => "/web/en/company/jobs"} Jobs
+              -#.span4
+                -#.footer-box
+                  -#.row-fluid.footer-box-caption
+                    -#.pull-left
+                      -#%h4 Other
+                  -#.row-fluid
+                    -#%ul.nav-tabs.nav-stacked.nav
+                      -#%li
+                        -#%a{:href => "/web/en/site/blog", :target => "_blank"} Blog
+                      -#%li
+                        -#%a{:href => "/web/en/site/support"} Support
+                      -#%li
+                        -#%a{:href => "/web/en/product/changelog"} Changelog
+                      -#%li
+                        -#%a{:href => "/web/en/site/contact"} Contact
+            -#.row-fluid.hidden-phone
+              -#.span12
+                -#.footer-box
+                  -#.row-fluid.footer-box-caption
+                    -#.pull-left
+                      -#%h4 Newsletter
+                  -#.row-fluid
+                    -#%form#newsletter-form.form-inline{:action => "/web/en/site/newsletter", :method => "post"}
+                      -#%input#newsletter-email.span8{:name => "email", :placeholder => "Your E-Mail address", :type => "email"}
+                        -#%button#newsletter-subscribe.btn.btn-primary.btn-small{"data-loading-text" => "processing..."} Subscribe
+                    -#%span.newsletter-help
+                      -#This newsletter informs you about leanIX changes. You can unsubscribe at any time unsing the link in the newsletter.
+          -#.span4
+            -#.footer-box.footer-box-highlight.twitter-box.hidden-phone
+              -#.row-fluid.footer-box-caption
+                -#.pull-left
+                  -#%h4 Twitter
+                -#.pull-right
+                  -#%iframe.twitter-follow-button.twitter-follow-button{:allowtransparency => "true", "data-twttr-rendered" => "true", :frameborder => "0", :scrolling => "no", :src => "https://platform.twitter.com/widgets/follow_button.1363148939.html#_=1364187689799&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=leanix_net&amp;show_count=false&amp;show_screen_name=false&amp;size=m", :style => "width: 60px; height: 20px;", :title => "Twitter Follow Button"}
+                  -#:javascript
+                    -#!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");          .row-fluid
+                -#.tweet
+                  -#%ul.tweet_list
+                    -#%li.tweet_first.tweet_odd
+                      -#%a.tweet_avatar{:href => "http://twitter.com/JGBeyer", :target => "_blank"}
+                        -#%img{:alt => "JGBeyer's avatar", :border => "0", :height => "30", :src => "https://s3.amazonaws.com/twitter_production/profile_images/1814827328/Profil_normal.jpg", :title => "JGBeyer's avatar", :width => "30"}/
+                      -#%span.tweet_time
+                        -#%a{:href => "http://twitter.com/JGBeyer/status/315869559141826560", :target => "_blank", :title => "view tweet on twitter"} about 12 hours ago
+                      -#%span.tweet_join
+                      -#%span.tweet_text
+                        -#Dennis Ritchie:
+                        -#%a.tweet_hashtag{:href => "http://search.twitter.com/search?q=&amp;tag=UNIX&amp;lang=all", :target => "_blank"} #UNIX
+                        -#is basically a simple operating system, but you have to be a genius to understand the simplicity.
+                        -#%a.tweet_hashtag{:href => "http://search.twitter.com/search?q=&amp;tag=555&amp;lang=all", :target => "_blank"} #555
+                        -#%a.tweet_hashtag{:href => "http://search.twitter.com/search?q=&amp;tag=CIO&amp;lang=all", :target => "_blank"} #CIO
+                        -#%a.tweet_hashtag{:href => "http://search.twitter.com/search?q=&amp;tag=ea&amp;lang=all", :target => "_blank"} #ea
+                    -#%li.tweet_even
+                      -#%a.tweet_avatar{:href => "http://twitter.com/christ_andre", :target => "_blank"}
+                        -#%img{:alt => "christ_andre's avatar", :border => "0", :height => "30", :src => "https://s3.amazonaws.com/twitter_production/profile_images/2843445458/a14123c10ef1de92f77d0e11809fa0cc_normal.jpeg", :title => "christ_andre's avatar", :width => "30"}/
+                      -#%span.tweet_time
+                        -#%a{:href => "http://twitter.com/christ_andre/status/315470001912045571", :target => "_blank", :title => "view tweet on twitter"} about a day ago
+                      -#%span.tweet_join
+                      -#%span.tweet_text
+                        -#%span.at @
+                        -#%a{:href => "http://twitter.com/frank_thelen", :target => "_blank"} frank_thelen
+                        -#Finally I have access again to OSX to try out latest
+                        -#%span.at @
+                        -#%a{:href => "http://twitter.com/doo", :target => "_blank"} doo
+                        -#\- What a huge leap forward over last 6 months
+                        -#%a{:href => "http://twitter.com/christ_andre/status/315470001912045571/photo/1", :target => "_blank"} pic.twitter.com/531DOfAfvI
+                    -#%li.tweet_odd
+                      -#%a.tweet_avatar{:href => "http://twitter.com/christ_andre", :target => "_blank"}
+                        -#%img{:alt => "christ_andre's avatar", :border => "0", :height => "30", :src => "https://s3.amazonaws.com/twitter_production/profile_images/2843445458/a14123c10ef1de92f77d0e11809fa0cc_normal.jpeg", :title => "christ_andre's avatar", :width => "30"}/
+                      -#%span.tweet_time
+                        -#%a{:href => "http://twitter.com/christ_andre/status/315467520675041282", :target => "_blank", :title => "view tweet on twitter"} about a day ago
+                      -#%span.tweet_join
+                      -#%span.tweet_text
+                        -#Agile development thx to
+                        -#%span.at @
+                        -#= succeed ":" do
+                          -#%a{:href => "http://twitter.com/pivotaltracker", :target => "_blank"} pivotaltracker
+                        -#Putting a super-hot feature for
+                        -#%a.tweet_hashtag{:href => "http://search.twitter.com/search?q=&amp;tag=entarch&amp;lang=all", :target => "_blank"} #entarch
+                        -#into the development for upcoming release of
+                        -#%span.at @
+                        -#= succeed "." do
+                          -#%a{:href => "http://twitter.com/leanix_net", :target => "_blank"} leanix_net
+                    -#%li.tweet_even
+                      -#%a.tweet_avatar{:href => "http://twitter.com/christ_andre", :target => "_blank"}
+                        -#%img{:alt => "christ_andre's avatar", :border => "0", :height => "30", :src => "https://s3.amazonaws.com/twitter_production/profile_images/2843445458/a14123c10ef1de92f77d0e11809fa0cc_normal.jpeg", :title => "christ_andre's avatar", :width => "30"}/
+                      -#%span.tweet_time
+                        -#%a{:href => "http://twitter.com/christ_andre/status/315465122883719168", :target => "_blank", :title => "view tweet on twitter"} about a day ago
+                      -#%span.tweet_join
+                      -#%span.tweet_text
+                        -#Nice video how
+                        -#%span.at @
+                        -#%a{:href => "http://twitter.com/twitter", :target => "_blank"} twitter
+                        -#evolved over the last 7 years - not seen yet:
+                        -#%a{:href => "https://www.youtube.com/watch?feature=endscreen&amp;v=Bl-FpuehWGA&amp;NR=1", :target => "_blank"} youtube.com/watch?feature=…
+        -#/ Footer menu
+        -#.row-fluid.footer-menu
+          -#.pull-left.copyright © LeanIX GmbH 2013
+          -#.pull-right
+            -#%ul.nav-pills.nav
+              -#%li
+                -#%a{:href => "/web/en/site/imprint"} Imprint
+              -#%li
+                -#%a{:href => "/web/en/site/terms", :target => "_blank"} Terms &amp; Conditions
+              -#%li
+                -#%a{:href => "/web/en/site/dataprotection"} Privacy
+              -#%li
+                -#%a{:href => "/web/en"} English
+              -#%li
+                -#%a{:href => "/web/de"} Deutsch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
