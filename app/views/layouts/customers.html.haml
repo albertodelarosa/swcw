@@ -1,0 +1,33 @@
+!!!
+%html{lang: "en"}
+  %head
+    %title Siteler Wash
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %body
+
+    .container.header-background
+      .top
+        .logo
+          = link_to '', root_path
+          = image_tag("logo.png")
+          = render "shared/sign_up_in"
+    .container
+      .navbar.navbar-static-top
+        .navbar-inner
+          .container
+            %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            .nav-collapse
+              %ul.nav
+                %li= link_to "My Dashboard", customers_my_dashboard_path
+                %li= link_to "My Appointments", customers_appointments_path
+    .container.body-background
+      - flash.each do |name, msg|
+        = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"
+      = yield
+
