@@ -1,0 +1,19 @@
+- if user_signed_in?
+  .logged-in.span4.pull-right
+    %h3
+      Welcome back
+      = succeed "!" do
+        %strong= current_user.username
+    = link_to 'Edit profile', edit_user_registration_path, class: 'btn'
+    = link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn'
+- elsif controller.controller_name.eql?("registrations") && controller.action_name.eql?("new")
+  .login_register.span2.pull-right
+    = link_to "sign in", new_user_session_path, class: 'btn pull-right'
+- elsif controller.controller_name.eql?("sessions") && controller.action_name.eql?("new")
+  .login_register.span2.pull-right
+    = link_to "sign up", new_user_registration_path, class: 'btn pull-right'
+- else
+  .login_register.span2.pull-right
+    = link_to "sign in", new_user_session_path, class: 'btn'
+    = link_to "sign up", new_user_registration_path, class: 'btn'
+
