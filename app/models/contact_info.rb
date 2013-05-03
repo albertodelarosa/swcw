@@ -1,3 +1,7 @@
 class ContactInfo < ActiveRecord::Base
-  attr_accessible :ext, :fax, :phone1, :phone2
+
+  self.inheritance_column = :child_class
+  attr_accessible :ext, :fax, :mobile, :phone1, :phone2
+  belongs_to :contactable, :polymorphic => true
+
 end

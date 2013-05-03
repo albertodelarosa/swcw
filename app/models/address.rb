@@ -1,3 +1,7 @@
 class Address < ActiveRecord::Base
-  attr_accessible :city, :fax, :mobile, :state, :street1, :street2, :work1, :work2, :zip
+
+  self.inheritance_column = :child_class
+  attr_accessible :city, :state, :street1, :street2, :zip
+  belongs_to :addressable, :polymorphic => true
+
 end

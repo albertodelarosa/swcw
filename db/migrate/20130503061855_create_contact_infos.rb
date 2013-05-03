@@ -1,6 +1,8 @@
 class CreateContactInfos < ActiveRecord::Migration
   def change
     create_table :contact_infos do |t|
+      t.string :email
+      t.string :mobile
       t.string :phone1
       t.string :phone2
       t.string :fax
