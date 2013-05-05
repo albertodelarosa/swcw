@@ -1,19 +1,55 @@
 - if user_signed_in?
   .logged-in.span4.pull-right
-    %h3
-      Welcome back
-      = succeed "!" do
-        %strong= current_user.username
-    = link_to 'Edit profile', edit_user_registration_path, class: 'btn'
+    .welcome-back
+      %h5
+        Welcome back
+        = succeed " !" do
+          %strong= current_user.username
+    - unless controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
+      = link_to 'Edit profile', edit_user_registration_path, class: 'btn'
     = link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn'
 - elsif controller.controller_name.eql?("registrations") && controller.action_name.eql?("new")
   .login_register.span2.pull-right
-    = link_to "sign in", new_user_session_path, class: 'btn pull-right'
+    -#= link_to "sign in", new_user_session_path, class: 'btn pull-right'
 - elsif controller.controller_name.eql?("sessions") && controller.action_name.eql?("new")
   .login_register.span2.pull-right
-    = link_to "sign up", new_user_registration_path, class: 'btn pull-right'
-- else
+    -#= link_to "sign up", new_user_registration_path, class: 'btn pull-right'
+- elsif controller.controller_name.eql?("users") && controller.action_name.eql?("login")
   .login_register.span2.pull-right
+    -#= link_to "sign up", new_user_registration_path, class: 'btn pull-right'
+- else
+  .login_register.span3.pull-right
     = link_to "sign in", new_user_session_path, class: 'btn'
     = link_to "sign up", new_user_registration_path, class: 'btn'
 
+
+
+    / Button to trigger modal
+    = link_to "sign in", "#signin", data: {toggle: "modal"}, class: 'btn'
+    = link_to "sign up", "#signup", data: {toggle: "modal"}, class: 'btn'
+
+
+
+
+    / Modal
+    #signin.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3#myModalLabel Modal header
+      .modal-body
+        %p One fine body…
+      .modal-footer
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+        %button.btn.btn-primary Save changes
+
+
+    / Modal
+    #signup.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3#myModalLabel Modal header
+      .modal-body
+        = render template: "devise/registrations/new"
+      .modal-footer
+        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+        %button.btn.btn-primary Save changes

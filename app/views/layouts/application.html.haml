@@ -27,6 +27,18 @@
               %li= link_to "About"
               %li= link_to "Services"
               %li= link_to "Contact"
+          - if user_signed_in?
+            .breadcrumb-container.span5.pull-right
+              %ul.breadcrumb
+                %li
+                  %a{:href => "#"} Home
+                  %span.divider 
+                    = "->"
+                %li
+                  %a{:href => "#"} Library
+                  %span.divider
+                    = "->"
+                %li.active Data
     .container.body-background
       - flash.each do |name, msg|
         = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"

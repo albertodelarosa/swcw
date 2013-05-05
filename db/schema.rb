@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317080532) do
+ActiveRecord::Schema.define(:version => 20130503061855) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -30,16 +30,17 @@ ActiveRecord::Schema.define(:version => 20130317080532) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street1"
+    t.string   "suite_no"
+    t.string   "apt_no"
     t.string   "street2"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.string   "work1"
-    t.string   "work2"
-    t.string   "fax"
-    t.string   "mobile"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "child_class"
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "admin_users", :force => true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130317080532) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+  add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
   create_table "appointments", :force => true do |t|
     t.datetime "date"
@@ -107,6 +109,20 @@ ActiveRecord::Schema.define(:version => 20130317080532) do
   add_index "companies_site_locations", ["company_id", "site_location_id"], :name => "cos_site_locs", :unique => true
   add_index "companies_site_locations", ["company_id"], :name => "index_companies_site_locations_on_company_id"
   add_index "companies_site_locations", ["site_location_id"], :name => "index_companies_site_locations_on_site_location_id"
+
+  create_table "contact_infos", :force => true do |t|
+    t.string   "email"
+    t.string   "mobile"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "fax"
+    t.string   "ext"
+    t.string   "child_class"
+    t.string   "contactable_type"
+    t.integer  "contactable_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "customer_managers_customers", :id => false, :force => true do |t|
     t.integer "user_id"
@@ -156,11 +172,48 @@ ActiveRecord::Schema.define(:version => 20130317080532) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "schedules", :force => true do |t|
+    t.integer  "appointment_id"
+    t.integer  "company_id"
+    t.integer  "customer_id"
+    t.integer  "site_id"
+    t.integer  "site_manager_id"
+    t.integer  "van_manager_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "schedules", ["appointment_id", "site_manager_id"], :name => "index_schedules_on_appointment_id_and_site_manager_id", :unique => true
+  add_index "schedules", ["appointment_id", "user_id"], :name => "index_schedules_on_appointment_id_and_user_id", :unique => true
+  add_index "schedules", ["appointment_id"], :name => "index_schedules_on_appointment_id"
+  add_index "schedules", ["company_id", "customer_id"], :name => "index_schedules_on_company_id_and_customer_id", :unique => true
+  add_index "schedules", ["company_id", "site_id"], :name => "index_schedules_on_company_id_and_site_id", :unique => true
+  add_index "schedules", ["company_id", "site_manager_id"], :name => "index_schedules_on_company_id_and_site_manager_id", :unique => true
+  add_index "schedules", ["company_id"], :name => "index_schedules_on_company_id"
+  add_index "schedules", ["customer_id", "site_id"], :name => "index_schedules_on_customer_id_and_site_id", :unique => true
+  add_index "schedules", ["customer_id", "site_manager_id"], :name => "index_schedules_on_customer_id_and_site_manager_id", :unique => true
+  add_index "schedules", ["customer_id"], :name => "index_schedules_on_customer_id"
+  add_index "schedules", ["site_id", "van_manager_id"], :name => "index_schedules_on_site_id_and_van_manager_id", :unique => true
+  add_index "schedules", ["site_id"], :name => "index_schedules_on_site_id"
+  add_index "schedules", ["site_manager_id"], :name => "index_schedules_on_site_manager_id"
+  add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"
+  add_index "schedules", ["van_manager_id"], :name => "index_schedules_on_van_manager_id"
+
   create_table "site_locations", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "location_no"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "sites", :force => true do |t|
+    t.string   "name"
+    t.string   "location_no"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
