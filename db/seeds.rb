@@ -56,29 +56,44 @@ site_locations  = SiteLocation.create([
 puts "Deleting existing addresses..."
 Address.all.each(&:destroy)
 
-puts "Adding new default addresses..."
-addresses = Address.create([
-  {street1: "14 Reardon Street" , city: "San Francisco", state: "CA", zip: "12345"},
-  {street1: "41 Northridge Road", city: "San Francisco", state: "CA", zip: "12345"}
+puts "Adding new default company addresses..."
+work_addresses = CompanyAddress.create!([
+  {street1: "181 2nd Ave" , suite_no: "112", city: "San Mateo", state: "CA", zip: "94401"}
 ])
 
-puts "Deleting existing customers..."
-Customer.all.each(&:destroy)
-
-puts "Adding new default customers..."
-customers = Customer.create([
-  {customer_no: '2ja094sva', first_name: 'John', last_name: 'Smith', title: 'Mr.', salutation: 'Johnny'},
-  {customer_no: '2ja094sva', first_name: 'Jane', last_name: 'Doe'  , title: 'Dr.', salutation: 'Janette'}
+puts "Adding new default home addresses..."
+home_addresses = HomeAddress.create!([
+  {street1: "2527 Ortega Street" , apt_no: "12", city: "San Francisco", state: "CA", zip: "94122"}
 ])
 
-puts "Deleting existing companies..."
-Company.all.each(&:destroy)
-puts "Deleted existing companies..."
-
-puts "Adding new default companies..."
-companies = Company.create([
-  {company_no: '209jrwe09g', business_id: '109nkwg9', name: 'Google'},
-  {company_no: '0ewksdweio', business_id: 'osetle8r', name: 'Apple'}
+puts "Adding new default company contact info..."
+company_contact_info = CompanyContactInfo.create!([
+  {phone1: "(650) 333-0168", ext: "329"}
 ])
+
+puts "Adding new default home contact info..."
+home_contact_info = HomeContactInfo.create!([
+  {phone1: "415.661.7226" , mobile: "415.845.0274"}
+])
+
+
+#puts "Deleting existing customers..."
+#Customer.all.each(&:destroy)
+
+#puts "Adding new default customers..."
+#customers = Customer.create([
+  #{customer_no: '2ja094sva', first_name: 'John', last_name: 'Smith', title: 'Mr.', salutation: 'Johnny'},
+  #{customer_no: '2ja094sva', first_name: 'Jane', last_name: 'Doe'  , title: 'Dr.', salutation: 'Janette'}
+#])
+
+#puts "Deleting existing companies..."
+#Company.all.each(&:destroy)
+#puts "Deleted existing companies..."
+
+#puts "Adding new default companies..."
+#companies = Company.create([
+  #{company_no: '209jrwe09g', business_id: '109nkwg9', name: 'Google'},
+  #{company_no: '0ewksdweio', business_id: 'osetle8r', name: 'Apple'}
+#])
 
 
