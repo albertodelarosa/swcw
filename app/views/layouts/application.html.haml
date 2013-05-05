@@ -31,14 +31,25 @@
             .breadcrumb-container.span5.pull-right
               %ul.breadcrumb
                 %li
-                  %a{:href => "#"} Home
-                  %span.divider 
-                    = "->"
-                %li
-                  %a{:href => "#"} Library
-                  %span.divider
-                    = "->"
-                %li.active Data
+                  =link_to image_tag("home.png"), root_path()
+                - if @breadcrumbs
+                  -@breadcrumbs.each do |txt, path|
+                    %li
+                      %span.divider= ">"
+                      =raw(path)
+
+
+
+
+                -#%li
+                  -#%a{:href => "#"} Home
+                  -#%span.divider 
+                    -#= "->"
+                -#%li
+                  -#%a{:href => "#"} Library
+                  -#%span.divider
+                    -#= "->"
+                -#%li.active Data
     .container.body-background
       - flash.each do |name, msg|
         = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"

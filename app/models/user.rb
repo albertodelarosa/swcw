@@ -48,11 +48,8 @@ class User < ActiveRecord::Base
     #relationships.create!(followed_id: other_user.id)
   #end
 
-
-
-
-  has_many :role_users
-  has_many :roles, :through => :role_users
+  #has_many :role_users
+  #has_many :roles, :through => :role_users
 
   #accepts_nested_attributes_for :home_address
 

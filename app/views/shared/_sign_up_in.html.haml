@@ -19,37 +19,34 @@
     -#= link_to "sign up", new_user_registration_path, class: 'btn pull-right'
 - else
   .login_register.span3.pull-right
-    = link_to "sign in", new_user_session_path, class: 'btn'
-    = link_to "sign up", new_user_registration_path, class: 'btn'
-
-
-
-    / Button to trigger modal
     = link_to "sign in", "#signin", data: {toggle: "modal"}, class: 'btn'
-    = link_to "sign up", "#signup", data: {toggle: "modal"}, class: 'btn'
-
-
-
-
+    = link_to "sign up", new_user_registration_path, class: 'btn'
     / Modal
-    #signin.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-        %h3#myModalLabel Modal header
-      .modal-body
-        %p One fine body…
-      .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-        %button.btn.btn-primary Save changes
+    #signin.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "signinLabel", :role => "dialog", :tabindex => "-1"}
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h3#signinLabel Sign In
+        .modal-body
+          %fieldset
+            .control-group
+              = f.label :username, class: 'control-label'
+              .controls
+                = f.text_field :username, :autofocus => true
+            .control-group
+              = f.label :password, class: 'control-label'
+              .controls
+                = f.password_field :password
+            - if devise_mapping.rememberable?
+              .control-group
+                = f.label :remember_me, :class => "checkbox" do
+                  .controls
+                    = f.check_box :remember_me
+                    remember me
+        .modal-footer
+          - if devise_mapping.omniauthable?
+            - resource_class.omniauth_providers.each do |provider|
+              = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+          = f.submit "Sign in", class: 'btn btn-large btn-success'
+          %button.btn.btn-danger{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
 
-
-    / Modal
-    #signup.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-        %h3#myModalLabel Modal header
-      .modal-body
-        = render template: "devise/registrations/new"
-      .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-        %button.btn.btn-primary Save changes

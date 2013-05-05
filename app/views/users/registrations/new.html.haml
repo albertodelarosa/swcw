@@ -1,0 +1,160 @@
+.row
+  .span6.offset1
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+      = devise_error_messages!
+      .myform-wrapper
+        %ul#myTab.nav.nav-tabs
+          %li.active
+            %a{:href => "#edit"} Edit
+          %li
+            %a{:href => "#work_contact_info"} Work
+          %li
+            %a{:href => "#home_contact_info"} Home
+        .tab-content
+          #edit.tab-pane.active 
+            %fieldset
+              %legend
+                %h2 Sign Up
+              .control-group
+                = f.label :email, class: 'control-label'
+                .controls
+                  = f.email_field :email, placeholder: "email", :autofocus => true
+              .control-group
+                = f.label :current_password, class: 'control-label'
+                .controls
+                  = f.password_field :current_password, placeholder: "current password"
+                  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                    %span.add-on
+                      %i
+                        %h6 Currently waiting confirmation for: #{resource.unconfirmed_email}
+              .control-group
+                = f.label :password, class: 'control-label'
+                .controls
+                  = f.password_field :password, placeholder: "password", :autocomplete => "off"
+                  %span.add-on
+                    %i 
+                      %h6 (leave blank if you don't want to change it)
+              .control-group
+                = f.label :password_confirmation, class: 'control-label'
+                .controls
+                  = f.password_field :password_confirmation, placeholder: "password confirmation"
+                  %span.add-on
+                    %i
+                      %h6 (we need your current password to confirm your changes)
+              %h5 (click on the next tab to continue)
+          #work_contact_info.tab-pane
+            - resource.work_contact_info ||= resource.build_work_contact_info
+            = f.fields_for :work_contact_info do |wci|
+              %fieldset
+                %legend
+                  %h5 Contact Info
+                .control-group
+                  = wci.label :email, "Email", class: 'control-label'
+                  .controls
+                    = wci.text_field :email, placeholder: "email address"
+                .control-group
+                  = wci.label :phone1, "Phone 1", class: 'control-label'
+                  .controls
+                    = wci.text_field :phone1, placeholder: "phone number 1"
+                .control-group
+                  = wci.label :ext, class: 'control-label'
+                  .controls
+                    = wci.text_field :ext, placeholder: "ext"
+                .control-group
+                  = wci.label :phone2, "Phone 2", class: 'control-label'
+                  .controls
+                    = wci.text_field :phone2, placeholder: "phone number 2"
+                .control-group
+                  = wci.label :mobile, class: 'control-label'
+                  .controls
+                    = wci.text_field :mobile, placeholder: "mobile number"
+                .control-group
+                  = wci.label :fax, class: 'control-label'
+                  .controls
+                    = wci.text_field :fax, placeholder: "fax number"
+            - resource.work_address ||= resource.build_work_address
+            = f.fields_for :work_address do |wa|
+              %fieldset
+                %legend
+                  %h5 Address Info
+                .control-group
+                  = wa.label :street1, class: 'control-label'
+                  .controls
+                    = wa.text_field :street1, placeholder: "street address 1"
+                .control-group
+                  = wa.label :suite_no, class: 'control-label'
+                  .controls
+                    = wa.text_field :suite_no, placeholder: "suite number"
+                .control-group
+                  = wa.label :street2, class: 'control-label'
+                  .controls
+                    = wa.text_field :street2, placeholder: "street address 2"
+                .control-group
+                  = wa.label :city, class: 'control-label'
+                  .controls
+                    = wa.text_field :city, placeholder: "city"
+                .control-group
+                  = wa.label :state, class: 'control-label'
+                  .controls
+                    = wa.text_field :state, placeholder: "state"
+                .control-group
+                  = wa.label :zip, "Zip Code", class: 'control-label'
+                  .controls
+                    = wa.text_field :zip, placeholder: "zip code"
+              %h5 (click on the next tab to continue)
+          #home_contact_info.tab-pane 
+            - resource.home_contact_info ||= resource.build_home_contact_info
+            = f.fields_for :home_contact_info do |hci|
+              %fieldset
+                %legend
+                  %h5 Contact Info
+                .control-group
+                  = hci.label :mobile, class: 'control-label'
+                  .controls
+                    = hci.text_field :mobile, placeholder: "mobile number"
+                .control-group
+                  = hci.label :phone1, "Phone 1", class: 'control-label'
+                  .controls
+                    = hci.text_field :phone1, placeholder: "phone number 1"
+                .control-group
+                  = hci.label :phone2, "Phone 2", class: 'control-label'
+                  .controls
+                    = hci.text_field :phone2, placeholder: "phone number 2"
+                .control-group
+                  = hci.label :fax, class: 'control-label'
+                  .controls
+                    = hci.text_field :fax, placeholder: "fax number"
+            - resource.home_address ||= resource.build_home_address
+            = f.fields_for :home_address do |ha|
+              %fieldset
+                %legend
+                  %h5 Address Info
+                .control-group
+                  = ha.label :street1, class: 'control-label'
+                  .controls
+                    = ha.text_field :street1, placeholder: "street address 1"
+                .control-group
+                  = ha.label :apt_no, class: 'control-label'
+                  .controls
+                    = ha.text_field :apt_no, placeholder: "apartment number"
+                .control-group
+                  = ha.label :street2, class: 'control-label'
+                  .controls
+                    = ha.text_field :street2, placeholder: "street address 2"
+                .control-group
+                  = ha.label :city, class: 'control-label'
+                  .controls
+                    = ha.text_field :city, placeholder: "city"
+                .control-group
+                  = ha.label :state, class: 'control-label'
+                  .controls
+                    = ha.text_field :state, placeholder: "state"
+                .control-group
+                  = ha.label :zip, "Zip Code", class: 'control-label'
+                  .controls
+                    = ha.text_field :zip, placeholder: "zip code"
+                .control-group
+                  .controls
+                    = f.submit "Sign up", class: 'btn btn-large btn-success'
+                    = render "devise/shared/links"
+
