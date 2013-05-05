@@ -9,8 +9,8 @@ class CreateContactInfos < ActiveRecord::Migration
       t.string :ext
 
       t.string :child_class
-      t.string :addressable_type
-      t.integer :addressable_id
+      t.string :contactable_type
+      t.integer :contactable_id
 
       t.timestamps
     end

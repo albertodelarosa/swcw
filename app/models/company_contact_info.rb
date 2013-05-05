@@ -1,4 +1,4 @@
 class CompanyContactInfo < ContactInfo
-  attr_accessible :email
+  attr_accessible :email, :ext
 end
 

@@ -18,6 +18,22 @@ Sitelerwash::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  devise_for :users, :controllers => {
+    :sessions           => "users/sessions",
+    :confirmations      => "users/confirmations",
+    :passwords          => "users/passwords",
+    :registrations      => "users/registrations",
+    :unlocks            => "users/unlocks",
+    :omniauth_callbacks => "users/omniauth_callbacks"
+  }
+
+  devise_scope :user do
+    get "sign_up" => "users/registrations#new"
+    get "login_in" => "users/sessions#new"
+    get "log_out" => "users/sessions#destroy"
+  end
+
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   root :to => "welcome#index"
