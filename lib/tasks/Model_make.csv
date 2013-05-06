@@ -1,0 +1,998 @@
+Make,Model,Trim,Size
+Acura,CL,,R
+Acura,Integra,,R
+Acura,Legend,,R
+Acura,MDX,,XL
+Acura,NSX,,R
+Acura,RDX,,XL
+Acura,RL,,R
+Acura,RSX,,R
+Acura,SLX,,XL
+Acura,TL,,R
+Acura,TLS,,R
+Acura,TSX,,R
+Acura,Vigor,,R
+Alfa Romeo,164,,R
+Alfa Romeo,GTV-6,,R
+Alfa Romeo,Milano,,R
+Alfa Romeo,Spider,,R
+AMC,Alliance,,R
+AMC,Eagle,,R
+AMC,Encore,,R
+AMC,GTA,,R
+Aston Martin,DB9,,R
+Aston Martin,Vantage,,R
+Audi,100,,R
+Audi,200,,R
+Audi,4000,,R
+Audi,5000,,R
+Audi,80,,R
+Audi,90,,R
+Audi,A3,,R
+Audi,A4,,R
+Audi,A5,,R
+Audi,A6,,R
+Audi,A6,Avant,XL
+Audi,A7,,R
+Audi,A8,,R
+Audi,A8L,,R
+Audi,allroad,,R
+Audi,Avant,,R
+Audi,Avant A4,,XL
+Audi,Cabriolet,,R
+Audi,CT,,R
+Audi,GT,,R
+Audi,L8T,,R
+Audi,Q5,,XL
+Audi,Q7,,XL
+Audi,Quattro,,R
+Audi,R8,,R
+Audi,R8 Spyder,,R
+Audi,RS4,,R
+Audi,RS6,,R
+Audi,S4,,R
+Audi,S5,,R
+Audi,S6,,R
+Audi,S8,,R
+Audi,Station Wagon,,XL
+Audi,TT,,R
+Bentley,Arnage,,R
+Bentley,Brooklands,,R
+Bentley,Continental,,R
+Bentley,Mulsanne,,R
+Bertone,X1/9,,R
+BMW,128i,,R
+BMW,135i,,R
+BMW,3 Series,,R
+BMW,3 series wagon,,XL
+BMW,325ci,,R
+BMW,328i,,R
+BMW,330ci,,R
+BMW,3Series,,R
+BMW,5 Series,,R
+BMW,525i,,R
+BMW,530i,,R
+BMW,550i,,R
+BMW,6 Series,,R
+BMW,7 Series,,R
+BMW,8 Series,,R
+BMW,i325,,R
+BMW,K1700 GT,,R
+BMW,M,,R
+BMW,M coupe,,R
+BMW,M Roadster,,R
+BMW,M2,,R
+BMW,M3,,R
+BMW,M5,,R
+BMW,M6,,R
+BMW,Mini Cooper,,R
+BMW,Roadster,,R
+BMW,Test 3 series,,R
+BMW,Wagon,,XL
+BMW,X3,,XL
+BMW,X4,,XL
+BMW,X5,,XL
+BMW,X6,,XL
+BMW,Z3,,R
+BMW,Z4,,R
+BMW,Z8,,R
+Buick,Century,,R
+Buick,Electra,,R
+Buick,Enclave,,XL
+Buick,Estate,,R
+Buick,LaCrosse,,R
+Buick,LeSabre,,R
+Buick,Lucerne,,R
+Buick,Park Avenue,,R
+Buick,Rainer,,XL
+Buick,Reatta,,R
+Buick,Regal,,R
+Buick,Rendezvous,,XL
+Buick,Riviera,,R
+Buick,Roadmaster,,R
+Buick,Skyhawk,,R
+Buick,Skylark,,R
+Buick,Somerset,,R
+Buick,Somerset Regal,,R
+Cadillac,Allante,,R
+Cadillac,Brougham,,R
+Cadillac,Catera,,R
+Cadillac,Cimarron,,R
+Cadillac,CTS,,R
+Cadillac,DeVille,,R
+Cadillac,Eldorado,,R
+Cadillac,Escalade,,XL
+Cadillac,Escalade EXT,,XL
+Cadillac,Fleetwood,,R
+Cadillac,Fleetwood 75,,R
+Cadillac,Seville,,R
+Cadillac,Sixty Special,,R
+Cadillac,SRX,,R
+Cadillac,STS,,R
+Cadillac,XLR,,XL
+Chevrolet,10 Pickup,,XL
+Chevrolet,1500 Pickup,,XL
+Chevrolet,20 Pickup,,XL
+Chevrolet,2500 Pickup,,XL
+Chevrolet,30 Pickup,,XL
+Chevrolet,3500 Pickup,,XL
+Chevrolet,APV,,XL
+Chevrolet,Astro,,XL
+Chevrolet,Avalanche,,XL
+Chevrolet,Aveo,,R
+Chevrolet,Beretta,,R
+Chevrolet,Blazer,,XL
+Chevrolet,Camaro,,R
+Chevrolet,Caprice,,R
+Chevrolet,Caprice Classic,,R
+Chevrolet,Captiva,,XL
+Chevrolet,Cavalier,,R
+Chevrolet,Celebrity,,R
+Chevrolet,Chevette,,R
+Chevrolet,Chevy,,R
+Chevrolet,Citation II,,R
+Chevrolet,Classic,,R
+Chevrolet,Cobalt,,R
+Chevrolet,Colorado,,XL
+Chevrolet,Corsica,,R
+Chevrolet,Corvette,,R
+Chevrolet,Cruz,,R
+Chevrolet,El Camino,,R
+Chevrolet,Equinox,,XL
+Chevrolet,Express Van,,XL
+Chevrolet,G-Series Van,,XL
+Chevrolet,HHR,,XL
+Chevrolet,Impala,,R
+Chevrolet,Impala SS,,R
+Chevrolet,Lumina,,R
+Chevrolet,Lumina APV,,XL
+Chevrolet,Malibu,,R
+Chevrolet,Metro,,R
+Chevrolet,Monte Carlo,,R
+Chevrolet,Monte Carlo SS,,R
+Chevrolet,Nova,,R
+Chevrolet,PIAA,,XL
+Chevrolet,Prizm,,R
+Chevrolet,S10 Blazer,,XL
+Chevrolet,S10 Pickup,,XL
+Chevrolet,Silverado,,XL
+Chevrolet,Silverado 1500 Pickup,,XL
+Chevrolet,Silverado 2500 Pickup,,XL
+Chevrolet,Silverado 3500 Pickup,,XL
+Chevrolet,Sonic,,R
+Chevrolet,Spectrum,,R
+Chevrolet,Sportvan,,XL
+Chevrolet,Sprint,,R
+Chevrolet,SSR,,R
+Chevrolet,Suburban,,XL
+Chevrolet,Tahoe,,XL
+Chevrolet,Tracker,,XL
+Chevrolet,TrailBlazer,,XL
+Chevrolet,Uplander,,XL
+Chevrolet,Venture,,XL
+Chevrolet,Volt,,R
+Chevrolet,XCab,,XL
+Chrysler,300C,,R
+Chrysler,300M,,R
+Chrysler,Cirrus,,R
+Chrysler,Concorde,,R
+Chrysler,Conquest,,R
+Chrysler,Conquest TSi,,R
+Chrysler,Country,,XL
+Chrysler,Crossfire,,R
+Chrysler,E Class,,R
+Chrysler,Executive,,R
+Chrysler,Fifth Ave,,R
+Chrysler,Grand Voyager,,XL
+Chrysler,Imperial,,R
+Chrysler,Laser,,R
+Chrysler,LeBaron,,R
+Chrysler,LHS,,R
+Chrysler,Neon,,R
+Chrysler,New Yorker,,R
+Chrysler,Pacifica,,XL
+Chrysler,PT Cruiser,,R
+Chrysler,Sebring,,R
+Chrysler,TC,,R
+Chrysler,Town Country,,XL
+Chrysler,Voyager,,XL
+Daewoo,Lanos,,R
+Daewoo,Leganza,,R
+Daewoo,Nubira,,R
+Dodge,100 Pickup,,XL
+Dodge,150 Pickup,,XL
+Dodge,1500 Pickup,,XL
+Dodge,250 Pickup,,XL
+Dodge,2500 Pickup,,XL
+Dodge,350 Pickup,,XL
+Dodge,3500 Pickup,,XL
+Dodge,600,,R
+Dodge,Aries,,R
+Dodge,Aries America,,R
+Dodge,Avenger,,R
+Dodge,Caliber,,R
+Dodge,Caravan,,XL
+Dodge,Challenger,,R
+Dodge,Charger,,R
+Dodge,Colt,,R
+Dodge,Colt Vista,,R
+Dodge,Conquest,,R
+Dodge,Dakota,,XL
+Dodge,Daytona,,R
+Dodge,Diplomat,,R
+Dodge,Durango,,XL
+Dodge,Dynasty,,R
+Dodge,Flat bed 1,,XL
+Dodge,Grand Caravan,,XL
+Dodge,Intrepid,,R
+Dodge,Journey,,XL
+Dodge,Lancer,,R
+Dodge,Laramie,,XL
+Dodge,Magnum,,XL
+Dodge,mini,,R
+Dodge,Mini Ram Van,,XL
+Dodge,Monaco,,R
+Dodge,Neon,,R
+Dodge,Nitro,,XL
+Dodge,Omni,,R
+Dodge,Omni America,,R
+Dodge,Raider,,R
+Dodge,Ram 1500,,XL
+Dodge,Ram 350,,XL
+Dodge,Ram 50 Pickup,,XL
+Dodge,Ram Van,,XL
+Dodge,Ram Wagon,,XL
+Dodge,Ramcharger,,R
+Dodge,Rampage,,R
+Dodge,Shadow,,R
+Dodge,Spirit,,R
+Dodge,Sprinter,,XL
+Dodge,Stealth,,R
+Dodge,Stratus,,R
+Dodge,Van,,XL
+Dodge,Viper,,R
+Eagle,Medallion,,R
+Eagle,Premier,,R
+Eagle,Summit,,R
+Eagle,Talon,,R
+Eagle,Vision,,R
+Ferrari,308,,R
+Ferrari,430 Scuderia,,R
+Ferrari,599 GTB,,R
+Ferrari,612 Scaglietti,,R
+Ferrari,F430 Spyder,,R
+Fiat,500,,R
+Ford,350,,R
+Ford,500,,R
+Ford,Aerostar,,XL
+Ford,Aspire,,R
+Ford,Bronco,,XL
+Ford,Bronco II,,XL
+Ford,Cargo Van,,XL
+Ford,Club Wagon,,XL
+Ford,Cobra,,R
+Ford,Contour,,R
+Ford,Country Squire,,R
+Ford,Crown Victoria,,R
+Ford,E 350,,XL
+Ford,E-250,,XL
+Ford,E150,,XL
+Ford,Econoline,,XL
+Ford,Edge,,XL
+Ford,Escape,,XL
+Ford,Escort,,R
+Ford,Estate,,XL
+Ford,Excursion,,XL
+Ford,EXP,,XL
+Ford,Expedition,,XL
+Ford,Explorer,,XL
+Ford,Explorer Sport,,XL
+Ford,Explorer Sport Trac,,XL
+Ford,F 350,,XL
+Ford,F150,,XL
+Ford,F180,,XL
+Ford,F250,,XL
+Ford,F350,,XL
+Ford,Falcon,,R
+Ford,Festiva,,R
+Ford,Fiesta,,R
+Ford,Flat bed 1 ton,,XL
+Ford,Flex,,XL
+Ford,Focus,,R
+Ford,Focus ZX4,,R
+Ford,Focus ZX5,,R
+Ford,Ford,,R
+Ford,Freestar,,XL
+Ford,Freestyle,,XL
+Ford,Fusion,,R
+Ford,Gt,,R
+Ford,Limo,,XL
+Ford,LTD,,R
+Ford,Mustang,,R
+Ford,Probe,,R
+Ford,Ranger,,XL
+Ford,Sable,,R
+Ford,Sport-Trac,,XL
+Ford,Super Duty,,R
+Ford,SUV,,R
+Ford,Taurus,,R
+Ford,Taurus SE,,R
+Ford,Tempo,,R
+Ford,Think,,R
+Ford,Thunderbird,,R
+Ford,Van 379,,XL
+Ford,Windstar,,XL
+Ford,ZX2,,R
+Ford,ZX3,,R
+GMC,1500 Pickup,,XL
+GMC,2500 Pickup,,XL
+GMC,3500 Pickup,,XL
+GMC,Acadia,,XL
+GMC,Bobtails,,XXL
+GMC,Caballero,,XL
+GMC,Canyon,,XL
+GMC,Denali,,XL
+GMC,Envoy,,XL
+GMC,Envoy XL,,XL
+GMC,Jimmy,,XL
+GMC,Rally Wagon,,XL
+GMC,S15 Jimmy,,XL
+GMC,S15 Pickup,,XL
+GMC,Safari,,XL
+GMC,Savana Van,,XL
+GMC,Siena,,R
+GMC,Sierra,,XL
+GMC,Sierra 1500 Pickup,,XL
+GMC,Sierra 2500 Pickup,,XL
+GMC,Sierra 3500 Pickup,,XL
+GMC,Sonoma,,XL
+GMC,Suburban,,XL
+GMC,Terrain,,XL
+GMC,Vandura,,XL
+GMC,Yukon,,XL
+GMC,Yukon XL,,XL
+Honda,Accord,,R
+Honda,Accord ,EX,R
+Honda,Accord,LX,R
+Honda,Accord,V6,R
+Honda,Civic,,R
+Honda,Civic,Ex,R
+Honda,Civic,Hybrid,R
+Honda,Civic,LX,R
+Honda,CR-V,,XL
+Honda,Crosstour,,R
+Honda,CRX,,R
+Honda,CRZ,,R
+Honda,del Sol,,R
+Honda,Element,,XL
+Honda,Ex-Wagon,,XL
+Honda,Fit,,R
+Honda,Goldwing,,R
+Honda,Hit Sport,,R
+Honda,Insight,,R
+Honda,Odyssey,,XL
+Honda,Passport,,XL
+Honda,Pilot,,XL
+Honda,Prelude,,R
+Honda,Ridgeline,,XL
+Honda,S2000,,R
+Honda,ST1300,,R
+Honda,Van,,XL
+Honda,VFR,,R
+Hummer,H1,,XL
+Hummer,H2,,XL
+Hummer,H3,,XL
+Hyundai,Accent,,R
+Hyundai,Azera,,R
+Hyundai,Elantra,,R
+Hyundai,Entourage,,XL
+Hyundai,Excel,,R
+Hyundai,Genesis,,R
+Hyundai,Guinness,,R
+Hyundai,Santa Fe,,XL
+Hyundai,Scoupe,,R
+Hyundai,Sonata,,R
+Hyundai,Tiburon,,R
+Hyundai,Tucson,,XL
+Hyundai,Veracruz,,XL
+Hyundai,XG300,,R
+Hyundai,XG350,,R
+Infiniti,EX 35,,R
+Infiniti,FX35,,XL
+Infiniti,FX45,,XL
+Infiniti,G20,,R
+Infiniti,G3 Coupe,,R
+Infiniti,G35,,R
+Infiniti,G35 Coupe,,R
+Infiniti,G37 coupe,,R
+Infiniti,G37s,,R
+Infiniti,G55,,R
+Infiniti,I30,,R
+Infiniti,I35,,R
+Infiniti,J30,,R
+Infiniti,M 37,,R
+Infiniti,M30,,R
+Infiniti,M35,,R
+Infiniti,M45,,R
+Infiniti,M56 S,,R
+Infiniti,Q30,,R
+Infiniti,Q35,,R
+Infiniti,Q45,,R
+Infiniti,QX4,,XL
+Infiniti,QX56,,XL
+Infiniti,SUV,,XL
+Isuzu,Amigo,,XL
+Isuzu,Ascender,,XL
+Isuzu,Axiom,,XL
+Isuzu,Boxstar,,R
+Isuzu,F series,,XXL
+Isuzu,H series,,XXL
+Isuzu,Hombre,,R
+Isuzu,I-Mark,,R
+Isuzu,Impulse,,R
+Isuzu,N series,,XXL
+Isuzu,Oasis,,R
+Isuzu,Pickup,,XL
+Isuzu,Rodeo,,XL
+Isuzu,Rodeo Sport,,XL
+Isuzu,Stylus,,R
+Isuzu,Trooper,,XL
+Isuzu,Trooper II,,XL
+Isuzu,VehiCROSS,,XL
+Jaguar,E-Type,,R
+Jaguar,S-Type,,R
+Jaguar,Vanden Plas,,R
+Jaguar,X-Type,,R
+Jaguar,XJ Sport,,R
+Jaguar,XJ Super,,R
+Jaguar,XJ12,,R
+Jaguar,XJ6,,R
+Jaguar,XJ8,,R
+Jaguar,XJR,,R
+Jaguar,XJR-S,,R
+Jaguar,XJS,,R
+Jaguar,XK8,,R
+Jaguar,XKR,,R
+Kia,Forte,,R
+Kia,Optima,,R
+Kia,Rio,,R
+Kia,Rondo,,XL
+Kia,Sedona,,XL
+Kia,Sephia,,R
+Kia,Sorento,,XL
+Kia,Soul,,XL
+Kia,Spectra,,R
+Kia,Sportage,,XL
+Lamborghini,Gallardo,,R
+Lamborghini,Gallardo,Superleggera,R
+Land Rover,593,,XL
+Land Rover,Defender,110,XL
+Land Rover,Defender,90,XL
+Land Rover,Discovery,,XL
+Land Rover,Discovery,Series II,XL
+Land Rover,Freelander,,XL
+Land Rover,LR 3,,XL
+Land Rover,LR 4,,XL
+Land Rover,LR2,,XL
+Land Rover,Manga,,XL
+Land Rover,Range Rover,,XL
+Land Rover,Range Rover,Sport,XL
+Lexus,400h,,R
+Lexus,CT 200H,,R
+Lexus,ES 250,,R
+Lexus,ES 300,,R
+Lexus,ES350,,R
+Lexus,GS 300,,R
+Lexus,GS 350,,R
+Lexus,GS 400,,R
+Lexus,GS 430,,R
+Lexus,GS 450h,,R
+Lexus,GX 460,,XL
+Lexus,GX 470,,XL
+Lexus,HS 250h,,R
+Lexus,IS 250,,R
+Lexus,IS 300,,R
+Lexus,IS 350,,R
+Lexus,ISF,,R
+Lexus,LS 350,,R
+Lexus,LS 400,,R
+Lexus,LS 430,,R
+Lexus,Ls 460,,R
+Lexus,LS 570,,XL
+Lexus,LS 600h,,R
+Lexus,LX 450,,XL
+Lexus,LX 470,,XL
+Lexus,Lx 570,,XL
+Lexus,RDX 350,,XL
+Lexus,RX 300,,XL
+Lexus,RX 330,,R
+Lexus,RX 350,,XL
+Lexus,RX 400h,,XL
+Lexus,RX400,,XL
+Lexus,RX450H,,XL
+Lexus,SC 300,,R
+Lexus,SC 400,,R
+Lexus,SC 430,,R
+Lexus,SUV,,R
+Lexus,400h,,R
+Lexus,CT 200H,,R
+Lexus,ES 250,,R
+Lexus,ES 300,,R
+Lexus,ES 330,,R
+Lexus,ES350,,R
+Lexus,Ex350,,R
+Lexus,GS 300,,R
+Lexus,GS 350,,R
+Lexus,GS 400,,R
+Lexus,GS 430,,R
+Lexus,GS 450h,,R
+Lexus,GX 460,,XL
+Lexus,GX 470,,XL
+Lexus,HS 250h,,R
+Lexus,IS 250,,R
+Lexus,IS 300,,R
+Lexus,IS 350,,R
+Lexus,ISF,,R
+Lexus,LS 350,,R
+Lexus,LS 400,,R
+Lexus,LS 430,,R
+Lexus,Ls 460,,R
+Lexus,LS 570,,XL
+Lexus,LS 600h,,R
+Lexus,LX 450,,XL
+Lexus,LX 470,,XL
+Lexus,Lx 570,,XL
+Lexus,RDX 350,,XL
+Lexus,RX 300,,XL
+Lexus,RX 330,,R
+Lexus,RX 350,,XL
+Lexus,RX 400h,,XL
+Lexus,RX400,,XL
+Lexus,RX450H,,XL
+Lexus,SC 300,,R
+Lexus,SC 400,,R
+Lexus,SC 430,,R
+Lexus,SUV,,R
+Maserati,GT,,R
+Maserati,Quattroporte,,R
+Mazda,3,,R
+Mazda,320,,R
+Mazda,323,,R
+Mazda,5,,XL
+Mazda,6,,R
+Mazda,626,,R
+Mazda,929,,R
+Mazda,B2000,,XL
+Mazda,B2200,,XL
+Mazda,B2300,,XL
+Mazda,B2500,,XL
+Mazda,B2600,,XL
+Mazda,B3000,,XL
+Mazda,B4000,,XL
+Mazda,CX-7,,XL
+Mazda,CX-9,,XL
+Mazda,GLC,,R
+Mazda,M3,,R
+Mazda,Mazda3,,R
+Mazda,Miata MX-5,,R
+Mazda,Millenia,,R
+Mazda,MPV,,XL
+Mazda,MS 3,,XL
+Mazda,MX-3,,R
+Mazda,MX-5,,R
+Mazda,MX-6,,R
+Mazda,Navajo,,XL
+Mazda,Protege,,R
+Mazda,Protege5,,R
+Mazda,RX-7,,R
+Mazda,RX8,,R
+Mazda,Speed3,,R
+Mazda,Tribute,,XL
+Mazda,Truck,,R
+Mercedes-Benz,1.90E-14,,R
+Mercedes-Benz,190D,,R
+Mercedes-Benz,190E,,R
+Mercedes-Benz,230C,,R
+Mercedes-Benz,240D,,R
+Mercedes-Benz,260E,,R
+Mercedes-Benz,300CD,,R
+Mercedes-Benz,300CE,,R
+Mercedes-Benz,300D,,R
+Mercedes-Benz,300E,,R
+Mercedes-Benz,300SD,,R
+Mercedes-Benz,300SDL,,R
+Mercedes-Benz,300SE,,R
+Mercedes-Benz,300SEL,,R
+Mercedes-Benz,300SL,,R
+Mercedes-Benz,300TD,,R
+Mercedes-Benz,300TE,,R
+Mercedes-Benz,350SD,,R
+Mercedes-Benz,350SDL,,R
+Mercedes-Benz,380SE,,R
+Mercedes-Benz,380SL,,R
+Mercedes-Benz,400E,,R
+Mercedes-Benz,400SE,,R
+Mercedes-Benz,400SEL,,R
+Mercedes-Benz,420SEL,,R
+Mercedes-Benz,450 GL,,XL
+Mercedes-Benz,500E,,R
+Mercedes-Benz,500SEC,,R
+Mercedes-Benz,500SEL,,R
+Mercedes-Benz,500SL,,R
+Mercedes-Benz,550 Black,,R
+Mercedes-Benz,560SEC,,R
+Mercedes-Benz,560SEL,,R
+Mercedes-Benz,560SL,,R
+Mercedes-Benz,600SEC,,R
+Mercedes-Benz,600SEL,,R
+Mercedes-Benz,600SL,,R
+Mercedes-Benz,AMG,,XL
+Mercedes-Benz,Brabus,,R
+Mercedes-Benz,C-Class,,R
+Mercedes-Benz,C230,,R
+Mercedes-Benz,CL-Class,,R
+Mercedes-Benz,CLK 350,,R
+Mercedes-Benz,CLK-Class,,R
+Mercedes-Benz,CLS-Class,,R
+Mercedes-Benz,E Class Comet,,R
+Mercedes-Benz,E-Class,,R
+Mercedes-Benz,E550,,XL
+Mercedes-Benz,G-Class,,XL
+Mercedes-Benz,GL-Class,,XL
+Mercedes-Benz,Kompressor,,R
+Mercedes-Benz,M-Class,,XL
+Mercedes-Benz,ML-Class,,XL
+Mercedes-Benz,Passion Smart Car,,R
+Mercedes-Benz,R 350,,XL
+Mercedes-Benz,R-500,,R
+Mercedes-Benz,S-Class,,R
+Mercedes-Benz,S420,,R
+Mercedes-Benz,S550,,R
+Mercedes-Benz,SL-Class,,R
+Mercedes-Benz,Slk,,R
+Mercedes-Benz,SLK-Class,,R
+Mercedes-Benz,Smart for two,,R
+Mercedes-Benz,C 300,,R
+Mercury,Capri,,R
+Mercury,Comet,,R
+Mercury,Cougar,,R
+Mercury,Grand Marquis,,R
+Mercury,Lynx,,R
+Mercury,Marauder,,R
+Mercury,Mariner Hybrid,,XL
+Mercury,Marquis,,R
+Mercury,Milan,,R
+Mercury,Monteret,,XL
+Mercury,Mountaineer,,XL
+Mercury,Mystique,,R
+Mercury,Sable,,R
+Mercury,Topaz,,R
+Mercury,Tracer,,R
+Mercury,Villager,,XL
+Mini,Clubman,,R
+Mini,Cooper,,R
+Mini,Cooper Convertible,,R
+Mini,CountryMan,,XL
+Mitsubishi,3000GT,,R
+Mitsubishi,Box Truck,,XXL
+Mitsubishi,Cordia,,R
+Mitsubishi,Diamante,,R
+Mitsubishi,Eclipse,,R
+Mitsubishi,Endeavor,,XL
+Mitsubishi,Evo,,R
+Mitsubishi,Expo,,R
+Mitsubishi,Galant,,R
+Mitsubishi,Galant Sigma,,R
+Mitsubishi,Lancer,,R
+Mitsubishi,Minivan,,XL
+Mitsubishi,Mirage,,R
+Mitsubishi,Montero,,XL
+Mitsubishi,Montero Sport,,XL
+Mitsubishi,Outlander,,XL
+Mitsubishi,Pickup,,XL
+Mitsubishi,Precis,,R
+Mitsubishi,Raider,,XL
+Mitsubishi,Sigma,,R
+Mitsubishi,Spyder,,R
+Mitsubishi,Starion,,R
+Mitsubishi,Tredia,,R
+Oldsmobile,88,,R
+Oldsmobile,98,,R
+Oldsmobile,Achieva,,R
+Oldsmobile,Alero,,R
+Oldsmobile,Aurora,,R
+Oldsmobile,Bravada,,XL
+Oldsmobile,Calais,,R
+Oldsmobile,Ciera,,R
+Oldsmobile,Custom Cruiser,,R
+Oldsmobile,Cutlass,,R
+Oldsmobile,Cutlass Cruiser,,R
+Oldsmobile,Cutlass Supreme,,R
+Oldsmobile,Delta 88,,R
+Oldsmobile,Firenza,,R
+Oldsmobile,Intrigue,,R
+Oldsmobile,LSS,,R
+Oldsmobile,Omega,,R
+Oldsmobile,Regency,,R
+Oldsmobile,Silhouette,,XL
+Oldsmobile,Toronado,,R
+Peugeot,405,,R
+Peugeot,505,,R
+Peugeot,604,,R
+Peugeot,Liberte,,R
+Plymouth,Acclaim,,R
+Plymouth,Breeze,,R
+Plymouth,Caravelle,,R
+Plymouth,Colt,,R
+Plymouth,Colt Vista,,R
+Plymouth,Conquest,,R
+Plymouth,Gran Fury,,R
+Plymouth,Grand Voyager,,XL
+Plymouth,Horizon,,R
+Plymouth,Laser,,R
+Plymouth,Neon,,R
+Plymouth,Prowler,,R
+Plymouth,Reliant,,R
+Plymouth,Sundance,,R
+Plymouth,Turismo,,R
+Plymouth,Valiant,,R
+Plymouth,Van,,XL
+Plymouth,Voyager,,XL
+Pontiac,1000,,R
+Pontiac,Sunbird,,R
+Pontiac,6000,,R
+Pontiac,Aztek,,XL
+Pontiac,Bonneville,,R
+Pontiac,Fiero,,R
+Pontiac,Firebird,,R
+Pontiac,G-6,,R
+Pontiac,G5,,R
+Pontiac,G6,,R
+Pontiac,G8,,R
+Pontiac,Grand Am,,R
+Pontiac,Grand Prix,,R
+Pontiac,GTO,,R
+Pontiac,LeMans,,R
+Pontiac,Montana,,XL
+Pontiac,Parisienne,,R
+Pontiac,Phoenix,,R
+Pontiac,Safari,,XL
+Pontiac,Solstice,,R
+Pontiac,Sunbird,,R
+Pontiac,Sunfire,,R
+Pontiac,Torrent,,XL
+Pontiac,Trans Am,,R
+Pontiac,Trans Sport,,XL
+Pontiac,Vibe,,R
+Porsche,911,,R
+Porsche,911 C4,,R
+Porsche,911 Turbo,,R
+Porsche,924,,R
+Porsche,928,,R
+Porsche,944,,R
+Porsche,968,,R
+Porsche,993,,R
+Porsche,996,,R
+Porsche,997,,R
+Porsche,Boxster,,R
+Porsche,C4,,R
+Porsche,Carrera,,R
+Porsche,Carrera,4,R
+Porsche,Cayanne,,XL
+Porsche,Cayenne,S,XL
+Porsche,Cayman,,R
+Porsche,Cayman,S,R
+Porsche,Panamera,,R
+Porsche,Targa,,R
+Range Rover,HSE,,XL
+Renault,Fuego,,R
+Renault,Sportwagon,,XL
+Rolls Royce,phantom,,R
+Saab,9-2x,,R
+Saab,3-Sep,,R
+Saab,5-Sep,,R
+Saab,7-Sep,,XL
+Saab,900,,R
+Saab,9000,,R
+Saab,93 Aero,,R
+Saab,Aero,,R
+Saab,Convertible,,R
+Saab,Wagon,,R
+Saturn,Astra,,R
+Saturn,Aura,,R
+Saturn,Ion,,R
+Saturn,L100,,R
+Saturn,L200,,R
+Saturn,L300,,R
+Saturn,LS,,R
+Saturn,LS1,,R
+Saturn,LS2,,R
+Saturn,LW1,,XL
+Saturn,LW2,,XL
+Saturn,LW200,,XL
+Saturn,LW300,,XL
+Saturn,Outlook,,XL
+Saturn,SC,,R
+Saturn,SC1,,R
+Saturn,SC2,,R
+Saturn,Sky,,R
+Saturn,SL,,R
+Saturn,SL1,,R
+Saturn,SL2,,R
+Saturn,SW1,,XL
+Saturn,SW2,,XL
+Saturn,VUE,,XL
+Scion,Cube,,XL
+Scion,TC,,R
+Scion,XA,,R
+Scion,XB,,R
+Scion,XD,,R
+Smart,Fortwo,,R
+Smart,Passion,,R
+Smart,Pure,,R
+Subaru,B9 Tribeca,,XL
+Subaru,Baja,,XL
+Subaru,Brat,,R
+Subaru,DL,,R
+Subaru,Forester,,XL
+Subaru,GL,,R
+Subaru,GL-10,,R
+Subaru,Impreza,,R
+Subaru,Imprezat,Outback Spor,XL
+Subaru,Impreza,WRX,R
+Subaru,Impreza,WRX Wagon,XL
+Subaru,Justy,,R
+Subaru,Legacy,,R
+Subaru,Legacy,Outback,XL
+Subaru,Loyale,,R
+Subaru,RX,,R
+Subaru,STD,,R
+Subaru,STi,,R
+Subaru,SVX,,R
+Subaru,WRX,,R
+Subaru,XT,,R
+Subaru,XT6,,R
+Suzuki,Aerio,,R
+Suzuki,Esteem,,R
+Suzuki,Grand Vitara,,XL
+Suzuki,Rhino,,R
+Suzuki,Samurai,,XL
+Suzuki,Sidekick,,XL
+Suzuki,Swift,,R
+Suzuki,SX4,,XL
+Suzuki,Vitara,,XL
+Suzuki,X-90,,XL
+Suzuki,XL-7,,XL
+Tesla,Roadster,,R
+Toyota,4Runner,,XL
+Toyota,Alessandro Volta,,R
+Toyota,Avalon,,R
+Toyota,Camry,,R
+Toyota,Camry 1999,,R
+Toyota,Celica,,R
+Toyota,Celica Supra,,R
+Toyota,Corolla,,R
+Toyota,Corolla,DX,XL
+Toyota,Corolla,LE,R
+Toyota,Cressida,,R
+Toyota,Echo,,R
+Toyota,Fit,,R
+Toyota,FJ Cruiser,,XL
+Toyota,Highlander,,XL
+Toyota,Hybrid,,R
+Toyota,Insight,,R
+Toyota,Land Cruiser,,XL
+Toyota,Matrix,,R
+Toyota,Minivan,,XL
+Toyota,MR2,,R
+Toyota,MR2 Spyder,,R
+Toyota,Paseo,,R
+Toyota,Pickup,,XL
+Toyota,Previa,,XL
+Toyota,Prius,,R
+Toyota,RAV4,,XL
+Toyota,S Runner,,XL
+Toyota,Sequoia,,XL
+Toyota,Sienna,,XL
+Toyota,SLE V6,,R
+Toyota,Solara,,R
+Toyota,SR5,,XL
+Toyota,Starlet,,R
+Toyota,Supra,,R
+Toyota,T100,,XL
+Toyota,Tacoma,,XL
+Toyota,Tercel,,R
+Toyota,Truck,,XL
+Toyota,Tundra,,XL
+Toyota,Van,,XL
+Toyota,Venza,,R
+Toyota,Yaris,,R
+Volkswagen,Beetle,,R
+Volkswagen,Bug,,R
+Volkswagen,Cabrio,,R
+Volkswagen,Cabriolet,,R
+Volkswagen,Camper,,XL
+Volkswagen,cc,,R
+Volkswagen,Corrado,,R
+Volkswagen,Eos,,R
+Volkswagen,Eurovan,,XL
+Volkswagen,Fox,,R
+Volkswagen,Golf,,R
+Volkswagen,Golf,GTI,R
+Volkswagen,Jetta,,R
+Volkswagen,Jetta,III,R
+Volkswagen,Karmann,,R
+Volkswagen,Micro Bus,,R
+Volkswagen,New Beetle,,R
+Volkswagen,New Cabrio,,R
+Volkswagen,New Golf,,R
+Volkswagen,New GTI,,R
+Volkswagen,New Jetta,,R
+Volkswagen,New Passat,,R
+Volkswagen,Passat,,R
+Volkswagen,Phaeton,,R
+Volkswagen,Quantum,,R
+Volkswagen,R32,,R
+Volkswagen,Rabbit,,R
+Volkswagen,Routan,,XL
+Volkswagen,Scirocco,,R
+Volkswagen,Tiguan,,XL
+Volkswagen,Touareg,,XL
+Volkswagen,Trek,,R
+Volkswagen,Type II,,XL
+Volkswagen,Vanagon,,XL
+Volvo,240,,R
+Volvo,350,,R
+Volvo,740,,R
+Volvo,760,,R
+Volvo,780,,R
+Volvo,850,,R
+Volvo,850 Wagon,,XL
+Volvo,940,,R
+Volvo,960,,R
+Volvo,C,,R
+Volvo,C30,,R
+Volvo,C70,,R
+Volvo,C90,,XL
+Volvo,Coupe,,R
+Volvo,Cross Country,,XL
+Volvo,DL,,R
+Volvo,GL,,R
+Volvo,GLT,,R
+Volvo,S40,,R
+Volvo,S60,,R
+Volvo,S60R,,R
+Volvo,S70,,R
+Volvo,S80,,R
+Volvo,S90,,R
+Volvo,Turbo,,R
+Volvo,V40,,R
+Volvo,V50,,XL
+Volvo,V70,,R
+Volvo,V90,,R
+Volvo,Wagon,,R
+Volvo,XC 60,,XL
+Volvo,XC30,,R
+Volvo,XC40,,XL
+Volvo,XC70,,XL
+Volvo,XC90,,XL

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505214836) do
+ActiveRecord::Schema.define(:version => 20130506052339) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -64,9 +64,18 @@ ActiveRecord::Schema.define(:version => 20130505214836) do
   add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
   create_table "companies", :force => true do |t|
+    t.string   "company_id"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "description"
+    t.string   "corporate_email_domain"
+    t.decimal  "siteler_dollars_percentage"
+    t.boolean  "remove_cc_info"
+    t.boolean  "user_reg_allowed"
+    t.boolean  "paypal_allowed"
+    t.boolean  "coupons_allowd"
+    t.boolean  "google_checkout_allowed"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "contact_infos", :force => true do |t|
@@ -84,9 +93,54 @@ ActiveRecord::Schema.define(:version => 20130505214836) do
   end
 
   create_table "employments", :force => true do |t|
-    t.integer "company_id"
-    t.integer "user_id"
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  add_index "employments", ["company_id", "user_id"], :name => "index_employments_on_company_id_and_user_id", :unique => true
+  add_index "employments", ["company_id"], :name => "index_employments_on_company_id"
+  add_index "employments", ["user_id"], :name => "index_employments_on_user_id"
+
+  create_table "makes", :force => true do |t|
+    t.string   "name"
+    t.integer  "vehicle_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "makes", ["vehicle_id"], :name => "index_makes_on_vehicle_id"
+
+  create_table "models", :force => true do |t|
+    t.string   "name"
+    t.string   "size"
+    t.integer  "make_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "models", ["make_id"], :name => "index_models_on_make_id"
+
+  create_table "transportations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "vehicle_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "transportations", ["user_id", "vehicle_id"], :name => "index_transportations_on_user_id_and_vehicle_id", :unique => true
+  add_index "transportations", ["user_id"], :name => "index_transportations_on_user_id"
+  add_index "transportations", ["vehicle_id"], :name => "index_transportations_on_vehicle_id"
+
+  create_table "trims", :force => true do |t|
+    t.string   "name"
+    t.integer  "model_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "trims", ["model_id"], :name => "index_trims_on_model_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",               :default => "", :null => false
@@ -110,5 +164,17 @@ ActiveRecord::Schema.define(:version => 20130505214836) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vehicles", :force => true do |t|
+    t.string   "year"
+    t.string   "color"
+    t.string   "doors"
+    t.string   "license_plate_number"
+    t.string   "comments"
+    t.string   "size"
+    t.string   "state_registered"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
 end

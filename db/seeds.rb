@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # default_roles = %w(customer company van_manager site_manager)
+require "csv"
 
 puts "Deleting existing users..."
 User.all.each(&:destroy)
@@ -16,6 +17,17 @@ puts "Deleted existing companies..."
 
 puts "Deleting existing addresses..."
 Address.all.each(&:destroy)
+
+puts "Deleting existing Makes..."
+Make.all.each(&:destroy)
+
+puts "Deleting existing Models..."
+Model.all.each(&:destroy)
+
+puts "Deleting existing Trims..."
+Trim.all.each(&:destroy)
+
+
 
 puts "Adding developer users..."
 developers = User.create([
@@ -49,6 +61,28 @@ companies = Company.create([
   {name: 'Google'}
 ])
 
+puts "creating Makes, Models, & Trims and associating them together..."
+CSV.foreach("#{Rails.root}/lib/tasks/Model_make.csv") do |row|
+  next if row.join.blank? or row[0].blank?
+  make = Make.new
+  model = Model.new
+  trim = Trim.new
+  make = Make.find_or_create_by_name(name: row[0])
+  if Model.find_by_name(row[1])
+    model = Model.find_by_name(row[1])
+  else
+    model = Model.create!(name: row[1], size: row[3])
+    make.models << model
+  end
+  unless row[2].blank?
+    if Trim.find_by_name(row[2])
+      trim = Trim.find_by_name(row[2])
+    else
+      trim = Trim.create!(name: row[2])
+      model.trims << trim
+    end
+  end
+end
 
 puts "tieing in developers[0] with other models"
 developers[0].work_contact_info = company_contact_infos[0]
@@ -56,6 +90,7 @@ developers[0].work_address = work_addresses[0]
 developers[0].home_contact_info = home_contact_infos[0]
 developers[0].home_address = home_addresses[0]
 developers[0].companies << companies[0]
+
 
 #puts "Deleting existing customers..."
 #Customer.all.each(&:destroy)

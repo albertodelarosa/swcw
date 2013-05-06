@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   has_many :employments
   has_many :companies, through: :employments
 
+  has_many :transportations
+  has_many :vehicles, through: :transportations
+
 
   accepts_nested_attributes_for :work_address
   accepts_nested_attributes_for :work_contact_info

@@ -3,4 +3,8 @@ class WelcomeController < ApplicationController
     #add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
     #add_breadcrumb 'Hotel Manager', 'Hotels'
   end
+  def dashboard
+  end
+  def vehicles
+  end
 end
