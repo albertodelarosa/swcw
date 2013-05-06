@@ -113,8 +113,28 @@ $sitelerLimeDarker9:    #001403 !default;
 
   }
 }
-
-
+.vehicle-wrapper{
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  margin: 0px 8px 0px 0px;
+  box-shadow: 2px 2px 7px grey;
+}
+.my-vehicle-pic{
+  margin:0px 8px;
+}
+.my-vehicle-pic img{
+  margin:0px auto;
+}
+.my-vehicle-body{
+  margin: 10px 0px 0px 20px;
+}
+.vehicle-attribute{
+  margin: 0px 10px 5px 10px;
+}
+.vehicle-attribute h4, .vehicle-attribute h5 {
+  margin:2px 0px 0px 0px;
+}
 
 
 /*body {*/

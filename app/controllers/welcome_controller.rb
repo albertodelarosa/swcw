@@ -6,5 +6,6 @@ class WelcomeController < ApplicationController
   def dashboard
   end
   def vehicles
+    @models = Model.all
   end
 end

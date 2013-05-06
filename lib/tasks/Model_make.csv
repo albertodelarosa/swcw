@@ -1,4 +1,3 @@
-Make,Model,Trim,Size
 Acura,CL,,R
 Acura,Integra,,R
 Acura,Legend,,R
@@ -130,12 +129,9 @@ Cadillac,Sixty Special,,R
 Cadillac,SRX,,R
 Cadillac,STS,,R
 Cadillac,XLR,,XL
-Chevrolet,10 Pickup,,XL
-Chevrolet,1500 Pickup,,XL
-Chevrolet,20 Pickup,,XL
-Chevrolet,2500 Pickup,,XL
-Chevrolet,30 Pickup,,XL
-Chevrolet,3500 Pickup,,XL
+Chevrolet,S10 Pickup,,XL
+Chevrolet,S20 Pickup,,XL
+Chevrolet,S30 Pickup,,XL
 Chevrolet,APV,,XL
 Chevrolet,Astro,,XL
 Chevrolet,Avalanche,,XL
@@ -174,7 +170,6 @@ Chevrolet,Nova,,R
 Chevrolet,PIAA,,XL
 Chevrolet,Prizm,,R
 Chevrolet,S10 Blazer,,XL
-Chevrolet,S10 Pickup,,XL
 Chevrolet,Silverado,,XL
 Chevrolet,Silverado 1500 Pickup,,XL
 Chevrolet,Silverado 2500 Pickup,,XL
@@ -208,7 +203,6 @@ Chrysler,Imperial,,R
 Chrysler,Laser,,R
 Chrysler,LeBaron,,R
 Chrysler,LHS,,R
-Chrysler,Neon,,R
 Chrysler,New Yorker,,R
 Chrysler,Pacifica,,XL
 Chrysler,PT Cruiser,,R
@@ -219,13 +213,13 @@ Chrysler,Voyager,,XL
 Daewoo,Lanos,,R
 Daewoo,Leganza,,R
 Daewoo,Nubira,,R
-Dodge,100 Pickup,,XL
-Dodge,150 Pickup,,XL
-Dodge,1500 Pickup,,XL
-Dodge,250 Pickup,,XL
-Dodge,2500 Pickup,,XL
-Dodge,350 Pickup,,XL
-Dodge,3500 Pickup,,XL
+Dodge,100 Series Pickup,,XL
+Dodge,150 Series Pickup,,XL
+Dodge,1500 Series Pickup,,XL
+Dodge,250 Series Pickup,,XL
+Dodge,2500 Series Pickup,,XL
+Dodge,350 Series Pickup,,XL
+Dodge,3500 Series Pickup,,XL
 Dodge,600,,R
 Dodge,Aries,,R
 Dodge,Aries America,,R
@@ -236,7 +230,6 @@ Dodge,Challenger,,R
 Dodge,Charger,,R
 Dodge,Colt,,R
 Dodge,Colt Vista,,R
-Dodge,Conquest,,R
 Dodge,Dakota,,XL
 Dodge,Daytona,,R
 Dodge,Diplomat,,R
@@ -281,7 +274,7 @@ Ferrari,430 Scuderia,,R
 Ferrari,599 GTB,,R
 Ferrari,612 Scaglietti,,R
 Ferrari,F430 Spyder,,R
-Fiat,500,,R
+Fiat,500c,,R
 Ford,350,,R
 Ford,500,,R
 Ford,Aerostar,,XL
@@ -301,7 +294,6 @@ Ford,Econoline,,XL
 Ford,Edge,,XL
 Ford,Escape,,XL
 Ford,Escort,,R
-Ford,Estate,,XL
 Ford,Excursion,,XL
 Ford,EXP,,XL
 Ford,Expedition,,XL
@@ -744,13 +736,11 @@ Plymouth,Acclaim,,R
 Plymouth,Breeze,,R
 Plymouth,Caravelle,,R
 Plymouth,Colt,,R
-Plymouth,Colt Vista,,R
-Plymouth,Conquest,,R
+Plymouth,Colt ,Vista,R
 Plymouth,Gran Fury,,R
 Plymouth,Grand Voyager,,XL
 Plymouth,Horizon,,R
 Plymouth,Laser,,R
-Plymouth,Neon,,R
 Plymouth,Prowler,,R
 Plymouth,Reliant,,R
 Plymouth,Sundance,,R

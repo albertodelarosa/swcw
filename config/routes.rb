@@ -9,6 +9,7 @@ Sitelerwash::Application.routes.draw do
 
   match "/", to: 'welcome#index', as: 'home', via: :get
   match "/dashboard", to: 'welcome#dashboard', as: 'dashboard', via: :get
+  match "/vehicles", to: 'welcome#vehicles', as: 'vehicles', via: :get
 
   ActiveAdmin.routes(self)
 

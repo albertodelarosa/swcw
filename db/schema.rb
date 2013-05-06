@@ -122,6 +122,14 @@ ActiveRecord::Schema.define(:version => 20130506052339) do
 
   add_index "models", ["make_id"], :name => "index_models_on_make_id"
 
+  create_table "models_trims", :id => false, :force => true do |t|
+    t.integer "model_id"
+    t.integer "trim_id"
+  end
+
+  add_index "models_trims", ["model_id"], :name => "index_models_trims_on_model_id"
+  add_index "models_trims", ["trim_id"], :name => "index_models_trims_on_trim_id"
+
   create_table "transportations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "vehicle_id"
@@ -135,12 +143,9 @@ ActiveRecord::Schema.define(:version => 20130506052339) do
 
   create_table "trims", :force => true do |t|
     t.string   "name"
-    t.integer  "model_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "trims", ["model_id"], :name => "index_trims_on_model_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",               :default => "", :null => false

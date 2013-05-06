@@ -68,20 +68,38 @@ CSV.foreach("#{Rails.root}/lib/tasks/Model_make.csv") do |row|
   model = Model.new
   trim = Trim.new
   make = Make.find_or_create_by_name(name: row[0])
-  if Model.find_by_name(row[1])
-    model = Model.find_by_name(row[1])
-  else
+  unless model = Model.find_by_name(row[1])
     model = Model.create!(name: row[1], size: row[3])
     make.models << model
   end
-  unless row[2].blank?
-    if Trim.find_by_name(row[2])
-      trim = Trim.find_by_name(row[2])
-    else
-      trim = Trim.create!(name: row[2])
-      model.trims << trim
-    end
+puts "model: #{model.name}"
+  if row[2].blank?
+    trim = Trim.find_or_create_by_name(name: "")
+    model.trims << trim
+    model.save!
+  else
+    trim = Trim.find_or_create_by_name(row[2])
+    model.trims << trim
   end
+
+
+
+
+
+
+
+
+  #if !row[2].blank?
+    #if Trim.find_by_name(row[2])
+      #trim = Trim.find_by_name(row[2])
+    #else
+      #trim = Trim.create!(name: row[2])
+      #model.trims << trim
+    #end
+  #else
+    #trim = Trim.create!(name: "")
+    #model.trims << trim
+  #end
 end
 
 puts "tieing in developers[0] with other models"
