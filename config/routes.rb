@@ -1,18 +1,14 @@
 Sitelerwash::Application.routes.draw do
 
+  resources :companies
+
+
   get "customers/index"
 
   get "customers/notacustomer"
 
   match "/", to: 'welcome#index', as: 'home', via: :get
-
-  namespace :customers do
-    match "/" => "customer#index"    
-    get :notacustomer, :to => "customers"
-    #match "notacustomer", to: 'customer#notacustomer',  as: 'notacustomer', via: :get
-    #match "/",            to: 'customer#index',         as: 'root',         via: :get
-    resources :appointments
-  end
+  match "/dashboard", to: 'welcome#dashboard', as: 'dashboard', via: :get
 
   ActiveAdmin.routes(self)
 

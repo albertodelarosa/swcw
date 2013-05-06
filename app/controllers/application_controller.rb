@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
     #end
   #end
 
+  def after_sign_in_path_for(resource)
+    unless resource.instance_of?(AdminUser)
+      dashboard_path()
+    else
+      super
+    end
+  end
+
   def add_breadcrumb name, url = ''
       @breadcrumbs ||= []
       url = eval(url) if url =~ /_path|_url|@/

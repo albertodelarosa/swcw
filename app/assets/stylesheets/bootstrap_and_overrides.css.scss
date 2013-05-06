@@ -319,8 +319,9 @@ $iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
 // @import "fontawesome";
 
 body{
-  font-family: Verdana,Helvetica,Arial;
+  font-family: CenturyGothic,Helvetica,Arial;
   font-size: 14px;
+  background-color: $sitelerBlue;
 }
 .header-background, .body-background{
   background:white;

@@ -6,9 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids,
+  attr_accessible :email, :username, :password, :password_confirmation, :remember_me, 
+                  :first_name, :last_name, :salutation, :suffix,
                   :home_address_attributes, :home_address, :home_contact_info_attributes, :home_contact_info, 
-                  :work_address_attributes, :work_address, :work_contact_info_attributes, :work_contact_info
+                  :work_address_attributes, :work_address, :work_contact_info_attributes, :work_contact_info, 
+                  :companies_attributes
 
   validates_presence_of :username
   validates_length_of :username, :minimum => 6
@@ -20,12 +22,16 @@ class User < ActiveRecord::Base
   has_one :home_contact_info, :class_name => 'HomeContactInfo', :as => :contactable, :dependent => :destroy
   has_one :home_address, :class_name => 'HomeAddress', :as => :addressable, :dependent => :destroy
 
+  has_many :employments
+  has_many :companies, through: :employments
+
 
   accepts_nested_attributes_for :work_address
   accepts_nested_attributes_for :work_contact_info
   accepts_nested_attributes_for :home_address
   accepts_nested_attributes_for :home_contact_info
 
+  accepts_nested_attributes_for :companies
 
 
 
