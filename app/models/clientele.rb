@@ -1,5 +1,4 @@
-class Employment < ActiveRecord::Base
-  attr_accessible :company_id, :user_id
+class Clientele < ActiveRecord::Base
   belongs_to :company
   belongs_to :user
   # attr_accessible :title, :body
