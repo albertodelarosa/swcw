@@ -72,7 +72,6 @@ CSV.foreach("#{Rails.root}/lib/tasks/Model_make.csv") do |row|
     model = Model.create!(name: row[1], size: row[3])
     make.models << model
   end
-puts "model: #{model.name}"
   if row[2].blank?
     trim = Trim.find_or_create_by_name(name: "")
     model.trims << trim

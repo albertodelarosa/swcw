@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :salutation, :suffix,
                   :home_address_attributes, :home_address, :home_contact_info_attributes, :home_contact_info, 
                   :work_address_attributes, :work_address, :work_contact_info_attributes, :work_contact_info, 
-                  :companies_attributes
+                  :companies_attributes, :vehicles_attributes
 
   validates_presence_of :username
   validates_length_of :username, :minimum => 6
@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :companies
 
+  accepts_nested_attributes_for :vehicles
 
 
 
