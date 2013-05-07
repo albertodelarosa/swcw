@@ -3,6 +3,6 @@ class Company < ActiveRecord::Base
                   :siteler_dollars_percentage, :remove_cc_info, :user_reg_allowed, 
                   :paypal_allowed, :coupons_allowd, :google_checkout_allowed
 
-  has_many :employments
-  has_many :employees, through: :employments, source: :users
+  has_many :clientele
+  has_many :clients, through: :clientele, source: :users
 end
