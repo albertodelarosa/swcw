@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :clientele do
-    company nil
+    site nil
     user nil
   end
 end
