@@ -1,0 +1,97 @@
+.row
+  .span5.offset1
+    .appointment-container
+      .appt-header
+        Make Appointments
+  .span4.offset2
+    .vehicle-wrapper
+      - if @vehicles.empty?
+        %h3 You have no Vehicles
+        = link_to "add vehicle", "#"
+      - else
+        %legend
+          %h4 Vehicle 1
+        .my-vehicle-pic
+          = image_tag("holder.png", size: "252x190")
+        .row
+          .my-vehicle-body
+            .vehicle-attribute.year.pull-left
+              %h5 Year
+              2010
+            .vehicle-attribute.make.pull-left
+              %h5 Make
+              Chevrolet
+            .vehicle-attribute.model.pull-left
+              %h5 Model
+              Silverado
+            .vehicle-attribute.trim.pull-left
+              %h5 Trim
+              Extended Cab
+            .vehicle-attribute.size.pull-left
+              %h5 Size
+              R
+            .vehicle-attribute.color.pull-left
+              %h5 Color
+              black
+            .vehicle-attribute.doors.pull-left
+              %h5 Doors
+              wagon
+            .vehicle-attribute.license.pull-left
+              %h5 License Plate
+              9ge9er4
+            .vehicle-attribute.state.pull-left
+              %h5 Registered State
+              CA
+
+.row
+  .span5.offset1
+    .appointment-container
+      .appt-header
+        Make Appointments
+  .span6
+    Make Appointments
+
+
+
+-#.row
+  -#.span8.offset4
+    -#.vehicle-wrapper
+      -#.row
+        -#.span3
+          -#.my-vehicle-pic
+            -#= image_tag("holder.png", size: "252x190")
+        -#.span4
+          -#.my-vehicle-body
+            -#%legend
+              -#%h4 Vehicle 1
+            -#.row
+              -#.vehicle-attribute.year.pull-left
+                -#%h5 Year
+                -#2010
+              -#.vehicle-attribute.make.pull-left
+                -#%h5 Make
+                -#Chevrolet
+              -#.vehicle-attribute.model.pull-left
+                -#%h5 Model
+                -#Silverado
+              -#.vehicle-attribute.trim.pull-left
+                -#%h5 Trim
+                -#Extended Cab
+              -#.vehicle-attribute.size.pull-left
+                -#%h5 Size
+                -#R
+              -#.vehicle-attribute.color.pull-left
+                -#%h5 Color
+                -#black
+              -#.vehicle-attribute.doors.pull-left
+                -#%h5 Doors
+                -#wagon
+              -#.vehicle-attribute.license.pull-left
+                -#%h5 License Plate
+                -#9ge9er4
+              -#.vehicle-attribute.state.pull-left
+                -#%h5 Registered State
+                -#CA
+
+
+

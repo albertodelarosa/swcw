@@ -7,27 +7,39 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-
     .container.header-background
       .top
         .logo
-          = link_to '', root_path
+          = link_to '', customers_path()
           = image_tag("logo.png")
           = render "shared/sign_up_in"
-    .container
-      .navbar.navbar-static-top
-        .navbar-inner
-          .container
-            %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            .nav-collapse
-              %ul.nav
-                %li= link_to "My Dashboard", customers_my_dashboard_path
-                %li= link_to "My Appointments", customers_appointments_path
+    .navbar.navbar-static-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          .nav-collapse
+            %ul.nav
+              %li= link_to "Home", customers_path()
+              %li= link_to "Add Vehicle", new_customers_vehicle_path()
+              %li= link_to "Add Site", new_customers_site_path()
+              %li= link_to "Add Company", new_customers_company_path()
+          - if user_signed_in?
+            .breadcrumb-container.span5.pull-right
+              %ul.breadcrumb
+                %li
+                  =link_to image_tag("home.png"), customers_customer_index_path()
+                - if @breadcrumbs
+                  -@breadcrumbs.each do |txt, path|
+                    %li
+                      %span.divider= ">"
+                      =raw(path)
     .container.body-background
-      - flash.each do |name, msg|
-        = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"
+      .row
+        .span5.offset2
+          - flash.each do |name, msg|
+            = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"
       = yield
 
