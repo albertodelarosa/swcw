@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506052339) do
+ActiveRecord::Schema.define(:version => 20130507213429) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(:version => 20130506052339) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
   add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
+  create_table "clienteles", :force => true do |t|
+    t.integer  "site_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "clienteles", ["site_id"], :name => "index_clienteles_on_site_id"
+  add_index "clienteles", ["user_id"], :name => "index_clienteles_on_user_id"
+
   create_table "companies", :force => true do |t|
     t.string   "company_id"
     t.string   "name"
@@ -74,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130506052339) do
     t.boolean  "paypal_allowed"
     t.boolean  "coupons_allowd"
     t.boolean  "google_checkout_allowed"
+    t.integer  "user_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
@@ -92,16 +103,14 @@ ActiveRecord::Schema.define(:version => 20130506052339) do
     t.datetime "updated_at",       :null => false
   end
 
-  create_table "employments", :force => true do |t|
-    t.integer  "company_id"
-    t.integer  "user_id"
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.text     "comments"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "employments", ["company_id", "user_id"], :name => "index_employments_on_company_id_and_user_id", :unique => true
-  add_index "employments", ["company_id"], :name => "index_employments_on_company_id"
-  add_index "employments", ["user_id"], :name => "index_employments_on_user_id"
 
   create_table "makes", :force => true do |t|
     t.string   "name"
@@ -129,6 +138,15 @@ ActiveRecord::Schema.define(:version => 20130506052339) do
 
   add_index "models_trims", ["model_id"], :name => "index_models_trims_on_model_id"
   add_index "models_trims", ["trim_id"], :name => "index_models_trims_on_trim_id"
+
+  create_table "sites", :force => true do |t|
+    t.string   "name"
+    t.text     "comments"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "transportations", :force => true do |t|
     t.integer  "user_id"
