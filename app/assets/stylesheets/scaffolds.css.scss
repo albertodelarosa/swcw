@@ -102,16 +102,36 @@ $sitelerLimeDarker9:    #001403 !default;
 .myform-wrapper .nav.nav-tabs li.active a {
   color:#ccc;
 }
-.breadcrumb-container.span5.pull-right{
-  margin:14px 10px -6px 0px;
-  .breadcrumb{
-    font-family: Verdana,Helvetica,Arial;
-    font-size: 12px;
-    -webkit-box-shadow:3px 3px 7px $grayDark inset;
-    -moz-box-shadow:3px 3px 7px $grayDark inset;
-    box-shadow:3px 3px 7px $grayDark inset;
+.breadcrumb-container{
+  margin:17px 10px -3px 0px;
+}
 
-  }
+.breadcrumb{
+  padding:7px 10px 3px 10px;
+  font-family: 'Open Sans Light',Helvetica,Arial;
+  font-size: 12px;
+  -webkit-box-shadow:3px 3px 7px $grayDark inset;
+  -moz-box-shadow:3px 3px 7px $grayDark inset;
+  box-shadow:3px 3px 7px $grayDark inset;
+}
+.profile_container{
+  margin:-42px 3px 0px 0px;
+  border:1px solid black;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  font-size:12px;
+  box-shadow:1px 1px 6px $grayDarker;
+}
+.profile_container .profile_buttons{
+  margin:1px;
+}
+.profile_container .edit_profile{
+  padding:0px 5px 0px 5px;
+  border-right:1px solid black;
+}
+.profile_container .logout{
+  padding:0px 5px 0px 5px;
 }
 .vehicle-wrapper{
   padding: 10px;
