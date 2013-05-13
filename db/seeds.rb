@@ -80,43 +80,14 @@ CSV.foreach("#{Rails.root}/lib/tasks/Model_make.csv") do |row|
     trim = Trim.find_or_create_by_name(row[2])
     model.trims << trim
   end
-
-
-
-
-
-
-
-
-  #if !row[2].blank?
-    #if Trim.find_by_name(row[2])
-      #trim = Trim.find_by_name(row[2])
-    #else
-      #trim = Trim.create!(name: row[2])
-      #model.trims << trim
-    #end
-  #else
-    #trim = Trim.create!(name: "")
-    #model.trims << trim
-  #end
 end
 
 puts "tieing in developers[0] with other models"
-developers[0].work_contact_info = company_contact_infos[0]
-developers[0].work_address = work_addresses[0]
-developers[0].home_contact_info = home_contact_infos[0]
-developers[0].home_address = home_addresses[0]
-developers[0].companies << companies[0]
-
-
-#puts "Deleting existing customers..."
-#Customer.all.each(&:destroy)
-
-#puts "Adding new default customers..."
-#customers = Customer.create([
-  #{customer_no: '2ja094sva', first_name: 'John', last_name: 'Smith', title: 'Mr.', salutation: 'Johnny'},
-  #{customer_no: '2ja094sva', first_name: 'Jane', last_name: 'Doe'  , title: 'Dr.', salutation: 'Janette'}
-#])
+#developers[0].work_contact_info = company_contact_infos[0]
+#developers[0].work_address = work_addresses[0]
+#developers[0].home_contact_info = home_contact_infos[0]
+#developers[0].home_address = home_addresses[0]
+#developers[0].companies << companies[0]
 
 
 
