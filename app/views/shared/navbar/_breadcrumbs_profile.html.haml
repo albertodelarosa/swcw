@@ -1,0 +1,6 @@
+.profile_container.pull-right
+  .profile_buttons.edit_profile.pull-left
+    = link_to "edit", edit_user_registration_path, class: "btn btn-small btn_blue"
+  .profile_buttons.logout.pull-left
+    = link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-small btn_lime"
+

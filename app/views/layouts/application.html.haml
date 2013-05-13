@@ -13,7 +13,7 @@
         .logo
           = link_to '', root_path
           = image_tag("logo.png")
-          = render "shared/sign_up_in"
+          = render "shared/navbar/sign_up_in"
     .navbar.navbar-static-top
       .navbar-inner
         .container
@@ -28,28 +28,9 @@
               %li= link_to "Services"
               %li= link_to "Contact"
           - if user_signed_in?
-            .breadcrumb-container.span5.pull-right
-              %ul.breadcrumb
-                %li
-                  =link_to image_tag("home.png"), root_path()
-                - if @breadcrumbs
-                  -@breadcrumbs.each do |txt, path|
-                    %li
-                      %span.divider= ">"
-                      =raw(path)
+            = render "shared/navbar/breadcrumbs"
 
 
-
-
-                -#%li
-                  -#%a{:href => "#"} Home
-                  -#%span.divider 
-                    -#= "->"
-                -#%li
-                  -#%a{:href => "#"} Library
-                  -#%span.divider
-                    -#= "->"
-                -#%li.active Data
     .container.body-background
       .row
         .span5.offset2

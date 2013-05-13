@@ -107,11 +107,11 @@ $sitelerLimeDarker9:    #001403 !default;
 }
 
 .breadcrumb-container{
-  margin:17px 10px -3px 0px;
+  margin:15px 10px -3px 0px;
 }
 
 .breadcrumb{
-  padding:7px 10px 3px 10px;
+  padding:9px 10px 3px 10px;
   font-family: 'Open Sans Light',Helvetica,Arial;
   font-size: 12px;
   -webkit-box-shadow:3px 3px 7px $grayDark inset;
@@ -119,23 +119,30 @@ $sitelerLimeDarker9:    #001403 !default;
   box-shadow:3px 3px 7px $grayDark inset;
 }
 .profile_container{
-  margin:-42px 3px 0px 0px;
-  border:1px solid black;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-  border-radius:3px;
+  margin:-44px 2px 0px 0px;
+  /*border:1px solid black;*/
+  /*-webkit-border-radius:3px;*/
+  /*-moz-border-radius:3px;*/
+  /*border-radius:3px;*/
+  /*box-shadow:1px 1px 6px $grayDarker;*/
   font-size:12px;
-  box-shadow:1px 1px 6px $grayDarker;
 }
 .profile_container .profile_buttons{
-  margin:1px;
+  padding:0px 2px 0px 2px;
+  /*margin:1px;*/
 }
 .profile_container .edit_profile{
-  padding:0px 5px 0px 5px;
-  border-right:1px solid black;
+  /*border-right:1px solid black;*/
 }
 .profile_container .logout{
-  padding:0px 5px 0px 5px;
+}
+
+.profile_container .profile_buttons .btn{
+  margin-top: 0px;
+  box-shadow:1px 1px 6px $grayDarker;
+}
+.profile_container .profile_buttons .btn-small{
+  font-size:14px;
 }
 
 /*======== Navbar END ====================================*/

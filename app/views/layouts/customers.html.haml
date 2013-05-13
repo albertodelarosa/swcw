@@ -12,7 +12,7 @@
         .logo
           = link_to '', customers_path()
           = image_tag("logo.png")
-          = render "shared/sign_up_in"
+          = render "shared/navbar/sign_up_in"
     .navbar.navbar-static-top
       .navbar-inner
         .container
@@ -27,21 +27,7 @@
               %li= link_to "Add Site",    customers_site_index_path()
               %li= link_to "Add Company", customers_company_index_path()
           - if user_signed_in?
-            .breadcrumb-container.span5.pull-right
-              %ul.breadcrumb
-                %li
-                  =link_to image_tag("home.png"), customers_customer_index_path()
-                - if @breadcrumbs
-                  -@breadcrumbs.each do |txt, path|
-                    %li
-                      %span.divider= ">"
-                      %span
-                        =raw(path)
-              .profile_container.pull-right
-                .profile_buttons.edit_profile.pull-left
-                  = link_to "edit", "#"
-                .profile_buttons.logout.pull-left
-                  = link_to "logout", "#"
+            = render "shared/navbar/breadcrumbs"
     .container.body-background
       .row
         .span5.offset2

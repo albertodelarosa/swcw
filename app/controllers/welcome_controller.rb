@@ -4,6 +4,9 @@ class WelcomeController < ApplicationController
   def index
     #add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
     #add_breadcrumb 'Hotel Manager', 'Hotels'
+    if user_signed_in?
+      redirect_to customers_path()
+    end
   end
 
   def dashboard
