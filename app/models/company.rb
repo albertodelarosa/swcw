@@ -7,8 +7,7 @@ class Company < ActiveRecord::Base
   has_one :address, :class_name => 'CompanyAddress', :as => :addressable, :dependent => :destroy
   has_one :contact_info, :class_name => 'CompanyContactInfo', :as => :contactable, :dependent => :destroy
 
-  has_many :clientele, class_name: "Clientele"
-  has_many :clients, through: :clientele, source: :users
+  belongs_to :client, :class_name => "User", :inverse_of => :companies
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :contact_info
