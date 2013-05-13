@@ -1,0 +1,160 @@
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Grays
+// -------------------------
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
+
+
+// Accent colors
+// ----------------------------
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+// SitelerWash Blue
+// ----------------------------
+$sitelerBlueDarker9:    #060A0F !default;
+$sitelerBlueDarker8:    #0B141E !default;
+$sitelerBlueDarker7:    #111F2D !default;
+$sitelerBlueDarker6:    #16293C !default;
+$sitelerBlueDarker5:    #1C334C !default;
+$sitelerBlueDarker4:    #223D5B !default;
+$sitelerBlueDarker3:    #27476A !default;
+$sitelerBlueDarker2:    #2D5279 !default;
+$sitelerBlueDarker1:    #325C88 !default;
+$sitelerBlue:           #386697 !default;
+$sitelerBlueLighter1:   #4C75A1 !default;
+$sitelerBlueLighter2:   #6085AC !default;
+$sitelerBlueLighter3:   #7494B6 !default;
+$sitelerBlueLighter4:   #88A3C1 !default;
+$sitelerBlueLighter5:   #9CB2CB !default;
+$sitelerBlueLighter6:   #AFC2D5 !default;
+$sitelerBlueLighter7:   #C3D1E0 !default;
+$sitelerBlueLighter8:   #D7E0EA !default;
+$sitelerBlueLighter9:   #EBF0F5 !default;
+
+// SitelerWash Green
+// ----------------------------
+$sitelerGreenDarker9:   #000F01 !default;
+$sitelerGreenDarker8:   #001E02 !default;
+$sitelerGreenDarker7:   #002D02 !default;
+$sitelerGreenDarker6:   #003C03 !default;
+$sitelerGreenDarker5:   #004B04 !default;
+$sitelerGreenDarker4:   #005A05 !default;
+$sitelerGreenDarker3:   #006906 !default;
+$sitelerGreenDarker2:   #007806 !default;
+$sitelerGreenDarker1:   #008707 !default;
+$sitelerGreen:          #009608 !default;
+$sitelerGreenLigheter1: #19A021 !default;
+$sitelerGreenLigheter2: #33AB39 !default;
+$sitelerGreenLigheter3: #4DB652 !default;
+$sitelerGreenLigheter4: #66C06B !default;
+$sitelerGreenLigheter5: #80CA84 !default;
+$sitelerGreenLigheter6: #99D59C !default;
+$sitelerGreenLigheter7: #B2E0B5 !default;
+$sitelerGreenLigheter8: #CCEACE !default;
+$sitelerGreenLigheter9: #E6F4E6 !default;
+
+// SitelerWash Lime
+// ----------------------------
+$sitelerLimeLighter9:   #E6FAE8 !default;
+$sitelerLimeLighter8:   #CDF5D1 !default;
+$sitelerLimeLighter7:   #B4F0BA !default;
+$sitelerLimeLighter6:   #9BEBA3 !default;
+$sitelerLimeLighter5:   #82E68C !default;
+$sitelerLimeLighter4:   #68E176 !default;
+$sitelerLimeLighter3:   #4FDC5F !default;
+$sitelerLimeLighter2:   #36D748 !default;
+$sitelerLimeLighter1:   #1DD231 !default;
+$sitelerLime:           #04CD1A !default;
+$sitelerLimeDarker1:    #04B817 !default;
+$sitelerLimeDarker2:    #03A415 !default;
+$sitelerLimeDarker3:    #039012 !default;
+$sitelerLimeDarker4:    #027B10 !default;
+$sitelerLimeDarker5:    #02660D !default;
+$sitelerLimeDarker6:    #02520A !default;
+$sitelerLimeDarker7:    #013E08 !default;
+$sitelerLimeDarker8:    #012905 !default;
+$sitelerLimeDarker9:    #001403 !default;
+
+.btn_blue {
+  border-color: $sitelerBlueDarker2 $sitelerBlueDarker1 hsl(211, 46%, 33%) !important;
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.46) !important;
+  background-repeat: repeat-x;
+  background-color: $sitelerBlueLighter2 !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($sitelerBlueDarker2), to($sitelerBlueLighter2)) !important;
+  background-image: -moz-linear-gradient(top,     $sitelerBlueDarker2 0%, $sitelerBlue 49%, $sitelerBlue 52%, $sitelerBlueLighter2 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $sitelerBlueDarker2), color-stop(49%, $sitelerBlue), color-stop(52%, $sitelerBlue), color-stop(100%, $sitelerBlueLighter2)) !important;
+  background-image: -webkit-linear-gradient(top,  $sitelerBlueDarker2 0%, $sitelerBlue 49%, $sitelerBlue 52%, $sitelerBlueLighter2 100%) !important;
+  background-image: -o-linear-gradient(top,       $sitelerBlueDarker2 0%, $sitelerBlue 49%, $sitelerBlue 52%, $sitelerBlueLighter2 100%) !important;
+  background-image: -ms-linear-gradient(top,      $sitelerBlueDarker2 0%, $sitelerBlue 49%, $sitelerBlue 52%, $sitelerBlueLighter2 100%) !important;
+  background-image: linear-gradient(to bottom,    $sitelerBlueDarker2 0%, $sitelerBlue 49%, $sitelerBlue 52%, $sitelerBlueLighter2 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$sitelerBlueDarker2', endColorstr='$sitelerBlueLighter2', GradientType=0) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn_green {
+  border-color: $sitelerGreenDarker2 $sitelerGreenDarker1 hsl(123, 100%, 24%) !important;
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.46) !important;
+  background-repeat: repeat-x;
+  background-color: $sitelerGreenLigheter2 !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($sitelerGreenDarker2), to($sitelerGreenLigheter2)) !important;
+  background-image: -moz-linear-gradient(top,     $sitelerGreenDarker2 0%, $sitelerGreen 49%, $sitelerGreen 52%, $sitelerGreenLigheter2 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $sitelerGreenDarker2), color-stop(49%, $sitelerGreen), color-stop(52%, $sitelerGreen), color-stop(100%, $sitelerGreenLigheter2)) !important;
+  background-image: -webkit-linear-gradient(top,  $sitelerGreenDarker2 0%, $sitelerGreen 49%, $sitelerGreen 52%, $sitelerGreenLigheter2 100%) !important;
+  background-image: -o-linear-gradient(top,       $sitelerGreenDarker2 0%, $sitelerGreen 49%, $sitelerGreen 52%, $sitelerGreenLigheter2 100%) !important;
+  background-image: -ms-linear-gradient(top,      $sitelerGreenDarker2 0%, $sitelerGreen 49%, $sitelerGreen 52%, $sitelerGreenLigheter2 100%) !important;
+  background-image: linear-gradient(to bottom,    $sitelerGreenDarker2 0%, $sitelerGreen 49%, $sitelerGreen 52%, $sitelerGreenLigheter2 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$sitelerGreenDarker2', endColorstr='$sitelerGreenLigheter2', GradientType=0) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn_lime {
+  border-color: $sitelerLimeDarker2 $sitelerLimeDarker1 hsl(127, 96%, 33%) !important;
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.46) !important;
+  background-repeat: repeat-x;
+  background-color: $sitelerLimeLighter2 !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($sitelerLimeDarker2), to($sitelerLimeLighter2)) !important;
+  background-image: -moz-linear-gradient(top,     $sitelerLimeDarker2 0%, $sitelerLime 49%, $sitelerLime 52%, $sitelerLimeLighter2 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $sitelerLimeDarker2), color-stop(49%, $sitelerLime), color-stop(52%, $sitelerLime), color-stop(100%, $sitelerLimeLighter2)) !important;
+  background-image: -webkit-linear-gradient(top,  $sitelerLimeDarker2 0%, $sitelerLime 49%, $sitelerLime 52%, $sitelerLimeLighter2 100%) !important;
+  background-image: -o-linear-gradient(top,       $sitelerLimeDarker2 0%, $sitelerLime 49%, $sitelerLime 52%, $sitelerLimeLighter2 100%) !important;
+  background-image: -ms-linear-gradient(top,      $sitelerLimeDarker2 0%, $sitelerLime 49%, $sitelerLime 52%, $sitelerLimeLighter2 100%) !important;
+  background-image: linear-gradient(to bottom,    $sitelerLimeDarker2 0%, $sitelerLime 49%, $sitelerLime 52%, $sitelerLimeLighter2 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$sitelerLimeDarker2', endColorstr='$sitelerLimeLighter2', GradientType=0) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn_red {
+  border-color: #990000 #B20000 hsl(360, 100%, 30%) !important;
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.46) !important;
+  background-repeat: repeat-x;
+  background-color: #FF1919 !important;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#990000), to(#FF1919)) !important;
+  background-image: -moz-linear-gradient(top, #990000 0%, #CC0000 49%, #CC0000 52%, #FF1919 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #990000), color-stop(49%, #CC0000), color-stop(52%, #CC0000), color-stop(100%, #FF1919)) !important;
+  background-image: -webkit-linear-gradient(top, #990000 0%, #CC0000 49%, #CC0000 52%, #FF1919 100%) !important;
+  background-image: -o-linear-gradient(top, #990000 0%, #CC0000 49%, #CC0000 52%, #FF1919 100%) !important;
+  background-image: -ms-linear-gradient(top, #990000 0%, #CC0000 49%, #CC0000 52%, #FF1919 100%) !important;
+  background-image: linear-gradient(to bottom, #990000 0%, #CC0000 49%, #CC0000 52%, #FF0000 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#990000', endColorstr='#FF1919', GradientType=0) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+
