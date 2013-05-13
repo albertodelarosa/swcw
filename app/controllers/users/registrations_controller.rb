@@ -5,8 +5,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
-    add_breadcrumb 'Hotel Manager', 'Hotels'
+    #add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
+    #add_breadcrumb 'Hotel Manager', 'Hotels'
     add_breadcrumb 'Edit User', 'Edit User'
     super
   end
@@ -20,8 +20,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # TODO if passwords present then need to authenticate the user with current password and need to update with new one
 
     @user = User.find(current_user.id)
-    company = Company.find(params[:company_id])
-    @user.companies << company
+    if params[:company_id]
+      company = Company.find(params[:company_id])
+      unless @user.companies.last == company
+        @user.companies << company
+      end
+    end
     if @user.update_attributes(params[:user])
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
