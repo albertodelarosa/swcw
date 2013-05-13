@@ -319,7 +319,7 @@ $iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
 // @import "fontawesome";
 
 body{
-  font-family: CenturyGothic,Helvetica,Arial;
+  font-family: 'Open Sans',Helvetica,Arial;
   font-size: 13px;
   background-color: $sitelerBlue;
 }
@@ -335,6 +335,7 @@ body{
   padding:25px 0px 0px 0px;
 }
 .navbar.navbar-static-top .navbar-inner{
+  font-family: 'Open Sans Bold',Helvetica,Arial;
   font-size: 16px;
   min-height:45px;
 }
