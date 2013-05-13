@@ -23,9 +23,9 @@
           .nav-collapse
             %ul.nav
               %li= link_to "Home", customers_path()
-              %li= link_to "Add Vehicle", new_customers_vehicle_path()
-              %li= link_to "Add Site", new_customers_site_path()
-              %li= link_to "Add Company", new_customers_company_path()
+              %li= link_to "Add Vehicle", customers_vehicle_index_path()
+              %li= link_to "Add Site",    customers_site_index_path()
+              %li= link_to "Add Company", customers_company_index_path()
           - if user_signed_in?
             .breadcrumb-container.span5.pull-right
               %ul.breadcrumb
@@ -35,7 +35,13 @@
                   -@breadcrumbs.each do |txt, path|
                     %li
                       %span.divider= ">"
-                      =raw(path)
+                      %span
+                        =raw(path)
+              .profile_container.pull-right
+                .profile_buttons.edit_profile.pull-left
+                  = link_to "edit", "#"
+                .profile_buttons.logout.pull-left
+                  = link_to "logout", "#"
     .container.body-background
       .row
         .span5.offset2
