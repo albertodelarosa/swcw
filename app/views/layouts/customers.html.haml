@@ -10,7 +10,7 @@
     .container.header-background
       .top
         .logo
-          = link_to '', customers_path()
+          = link_to '', customers_path
           = image_tag("logo.png")
           = render "shared/navbar/sign_up_in"
     .navbar.navbar-static-top
@@ -22,10 +22,10 @@
             %span.icon-bar
           .nav-collapse
             %ul.nav
-              %li= link_to "Home", customers_path()
-              %li= link_to "Add Vehicle", customers_vehicle_index_path()
-              %li= link_to "Add Site",    customers_site_index_path()
-              %li= link_to "Add Company", customers_company_index_path()
+              %li= link_to "Home", customers_path
+              %li= link_to "Add Vehicle", new_customers_vehicle_path
+              %li= link_to "Add Site",    customers_site_index_path
+              %li= link_to "Add Company", customers_company_index_path
           - if user_signed_in?
             = render "shared/navbar/breadcrumbs"
     .container.body-background

@@ -2,15 +2,15 @@ Sitelerwash::Application.routes.draw do
 
   namespace :customers do
     match "/" => "customer#index"
-    resources :customer do
-      collection do
-        get :create_vehicle, :update_vehicle
-      end
-    end
+    #resources :customer do
+      #collection do
+        #get :create_vehicle, :update_vehicle
+      #end
+    #end
     resources :appointment
     resources :site
     resources :company
-    resources :vehicle
+    resources :vehicles
   end
 
   match "/", to: 'welcome#index', as: 'home', via: :get
@@ -20,16 +20,6 @@ Sitelerwash::Application.routes.draw do
   match 'dashboard',      to: 'welcome#create_vehicle',                       via: :post
   match 'dashboard/:id',  to: 'welcome#update_vehicle',                       via: :put
 
-  #namespace :customer do
-    #match "/" => "customer#index"
-    #resources :vehicles
-    #resources :sports_organizations do
-      #collection do
-        #get :teams, :team_detail
-        #post :upload
-      #end
-    #end
-  #end
 
   ActiveAdmin.routes(self)
 

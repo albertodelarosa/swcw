@@ -1,7 +1,7 @@
 .breadcrumb-container.span5.pull-right
   %ul.breadcrumb
     %li
-      =link_to image_tag("home.png"), customers_customer_index_path()
+      =link_to image_tag("home.png"), customers_path
     - if @breadcrumbs
       -@breadcrumbs.each do |txt, path|
         %li
