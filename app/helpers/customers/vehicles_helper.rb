@@ -1,0 +1,2 @@
+module Customers::VehiclesHelper
+end

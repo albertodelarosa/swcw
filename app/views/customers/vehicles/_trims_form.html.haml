@@ -1,0 +1,7 @@
+#modelTrims
+  = mo.fields_for :trims_attributes do |tr|
+    .control-group
+      = tr.label :name, "Model", class: "control-label"
+      .controls
+        = tr.collection_select( :name, Trim.all, :id, :name, :prompt => true, html: {class: "input-small"})
+

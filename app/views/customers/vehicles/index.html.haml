@@ -1,0 +1,52 @@
+.row
+  .span4
+    %table.table.table-striped.table-hover.table-condensed
+      %tr
+        %th Make
+        %th Model
+        %th Trim
+        %th Size
+
+      - @models.each do |model|
+        - if model.trims.empty?
+          %tr
+            %td 
+              = model.make.name
+            %td
+              = model.name
+            %td
+            %td
+              = model.size
+        - else
+          - model.trims.each do |trim|
+            %tr
+              %td 
+                = model.id
+              %td 
+                = model.make.name
+              %td
+                = model.name
+              %td
+                = trim.name
+              %td
+                = model.size
+
+
+
+-#%h1 Listing vehicles
+
+-#%table
+  -#%tr
+    -#%th
+    -#%th
+    -#%th
+
+  -#- @vehicles.each do |vehicle|
+    -#%tr
+      -#%td= link_to 'Show', vehicle
+      -#%td= link_to 'Edit', edit_customers_vehicle_path(vehicle)
+      -#%td= link_to 'Destroy', vehicle, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+-#%br
+
+-#= link_to 'New Vehicle', new_customers_vehicle_path

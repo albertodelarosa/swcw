@@ -1,0 +1,15 @@
+%br
+%br
+.row
+  .span2.offset1
+    = link_to 'Back', customers_vehicles_path
+  .span6
+    %legend 
+      = "Add a Vehicle #{current_user.first_name}"
+    = render 'form'
+
+-#%h1 New vehicle
+
+-#= render 'form'
+
+-#= link_to 'Back', customers_vehicles_path
