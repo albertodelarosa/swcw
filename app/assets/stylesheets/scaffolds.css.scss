@@ -89,6 +89,46 @@ $sitelerLimeDarker7:    #013E08 !default;
 $sitelerLimeDarker8:    #012905 !default;
 $sitelerLimeDarker9:    #001403 !default;
 
+.header-background, .body-background{
+  background:white;
+}
+.body-background{
+  /*background-image: url('wash.jpg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center top;*/
+  /*background-size: 452px 400px;*/
+  min-height:800px;
+  padding:25px 0px 0px 0px;
+}
+
+.top{
+  position: relative;
+  .logo{
+    margin-top: 40px;
+    margin-left: 100px;
+    padding-bottom: 10px;
+    .a{
+      color: #1B97F2;
+      text-decoration: none;
+    }
+  }
+  .login_register{
+    margin:15px 20px 0px 0px;
+  }
+}
+
+/*========   Navbar   ====================================*/
+
+.navbar.navbar-static-top .navbar-inner{
+  font-family: 'Open Sans Bold',Helvetica,Arial;
+  font-size: 16px;
+  min-height:45px;
+}
+
+.myform-wrapper .nav.nav-tabs li.active a {
+  color:#ccc;
+}
+
 .myform-wrapper{
   -webkit-border-radius:10px;
   -moz-border-radius:10px;
@@ -98,12 +138,6 @@ $sitelerLimeDarker9:    #001403 !default;
   box-shadow:3px 3px 7px $grayDark;
   border:1px solid $sitelerBlueLighter6;
   padding:20px;
-}
-
-/*========   Navbar   ====================================*/
-
-.myform-wrapper .nav.nav-tabs li.active a {
-  color:#ccc;
 }
 
 .breadcrumb-container{
@@ -144,33 +178,5 @@ $sitelerLimeDarker9:    #001403 !default;
 .profile_container .profile_buttons .btn-small{
   font-size:14px;
 }
-
 /*======== Navbar END ====================================*/
-
-
-
-
-
-.vehicle-wrapper{
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid lightgrey;
-  margin: 0px 8px 0px 0px;
-  box-shadow: 2px 2px 7px grey;
-}
-.my-vehicle-pic{
-  margin:0px 8px;
-}
-.my-vehicle-pic img{
-  margin:0px auto;
-}
-.my-vehicle-body{
-  margin: 10px 0px 0px 20px;
-}
-.vehicle-attribute{
-  margin: 0px 10px 5px 10px;
-}
-.vehicle-attribute h4, .vehicle-attribute h5 {
-  margin:2px 0px 0px 0px;
-}
 

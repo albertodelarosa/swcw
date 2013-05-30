@@ -1,3 +1,106 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Grays
+// -------------------------
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
+
+
+// Accent colors
+// ----------------------------
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+// SitelerWash Blue
+// ----------------------------
+$sitelerBlueDarker9:    #060A0F !default;
+$sitelerBlueDarker8:    #0B141E !default;
+$sitelerBlueDarker7:    #111F2D !default;
+$sitelerBlueDarker6:    #16293C !default;
+$sitelerBlueDarker5:    #1C334C !default;
+$sitelerBlueDarker4:    #223D5B !default;
+$sitelerBlueDarker3:    #27476A !default;
+$sitelerBlueDarker2:    #2D5279 !default;
+$sitelerBlueDarker1:    #325C88 !default;
+$sitelerBlue:           #386697 !default;
+$sitelerBlueLighter1:   #4C75A1 !default;
+$sitelerBlueLighter2:   #6085AC !default;
+$sitelerBlueLighter3:   #7494B6 !default;
+$sitelerBlueLighter4:   #88A3C1 !default;
+$sitelerBlueLighter5:   #9CB2CB !default;
+$sitelerBlueLighter6:   #AFC2D5 !default;
+$sitelerBlueLighter7:   #C3D1E0 !default;
+$sitelerBlueLighter8:   #D7E0EA !default;
+$sitelerBlueLighter9:   #EBF0F5 !default;
+
+// SitelerWash Green
+// ----------------------------
+$sitelerGreenDarker9:   #000F01 !default;
+$sitelerGreenDarker8:   #001E02 !default;
+$sitelerGreenDarker7:   #002D02 !default;
+$sitelerGreenDarker6:   #003C03 !default;
+$sitelerGreenDarker5:   #004B04 !default;
+$sitelerGreenDarker4:   #005A05 !default;
+$sitelerGreenDarker3:   #006906 !default;
+$sitelerGreenDarker2:   #007806 !default;
+$sitelerGreenDarker1:   #008707 !default;
+$sitelerGreen:          #009608 !default;
+$sitelerGreenLigheter1: #19A021 !default;
+$sitelerGreenLigheter2: #33AB39 !default;
+$sitelerGreenLigheter3: #4DB652 !default;
+$sitelerGreenLigheter4: #66C06B !default;
+$sitelerGreenLigheter5: #80CA84 !default;
+$sitelerGreenLigheter6: #99D59C !default;
+$sitelerGreenLigheter7: #B2E0B5 !default;
+$sitelerGreenLigheter8: #CCEACE !default;
+$sitelerGreenLigheter9: #E6F4E6 !default;
+
+// SitelerWash Lime
+// ----------------------------
+$sitelerLimeLighter9:   #E6FAE8 !default;
+$sitelerLimeLighter8:   #CDF5D1 !default;
+$sitelerLimeLighter7:   #B4F0BA !default;
+$sitelerLimeLighter6:   #9BEBA3 !default;
+$sitelerLimeLighter5:   #82E68C !default;
+$sitelerLimeLighter4:   #68E176 !default;
+$sitelerLimeLighter3:   #4FDC5F !default;
+$sitelerLimeLighter2:   #36D748 !default;
+$sitelerLimeLighter1:   #1DD231 !default;
+$sitelerLime:           #04CD1A !default;
+$sitelerLimeDarker1:    #04B817 !default;
+$sitelerLimeDarker2:    #03A415 !default;
+$sitelerLimeDarker3:    #039012 !default;
+$sitelerLimeDarker4:    #027B10 !default;
+$sitelerLimeDarker5:    #02660D !default;
+$sitelerLimeDarker6:    #02520A !default;
+$sitelerLimeDarker7:    #013E08 !default;
+$sitelerLimeDarker8:    #012905 !default;
+$sitelerLimeDarker9:    #001403 !default;
+
+.hero-unit{
+  -webkit-border-radius:16px;
+  -moz-border-radius:16px;
+  border-radius:16px;
+  -webkit-box-shadow:1px 1px 7px $grayDark inset;
+  -moz-box-shadow:1px 1px 7px $grayDark inset;
+  box-shadow:1px 1px 7px $grayDark inset;
+  background-color:$sitelerBlue;
+}
+
+
