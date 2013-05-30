@@ -3,7 +3,8 @@
 .row
   .span2.offset1
     = link_to 'Back', customers_vehicles_path
-  .span6
+.row
+  .span9.offset2
     %legend 
       = "Add a Vehicle #{current_user.first_name}"
     = render 'form'

@@ -6,51 +6,56 @@
         - @vehicle.errors.full_messages.each do |msg|
           %li= msg
 
-  .control-group
-    = f.label :year, class: "control-label"
-    .controls
-      = f.text_field :year, class: "input-mini"
-  .control-group
-    = f.label :color, class: "control-label"
-    .controls
-      = f.text_field :color, class: "input-small"
-  .control-group
-    = f.label :comments, class: "control-label"
-    .controls
-      = f.text_area :comments, rows: 3
-  .control-group
-    = f.label :doors, class: "control-label"
-    .controls
-      = f.text_field :doors, class: "input-mini"
-  .control-group
-    = f.label :license_plate_number, class: "control-label"
-    .controls
-      = f.text_field :license_plate_number, class: "input-small"
-  .control-group
-    = f.label :state_registered, class: "control-label"
-    .controls
-      = f.text_field :state_registered, class: "input-small"
-  .control-group
-    = f.label :size, class: "control-label"
-    .controls
-      = f.text_field :size, class: "input-small"
-
-  - f.object.make ||=  f.object.build_make
-  = f.fields_for :make do |ma|
-    .control-group
-      = ma.label :name, "Make", class: "control-label"
-      .controls
-        = ma.collection_select( :id, Make.all, :id, :name, prompt: true)
-
-    - ma.object.models ||= ma.object.build_models
-    = ma.fields_for :models_attributes do |mo|
+  .row
+    .span3
       .control-group
-        = mo.label :name, "Model", class: "control-label"
+        = f.label :year, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = f.collection_select( :year, Year.all, :id, :name, {prompt: "Year"}, {class: "input-small"})
+      .control-group
+        = f.label :make, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = grouped_collection_select :year, :makes, Year.order(:name), :makes, :name, :id, :name, {prompt: "Select Make"}, {class: "input-medium"}
+      .control-group
+        = f.label :model, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = grouped_collection_select :year, :models, Make.order(:name), :models, :name, :id, :name, {prompt: "Select Model"}, {class: "input-medium"}
+      .control-group
+        = f.label :trim, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = grouped_collection_select :model, :trims, Model.order(:name), :trims, :name, :id, :name, {prompt: "Select Trim"}, {class: "input-medium"}
+      .control-group
+        = f.label :type, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = grouped_collection_select :trim, :types, Trim.order(:name), :types, :name, :id, :name, {prompt: "Select Type"}, {class: "input-medium"}
+      .control-group
+        = f.label :door, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = grouped_collection_select :type, :doors, Type.order(:name), :doors, :name, :id, :name, {prompt: "Select Doors"}, {class: "input-medium"}
+      .control-group
+        = f.label :size, class: "control-label", style: "width:50px"
+        .controls{style: "margin-left:70px"}
+          = grouped_collection_select :type, :sizes, Type.order(:name), :sizes, :name, :id, :name, {prompt: "Select Size"}, {class: "input-medium"}
+    .span5
+      .control-group
+        = f.label :color, class: "control-label"
         .controls
-          = mo.grouped_collection_select :model_id, Make.order(:name), :models, :name, :id, :name, prompt: true
-  .control-group
-    .controls
-      = f.submit 'Save', class: "btn btn_green"
+          = f.text_field :color, class: "input-small"
+      .control-group
+        = f.label :comments, class: "control-label"
+        .controls
+          = f.text_area :comments, rows: 3
+      .control-group
+        = f.label :license_plate_number, class: "control-label"
+        .controls
+          = f.text_field :license_plate_number, class: "input-small"
+      .control-group
+        = f.label :state_registered, class: "control-label"
+        .controls
+          = f.text_field :state_registered, class: "input-small"
+      .control-group
+        .controls
+          = f.submit 'Save', class: "btn btn_green"
 
 
 
