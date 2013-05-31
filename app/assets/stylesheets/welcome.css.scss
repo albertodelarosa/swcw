@@ -97,10 +97,35 @@ $sitelerLimeDarker9:    #001403 !default;
   -webkit-border-radius:16px;
   -moz-border-radius:16px;
   border-radius:16px;
-  -webkit-box-shadow:1px 1px 7px $grayDark inset;
-  -moz-box-shadow:1px 1px 7px $grayDark inset;
-  box-shadow:1px 1px 7px $grayDark inset;
+  -webkit-box-shadow:1px 1px 7px $grayDark;
+  -moz-box-shadow:1px 1px 7px $grayDark;
+  box-shadow:1px 1px 7px $grayDark;
   background-color:$sitelerBlue;
 }
 
+.hero-unit:before, .hero-unit:after {
 
+	content: "";
+	position: absolute;
+	z-index: -1;
+	-ms-transform: skew(-3deg,-2deg);
+	-webkit-transform: skew(-3deg,-2deg); /* Safari and Chrome */
+	-o-transform: skew(-3deg,-2deg); /* Opera */
+	-moz-transform: skew(-3deg,-2deg); /* Firefox */
+	bottom: 14px;
+	box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+	height: 50px;
+	left: 1px;
+	max-width: 50%;
+	width: 50%;
+}
+.hero-unit:after {
+
+	-ms-transform: skew(3deg,2deg); /* IE 9 */
+	-webkit-transform: skew(3deg,2deg); /* Safari and Chrome */
+	-o-transform: skew(3deg,2deg); /* Opera */
+	-moz-transform: skew(3deg,2deg); /* Firefox */
+	left: auto;
+	right: 1px;
+}
+					
