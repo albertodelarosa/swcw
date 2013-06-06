@@ -1,0 +1,3 @@
+class VehicleSize < ActiveRecord::Base
+  attr_accessible :name
+end
