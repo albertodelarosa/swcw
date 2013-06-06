@@ -12,7 +12,7 @@
         = @vehicles.each do |vehicle|
           %legend
             %h4 
-              = "#{vehicle.year} #{vehicle.make.name} #{vehicle.make.models.name}"
+              = "#{vehicle.year} #{vehicle.make} #{vehicle.model}"
           .my-vehicle-pic
             = image_tag("holder.png", size: "252x190")
           .row
@@ -22,7 +22,7 @@
                 = vehicle.year
               .vehicle-attribute.make.pull-left
                 %h5 Make
-                = vehicle.make.name
+                = vehicle.make
               .vehicle-attribute.model.pull-left
                 %h5 Model
                 Silverado

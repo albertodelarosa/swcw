@@ -1,8 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :trim do
+  factory :vehicle_year do
     name "MyString"
-    model nil
   end
 end

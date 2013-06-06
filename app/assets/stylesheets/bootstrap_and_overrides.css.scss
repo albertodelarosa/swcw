@@ -62,7 +62,7 @@ $sitelerGreenDarker4:   #005A05 !default;
 $sitelerGreenDarker3:   #006906 !default;
 $sitelerGreenDarker2:   #007806 !default;
 $sitelerGreenDarker1:   #008707 !default;
-$sitelerGreen:          #009608 !default;
+$sitelerGreen:          #009508 !default;
 $sitelerGreenLigheter1: #19A021 !default;
 $sitelerGreenLigheter2: #33AB39 !default;
 $sitelerGreenLigheter3: #4DB652 !default;
@@ -109,9 +109,10 @@ $linkColorHover:        darken($linkColor, 15%) !default;
 $sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $serifFontFamily:       Georgia, "Times New Roman", Times, serif !default;
 $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$sitelerFontFamily:     'Open Sans',Helvetica,Arial !default;
 
 $baseFontSize:          13px !default;
-$baseFontFamily:        $sansFontFamily !default;
+$baseFontFamily:        $sitelerFontFamily !default;
 $baseLineHeight:        18px !default;
 $altFontFamily:         $serifFontFamily !default;
 
@@ -202,16 +203,18 @@ $hrBorder:                $grayLighter !default;
 
 // Navbar
 // -------------------------
-$navbarHeight:                    60px !default;
-$navbarBackground:                $sitelerGreenDarker3 !default;
-$navbarBackgroundHighlight:       $sitelerGreenLigheter3 !default;
+$navbarHeight:                    50px !default;
+$navbarBackground:                $sitelerGreen !default;
+$navbarBackgroundHighlight:       $sitelerGreen !default;
 
 $navbarText:                      $grayLight !default;
-$navbarLinkColor:                 $sitelerGreenDarker6 !default;
-$navbarLinkColorHover:            $white !default;
-$navbarLinkColorActive:           $navbarLinkColorHover !default;
-$navbarLinkBackgroundHover:       transparent !default;
-$navbarLinkBackgroundActive:      $navbarBackground !default;
+$navbarLinkColor:                 $sitelerGreenLigheter9 !default;
+
+$navbarLinkColorHover:            $sitelerBlueLighter9 !default;
+$navbarLinkBackgroundHover:       $sitelerBlue !default;
+
+$navbarLinkColorActive:           $sitelerGreenLigheter7 !default;
+$navbarLinkBackgroundActive:      $sitelerGreenDarker5 !default;
 
 $navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
 $navbarSearchBackgroundFocus:     $white !default;
@@ -318,9 +321,4 @@ $iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
 @import 'font-awesome';
 // @import "fontawesome";
 
-body{
-  font-family: 'Open Sans',Helvetica,Arial;
-  font-size: 13px;
-  background-color: $sitelerBlue;
-}
 

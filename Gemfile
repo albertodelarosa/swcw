@@ -41,6 +41,7 @@ group :development do
   gem 'brakeman'
   gem 'therubyracer'
   gem 'letter_opener'
+  gem 'rails-erd'
 end
 
 group :test do

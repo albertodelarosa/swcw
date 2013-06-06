@@ -89,40 +89,79 @@ $sitelerLimeDarker7:    #013E08 !default;
 $sitelerLimeDarker8:    #012905 !default;
 $sitelerLimeDarker9:    #001403 !default;
 
-.header-background, .body-background{
-  background:white;
+.header, .body-background, .footer{
+  background:$sitelerBlue;
 }
-.body-background{
-  /*background-image: url('wash.jpg');*/
-  /*background-repeat: no-repeat;*/
-  /*background-position: center top;*/
-  /*background-size: 452px 400px;*/
-  min-height:800px;
-  padding:25px 0px 0px 0px;
+.content-div{
+  background-color: $sitelerGreenLigheter9;
+  padding:20px;
+  box-shadow: 0px 0px 10px $sitelerBlueDarker9;
 }
 
-.top{
-  position: relative;
-  .logo{
-    margin-top: 40px;
-    margin-left: 100px;
-    padding-bottom: 10px;
-    .a{
-      color: #1B97F2;
-      text-decoration: none;
-    }
-  }
-  .login_register{
-    margin:15px 20px 0px 0px;
-  }
+.logo{
+  margin-left: 80px;
+  width: 240px;
+}
+
+.body-background{
+  min-height:400px;
+}
+
+.header-background{
+  margin:0px 0px 0px 0px;
+}
+
+.welcome-back{
+  margin-top:25px;
 }
 
 /*========   Navbar   ====================================*/
 
 .navbar.navbar-static-top .navbar-inner{
-  font-family: 'Open Sans Bold',Helvetica,Arial;
   font-size: 16px;
-  min-height:45px;
+  border-width:5px 0px 5px 0px;
+}
+
+.navbar .nav {
+  margin:0px 10px;
+}
+
+.navbar .nav li a:hover{
+  -webkit-transition: background .25s linear;
+  transition: background .25s linear;
+}
+
+@media (max-width: 979px){
+.navbar .nav li a:hover{
+  padding: 7px 15px;
+  text-shadow: 0 1px 0 $sitelerGreenDarker9;
+  background:$sitelerBlue;
+  -webkit-transition: background .25s linear;
+  transition: background .25s linear;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin: 9px 0px;
+}
+}
+.navbar .nav li a{
+  padding: 7px 15px;
+  text-shadow: 0 1px 0 $sitelerGreenDarker9;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin: 9px 0px;
+}
+
+.login_register {
+  margin:0px 25px 0px 0px;
+}
+
+@media (max-width: 979px){
+  .login_register{
+    width:140px;
+    margin:0px 0px 0px 10px;
+  }
 }
 
 .myform-wrapper .nav.nav-tabs li.active a {
@@ -139,9 +178,17 @@ $sitelerLimeDarker9:    #001403 !default;
   border:1px solid $sitelerBlueLighter6;
   padding:20px;
 }
+@media (max-width: 979px){
+  .navbar .navbar-inner .container .breadcrumb-container{
+    margin:10px 10px 10px 0px;
+    .breadcrumb{
+      margin:0px 0px 0px 0px;
+    }
+  }
+}
 
 .breadcrumb-container{
-  margin:15px 10px -3px 0px;
+  margin:10px 0px -8px 0px;
 }
 
 .breadcrumb{
@@ -153,7 +200,7 @@ $sitelerLimeDarker9:    #001403 !default;
   box-shadow:3px 3px 7px $grayDark inset;
 }
 .profile_container{
-  margin:-44px 2px 0px 0px;
+  margin:4px 2px 0px 0px;
   /*border:1px solid black;*/
   /*-webkit-border-radius:3px;*/
   /*-moz-border-radius:3px;*/

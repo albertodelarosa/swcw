@@ -1,26 +1,7 @@
-- if user_signed_in?
-  .logged-in.span4.pull-right
-    .welcome-back
-      %h5
-        Welcome back
-        = succeed " !" do
-          %strong= current_user.username
-    -#- unless controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
-      -#= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn_blue'
-    -#= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn_green'
-- elsif controller.controller_name.eql?("registrations") && controller.action_name.eql?("new")
+- unless user_signed_in?
   .login_register.span2.pull-right
-    -#= link_to "sign in", new_user_session_path, class: 'btn pull-right'
-- elsif controller.controller_name.eql?("sessions") && controller.action_name.eql?("new")
-  .login_register.span2.pull-right
-    -#= link_to "sign up", new_user_registration_path, class: 'btn pull-right'
-- elsif controller.controller_name.eql?("users") && controller.action_name.eql?("login")
-  .login_register.span2.pull-right
-    -#= link_to "sign up", new_user_registration_path, class: 'btn pull-right'
-- else
-  .login_register.span3.pull-right
     = link_to "sign in", "#signin", data: {toggle: "modal"}, class: 'btn btn_blue'
-    = link_to "sign up", new_user_registration_path, class: 'btn btn_green'
+    = link_to "sign up", new_user_registration_path, class: 'btn btn_lime'
     / Modal
     #signin.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "signinLabel", :role => "dialog", :tabindex => "-1"}
       = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f|

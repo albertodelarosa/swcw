@@ -1,41 +1,40 @@
-= form_for [:customers, @vehicle], html: {class: "form-horizontal"} do |f|
+= form_for [:customers, @vehicle], method: "post", html: {class: "form-horizontal"} do |f|
   - if @vehicle.errors.any?
     #error_explanation
       %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this company from being saved:"
       %ul
         - @vehicle.errors.full_messages.each do |msg|
           %li= msg
-
   .row
     .span3
       .control-group
         = f.label :year, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = f.collection_select( :year, Year.all, :id, :name, {prompt: "Year"}, {class: "input-small"})
+          = f.collection_select( :year, @years, :id, :name, {prompt: "Year"}, {class: "input-small"})
       .control-group
         = f.label :make, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = grouped_collection_select :year, :makes, Year.order(:name), :makes, :name, :id, :name, {prompt: "Select Make"}, {class: "input-medium"}
+          = grouped_collection_select :year, :makes, @years, :makes, :name, :id, :name, {prompt: "Select Make"}, {class: "input-medium"}
       .control-group
         = f.label :model, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = grouped_collection_select :year, :models, Make.order(:name), :models, :name, :id, :name, {prompt: "Select Model"}, {class: "input-medium"}
+          = grouped_collection_select :make, :models, @makes, :models, :name, :id, :name, {prompt: "Select Model"}, {class: "input-medium"}
       .control-group
         = f.label :trim, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = grouped_collection_select :model, :trims, Model.order(:name), :trims, :name, :id, :name, {prompt: "Select Trim"}, {class: "input-medium"}
+          = grouped_collection_select :model, :trims, @models, :trims, :name, :id, :name, {prompt: "Select Trim"}, {class: "input-medium"}
       .control-group
         = f.label :type, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = grouped_collection_select :trim, :types, Trim.order(:name), :types, :name, :id, :name, {prompt: "Select Type"}, {class: "input-medium"}
+          = grouped_collection_select :trim, :types, @trims, :types, :name, :id, :name, {prompt: "Select Type"}, {class: "input-medium"}
       .control-group
         = f.label :door, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = grouped_collection_select :type, :doors, Type.order(:name), :doors, :name, :id, :name, {prompt: "Select Doors"}, {class: "input-medium"}
+          = grouped_collection_select :type, :doors, @types, :doors, :name, :id, :name, {prompt: "Select Doors"}, {class: "input-medium"}
       .control-group
         = f.label :size, class: "control-label", style: "width:50px"
         .controls{style: "margin-left:70px"}
-          = grouped_collection_select :type, :sizes, Type.order(:name), :sizes, :name, :id, :name, {prompt: "Select Size"}, {class: "input-medium"}
+          = grouped_collection_select :type, :sizes, @types, :sizes, :name, :id, :name, {prompt: "Select Size"}, {class: "input-medium"}
     .span5
       .control-group
         = f.label :color, class: "control-label"

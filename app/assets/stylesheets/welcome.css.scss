@@ -93,6 +93,13 @@ $sitelerLimeDarker7:    #013E08 !default;
 $sitelerLimeDarker8:    #012905 !default;
 $sitelerLimeDarker9:    #001403 !default;
 
+.carousel-control.left{
+  left:-53px;
+}
+
+.carousel-control.right{
+  right:-53px;
+}
 .hero-unit{
   -webkit-border-radius:16px;
   -moz-border-radius:16px;

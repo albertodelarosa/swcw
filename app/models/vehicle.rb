@@ -1,11 +1,10 @@
 class Vehicle < ActiveRecord::Base
-  attr_accessible :year, :color, :comments, :doors, 
-                  :license_plate_number, :size, :state_registered, 
-                  :make, :make_attributes
-  has_one :make
+  attr_accessible :year, :make, :model, :trim, 
+                  :type, :doors, :size, 
+                  :license_plate_number, :state_registered, 
+                  :color,  :comments
 
   has_many :transportations
   has_many :owners, through: :transportations, source: :user
 
-  accepts_nested_attributes_for :make
 end
