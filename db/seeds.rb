@@ -139,9 +139,9 @@ end
 puts "creating Years, Makes, Models, Trims & associating them together..."
 csv_filename = ""
 if Rails.env.production?
-  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv"
-else
   csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
+else
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv"
 end
 
 #CSV.read("#{Rails.root}/lib/tasks/year_model_trim.csv", options).each_with_index do |row, i|
