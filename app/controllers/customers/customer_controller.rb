@@ -5,7 +5,6 @@ class Customers::CustomerController < ApplicationController
 
   def index
     @vehicles = current_user.vehicles || []
-    @new_vehicle = Vehicle.new
   end
 
   def create_vehicle

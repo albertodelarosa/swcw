@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516204355) do
+ActiveRecord::Schema.define(:version => 20130606062405) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -103,12 +103,6 @@ ActiveRecord::Schema.define(:version => 20130516204355) do
     t.datetime "updated_at",       :null => false
   end
 
-  create_table "doors", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.text     "comments"
@@ -118,29 +112,11 @@ ActiveRecord::Schema.define(:version => 20130516204355) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "makes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "models", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "sites", :force => true do |t|
     t.string   "name"
     t.text     "comments"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sizes", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -155,18 +131,6 @@ ActiveRecord::Schema.define(:version => 20130516204355) do
   add_index "transportations", ["user_id", "vehicle_id"], :name => "index_transportations_on_user_id_and_vehicle_id", :unique => true
   add_index "transportations", ["user_id"], :name => "index_transportations_on_user_id"
   add_index "transportations", ["vehicle_id"], :name => "index_transportations_on_vehicle_id"
-
-  create_table "trims", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "username",               :default => "", :null => false
@@ -191,52 +155,90 @@ ActiveRecord::Schema.define(:version => 20130516204355) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
-  create_table "vehicle_settings", :force => true do |t|
-    t.integer  "year_id"
-    t.integer  "make_id"
-    t.integer  "model_id"
-    t.integer  "trim_id"
-    t.integer  "type_id"
-    t.integer  "door_id"
-    t.integer  "size_id"
+  create_table "vehicle_doors", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "vehicle_settings", ["door_id", "type_id"], :name => "index_vehicle_settings_on_door_id_and_type_id"
-  add_index "vehicle_settings", ["door_id"], :name => "index_vehicle_settings_on_door_id"
-  add_index "vehicle_settings", ["make_id", "model_id"], :name => "index_vehicle_settings_on_make_id_and_model_id"
-  add_index "vehicle_settings", ["make_id", "year_id"], :name => "index_vehicle_settings_on_make_id_and_year_id"
-  add_index "vehicle_settings", ["make_id"], :name => "index_vehicle_settings_on_make_id"
-  add_index "vehicle_settings", ["model_id", "trim_id"], :name => "index_vehicle_settings_on_model_id_and_trim_id"
-  add_index "vehicle_settings", ["model_id"], :name => "index_vehicle_settings_on_model_id"
-  add_index "vehicle_settings", ["size_id", "type_id"], :name => "index_vehicle_settings_on_size_id_and_type_id"
-  add_index "vehicle_settings", ["size_id"], :name => "index_vehicle_settings_on_size_id"
-  add_index "vehicle_settings", ["trim_id", "type_id"], :name => "index_vehicle_settings_on_trim_id_and_type_id"
-  add_index "vehicle_settings", ["trim_id"], :name => "index_vehicle_settings_on_trim_id"
-  add_index "vehicle_settings", ["type_id"], :name => "index_vehicle_settings_on_type_id"
-  add_index "vehicle_settings", ["year_id"], :name => "index_vehicle_settings_on_year_id"
+  create_table "vehicle_makes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vehicle_models", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vehicle_settings", :force => true do |t|
+    t.integer  "vehicle_id"
+    t.integer  "vehicle_year_id"
+    t.integer  "vehicle_make_id"
+    t.integer  "vehicle_model_id"
+    t.integer  "vehicle_trim_id"
+    t.integer  "vehicle_type_id"
+    t.integer  "vehicle_door_id"
+    t.integer  "vehicle_size_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "vehicle_settings", ["vehicle_door_id", "vehicle_type_id"], :name => "index_vehicle_settings_on_vehicle_door_id_and_vehicle_type_id"
+  add_index "vehicle_settings", ["vehicle_door_id"], :name => "index_vehicle_settings_on_vehicle_door_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_door_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_door_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_make_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_make_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_model_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_model_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_size_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_size_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_trim_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_trim_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_type_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_type_id"
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_year_id"], :name => "index_vehicle_settings_on_vehicle_id_and_vehicle_year_id"
+  add_index "vehicle_settings", ["vehicle_id"], :name => "index_vehicle_settings_on_vehicle_id"
+  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_model_id"], :name => "index_vehicle_settings_on_vehicle_make_id_and_vehicle_model_id"
+  add_index "vehicle_settings", ["vehicle_make_id"], :name => "index_vehicle_settings_on_vehicle_make_id"
+  add_index "vehicle_settings", ["vehicle_model_id", "vehicle_trim_id"], :name => "index_vehicle_settings_on_vehicle_model_id_and_vehicle_trim_id"
+  add_index "vehicle_settings", ["vehicle_model_id"], :name => "index_vehicle_settings_on_vehicle_model_id"
+  add_index "vehicle_settings", ["vehicle_size_id", "vehicle_type_id"], :name => "index_vehicle_settings_on_vehicle_size_id_and_vehicle_type_id"
+  add_index "vehicle_settings", ["vehicle_size_id"], :name => "index_vehicle_settings_on_vehicle_size_id"
+  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_type_id"], :name => "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_type_id"
+  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_year_id"], :name => "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_year_id"
+  add_index "vehicle_settings", ["vehicle_trim_id"], :name => "index_vehicle_settings_on_vehicle_trim_id"
+  add_index "vehicle_settings", ["vehicle_type_id"], :name => "index_vehicle_settings_on_vehicle_type_id"
+  add_index "vehicle_settings", ["vehicle_year_id"], :name => "index_vehicle_settings_on_vehicle_year_id"
+
+  create_table "vehicle_sizes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vehicle_trims", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vehicle_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vehicle_years", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "vehicles", :force => true do |t|
-    t.string   "year"
-    t.string   "make"
-    t.string   "model"
-    t.string   "trim"
-    t.string   "type"
-    t.string   "doors"
-    t.string   "size"
     t.string   "license_plate_number"
     t.string   "state_registered"
     t.string   "color"
     t.text     "comments"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
-  end
-
-  create_table "years", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end

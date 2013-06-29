@@ -20,25 +20,25 @@ puts "Deleting existing addresses..."
 Address.all.each(&:destroy)
 
 puts "Deleting existing Years..."
-Year.all.each(&:destroy)
+VehicleYear.all.each(&:destroy)
 
 puts "Deleting existing Makes..."
-Make.all.each(&:destroy)
+VehicleMake.all.each(&:destroy)
 
 puts "Deleting existing Models..."
-Model.all.each(&:destroy)
+VehicleModel.all.each(&:destroy)
 
 puts "Deleting existing Trims..."
-Trim.all.each(&:destroy)
+VehicleTrim.all.each(&:destroy)
 
 puts "Deleting existing Types..."
-Type.all.each(&:destroy)
+VehicleType.all.each(&:destroy)
 
 puts "Deleting existing Doors..."
-Door.all.each(&:destroy)
+VehicleDoor.all.each(&:destroy)
 
 puts "Deleting existing Sizes..."
-Size.all.each(&:destroy)
+VehicleSize.all.each(&:destroy)
 
 
 
@@ -63,47 +63,78 @@ home_contact_infos = HomeContactInfo.create!([{phone1: "415.661.7226" , mobile: 
 puts "Adding new default companies..."
 companies = Company.create([{name: 'Apple'},{name: 'Google'}])
 
-#def trim_type_door_size_assocations(trim, type, door, size)
-  #type.doors << door unless type.doors.include?(door)
-  #type.sizes << size unless type.sizes.include?(size)
-  #trim.types << type unless trim.types.include?(type)
-#end
-
 puts "setting up year, make, model, trim, type, door, size..."
-year, make, model, trim, type, door, size = Year.new, Make.new, Model.new, Trim.new, Type.new, Door.new, Size.new 
+year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
 puts
 puts "creating Makes, Models, & associating them together..."
 CSV.read("#{Rails.root}/lib/tasks/make_model.csv", options).each_with_index do |row, i|
   unless row[0].nil?
-    make = Make.find_or_create_by_name(name: row[0])
+    make = VehicleMake.find_or_create_by_name(name: row[0])
   else
     row.compact.each do |column|
-      model = Model.find_or_create_by_name(name: column)
-      make.models << model unless make.models.include?(model)
+      model = VehicleModel.find_or_create_by_name(name: column)
+      make.vehicle_models << model unless make.vehicle_models.include?(model)
     end
   end
 end
 puts "================= DONE ================="
 
 puts "setting up years, year, make, model, trim, type, door, size..."
-year, make, model, trim, type, door, size = Year.new, Make.new, Model.new, Trim.new, Type.new, Door.new, Size.new 
+year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
 years = []
 row_counter = 0
 
 def build_trim_associations(year,make,model,type_name,door_name,trim_name="base")
-  trim = Trim.find_or_create_by_name(trim_name)
-  type = Type.find_or_create_by_name(type_name)
-  door = Door.find_or_create_by_name(door_name)
+  make.vehicle_models << model unless make.vehicle_models.include?(model)
+  #unless (trim = VehicleTrim.find_by_name(trim_name))
+    #trim = VehicleTrim.create!(name: trim_name)
+    #trim.vehicle_models << model
+  #end
+  trims = VehicleTrim.joins(:vehicle_models).where(vehicle_trims: {name: trim_name}).where(vehicle_models: {name: model.name}).readonly(false)
+  if trims.empty? 
+    trim = VehicleTrim.create!(name: trim_name)
+    trim.vehicle_models << model
+    puts"model: #{trim.vehicle_models[0].name} has a new trim: #{trim.name}"
+  else
+    print "trim found, "
+    trims.each do |each_trim|
+      puts "trim: #{each_trim.name}"
+      each_trim.vehicle_models.each do |model|
+        puts "\t\tassociated model: #{each_trim.vehicle_models[0].name}"
+      end
+    end
+    trim = trims[0]
+  end
 
-  #year.models << model  unless year.models.include?(model)
-  #year.trims  << trim   unless year.trims.include?(trim)
-  year.makes  << make  unless year.makes.include?(make)
-  make.models << model unless make.models.include?(model)
-  model.trims << trim  unless model.trims.include?(trim)
-  trim.types  << type  unless trim.types.include?(type)
-  type.doors  << door  unless type.doors.include?(door)
+  trim.vehicle_years << year
+  trim.save!
 
-  #puts("\tYear: #{year.name},\tMake: #{make.name},\tModel: #{model.name},\tTrim: #{trim.name},\tType: #{type.name},\tDoor: #{door.name}")
+  mapped_trims = trim.vehicle_types.map{|type| type.name}
+  if type_index = mapped_trims.index(type_name)
+    type = trim.vehicle_types[type_index]
+  else
+    type = VehicleType.create!(name: type_name)
+    type.vehicle_trims << trim
+    if type_name.include?("Pickup") || type_name.include?("SUV/Crossover") || type_name.include?("Van/Minivan")
+      size = VehicleSize.find_or_create_by_name("Large")
+    else
+      size = VehicleSize.find_or_create_by_name("Small")
+    end
+  end
+  type.vehicle_years << year
+
+  mapped_doors = type.vehicle_doors.map{|door| door.name}
+  if door_index = mapped_doors.index(door_name)
+    door = type.vehicle_doors[door_index]
+  else
+    door = VehicleDoor.create!(name: door_name)
+    door.vehicle_types << type
+  end
+  door.vehicle_years << year
+
+  #puts("Year: #{year.name},\tMake: #{make.name},\tModel: #{model.name}\tTrim: #{trim.name},\tType: #{type.name}\tDoor: #{door.name}")
+  puts
+
 end
 
 def build_forgot(year,forgot)
@@ -111,16 +142,15 @@ def build_forgot(year,forgot)
 end
 
 puts "creating Years, Makes, Models, Trims & associating them together..."
-CSV.read("#{Rails.root}/lib/tasks/year_model_trim.csv", options).each_with_index do |row, i|
+#CSV.read("#{Rails.root}/lib/tasks/year_model_trim.csv", options).each_with_index do |row, i|
+CSV.read("#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv", options).each_with_index do |row, i|
   unless row[0].nil?
-    puts
     years = []
     row_counter = 0
-    puts("Model should be: #{row[0]}")
-    model = Model.find_by_name(row[0])
-    make = model.makes[0]
+    model = VehicleModel.find_by_name(row[0])
+    make = model.vehicle_makes[0]
     row.drop(1).compact.each do |column|
-      years << Year.find_or_create_by_name(column)
+      years << VehicleYear.find_or_create_by_name(column)
     end
   else
     row.compact.each do |column|
@@ -132,7 +162,14 @@ CSV.read("#{Rails.root}/lib/tasks/year_model_trim.csv", options).each_with_index
       when  2
         build_trim_associations(year,make,model,column_items[0],column_items[1])
       when  3
-        build_trim_associations(year,make,model,column_items[1],column_items[2],column_items[0])
+        if column_items[1].include?("door") && column_items[2].include?("door")
+          #puts "#{year.name},\t#{make.name},\t#{model.name},\tcol0: #{column_items[0]},\tcol1: #{column_items[1]},\tcol2: #{column_items[2]}"
+          #puts
+          build_trim_associations(year,make,model,column_items[0],column_items[1])
+          build_trim_associations(year,make,model,column_items[0],column_items[2])
+        else
+          build_trim_associations(year,make,model,column_items[1],column_items[2],column_items[0])
+        end
       when  4
         if column_items[2].include?("door") && column_items[3].include?("door")
           build_trim_associations(year,make,model,column_items[1],column_items[2],column_items[0])
@@ -142,43 +179,17 @@ CSV.read("#{Rails.root}/lib/tasks/year_model_trim.csv", options).each_with_index
           build_trim_associations(year,make,model,column_items[2],column_items[3],column_items[0])
         end
       end
-      #year.makes << model.makes[0]
     end
     row_counter += 1
   end
 end
 
-#CSV.foreach("#{Rails.root}/lib/tasks/year_make_model_trim_type_door_size.csv") do |row|
-##CSV.foreach("#{Rails.root}/lib/tasks/year_make_model_trim_type_door_size.csv") do |row|
-  #next if row.join.blank? #or row[0].blank?
-    #year  =  Year.find_or_create_by_name(name: row[0]) unless row[0].blank?
-    #make  =  Make.find_or_create_by_name(name: row[1]) unless row[1].blank?
-    #model = Model.find_or_create_by_name(name: row[2]) unless row[2].blank?
-    #trim  =  Trim.create(name: row[3]) unless row[3].blank?
-    #size  =  Size.create(name: row[6])
-    #unless row[4].blank? 
-      #row4_array = row[4].split(",")
-      #row5_array = row[5].split(",")
-      #row4_array.each_with_index do |row4, index|
-        #type = Type.create(name: row4)
-        #door = Door.create(name: row5_array[index]) if row4_array.size == row5_array.size
-        #door = Door.create(name: row5_array[0])     if row4_array.size >  row5_array.size
-        #trim_type_door_size_assocations(trim, type, door, size)
-      #end
-    #end
-    #model.trims << trim
-    #make.models << model unless make.models.include?(model)
-    #year.makes  << make  unless year.makes.include?(make)
-    #trim = Trim.new if trim.name.eql?("base")
-#end
-
-
-#puts "tieing in developers[0] with other models"
-#developers[0].work_contact_info = company_contact_infos[0]
-#developers[0].work_address = work_addresses[0]
-#developers[0].home_contact_info = home_contact_infos[0]
-#developers[0].home_address = home_addresses[0]
-#developers[0].companies << companies[0]
+puts "tieing in developers[0] with other models"
+developers[0].work_contact_info = company_contact_infos[0]
+developers[0].work_address = work_addresses[0]
+developers[0].home_contact_info = home_contact_infos[0]
+developers[0].home_address = home_addresses[0]
+developers[0].companies << companies[0]
 
 
 
