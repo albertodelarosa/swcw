@@ -18,7 +18,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-sass-rails'
 gem 'font-awesome-sass-rails'
 gem 'airbrake'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
 gem 'devise'
 gem 'money-rails', "~> 0.8.1"
 gem 'cancan'
