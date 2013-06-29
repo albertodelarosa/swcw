@@ -4,21 +4,14 @@
     %title Siteler Wash
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    /[if lt IE 9]
+      %script{:src => "javascript/ie_utilities/index.js"}
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-    .header-background
-      .container
-        .content-div
-          .header-background
-            .row
-              .logo.pull-left
-                =link_to( image_tag("logo.png"), root_path(), :class=>"logo_image")
-              - if controller.controller_name.eql?("customer") && controller.action_name.eql?("index")
-                = render "shared/navbar/welcome_back"
     .navbar.navbar-static-top
       .navbar-inner
-        .container
+        .container-fluid
           %a.btn.btn-navbar.btn_blue{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
             %span.icon-bar
             %span.icon-bar
@@ -30,10 +23,17 @@
               %li= link_to "Add Vehicle", new_customers_vehicle_path
               %li= link_to "Add Site",    customers_site_index_path
               %li= link_to "Add Company", customers_company_index_path
+
     .body-background
-      .container
+      .container-fluid
         .content-div
-          .row
+          .row-fluid
+            .header-background
+              .logo.pull-left
+                =link_to( image_tag("logo.png"), root_path(), :class=>"logo_image")
+              - if controller.controller_name.eql?("customer") && controller.action_name.eql?("index")
+                = render "shared/navbar/welcome_back"
+          .row-fluid
             .span5.offset2
               - flash.each do |name, msg|
                 = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"
