@@ -1,4 +1,5 @@
 class VehicleSetting < ActiveRecord::Base
+  belongs_to :vehicle
   belongs_to :vehicle_year
   belongs_to :vehicle_make
   belongs_to :vehicle_model
