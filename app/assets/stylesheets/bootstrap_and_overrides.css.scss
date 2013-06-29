@@ -302,6 +302,9 @@ $fluidGridGutterWidthLarge:    2.564102564% !default;
 // $mediaLarge:              1200px !default; // and upper
 
 @import "bootstrap";
+/*body {*/
+  /*padding:150px 0px 0px 0px;*/
+/*}*/
 @import "bootstrap/responsive";
 
 // Set the correct sprite paths

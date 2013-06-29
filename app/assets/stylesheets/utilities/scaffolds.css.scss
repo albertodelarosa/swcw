@@ -89,12 +89,13 @@ $sitelerLimeDarker7:    #013E08 !default;
 $sitelerLimeDarker8:    #012905 !default;
 $sitelerLimeDarker9:    #001403 !default;
 
-.header, .body-background, .footer{
+/*.header, .body-background, .footer{
   background:$sitelerBlue;
-}
+}*/
 .content-div{
   background-color: $sitelerGreenLigheter9;
   padding:20px;
+  min-height:400px;
   box-shadow: 0px 0px 10px $sitelerBlueDarker9;
 }
 
@@ -104,11 +105,10 @@ $sitelerLimeDarker9:    #001403 !default;
 }
 
 .body-background{
-  min-height:400px;
 }
 
 .header-background{
-  margin:0px 0px 0px 0px;
+  margin:0px 0px 150px 0px;
 }
 
 .welcome-back{
@@ -117,6 +117,11 @@ $sitelerLimeDarker9:    #001403 !default;
 
 /*========   Navbar   ====================================*/
 
+.navbar.navbar-static-top{
+  position:absolute;
+  width:100%;
+  top:100px;
+}
 .navbar.navbar-static-top .navbar-inner{
   font-size: 16px;
   border-width:5px 0px 5px 0px;

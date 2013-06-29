@@ -100,11 +100,15 @@ $sitelerLimeDarker9:    #001403 !default;
   margin: 0px 8px 0px 0px;
   box-shadow: 2px 2px 7px grey;
 }
+.vehicle-container{
+  margin:0px 0px 50px 0px;
+}
 .my-vehicle-pic{
-  margin:0px 8px;
+  text-align:center;
+  margin:0px auto;
 }
 .my-vehicle-pic img{
-  margin:0px auto;
+  margin:10px auto;
 }
 .my-vehicle-body{
   margin: 10px 0px 0px 20px;
@@ -115,5 +119,20 @@ $sitelerLimeDarker9:    #001403 !default;
 .vehicle-attribute h4, .vehicle-attribute h5 {
   margin:2px 0px 0px 0px;
 }
+#my_vehicle.nav.nav-tabs > li > a{
+-webkit-border-radius: 4px 4px 0 0;
+-moz-border-radius: 4px 4px 0 0;
+border-radius: 8px 8px 0 0;
+}
+#my_vehicle.nav.nav-tabs > .active > a{
+  color: $sitelerBlueLighter8;
+}
+#my_vehicle.nav.nav-tabs > .active > a:hover, 
+#my_vehicle.nav.nav-tabs > .active > a:focus {
+  background-color: $sitelerBlueDarker4;
+}
 
-
+#my_vehicle.nav.nav-tabs > li > a:hover, 
+#my_vehicle.nav.nav-tabs > li > a:focus {
+  background-color: $sitelerBlueLighter5;
+}
