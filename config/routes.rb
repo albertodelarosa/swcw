@@ -10,7 +10,11 @@ Sitelerwash::Application.routes.draw do
     resources :appointment
     resources :site
     resources :company
-    resources :vehicles
+    resources :vehicles do 
+      collection do 
+        get :update_make, :update_model, :update_trim, :update_type, :update_doors, :update_size
+      end
+    end
   end
 
   match "/", to: 'welcome#index', as: 'home', via: :get
