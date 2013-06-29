@@ -20,7 +20,7 @@ gem 'font-awesome-sass-rails'
 gem 'airbrake'
 gem 'jquery-rails'
 gem 'devise'
-gem 'money-rails'
+gem 'money-rails', "~> 0.8.1"
 gem 'cancan'
 
 
@@ -39,7 +39,7 @@ end
 group :development do
   gem 'ruby_parser'
   gem 'brakeman'
-  gem 'therubyracer'
+#  gem 'therubyracer'
   gem 'letter_opener'
   gem 'rails-erd'
 end
