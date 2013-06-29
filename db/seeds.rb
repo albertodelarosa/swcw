@@ -86,21 +86,19 @@ row_counter = 0
 
 def build_trim_associations(year,make,model,type_name,door_name,trim_name="base")
   make.vehicle_models << model unless make.vehicle_models.include?(model)
-  #unless (trim = VehicleTrim.find_by_name(trim_name))
-    #trim = VehicleTrim.create!(name: trim_name)
-    #trim.vehicle_models << model
-  #end
   trims = VehicleTrim.joins(:vehicle_models).where(vehicle_trims: {name: trim_name}).where(vehicle_models: {name: model.name}).readonly(false)
   if trims.empty? 
     trim = VehicleTrim.create!(name: trim_name)
     trim.vehicle_models << model
-    puts"model: #{trim.vehicle_models[0].name} has a new trim: #{trim.name}"
+    puts"model: #{trim.vehicle_models[0].name} has a new trim: #{trim.name}" unless Rails.env.production?
   else
-    print "trim found, "
-    trims.each do |each_trim|
-      puts "trim: #{each_trim.name}"
-      each_trim.vehicle_models.each do |model|
-        puts "\t\tassociated model: #{each_trim.vehicle_models[0].name}"
+    unless Rails.env.production?
+      print "trim found, "
+      trims.each do |each_trim|
+        puts "trim: #{each_trim.name}"
+        each_trim.vehicle_models.each do |model|
+          puts "\t\tassociated model: #{each_trim.vehicle_models[0].name}"
+        end
       end
     end
     trim = trims[0]
@@ -132,9 +130,6 @@ def build_trim_associations(year,make,model,type_name,door_name,trim_name="base"
   end
   door.vehicle_years << year
 
-  #puts("Year: #{year.name},\tMake: #{make.name},\tModel: #{model.name}\tTrim: #{trim.name},\tType: #{type.name}\tDoor: #{door.name}")
-  puts
-
 end
 
 def build_forgot(year,forgot)
@@ -142,8 +137,15 @@ def build_forgot(year,forgot)
 end
 
 puts "creating Years, Makes, Models, Trims & associating them together..."
+csv_filename = ""
+if Rails.env.production?
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv"
+else
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
+end
+
 #CSV.read("#{Rails.root}/lib/tasks/year_model_trim.csv", options).each_with_index do |row, i|
-CSV.read("#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv", options).each_with_index do |row, i|
+CSV.read(csv_filename, options).each_with_index do |row, i|
   unless row[0].nil?
     years = []
     row_counter = 0
@@ -163,8 +165,6 @@ CSV.read("#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv", options).ea
         build_trim_associations(year,make,model,column_items[0],column_items[1])
       when  3
         if column_items[1].include?("door") && column_items[2].include?("door")
-          #puts "#{year.name},\t#{make.name},\t#{model.name},\tcol0: #{column_items[0]},\tcol1: #{column_items[1]},\tcol2: #{column_items[2]}"
-          #puts
           build_trim_associations(year,make,model,column_items[0],column_items[1])
           build_trim_associations(year,make,model,column_items[0],column_items[2])
         else
