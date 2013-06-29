@@ -6,35 +6,43 @@
         - @vehicle.errors.full_messages.each do |msg|
           %li= msg
   .row
-    .span3
-      .control-group
-        = f.label :year, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = f.collection_select( :year, @years, :id, :name, {prompt: "Year"}, {class: "input-small"})
-      .control-group
-        = f.label :make, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = grouped_collection_select :year, :makes, @years, :makes, :name, :id, :name, {prompt: "Select Make"}, {class: "input-medium"}
-      .control-group
-        = f.label :model, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = grouped_collection_select :make, :models, @makes, :models, :name, :id, :name, {prompt: "Select Model"}, {class: "input-medium"}
-      .control-group
-        = f.label :trim, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = grouped_collection_select :model, :trims, @models, :trims, :name, :id, :name, {prompt: "Select Trim"}, {class: "input-medium"}
-      .control-group
-        = f.label :type, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = grouped_collection_select :trim, :types, @trims, :types, :name, :id, :name, {prompt: "Select Type"}, {class: "input-medium"}
-      .control-group
-        = f.label :door, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = grouped_collection_select :type, :doors, @types, :doors, :name, :id, :name, {prompt: "Select Doors"}, {class: "input-medium"}
-      .control-group
-        = f.label :size, class: "control-label", style: "width:50px"
-        .controls{style: "margin-left:70px"}
-          = grouped_collection_select :type, :sizes, @types, :sizes, :name, :id, :name, {prompt: "Select Size"}, {class: "input-medium"}
+    .span3.vehicle_selects
+      = f.fields_for :vehicle_years do |vyr|
+        -#= "I exists"
+        .control-group
+          = vyr.label :year, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vyr.collection_select( :id, @years, :id, :name, {prompt: "Select Year"}, {class: "input-medium"})
+      = f.fields_for :vehicle_makes do |vma|
+        .control-group
+          = vma.label :make, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vma.collection_select(:id, @makes, :id, :name, {prompt: "Select Make"}, {class: "input-medium"})
+      = f.fields_for :vehicle_models do |vmo|
+        .control-group
+          = vmo.label :model, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vmo.collection_select(:id, @models, :id, :name, {prompt: "Select Model"}, {class: "input-medium"})
+      = f.fields_for :vehicle_trims do |vtm|
+        .control-group
+          = vtm.label :trim, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vtm.collection_select(:id, @trims, :id, :name, {prompt: "Select Trim"}, {class: "input-medium"})
+      = f.fields_for :vehicle_types do |vty|
+        .control-group
+          = vty.label :type, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vty.collection_select(:id, @types, :id, :name, {prompt: "Select Type"}, {class: "input-medium"})
+      = f.fields_for :vehicle_doors do |vdr|
+        .control-group
+          = vdr.label :door, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vdr.collection_select(:id, @doors, :id, :name, {prompt: "Select Doors"}, {class: "input-medium"})
+      = f.fields_for :vehicle_sizes do |vsz|
+        .control-group
+          = vsz.label :size, class: "control-label", style: "width:50px"
+          .controls{style: "margin-left:70px"}
+            = vsz.collection_select(:id, @sizes, :id, :name, {prompt: "Select Size"}, {class: "input-medium"})
     .span5
       .control-group
         = f.label :color, class: "control-label"

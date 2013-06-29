@@ -1,37 +1,43 @@
 .row
-  .span4
+  .span10.offset1
     %table.table.table-striped.table-hover.table-condensed
       %tr
+        %th Year
         %th Make
         %th Model
         %th Trim
-        %th Size
+        %th Type
+        %th Doors
+        -#%th Size
+        %th Color
+        %th Comments
+        %th License Plate Number
+        %th State Registered
 
-      - @models.each do |model|
-        - if model.trims.empty?
-          %tr
-            %td 
-              = model.make.name
-            %td
-              = model.name
-            %td
-            %td
-              = model.size
-        - else
-          - model.trims.each do |trim|
-            %tr
-              %td 
-                = model.id
-              %td 
-                = model.make.name
-              %td
-                = model.name
-              %td
-                = trim.name
-              %td
-                = model.size
-
-
+      - @vehicles.each do |vehicle|
+        %tr
+          %td 
+            = vehicle.vehicle_years[0].name
+          %td 
+            = vehicle.vehicle_makes[0].name
+          %td 
+            = vehicle.vehicle_models[0].name
+          %td 
+            = vehicle.vehicle_trims[0].name
+          %td 
+            = vehicle.vehicle_types[0].name
+          %td 
+            = vehicle.vehicle_doors[0].name
+          -#%td 
+            -#= vehicle.vehicle_sizes[0].name
+          %td 
+            = vehicle.color
+          %td 
+            = vehicle.comments
+          %td 
+            = vehicle.license_plate_number
+          %td 
+            = vehicle.state_registered
 
 -#%h1 Listing vehicles
 
