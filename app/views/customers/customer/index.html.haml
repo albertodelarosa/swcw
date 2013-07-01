@@ -19,10 +19,8 @@
       - else
         %ul#myVehicle.nav.nav-tabs
           - @vehicles.each_with_index do |vehicle, index|
-            = render :partial => "nav-tabs_ul", :locals => { vehicle: vehicle, index: index }
+            = render partial: "nav-tabs_ul", locals: {vehicle: vehicle, index: index}
         #myVehicle_content.tab-content
           - @vehicles.each_with_index do |vehicle, index|
-            = render :partial => "tab-pane", :locals => { vehicle: vehicle, index: index }
-
-
+            = render partial: "tab-pane", locals: {vehicle: vehicle, index: index}
 

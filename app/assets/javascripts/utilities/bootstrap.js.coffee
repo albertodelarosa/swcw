@@ -6,10 +6,11 @@ jQuery ->
   $("#personalleTab a").click (e) ->
     e.preventDefault()
     $(this).tab "show"
-  $("ul#myVehicle a").click (e) ->
-    e.preventDefault()
-    $(this).tab "show"
   $("#workTab a").click (e) ->
     e.preventDefault()
     $(this).tab "show"
+  $(document).ready ->
+    $("ul#myVehicle a").click (e) ->
+      e.preventDefault()
+      $(this).tab "show"
 
