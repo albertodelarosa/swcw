@@ -1,22 +1,23 @@
--#%ul#myTab.nav.nav-tabs
-  -#- @vehicles.each_with_index do |vehicle, index|
-    -#= render :partial => "nav-tabs_ul", :locals => { vehicle: vehicle, index: index }
--##myTabContent.tab-content
-  -#- @vehicles.each_with_index do |vehicle, index|
-    -#= render :partial => "tab-pane", :locals => { vehicle: vehicle, index: index }
-
-
 .row-fluid
   .span5.offset1
-    .appointment-container
-      .appt-header
-        Make Appointments
+    .row-fluid
+      .appointment-container
+        .appt-header
+          Make an Appointment
+    .row-fluid
+      .site-wrapper
+        Add a Site
+    .row-fluid
+      .company-wrapper
+        Add a Company
   .span5.offset1
     .vehicle-wrapper
       - if @vehicles.empty?
         %h3 You have no Vehicles
         = link_to "add vehicle", new_customers_vehicle_path
       - else
+        %legend
+          My Vehicles
         %ul#myVehicle.nav.nav-tabs
           - @vehicles.each_with_index do |vehicle, index|
             = render partial: "nav-tabs_ul", locals: {vehicle: vehicle, index: index}
