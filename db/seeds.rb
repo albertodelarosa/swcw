@@ -48,20 +48,42 @@ developers = User.create([
    {username: 'ibaraku',      email: 'ibaraku@gmail.com',            password: 'password'}
 ])
 
-puts "Adding new default company addresses..."
-work_addresses = CompanyAddress.create!([{street1: "181 2nd Ave" , suite_no: "112", city: "San Mateo", state: "CA", zip: "94401"}])
-
 puts "Adding new default home addresses..."
 home_addresses = HomeAddress.create!([{street1: "2527 Ortega Street" , apt_no: "12", city: "San Francisco", state: "CA", zip: "94122"}])
-
-puts "Adding new default company contact info..."
-company_contact_infos = CompanyContactInfo.create!([{phone1: "(650) 333-0168", ext: "329"}])
 
 puts "Adding new default home contact info..."
 home_contact_infos = HomeContactInfo.create!([{phone1: "415.661.7226" , mobile: "415.845.0274"}])
 
+puts "Creating Company Listing..."
+CSV.read("#{Rails.root}/lib/tasks/company.csv", "r:ISO-8859-1").each_with_index do |row, i|
+  unless row[0].nil?
+    puts row
+    street_address = row[2].split(",")
+    city_state_zip = row[3].split(",")
+    row[4]
+
+    Company.create!(name:     row[1], 
+                    address:  CompanyAddress.create!(street1:     street_address[0] , 
+                                                     suite_no:    street_address.size > 1 ? street_address[1] : "", 
+                                                     city:        city_state_zip[0], 
+                                                     state:       city_state_zip[1], 
+                                                     zip:         city_state_zip[2], 
+                                                     created_at:  row[4]
+                                                    )
+                   )
+  end
+end
+
 puts "Adding new default companies..."
-companies = Company.create([{name: 'Apple'},{name: 'Google'}])
+companies = []
+companies << Company.find_by_name("Apple, Inc")
+companies << Company.find_by_name("Google, Inc.")
+
+puts "Adding new default company addresses..."
+work_addresses = companies[0].address
+
+puts "Adding new default company contact info..."
+company_contact_infos = CompanyContactInfo.create!([{phone1: "(650) 333-0168", ext: "329"}])
 
 puts "setting up year, make, model, trim, type, door, size..."
 year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 

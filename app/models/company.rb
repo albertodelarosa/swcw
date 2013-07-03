@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :company_id, :name, :description, :corporate_email_domain, 
+  attr_accessible :company_id, :name, :description, :corporate_email_domain, :address, 
                   :siteler_dollars_percentage, :remove_cc_info, :user_reg_allowed, 
                   :paypal_allowed, :coupons_allowd, :google_checkout_allowed, 
                   :address_attributes
