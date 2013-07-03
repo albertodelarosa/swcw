@@ -2,14 +2,10 @@ Sitelerwash::Application.routes.draw do
 
   namespace :customers do
     match "/" => "customer#index"
-    #resources :customer do
-      #collection do
-        #get :create_vehicle, :update_vehicle
-      #end
-    #end
+
     resources :appointment
     resources :site
-    resources :company
+    resources :companies
     resources :vehicles do 
       collection do 
         get :update_make, :update_model, :update_trim, :update_type, :update_doors, :update_size
