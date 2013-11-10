@@ -1,0 +1,6 @@
+%table
+  -companies.each do |company|
+    %tr
+      %td
+        =link_to(company.name, admin_company_path(company))
+

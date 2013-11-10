@@ -19,11 +19,8 @@ class Vehicle < ActiveRecord::Base
   has_many :vehicle_doors,  through: :vehicle_settings
   has_many :vehicle_sizes,  through: :vehicle_settings
 
-  #accepts_nested_attributes_for :vehicle_years
-  #accepts_nested_attributes_for :vehicle_makes
-  #accepts_nested_attributes_for :vehicle_models
-  #accepts_nested_attributes_for :vehicle_trims
-  #accepts_nested_attributes_for :vehicle_types
-  #accepts_nested_attributes_for :vehicle_doors
-  #accepts_nested_attributes_for :vehicle_sizes
+  has_many :locations
+  has_many :companies, through: :locations
+  has_many :sites,     through: :locations
+
 end

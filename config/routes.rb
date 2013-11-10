@@ -1,10 +1,11 @@
 Sitelerwash::Application.routes.draw do
 
+  match "/customers/sites/:id", to: "customers/sites#destroy", as: "destroy_customers_site", via: :delete
   namespace :customers do
     match "/" => "customer#index"
 
     resources :appointment
-    resources :site
+    resources :sites
     resources :companies
     resources :vehicles do 
       collection do 
@@ -19,7 +20,6 @@ Sitelerwash::Application.routes.draw do
   match "/vehicles",      to: 'welcome#vehicles',           as: 'vehicles',   via: :get
   match 'dashboard',      to: 'welcome#create_vehicle',                       via: :post
   match 'dashboard/:id',  to: 'welcome#update_vehicle',                       via: :put
-
 
   ActiveAdmin.routes(self)
 

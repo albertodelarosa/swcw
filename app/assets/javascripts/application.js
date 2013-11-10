@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require /jquery_ui
 //= require twitter/bootstrap
 //= require utilities
 //= require welcome
 //= require customers
+//= require_self

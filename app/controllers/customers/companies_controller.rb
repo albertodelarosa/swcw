@@ -24,6 +24,7 @@ class Customers::CompaniesController < Customers::CustomerController
   # GET /customers/companies/new
   # GET /customers/companies/new.json
   def new
+    @companies = Company.all
     @company = Company.new
 
     respond_to do |format|
@@ -40,11 +41,13 @@ class Customers::CompaniesController < Customers::CustomerController
   # POST /customers/companies
   # POST /customers/companies.json
   def create
-    @company = Company.new(params[:company])
+    #@company = Company.new(params[:company])
+    @company = Company.find(params[:company][:id])
+    current_user.companies << @company
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
         format.html { render action: "new" }

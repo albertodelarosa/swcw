@@ -1,0 +1,9 @@
+%br
+%br
+.row
+  .span1.offset1
+    = link_to 'Back', customers_path
+  .span10
+    %legend 
+      = "Add a Site #{current_user.first_name}"
+    = render 'form'

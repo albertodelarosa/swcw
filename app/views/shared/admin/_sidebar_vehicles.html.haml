@@ -1,0 +1,6 @@
+%table
+  -vehicles.each do |vehicle|
+    %tr
+      %td
+        =link_to("#{vehicle.vehicle_years[0].name} #{vehicle.vehicle_makes[0].name} #{vehicle.vehicle_models[0].name} ", admin_vehicle_path(vehicle))
+

@@ -66,37 +66,37 @@ $sitelerGreenLigheter6: #99D59C !default;
 $sitelerGreenLigheter7: #B2E0B5 !default;
 $sitelerGreenLigheter8: #CCEACE !default;
 $sitelerGreenLigheter9: #E6F4E6 !default;
+$sitelerGreenLigheter10: #F5FBF5 !default;
 
 // SitelerWash Lime
 // ----------------------------
-$sitelerLimeLighter9:   #E6FAE8 !default;
-$sitelerLimeLighter8:   #CDF5D1 !default;
-$sitelerLimeLighter7:   #B4F0BA !default;
-$sitelerLimeLighter6:   #9BEBA3 !default;
-$sitelerLimeLighter5:   #82E68C !default;
-$sitelerLimeLighter4:   #68E176 !default;
-$sitelerLimeLighter3:   #4FDC5F !default;
-$sitelerLimeLighter2:   #36D748 !default;
-$sitelerLimeLighter1:   #1DD231 !default;
-$sitelerLime:           #04CD1A !default;
-$sitelerLimeDarker1:    #04B817 !default;
-$sitelerLimeDarker2:    #03A415 !default;
-$sitelerLimeDarker3:    #039012 !default;
-$sitelerLimeDarker4:    #027B10 !default;
-$sitelerLimeDarker5:    #02660D !default;
-$sitelerLimeDarker6:    #02520A !default;
-$sitelerLimeDarker7:    #013E08 !default;
-$sitelerLimeDarker8:    #012905 !default;
 $sitelerLimeDarker9:    #001403 !default;
+$sitelerLimeDarker8:    #012905 !default;
+$sitelerLimeDarker7:    #013E08 !default;
+$sitelerLimeDarker6:    #02520A !default;
+$sitelerLimeDarker5:    #02660D !default;
+$sitelerLimeDarker4:    #027B10 !default;
+$sitelerLimeDarker3:    #039012 !default;
+$sitelerLimeDarker2:    #03A415 !default;
+$sitelerLimeDarker1:    #04B817 !default;
+$sitelerLime:           #04CD1A !default;
+$sitelerLimeLighter1:   #1DD231 !default;
+$sitelerLimeLighter2:   #36D748 !default;
+$sitelerLimeLighter3:   #4FDC5F !default;
+$sitelerLimeLighter4:   #68E176 !default;
+$sitelerLimeLighter5:   #82E68C !default;
+$sitelerLimeLighter6:   #9BEBA3 !default;
+$sitelerLimeLighter7:   #B4F0BA !default;
+$sitelerLimeLighter8:   #CDF5D1 !default;
+$sitelerLimeLighter9:   #E6FAE8 !default;
 
 /*.header, .body-background, .footer{
   background:$sitelerBlue;
 }*/
 .content-div{
-  background-color: $sitelerGreenLigheter9;
+  background-color: $sitelerGreenLigheter10;
   padding:20px;
-  min-height:400px;
-  box-shadow: 0px 0px 10px $sitelerBlueDarker9;
+  min-height:650px;
 }
 
 .logo{

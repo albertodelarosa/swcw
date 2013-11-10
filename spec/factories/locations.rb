@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :location do
-    name "MyString"
-    comments "MyText"
-    latitude 1.5
-    longitude 1.5
+    vehicle nil
+    user nil
+    company nil
+    site nil
   end
 end

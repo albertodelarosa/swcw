@@ -5,6 +5,8 @@ class Customers::CustomerController < ApplicationController
 
   def index
     @vehicles = current_user.vehicles || []
+    @companies = current_user.companies || []
+    @sites = current_user.sites || []
   end
 
   def create_vehicle

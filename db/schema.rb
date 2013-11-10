@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606062405) do
+ActiveRecord::Schema.define(:version => 20130725015326) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,6 +63,32 @@ ActiveRecord::Schema.define(:version => 20130606062405) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
   add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
+  create_table "appointments", :force => true do |t|
+    t.string   "appointment_number"
+    t.datetime "drop_off_time"
+    t.datetime "pick_up_time"
+    t.string   "vehicle"
+    t.string   "company"
+    t.string   "site"
+    t.text     "notes"
+    t.string   "year"
+    t.string   "make"
+    t.string   "model"
+    t.string   "trim"
+    t.string   "type"
+    t.string   "doors"
+    t.string   "size"
+    t.string   "license_plate_number"
+    t.string   "state_registered"
+    t.string   "color"
+    t.text     "comments"
+    t.integer  "vehicle_id"
+    t.integer  "company_id"
+    t.integer  "site_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
   create_table "clienteles", :force => true do |t|
     t.integer  "site_id"
     t.integer  "user_id"
@@ -104,13 +130,50 @@ ActiveRecord::Schema.define(:version => 20130606062405) do
   end
 
   create_table "locations", :force => true do |t|
-    t.string   "name"
-    t.text     "comments"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.integer  "vehicle_id"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "site_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "locations", ["company_id", "site_id"], :name => "index_locations_on_company_id_and_site_id"
+  add_index "locations", ["company_id", "user_id"], :name => "index_locations_on_company_id_and_user_id"
+  add_index "locations", ["company_id", "vehicle_id"], :name => "index_locations_on_company_id_and_vehicle_id"
+  add_index "locations", ["company_id"], :name => "index_locations_on_company_id"
+  add_index "locations", ["site_id", "user_id"], :name => "index_locations_on_site_id_and_user_id"
+  add_index "locations", ["site_id", "vehicle_id"], :name => "index_locations_on_site_id_and_vehicle_id"
+  add_index "locations", ["site_id"], :name => "index_locations_on_site_id"
+  add_index "locations", ["user_id", "vehicle_id"], :name => "index_locations_on_user_id_and_vehicle_id"
+  add_index "locations", ["user_id"], :name => "index_locations_on_user_id"
+  add_index "locations", ["vehicle_id"], :name => "index_locations_on_vehicle_id"
+
+  create_table "schedules", :force => true do |t|
+    t.integer  "appointment_id"
+    t.integer  "company_id"
+    t.integer  "site_id"
+    t.integer  "vehicle_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "schedules", ["appointment_id", "company_id"], :name => "index_schedules_on_appointment_id_and_company_id"
+  add_index "schedules", ["appointment_id", "site_id"], :name => "index_schedules_on_appointment_id_and_site_id"
+  add_index "schedules", ["appointment_id", "user_id"], :name => "index_schedules_on_appointment_id_and_user_id"
+  add_index "schedules", ["appointment_id", "vehicle_id"], :name => "index_schedules_on_appointment_id_and_vehicle_id"
+  add_index "schedules", ["appointment_id"], :name => "index_schedules_on_appointment_id"
+  add_index "schedules", ["company_id", "site_id"], :name => "index_schedules_on_company_id_and_site_id"
+  add_index "schedules", ["company_id", "user_id"], :name => "index_schedules_on_company_id_and_user_id"
+  add_index "schedules", ["company_id", "vehicle_id"], :name => "index_schedules_on_company_id_and_vehicle_id"
+  add_index "schedules", ["company_id"], :name => "index_schedules_on_company_id"
+  add_index "schedules", ["site_id", "user_id"], :name => "index_schedules_on_site_id_and_user_id"
+  add_index "schedules", ["site_id", "vehicle_id"], :name => "index_schedules_on_site_id_and_vehicle_id"
+  add_index "schedules", ["site_id"], :name => "index_schedules_on_site_id"
+  add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"
+  add_index "schedules", ["vehicle_id", "user_id"], :name => "index_schedules_on_vehicle_id_and_user_id"
+  add_index "schedules", ["vehicle_id"], :name => "index_schedules_on_vehicle_id"
 
   create_table "sites", :force => true do |t|
     t.string   "name"

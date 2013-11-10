@@ -1,0 +1,6 @@
+%table
+  -sites.each do |site|
+    %tr
+      %td
+        =link_to(site.name, admin_site_path(site))
+

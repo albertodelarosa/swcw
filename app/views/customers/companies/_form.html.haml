@@ -1,4 +1,7 @@
-= form_for [:customers, @company] do |f|
+
+
+
+= form_for [:customers, @company], method: "post", html: {class: "form-horizontal"} do |f|
   - if @company.errors.any?
     #error_explanation
       %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
@@ -6,5 +9,11 @@
         - @company.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions
-    = f.submit 'Save'
+  .control-group
+    = f.label :name, "Company", class: "control-label"
+    .controls
+      = f.collection_select( :id, @companies, :id, :name, {prompt: "Select Company"}, {class: "input-medium"})
+  .control-group
+    .controls
+      = f.submit 'Add', class: "btn btn_green"
+

@@ -1,15 +1,40 @@
 .row-fluid
   .span5.offset1
+    .site-wrapper
+      - if @sites.empty?
+        %legend
+          %li= link_to "Add Site",    new_customers_site_path
+      - else
+        %legend
+          My Sites
+        .mySites
+          -@sites.each do |site|
+            .div
+              =link_to site.name, edit_customers_site_path(site)
+              =" | "
+              = link_to 'Destroy', customers_site_path(site), :method => :delete, :data => { :confirm => 'Are you sure?' }
+            .div site.address
+  .span5.offset1
+    .company-wrapper
+      - if @companies.empty?
+        %legend
+          %li= link_to "Add Company", new_customers_company_path
+      - else
+        %legend
+          My Companies
+        .myCompanies
+          -@companies.each do |company|
+            .div
+              =link_to company.name, edit_customers_company_path(company)
+              =" | "
+              = link_to 'Destroy', customers_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' }
+            .div company.address
+.row-fluid
+  .span5.offset1
     .row-fluid
       .appointment-container
         .appt-header
           Make an Appointment
-    .row-fluid
-      .site-wrapper
-        Add a Site
-    .row-fluid
-      .company-wrapper
-        Add a Company
   .span5.offset1
     .vehicle-wrapper
       - if @vehicles.empty?

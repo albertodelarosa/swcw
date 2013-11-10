@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Companies" do
-  describe "GET /companies" do
+describe "Customers::Sites" do
+  describe "GET /customers_sites" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get companies_path
+      get customers_sites_path
       response.status.should be(200)
     end
   end

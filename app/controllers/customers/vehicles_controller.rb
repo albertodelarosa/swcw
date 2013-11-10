@@ -75,7 +75,7 @@ class Customers::VehiclesController < Customers::CustomerController
     respond_to do |format|
       if @vehicle.save
         @vehicle.owners << current_user
-        format.html { redirect_to customers_vehicle_path(@vehicle), notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Vehicle was successfully created.' }
         format.json { render params[:id]}#json: @vehicle, status: :created, location: @vehicle }
       else
         format.html { render action: "new" }

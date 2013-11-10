@@ -1,13 +1,11 @@
 %div{class: index  > 0 ? "vehicle-container tab-pane fade" : "vehicle-container tab-pane fade in active", id: "my_vehicle_#{index}"}
-  %legend
-    %h4 
-      = "#{vehicle.vehicle_years[0].name} #{vehicle.vehicle_models[0].name} #{vehicle.vehicle_trims[0].name}"
-      .pull-right
-        = "edit"
   .row-fluid
-    .span12
+    .span9.offset1
       .my-vehicle-pic
         = image_tag("holder.png", size: "252x190")
+    .span2.pull-right
+      %h4
+        = link_to "edit", edit_customers_vehicle_path(vehicle)
   .row-fluid
     .span3.offset1.pull-left
       %h5 Year

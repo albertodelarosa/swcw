@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "site/index.html.haml" do
+describe Appointment do
   pending "add some examples to (or delete) #{__FILE__}"
 end

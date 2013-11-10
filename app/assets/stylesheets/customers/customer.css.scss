@@ -96,12 +96,13 @@ $sitelerLimeDarker9:    #001403 !default;
 .vehicle-wrapper{
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid lightgrey;
+  border: 1px solid $sitelerBlueLighter5;
   margin: 0px 8px 0px 0px;
-  box-shadow: 2px 2px 7px grey;
+//  box-shadow: 3px 3px 15px -2px $sitelerGreenDarker9;
+  background-color:$sitelerBlueLighter7;
 }
 .vehicle-container{
-  margin:0px 0px 50px 0px;
+  margin:0px 0px 20px 0px;
 }
 .my-vehicle-pic{
   text-align:center;
@@ -136,3 +137,70 @@ border-radius: 8px 8px 0 0;
 #my_vehicle.nav.nav-tabs > li > a:focus {
   background-color: $sitelerBlueLighter5;
 }
+
+
+
+
+.lifted, .new_lifted {
+//	border-radius:2px;
+	position:relative;
+	padding:1em;
+	background:#fcfcfc;
+	-webkit-box-shadow: 0px 0px 1px 1px  rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 1px 1px  rgba(0,0,0,0.2);
+	-o-box-shadow: 0px 0px 1px 1px  rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.2);
+}
+
+.lifted:before, .lifted:after {
+	bottom:14px;
+	content: "";
+	position: absolute;
+	z-index: -1;
+	-webkit-transform: rotate(-1deg); /* Safari and Chrome */
+	-moz-transform: rotate(-1deg); /* Firefox */
+	-ms-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg); /* Opera */
+	box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+	height: 50px;
+	left: 5px;
+	max-width: 50%;
+	width: 50%;
+}
+
+.lifted:after {	
+	-webkit-transform: rotate(1deg); /* Safari and Chrome */
+	-moz-transform: rotate(1deg); /* Firefox */
+	-ms-transform: rotate(1deg); /* IE 9 */
+	-o-transform: rotate(1deg); /* Opera */
+	left: auto;
+	right: 5px;
+}
+
+/*
+.hero-unit:before, .hero-unit:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	-webkit-transform: skew(-3deg,-2deg); [> Safari and Chrome <]
+	-moz-transform: skew(-3deg,-2deg); [> Firefox <]
+	-ms-transform: skew(-3deg,-2deg);
+	-o-transform: skew(-3deg,-2deg); [> Opera <]
+	bottom: 14px;
+	box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+	height: 50px;
+	left: 1px;
+	max-width: 50%;
+	width: 50%;
+}
+
+.hero-unit:after {
+	-webkit-transform: skew(3deg,2deg); [> Safari and Chrome <]
+	-moz-transform: skew(3deg,2deg); [> Firefox <]
+	-ms-transform: skew(3deg,2deg); [> IE 9 <]
+	-o-transform: skew(3deg,2deg); [> Opera <]
+	left: auto;
+	right: 1px;
+}*/
+
+

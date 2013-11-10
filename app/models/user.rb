@@ -22,15 +22,15 @@ class User < ActiveRecord::Base
   has_one :home_contact_info, :class_name => 'HomeContactInfo', :as => :contactable, :dependent => :destroy
   has_one :home_address, :class_name => 'HomeAddress', :as => :addressable, :dependent => :destroy
 
-  has_many :clientele, class_name: "Clientele"
-  has_many :sites, through: :clientele
-
   has_many :transportations
   has_many :vehicles, through: :transportations
 
-  has_many :companies, :inverse_of => :client
+  has_many :locations
+  has_many :companies,  through: :locations
+  has_many :sites,  through: :locations
 
-
+  has_many :schedules
+  has_many :appointments, through: :schedules
 
   accepts_nested_attributes_for :work_address
   accepts_nested_attributes_for :work_contact_info
