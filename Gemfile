@@ -41,15 +41,14 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 gem 'bootstrap3-rails'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
-gem 'twitter-bootstrap-rails'
 gem 'fastimage'
 gem 'sass-rails',   '~> 3.2.3'
 
 
-#gem 'twitter-bootstrap-rails'
-#gem 'bootstrap-sass'
-#gem 'bootstrap-sass-rails'
-#gem 'font-awesome-sass-rails'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap-sass-rails'
+gem 'font-awesome-sass-rails'
 
 
 gem 'money-rails', "~> 0.8.1"
