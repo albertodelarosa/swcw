@@ -41,6 +41,7 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 gem 'bootstrap3-rails'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+gem 'twitter-bootstrap-rails'
 gem 'fastimage'
 gem 'sass-rails',   '~> 3.2.3'
 
