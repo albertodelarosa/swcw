@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'unicorn', :group => [:production] #https://devcenter.heroku.com/articles/rails-unicorn
-gem 'thin', :group => [:test, :development]
+gem 'thin'
 gem 'pg', '0.14.1'
 gem 'haml'
 gem 'haml-rails'
