@@ -3,9 +3,6 @@
   %head
     %title Siteler Wash
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    /[if lt IE 9]
-      %script{:src => "javascript/ie_utilities/index.js"}
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
@@ -39,6 +36,9 @@
                 = content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}"
           = yield
     %footer.footer
+    = javascript_include_tag "application"
+    /[if lt IE 9]
+      %script{:src => "javascript/ie_utilities/index.js"}
       %br
       %br
       -if Rails.env.development?
