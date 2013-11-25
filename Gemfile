@@ -1,54 +1,31 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'unicorn', :group => [:production] #https://devcenter.heroku.com/articles/rails-unicorn
 gem 'thin'
-gem 'pg', '0.14.1'
-gem 'haml'
-gem 'haml-rails'
-gem 'jquery-rails'
-
-
-gem 'devise', '2.2.4'
-gem 'cancan'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'symmetric-encryption'
-gem 'activemerchant'
-
-
-
-gem 'airbrake'
-
-
-
+gem 'pg'
 gem 'activeadmin'
-#gem "ransack" #object based searching, maybe later
-
-
-gem 'paypal_adaptive'
-
-
-
+gem 'hpricot'
+gem 'haml'
 gem 'formtastic'
 gem "meta_search",    '>= 1.1.0.pre'
+gem 'haml-rails'
 
+gem 'bootstrap3-rails'
+gem 'anjlab-bootstrap-rails', '>= 3.0.2.0', :require => 'bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
+#gem 'bootstrap-sass'
+#gem 'bootstrap-sass-rails'
+#gem 'font-awesome-sass-rails'
 
-gem 'fastimage'
-
-
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap-sass'
-gem 'bootstrap-sass-rails'
-gem 'font-awesome-sass-rails'
-
-
+gem 'airbrake'
+gem 'jquery-rails', '~> 2.3.0'
+gem 'devise'
 gem 'money-rails', "~> 0.8.1"
+gem 'cancan'
 
 
 # Gems used only for assets and not required
@@ -66,7 +43,6 @@ end
 group :development do
   gem 'ruby_parser'
   gem 'brakeman'
-#  gem 'therubyracer'
   gem 'letter_opener'
   gem 'rails-erd'
 end
@@ -76,6 +52,9 @@ group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'factory_girl_rails'
+  gem 'capybara' 
+  gem 'guard-rspec' 
+  gem 'launchy'
 end
 
 group :test, :development do
