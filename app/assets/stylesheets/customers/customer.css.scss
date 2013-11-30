@@ -93,7 +93,7 @@ $sitelerLimeDarker8:    #012905 !default;
 $sitelerLimeDarker9:    #001403 !default;
 
 
-.vehicle-wrapper{
+/*.vehicle-wrapper{
   padding: 10px;
   border-radius: 8px;
   border: 1px solid $sitelerBlueLighter5;
@@ -157,10 +157,10 @@ border-radius: 8px 8px 0 0;
 	content: "";
 	position: absolute;
 	z-index: -1;
-	-webkit-transform: rotate(-1deg); /* Safari and Chrome */
-	-moz-transform: rotate(-1deg); /* Firefox */
+	-webkit-transform: rotate(-1deg); [> Safari and Chrome <]
+	-moz-transform: rotate(-1deg); [> Firefox <]
 	-ms-transform: rotate(-1deg);
-	-o-transform: rotate(-1deg); /* Opera */
+	-o-transform: rotate(-1deg); [> Opera <]
 	box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
 	height: 50px;
 	left: 5px;
@@ -169,13 +169,13 @@ border-radius: 8px 8px 0 0;
 }
 
 .lifted:after {	
-	-webkit-transform: rotate(1deg); /* Safari and Chrome */
-	-moz-transform: rotate(1deg); /* Firefox */
-	-ms-transform: rotate(1deg); /* IE 9 */
-	-o-transform: rotate(1deg); /* Opera */
+	-webkit-transform: rotate(1deg); [> Safari and Chrome <]
+	-moz-transform: rotate(1deg); [> Firefox <]
+	-ms-transform: rotate(1deg); [> IE 9 <]
+	-o-transform: rotate(1deg); [> Opera <]
 	left: auto;
 	right: 5px;
-}
+}*/
 
 /*
 .hero-unit:before, .hero-unit:after {

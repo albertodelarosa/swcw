@@ -93,142 +93,142 @@ $sitelerLimeLighter9:   #E6FAE8 !default;
 /*.header, .body-background, .footer{
   background:$sitelerBlue;
 }*/
-.content-div{
-  background-color: $sitelerGreenLigheter10;
-  padding:20px;
-  min-height:650px;
-}
+/*.content-div{*/
+  /*background-color: $sitelerGreenLigheter10;*/
+  /*padding:20px;*/
+  /*min-height:650px;*/
+/*}*/
 
-.logo{
-  margin-left: 80px;
-  width: 240px;
-}
+/*.logo{*/
+  /*margin-left: 80px;*/
+  /*width: 240px;*/
+/*}*/
 
-.body-background{
-}
+/*.body-background{*/
+/*}*/
 
-.header-background{
-  margin:0px 0px 150px 0px;
-}
+/*.header-background{*/
+  /*margin:0px 0px 150px 0px;*/
+/*}*/
 
-.welcome-back{
-  margin-top:25px;
-}
+/*.welcome-back{*/
+  /*margin-top:25px;*/
+/*}*/
 
-/*========   Navbar   ====================================*/
+/*[>========   Navbar   ====================================<]*/
 
-.navbar.navbar-static-top{
-  position:absolute;
-  width:100%;
-  top:100px;
-}
-.navbar.navbar-static-top .navbar-inner{
-  font-size: 16px;
-  border-width:5px 0px 5px 0px;
-}
+/*.navbar.navbar-static-top{*/
+  /*position:absolute;*/
+  /*width:100%;*/
+  /*top:100px;*/
+/*}*/
+/*.navbar.navbar-static-top .navbar-inner{*/
+  /*font-size: 16px;*/
+  /*border-width:5px 0px 5px 0px;*/
+/*}*/
 
-.navbar .nav {
-  margin:0px 10px;
-}
+/*.navbar .nav {*/
+  /*margin:0px 10px;*/
+/*}*/
 
-.navbar .nav li a:hover{
-  -webkit-transition: background .25s linear;
-  transition: background .25s linear;
-}
+/*.navbar .nav li a:hover{*/
+  /*-webkit-transition: background .25s linear;*/
+  /*transition: background .25s linear;*/
+/*}*/
 
-@media (max-width: 979px){
-.navbar .nav li a:hover{
-  padding: 7px 15px;
-  text-shadow: 0 1px 0 $sitelerGreenDarker9;
-  background:$sitelerBlue;
-  -webkit-transition: background .25s linear;
-  transition: background .25s linear;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  margin: 9px 0px;
-}
-}
-.navbar .nav li a{
-  padding: 7px 15px;
-  text-shadow: 0 1px 0 $sitelerGreenDarker9;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  margin: 9px 0px;
-}
+/*@media (max-width: 979px){*/
+/*.navbar .nav li a:hover{*/
+  /*padding: 7px 15px;*/
+  /*text-shadow: 0 1px 0 $sitelerGreenDarker9;*/
+  /*background:$sitelerBlue;*/
+  /*-webkit-transition: background .25s linear;*/
+  /*transition: background .25s linear;*/
+  /*-webkit-border-radius: 8px;*/
+  /*-moz-border-radius: 8px;*/
+  /*border-radius: 8px;*/
+  /*margin: 9px 0px;*/
+/*}*/
+/*}*/
+/*.navbar .nav li a{*/
+  /*padding: 7px 15px;*/
+  /*text-shadow: 0 1px 0 $sitelerGreenDarker9;*/
+  /*-webkit-border-radius: 8px;*/
+  /*-moz-border-radius: 8px;*/
+  /*border-radius: 8px;*/
+  /*margin: 9px 0px;*/
+/*}*/
 
-.login_register {
-  margin:0px 25px 0px 0px;
-}
+/*.login_register {*/
+  /*margin:0px 25px 0px 0px;*/
+/*}*/
 
-@media (max-width: 979px){
-  .login_register{
-    width:140px;
-    margin:0px 0px 0px 10px;
-  }
-}
+/*@media (max-width: 979px){*/
+  /*.login_register{*/
+    /*width:140px;*/
+    /*margin:0px 0px 0px 10px;*/
+  /*}*/
+/*}*/
 
-.nav.nav-tabs li.active a {
-  color:#ccc;
-}
+/*.nav.nav-tabs li.active a {*/
+  /*color:#ccc;*/
+/*}*/
 
-.myform-wrapper{
-  -webkit-border-radius:10px;
-  -moz-border-radius:10px;
-  border-radius:10px;
-  -webkit-box-shadow:3px 3px 7px $grayDark;
-  -moz-box-shadow:3px 3px 7px $grayDark;
-  box-shadow:3px 3px 7px $grayDark;
-  border:1px solid $sitelerBlueLighter6;
-  padding:20px;
-}
-@media (max-width: 979px){
-  .navbar .navbar-inner .container .breadcrumb-container{
-    margin:10px 10px 10px 0px;
-    .breadcrumb{
-      margin:0px 0px 0px 0px;
-    }
-  }
-}
+/*.myform-wrapper{*/
+  /*-webkit-border-radius:10px;*/
+  /*-moz-border-radius:10px;*/
+  /*border-radius:10px;*/
+  /*-webkit-box-shadow:3px 3px 7px $grayDark;*/
+  /*-moz-box-shadow:3px 3px 7px $grayDark;*/
+  /*box-shadow:3px 3px 7px $grayDark;*/
+  /*border:1px solid $sitelerBlueLighter6;*/
+  /*padding:20px;*/
+/*}*/
+/*@media (max-width: 979px){*/
+  /*.navbar .navbar-inner .container .breadcrumb-container{*/
+    /*margin:10px 10px 10px 0px;*/
+    /*.breadcrumb{*/
+      /*margin:0px 0px 0px 0px;*/
+    /*}*/
+  /*}*/
+/*}*/
 
-.breadcrumb-container{
-  margin:10px 0px -8px 0px;
-}
+/*.breadcrumb-container{*/
+  /*margin:10px 0px -8px 0px;*/
+/*}*/
 
-.breadcrumb{
-  padding:9px 10px 3px 10px;
-  font-family: 'Open Sans Light',Helvetica,Arial;
-  font-size: 12px;
-  -webkit-box-shadow:3px 3px 7px $grayDark inset;
-  -moz-box-shadow:3px 3px 7px $grayDark inset;
-  box-shadow:3px 3px 7px $grayDark inset;
-}
-.profile_container{
-  margin:4px 2px 0px 0px;
-  /*border:1px solid black;*/
-  /*-webkit-border-radius:3px;*/
-  /*-moz-border-radius:3px;*/
-  /*border-radius:3px;*/
+/*.breadcrumb{*/
+  /*padding:9px 10px 3px 10px;*/
+  /*font-family: 'Open Sans Light',Helvetica,Arial;*/
+  /*font-size: 12px;*/
+  /*-webkit-box-shadow:3px 3px 7px $grayDark inset;*/
+  /*-moz-box-shadow:3px 3px 7px $grayDark inset;*/
+  /*box-shadow:3px 3px 7px $grayDark inset;*/
+/*}*/
+/*.profile_container{*/
+  /*margin:4px 2px 0px 0px;*/
+  /*[>border:1px solid black;<]*/
+  /*[>-webkit-border-radius:3px;<]*/
+  /*[>-moz-border-radius:3px;<]*/
+  /*[>border-radius:3px;<]*/
+  /*[>box-shadow:1px 1px 6px $grayDarker;<]*/
+  /*font-size:12px;*/
+/*}*/
+/*.profile_container .profile_buttons{*/
+  /*padding:0px 2px 0px 2px;*/
+  /*[>margin:1px;<]*/
+/*}*/
+/*.profile_container .edit_profile{*/
+  /*[>border-right:1px solid black;<]*/
+/*}*/
+/*.profile_container .logout{*/
+/*}*/
+
+/*.profile_container .profile_buttons .btn{*/
+  /*margin-top: 0px;*/
   /*box-shadow:1px 1px 6px $grayDarker;*/
-  font-size:12px;
-}
-.profile_container .profile_buttons{
-  padding:0px 2px 0px 2px;
-  /*margin:1px;*/
-}
-.profile_container .edit_profile{
-  /*border-right:1px solid black;*/
-}
-.profile_container .logout{
-}
-
-.profile_container .profile_buttons .btn{
-  margin-top: 0px;
-  box-shadow:1px 1px 6px $grayDarker;
-}
-.profile_container .profile_buttons .btn-small{
-  font-size:14px;
-}
-/*======== Navbar END ====================================*/
+/*}*/
+/*.profile_container .profile_buttons .btn-small{*/
+  /*font-size:14px;*/
+/*}*/
+/*[>======== Navbar END ====================================<]*/
 

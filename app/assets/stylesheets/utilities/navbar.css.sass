@@ -1,0 +1,112 @@
+@import "utilities/variables"
+body
+  padding: 141px 0px 0px 0px
+  background: $sitelerBlueGreyLighter9
+
+  .navbar
+    background: $sitelerBlueGrey
+    .navbar-nav
+      .nav-divider
+        margin: 0px
+      li.active
+        a, a:hover
+          background: $sitelerBlueGrey
+          color: $sitelerBlueLighter8!important
+      li
+        a
+          color: $sitelerBlueLighter8!important
+        a:hover
+
+    .navbar-form.navbar-right
+
+@media (min-width: 768px)
+  .navbar
+    min-height: 121px
+    .navbar-nav
+      padding: 20px 0 0 0
+
+      li.active
+        a, a:hover
+          border-radius: 5px 5px 5px 5px
+          .link_top, .link_bottom
+            display: block
+            position: relative
+            height: 10px
+            background: $sitelerBlueLighter8
+            border: none
+          .link_top
+            margin: 0px -15px -10px -15px
+            top: -25px
+            border-radius: 8px 8px 0px 0px
+          .link_bottom
+            margin: -10px -15px 0px -15px
+            bottom: -25px
+            border-radius: 0px 0px 8px 8px
+      li
+        border-left: $sitelerBlueGreyLighter2 1px solid
+        a
+          padding: 25px 30px
+        a:hover
+          .link_top, .link_bottom
+            display: block
+            position: relative
+            height: 10px
+            background: $sitelerBlueLighter8
+          .link_top
+            margin: 0px -15px -10px -14px
+            top: -35px
+            border-radius: 5px 5px 0px 0px
+          .link_bottom
+            margin: -10px -15px 0px -14px
+            bottom: -35px
+            border-radius: 0px 0px 5px 5px
+      li.open
+        a, a:focus, a:hover
+          background: $sitelerBlueGreyDarker2
+        ul.dropdown-menu
+          padding: 10px 0px
+          border-radius: 0px 4px 4px 4px
+          background: $sitelerBlueGreyDarker4
+          color: $sitelerBlueGreyLighter2
+          li.divider
+            background: $sitelerBlueGreyLighter2
+            //margin: 15px 0
+          li:last-child
+            border-right: $sitelerBlueGreyLighter2 0px solid
+          li
+            border-left: $sitelerBlueGreyLighter2 0px solid
+            a
+              background: $sitelerBlueGreyDarker4
+              padding: 10px 5px
+              text-align: center
+            a:hover
+              .link_top, .link_bottom
+                display: block
+                position: relative
+                height: 10px
+                background: $sitelerBlueLighter8
+                width: 100%
+                left: 14px
+              .link_top
+                top: -15px
+              .link_bottom
+                bottom: -15px
+
+      li:last-child
+        border-right: $sitelerBlueGreyLighter2 1px solid
+
+    .navbar-form
+      display: none
+      .form-group
+        margin-left: 3px
+.pre-footer
+  background: $sitelerBlueGreyLighter1
+  margin-top: 60px
+  margin-bottom: -30px!important
+  min-height: 250px
+.footer
+  height: 60px
+  background-color: $sitelerBlueGreyDarker5
+  .navbar-header
+    .navbar-brand
+      padding: 5px 15px

@@ -1,12 +1,13 @@
 .row
-  .span1
-  .span10
-    .hero-unit
-      #myCarousel.carousel.slide
+  .jumbotron
+    .col-sm-6.col-md-6
+      #myCarousel.carousel.slide{"data-ride" => "carousel"}
+        / Indicators
         %ol.carousel-indicators
           %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
           %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
           %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+        / Wrapper for slides
         .carousel-inner
           .item.active
             = image_tag('400/wash.jpg', alt: '')
@@ -23,15 +24,26 @@
             .carousel-caption
               %h4 Third Thumbnail label
               %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"} ‹
-        %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"} ›
-  .span1
-.row
-  .span1
-  .span10
-    %p
-      Dear Valued Customer,
-    %p
-      We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
-  .span1
+        // Controls
+        %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+          %span.glyphicon.glyphicon-chevron-left
+        %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+          %span.glyphicon.glyphicon-chevron-right
+
+    .col-sm-6.col-md-6
+      %h2 Dear Valued Customer,
+      %p
+        We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
+      = render "shared/sign_up_in_buttons"
+
+
+
+
+
+
+
+
+
+
+
 

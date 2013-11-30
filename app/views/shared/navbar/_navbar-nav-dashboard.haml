@@ -1,0 +1,58 @@
+%ul.nav.navbar-nav
+  %li
+    %a{href: "#{root_path}"}
+      .link_top
+      Home
+      .link_bottom
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      Dropdown
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        %a{href: "#{new_customers_vehicle_path}"}
+          .link_top
+          Add Vehicle
+          .link_bottom
+      %li.divider
+      %li
+        %a{href: "#{new_customers_site_path}"}
+          .link_top
+          Add Site
+          .link_bottom
+      %li.divider
+      %li
+        %a{href: "#{new_customers_company_path}"}
+          .link_top
+          Add Company
+          .link_bottom
+
+
+  - if user_signed_in?
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Dropdown
+        %b.caret
+      %ul.dropdown-menu
+        %li
+          %a{href: "#{edit_user_registration_path}"}
+            .link_top
+            My Profile
+            .link_bottom
+        %li
+          -#= link_to "logout", destroy_user_session_path, method: :delete, class: "btn"
+          %a{href: "#{destroy_user_session_path}", data: {method: :delete}}
+            .link_top
+            Log Out
+            .link_bottom
+
+
+
+-#.profile_container.pull-right
+  -#.profile_buttons.edit_profile.pull-left
+    -#= link_to "edit", edit_user_registration_path, class: "btn btn-small btn_blue"
+  -#.profile_buttons.logout.pull-left
+    -#= link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-small btn_lime"
+
+
+

@@ -1,13 +1,10 @@
-- unless user_signed_in?
-  .login_register.span2.pull-right
-    = link_to "sign in", "#signin", data: {toggle: "modal"}, class: 'btn btn_blue'
-    = link_to "sign up", new_user_registration_path, class: 'btn btn_lime'
-    / Modal
-    #signin.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "signinLabel", :role => "dialog", :tabindex => "-1"}
-      = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+#myModal.modal.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+    .modal-dialog
+      .modal-content
         .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-          %h3#signinLabel Sign In
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+          %h4#myModalLabel.modal-title Sign In
         .modal-body
           %fieldset
             .control-group
@@ -29,5 +26,5 @@
             - resource_class.omniauth_providers.each do |provider|
               = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
           = f.submit "Sign in", class: 'btn btn-large btn_lime'
-          %button.btn.btn_red{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
 
+          %button.btn.btn-danger.btn-default{"data-dismiss" => "modal", :type => "button"} Close

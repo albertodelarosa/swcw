@@ -1,0 +1,21 @@
+- if user_signed_in?
+  .breadcrumb-container.pull-left
+    %ol.breadcrumb
+      %li
+        =link_to image_tag("home.png"), customers_path
+      %li
+        %a{:href => "#"} Library
+      %li.active Data
+    - if controller.controller_name.eql?("customer") && controller.action_name.eql?("index")
+      = render "shared/navbar/welcome_back"
+
+    -#%li.active Library %ul.breadcrumb
+      -#%li
+        -#=link_to image_tag("home.png"), customers_path
+      -#- if @breadcrumbs
+        -#-@breadcrumbs.each do |txt, path|
+          -#%li
+            -#%span.divider= ">"
+            -#%span
+              -#=raw(path)
+
