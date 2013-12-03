@@ -6,53 +6,43 @@
       .link_bottom
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-      Dropdown
+      Add
       %b.caret
     %ul.dropdown-menu
       %li
         %a{href: "#{new_customers_vehicle_path}"}
           .link_top
-          Add Vehicle
+          Vehicle
           .link_bottom
       %li.divider
       %li
         %a{href: "#{new_customers_site_path}"}
           .link_top
-          Add Site
+          Site
           .link_bottom
       %li.divider
       %li
         %a{href: "#{new_customers_company_path}"}
           .link_top
-          Add Company
+          Company
           .link_bottom
 
 
   - if user_signed_in?
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        Dropdown
+        my profile
         %b.caret
       %ul.dropdown-menu
         %li
           %a{href: "#{edit_user_registration_path}"}
             .link_top
-            My Profile
+            edit
             .link_bottom
         %li
           -#= link_to "logout", destroy_user_session_path, method: :delete, class: "btn"
           %a{href: "#{destroy_user_session_path}", data: {method: :delete}}
             .link_top
-            Log Out
+            sign out
             .link_bottom
-
-
-
--#.profile_container.pull-right
-  -#.profile_buttons.edit_profile.pull-left
-    -#= link_to "edit", edit_user_registration_path, class: "btn btn-small btn_blue"
-  -#.profile_buttons.logout.pull-left
-    -#= link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-small btn_lime"
-
-
 

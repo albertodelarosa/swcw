@@ -24,6 +24,11 @@ gem 'anjlab-bootstrap-rails', '>= 3.0.2.0', :require => 'bootstrap-rails'
 gem 'airbrake'
 gem 'jquery-rails', '~> 2.3.0'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+
 gem 'money-rails', "~> 0.8.1"
 gem 'cancan'
 

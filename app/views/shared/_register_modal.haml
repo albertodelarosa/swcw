@@ -1,139 +1,169 @@
-- unless user_signed_in?
-  .row
-    #myModal.modal.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}) do |f|
-        .modal-dialog
-          .modal-content
-            .modal-header
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
-              %h3#myModalLabel.modal-title Sign Up
-              %ul.nav.nav-pills.modal-title
-                %li.active
-                  %a{"data-toggle" => "pill", :href => "#name"} client info
-                %li
-                  %a{"data-toggle" => "pill", :href => "#work_info"} work info
-                %li
-                  %a{"data-toggle" => "pill", :href => "#home_info"} home info
-            .tab-content
-              #name.tab-pane.fade.in.active
-                .modal-body
-                  .form-group
-                    = f.label :username, class: 'control-label col-sm-2'
-                    .col-sm-6
-                      = f.text_field :username, class: "form-control", placeholder: "username", :autofocus => true
-                  .form-group
-                    = f.label :email, class: 'control-label col-sm-2'
-                    .col-sm-6
-                      = f.email_field :email, class: "form-control", placeholder: "email"
-                  .form-group
-                    = f.label :password, class: 'control-label col-sm-2'
-                    .col-sm-6
-                      = f.password_field :password, class: "form-control", placeholder: "password"
-                  .form-group
-                    = f.label :password_confirmation, class: 'control-label col-sm-2'
-                    .col-sm-6
-                      = f.password_field :password_confirmation, class: "form-control", placeholder: "password confirmation"
-                  - if devise_mapping.rememberable?
-                    .form-group
-                      = f.label :remember_me, :class => "col-sm-offset-2 col-sm-7" do
-                        .col-sm-6
-                          = f.check_box :remember_me
-                          remember me
-                  %h5 (click on the next tab to continue)
-              #work_info.tab-pane.fade
-                .modal-body
-                  .row
-                    .col-md-6
-                      - resource.work_contact_info ||= resource.build_work_contact_info
-                      = f.fields_for :work_contact_info do |wci|
-                        %legend Contact Info
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wci.text_field :email, class: "form-control", placeholder: "email address"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wci.text_field :phone1, class: "form-control", placeholder: "phone number 1"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wci.text_field :ext, class: "form-control", placeholder: "ext"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wci.text_field :phone2, class: "form-control", placeholder: "phone number 2"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wci.text_field :mobile, class: "form-control", placeholder: "mobile number"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wci.text_field :fax, class: "form-control", placeholder: "fax number"
-                    .col-md-6
-                      - resource.work_address ||= resource.build_work_address
-                      = f.fields_for :work_address do |wa|
-                        %legend Address Info
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wa.text_field :street1, class: "form-control", placeholder: "street address 1"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wa.text_field :suite_no, class: "form-control", placeholder: "suite number"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wa.text_field :street2, class: "form-control", placeholder: "street address 2"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wa.text_field :city, class: "form-control", placeholder: "city"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wa.text_field :state, class: "form-control", placeholder: "state"
-                        .form-group
-                          .col-sm-12.col-md-12
-                            = wa.text_field :zip, class: "form-control", placeholder: "zip code"
-                  %h5.col-sm-offset-4 (click on the next tab to continue)
-              #home_info.tab-pane.fade
-                .modal-body
-                  .row
-                    .col-md-6
-                      - resource.home_contact_info ||= resource.build_home_contact_info
-                      = f.fields_for :home_contact_info do |hci|
-                        %legend Contact Info
-                        .form-group
-                          .col-sm-7
-                            = hci.text_field :mobile, class: "form-control", placeholder: "mobile number"
-                        .form-group
-                          .col-sm-7
-                            = hci.text_field :phone1, class: "form-control", placeholder: "phone number 1"
-                        .form-group
-                          .col-sm-7
-                            = hci.text_field :phone2, class: "form-control", placeholder: "phone number 2"
-                        .form-group
-                          .col-sm-7
-                            = hci.text_field :fax, class: "form-control", placeholder: "fax number"
-                    .col-md-6
-                      - resource.home_address ||= resource.build_home_address
-                      = f.fields_for :home_address do |ha|
-                        %legend Address Info
-                        .form-group
-                          .col-sm-7
-                            = ha.text_field :street1, class: "form-control", placeholder: "street address 1"
-                        .form-group
-                          .col-sm-7
-                            = ha.text_field :apt_no, class: "form-control", placeholder: "apt no."
-                        .form-group
-                          .col-sm-7
-                            = ha.text_field :street2, class: "form-control", placeholder: "street address 2"
-                        .form-group
-                          .col-sm-7
-                            = ha.text_field :city, class: "form-control", placeholder: "city"
-                        .form-group
-                          .col-sm-7
-                            = ha.text_field :state, class: "form-control", placeholder: "state"
-                        .form-group
-                          .col-sm-7
-                            = ha.text_field :zip, class: "form-control", placeholder: "zip code"
-                  .row
-                    .modal-footer
-                      - if devise_mapping.omniauthable?
-                        - resource_class.omniauth_providers.each do |provider|
-                          = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
-                      = f.submit "Sign in", class: 'btn btn-large btn_lime'
-                      %button.btn.btn-danger.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+#myModal.modal.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+  = render "devise/registrations/new"
+
+
+
+
+
+
+
+
+
+
+
+
+-#- unless user_signed_in?
+  -#.row
+    -##myModal.modal.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+      -#= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+        -#.modal-dialog
+          -#.modal-content
+            -#.modal-header
+              -#%button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+              -#%h3#myModalLabel.modal-title Sign Up
+              -#%ul.nav.nav-pills.modal-title
+                -#%li.active
+                  -#%a{"data-toggle" => "pill", :href => "#name"} User Information
+                -#%li
+                  -#%a{"data-toggle" => "pill", :href => "#work_info"} Business Information
+                -#%li
+                  -#%a{"data-toggle" => "pill", :href => "#home_info"} Personal Information
+            -#.tab-content
+              -##name.tab-pane.fade.in.active
+                -#.modal-body
+                  -#.form-group
+                    -#= f.label :username, class: 'control-label col-sm-12 col-md-12 sr-only'
+                    -#.col-sm-12.col-md-12
+                      -#= f.text_field :username, class: "form-control", placeholder: "username", :autofocus => true
+                  -#.form-group
+                    -#= f.label :email, class: 'control-label col-sm-12 col-md-12 sr-only'
+                    -#.col-sm-12.col-md-12
+                      -#= f.email_field :email, class: "form-control", placeholder: "email"
+                  -#.form-group
+                    -#= f.label :password, class: 'control-label col-sm-12 col-md-12 sr-only'
+                    -#.col-sm-12.col-md-12
+                      -#= f.password_field :password, class: "form-control", placeholder: "password"
+                  -#.form-group
+                    -#= f.label :password_confirmation, class: 'control-label col-sm-12 col-md-12 sr-only'
+                    -#.col-sm-12.col-md-12
+                      -#= f.password_field :password_confirmation, class: "form-control", placeholder: "password confirmation"
+                  -#- if devise_mapping.rememberable?
+                    -#.form-group
+                      -#= f.label :remember_me, :class => "col-sm-offset-2 col-sm-7" do
+                        -#.col-sm-6
+                          -#= f.check_box :remember_me
+                          -#remember me
+                  -#%h5 (click on the next tab to continue)
+              -##work_info.tab-pane.fade
+                -#.modal-body
+                  -#.row
+                    -#.col-md-6
+                      -#- resource.work_contact_info ||= resource.build_work_contact_info
+                      -#= f.fields_for :work_contact_info do |wci|
+                        -#.form-group
+                          -#= f.label :email, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wci.text_field :email, class: "form-control", placeholder: "email"
+                        -#.form-group
+                          -#= f.label :mobile, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wci.text_field :mobile, class: "form-control", placeholder: "mobile"
+                        -#.form-group
+                          -#= f.label :phone1, class: 'control-label col-sm-8 col-md-8 sr-only'
+                          -#= f.label :ext, class: 'control-label col-sm-4 col-md-4 sr-only'
+                          -#.col-sm-8.col-md-8
+                            -#= wci.text_field :phone1, class: "form-control", placeholder: "phone 1"
+                          -#.col-sm-4.col-md-4
+                            -#= wci.text_field :ext, class: "form-control", placeholder: "ext"
+                        -#.form-group
+                          -#= f.label :phone2, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wci.text_field :phone2, class: "form-control", placeholder: "phone 2"
+                        -#.form-group
+                          -#= f.label :fax, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wci.text_field :fax, class: "form-control", placeholder: "fax"
+                    -#.col-md-6
+                      -#- resource.work_address ||= resource.build_work_address
+                      -#= f.fields_for :work_address do |wa|
+                        -#.form-group
+                          -#= f.label :street1, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wa.text_field :street1, class: "form-control", placeholder: "street address 1"
+                        -#.form-group
+                          -#= f.label :suite_no, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wa.text_field :suite_no, class: "form-control", placeholder: "suite number"
+                        -#.form-group
+                          -#= f.label :street2, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wa.text_field :street2, class: "form-control", placeholder: "street address 2"
+                        -#.form-group
+                          -#= f.label :city, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= wa.text_field :city, class: "form-control", placeholder: "city"
+                        -#.form-group
+                          -#= f.label :state, class: 'control-label col-sm-6 col-md-6 sr-only'
+                          -#= f.label :zip, class: 'control-label col-sm-6 col-md-6 sr-only'
+                          -#.col-sm-6.col-md-6
+                            -#= wa.text_field :state, class: "form-control", placeholder: "state"
+                          -#.col-sm-6.col-md-6
+                            -#= wa.text_field :zip, class: "form-control", placeholder: "zip code"
+                  -#//%h5.col-sm-offset-4 (click on the next tab to continue)
+              -##home_info.tab-pane.fade
+                -#.modal-body
+                  -#.row
+                    -#.col-md-6
+                      -#- resource.home_contact_info ||= resource.build_home_contact_info
+                      -#= f.fields_for :home_contact_info do |hci|
+                        -#.form-group
+                          -#= f.label :mobile, class: 'control-label col-sm-6 col-md-6 sr-only'
+                          -#= f.label :mobile, class: 'control-label col-sm-6 col-md-6 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= hci.text_field :mobile, class: "form-control", placeholder: "mobile number"
+                        -#.form-group
+                          -#= f.label :phone1, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= hci.text_field :phone1, class: "form-control", placeholder: "phone number 1"
+                        -#.form-group
+                          -#= f.label :phone2, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= hci.text_field :phone2, class: "form-control", placeholder: "phone number 2"
+                        -#.form-group
+                          -#= f.label :fax, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= hci.text_field :fax, class: "form-control", placeholder: "fax number"
+                    -#.col-md-6
+                      -#- resource.home_address ||= resource.build_home_address
+                      -#= f.fields_for :home_address do |ha|
+                        -#.form-group
+                          -#= f.label :street1, class: 'control-label col-sm-8 col-md-8 sr-only'
+                          -#= f.label :apt_no, class: 'control-label col-sm-4 col-md-4 sr-only'
+                          -#.col-sm-8.col-md-8
+                            -#= ha.text_field :street1, class: "form-control", placeholder: "street address 1"
+                          -#.col-sm-4.col-md-4
+                            -#= ha.text_field :apt_no, class: "form-control", placeholder: "apt no."
+                        -#.form-group
+                          -#= f.label :street2, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= ha.text_field :street2, class: "form-control", placeholder: "street address 2"
+                        -#.form-group
+                          -#= f.label :city, class: 'control-label col-sm-12 col-md-12 sr-only'
+                          -#.col-sm-12.col-md-12
+                            -#= ha.text_field :city, class: "form-control", placeholder: "city"
+                        -#.form-group
+                          -#= f.label :state, class: 'control-label col-sm-6 col-md-6 sr-only'
+                          -#= f.label :zip, class: 'control-label col-sm-6 col-md-6 sr-only'
+                          -#.col-sm-6.col-md-6
+                            -#= ha.text_field :state, class: "form-control", placeholder: "state"
+                          -#.col-sm-6.col-md-6
+                            -#= ha.text_field :zip, class: "form-control", placeholder: "zip code"
+                  -#.row
+                    -#.modal-footer
+                      -#.btn-group.pull-left
+                        -#= render "devise/shared/links_sign_in"
+                      -#.btn-group
+                        -#= f.submit "register", class: 'btn btn-large btn-success'
+                        -#= render "devise/shared/links_omniauthable"
+                        -#%button.btn.btn-danger{"data-dismiss" => "modal", :type => "button"} cancel
 
