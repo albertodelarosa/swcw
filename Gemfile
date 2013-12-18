@@ -16,7 +16,7 @@ gem 'haml-rails'
 
 gem 'bootstrap3-rails'
 gem 'anjlab-bootstrap-rails', '>= 3.0.2.0', :require => 'bootstrap-rails'
-gem "breadcrumbs_on_rails"
+#gem "breadcrumbs_on_rails"
 
 gem 'airbrake'
 gem 'jquery-rails', '~> 2.3.0'

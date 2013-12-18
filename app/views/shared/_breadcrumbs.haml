@@ -1,21 +1,20 @@
 - if user_signed_in?
-  = render_breadcrumbs
-  -#.breadcrumb-container.col-xs-9.col-sm-9.col-md-9.col-lg-9.pull-right
-    -#%ol.breadcrumb
-      -#%li
-        -#-#=link_to image_tag("home.png"), customers_path
-        -#= link_to customers_path do
-          -#%span.glyphicon.glyphicon-home
-      -#%li
-        -#%a{:href => "#"} Library
-
-    -#%li.active Library %ul.breadcrumb
-      -#%li
-        -#=link_to image_tag("home.png"), customers_path
-      -#- if @breadcrumbs
-        -#-@breadcrumbs.each do |txt, path|
-          -#%li
-            -#%span.divider= ">"
-            -#%span
-              -#=raw(path)
+  .breadcrumb-container.col-xs-9.col-sm-9.col-md-9.col-lg-9.pull-right
+    %ol.breadcrumb
+      - index = 0
+      - @breadcrumbs.each do |name, path, icon|
+        - if index == 0
+          %li.active
+            = link_to path do 
+              - if icon
+                %span{class: "glyphicon #{icon}"}
+              - else
+                = name
+        - else
+          %li
+            = link_to path do 
+              = name
+              - if icon
+                %span{class: "glyphicon #{icon}"}
+        - index+=1
 

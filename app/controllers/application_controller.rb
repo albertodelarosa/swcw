@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def add_breadcrumb name, url = ''
+  def add_breadcrumb name, url = "", icon = ""
       @breadcrumbs ||= []
       url = eval(url) if url =~ /_path|_url|@/
-      @breadcrumbs << [name, url]
+      @breadcrumbs << [name, url, icon]
   end
 
 end
