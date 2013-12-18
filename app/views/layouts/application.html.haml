@@ -7,7 +7,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
     = render "shared/navbar"
-    = render "shared/alert"
+    = render "shared/alert", flash: flash
     = yield
     = render "shared/footer"
     = render "shared/javascripts"

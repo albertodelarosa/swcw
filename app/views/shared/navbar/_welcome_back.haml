@@ -1,11 +1,10 @@
 - if user_signed_in?
-  .logged-in.span4.pull-right
-    .welcome-back
-      %h5
-        Welcome back
-        = succeed " !" do
-          %strong= current_user.username
-    -#- unless controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
-      -#= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn_blue'
-    -#= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn_green'
+  .welcome-back.alert.col-md-3.pull-right
+    %h5
+      Welcome back
+      = succeed " !" do
+        %strong= current_user.username
+  -#- unless controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
+    -#= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn_blue'
+  -#= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn_green'
 

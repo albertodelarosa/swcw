@@ -1,7 +1,11 @@
 .row
-  .jumbotron.col-sm-12.col-md-12
+  .jumbotron.col-sm-offset-1.col-md-offset-1.col-lg-offset-1.col-sm-10.col-md-10.col-lg-10.intro-page
     .row
-      .col-sm-6.col-md-6
+      %h2 Dear Valued Customer,
+      %p
+        We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
+    .row
+      .col-sm-6.col-md-6.col-lg-6
         #myCarousel.carousel.slide{"data-ride" => "carousel"}
           / Indicators
           %ol.carousel-indicators
@@ -31,10 +35,7 @@
           %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
             %span.glyphicon.glyphicon-chevron-right
 
-      .col-sm-6.col-md-6
-        %h2 Dear Valued Customer,
-        %p
-          We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
+      .col-sm-6.col-md-6.col-lg-6
         .splash_page_login
           = render "shared/sign_up_in_buttons"
         = render "shared/register_modal"

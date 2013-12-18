@@ -16,10 +16,7 @@ gem 'haml-rails'
 
 gem 'bootstrap3-rails'
 gem 'anjlab-bootstrap-rails', '>= 3.0.2.0', :require => 'bootstrap-rails'
-#gem 'twitter-bootstrap-rails'
-#gem 'bootstrap-sass'
-#gem 'bootstrap-sass-rails'
-#gem 'font-awesome-sass-rails'
+gem "breadcrumbs_on_rails"
 
 gem 'airbrake'
 gem 'jquery-rails', '~> 2.3.0'
@@ -28,6 +25,10 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+
+gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'draper', '~> 1.3'
 
 gem 'money-rails', "~> 0.8.1"
 gem 'cancan'
@@ -50,6 +51,11 @@ group :development do
   gem 'brakeman'
   gem 'letter_opener'
   gem 'rails-erd'
+
+  gem 'sextant' #rake routes on http://localhost:3000/rails/routes
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'quiet_assets' #turns off the Rails asset pipeline log. E.g. Served asset /application.js - 304 Not Modified (8ms)
 end
 
 group :test do

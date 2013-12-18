@@ -16,4 +16,6 @@
 //= require utilities
 //= require welcome
 //= require customers
-//= require_self
+//= require jquery
+//= require jquery.turbolinks
+////= require_self

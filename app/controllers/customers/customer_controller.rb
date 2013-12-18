@@ -7,6 +7,7 @@ class Customers::CustomerController < ApplicationController
     @vehicles = current_user.vehicles || []
     @companies = current_user.companies || []
     @sites = current_user.sites || []
+    add_breadcrumb "home", root_path
   end
 
   def create_vehicle

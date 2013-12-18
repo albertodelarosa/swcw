@@ -1,84 +1,47 @@
 .row
   .container
-    .dashboard
-      %ul#dashboardTab.nav.nav-tabs
-        %li.active
-          %a{"data-toggle" => "tab", :href => "#dashboard"} My Dashboard
-        %li
-          %a{"data-toggle" => "tab", :href => "#site"} My Site
-        %li
-          %a{"data-toggle" => "tab", :href => "#company"} My Company
-        %li
-          %a{"data-toggle" => "tab", :href => "#vehicle"} My Vehicles
-        -#%li.dropdown
-          -#%a#myTabDrop1.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            -#Dropdown
-            -#%b.caret
-          -#%ul.dropdown-menu{"aria-labelledby" => "myTabDrop1", :role => "menu"}
-            -#%li
-              -#%a{"data-toggle" => "tab", :href => "#dropdown1", :tabindex => "-1"} @fat
-            -#%li
-              -#%a{"data-toggle" => "tab", :href => "#dropdown2", :tabindex => "-1"} @mdo
-      #dashboardTabContent.tab-content.container
-        #dashboard.tab-pane.active.fade.in
-          .row
-            %legend
-              %h3
-                Make appointment
-            %p
-              TODO
-          .row
-            %legend
-              %h4
-                Past Appointments
-            %p
-              TODO
-        #site.tab-pane.fade
-          .row
-            .site-wrapper
-              - if @sites.empty?
-                %legend
-                  %li= link_to "Add Site",    new_customers_site_path
-              - else
-                %legend
-                  My Sites
-                .mySites
-                  -@sites.each do |site|
-                    .div
-                      =link_to site.name, edit_customers_site_path(site)
-                      =" | "
-                      = link_to 'Destroy', customers_site_path(site), :method => :delete, :data => { :confirm => 'Are you sure?' }
-                    .div
-                      =site.address
-        #company.tab-pane.fade
-          .row
-            .company-wrapper
-              - if @companies.empty?
-                %legend
-                  %li= link_to "Add Company", new_customers_company_path
-              - else
-                %legend
-                  My Companies
-                .myCompanies
-                  -@companies.each do |company|
-                    .div
-                      =link_to company.name, edit_customers_company_path(company)
-                      =" | "
-                      = link_to 'Destroy', customers_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' }
-                    .div company.address
-        #vehicle.tab-pane.fade
-          .row
-            .vehicle-wrapper
-              - if @vehicles.empty?
-                %h3 You have no Vehicles
-                = link_to "add vehicle", new_customers_vehicle_path
-              - else
-                %legend
-                  My Vehicles
-                %ul#myVehicle.nav.nav-tabs
-                  - @vehicles.each_with_index do |vehicle, index|
-                    = render partial: "nav-tabs_ul", locals: {vehicle: vehicle, index: index}
-                #myVehicle_content.tab-content
-                  - @vehicles.each_with_index do |vehicle, index|
-                    = render partial: "tab-pane", locals: {vehicle: vehicle, index: index}
+    .panel.panel-success.panel-dashboard
+      .panel-heading.panel-heading-dashboard
+        = render "shared/breadcrumbs"
+        %h4 
+          Dashboard
+      .panel-body.panel-body-dashboard
+        %ul#dashboardTab.nav.nav-tabs.nav-tabs-dashboard
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#dashboard"} Appointments
+          %li
+            %a{"data-toggle" => "tab", :href => "#site"} Sites
+          %li
+            %a{"data-toggle" => "tab", :href => "#company"} Companies
+          %li
+            %a{"data-toggle" => "tab", :href => "#vehicle"} Vehicles
+
+        #dashboardTabContent.tab-content.tab-content-dashboard
+          #dashboard.tab-pane.active.fade.in
+            .col-md-12
+              %legend
+                %h3
+                  Make appointment
+              %p
+                TODO
+            .col-md-12
+              %legend
+                %h4
+                  Past Appointments
+              %p
+                TODO
+          #site.tab-pane.fade
+            = render "customers/customer/tab_panes/sites"
+          #company.tab-pane.fade
+            = render "customers/customer/tab_panes/companies"
+          #vehicle.tab-pane.fade
+            = render "customers/customer/tab_panes/vehicles"
+
+
+
+
+
+
+
+      //.panel-footer
 
