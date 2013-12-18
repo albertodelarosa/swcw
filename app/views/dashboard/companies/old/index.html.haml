@@ -1,0 +1,17 @@
+%h1 Listing dashboard_companies
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @dashboard_companies.each do |dashboard_company|
+    %tr
+      %td= link_to 'Show', dashboard_company
+      %td= link_to 'Edit', edit_dashboard_company_path(dashboard_company)
+      %td= link_to 'Destroy', dashboard_company, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Company', new_dashboard_company_path

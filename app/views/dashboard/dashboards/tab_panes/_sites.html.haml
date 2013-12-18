@@ -1,0 +1,47 @@
+- if @sites.empty?
+  .col-ms-12.col-md-12
+    %legend
+      %li= link_to "Add Site", new_dashboard_site_path
+- else
+  .row
+    .col-ms-12.col-md-12
+      - if @sites.size > 1
+      - else
+        -@sites.each do |site|
+          .panel.panel-info.panel-inner
+            .panel-heading
+              .row
+                .edit.col-sm-1.col-md-1
+                  %h4
+                    = link_to edit_dashboard_site_path(site) do
+                      %span.glyphicon.glyphicon-edit
+                .name.col-sm-10.col-md-10
+                  %h3
+                    = site.name
+                .delete.col-sm-1.col-md-1
+                  %h4
+                    = link_to dashboard_site_path(site), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      %span.glyphicon.glyphicon-trash
+            .panel-body
+              .panel-body-pic.col-sm-3.col-md-3.pull-left
+                = image_tag("holder.png", class: "img-responsive")
+              .panel-body-address.col-sm-9.col-md-9.pull-left
+                %table.table.table-condensed.table-striped.table-hover
+                  %tr
+                    %th street1
+                    %th street2
+                    %th city
+                    %th state
+                    %th zip
+                  %tr
+                    %td
+                      = site.address.street1
+                    %td
+                      = site.address.street2
+                    %td
+                      = site.address.city
+                    %td
+                      = site.address.state
+                    %td
+                      = site.address.zip
+

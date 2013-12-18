@@ -1,0 +1,17 @@
+%h1 Listing dashboard_appointments
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @dashboard_appointments.each do |dashboard_appointment|
+    %tr
+      %td= link_to 'Show', dashboard_appointment
+      %td= link_to 'Edit', edit_dashboard_appointment_path(dashboard_appointment)
+      %td= link_to 'Destroy', dashboard_appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Appointment', new_dashboard_appointment_path

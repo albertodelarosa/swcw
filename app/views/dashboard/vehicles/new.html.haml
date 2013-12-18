@@ -1,0 +1,12 @@
+.row
+  .container
+    .panel.panel-success.panel-dashboard
+      .panel-heading.panel-heading-dashboard
+        = link_to 'Back', dashboard_path, class: "pull-right btn btn-sm"
+        = render "shared/breadcrumbs"
+        %h4 
+          = "Add a Vehicle #{current_user.first_name}"
+      .panel-body.panel-body-dashboard
+        = render 'form'
+        
+

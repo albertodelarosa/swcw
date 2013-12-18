@@ -1,0 +1,11 @@
+%br
+%br
+.row
+.row
+  .span1.offset1
+    = link_to 'Back', dashboard_companies_path, class: "btn btn_blue btn-small"
+  .span9.offset1
+    %legend 
+      = "Add a Company #{current_user.first_name}"
+    = render 'form'
+

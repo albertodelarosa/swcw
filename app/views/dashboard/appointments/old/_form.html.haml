@@ -1,0 +1,10 @@
+= form_for @dashboard_appointment do |f|
+  - if @dashboard_appointment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dashboard_appointment.errors.count, "error")} prohibited this dashboard_appointment from being saved:"
+      %ul
+        - @dashboard_appointment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

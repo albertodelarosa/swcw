@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     unless resource.instance_of?(AdminUser)
-      customers_path()
+      dashboard_path()
     else
       super
     end

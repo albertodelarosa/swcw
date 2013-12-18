@@ -1,4 +1,4 @@
-class Customers::SitesController < Customers::CustomerController
+class Customers::SitesController < Customers::DashboardsController
   # GET /customers/sites
   # GET /customers/sites.json
   def index

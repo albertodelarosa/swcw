@@ -1,4 +1,4 @@
-class Customers::VehiclesController < Customers::CustomerController
+class Customers::VehiclesController < Customers::DashboardsController
   # GET /customers/vehicles
   # GET /customers/vehicles.json
   def index

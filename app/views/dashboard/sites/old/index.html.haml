@@ -1,0 +1,17 @@
+%h1 Listing dashboard_sites
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @dashboard_sites.each do |dashboard_site|
+    %tr
+      %td= link_to 'Show', dashboard_site
+      %td= link_to 'Edit', edit_dashboard_site_path(dashboard_site)
+      %td= link_to 'Destroy', dashboard_site, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Site', new_dashboard_site_path

@@ -1,4 +1,4 @@
-class Customers::AppointmentController < Customers::CustomerController
+class Customers::AppointmentController < Customers::DashboardsController
 
   def index
   end

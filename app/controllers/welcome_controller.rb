@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     #add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
     #add_breadcrumb 'Hotel Manager', 'Hotels'
     if user_signed_in?
-      redirect_to customers_path()
+      redirect_to dashboard_path()
     end
   end
 

@@ -1,7 +1,7 @@
 Sitelerwash::Application.routes.draw do
 
-  namespace :customers do
-    match "/" => "customer#index", as: 'root', via: :get
+  namespace :dashboard do
+    match "/" => "dashboards#index"
 
     resources :appointment
     resources :sites
@@ -12,8 +12,6 @@ Sitelerwash::Application.routes.draw do
       end
     end
   end
-
-  match "/", to: 'welcome#index', as: 'home', via: :get
 
   ActiveAdmin.routes(self)
 

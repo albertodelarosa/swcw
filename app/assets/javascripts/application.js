@@ -11,11 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require /jquery_ui
 //= require utilities
 //= require welcome
-//= require customers
-//= require jquery
-//= require jquery.turbolinks
+//= require dashboard
 ////= require_self

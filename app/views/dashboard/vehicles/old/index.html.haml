@@ -1,0 +1,17 @@
+%h1 Listing dashboard_vehicles
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @dashboard_vehicles.each do |dashboard_vehicle|
+    %tr
+      %td= link_to 'Show', dashboard_vehicle
+      %td= link_to 'Edit', edit_dashboard_vehicle_path(dashboard_vehicle)
+      %td= link_to 'Destroy', dashboard_vehicle, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Vehicle', new_dashboard_vehicle_path

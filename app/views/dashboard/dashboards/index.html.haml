@@ -1,0 +1,47 @@
+.row
+  .container
+    .panel.panel-success.panel-dashboard
+      .panel-heading.panel-heading-dashboard
+        = render "shared/breadcrumbs"
+        %h4 
+          Dashboard
+      .panel-body.panel-body-dashboard
+        %ul#dashboardTab.nav.nav-tabs.nav-tabs-dashboard
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#dashboard"} Appointments
+          %li
+            %a{"data-toggle" => "tab", :href => "#site"} Sites
+          %li
+            %a{"data-toggle" => "tab", :href => "#company"} Companies
+          %li
+            %a{"data-toggle" => "tab", :href => "#vehicle"} Vehicles
+
+        #dashboardTabContent.tab-content.tab-content-dashboard
+          #dashboard.tab-pane.active.fade.in
+            .col-md-12
+              %legend
+                %h3
+                  Make appointment
+              %p
+                TODO
+            .col-md-12
+              %legend
+                %h4
+                  Past Appointments
+              %p
+                TODO
+          #site.tab-pane.fade
+            = render "dashboard/dashboards/tab_panes/sites"
+          #company.tab-pane.fade
+            = render "dashboard/dashboards/tab_panes/companies"
+          #vehicle.tab-pane.fade
+            = render "dashboard/dashboards/tab_panes/vehicles"
+
+
+
+
+
+
+
+      //.panel-footer
+

@@ -1,0 +1,70 @@
+- if @vehicles.empty?
+  .col-ms-12.col-md-12
+    %h3 You have no Vehicles
+    = link_to "add your vehicle", new_customers_vehicle_path
+- else
+  .row
+    .col-ms-12.col-md-12
+      - if @vehicles.size > 1
+      - else
+        -@vehicles.each_with_index do |vehicle, index|
+          .panel.panel-info.panel-inner
+            .panel-heading
+              .row
+                .edit.col-sm-1.col-md-1
+                  %h4
+                    = link_to edit_customers_vehicle_path(vehicle) do
+                      %span.glyphicon.glyphicon-edit
+                .name.col-sm-10.col-md-10
+                  %h3
+                    = "#{vehicle.vehicle_years[index].name} #{vehicle.vehicle_models[index].name} #{vehicle.vehicle_trims[index].name}"
+                .delete.col-sm-1.col-md-1
+                  %h4
+                    = link_to customers_vehicle_path(vehicle), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      %span.glyphicon.glyphicon-trash
+            .panel-body
+              .panel-body-pic.col-sm-3.col-md-3.pull-left
+                = image_tag("holder.png", class: "img-responsive")
+              .panel-body-address.col-sm-9.col-md-9.pull-left
+                %table.table.table-condensed.table-striped.table-hover
+                  %tr
+                    %th Year
+                    %th Make
+                    %th Model
+                    %th Trim
+                    %th Type
+                    %th Doors
+                  %tr
+                    %td
+                      = vehicle.vehicle_years[index].name
+                    %td
+                      = vehicle.vehicle_makes[index].name
+                    %td
+                      = vehicle.vehicle_models[index].name
+                    %td
+                      = vehicle.vehicle_trims[index].name
+                    %td
+                      = vehicle.vehicle_types[index].name
+                    %td
+                      = vehicle.vehicle_doors[index].name
+                  -#%tr
+                    -#%td
+                    -#%td
+                    -#%td
+                    -#%td
+                    -#%td
+                  %tr
+                    %th Color
+                    %th License Plate No.
+                    %th State
+                    -#%th Size
+                  %tr
+                    %td
+                      = vehicle.color
+                    %td
+                      = vehicle.license_plate_number
+                    %td
+                      = vehicle.state_registered
+                    -#%td
+                      -#= vehicle_sizes[index].name 
+

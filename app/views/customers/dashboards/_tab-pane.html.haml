@@ -1,0 +1,43 @@
+%div{class: index  > 0 ? "vehicle-container tab-pane fade" : "vehicle-container tab-pane fade in active", id: "my_vehicle_#{index}"}
+  .row-fluid
+    .span9.offset1
+      .my-vehicle-pic
+        = image_tag("holder.png", size: "252x190")
+    .span2.pull-right
+      %h4
+        = link_to "edit", edit_customers_vehicle_path(vehicle)
+  .row-fluid
+    .span3.offset1.pull-left
+      %h5 Year
+      = vehicle.vehicle_years[0].name
+    .span4.pull-left
+      %h5 Make
+      = vehicle.vehicle_makes[0].name
+    .span4.pull-left
+      %h5 Model
+      = vehicle.vehicle_models[0].name
+  .row-fluid
+    .span3.offset1.pull-left
+      %h5 Trim
+      = vehicle.vehicle_trims[0].name
+    .span8.pull-left
+      %h5 Type
+      = vehicle.vehicle_types[0].name
+  .row-fluid
+    .span3.offset1.pull-left
+      %h5 Doors
+      = vehicle.vehicle_doors[0].name
+    .span4.pull-left
+      %h5 Size
+      -#= vehicle_sizes[0].name
+    .span4.pull-left
+      %h5 Color
+      = vehicle.color
+  .row-fluid
+    .span3.offset1.pull-left
+      %h5 License Plate No.
+      = vehicle.license_plate_number
+    .span4.pull-left
+      %h5 State
+      = vehicle.state_registered
+
