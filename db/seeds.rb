@@ -58,6 +58,86 @@ home_contact_infos = HomeContactInfo.create!([{phone1: "415.661.7226" , mobile: 
 puts "Adding new default company contact info..."
 company_contact_infos = CompanyContactInfo.create!([{phone1: "(650) 333-0168", ext: "329"}])
 
+
+
+
+
+###############################################################################
+# company list
+
+puts "Creating Company Listing..."
+CSV.read("#{Rails.root}/lib/tasks/company.csv", "r:ISO-8859-1").each_with_index do |row, i|
+  unless row[0].nil?
+    name, street_address, city_state_zip, created_at = row[0], row[1].split(","), row[2].split(","), row[3] || ""
+    Company.create!(name:     name, 
+                    corporate_email_domain: 'example@example.com',
+                    description: 'Example discription',
+                    address:  CompanyAddress.create!(street1:     street_address[0] , 
+                                                     suite_no:    street_address.size > 1 ? street_address[1] : "", 
+                                                     city:        city_state_zip[0], 
+                                                     state:       city_state_zip[1], 
+                                                     zip:         city_state_zip[2], 
+                                                     created_at:  created_at
+                                                    ),
+                    contact_info:  CompanyContactInfo.create!( email:  '',
+                                                               mobile: '',
+                                                               phone1: '',
+                                                               ext:    '',
+                                                               phone2: '',
+                                                               fax:    ''
+                                                             )
+                   )
+  end
+end
+
+puts "Adding my companies deflauts..."
+my_companies = []
+my_companies << Company.find_by_name("Genentech, Inc.")
+my_companies << Company.find_by_name("Google, Inc.")
+
+puts "Adding new default company addresses..."
+work_addresses = my_companies[0].address
+
+
+
+###############################################################################
+# location listing
+
+puts "Creating Location Listing..."
+temp_company = Company.new
+CSV.read("#{Rails.root}/lib/tasks/site.csv", "r:ISO-8859-1").each_with_index do |row, i|
+  unless row[0].nil?
+    temp_company = Company.find_by_name(row[0])
+  else
+    unless row[1].nil?
+      name, street_address, city_state_zip = row[1], row[2], row[3].split(",")
+      temp_company.sites << Site.create!( name:     name, 
+                                          comments: 'Found in back. Please see Google map provided.',
+                                          address:  CompanyAddress.create!( street1: street_address,
+                                                                            city:    city_state_zip[0], 
+                                                                            state:   city_state_zip[1], 
+                                                                            zip:     city_state_zip[2], 
+                                                                          ),
+                                        )
+    end
+  end
+end
+
+
+
+###############################################################################
+
+
+puts "tieing in developers[0] with other models"
+developers[0].work_contact_info = company_contact_infos[0]
+developers[0].work_address = work_addresses[0]
+developers[0].home_contact_info = home_contact_infos[0]
+developers[0].home_address = home_addresses[0]
+developers[0].companies << my_companies[0]
+
+
+
+
 puts "================= CREATED DEFAULT USER ================="
 
 puts "setting up make & model..."
@@ -201,79 +281,6 @@ end
 
 
 
-
-
-
-###############################################################################
-# company list
-
-puts "Creating Company Listing..."
-CSV.read("#{Rails.root}/lib/tasks/company.csv", "r:ISO-8859-1").each_with_index do |row, i|
-  unless row[0].nil?
-    name, street_address, city_state_zip, created_at = row[0], row[1].split(","), row[2].split(","), row[3] || ""
-    Company.create!(name:     name, 
-                    address:  CompanyAddress.create!(street1:     street_address[0] , 
-                                                     suite_no:    street_address.size > 1 ? street_address[1] : "", 
-                                                     city:        city_state_zip[0], 
-                                                     state:       city_state_zip[1], 
-                                                     zip:         city_state_zip[2], 
-                                                     created_at:  created_at
-                                                    )
-                   )
-  end
-end
-
-puts "Adding my companies deflauts..."
-my_companies = []
-my_companies << Company.find_by_name("Genentech, Inc.")
-my_companies << Company.find_by_name("Google, Inc.")
-
-puts "Adding new default company addresses..."
-work_addresses = my_companies[0].address
-
-
-
-###############################################################################
-# location listing
-
-puts "Creating Location Listing..."
-temp_company = Company.new
-CSV.read("#{Rails.root}/lib/tasks/site.csv", "r:ISO-8859-1").each_with_index do |row, i|
-  unless row[0].nil?
-    temp_company = Company.find_by_name(row[0])
-  else
-    unless row[1].nil?
-      name, street_address, city_state_zip = row[1], row[2], row[3].split(",")
-      temp_company.sites << Site.create!( name:     name, 
-                                          address:  CompanyAddress.create!( street1: street_address,
-                                                                            city:    city_state_zip[0], 
-                                                                            state:   city_state_zip[1], 
-                                                                            zip:     city_state_zip[2], 
-                                                                          )
-                                        )
-    end
-  end
-end
-
-
-
-###############################################################################
-
-
-
-
-
-
-
-
-
-
-puts "tieing in developers[0] with other models"
-developers[0].work_contact_info = company_contact_infos[0]
-developers[0].work_address = work_addresses[0]
-developers[0].home_contact_info = home_contact_infos[0]
-developers[0].home_address = home_addresses[0]
-developers[0].companies << my_companies[0]
 
 
 
