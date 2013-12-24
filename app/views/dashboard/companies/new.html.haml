@@ -1,11 +1,19 @@
-%br
-%br
 .row
-.row
-  .span1.offset1
-    = link_to 'Back', dashboard_companies_path, class: "btn btn_blue btn-small"
-  .span9.offset1
-    %legend 
-      = "Add a Company #{current_user.first_name}"
-    = render 'form'
+  .container
+    = form_for [:dashboard, @company], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
+      - if @company.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+          %ul
+            - @company.errors.full_messages.each do |msg|
+              %li= msg
+      = BootstrapHelper::Panel.new(contextual: 'panel-primary', footer: '', title:"") do |panel|
+        - panel.header do
+          = render partial: 'shared/panel_header', locals: {title: "Add a Company #{current_user.first_name}"}
+        - panel.body do
+          = render partial: 'form', locals: {f: f}
+        - panel.footer do 
+          .col-xs-10.col-sm-10.col-md-10.col-lg-10
+          .col-xs-2.col-sm-2.col-md-2.col-lg-2
+            = f.submit 'Save', class: "btn btn-success btn-block"
 

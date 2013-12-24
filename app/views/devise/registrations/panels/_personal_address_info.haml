@@ -1,0 +1,27 @@
+- resource.home_address ||= resource.build_home_address
+= f.fields_for :home_address do |ha|
+  .form-group
+    = f.label :street1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = ha.text_field :street1, class: "form-control", placeholder: "street address 1"
+  .form-group
+    = f.label :apt_no, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = ha.text_field :apt_no, class: "form-control", placeholder: "apt no."
+  .form-group
+    = f.label :street2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = ha.text_field :street2, class: "form-control", placeholder: "street address 2"
+  .form-group
+    = f.label :city, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = ha.text_field :city, class: "form-control", placeholder: "city"
+  .form-group
+    = f.label :state, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = ha.text_field :state, class: "form-control", placeholder: "state"
+  .form-group
+    = f.label :zip, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = ha.text_field :zip, class: "form-control", placeholder: "zip code"
+

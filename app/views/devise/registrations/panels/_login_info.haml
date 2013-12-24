@@ -1,0 +1,24 @@
+.form-group
+  = f.label :username, class: 'control-label col-sm-4 col-md-4'
+  .col-sm-6.col-md-6
+    = f.text_field :username, class: "form-control", placeholder: "username", :autofocus => true
+.form-group
+  = f.label :email, class: 'control-label col-sm-4 col-md-4'
+  .col-sm-6.col-md-6
+    = f.email_field :email, class: "form-control", placeholder: "email"
+.form-group
+  = f.label :password, class: 'control-label col-sm-4 col-md-4'
+  .col-sm-6.col-md-6
+    = f.password_field :password, class: "form-control", placeholder: "password"
+.form-group
+  = f.label :password_confirmation, class: 'control-label col-sm-4 col-md-4'
+  .col-sm-6.col-md-6
+    = f.password_field :password_confirmation, class: "form-control", placeholder: "password confirmation"
+- if devise_mapping.rememberable?
+  .form-group
+    .col-sm-offset-4.col-md-offset-4.col-sm-4.col-md-4
+      .checkbox
+        = f.label :remember_me do
+          = f.check_box :remember_me
+          remember me
+

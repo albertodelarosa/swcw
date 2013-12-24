@@ -1,158 +1,49 @@
-.container
-  .row
+.row
+  .container
     - unless user_signed_in?
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}, role: 'role') do |f|
-        .panel.panel-success
-          .panel-heading
-            %h3
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}, role: 'form') do |f|
+        = BootstrapHelper::Panel.new(contextual: 'panel-primary', title: '', footer: '') do |panel|
+          - panel.header_col(col_size: 12) do 
+            %h4
               Register an Account
-          .panel-body
-            .panel.panel-primary
-              .panel-heading
-                User Information
-              .panel-body
-                .form-group
-                  = f.label :username, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                  .col-sm-6.col-md-6
-                    = f.text_field :username, class: "form-control", placeholder: "username", :autofocus => true
-                .form-group
-                  = f.label :email, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                  .col-sm-6.col-md-6
-                    = f.email_field :email, class: "form-control", placeholder: "email"
-                .form-group
-                  = f.label :password, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                  .col-sm-6.col-md-6
-                    = f.password_field :password, class: "form-control", placeholder: "password"
-                .form-group
-                  = f.label :password_confirmation, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                  .col-sm-6.col-md-6
-                    = f.password_field :password_confirmation, class: "form-control", placeholder: "password confirmation"
-                - if devise_mapping.rememberable?
-                  .form-group
-                    .col-sm-offset-4.col-md-offset-4.col-sm-3.col-md-3
-                      .checkbox
-                        = f.label :remember_me do
-                          = f.check_box :remember_me
-                          remember me
-            .panel.panel-primary
-              .panel-heading
-                Business Contact Information
-              .panel-body
-                - resource.work_contact_info ||= resource.build_work_contact_info
-                = f.fields_for :work_contact_info do |wci|
-                  .form-group
-                    = f.label :email, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wci.text_field :email, class: "form-control", placeholder: "email"
-                  .form-group
-                    = f.label :mobile, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wci.text_field :mobile, class: "form-control", placeholder: "mobile"
-                  .form-group
-                    = f.label :phone1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wci.text_field :phone1, class: "form-control", placeholder: "phone 1"
-                  .form-group
-                    = f.label :ext, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-4.col-md-4
-                      = wci.text_field :ext, class: "form-control", placeholder: "ext"
-                  .form-group
-                    = f.label :phone2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wci.text_field :phone2, class: "form-control", placeholder: "phone 2"
-                  .form-group
-                    = f.label :fax, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wci.text_field :fax, class: "form-control", placeholder: "fax"
-            .panel.panel-primary
-              .panel-heading
-                Business Address Information
-              .panel-body
-                - resource.work_address ||= resource.build_work_address
-                = f.fields_for :work_address do |wa|
-                  .form-group
-                    = f.label :street1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wa.text_field :street1, class: "form-control", placeholder: "street address 1"
-                  .form-group
-                    = f.label :suite_no, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wa.text_field :suite_no, class: "form-control", placeholder: "suite number"
-                  .form-group
-                    = f.label :street2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wa.text_field :street2, class: "form-control", placeholder: "street address 2"
-                  .form-group
-                    = f.label :city, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wa.text_field :city, class: "form-control", placeholder: "city"
-                  .form-group
-                    = f.label :state, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wa.text_field :state, class: "form-control", placeholder: "state"
-                  .form-group
-                    = f.label :zip, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = wa.text_field :zip, class: "form-control", placeholder: "zip code"
-            .panel.panel-primary
-              .panel-heading
-                Personal Contact Information
-              .panel-body
-                - resource.home_contact_info ||= resource.build_home_contact_info
-                = f.fields_for :home_contact_info do |hci|
-                  .form-group
-                    = f.label :mobile, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = hci.text_field :mobile, class: "form-control", placeholder: "mobile number"
-                  .form-group
-                    = f.label :phone1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = hci.text_field :phone1, class: "form-control", placeholder: "phone number 1"
-                  .form-group
-                    = f.label :phone2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = hci.text_field :phone2, class: "form-control", placeholder: "phone number 2"
-                  .form-group
-                    = f.label :fax, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = hci.text_field :fax, class: "form-control", placeholder: "fax number"
-            .panel.panel-primary
-              .panel-heading
-                Personal Address Information
-              - resource.home_address ||= resource.build_home_address
-              .panel-body
-                = f.fields_for :home_address do |ha|
-                  .form-group
-                    = f.label :street1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = ha.text_field :street1, class: "form-control", placeholder: "street address 1"
-                  .form-group
-                    = f.label :apt_no, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = ha.text_field :apt_no, class: "form-control", placeholder: "apt no."
-                  .form-group
-                    = f.label :street2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = ha.text_field :street2, class: "form-control", placeholder: "street address 2"
-                  .form-group
-                    = f.label :city, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = ha.text_field :city, class: "form-control", placeholder: "city"
-                  .form-group
-                    = f.label :state, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = ha.text_field :state, class: "form-control", placeholder: "state"
-                  .form-group
-                    = f.label :zip, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-                    .col-sm-6.col-md-6
-                      = ha.text_field :zip, class: "form-control", placeholder: "zip code"
-          .panel-footer
-            .pull-right
-              = render "devise/shared/links_sign_in"
-            .btn-group
-              = f.submit "register", class: 'btn btn-large btn-success'
+          - panel.body do
+            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |login_info_panel|
+              - login_info_panel.header_col(col_size: 12) do 
+                .h4
+                  User Information
+              - login_info_panel.body do
+                = render partial: "/devise/registrations/panels/login_info", locals: {f: f}
+            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |business_contact_info_panel|
+              - business_contact_info_panel.header_col(col_size: 12) do 
+                .h4
+                  Business Contact Information
+              - business_contact_info_panel.body do
+                = render partial: "/devise/registrations/panels/business_contact_info", locals: {f: f}
+            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |business_address_panel|
+              - business_address_panel.header_col(col_size: 12) do 
+                .h4
+                  Business Address Information
+              - business_address_panel.body do
+                = render partial: "/devise/registrations/panels/business_address_info", locals: {f: f}
+            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |personal_contact_panel|
+              - personal_contact_panel.header_col(col_size: 12) do 
+                .h4
+                  Personal Contact Information
+              - personal_contact_panel.body do
+                = render partial: "/devise/registrations/panels/personal_contact_info", locals: {f: f}
+            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |personal_address_panel|
+              - personal_address_panel.header_col(col_size: 12) do 
+                .h4
+                  Personal Address Information
+              - personal_address_panel.body do
+                = render partial: "/devise/registrations/panels/personal_address_info", locals: {f: f}
+
+          - panel.footer do
+            .col-sm-8.col-md-8.btn-group
               = render "devise/shared/links_omniauthable"
-              %button.btn.btn-danger{"data-dismiss" => "modal", :type => "button"} cancel
-
-
+              = render "devise/shared/links_sign_in"
+            .col-sm-2.col-md-2
+              %button.btn.btn-danger.btn-block{"data-dismiss" => "modal", :type => "button"} cancel
+            .col-sm-2.col-md-2
+              = f.submit "register", class: 'btn btn-large btn-success btn-block'
 

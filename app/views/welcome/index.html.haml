@@ -1,44 +1,45 @@
 .row
-  .jumbotron.col-sm-offset-1.col-md-offset-1.col-lg-offset-1.col-sm-10.col-md-10.col-lg-10.intro-page
-    .row
-      %h2 Dear Valued Customer,
-      %p
-        We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
-    .row
-      .col-sm-6.col-md-6.col-lg-6
-        #myCarousel.carousel.slide{"data-ride" => "carousel"}
-          / Indicators
-          %ol.carousel-indicators
-            %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
-            %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
-            %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
-          / Wrapper for slides
-          .carousel-inner
-            .item.active
-              = image_tag('400/wash.jpg', alt: '')
-              .carousel-caption
-                %h4 First Thumbnail label
-                %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-            .item
-              = image_tag('400/carwasher.jpg', alt: '')
-              .carousel-caption
-                %h4 Second Thumbnail label
-                %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-            .item
-              = image_tag('400/washingcar.jpg', alt: '')
-              .carousel-caption
-                %h4 Third Thumbnail label
-                %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-          // Controls
-          %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
-            %span.glyphicon.glyphicon-chevron-left
-          %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
-            %span.glyphicon.glyphicon-chevron-right
+  .jumbotron.intro-page
+    .container
+      .col-sm-12.col-md-12.col-lg-12
+        %h3 Dear Valued Customer
+        %h4
+          We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
+      .row
+        .col-sm-6.col-md-6.col-lg-6
+          #myCarousel.carousel.slide{"data-ride" => "carousel"}
+            / Indicators
+            %ol.carousel-indicators
+              %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+              %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+              %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+            / Wrapper for slides
+            .carousel-inner
+              .item.active
+                = image_tag('400/wash.jpg', alt: '')
+                .carousel-caption
+                  %h4 First Thumbnail label
+                  %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              .item
+                = image_tag('400/carwasher.jpg', alt: '')
+                .carousel-caption
+                  %h4 Second Thumbnail label
+                  %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              .item
+                = image_tag('400/washingcar.jpg', alt: '')
+                .carousel-caption
+                  %h4 Third Thumbnail label
+                  %p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            // Controls
+            %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+              %span.glyphicon.glyphicon-chevron-left
+            %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+              %span.glyphicon.glyphicon-chevron-right
 
-      .col-sm-6.col-md-6.col-lg-6
-        .splash_page_login
-          = render "shared/sign_up_in_buttons"
-        = render "shared/register_modal"
+        .col-sm-6.col-md-6.col-lg-6
+          .splash_page_login
+            = render "shared/sign_up_in_buttons"
+          = render "shared/register_modal"
 
 
 

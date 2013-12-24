@@ -1,47 +1,96 @@
-- if @companies.empty?
+.row
   .col-ms-12.col-md-12
-    %legend
-      %li= link_to "Add Company", new_dashboard_company_path
-- else
-  .row
-    .col-ms-12.col-md-12
-      - if @companies.size > 1
-      - else
-        -@companies.each do |company|
-          .panel.panel-info.panel-inner
-            .panel-heading
-              .row
-                .edit.col-sm-1.col-md-1
+    - if @companies.empty?
+      = form_for [:dashboard, @company], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
+        - if @company.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+            %ul
+              - @company.errors.full_messages.each do |msg|
+                %li= msg
+        = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
+          - panel.header_col(col_size: 12) do
+            %h4= "Add a Company #{current_user.first_name}"
+          - panel.body do
+            = render partial: 'dashboard/companies/form', locals: {f: f}
+          - panel.footer do 
+            .col-xs-8.col-sm-8.col-md-8.col-lg-8
+            .col-xs-2.col-sm-2.col-md-2.col-lg-2
+              = link_to "Cancel", :back, class: "btn btn-danger btn-block"
+            .col-xs-2.col-sm-2.col-md-2.col-lg-2
+              = f.submit 'Add', class: "btn btn-success btn-block"
+    - else
+      -@companies.each do |company|
+        = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
+          - panel.header_col(col_class: 'edit', col_size: 3) do
+            .h3
+              = link_to edit_dashboard_company_path(company) do
+                %span.glyphicon.glyphicon-edit
+                edit
+          - panel.header_col(col_class: 'name', col_size: 8) do
+            .h3= company.name
+          - panel.header_col(col_class: 'delete', col_size: 1) do
+            .h3
+              = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                %span.glyphicon.glyphicon-trash
+          - panel.body do
+            .panel-body-pic.col-sm-3.col-md-3
+              = image_tag("holder.png", class: "img-responsive")
+            .panel-body-address.col-sm-9.col-md-9
+              %table.table.table-condensed.table-striped.table-hover
+                .col-sm-4.col-md-4
                   %h4
-                    = link_to edit_dashboard_company_path(company) do
-                      %span.glyphicon.glyphicon-edit
-                .name.col-sm-10.col-md-10
-                  %h3
-                    = company.name
-                .delete.col-sm-1.col-md-1
+                    Contact Information
+                .col-sm-8.col-md-8
                   %h4
-                    = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-                      %span.glyphicon.glyphicon-trash
-            .panel-body
-              .panel-body-pic.col-sm-3.col-md-3.pull-left
-                = image_tag("holder.png", class: "img-responsive")
-              .panel-body-address.col-sm-9.col-md-9.pull-left
-                %table.table.table-condensed.table-striped.table-hover
-                  %tr
-                    %th street1
+                    = company.corporate_email_domain
+                %tr
+                  %th email
+                  %th mobile
+                  %th phone1
+                  %th ext
+                  %th phone2
+                  %th fax
+                %tr
+                  %td
+                    = company.contact_info.email
+                    = "(415) 555-5555"
+                  %td
+                    = company.contact_info.mobile
+                    = "(415) 555-5555"
+                  %td
+                    = company.contact_info.phone1
+                    = "(415) 555-5555"
+                  %td
+                    = company.contact_info.ext
+                    = "x3456"
+                  %td
+                    = company.contact_info.phone2
+                    = "(415) 555-5555"
+                  %td
+                    = company.contact_info.fax
+                    = "(415) 555-5555"
+              %table.table.table-condensed.table-striped.table-hover
+                .col-sm-12.col-md-12
+                  %h4
+                    Address
+                %tr
+                  %th street1
+                  - if company.address.street2?
                     %th street2
-                    %th city
-                    %th state
-                    %th zip
-                  %tr
-                    %td
-                      = company.address.street1
+                  %th city
+                  %th state
+                  %th zip
+                %tr
+                  %td
+                    = company.address.street1
+                  - if company.address.street2?
                     %td
                       = company.address.street2
-                    %td
-                      = company.address.city
-                    %td
-                      = company.address.state
-                    %td
-                      = company.address.zip
+                  %td
+                    = company.address.city
+                  %td
+                    = company.address.state
+                  %td
+                    = company.address.zip
 

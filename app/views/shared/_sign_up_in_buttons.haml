@@ -1,25 +1,29 @@
-
 .row
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
-    .panel.panel-primary
-      .panel-heading
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f|
+    = BootstrapHelper::Panel.new(contextual: 'panel-primary', title: '', footer: '') do |panel|
+      - panel.header_col(col_size: 12) do 
         %h4 Sign in
-      .panel-body
+      - panel.body do
         .form-group
-          = f.label :username, class: "control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3"
-          .col-sm-6.col-md-6
+          = f.label :username, class: "control-label col-sm-4 col-md-4 small"
+          .col-sm-7
             = f.text_field :username, placeholder: "username", class: "form-control", autofocus: true
         .form-group
-          = f.label :password, class: "control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3"
-          .col-sm-6.col-md-6
+          = f.label :password, class: "control-label col-sm-4 col-md-4 small"
+          .col-sm-7
             = f.password_field :password, placeholder: "password", class: "form-control"
-      .panel-footer
-        .btn-group.pull-right
-          = f.submit "sign in", class: 'btn btn-success line-height-20px'
+      - panel.footer do
+        .col-sm-5.col-md-7
+          - if devise_mapping.omniauthable?
+            - resource_class.omniauth_providers.each do |provider|
+              = link_to "Use #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-primary", role: "button"
+        .col-sm-7.col-md-5
+          = f.submit "sign in", class: 'btn btn-success'
           %button.btn.btn-primary{data: {toggle: "modal", target: "#myModal"}}sign up
-        .btn-group
-          = render "devise/shared/links_error_handling"
-        %br
-        .btn-group
-          = render "devise/shared/links_omniauthable"
+          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+            = link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-primary", role: "button"
+          - if devise_mapping.confirmable? && controller_name != 'confirmations'
+            = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "btn btn-succes", role: "button"
+          - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+            = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "btn btn-info", role: "button"
 

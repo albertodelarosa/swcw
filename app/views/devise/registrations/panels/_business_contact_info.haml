@@ -1,0 +1,27 @@
+- resource.work_contact_info ||= resource.build_work_contact_info
+= f.fields_for :work_contact_info do |wci|
+  .form-group
+    = f.label :email, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = wci.text_field :email, class: "form-control", placeholder: "email"
+  .form-group
+    = f.label :mobile, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = wci.text_field :mobile, class: "form-control", placeholder: "mobile"
+  .form-group
+    = f.label :phone1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = wci.text_field :phone1, class: "form-control", placeholder: "phone 1"
+  .form-group
+    = f.label :ext, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-4.col-md-4
+      = wci.text_field :ext, class: "form-control", placeholder: "ext"
+  .form-group
+    = f.label :phone2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = wci.text_field :phone2, class: "form-control", placeholder: "phone 2"
+  .form-group
+    = f.label :fax, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+    .col-sm-6.col-md-6
+      = wci.text_field :fax, class: "form-control", placeholder: "fax"
+
