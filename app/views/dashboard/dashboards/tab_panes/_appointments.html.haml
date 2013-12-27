@@ -1,0 +1,31 @@
+.row
+  .col-ms-12.col-md-12
+    - if @appointments.empty?
+      = form_for [:dashboard, @appointment], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
+        - if @appointment.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@appointment.errors.count, "error")} prohibited this appointment from being saved:"
+            %ul
+              - @appointment.errors.full_messages.each do |msg|
+                %li= msg
+        = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
+          - panel.header_col(col_size: 12) do
+            %h4= "Make an Appointment #{current_user.first_name}"
+          - panel.body do
+            %p
+              TODO
+    - else
+      = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
+        - panel.header_col(col_size: 6) do
+          %h4= "Make appointment #{current_user.first_name}"
+        - panel.body do
+          %p
+            TODO
+  .col-ms-12.col-md-12
+    = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
+      - panel.header_col(col_size: 6) do
+        %h4= "Past Appointments #{current_user.first_name}"
+      - panel.body do
+        %p
+          TODO
+

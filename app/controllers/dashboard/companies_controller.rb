@@ -1,6 +1,6 @@
 class Dashboard::CompaniesController < Dashboard::DashboardsController
-  # GET /customers/companies
-  # GET /customers/companies.json
+  # GET /dashboard/companies
+  # GET /dashboard/companies.json
   def index
     @companies = Company.all
 
@@ -10,8 +10,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     end
   end
 
-  # GET /customers/companies/1
-  # GET /customers/companies/1.json
+  # GET /dashboard/companies/1
+  # GET /dashboard/companies/1.json
   def show
     @company = Company.find(params[:id])
 
@@ -21,8 +21,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     end
   end
 
-  # GET /customers/companies/new
-  # GET /customers/companies/new.json
+  # GET /dashboard/companies/new
+  # GET /dashboard/companies/new.json
   def new
     @companies = Company.all
     @company = Company.new
@@ -33,13 +33,13 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     end
   end
 
-  # GET /customers/companies/1/edit
+  # GET /dashboard/companies/1/edit
   def edit
     @company = Company.find(params[:id])
   end
 
-  # POST /customers/companies
-  # POST /customers/companies.json
+  # POST /dashboard/companies
+  # POST /dashboard/companies.json
   def create
     #@company = Company.new(params[:company])
     @company = Company.find(params[:company][:id])
@@ -56,8 +56,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     end
   end
 
-  # PUT /customers/companies/1
-  # PUT /customers/companies/1.json
+  # PUT /dashboard/companies/1
+  # PUT /dashboard/companies/1.json
   def update
     @company = Company.find(params[:id])
 
@@ -72,14 +72,14 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     end
   end
 
-  # DELETE /customers/companies/1
-  # DELETE /customers/companies/1.json
+  # DELETE /dashboard/companies/1
+  # DELETE /dashboard/companies/1.json
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
 
     respond_to do |format|
-      format.html { redirect_to customers_companies_url }
+      format.html { redirect_to dashboard_companies_url }
       format.json { head :no_content }
     end
   end

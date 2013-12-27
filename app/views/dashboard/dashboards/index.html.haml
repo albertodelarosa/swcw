@@ -15,21 +15,7 @@
           - nav.nav_li(a_href: '#vehicles') do
             Vehicles
           - nav.nav_pane(tab_id: 'appointments', active: '') do
-            .row
-              .col-ms-12.col-md-12
-                = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-                  - panel.header_col(col_size: 6) do
-                    %h4= "Make appointment #{current_user.first_name}"
-                  - panel.body do
-                    %p
-                      TODO
-              .col-ms-12.col-md-12
-                = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-                  - panel.header_col(col_size: 6) do
-                    %h4= "Past Appointments #{current_user.first_name}"
-                  - panel.body do
-                    %p
-                      TODO
+            = render "dashboard/dashboards/tab_panes/appointments"
           - nav.nav_pane(tab_id: 'sites') do
             = render "dashboard/dashboards/tab_panes/sites"
           - nav.nav_pane(tab_id: 'companies') do

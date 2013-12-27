@@ -5,9 +5,13 @@ class Dashboard::DashboardsController < ApplicationController
   before_filter { add_breadcrumb "home", root_path, "glyphicon-home" }
 
   def index
+
+    current_user.appointments.empty? ? ( @appointment = Appointment.new, @appointments = [] ) : ( @appointments = current_user.appointments )
+
     @vehicles = current_user.vehicles || []
     @companies = current_user.companies || []
     @sites = current_user.sites || []
+    @appointments = current_user.sites || []
     if current_user.appointments.empty?
       @appointment = Appointment.new
     end
