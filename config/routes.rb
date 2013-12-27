@@ -3,7 +3,7 @@ Sitelerwash::Application.routes.draw do
   namespace :dashboard do
     match "/" => "dashboards#index"
 
-    resources :appointment
+    resources :appointments
     resources :sites
     resources :companies
     resources :vehicles do 

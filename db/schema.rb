@@ -64,29 +64,40 @@ ActiveRecord::Schema.define(:version => 20130725015326) do
   add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
   create_table "appointments", :force => true do |t|
+    t.datetime "appointment_date"
     t.string   "appointment_number"
     t.datetime "drop_off_time"
     t.datetime "pick_up_time"
-    t.string   "vehicle"
-    t.string   "company"
-    t.string   "site"
     t.text     "notes"
-    t.string   "year"
-    t.string   "make"
-    t.string   "model"
-    t.string   "trim"
-    t.string   "type"
-    t.string   "doors"
-    t.string   "size"
+    t.integer  "user_id"
+    t.string   "username",               :default => "", :null => false
+    t.string   "first_name",             :default => "", :null => false
+    t.string   "last_name",              :default => "", :null => false
+    t.string   "salutation",             :default => "", :null => false
+    t.string   "suffix",                 :default => "", :null => false
+    t.integer  "company_id"
+    t.string   "company_name"
+    t.string   "corporate_id"
+    t.string   "company_description"
+    t.string   "corporate_email_domain"
+    t.integer  "site_id"
+    t.string   "site_name"
+    t.text     "site_comments"
+    t.float    "site_latitude"
+    t.float    "site_longitude"
+    t.integer  "vehicle_id"
+    t.string   "vehicle_year"
+    t.string   "vehicle_make"
+    t.string   "vehicle_model"
+    t.string   "vehicle_trim"
+    t.string   "vehicle_type"
+    t.string   "vehicle_doors"
+    t.string   "vehicle_size"
     t.string   "license_plate_number"
     t.string   "state_registered"
-    t.string   "color"
-    t.text     "comments"
-    t.integer  "vehicle_id"
-    t.integer  "company_id"
-    t.integer  "site_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.string   "vehicle_color"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "clienteles", :force => true do |t|
@@ -100,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20130725015326) do
   add_index "clienteles", ["user_id"], :name => "index_clienteles_on_user_id"
 
   create_table "companies", :force => true do |t|
-    t.string   "company_id"
+    t.string   "corporate_id"
     t.string   "name"
     t.string   "description"
     t.string   "corporate_email_domain"
