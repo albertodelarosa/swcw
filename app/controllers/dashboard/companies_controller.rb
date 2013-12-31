@@ -1,7 +1,11 @@
 class Dashboard::CompaniesController < Dashboard::DashboardsController
+  before_filter { add_breadcrumb "companies", dashboard_companies_path, "glyphicon-briefcase" }
+
   # GET /dashboard/companies
   # GET /dashboard/companies.json
   def index
+    add_breadcrumb "all", nil, "glyphicon-list"
+
     @companies = Company.all
 
     respond_to do |format|
@@ -13,6 +17,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # GET /dashboard/companies/1
   # GET /dashboard/companies/1.json
   def show
+    add_breadcrumb "all", nil, "glyphicon-screenshot"
+
     @company = Company.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +30,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # GET /dashboard/companies/new
   # GET /dashboard/companies/new.json
   def new
+    add_breadcrumb "add", nil, "glyphicon-plus-sign"
+
     @companies = Company.all
     @company = Company.new
 
@@ -35,6 +43,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
 
   # GET /dashboard/companies/1/edit
   def edit
+    add_breadcrumb "edit", nil, "glyphicon-edit"
+
     @company = Company.find(params[:id])
   end
 

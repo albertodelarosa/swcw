@@ -1,20 +1,26 @@
 - if user_signed_in?
   .breadcrumb-container
     %ol.breadcrumb
-      - index = 0
-      - @breadcrumbs.each do |name, path, icon|
-        - if index == 0
+      - @breadcrumbs.each_with_index do |breadcrumb, index|
+        - name = breadcrumb[0]
+        - path = breadcrumb[1]
+        - icon = breadcrumb[2]
+        -if index == @breadcrumbs.size-1
           %li.active
-            = link_to path do 
+            -if name.eql?("home")
+              %span{class: "glyphicon #{icon}"}
+            -else
               - if icon
                 %span{class: "glyphicon #{icon}"}
-              - else
-                = name
-        - else
-          %li
-            = link_to path do 
               = name
-              - if icon
+        -else
+          %li
+            -if name.eql?("home")
+              = link_to path do 
                 %span{class: "glyphicon #{icon}"}
-        - index+=1
+            -else
+              = link_to path do 
+                - if icon
+                  %span{class: "glyphicon #{icon}"}
+                = name
 

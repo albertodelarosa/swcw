@@ -1,9 +1,10 @@
 class Dashboard::VehiclesController < Dashboard::DashboardsController
+  before_filter { add_breadcrumb "vehicles", dashboard_vehicles_path, "glyphicon-dashboard" }
+
   # GET /customers/vehicles
   # GET /customers/vehicles.json
   def index
-    add_breadcrumb 'Customer', '<a href="/customers">Customer</a>'
-    add_breadcrumb 'Customer', 'Vehicles'
+    add_breadcrumb "all", nil, "glyphicon-list"
 
     #@vehicles = Vehicle.all
     @vehicles = current_user.vehicles || []
@@ -17,6 +18,8 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # GET /customers/vehicles/1
   # GET /customers/vehicles/1.json
   def show
+    add_breadcrumb "all", nil, "glyphicon-screenshot"
+
     @vehicle = Vehicle.find(params[:id])
     #if current_user.vehicles.contain?(@vehicle)
 
@@ -30,6 +33,8 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # GET /customers/vehicles/new
   # GET /customers/vehicles/new.json
   def new
+    add_breadcrumb "add", nil, "glyphicon-plus-sign"
+
     @vehicle  = Vehicle.new
     @years    = VehicleYear.all
     @makes    = []
@@ -47,6 +52,8 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
 
   # GET /customers/vehicles/1/edit
   def edit
+    add_breadcrumb "edit", nil, "glyphicon-edit"
+
     @vehicle = Vehicle.find(params[:id])
   end
 

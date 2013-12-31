@@ -1,7 +1,11 @@
 class Dashboard::AppointmentsController < Dashboard::DashboardsController
+  before_filter { add_breadcrumb "appointments", dashboard_appointments_path, "glyphicon-time" }
+
   # GET /dashboard/appointments
   # GET /dashboard/appointments.json
   def index
+    add_breadcrumb "all", nil, "glyphicon-list"
+
     @appointments = Appointment.all
 
     respond_to do |format|
@@ -13,6 +17,8 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
   # GET /dashboard/appointments/1
   # GET /dashboard/appointments/1.json
   def show
+    add_breadcrumb "all", nil, "glyphicon-screenshot"
+
     @appointment = Appointment.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +30,8 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
   # GET /dashboard/appointments/new
   # GET /dashboard/appointments/new.json
   def new
+    add_breadcrumb "add", nil, "glyphicon-plus-sign"
+
     @appointments = Appointment.all
     @appointment = Appointment.new
 
@@ -35,6 +43,8 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
 
   # GET /dashboard/appointments/1/edit
   def edit
+    add_breadcrumb "edit", nil, "glyphicon-edit"
+
     @appointment = Appointment.find(params[:id])
   end
 

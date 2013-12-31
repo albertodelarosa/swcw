@@ -1,7 +1,11 @@
 class Dashboard::SitesController < Dashboard::DashboardsController
+  before_filter { add_breadcrumb "sites", dashboard_sites_path, "glyphicon-wrench" }
+
   # GET /customers/sites
   # GET /customers/sites.json
   def index
+    add_breadcrumb "all", nil, "glyphicon-list"
+
     @sites = Site.all
 
     respond_to do |format|
@@ -13,6 +17,8 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # GET /customers/sites/1
   # GET /customers/sites/1.json
   def show
+    add_breadcrumb "all", nil, "glyphicon-screenshot"
+
     @site = Site.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +30,8 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # GET /customers/sites/new
   # GET /customers/sites/new.json
   def new
+    add_breadcrumb "add", nil, "glyphicon-plus-sign"
+
     @site = Site.new
 
     respond_to do |format|
@@ -34,6 +42,8 @@ class Dashboard::SitesController < Dashboard::DashboardsController
 
   # GET /customers/sites/1/edit
   def edit
+    add_breadcrumb "edit", nil, "glyphicon-edit"
+
     @site = Site.find(params[:id])
   end
 
