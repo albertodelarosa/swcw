@@ -8,8 +8,9 @@
             %ul
               - @company.errors.full_messages.each do |msg|
                 %li= msg
-        = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-          - panel.header_col(col_size: 12) do
+        = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+          - size = 12
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
             %h4= "Add a Company #{current_user.first_name}"
           - panel.body do
             = render partial: 'dashboard/companies/form', locals: {f: f}
@@ -21,16 +22,19 @@
               = f.submit 'Add', class: "btn btn-success btn-block"
     - else
       -@companies.each do |company|
-        = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-          - panel.header_col(col_class: 'edit', col_size: 3) do
-            .h3
+        = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+          - size = 3
+          - panel.header_col(class: 'edit', xs: 4,sm: size,md:size,lg:size) do
+            .h4
               = link_to edit_dashboard_company_path(company) do
                 %span.glyphicon.glyphicon-edit
                 edit
-          - panel.header_col(col_class: 'name', col_size: 8) do
-            .h3= company.name
-          - panel.header_col(col_class: 'delete', col_size: 1) do
-            .h3
+          - size = 8
+          - panel.header_col(class: 'name', xs: 6,sm: size,md:size,lg:size) do
+            .h4= company.name
+          - size = 1
+          - panel.header_col(class: 'delete', xs: 2,sm: size,md:size,lg:size) do
+            .h4
               = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
                 %span.glyphicon.glyphicon-trash
           - panel.body do
@@ -38,32 +42,36 @@
               = image_tag("holder.png", class: "img-responsive")
             .panel-body-address.col-sm-9.col-md-9
               %table.table.table-condensed.table-striped.table-hover
-                .col-sm-4.col-md-4
-                  %h4
-                    Contact Information
-                .col-sm-8.col-md-8
-                  %h4
+                .col-sm-3.col-md-3
+                  %h5
+                    Contact Info
+                .col-sm-9.col-md-9
+                  %h6
                     = company.corporate_email_domain
                 %tr
                   %th email
                   %th mobile
-                  %th phone1
-                  %th ext
-                  %th phone2
-                  %th fax
                 %tr
                   %td
                     = company.contact_info.email
-                    = "(415) 555-5555"
+                    = company.corporate_email_domain
                   %td
                     = company.contact_info.mobile
                     = "(415) 555-5555"
+                %tr
+                  %th phone1
+                  %th ext
+                %tr
                   %td
                     = company.contact_info.phone1
                     = "(415) 555-5555"
                   %td
                     = company.contact_info.ext
                     = "x3456"
+                %tr
+                  %th phone2
+                  %th fax
+                %tr
                   %td
                     = company.contact_info.phone2
                     = "(415) 555-5555"
@@ -72,7 +80,7 @@
                     = "(415) 555-5555"
               %table.table.table-condensed.table-striped.table-hover
                 .col-sm-12.col-md-12
-                  %h4
+                  %h5
                     Address
                 %tr
                   %th street1

@@ -7,9 +7,8 @@
           %ul
             - @site.errors.full_messages.each do |msg|
               %li= msg
-      = BootstrapHelper::Panel.new(contextual: 'panel-primary', footer: '', title:"") do |panel|
-        - panel.header do
-          = render partial: 'shared/panel_header', locals: {title: "Add a Site #{current_user.first_name}"}
+      = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
+        = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Site #{current_user.first_name}"}
         - panel.body do
           = render partial: 'form', locals: {f: f}
         - panel.footer do 

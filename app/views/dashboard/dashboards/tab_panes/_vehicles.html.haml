@@ -9,8 +9,9 @@
               - @vehicle.errors.full_messages.each do |msg|
                 %li= msg
 
-        = BootstrapHelper::Panel.new(contextual: 'panel-info', footer: '', title:"") do |panel|
-          - panel.header_col(col_size: 6) do
+        = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+          - size = 6
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
             %h4= "Add a Vehicle #{current_user.first_name}"
           - panel.body do
             = render partial: 'dashboard/vehicles/form', locals: {f: f}
@@ -22,21 +23,23 @@
               = f.submit 'Add', class: "btn btn-success btn-block"
     - else
       -@vehicles.each_with_index do |vehicle, index|
-        .panel.panel-info.panel-inner
-          .panel-heading
-            .row
-              .edit.col-sm-1.col-md-1
-                %h4
-                  = link_to edit_dashboard_vehicle_path(vehicle) do
-                    %span.glyphicon.glyphicon-edit
-              .name.col-sm-10.col-md-10
-                %h3
-                  = "#{vehicle.vehicle_years[index].name} #{vehicle.vehicle_models[index].name} #{vehicle.vehicle_trims[index].name}"
-              .delete.col-sm-1.col-md-1
-                %h4
-                  = link_to dashboard_vehicle_path(vehicle), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-                    %span.glyphicon.glyphicon-trash
-          .panel-body
+        = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+          - size = 3
+          - panel.header_col(class: "edit", xs: 4,sm: size,md:size,lg:size) do
+            .h4
+              = link_to edit_dashboard_vehicle_path(vehicle) do
+                %span.glyphicon.glyphicon-edit
+                  edit
+          - size = 8
+          - panel.header_col(class: 'name', xs: 6,sm: size,md:size,lg:size) do
+            .h4
+              = "#{vehicle.vehicle_years[index].name} #{vehicle.vehicle_models[index].name} #{vehicle.vehicle_trims[index].name}"
+          - size = 1
+          - panel.header_col(class: 'delete', xs: 2,sm: size,md:size,lg:size) do
+            .h4
+              = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                %span.glyphicon.glyphicon-trash
+          - panel.body do
             .panel-body-pic.col-sm-3.col-md-3.pull-left
               = image_tag("holder.png", class: "img-responsive")
             .panel-body-address.col-sm-9.col-md-9.pull-left
@@ -81,4 +84,5 @@
                     = vehicle.state_registered
                   -#%td
                     -#= vehicle_sizes[index].name 
+
 

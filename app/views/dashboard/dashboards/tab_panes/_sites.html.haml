@@ -8,8 +8,9 @@
             %ul
               - @site.errors.full_messages.each do |msg|
                 %li= msg
-        = BootstrapHelper::Panel.new(contextual: 'panel-info', footer: '', title:"") do |panel|
-          - panel.header_col(col_size: 6) do
+        = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+          - size = 12
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
             %h4= "Add a Site #{current_user.first_name}"
           - panel.body do
             = render partial: 'dashboard/sites/form', locals: {f: f}
@@ -21,17 +22,20 @@
               = f.submit 'Add', class: "btn btn-success btn-block"
     - else
       -@sites.each do |site|
-        = BootstrapHelper::Panel.new(contextual: 'panel-info', footer: '', title:"") do |panel|
-          - panel.header_col(col_size: 3) do
-            %h4
+        = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+          - size = 3
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
+            .h4
               = link_to edit_dashboard_site_path(site) do
                 %span.glyphicon.glyphicon-edit
                 edit
-          - panel.header_col(col_size: 8) do
-            %h3
+          - size = 8
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
+            .h4
               = site.name
-          - panel.header_col(col_size: 1) do
-            %h4
+          - size = 1
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
+            .h4
               = link_to dashboard_site_path(site), :method => :delete, :data => { :confirm => 'Are you sure?' } do
                 %span.glyphicon.glyphicon-trash
           - panel.body do

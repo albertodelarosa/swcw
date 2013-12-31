@@ -8,23 +8,32 @@
             %ul
               - @appointment.errors.full_messages.each do |msg|
                 %li= msg
-        = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-          - panel.header_col(col_size: 12) do
+        = BootstrapHelper::Panel.new(contextual: 'info', title:"", footer:"") do |panel|
+          - size = 12
+          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
             %h4= "Make an Appointment #{current_user.first_name}"
           - panel.body do
-            %p
-              TODO
+            = render partial: 'dashboard/appointments/form', locals: {f: f}
+          - panel.footer do
+            .col-xs-3.col-sm-3.col-md-3.col-lg-3
+            .col-xs-3.col-sm-2.col-md-2.col-lg-2
+              = f.submit 'Save', class: "btn btn-success btn-block"
     - else
-      = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-        - panel.header_col(col_size: 6) do
-          %h4= "Make appointment #{current_user.first_name}"
+      = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+        - size = 12
+        - panel.header_col(xs: size,sm: size,md:size,lg:size) do
+          %h4= "My Appointments"
         - panel.body do
+          = @appointments.to_s
+          -#- @appointments.each do |appointment|
+            -#= appointment.appointment_date
           %p
             TODO
   .col-ms-12.col-md-12
-    = BootstrapHelper::Panel.new(contextual: 'panel-info', title:"") do |panel|
-      - panel.header_col(col_size: 6) do
-        %h4= "Past Appointments #{current_user.first_name}"
+    = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+      - size = 12
+      - panel.header_col(xs: size,sm: size,md:size,lg:size) do
+        %h4= "Make appointment #{current_user.first_name}"
       - panel.body do
         %p
           TODO

@@ -1,8 +1,7 @@
 .row
   .container
-    = BootstrapHelper::Panel.new(contextual: 'panel-primary', title:"", footer: '') do |panel|
-      - panel.header(header_class: "#{controller.controller_name}_#{controller.action_name}") do
-        = render partial: 'shared/panel_header', locals: {title: "Dashboard"}
+    = BootstrapHelper::Panel.new(contextual: 'primary', title:"", footer: '', header_class: "#{controller.controller_name}_#{controller.action_name}" ) do |panel|
+      = render partial: 'shared/panel_header', locals: {panel: panel, title: "Dashboard"}
       - panel.body do
         - opts={navs: 'nav-tabs', nav_tab_id: 'dashboardTab', tab_content_id: 'dashboardTabContent'}
         = BootstrapHelper::Nav.new(opts) do |nav|

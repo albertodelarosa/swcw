@@ -1,12 +1,16 @@
-.col-xs-3.col-sm-3.col-md-3.col-lg-3
+- size = 3
+- panel.header_col(xs: 12,sm: size,md:size,lg:size) do
   %h4
     = title
 - if controller.controller_name.eql?("dashboards") && controller.action_name.eql?("index")
-  .col-xs-9.col-sm-9.col-md-9.col-lg-9
+  - size = 9
+  - panel.header_col(xs: 12,sm: size,md:size,lg:size) do
     = render "shared/breadcrumbs"
 - else
-  .col-xs-7.col-sm-7.col-md-7.col-lg-7
+  - size = 7
+  - panel.header_col(xs: 8,sm: size,md:size,lg:size) do
     = render "shared/breadcrumbs"
-  .col-xs-2.col-sm-2.col-md-2.col-lg-2
+  - size = 2
+  - panel.header_col(xs: 4,sm: size,md:size,lg:size) do
     = link_to "Back", :back, class: "btn btn-warning btn-block"
 

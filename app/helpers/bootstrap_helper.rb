@@ -1,182 +1,127 @@
 module BootstrapHelper
 
-  #========================== EXAMPLE ==========================
-  #= BootstrapHelper::Panel.new(contextual: 'panel-info', title: '', footer: '') do |panel|
-    #- panel.header do 
-      #Anastacia de la Rosa
+#=============== EXAMPLE =============== EXAMPLE =============== EXAMPLE ===============
+  #= BootstrapHelper::Panel.new(contextual: 'info', title: '', footer: '') do |panel|
+    #- panel.header_col(xs:1, sm:2, md:3 lg:4) do 
+      #= &block
 
     #- panel.body do
-      #= render "shared/breadcrumbs"
+      #= &block
 
     #-panel.footer do
-      #I too have a footer
+      #= &block
+
   class Panel
     attr_accessor :id, :header, :body, :footer
 
     def initialize(opts={}, &block)
       @uuid = UUID.generate
-      @main_id = opts[:id] || @uuid
-      @main_class = opts[:main_class] || ''
+      @panel_id = opts[:id] || @uuid
+      @panel_class = opts[:class] || ''
+      @header_class = opts[:header_class] || ''
       @ctx = RequestStore.store.fetch(:current_view_context)
 
       @contextual = ((!opts[:contextual]) or (opts[:contextual] == "")) ? @contextual = 'panel-default' : @contextual = opts[:contextual]
       @has_a_footer = opts[:footer] ?  true : false
       @has_a_title = opts[:title] ?  true : false
       @header = ''
+      @body = ''
+      @footer = ''
       yield(self)
     end
 
-    def header(opts={}, &block)
-      @header_class = opts[:header_class] || ''
-      @header = @ctx.capture(&block)
-      return nil
-    end
-
     def header_col(opts={}, &block)
-      col_size  = opts[:col_size]
-      col_class = opts[:col_class] || ''
-      content   = @ctx.capture(&block)
+      uuid = UUID.generate
+      col_id = "#" + ("#{uuid}")
+      col_class = "col-xs-#{opts[:xs]} col-sm-#{opts[:sm]} col-md-#{opts[:md]} col-lg-#{opts[:lg]} #{opts[:class]}"
 
-      @header += <<-END
-        <div class="col-xs-#{col_size} col-sm-#{col_size} col-md-#{col_size} col-lg-#{col_size} #{col_class}">#{content}</div>
-      END
-      @header.html_safe
+      @header += content_tag :div, {id: col_id, class: col_class} do
+        @ctx.capture(&block)
+      end
+      @header
     end
 
     def body(opts={}, &block)
-      @body = @ctx.capture(&block)
-      return nil
+      uuid = UUID.generate
+      col_id = "#" + "#{opts[:id]}" || "#{uuid}"
+      @body = content_tag :div, {id: col_id, class: "panel-body #{:class}"} do 
+        @ctx.capture(&block)
+      end
+      @body
     end
 
     def footer(opts={}, &block)
-      @footer = @ctx.capture(&block)
-      return nil
+      uuid = UUID.generate
+      col_id = "#" + "#{opts[:id]}" || "#{uuid}"
+      @footer = content_tag :div, {id: col_id, class: "panel-footer #{opts[:class]}"} do 
+        content_tag :div, { class: "row" } do 
+          @ctx.capture(&block)
+        end
+      end
+      @footer
     end
 
     def to_s
-      ret = <<-END
-        <div id="#{@main_id}" class="panel #{@contextual} #{@main_class}">
-      END
-      if @has_a_title
-        ret += <<-END
-          <div class="panel-heading  #{@header_class}">
-            <div class="panel-title">
-              <div class="row">
-              #{@header}
-            </div>
-            </div>
-          </div>
-        END
-      else
-        ret += <<-END
-          <div class="panel-heading #{@header_class}">
-            <div class="row">
-            #{@header}
-            </div>
-          </div>
-        END
+      uuid = UUID.generate
+      panel_id = "#" + @panel_id || uuid
+      ret = content_tag :div, {id: panel_id, class: "panel panel-#{@contextual} #{@panel_class}"} do
+        content = content_tag :div, { class: "panel-heading #{@header_class}" } do
+          if @has_a_title
+            content_tag :div, { class: "panel-title" } do
+              content_tag :div, { class: "row" } do
+                @header.html_safe
+              end
+            end
+          else
+            content_tag :div, { class: "row"} do
+              @header.html_safe
+            end
+          end
+        end
+        content += @body.html_safe
+        @has_a_footer ? content += @footer.html_safe : content.html_safe
       end
-      ret += <<-END
-          <div class="panel-body">
-            #{@body}
-          </div>
-      END
-      if @has_a_footer
-        ret += <<-END
-            <div class="panel-footer">
-              <div class="row">
-                #{@footer}
-              </div>
-            </div>
-        END
-      end
-      ret += <<-END
-        </div>
-      END
       ret.html_safe
     end
   end
 
   class Nav
-
     def initialize(opts={}, &block)
       @navs = opts[:navs]
       @lis  = ''
       @tabs = ''
       @ctx = RequestStore.store.fetch(:current_view_context)
 
-      uuid = UUID.generate
-      @nav_tab_id         = opts[:nav_tab_id]         || uuid
+      @nav_tab_id         = opts[:nav_tab_id]         || UUID.generate
       @nav_tab_class      = opts[:nav_tab_class]      || ''
 
-      uuid = UUID.generate
-      @tab_content_id     = opts[:tab_content_id]     || uuid
+      @tab_content_id     = opts[:tab_content_id]     || UUID.generate
       @tab_content_class  = opts[:tab_content_class]  || ''
-
 
       yield(self)
     end
 
     def nav_li(opts={}, &block)
-      uuid = UUID.generate
-      li_id     = opts[:li_id]    || uuid
-      li_class  = opts[:li_class] || ''
-
-      uuid = UUID.generate
-      a_id      = opts[:a_id]     || uuid
-      a_class   = opts[:a_class]  || ''
-      a_href    = opts[:a_href]   || ''
-
-      anchor_content = @ctx.capture(&block)
-
-      if opts[:active]
-        @lis += <<-END
-          <li id="#{li_id}" class="#{li_class} active">
-            <a id="#{a_id}" class="#{a_class}" href="#{a_href}" data-toggle="tab">
-              #{anchor_content}
-            </a>
-          </li>
-        END
-      else
-        @lis += <<-END
-          <li id="#{li_id}" class="#{li_class}">
-            <a id="#{a_id}" class="#{a_class}" href="#{a_href}" data-toggle="tab">
-              #{anchor_content}
-            </a>
-          </li>
-        END
+      @lis += content_tag :li, { id: opts[:li_id] ? "#{ opts[:li_id] }" : UUID.generate, class: opts[:active] ? "#{ opts[:li_class] } active" : "#{ opts[:li_class] }" } do 
+        content_tag :a, { id: opts[:a_id] ? "#{ opts[:a_id] }" : UUID.generate, class: opts[:a_class] ? "#{ opts[:a_class] }" : "", href: opts[:a_href] ? "#{ opts[:a_href] }" : "#",  data: {toggle: "tab"} } do
+          @ctx.capture(&block)
+        end
       end
-      @lis.html_safe
     end
 
     def nav_pane(opts={}, &block)
-
-      uuid = UUID.generate
-      tab_id              = opts[:tab_id]             || uuid
-      tab_class           = opts[:tab_class]          || ''
-      tab_content         = @ctx.capture(&block)
-
-      if opts[:active]
-        @tabs += <<-END
-          <div class="tab-pane fade in active #{tab_class}" id="#{tab_id}">#{tab_content}</div>
-        END
-      else
-        @tabs += <<-END
-          <div class="tab-pane fade #{tab_class}" id="#{tab_id}">#{tab_content}</div>
-        END
+      @tabs += content_tag :div, { id: opts[:tab_id] ? opts[:tab_id] : UUID.generate, class: opts[:active] ? "tab-pane fade in active #{opts[:tab_class]}" : "tab-pane fade #{opts[:tab_class]}" } do
+        @ctx.capture(&block)
       end
-      @tabs.html_safe
     end
 
     def to_s
-      ret = <<-END
-        <ul  id="#{@nav_tab_id}" class="nav nav-tabs #{@nav_tab_class}">
-          #{@lis}
-        </ul>
-        <div id="#{@tab_content_id}" class="tab-content #{@tab_content_class}">
-          #{@tabs}
-        </div>
-      END
+      ret = content_tag :ul, { id: @nav_tab_id, class: "nav nav-tabs #{@nav_tab_class}" } do
+        @lis.html_safe
+      end
+      ret += content_tag :div, { id: @tab_content_id, class: "tab-content #{@tab_content_class}" } do
+        @tabs.html_safe
+      end
       ret.html_safe
     end
   end

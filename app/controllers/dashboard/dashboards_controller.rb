@@ -11,26 +11,18 @@ class Dashboard::DashboardsController < ApplicationController
     @vehicles = current_user.vehicles || []
     @companies = current_user.companies || []
     @sites = current_user.sites || []
-    @appointments = current_user.sites || []
-    if current_user.appointments.empty?
-      @appointment = Appointment.new
-    end
-    if current_user.companies.empty?
-      @company = Company.new
-    end
-    if current_user.sites.empty?
-      @site = Site.new
-    end
-    if current_user.vehicles.empty?
-      @vehicle  = Vehicle.new
-      @years    = VehicleYear.all
-      @makes    = []
-      @models   = []
-      @trims    = []
-      @types    = []
-      @doors    = []
-      @sizes    = []
-    end
+    @appointments = current_user.appointments || []
+    @appointment = Appointment.new
+    @company = Company.new
+    @site = Site.new
+    @vehicle  = Vehicle.new
+    @years    = VehicleYear.all
+    @makes    = []
+    @models   = []
+    @trims    = []
+    @types    = []
+    @doors    = []
+    @sizes    = []
   end
 
   def create_vehicle
