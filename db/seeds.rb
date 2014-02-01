@@ -45,8 +45,8 @@ puts "================= CLEARED ALL SETTINGS ================="
 
 puts "Adding developer users..."
 developers = User.create([
-   {username: 'betodelarosa', email: 'alberto.g.delarosa@gmail.com', password: 'password'},
-   {username: 'ibaraku',      email: 'ibaraku@gmail.com',            password: 'password'}
+   {username: 'betodelarosa', email: 'alberto.g.delarosa@gmail.com', password: 'password'}, 
+   {username: 'developers',   email: 'developers@sitlerwash.com',    password: 'password'}
 ])
 
 puts "Adding new default home addresses..."

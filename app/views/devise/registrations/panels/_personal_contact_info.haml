@@ -1,19 +1,24 @@
-- resource.home_contact_info ||= resource.build_home_contact_info
-= f.fields_for :home_contact_info do |hci|
-  .form-group
-    = f.label :mobile, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = hci.text_field :mobile, class: "form-control", placeholder: "mobile number"
-  .form-group
-    = f.label :phone1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = hci.text_field :phone1, class: "form-control", placeholder: "phone number 1"
-  .form-group
-    = f.label :phone2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = hci.text_field :phone2, class: "form-control", placeholder: "phone number 2"
-  .form-group
-    = f.label :fax, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = hci.text_field :fax, class: "form-control", placeholder: "fax number"
+= BootstrapHelper::Panel.new(contextual: 'info', title: '') do |personal_contact_panel|
+  - personal_contact_panel.header_col(xs: size,sm: size,md:size,lg:size) do 
+    .h4
+      Personal Contact Information
+  - personal_contact_panel.body do
+    - resource.home_contact_info ||= resource.build_home_contact_info
+    = f.fields_for :home_contact_info do |hci|
+      .form-group
+        = f.label :mobile, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = hci.text_field :mobile, class: "form-control", placeholder: "mobile number"
+      .form-group
+        = f.label :phone1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = hci.text_field :phone1, class: "form-control", placeholder: "phone number 1"
+      .form-group
+        = f.label :phone2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = hci.text_field :phone2, class: "form-control", placeholder: "phone number 2"
+      .form-group
+        = f.label :fax, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = hci.text_field :fax, class: "form-control", placeholder: "fax number"
 

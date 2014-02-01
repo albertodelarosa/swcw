@@ -1,57 +1,13 @@
-.container
-  .row
-    .col-sm-3.col-md-3
-      %h3
-        Unhappy?
-      %h3
-        #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger"}
-
-    .col-sm-9.col-md-9
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal", role: "form" }) do |f|
-        = BootstrapHelper::Panel.new(contextual: 'panel-success', title: '', footer: '') do |panel|
-          - panel.header_col(col_size: 10) do 
-            %h4
-              Edit #{resource_name.to_s.humanize}
-          - panel.header_col(col_size: 2) do 
-            = link_to "Back", :back, class: "btn btn-warning btn-block"
-
-          - panel.body do
-            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |login_info_panel|
-              - login_info_panel.header_col(col_size: 12) do 
-                .h4
-                  User Information
-              - login_info_panel.body do
-                = render partial: "/devise/registrations/panels/login_info", locals: {f: f}
-            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |business_contact_info_panel|
-              - business_contact_info_panel.header_col(col_size: 12) do 
-                .h4
-                  Business Contact Information
-              - business_contact_info_panel.body do
-                = render partial: "/devise/registrations/panels/business_contact_info", locals: {f: f}
-            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |business_address_panel|
-              - business_address_panel.header_col(col_size: 12) do 
-                .h4
-                  Business Address Information
-              - business_address_panel.body do
-                = render partial: "/devise/registrations/panels/business_address_info", locals: {f: f}
-            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |personal_contact_panel|
-              - personal_contact_panel.header_col(col_size: 12) do 
-                .h4
-                  Personal Contact Information
-              - personal_contact_panel.body do
-                = render partial: "/devise/registrations/panels/personal_contact_info", locals: {f: f}
-            = BootstrapHelper::Panel.new(contextual: 'panel-info', title: '') do |personal_address_panel|
-              - personal_address_panel.header_col(col_size: 12) do 
-                .h4
-                  Personal Address Information
-              - personal_address_panel.body do
-                = render partial: "/devise/registrations/panels/personal_address_info", locals: {f: f}
-          -panel.footer do
-            .col-sm-9.col-md-9
-            .col-sm-3.col-md-3
-              = f.submit "Update", class: "btn btn-success btn-block"
-
-
+- if user_signed_in?
+  .container
+    .row
+      .col-sm-3.col-md-3
+        %h3
+          Unhappy?
+        %h3
+          #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger"}
+      .col-sm-9.col-md-9
+        = render "form"
 -#%h2
   -#Edit #{resource_name.to_s.humanize}
 -#= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|

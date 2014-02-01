@@ -1,7 +1,8 @@
 .row
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f|
-    = BootstrapHelper::Panel.new(contextual: 'panel-primary', title: '', footer: '') do |panel|
-      - panel.header_col(col_size: 12) do 
+    = BootstrapHelper::Panel.new(contextual: 'primary', title: '', footer: '') do |panel|
+      - size = 12
+      - panel.header_col(xs: size,sm: size,md:size,lg:size) do
         %h4 Sign in
       - panel.body do
         .form-group

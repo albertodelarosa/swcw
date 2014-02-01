@@ -1,0 +1,35 @@
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}, role: 'form') do |f|
+  - size = 12
+  = BootstrapHelper::Panel.new(contextual: (controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")) ? 'success' : 'primary', title: '', footer: '') do |panel|
+    - if controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
+      - size = 10
+      - panel.header_col(xs: size,sm: size,md:size,lg:size) do 
+        %h4
+          Edit #{resource_name.to_s.humanize}
+      - size = 2
+      - panel.header_col(xs: size,sm: size,md:size,lg:size) do 
+        = link_to "Back", :back, class: "btn btn-warning btn-block"
+    - else
+      - panel.header_col(xs: size,sm: size,md:size,lg:size) do
+        %h4
+          Register an Account
+    - panel.body do
+      = render partial: "/devise/registrations/panels/login_info", locals: {f: f, size: size}
+      = render partial: "/devise/registrations/panels/business_contact_info", locals: {f: f, size: size}
+      = render partial: "/devise/registrations/panels/business_address_info", locals: {f: f, size: size}
+      = render partial: "/devise/registrations/panels/personal_contact_info", locals: {f: f, size: size}
+      = render partial: "/devise/registrations/panels/personal_address_info", locals: {f: f, size: size}
+    - panel.footer do
+      - if controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
+        .col-sm-9.col-md-9
+        .col-sm-3.col-md-3
+          = f.submit "Update", class: "btn btn-success btn-block"
+      - else
+        .col-sm-8.col-md-8.btn-group
+          = render "devise/shared/links_omniauthable"
+          = render "devise/shared/links_sign_in"
+        .col-sm-2.col-md-2
+          %button.btn.btn-danger.btn-block{"data-dismiss" => "modal", :type => "button"} cancel
+        .col-sm-2.col-md-2
+          = f.submit "register", class: 'btn btn-large btn-success btn-block'
+

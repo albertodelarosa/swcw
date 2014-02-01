@@ -1,27 +1,32 @@
-- resource.work_address ||= resource.build_work_address
-= f.fields_for :work_address do |wa|
-  .form-group
-    = f.label :street1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = wa.text_field :street1, class: "form-control", placeholder: "street address 1"
-  .form-group
-    = f.label :suite_no, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = wa.text_field :suite_no, class: "form-control", placeholder: "suite number"
-  .form-group
-    = f.label :street2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = wa.text_field :street2, class: "form-control", placeholder: "street address 2"
-  .form-group
-    = f.label :city, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = wa.text_field :city, class: "form-control", placeholder: "city"
-  .form-group
-    = f.label :state, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = wa.text_field :state, class: "form-control", placeholder: "state"
-  .form-group
-    = f.label :zip, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-    .col-sm-6.col-md-6
-      = wa.text_field :zip, class: "form-control", placeholder: "zip code"
+= BootstrapHelper::Panel.new(contextual: 'info', title: '') do |business_address_panel|
+  - business_address_panel.header_col(xs: size,sm: size,md:size,lg:size) do 
+    .h4
+      Business Address Information
+  - business_address_panel.body do
+    - resource.work_address ||= resource.build_work_address
+    = f.fields_for :work_address do |wa|
+      .form-group
+        = f.label :street1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = wa.text_field :street1, class: "form-control", placeholder: "street address 1"
+      .form-group
+        = f.label :suite_no, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = wa.text_field :suite_no, class: "form-control", placeholder: "suite number"
+      .form-group
+        = f.label :street2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = wa.text_field :street2, class: "form-control", placeholder: "street address 2"
+      .form-group
+        = f.label :city, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = wa.text_field :city, class: "form-control", placeholder: "city"
+      .form-group
+        = f.label :state, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = wa.text_field :state, class: "form-control", placeholder: "state"
+      .form-group
+        = f.label :zip, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+        .col-sm-6.col-md-6
+          = wa.text_field :zip, class: "form-control", placeholder: "zip code"
 

@@ -1,10 +1,10 @@
-#myModal.modal.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
-  = render "devise/registrations/new"
+= render "devise/registrations/form_welcome"
 
-
-
-
-
+-##myModal.modal.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+  -#%button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+  -#.row
+    -#.container
+      -#= render "devise/registrations/form_welcome"
 
 
 

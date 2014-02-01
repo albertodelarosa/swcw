@@ -1,17 +1,18 @@
+include ActionView::Helpers::TagHelper
+include ActionView::Context
+
 module BootstrapHelper
 
-#=============== EXAMPLE =============== EXAMPLE =============== EXAMPLE ===============
-  #= BootstrapHelper::Panel.new(contextual: 'info', title: '', footer: '') do |panel|
-    #- panel.header_col(xs:1, sm:2, md:3 lg:4) do 
-      #= &block
+  class Base
+    attr_accessor :id
 
-    #- panel.body do
-      #= &block
+    def initialize(id=nil, &block)
+      @ctx = RequestStore.store.fetch(:current_view_context)
+      yield(self)
+    end
+  end
 
-    #-panel.footer do
-      #= &block
-
-  class Panel
+  class Panel < Base
     attr_accessor :id, :header, :body, :footer
 
     def initialize(opts={}, &block)
@@ -22,8 +23,9 @@ module BootstrapHelper
       @ctx = RequestStore.store.fetch(:current_view_context)
 
       @contextual = ((!opts[:contextual]) or (opts[:contextual] == "")) ? @contextual = 'panel-default' : @contextual = opts[:contextual]
-      @has_a_footer = opts[:footer] ?  true : false
-      @has_a_title = opts[:title] ?  true : false
+      @has_heading = opts[:no_heading] ?  false : true
+      @has_title = opts[:title] ?  true : false
+      @has_footer = opts[:footer] ?  true : false
       @header = ''
       @body = ''
       @footer = ''
@@ -35,7 +37,7 @@ module BootstrapHelper
       col_id = "#" + ("#{uuid}")
       col_class = "col-xs-#{opts[:xs]} col-sm-#{opts[:sm]} col-md-#{opts[:md]} col-lg-#{opts[:lg]} #{opts[:class]}"
 
-      @header += content_tag :div, {id: col_id, class: col_class} do
+      @header += content_tag :div, nil, {id: col_id, class: col_class} do
         @ctx.capture(&block)
       end
       @header
@@ -65,27 +67,31 @@ module BootstrapHelper
       uuid = UUID.generate
       panel_id = "#" + @panel_id || uuid
       ret = content_tag :div, {id: panel_id, class: "panel panel-#{@contextual} #{@panel_class}"} do
-        content = content_tag :div, { class: "panel-heading #{@header_class}" } do
-          if @has_a_title
-            content_tag :div, { class: "panel-title" } do
-              content_tag :div, { class: "row" } do
+        if @has_heading
+          content = content_tag :div, { class: "panel-heading #{@header_class}" } do
+            if @has_title
+              content_tag :div, { class: "panel-title" } do
+                content_tag :div, { class: "row" } do
+                  @header.html_safe
+                end
+              end
+            else
+              content_tag :div, { class: "row"} do
                 @header.html_safe
               end
             end
-          else
-            content_tag :div, { class: "row"} do
-              @header.html_safe
-            end
           end
+        else
+          content = content_tag :div
         end
         content += @body.html_safe
-        @has_a_footer ? content += @footer.html_safe : content.html_safe
+        @has_footer ? content += @footer.html_safe : content.html_safe
       end
       ret.html_safe
     end
   end
 
-  class Nav
+  class Nav < Base
     def initialize(opts={}, &block)
       @navs = opts[:navs]
       @lis  = ''
