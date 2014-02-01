@@ -1,5 +1,5 @@
 class Dashboard::SitesController < Dashboard::DashboardsController
-  before_filter { add_breadcrumb "sites", dashboard_sites_path, "glyphicon-wrench" }
+  before_filter { add_breadcrumb "sites", dashboard_sites_path, "glyphicon-tower" }
 
   # GET /customers/sites
   # GET /customers/sites.json
