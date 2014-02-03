@@ -8,9 +8,9 @@
     = render "shared/breadcrumbs"
 - else
   - size = 7
-  - panel.header_col(xs: 8,sm: size,md:size,lg:size) do
+  - panel.header_col(xs: 12,sm: size,md:size,lg:size) do
     = render "shared/breadcrumbs"
   - size = 2
-  - panel.header_col(xs: 4,sm: size,md:size,lg:size) do
+  - panel.header_col(xs: 12,sm: size,md:size,lg:size) do
     = link_to "Back", :back, class: "btn btn-warning btn-block"
 

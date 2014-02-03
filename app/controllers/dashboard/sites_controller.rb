@@ -44,6 +44,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def edit
     add_breadcrumb "edit", nil, "glyphicon-edit"
 
+    @sites = current_user.sites
     @site = Site.find(params[:id])
   end
 
@@ -67,17 +68,23 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # PUT /customers/sites/1
   # PUT /customers/sites/1.json
   def update
-    @old_site = Site.find(params[:id])
-    @site = Site.find(params[:site][:id])
+    #@old_site = Site.find(params[:id])
+    site = Site.find(params[:site][:id])
+    if current_user.sites.include?(site)
+      @site = current_user.sites.delete(site)
+    else
+      @site = site
+    end
 
     respond_to do |format|
-      if current_user.sites.delete(@old_site)
-        current_user.sites << @site
+      #if current_user.sites.delete(@old_site)
+      if current_user.sites << @site
         format.html { redirect_to root_path, notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @old_site.errors.errors, status: :unprocessable_entity }
+        format.json { render json: @site.errors.errors, status: :unprocessable_entity }
+        #format.json { render json: @old_site.errors.errors, status: :unprocessable_entity }
       end
     end
   end

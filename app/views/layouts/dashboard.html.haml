@@ -8,7 +8,10 @@
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
     = render "shared/navbar"
     = render "shared/alert", flash: flash
-    = yield
+    .row
+      .container
+        .main-body-wrapper
+          = yield
     = render "shared/footer"
     = javascript_include_tag "application"
     = render "shared/javascripts"

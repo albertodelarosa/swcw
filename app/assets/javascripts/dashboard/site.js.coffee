@@ -2,26 +2,28 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #
-jQuery ->
-  $('#btn').parent().parent().hide()
-  $('#site_id').parent().parent().hide()
+
+ready = ->
+  $("#add_site").attr "disabled", "disabled"
   sites = $('#site_id').html()
-  console.log(sites)
-  $('#company_company_id').change ->
-    $('#btn').parent().parent().fadeOut()
-    company = $('#company_company_id :selected').text()
+  $('#site_id').attr "disabled", "disabled"
+  $('#company_id').change ->
+    $('#site_id').removeAttr "disabled"
+    company = $('#company_id :selected').text()
     escaped_company = company.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
     options = $(sites)
                       .prepend('<option>Select a Site</option>')
                       .filter("optgroup[label=#{escaped_company}]")
                       .html()
-    console.log(options)
     if options
       $('#site_id').html(options)
-      $('#site_id').parent().parent().fadeIn()
+      $('#site_id').removeAttr "disabled"
     else
       $('#site_id').empty()
-      $('#site_id').parent().parent().fadeOut()
+      $('#site_id').attr "disabled", "disabled"
   $('#site_id').change ->
-    $('#btn').parent().parent().fadeIn()
+    $('#add_site').removeAttr "disabled"
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
 

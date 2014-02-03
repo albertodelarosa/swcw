@@ -1,12 +1,16 @@
-%br
-%br
-.row
-  .span1.offset1
-    = link_to 'Back', customers_path
-  .span10
-    %legend 
-      = "edit Site #{@site.name}"
-    = render 'form'
+= render 'form_edit'
+
+
+-#%br
+-#%br
+-#.row
+  -#.span1.offset1
+    -#= link_to 'Back', customers_path
+  -#.span10
+    -#%legend 
+      -#= "edit Site #{@site.name}"
+    -#= render 'form'
+
 -#%h1 Editing customers_site
 
 -#= render 'form'

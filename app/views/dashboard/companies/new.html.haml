@@ -1,18 +1,16 @@
-.row
-  .container
-    = form_for [:dashboard, @company], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
-      - if @company.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
-          %ul
-            - @company.errors.full_messages.each do |msg|
-              %li= msg
-      = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
-        = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Company #{current_user.first_name}"}
-        - panel.body do
-          = render partial: 'form', locals: {f: f}
-        - panel.footer do 
-          .col-xs-4.col-sm-4.col-md-4.col-lg-4
-          .col-xs-3.col-sm-2.col-md-2.col-lg-2
-            = f.submit 'Save', class: "btn btn-success btn-block"
+= form_for [:dashboard, @company], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
+  - if @company.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg
+  = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
+    = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Company #{current_user.first_name}"}
+    - panel.body do
+      = render partial: 'form', locals: {f: f}
+    - panel.footer do 
+      .col-xs-4.col-sm-4.col-md-4.col-lg-4
+      .col-xs-3.col-sm-2.col-md-2.col-lg-2
+        = f.submit 'Save', class: "btn btn-success btn-block"
 

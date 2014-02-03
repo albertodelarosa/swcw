@@ -1,18 +1,2 @@
-.row
-  .container
-    = form_for [:dashboard, @site], html: {class: "form-horizontal", role: "form"} do |f|
-      - if @site.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@site.errors.count, "error")} prohibited this site from being saved:"
-          %ul
-            - @site.errors.full_messages.each do |msg|
-              %li= msg
-      = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
-        = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Site #{current_user.first_name}"}
-        - panel.body do
-          = render partial: 'form', locals: {f: f}
-        - panel.footer do 
-          .col-xs-10.col-sm-10.col-md-10.col-lg-10
-          .col-xs-2.col-sm-2.col-md-2.col-lg-2
-            = f.submit 'Save', class: "btn btn-success btn-block"
+= render 'form'
 

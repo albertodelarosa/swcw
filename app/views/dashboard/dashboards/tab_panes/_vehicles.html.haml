@@ -33,11 +33,11 @@
           - size = 8
           - panel.header_col(class: 'name', xs: 6,sm: size,md:size,lg:size) do
             .h4
-              = "#{vehicle.vehicle_years[index].name} #{vehicle.vehicle_models[index].name} #{vehicle.vehicle_trims[index].name}"
+              = "#{vehicle.vehicle_years.first.name} #{vehicle.vehicle_models.first.name} #{vehicle.vehicle_trims.first.name}"
           - size = 1
           - panel.header_col(class: 'delete', xs: 2,sm: size,md:size,lg:size) do
             .h4
-              = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+              = link_to dashboard_vehicle_path(vehicle), :method => :delete, :data => { :confirm => 'Are you sure?' } do
                 %span.glyphicon.glyphicon-trash
           - panel.body do
             .panel-body-pic.col-sm-3.col-md-3.pull-left
@@ -50,30 +50,22 @@
                   %th Model
                   %th Trim
                   %th Type
-                  %th Doors
                 %tr
                   %td
-                    = vehicle.vehicle_years[index].name
+                    = vehicle.vehicle_years.first.name
                   %td
-                    = vehicle.vehicle_makes[index].name
+                    = vehicle.vehicle_makes.first.name
                   %td
-                    = vehicle.vehicle_models[index].name
+                    = vehicle.vehicle_models.first.name
                   %td
-                    = vehicle.vehicle_trims[index].name
+                    = vehicle.vehicle_trims.first.name
                   %td
-                    = vehicle.vehicle_types[index].name
-                  %td
-                    = vehicle.vehicle_doors[index].name
-                -#%tr
-                  -#%td
-                  -#%td
-                  -#%td
-                  -#%td
-                  -#%td
+                    = vehicle.vehicle_types.first.name
                 %tr
                   %th Color
                   %th License Plate No.
                   %th State
+                  %th Doors
                   -#%th Size
                 %tr
                   %td
@@ -82,7 +74,9 @@
                     = vehicle.license_plate_number
                   %td
                     = vehicle.state_registered
+                  %td
+                    = vehicle.vehicle_doors.first.name
                   -#%td
-                    -#= vehicle_sizes[index].name 
+                    -#= vehicle_sizes.first.name 
 
 
