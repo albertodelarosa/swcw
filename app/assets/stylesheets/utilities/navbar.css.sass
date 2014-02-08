@@ -1,9 +1,28 @@
 @import "utilities/variables"
+@mixin navbar-link-mixin()
+  .link_top, .link_bottom
+    display: block
+    position: relative
+    height: 10px
+  .link_top
+    margin: 0px -26px -10px -26px
+    top: -28px
+    border: 1px solid $sitelerBlueGreyLighter2
+    border-bottom: none
+    border-radius: 5px 5px 0px 0px
+  .link_bottom
+    margin: -10px -26px 0px -26px
+    bottom: -29px
+    border-radius: 0px 0px 5px 5px
+    background: $sitelerBlueLighter8
+
+
 .navbar
   background: $sitelerBlueGrey
   .navbar-nav
     .nav-divider
       margin: 0px
+
     li.active
       a, a:hover
         background: $sitelerBlueGrey
@@ -19,72 +38,72 @@
     .navbar-nav
       padding: 20px 0 0 0
 
-      li.active
-        a, a:hover
-          border-radius: 5px 5px 5px 5px
-          .link_top, .link_bottom
-            display: block
-            position: relative
-            height: 10px
-            background: $sitelerBlueLighter8
-            border: none
-          .link_top
-            margin: 0px -15px -10px -15px
-            top: -25px
-            border-radius: 8px 8px 0px 0px
-          .link_bottom
-            margin: -10px -15px 0px -15px
-            bottom: -25px
-            border-radius: 0px 0px 8px 8px
       li
         border-left: $sitelerBlueGreyLighter2 1px solid
         a
-          padding: 25px 30px
+          padding: 18px 25px
         a:hover
-          .link_top, .link_bottom
+          @include navbar-link-mixin
+
+      li.active
+        a, a:hover
+          @include navbar-link-mixin
+
+      li.open
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
+
+        a, a:focus, a:hover
+          background: $sitelerBlueGrey
+          .link_top
             display: block
             position: relative
             height: 10px
-            background: $sitelerBlueLighter8
-          .link_top
-            margin: 0px -15px -10px -14px
-            top: -35px
+            margin: 0px -26px -10px -26px
+            top: -28px
+            border: 1px solid $sitelerBlueGreyLighter2
+            border-bottom: none
             border-radius: 5px 5px 0px 0px
+            background: $sitelerBlueGrey
           .link_bottom
-            margin: -10px -15px 0px -14px
-            bottom: -35px
-            border-radius: 0px 0px 5px 5px
-      li.open
-        a, a:focus, a:hover
-          background: $sitelerBlueGreyDarker2
+            display: block
+            position: relative
+            margin: 0px -25px
+            bottom: -18px
+            border-radius: 0px
+            background: $sitelerBlueGrey
+            z-index: 1001
+            height: 1px
+
         ul.dropdown-menu
-          padding: 10px 0px
+          border: 1px solid $sitelerBlueGreyLighter2
+          margin-left: -1px
+          margin-top: -1px
+          padding: 0px
+          background: $sitelerBlueGrey
+          background: -moz-linear-gradient(top, $sitelerBlueGrey, $sitelerBlueGreyDarker4)
+          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($sitelerBlueGrey), to($sitelerBlueGreyDarker4))
           border-radius: 0px 4px 4px 4px
-          background: $sitelerBlueGreyDarker4
-          color: $sitelerBlueGreyLighter2
+          -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
+          li
+            border-left: none
+            a
+              background: none
+              padding: 23px 25px
+              .link_top
+                border-radius: 0px
+                background: $sitelerBlueGreyLighter2
+                height: 1px
+                top: -24px
+            a:hover
+              background: $sitelerBlueGreyLighter2
+              color: $sitelerBlueGreyDarker4!important
           li.divider
             background: $sitelerBlueGreyLighter2
-            //margin: 15px 0
+            margin: 0px
           li:last-child
             border-right: $sitelerBlueGreyLighter2 0px solid
-          li
-            border-left: $sitelerBlueGreyLighter2 0px solid
-            a
-              background: $sitelerBlueGreyDarker4
-              padding: 10px 5px
-              text-align: center
-            a:hover
-              .link_top, .link_bottom
-                display: block
-                position: relative
-                height: 10px
-                background: $sitelerBlueLighter8
-                width: 100%
-                left: 14px
-              .link_top
-                top: -15px
-              .link_bottom
-                bottom: -15px
 
       li:last-child
         border-right: $sitelerBlueGreyLighter2 1px solid
