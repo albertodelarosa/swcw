@@ -148,9 +148,14 @@
     .icon
       background: none
 
-.footer
+#footer
   height: 60px
   background-color: $sitelerBlueGreyDarker5
-  .navbar-header
+  .navbar-header, .copyright
     .navbar-brand
       padding: 5px 15px
+
+  .copyright
+    @media (min-width: 768px)
+      padding-top: 20px
+      color: $sitelerBlueGreyLighter2

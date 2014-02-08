@@ -1,16 +1,15 @@
-.row
-  .container
-    -#.notice_error
-      -#- flash.each do |name, msg|
-        -#- if name.eql?("notice")
-          -#= content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name} alert alert-success"
+.container
+  -#.notice_error
+    -#- flash.each do |name, msg|
+      -#- if name.eql?("notice")
+        -#= content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name} alert alert-success"
 
-    - flash.each do |type, message|
-      %div{:class => "alert #{alert_class_for(type)} alert-dismissable fade in"}
-        %button.close{data: {dismiss: :alert}} ×
-        = message
+  - flash.each do |type, message|
+    %div{:class => "alert #{alert_class_for(type)} alert-dismissable fade in"}
+      %button.close{data: {dismiss: :alert}} ×
+      = message
 
-        - if controller.controller_name.eql?("dashboard") && controller.action_name.eql?("index")
-          = render "shared/navbar/welcome_back"
+      - if controller.controller_name.eql?("dashboard") && controller.action_name.eql?("index")
+        = render "shared/navbar/welcome_back"
 
 
