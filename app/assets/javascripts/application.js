@@ -13,10 +13,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-ui
-//= require moment-with-langs
-//= require_tree ./utilities/
-//= require_tree ./welcome/
-//= require_tree ./dashboard/
+//= require utilities/
+//= require dashboard/
 
-//////= require_self
