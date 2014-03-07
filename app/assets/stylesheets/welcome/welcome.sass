@@ -1,14 +1,33 @@
 @import "utilities/variables"
-.jumbotron.intro-page 
-  margin-top: 20px
+#bg
+  background-image: url('index/spash_vertical_trans.jpeg')
+  background-repeat: no-repeat
+  background-position: left top
+  position: fixed
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  z-index: -1
+
+.jumbotron.intro-page
+  background: none
+  line-height: inherit
   .form-group
     line-height: 1.428571429
 @media (min-width: $screen-md-min)
   .jumbotron.intro-page
     .panel
-      margin-top: 30px
+      margin-top: 0px
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
   .jumbotron.intro-page
     .panel
       margin-top: 0px
+
+.salutation
+  background: rgba(255, 255, 255, 0.75)
+  color: rgba(0, 0, 0, 1)
+  padding: 10px
+  border-radius: 3px
+  box-shadow: 1px 1px 7px #000000
 

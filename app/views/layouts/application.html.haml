@@ -6,9 +6,11 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
+    #bg
     = render "shared/navbar"
     = render "shared/alert", flash: flash
-    = yield
+    #wrap
+      = yield
     = render "shared/pre_footer"
     = render "shared/footer"
     = javascript_include_tag "welcome/"
