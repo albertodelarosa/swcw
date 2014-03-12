@@ -10,6 +10,7 @@ class Vehicle < ActiveRecord::Base
 
   has_many :transportations
   has_many :owners, through: :transportations, source: :user
+
   has_many :vehicle_settings
   has_many :vehicle_years,  through: :vehicle_settings
   has_many :vehicle_makes,  through: :vehicle_settings
