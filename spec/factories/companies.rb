@@ -2,6 +2,16 @@
 
 FactoryGirl.define do
   factory :company do
-    name "MyString"
+    name "My Factory Girl Company"
+    corporate_id "oefeiu3q9h"
+    description "My Factory Girl Company"
+    corporate_email_domain "factorygirl@myfactorygirl.com"
+
+    after do |company|
+      company.contact_info ||= FactoryGirl.build(:contact_info, :company => company)
+      company.address ||= FactoryGirl.build(:address, :company => company)
+      company.sites << FactoryGirl.create(:site)
+      company.clients << FactoryGirl.create(:client)
+    end
   end
 end

@@ -2,6 +2,11 @@
 
 FactoryGirl.define do
   factory :vehicle_make do
-    name "MyString"
+    name "Chevrolet"
+
+    after do |vehicle_make|
+      vehicle_make.vehicles       << FactoryGirl.create(:vehicle)
+      vehicle_make.vehicle_models  << FactoryGirl.create(:vehicle_model)
+    end
   end
 end
