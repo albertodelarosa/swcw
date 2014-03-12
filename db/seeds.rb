@@ -45,7 +45,7 @@ puts "================= CLEARED ALL SETTINGS ================="
 
 puts "Adding developer users..."
 developers = User.create([
-   {username: 'developers',   email: 'developers@sitlerwash.com',    password: 'password'}
+   {username: 'developers',   email: 'alberto.g.delrosa+sitelerwash_developer@gmail.com',    password: 'password'}
 ])
 developers.each do |developer|
   developer.skip_confirmation!
