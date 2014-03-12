@@ -45,9 +45,12 @@ puts "================= CLEARED ALL SETTINGS ================="
 
 puts "Adding developer users..."
 developers = User.create([
-   {username: 'betodelarosa', email: 'alberto.g.delarosa@gmail.com', password: 'password'}, 
    {username: 'developers',   email: 'developers@sitlerwash.com',    password: 'password'}
 ])
+developers.each do |developer|
+  developer.skip_confirmation!
+  developer.save!
+end
 
 puts "Adding new default home addresses..."
 home_addresses = HomeAddress.create!([{street1: "2527 Ortega Street" , apt_no: "12", city: "San Francisco", state: "CA", zip: "94122"}])
