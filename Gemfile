@@ -32,6 +32,7 @@ gem 'draper', '~> 1.3'
 gem 'money-rails', "~> 0.8.1"
 gem 'cancan'
 gem 'uuid' #UUID.generate
+#gem 'ice_cube' for scheduling
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -60,7 +61,6 @@ group :test do
   gem 'ci_reporter'
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
-  gem 'factory_girl_rails'
   gem 'capybara' 
   gem 'guard-rspec' 
   gem 'launchy'
