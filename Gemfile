@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,9 +13,11 @@ gem 'haml'
 gem 'formtastic'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'haml-rails'
+gem 'sendgrid'
 
-gem 'sass-rails',   '~> 3.2.3'
-gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'sass-rails', '3.2.6'
+gem 'bootstrap-sass', '3.0.3.0'
+gem 'tilt',  '1.4.1'
 
 gem 'airbrake'
 gem 'jquery-rails', '~> 2.3.0'
@@ -37,7 +39,7 @@ gem 'uuid' #UUID.generate
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', '~> 3.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -47,7 +49,7 @@ end
 
 group :development do
   gem 'ruby_parser'
-  gem 'brakeman'
+  gem 'brakeman', '2.3.1'
   gem 'letter_opener'
   gem 'rails-erd'
 
