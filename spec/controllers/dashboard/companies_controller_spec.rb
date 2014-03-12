@@ -30,131 +30,143 @@ describe Dashboard::CompaniesController do
   # Dashboard::CompaniesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  login_user
+
   describe "GET index" do
-    it "assigns all dashboard_companies as @dashboard_companies" do
-      company = Dashboard::Company.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:dashboard_companies).should eq([company])
+    it "assigns all companies as @companies" do
+      companies = FactoryGirl.create(:company)
+      get :index
+      assigns(:companies).should eq([companies])
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested dashboard_company as @dashboard_company" do
-      company = Dashboard::Company.create! valid_attributes
-      get :show, {:id => company.to_param}, valid_session
-      assigns(:dashboard_company).should eq(company)
-    end
-  end
 
-  describe "GET new" do
-    it "assigns a new dashboard_company as @dashboard_company" do
-      get :new, {}, valid_session
-      assigns(:dashboard_company).should be_a_new(Dashboard::Company)
-    end
-  end
 
-  describe "GET edit" do
-    it "assigns the requested dashboard_company as @dashboard_company" do
-      company = Dashboard::Company.create! valid_attributes
-      get :edit, {:id => company.to_param}, valid_session
-      assigns(:dashboard_company).should eq(company)
-    end
-  end
+  #describe "GET index" do
+    #it "assigns all dashboard_companies as @dashboard_companies" do
+      #company = Dashboard::Company.create! valid_attributes
+      #get :index, {}, valid_session
+      #assigns(:dashboard_companies).should eq([company])
+    #end
+  #end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Dashboard::Company" do
-        expect {
-          post :create, {:dashboard_company => valid_attributes}, valid_session
-        }.to change(Dashboard::Company, :count).by(1)
-      end
+  #describe "GET show" do
+    #it "assigns the requested dashboard_company as @dashboard_company" do
+      #company = Dashboard::Company.create! valid_attributes
+      #get :show, {:id => company.to_param}, valid_session
+      #assigns(:dashboard_company).should eq(company)
+    #end
+  #end
 
-      it "assigns a newly created dashboard_company as @dashboard_company" do
-        post :create, {:dashboard_company => valid_attributes}, valid_session
-        assigns(:dashboard_company).should be_a(Dashboard::Company)
-        assigns(:dashboard_company).should be_persisted
-      end
+  #describe "GET new" do
+    #it "assigns a new dashboard_company as @dashboard_company" do
+      #get :new, {}, valid_session
+      #assigns(:dashboard_company).should be_a_new(Dashboard::Company)
+    #end
+  #end
 
-      it "redirects to the created dashboard_company" do
-        post :create, {:dashboard_company => valid_attributes}, valid_session
-        response.should redirect_to(Dashboard::Company.last)
-      end
-    end
+  #describe "GET edit" do
+    #it "assigns the requested dashboard_company as @dashboard_company" do
+      #company = Dashboard::Company.create! valid_attributes
+      #get :edit, {:id => company.to_param}, valid_session
+      #assigns(:dashboard_company).should eq(company)
+    #end
+  #end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved dashboard_company as @dashboard_company" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Company.any_instance.stub(:save).and_return(false)
-        post :create, {:dashboard_company => {  }}, valid_session
-        assigns(:dashboard_company).should be_a_new(Dashboard::Company)
-      end
+  #describe "POST create" do
+    #describe "with valid params" do
+      #it "creates a new Dashboard::Company" do
+        #expect {
+          #post :create, {:dashboard_company => valid_attributes}, valid_session
+        #}.to change(Dashboard::Company, :count).by(1)
+      #end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Company.any_instance.stub(:save).and_return(false)
-        post :create, {:dashboard_company => {  }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
+      #it "assigns a newly created dashboard_company as @dashboard_company" do
+        #post :create, {:dashboard_company => valid_attributes}, valid_session
+        #assigns(:dashboard_company).should be_a(Dashboard::Company)
+        #assigns(:dashboard_company).should be_persisted
+      #end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested dashboard_company" do
-        company = Dashboard::Company.create! valid_attributes
-        # Assuming there are no other dashboard_companies in the database, this
-        # specifies that the Dashboard::Company created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Dashboard::Company.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => company.to_param, :dashboard_company => { "these" => "params" }}, valid_session
-      end
+      #it "redirects to the created dashboard_company" do
+        #post :create, {:dashboard_company => valid_attributes}, valid_session
+        #response.should redirect_to(Dashboard::Company.last)
+      #end
+    #end
 
-      it "assigns the requested dashboard_company as @dashboard_company" do
-        company = Dashboard::Company.create! valid_attributes
-        put :update, {:id => company.to_param, :dashboard_company => valid_attributes}, valid_session
-        assigns(:dashboard_company).should eq(company)
-      end
+    #describe "with invalid params" do
+      #it "assigns a newly created but unsaved dashboard_company as @dashboard_company" do
+        ## Trigger the behavior that occurs when invalid params are submitted
+        #Dashboard::Company.any_instance.stub(:save).and_return(false)
+        #post :create, {:dashboard_company => {  }}, valid_session
+        #assigns(:dashboard_company).should be_a_new(Dashboard::Company)
+      #end
 
-      it "redirects to the dashboard_company" do
-        company = Dashboard::Company.create! valid_attributes
-        put :update, {:id => company.to_param, :dashboard_company => valid_attributes}, valid_session
-        response.should redirect_to(company)
-      end
-    end
+      #it "re-renders the 'new' template" do
+        ## Trigger the behavior that occurs when invalid params are submitted
+        #Dashboard::Company.any_instance.stub(:save).and_return(false)
+        #post :create, {:dashboard_company => {  }}, valid_session
+        #response.should render_template("new")
+      #end
+    #end
+  #end
 
-    describe "with invalid params" do
-      it "assigns the dashboard_company as @dashboard_company" do
-        company = Dashboard::Company.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Company.any_instance.stub(:save).and_return(false)
-        put :update, {:id => company.to_param, :dashboard_company => {  }}, valid_session
-        assigns(:dashboard_company).should eq(company)
-      end
+  #describe "PUT update" do
+    #describe "with valid params" do
+      #it "updates the requested dashboard_company" do
+        #company = Dashboard::Company.create! valid_attributes
+        ## Assuming there are no other dashboard_companies in the database, this
+        ## specifies that the Dashboard::Company created on the previous line
+        ## receives the :update_attributes message with whatever params are
+        ## submitted in the request.
+        #Dashboard::Company.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
+        #put :update, {:id => company.to_param, :dashboard_company => { "these" => "params" }}, valid_session
+      #end
 
-      it "re-renders the 'edit' template" do
-        company = Dashboard::Company.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Company.any_instance.stub(:save).and_return(false)
-        put :update, {:id => company.to_param, :dashboard_company => {  }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
+      #it "assigns the requested dashboard_company as @dashboard_company" do
+        #company = Dashboard::Company.create! valid_attributes
+        #put :update, {:id => company.to_param, :dashboard_company => valid_attributes}, valid_session
+        #assigns(:dashboard_company).should eq(company)
+      #end
 
-  describe "DELETE destroy" do
-    it "destroys the requested dashboard_company" do
-      company = Dashboard::Company.create! valid_attributes
-      expect {
-        delete :destroy, {:id => company.to_param}, valid_session
-      }.to change(Dashboard::Company, :count).by(-1)
-    end
+      #it "redirects to the dashboard_company" do
+        #company = Dashboard::Company.create! valid_attributes
+        #put :update, {:id => company.to_param, :dashboard_company => valid_attributes}, valid_session
+        #response.should redirect_to(company)
+      #end
+    #end
 
-    it "redirects to the dashboard_companies list" do
-      company = Dashboard::Company.create! valid_attributes
-      delete :destroy, {:id => company.to_param}, valid_session
-      response.should redirect_to(dashboard_companies_url)
-    end
-  end
+    #describe "with invalid params" do
+      #it "assigns the dashboard_company as @dashboard_company" do
+        #company = Dashboard::Company.create! valid_attributes
+        ## Trigger the behavior that occurs when invalid params are submitted
+        #Dashboard::Company.any_instance.stub(:save).and_return(false)
+        #put :update, {:id => company.to_param, :dashboard_company => {  }}, valid_session
+        #assigns(:dashboard_company).should eq(company)
+      #end
+
+      #it "re-renders the 'edit' template" do
+        #company = Dashboard::Company.create! valid_attributes
+        ## Trigger the behavior that occurs when invalid params are submitted
+        #Dashboard::Company.any_instance.stub(:save).and_return(false)
+        #put :update, {:id => company.to_param, :dashboard_company => {  }}, valid_session
+        #response.should render_template("edit")
+      #end
+    #end
+  #end
+
+  #describe "DELETE destroy" do
+    #it "destroys the requested dashboard_company" do
+      #company = Dashboard::Company.create! valid_attributes
+      #expect {
+        #delete :destroy, {:id => company.to_param}, valid_session
+      #}.to change(Dashboard::Company, :count).by(-1)
+    #end
+
+    #it "redirects to the dashboard_companies list" do
+      #company = Dashboard::Company.create! valid_attributes
+      #delete :destroy, {:id => company.to_param}, valid_session
+      #response.should redirect_to(dashboard_companies_url)
+    #end
+  #end
 
 end

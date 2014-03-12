@@ -30,131 +30,120 @@ describe Dashboard::DashboardsController do
   # Dashboard::DashboardsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  login_user
+
   describe "GET index" do
-    it "assigns all dashboard_dashboards as @dashboard_dashboards" do
-      dashboard = Dashboard::Dashboard.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:dashboard_dashboards).should eq([dashboard])
-    end
-  end
 
-  describe "GET show" do
-    it "assigns the requested dashboard_dashboard as @dashboard_dashboard" do
-      dashboard = Dashboard::Dashboard.create! valid_attributes
-      get :show, {:id => dashboard.to_param}, valid_session
-      assigns(:dashboard_dashboard).should eq(dashboard)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new dashboard_dashboard as @dashboard_dashboard" do
-      get :new, {}, valid_session
-      assigns(:dashboard_dashboard).should be_a_new(Dashboard::Dashboard)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested dashboard_dashboard as @dashboard_dashboard" do
-      dashboard = Dashboard::Dashboard.create! valid_attributes
-      get :edit, {:id => dashboard.to_param}, valid_session
-      assigns(:dashboard_dashboard).should eq(dashboard)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Dashboard::Dashboard" do
-        expect {
-          post :create, {:dashboard_dashboard => valid_attributes}, valid_session
-        }.to change(Dashboard::Dashboard, :count).by(1)
-      end
-
-      it "assigns a newly created dashboard_dashboard as @dashboard_dashboard" do
-        post :create, {:dashboard_dashboard => valid_attributes}, valid_session
-        assigns(:dashboard_dashboard).should be_a(Dashboard::Dashboard)
-        assigns(:dashboard_dashboard).should be_persisted
-      end
-
-      it "redirects to the created dashboard_dashboard" do
-        post :create, {:dashboard_dashboard => valid_attributes}, valid_session
-        response.should redirect_to(Dashboard::Dashboard.last)
-      end
+    it "assigns all current_user's appointments as @appointments" do
+      appointments = @user.appointments
+      get :index
+      assigns(:appointments).should eq(appointments)
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved dashboard_dashboard as @dashboard_dashboard" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Dashboard.any_instance.stub(:save).and_return(false)
-        post :create, {:dashboard_dashboard => { "index" => "invalid value" }}, valid_session
-        assigns(:dashboard_dashboard).should be_a_new(Dashboard::Dashboard)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Dashboard.any_instance.stub(:save).and_return(false)
-        post :create, {:dashboard_dashboard => { "index" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested dashboard_dashboard" do
-        dashboard = Dashboard::Dashboard.create! valid_attributes
-        # Assuming there are no other dashboard_dashboards in the database, this
-        # specifies that the Dashboard::Dashboard created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Dashboard::Dashboard.any_instance.should_receive(:update_attributes).with({ "index" => "MyString" })
-        put :update, {:id => dashboard.to_param, :dashboard_dashboard => { "index" => "MyString" }}, valid_session
-      end
-
-      it "assigns the requested dashboard_dashboard as @dashboard_dashboard" do
-        dashboard = Dashboard::Dashboard.create! valid_attributes
-        put :update, {:id => dashboard.to_param, :dashboard_dashboard => valid_attributes}, valid_session
-        assigns(:dashboard_dashboard).should eq(dashboard)
-      end
-
-      it "redirects to the dashboard_dashboard" do
-        dashboard = Dashboard::Dashboard.create! valid_attributes
-        put :update, {:id => dashboard.to_param, :dashboard_dashboard => valid_attributes}, valid_session
-        response.should redirect_to(dashboard)
-      end
+    it "assigns an empty array as @appointments" do
+      appointments = []
+      get :index
+      assigns(:appointments).should eq(appointments)
     end
 
-    describe "with invalid params" do
-      it "assigns the dashboard_dashboard as @dashboard_dashboard" do
-        dashboard = Dashboard::Dashboard.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Dashboard.any_instance.stub(:save).and_return(false)
-        put :update, {:id => dashboard.to_param, :dashboard_dashboard => { "index" => "invalid value" }}, valid_session
-        assigns(:dashboard_dashboard).should eq(dashboard)
-      end
-
-      it "re-renders the 'edit' template" do
-        dashboard = Dashboard::Dashboard.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Dashboard::Dashboard.any_instance.stub(:save).and_return(false)
-        put :update, {:id => dashboard.to_param, :dashboard_dashboard => { "index" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested dashboard_dashboard" do
-      dashboard = Dashboard::Dashboard.create! valid_attributes
-      expect {
-        delete :destroy, {:id => dashboard.to_param}, valid_session
-      }.to change(Dashboard::Dashboard, :count).by(-1)
+    it "assigns an new Appointment as @appointment" do
+      get :index
+      assigns(:appointment).should be_a_new(Appointment)
     end
 
-    it "redirects to the dashboard_dashboards list" do
-      dashboard = Dashboard::Dashboard.create! valid_attributes
-      delete :destroy, {:id => dashboard.to_param}, valid_session
-      response.should redirect_to(dashboard_dashboards_url)
+    it "assigns all current_user's sites as @sites" do
+      sites = @user.sites
+      get :index
+      assigns(:sites).should eq(sites)
     end
+
+    it "assigns an empty array as @sites" do
+      sites = []
+      get :index
+      assigns(:sites).should eq(sites)
+    end
+
+    it "assigns an new Site as @site" do
+      get :index
+      assigns(:site).should be_a_new(Site)
+    end
+
+    it "assigns all current_user's companies as @companies" do
+      companies = @user.companies
+      get :index
+      assigns(:companies).should eq(companies)
+    end
+
+    it "assigns an empty array as @companies" do
+      companies = []
+      get :index
+      assigns(:companies).should eq(companies)
+    end
+
+    it "assigns an new Company as @company" do
+      get :index
+      assigns(:company).should be_a_new(Company)
+    end
+
+    it "assigns all current_user's vehicles as @vehicles" do
+      vehicles = @user.vehicles
+      get :index
+      assigns(:vehicles).should eq(vehicles)
+    end
+
+    it "assigns an empty array as @vehicles" do
+      vehicles = []
+      get :index
+      assigns(:vehicles).should eq(vehicles)
+    end
+
+    it "assigns an new Vehicle as @vehicle" do
+      get :index
+      assigns(:vehicle).should be_a_new(Vehicle)
+    end
+
+    it "assigns an all VehicleYears as @years" do
+      vehicle_year = VehicleYear.create!
+      get :index
+      assigns(:years).should eq([vehicle_year])
+    end
+
+    it "assigns an empty array as @makes" do
+      makes = []
+      get :index
+      assigns(:makes).should eq(makes)
+    end
+
+    it "assigns an empty array as @models" do
+      models = []
+      get :index
+      assigns(:models).should eq(models)
+    end
+
+    it "assigns an empty array as @trims" do
+      trims = []
+      get :index
+      assigns(:trims).should eq(trims)
+    end
+
+    it "assigns an empty array as @types" do
+      types = []
+      get :index
+      assigns(:types).should eq(types)
+    end
+
+    it "assigns an empty array as @doors" do
+      doors = []
+      get :index
+      assigns(:doors).should eq(doors)
+    end
+
+    it "assigns an empty array as @sizes" do
+      sizes = []
+      get :index
+      assigns(:sizes).should eq(sizes)
+    end
+
   end
 
 end
