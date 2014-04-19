@@ -24,23 +24,140 @@ describe Dashboard::CompaniesController do
   # Dashboard::Company. As you add validations to Dashboard::Company, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { {  } }
+  let!(:test_company) { FactoryGirl.create(:company) }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # Dashboard::CompaniesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  login_user
+  register_user
 
   describe "GET index" do
     it "assigns all companies as @companies" do
-      companies = FactoryGirl.create(:company)
       get :index
-      assigns(:companies).should eq([companies])
+      assigns(:companies).should eq([test_company])
+    end
+  end
+
+  describe "GET show" do
+    it "assigns the requested company as @company" do
+      get :show, {:id => test_company.id}
+      assigns(:company).should eq(test_company)
+    end
+  end
+
+  describe "GET new" do
+    it "assigns a new company as @company" do
+      get :new
+      assigns(:company).should be_a_new(Company)
+    end
+
+    it "assigns all companies as @companies" do
+      get :new
+      assigns(:companies).should eq([test_company])
+    end
+  end
+
+  describe "GET edit" do
+    it "assigns the requested company as @company" do
+      get :edit, {:id => test_company.id}
+      assigns(:company).should eq(test_company)
+    end
+  end
+
+  describe "POST create" do
+    describe "with valid params" do
+      subject {post :create, company: {id: test_company.id}}
+      before(:each) do
+        subject
+      end
+
+      it "finds company from params" do
+        Company.stub!(:find).with(company: {id: test_company.id}).and_return(test_company)
+      end
+
+      it "assigns the requested company as @company" do
+        assigns(:company).should eq(test_company)
+      end
+
+      it "adds company to @user.companies" do
+        expect {@user.companies << test_company}.to change{@user.companies.count}.by(1)
+      end
+
+      it "assigns a newly created dashboard_company as @dashboard_company" do
+        response.should redirect_to(root_url)
+      end
+    end
+
+    #describe "with invalid params" do
+      #it "assigns a newly created but unsaved dashboard_company as @dashboard_company" do
+        ## Trigger the behavior that occurs when invalid params are submitted
+        #Company.any_instance.stub(:save).and_return(false)
+        #post :create, {:company => {  }}, valid_session
+        #assigns(:company).should be_a_new(Company)
+      #end
+
+      #it "re-renders the 'new' template" do
+        ## Trigger the behavior that occurs when invalid params are submitted
+        #Dashboard::Company.any_instance.stub(:save).and_return(false)
+        #post :create, {:dashboard_company => {  }}, valid_session
+        #response.should render_template("new")
+      #end
+    #end
+
+  end
+
+  describe "PUT update" do
+    describe "with valid params" do
+      subject {put :update, id: test_company.id}
+      before(:each) do
+        subject
+      end
+
+      it "finds company from params" do
+        Company.stub!(:find).with(id: test_company.id).and_return(test_company)
+      end
+
+      it "assigns the requested company as @company" do
+        assigns(:company).should eq(test_company)
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+    subject {delete :destroy, id: test_company.id}
+    before(:each) do
+      subject
+    end
+
+    it "finds company from params" do
+      Company.stub!(:find).with(id: test_company.id).and_return(test_company)
+    end
+
+    it "assigns the requested company as @company" do
+      assigns(:company).should eq(test_company)
+    end
+
+    it "destroys the requested dashboard_company" do
+      company = Dashboard::Company.create! valid_attributes
+      expect {
+        delete :destroy, {:id => company.to_param}, valid_session
+      }.to change(Dashboard::Company, :count).by(-1)
+    end
+
+    it "redirects to the dashboard_companies list" do
+      company = Dashboard::Company.create! valid_attributes
+      delete :destroy, {:id => company.to_param}, valid_session
+      response.should redirect_to(dashboard_companies_url)
     end
   end
 
 
+
+    #it "should redirect to root" do
+      #current_url.should == root_url
+    #end
 
   #describe "GET index" do
     #it "assigns all dashboard_companies as @dashboard_companies" do

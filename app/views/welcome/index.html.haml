@@ -1,7 +1,7 @@
 .jumbotron.intro-page
   .container
     .col-sm-6.col-md-6.col-lg-6
-      .salutation
+      .salutation-wrapper
         %h3 Dear Valued Customer
         .h4
           We are currently in the process of rebuilding our entire website to provide you with a better Siteler experience. In the meantime, we've implemented a temporary solution for scheduling and paying for our services. During this time, if you have any feedback or suggestions please contact us. We'd love to hear from you!
@@ -9,4 +9,8 @@
       .splash_page_login
         = render "shared/sign_up_in_buttons"
       = render "devise/registrations/form_welcome"
+    .col-sm-6.col-md-6.col-lg-6
+      #myDiv
+        #effect
+          #color
 
