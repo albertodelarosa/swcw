@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "welcome", :media => "all"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "We use sendgrid", :name => "sendgrid"}
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
     #bg
     = render "shared/navbar"
