@@ -6,7 +6,7 @@ ActionMailer::Base.smtp_settings = {
   :password => '1952Chevy',
   :domain => 'enigmatic-inlet-5364.herokuapp.com',
   :address => 'smtp.sendgrid.net',
-  :port => 587,
+  :port => 25,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
