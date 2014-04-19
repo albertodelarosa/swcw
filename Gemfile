@@ -13,7 +13,7 @@ gem 'haml'
 gem 'formtastic'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'haml-rails'
-gem 'sendgrid'
+#gem 'sendgrid'
 
 gem 'sass-rails', '3.2.6'
 gem 'bootstrap-sass', '3.0.3.0'
