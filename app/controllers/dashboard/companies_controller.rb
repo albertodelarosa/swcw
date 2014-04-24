@@ -54,50 +54,35 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     @company = Company.find(params[:company][:id])
 
     respond_to do |format|
-      current_user.companies << @company
+      @company.clients << current_user
       format.html { redirect_to root_path, notice: 'Company was successfully created.' }
       format.json
-
-      #if @company.save
-        #format.html { redirect_to root_path, notice: 'Company was successfully created.' }
-        #format.json { render json: @company, status: :created, location: @company }
-      #else
-        #format.html { render action: "new" }
-        #format.json { render json: @company.errors, status: :unprocessable_entity }
-      #end
-
     end
   end
 
   # PUT /dashboard/companies/1
   # PUT /dashboard/companies/1.json
   def update
-    @company = Company.find(params[:id])
+      @company = Company.find(params[:id])
+      @company.clients.delete(current_user) if @company.clients.exists? current_user
+      @company.clients << current_user
 
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
-      format.json { head :no_content }
-
-      #if @company.update_attributes(params[:company])
-        #format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
-        #format.json { head :no_content }
-      #else
-        #format.html { render action: "edit" }
-        #format.json { render json: @company.errors, status: :unprocessable_entity }
-      #end
-
-    end
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
+        format.json { head :no_content }
+      end
   end
 
   # DELETE /dashboard/companies/1
   # DELETE /dashboard/companies/1.json
   def destroy
     @company = Company.find(params[:id])
-    current_user.companies.delete(@company)
+    @company.clients.delete(current_user)
+    #current_user.companies.delete(@company)
     #@company.destroy
 
     respond_to do |format|
-      format.html { redirect_to companies_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
