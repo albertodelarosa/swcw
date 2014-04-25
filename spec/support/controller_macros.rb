@@ -14,4 +14,10 @@ module ControllerMacros
       sign_in @user
     end
   end
+
+  #def shared_find "find from" do |entity|
+    #it 'valid params' do
+      #entity.stub(:find).with(company: {id: test_company.id}).and_return(test_company)
+    #end
+  #end
 end
