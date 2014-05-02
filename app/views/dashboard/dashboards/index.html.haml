@@ -1,4 +1,4 @@
-= BootstrapHelper::Panel.new(contextual: 'primary', title:"", footer: '', header_class: "#{controller.controller_name}_#{controller.action_name}" ) do |panel|
+= BootstrapHelper::Panel.new(contextual: 'default', title:"", footer: '', header_class: "#{controller.controller_name}_#{controller.action_name}" ) do |panel|
   = render partial: 'shared/panel_header', locals: {panel: panel, title: "Dashboard"}
   - panel.body do
     - opts={navs: 'nav-tabs', nav_tab_id: 'dashboardTab', tab_content_id: 'dashboardTabContent'}

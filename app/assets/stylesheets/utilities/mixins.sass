@@ -1,0 +1,21 @@
+@mixin breadcumbs ( $bg, $color )
+  background-color: $bg
+  color: $color
+
+@mixin navbar-link-mixin()
+  .link_top, .link_bottom
+    display: block
+    position: relative
+    height: 10px
+  .link_top
+    margin: 0px -26px -10px -26px
+    top: -28px
+    border: 1px solid $sitelerBlueGreyLighter2
+    border-bottom: none
+    border-radius: 5px 5px 0px 0px
+  .link_bottom
+    margin: -10px -26px 0px -26px
+    bottom: -28px
+    border-radius: 0px 0px 5px 5px
+    background: $sitelerBlueLighter8
+

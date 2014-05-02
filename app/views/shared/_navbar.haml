@@ -5,12 +5,13 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{:href => root_path}
+    %a.navbar-brand{href: root_path}
       = image_tag('logo-90.png')
-  .collapse.navbar-collapse
+  .collapse.navbar-collapse.pull-right
+    .col-xs-12.col-sm-12.col-md-12
+      - if user_signed_in?
+        = render "shared/navbar/navbar-nav-dashboard"
+      - else
+        = render "shared/navbar/navbar-nav-welcome"
     .col-sm-2.col-md-2
-    - if user_signed_in?
-      = render "shared/navbar/navbar-nav-dashboard"
-    - else
-      = render "shared/navbar/navbar-nav-welcome"
 
