@@ -6,7 +6,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def index
     add_breadcrumb "all", nil, "glyphicon-list"
 
-    @sites = Site.all
+    @sites =  current_user.sites || []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,11 +70,8 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def update
     #@old_site = Site.find(params[:id])
     site = Site.find(params[:site][:id])
-    if current_user.sites.include?(site)
-      @site = current_user.sites.delete(site)
-    else
-      @site = site
-    end
+    current_user.sites.delete(site) if current_user.sites.include?(site)
+    @site = site
 
     respond_to do |format|
       #if current_user.sites.delete(@old_site)
