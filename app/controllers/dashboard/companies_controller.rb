@@ -6,7 +6,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def index
     add_breadcrumb "all", nil, "glyphicon-list"
 
-    @companies = Company.all
+    @companies = current_user.companies || []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +19,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def show
     add_breadcrumb "all", nil, "glyphicon-screenshot"
 
-    @company = Company.find(params[:id])
+    @company = Company.find_by_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
