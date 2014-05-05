@@ -264,8 +264,8 @@ $gray-lighter:           lighten(#000, 93.5%) !default
 // Scaffolding
 // -------------------------
 
-$body-bg:               $sitelerBlueLighter2 !default
-$text-color:            $sitelerGreyLighter8 !default
+$body-bg:               $sitelerBlueGreyLighter6 !default
+$text-color:            $sitelerGreyDarker8 !default
 
 // Links
 // -------------------------
@@ -585,9 +585,10 @@ $nav-open-link-hover-color:                 #fff !default
   li 
     a
       //border: $sitelerSolidBlue2
-      color: $sitelerBlueGreyLighter8
+      color: $sitelerBlueGreyDarker8
     a:hover
       background-color: $sitelerSolidBlue3
+      color: $sitelerBlueGreyLighter8
   li.active
     a, a:hover
       background-color: $sitelerSolidBlue2
@@ -797,50 +798,21 @@ $panel-border-radius:         $border-radius-base !default
 $panel-inner-border:          $sitelerSolidBlue2 !default
 $panel-footer-bg:             $sitelerSolidBlue2 !default
 
-
-$panel-default-heading-bg:    $sitelerSolidBlue2 !default
+$panel-default-heading-bg:    $sitelerGreyBlue !default
 $panel-default-border:        $panel-default-heading-bg !default
 $panel-default-text:          $sitelerBlueLighter8 !default
-.panel-default
-  box-shadow: 3px 3px 15px rgba(22, 41, 60, .75)
-  background: $sitelerSolidBlue1
-  .panel-footer
-    background-color: $panel-default-heading-bg
 
-
-$panel-primary-heading-bg:    $sitelerBlueDarker3 !default
+$panel-primary-heading-bg:    $sitelerBlue !default
 $panel-primary-border:        $panel-primary-heading-bg !default
 $panel-primary-text:          $sitelerBlueLighter8 !default
-.panel-primary
-  //box-shadow: 5px 5px 10px $sitelerBlueDarker6
-  box-shadow: 3px 3px 15px rgba(22, 41, 60, .75)
-  background: $sitelerBlue
-
-  .panel-footer
-    background-color: $panel-primary-heading-bg
-
 
 $panel-success-heading-bg:    $sitelerGreenDarker4 !default
 $panel-success-border:        $panel-success-heading-bg !default
 $panel-success-text:          $sitelerGreenLighter9 !default
-.panel-success
-  box-shadow: 3px 3px 12px rgba(0, 75, 4, .75)
-  background: $sitelerGreen
-  .panel-footer
-    background-color: $panel-success-heading-bg
-
 
 $panel-info-heading-bg:       $sitelerBlueDarker3 !default
 $panel-info-border:           $panel-info-heading-bg !default
 $panel-info-text:             $sitelerBlueLighter8 !default
-.panel-info
-  //box-shadow: 5px 5px 10px $sitelerBlueDarker6
-  box-shadow: 3px 3px 12px rgba(22, 41, 60, .5)
-  background: $sitelerBlue
-  .panel-footer
-    background-color: $panel-info-heading-bg
-
-
 
 $panel-warning-text:          $state-warning-text !default
 $panel-warning-border:        $state-warning-border !default
@@ -850,6 +822,7 @@ $panel-danger-text:           $state-danger-text !default
 $panel-danger-border:         $state-danger-border !default
 $panel-danger-heading-bg:     $state-danger-bg !default
 
+@include panel-settings(2px 2px 8px rgba(22, 41, 60, .75), $panel-default-heading-bg, 2px 2px 8px rgba(22, 41, 60, .75), $panel-primary-heading-bg, 3px 3px 12px rgba(0, 75, 4, .75),  $panel-success-heading-bg, 3px 3px 12px rgba(22, 41, 60, .5), $sitelerBlue)
 
 // Thumbnails
 // -------------------------
@@ -886,33 +859,17 @@ $badge-border-radius:         10px !default
 // -------------------------
 $breadcrumb-padding-vertical:   6px !default
 $breadcrumb-padding-horizontal: 12px !default
-$breadcrumb-separator:          ">" !default
+$breadcrumb-separator:          "=>" !default
 
 $breadcrumb-bg:                 #f5f5f5 !default
 $breadcrumb-color:              #ccc !default
 $breadcrumb-active-color:       $gray-light !default
 
 .panel-default .breadcrumb
-  @include breadcumbs($sitelerBlueGreyLighter6, $sitelerBlueGrey)
-  &:active
-    color: $sitelerBlueGreyDarker5
-
-  li:before
-    color: $sitelerBlueGrey
-
-  .active
-    color: $panel-default-heading-bg
-
+  @include breadcumbs($sitelerBlueGreyLighter6, $sitelerBlueGrey, $sitelerBlueGreyDarker5, $panel-default-heading-bg)
 
 .panel-primary .breadcrumb
-  @include breadcumbs($sitelerBlueLighter5, $sitelerBlueGrey)
-
-  li:before
-    color: $sitelerBlueGrey
-
-  .active
-    color: $sitelerBlueLighter1
-
+  @include breadcumbs($sitelerBlueLighter5, $sitelerBlueGrey,$sitelerBlueDarker5, $sitelerBlueLighter1)
 
 // Carousel
 // ------------------------

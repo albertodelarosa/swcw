@@ -1,6 +1,18 @@
-@mixin breadcumbs ( $bg, $color )
+@mixin breadcumbs ( $bg, $color, $this-active-color, $active-color )
+  border: 1px solid $bg
   background-color: $bg
   color: $color
+  padding: 5px 20px
+  margin-top: 3px
+  margin-bottom: 0px !important
+  border-radius: 3px
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.75) inset
+  &:active
+    color: $this-active-color
+  li:before
+    color: $color
+  .active
+    color: $active-color
 
 @mixin navbar-link-mixin()
   .link_top, .link_bottom
@@ -18,4 +30,29 @@
     bottom: -28px
     border-radius: 0px 0px 5px 5px
     background: $sitelerBlueLighter8
+
+@mixin panel-settings($default-box-shadow, $default-background, $primary-box-shadow,$primary-background, $success-box-shadow, $success-background, $info-box-shadow, $info-background)
+  .panel.panel-default, .panel.panel-primary, .panel.panel-success, .panel.panel-info
+    @include all-panel-settings()
+  .panel-default
+    @include my-panel-settings($default-box-shadow, $default-background)
+  .panel-primary
+    @include my-panel-settings($primary-box-shadow, $primary-background)
+  .panel-success
+    @include my-panel-settings($success-box-shadow, $success-background)
+  .panel-info
+    @include my-panel-settings($info-box-shadow, $info-background)
+
+@mixin all-panel-settings()
+  margin-top: 10px
+  .panel-heading 
+    padding: 8px 10px
+  .panel-footer
+    border-top: none
+
+@mixin my-panel-settings($box-shadow, $background)
+  box-shadow: $box-shadow
+  background: lighten($background, 50%)
+  .panel-footer
+    background-color: lighten($background, 25%)
 

@@ -17,7 +17,6 @@
     li
       a
         color: $sitelerBlueLighter8!important
-      //a:hover
 
 @media (min-width: 768px)
   .navbar
@@ -37,40 +36,25 @@
           @include navbar-link-mixin
 
       li.open
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
-
         a, a:focus, a:hover
-          background: $sitelerBlueGrey
+          background: $sitelerSolidBlue3
+          @include navbar-link-mixin
           .link_top
-            display: block
-            position: relative
-            height: 10px
-            margin: 0px -26px -10px -26px
-            top: -28px
-            border: 1px solid $sitelerBlueGreyLighter2
-            border-bottom: none
-            border-radius: 5px 5px 0px 0px
-            background: $sitelerBlueGrey
+            background: inherit
           .link_bottom
-            display: block
-            position: relative
-            margin: 0px -25px
-            bottom: -18px
-            border-radius: 0px
-            background: $sitelerBlueGrey
-            z-index: 1001
-            height: 1px
+            background: inherit
+            border: 1px solid $sitelerBlueGreyLighter2
+            border-top: none
 
         ul.dropdown-menu
           border: 1px solid $sitelerBlueGreyLighter2
           margin-left: -1px
-          margin-top: -1px
+          margin-top: 45px
           padding: 0px
           background: $sitelerBlueGrey
           background: -moz-linear-gradient(top, $sitelerBlueGrey, $sitelerBlueGreyDarker4)
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($sitelerBlueGrey), to($sitelerBlueGreyDarker4))
-          border-radius: 0px 4px 4px 4px
+          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($sitelerSolidBlue1), to($sitelerSolidBlue6))
+          border-radius: 7px 45px
           -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
           li
@@ -84,15 +68,8 @@
                 height: 1px
                 top: -24px
             a:hover
-              background: $sitelerBlueLighter8
-              color: $sitelerBlueGrey!important
-          li:first-child
-            a:hover
-              border-radius: 0px 4px 0px 0px
-
-          li:last-child
-            a:hover
-              border-radius: 0px 0px 4px 4px
+              font-size: 20px
+              line-height: 20px
 
           li.divider
             background: $sitelerBlueGreyLighter2

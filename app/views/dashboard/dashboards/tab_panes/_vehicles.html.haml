@@ -9,7 +9,7 @@
               - @vehicle.errors.full_messages.each do |msg|
                 %li= msg
 
-        = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+        = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
           - size = 6
           - panel.header_col(xs: size,sm: size,md:size,lg:size) do
             %h4= "Add a Vehicle #{current_user.first_name}"
@@ -23,7 +23,7 @@
               = f.submit 'Add', class: "btn btn-success btn-block"
     - else
       -@vehicles.each_with_index do |vehicle, index|
-        = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+        = BootstrapHelper::Panel.new(contextual: 'primary', title:"") do |panel|
           - size = 3
           - panel.header_col(class: "edit", xs: 4,sm: size,md:size,lg:size) do
             .h4

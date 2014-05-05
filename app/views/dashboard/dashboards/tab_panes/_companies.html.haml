@@ -8,7 +8,7 @@
             %ul
               - @company.errors.full_messages.each do |msg|
                 %li= msg
-        = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+        = BootstrapHelper::Panel.new(contextual: 'primary', title:"") do |panel|
           - size = 12
           - panel.header_col(xs: size,sm: size,md:size,lg:size) do
             %h4= "Add a Company #{current_user.first_name}"
@@ -22,7 +22,7 @@
               = f.submit 'Add', class: "btn btn-success btn-block"
     - else
       -@companies.each do |company|
-        = BootstrapHelper::Panel.new(contextual: 'info', title:"") do |panel|
+        = BootstrapHelper::Panel.new(contextual: 'primary', title:"") do |panel|
           - size = 3
           - panel.header_col(class: 'edit', xs: 4,sm: size,md:size,lg:size) do
             .h4

@@ -7,7 +7,7 @@
       - if @sites.size > 1
         %h3
           Current Site
-      = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+      = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
         - size = 3
         - panel.header_col(xs: size,sm: size,md:size,lg:size) do
           .h4
@@ -53,7 +53,7 @@
           - else 
             Previous Site
         - @sites.reverse.each do |site|
-          = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+          = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
             - size = 3
             - panel.header_col(xs: size,sm: size,md:size,lg:size) do
               .h4
