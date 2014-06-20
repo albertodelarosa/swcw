@@ -13,6 +13,7 @@
       - panel.header_col(xs: size,sm: size,md:size,lg:size) do
         %h4
           Register an Account
+    - size = 12
     - panel.body do
       = render partial: "/devise/registrations/panels/login_info", locals: {f: f, size: size}
       = render partial: "/devise/registrations/panels/business_contact_info", locals: {f: f, size: size}
