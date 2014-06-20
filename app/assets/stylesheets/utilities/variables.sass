@@ -264,8 +264,8 @@ $gray-lighter:           lighten(#000, 93.5%) !default
 // Scaffolding
 // -------------------------
 
-$body-bg:               $sitelerBlueGreyLighter6 !default
-$text-color:            $sitelerGreyDarker8 !default
+$body-bg:               #c5c8cc !default
+$text-color:            darken($body-bg, 75%) 
 
 // Links
 // -------------------------
@@ -581,25 +581,12 @@ $nav-disabled-link-hover-color:             $gray-light !default
 $nav-open-link-hover-color:                 #fff !default
 
 // Tabs
-.panel-default .nav.nav-tabs 
-  li 
-    a
-      //border: $sitelerSolidBlue2
-      color: $sitelerBlueGreyDarker8
-    a:hover
-      background-color: $sitelerSolidBlue3
-      color: $sitelerBlueGreyLighter8
-  li.active
-    a, a:hover
-      background-color: $sitelerSolidBlue2
-      color: $sitelerBlueGreyLighter6
+//$nav-tabs-border-color:                           $sitelerSolidBlue2 !default
+//$nav-tabs-link-hover-border-color:                $sitelerSolidBlue3 !default
 
-$nav-tabs-border-color:                           $sitelerSolidBlue2 !default
-$nav-tabs-link-hover-border-color:                $sitelerSolidBlue3 !default
-
-$nav-tabs-active-link-hover-bg:                   $sitelerSolidBlue2 !default
-$nav-tabs-active-link-hover-color:                $sitelerBlueGreyLighter6 !default
-$nav-tabs-active-link-hover-border-color:         $sitelerSolidBlue3 !default
+//$nav-tabs-active-link-hover-bg:                   $sitelerSolidBlue2 !default
+//$nav-tabs-active-link-hover-color:                $sitelerBlueGreyLighter6 !default
+//$nav-tabs-active-link-hover-border-color:         $sitelerSolidBlue3 !default
 
 $nav-tabs-justified-link-border-color:            #ddd !default
 $nav-tabs-justified-active-link-border-color:     $body-bg !default
@@ -792,37 +779,56 @@ $list-group-link-heading-color: #333 !default
 
 // Panels
 // -------------------------
-$panel-bg:                    $sitelerSolidBlue1 !default
+$panel-bg:                    #ffffff !default
 $panel-body-padding:          15px !default
 $panel-border-radius:         $border-radius-base !default
-$panel-inner-border:          $sitelerSolidBlue2 !default
-$panel-footer-bg:             $sitelerSolidBlue2 !default
+$panel-inner-border:          darken($panel-bg, 50%) !default
+$panel-footer-bg:             darken($panel-bg, 20%) !default
 
-$panel-default-heading-bg:    $sitelerGreyBlue !default
-$panel-default-border:        $panel-default-heading-bg !default
-$panel-default-text:          $sitelerBlueLighter8 !default
+$panel-default-heading-bg:    #546f8c !default
+$panel-default-border:        lighten($panel-default-heading-bg, 11%) !default
+$panel-default-text:          lighten($panel-default-heading-bg, 60%) !default
+@include panel-settings("default", $panel-default-heading-bg)
 
-$panel-primary-heading-bg:    $sitelerBlue !default
-$panel-primary-border:        $panel-primary-heading-bg !default
-$panel-primary-text:          $sitelerBlueLighter8 !default
+$panel-primary-heading-bg:    #628ab2 !default
+$panel-primary-border:        lighten($panel-primary-heading-bg, 11%) !default
+$panel-primary-text:          lighten($panel-primary-heading-bg, 60%) !default
+@include panel-settings("primary", $panel-primary-heading-bg)
 
-$panel-success-heading-bg:    $sitelerGreenDarker4 !default
-$panel-success-border:        $panel-success-heading-bg !default
-$panel-success-text:          $sitelerGreenLighter9 !default
+$panel-success-heading-bg:    #548c59 !default
+$panel-success-border:        lighten($panel-success-heading-bg, 11%) !default
+$panel-success-text:          lighten($panel-default-heading-bg, 70%) !default
+@include panel-settings("success", $panel-success-heading-bg)
 
-$panel-info-heading-bg:       $sitelerBlueDarker3 !default
-$panel-info-border:           $panel-info-heading-bg !default
-$panel-info-text:             $sitelerBlueLighter8 !default
+$panel-info-heading-bg:       #69b8bf !default
+$panel-info-border:           lighten($panel-info-heading-bg, 20%) !default
+$panel-info-text:             lighten($panel-info-heading-bg, 60%) !default
+@include panel-settings("info",    $panel-info-heading-bg)
 
-$panel-warning-text:          $state-warning-text !default
-$panel-warning-border:        $state-warning-border !default
-$panel-warning-heading-bg:    $state-warning-bg !default
+$panel-warning-heading-bg:    #DBC996 !default
+$panel-warning-border:        lighten($panel-warning-heading-bg, 3%) !default
+$panel-warning-text:          lighten($panel-warning-heading-bg, 60%) !default
+@include panel-settings("warning", $panel-warning-heading-bg)
 
-$panel-danger-text:           $state-danger-text !default
-$panel-danger-border:         $state-danger-border !default
-$panel-danger-heading-bg:     $state-danger-bg !default
+$panel-danger-heading-bg:     #a55452 !default
+$panel-danger-border:         lighten($panel-danger-heading-bg, 11%)  !default
+$panel-danger-text:           lighten($panel-danger-heading-bg, 60%) !default
+@include panel-settings("danger",  $panel-danger-heading-bg)
 
-@include panel-settings(2px 2px 8px rgba(22, 41, 60, .75), $panel-default-heading-bg, 2px 2px 8px rgba(22, 41, 60, .75), $panel-primary-heading-bg, 3px 3px 12px rgba(0, 75, 4, .75),  $panel-success-heading-bg, 3px 3px 12px rgba(22, 41, 60, .5), $sitelerBlue)
+//.panel-default .nav.nav-tabs 
+  //margin-bottom: 15px
+  //li 
+    //a
+      ////border: $sitelerSolidBlue2
+      //color: $sitelerBlueGreyDarker8
+    //a:hover
+      //background-color: $sitelerSolidBlue3
+      //color: $sitelerBlueGreyLighter8
+  //li.active
+    //a, a:hover
+      //background-color: $sitelerSolidBlue2
+      //color: $sitelerBlueGreyLighter6
+
 
 // Thumbnails
 // -------------------------
@@ -865,11 +871,9 @@ $breadcrumb-bg:                 #f5f5f5 !default
 $breadcrumb-color:              #ccc !default
 $breadcrumb-active-color:       $gray-light !default
 
-.panel-default .breadcrumb
-  @include breadcumbs($sitelerBlueGreyLighter6, $sitelerBlueGrey, $sitelerBlueGreyDarker5, $panel-default-heading-bg)
+//@include breadcumbs("default", $body-bg, $panel-default-heading-bg)
 
-.panel-primary .breadcrumb
-  @include breadcumbs($sitelerBlueLighter5, $sitelerBlueGrey,$sitelerBlueDarker5, $sitelerBlueLighter1)
+//@include breadcumbs("primary", $body-bg, $panel-primary-heading-bg)
 
 // Carousel
 // ------------------------
@@ -940,3 +944,7 @@ $container-md:                 $container-desktop !default
 // Large screen / wide desktop
 $container-large-desktop:      ((1140px + $grid-gutter-width)) !default
 $container-lg:                 $container-large-desktop !default
+
+h4
+  margin-top: 6px
+  margin-bottom: 2px

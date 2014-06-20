@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  layout :layout_by_resource
   def stored_location_for(resource)
     nil
   end
@@ -22,6 +23,17 @@ class ApplicationController < ActionController::Base
       @breadcrumbs ||= []
       url = eval(url) if url =~ /_path|_url|@/
       @breadcrumbs << [name, url, icon]
+  end
+
+
+  protected
+
+  def layout_by_resource
+    if devise_controller?
+      "dashboard"
+    else
+      "application"
+    end
   end
 
 end

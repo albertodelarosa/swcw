@@ -10,7 +10,8 @@
       = render "shared/navbar"
       = render "shared/alert", flash: flash
       .container
-        = yield
+        .main-body-wrapper
+          = yield
     = render "shared/footer"
     = javascript_include_tag "application"
     = render "shared/javascripts"
