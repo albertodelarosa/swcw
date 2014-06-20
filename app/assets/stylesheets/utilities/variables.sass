@@ -266,7 +266,7 @@ $gray-lighter:           lighten(#000, 93.5%) !default
 
 $body-bg:               #c5c8cc !default
 $text-color:            darken($body-bg, 75%) 
-
+//#c5c8cc
 // Links
 // -------------------------
 
@@ -518,15 +518,16 @@ $navbar-border-radius:             $border-radius-base !default
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default
 
-$navbar-default-color:             #777 !default
-$navbar-default-bg:                #f8f8f8 !default
+$navbar-default-color:             $sitelerBlueLighter8 !default
+$navbar-default-bg:                #4E9CB5//$sitelerSolidBlue3 !default
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default
+$body-bg:                           lighten($navbar-default-bg, 38%)
 
 // Navbar links
-$navbar-default-link-color:                #777 !default
-$navbar-default-link-hover-color:          #333 !default
+$navbar-default-link-color:                $sitelerBlueLighter8 !default
+$navbar-default-link-hover-color:          $sitelerBlueLighter8 !default
 $navbar-default-link-hover-bg:             transparent !default
-$navbar-default-link-active-color:         #555 !default
+$navbar-default-link-active-color:         $sitelerBlueLighter8 !default
 $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default
 $navbar-default-link-disabled-color:       #ccc !default
 $navbar-default-link-disabled-bg:          transparent !default
@@ -572,8 +573,8 @@ $navbar-inverse-toggle-border-color:        #333 !default
 // Navs
 // -------------------------
 
-$nav-link-padding:                          10px 15px !default
-$nav-link-hover-bg:                         $gray-lighter !default
+$nav-link-padding:                          8px 10px !default
+$nav-link-hover-bg:                         lighten($sitelerBlue, 20%) !default
 
 $nav-disabled-link-color:                   $gray-light !default
 $nav-disabled-link-hover-color:             $gray-light !default
@@ -581,12 +582,12 @@ $nav-disabled-link-hover-color:             $gray-light !default
 $nav-open-link-hover-color:                 #fff !default
 
 // Tabs
-//$nav-tabs-border-color:                           $sitelerSolidBlue2 !default
-//$nav-tabs-link-hover-border-color:                $sitelerSolidBlue3 !default
+$nav-tabs-border-color:                           $sitelerBlue !default
+$nav-tabs-link-hover-border-color:                $sitelerBlue !default
 
-//$nav-tabs-active-link-hover-bg:                   $sitelerSolidBlue2 !default
-//$nav-tabs-active-link-hover-color:                $sitelerBlueGreyLighter6 !default
-//$nav-tabs-active-link-hover-border-color:         $sitelerSolidBlue3 !default
+$nav-tabs-active-link-hover-bg:                   $sitelerBlue !default
+$nav-tabs-active-link-hover-color:                lighten($nav-tabs-active-link-hover-bg, 95%) !default
+$nav-tabs-active-link-hover-border-color:         darken($nav-tabs-active-link-hover-bg, 10%) !default
 
 $nav-tabs-justified-link-border-color:            #ddd !default
 $nav-tabs-justified-active-link-border-color:     $body-bg !default
@@ -795,7 +796,7 @@ $panel-primary-border:        lighten($panel-primary-heading-bg, 11%) !default
 $panel-primary-text:          lighten($panel-primary-heading-bg, 60%) !default
 @include panel-settings("primary", $panel-primary-heading-bg)
 
-$panel-success-heading-bg:    #548c59 !default
+$panel-success-heading-bg:    #2FB376 !default
 $panel-success-border:        lighten($panel-success-heading-bg, 11%) !default
 $panel-success-text:          lighten($panel-default-heading-bg, 70%) !default
 @include panel-settings("success", $panel-success-heading-bg)
@@ -810,7 +811,7 @@ $panel-warning-border:        lighten($panel-warning-heading-bg, 3%) !default
 $panel-warning-text:          lighten($panel-warning-heading-bg, 60%) !default
 @include panel-settings("warning", $panel-warning-heading-bg)
 
-$panel-danger-heading-bg:     #a55452 !default
+$panel-danger-heading-bg:     #D03453 !default
 $panel-danger-border:         lighten($panel-danger-heading-bg, 11%)  !default
 $panel-danger-text:           lighten($panel-danger-heading-bg, 60%) !default
 @include panel-settings("danger",  $panel-danger-heading-bg)
