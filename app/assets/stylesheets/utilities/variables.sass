@@ -1,950 +1,181 @@
 @import "utilities/mixins"
-//##########################################
+
+//##############################################################################################################
+h4
+  margin-top: 6px
+  margin-bottom: 2px
+
+//##############################################################################################################
 // Siteler Brand colors
-//##########################################
+//##############################################################################################################
 
 // Primary Colors
-//##########################################
-$sitelerBlueDarker9:        #060A0F !default
-$sitelerBlueDarker8:        #0B141E !default
-$sitelerBlueDarker7:        #111F2D !default
-$sitelerBlueDarker6:        #16293C !default
-$sitelerBlueDarker5:        #1C334C !default
-$sitelerBlueDarker4:        #223D5B !default
-$sitelerBlueDarker3:        #27476A !default
-$sitelerBlueDarker2:        #2D5279 !default
-$sitelerBlueDarker1:        #325C88 !default
-$sitelerBlue:               #386697 !default
-$sitelerBlueLighter1:       #4C75A1 !default
-$sitelerBlueLighter2:       #6085AC !default
-$sitelerBlueLighter3:       #7494B6 !default
-$sitelerBlueLighter4:       #88A3C1 !default
-$sitelerBlueLighter5:       #9CB2CB !default
-$sitelerBlueLighter6:       #AFC2D5 !default
-$sitelerBlueLighter7:       #C3D1E0 !default
-$sitelerBlueLighter8:       #D7E0EA !default
-$sitelerBlueLighter9:       #EBF0F5 !default
-
-$sitelerGreenDarker9:       #050E06 !default
-$sitelerGreenDarker8:       #0A1C0C !default
-$sitelerGreenDarker7:       #0F2A12 !default
-$sitelerGreenDarker6:       #143818 !default
-$sitelerGreenDarker5:       #18461E !default
-$sitelerGreenDarker4:       #1D5425 !default
-$sitelerGreenDarker3:       #22622B !default
-$sitelerGreenDarker2:       #277031 !default
-$sitelerGreenDarker1:       #2C7E37 !default
-$sitelerGreen:              #318c3d !default
-$sitelerGreenLighter1:      #469850 !default
-$sitelerGreenLighter2:      #5AA364 !default
-$sitelerGreenLighter3:      #6FAE77 !default
-$sitelerGreenLighter4:      #83BA8B !default
-$sitelerGreenLighter5:      #98C69E !default
-$sitelerGreenLighter6:      #ADD1B1 !default
-$sitelerGreenLighter7:      #C1DCC5 !default
-$sitelerGreenLighter8:      #D6E8D8 !default
-$sitelerGreenLighter9:      #EAF4EC !default
-
-$sitelerLimeDarker9:        #001403 !default
-$sitelerLimeDarker8:        #012905 !default
-$sitelerLimeDarker7:        #013E08 !default
-$sitelerLimeDarker6:        #02520A !default
-$sitelerLimeDarker5:        #02660D !default
-$sitelerLimeDarker4:        #027B10 !default
-$sitelerLimeDarker3:        #039012 !default
-$sitelerLimeDarker2:        #03A415 !default
-$sitelerLimeDarker1:        #04B817 !default
-$sitelerLime:               #04CD1A !default
-$sitelerLimeLighter1:       #1DD231 !default
-$sitelerLimeLighter2:       #36D748 !default
-$sitelerLimeLighter3:       #4FDC5F !default
-$sitelerLimeLighter4:       #68E176 !default
-$sitelerLimeLighter5:       #82E68C !default
-$sitelerLimeLighter6:       #9BEBA3 !default
-$sitelerLimeLighter7:       #B4F0BA !default
-$sitelerLimeLighter8:       #CDF5D1 !default
-$sitelerLimeLighter9:       #E6FAE8 !default
+//##############################################################################################################
+$sitelerBlue:                               #386697 !default
+$sitelerGreen:                              #318c3d !default
+$sitelerLime:                               #04CD1A !default
 
 // Greys
-//##########################################
-$sitelerBlueGreyDarker9:    #050606 !default
-$sitelerBlueGreyDarker8:    #0A0B0D !default
-$sitelerBlueGreyDarker7:    #0E1113 !default
-$sitelerBlueGreyDarker6:    #131619 !default
-$sitelerBlueGreyDarker5:    #181C20 !default
-$sitelerBlueGreyDarker4:    #1D2226 !default
-$sitelerBlueGreyDarker3:    #22272C !default
-$sitelerBlueGreyDarker2:    #262D32 !default
-$sitelerBlueGreyDarker1:    #2B3239 !default
-$sitelerBlueGrey:           #30383F !default
-$sitelerBlueGreyLighter1:   #454C52 !default
-$sitelerBlueGreyLighter2:   #596065 !default
-$sitelerBlueGreyLighter3:   #6E7479 !default
-$sitelerBlueGreyLighter4:   #83888C !default
-$sitelerBlueGreyLighter5:   #989C9F !default
-$sitelerBlueGreyLighter6:   #ACAFB2 !default
-$sitelerBlueGreyLighter7:   #C1C3C5 !default
-$sitelerBlueGreyLighter8:   #D6D7D9 !default
-$sitelerBlueGreyLighter9:   #EAEBEC !default
-
-$sitelerGreyBlueDarker9:    #06080A !default
-$sitelerGreyBlueDarker8:    #0B0F14 !default
-$sitelerGreyBlueDarker7:    #10171E !default
-$sitelerGreyBlueDarker6:    #161F28 !default
-$sitelerGreyBlueDarker5:    #1C2632 !default
-$sitelerGreyBlueDarker4:    #212E3D !default
-$sitelerGreyBlueDarker3:    #263647 !default
-$sitelerGreyBlueDarker2:    #2C3E51 !default
-$sitelerGreyBlueDarker1:    #32455B !default
-$sitelerGreyBlue:           #374D65 !default
-$sitelerGreyBlueLighter1:   #4B5F74 !default
-$sitelerGreyBlueLighter2:   #5F7184 !default
-$sitelerGreyBlueLighter3:   #738293 !default
-$sitelerGreyBlueLighter4:   #8794A3 !default
-$sitelerGreyBlueLighter5:   #9BA6B2 !default
-$sitelerGreyBlueLighter6:   #AFB8C1 !default
-$sitelerGreyBlueLighter7:   #C3CAD1 !default
-$sitelerGreyBlueLighter8:   #D7DBE0 !default
-$sitelerGreyBlueLighter9:   #EBEDF0 !default
-
-$sitelerLimeGreyDarker9:    #060D07 !default
-$sitelerLimeGreyDarker8:    #0C190E !default
-$sitelerLimeGreyDarker7:    #132615 !default
-$sitelerLimeGreyDarker6:    #19331C !default
-$sitelerLimeGreyDarker5:    #1F4023 !default
-$sitelerLimeGreyDarker4:    #254C2A !default
-$sitelerLimeGreyDarker3:    #2B5931 !default
-$sitelerLimeGreyDarker2:    #326638 !default
-$sitelerLimeGreyDarker1:    #38723F !default
-$sitelerLimeGrey:           #3E7F46 !default
-$sitelerLimeGreyLighter1:   #518C58 !default
-$sitelerLimeGreyLighter2:   #65996B !default
-$sitelerLimeGreyLighter3:   #78A57E !default
-$sitelerLimeGreyLighter4:   #8BB290 !default
-$sitelerLimeGreyLighter5:   #9EBFA2 !default
-$sitelerLimeGreyLighter6:   #B2CCB5 !default
-$sitelerLimeGreyLighter7:   #C5D9C8 !default
-$sitelerLimeGreyLighter8:   #D8E5DA !default
-$sitelerLimeGreyLighter9:   #ECF2EC !default
-
-$sitelerGreyDarker9:        #0C0D0F !default
-$sitelerGreyDarker8:        #171A1E !default
-$sitelerGreyDarker7:        #22282D !default
-$sitelerGreyDarker6:        #2E353C !default
-$sitelerGreyDarker5:        #3A424A !default
-$sitelerGreyDarker4:        #454F59 !default
-$sitelerGreyDarker3:        #505C68 !default
-$sitelerGreyDarker2:        #5C6A77 !default
-$sitelerGreyDarker1:        #687786 !default
-$sitelerGrey:               #738495 !default
-$sitelerGreyLighter1:       #8190A0 !default
-$sitelerGreyLighter2:       #8F9DAA !default
-$sitelerGreyLighter3:       #9DA9B5 !default
-$sitelerGreyLighter4:       #ABB5BF !default
-$sitelerGreyLighter5:       #B9C2CA !default
-$sitelerGreyLighter6:       #C7CED5 !default
-$sitelerGreyLighter7:       #D5DADF !default
-$sitelerGreyLighter8:       #E3E6EA !default
-$sitelerGreyLighter9:       #F1F3F4 !default
-
-$sitelerYellowDarker9:      #171003 !default
-$sitelerYellowDarker8:      #2E2007 !default
-$sitelerYellowDarker7:      #45300A !default
-$sitelerYellowDarker6:      #5C400E !default
-$sitelerYellowDarker5:      #725011 !default
-$sitelerYellowDarker4:      #896114 !default
-$sitelerYellowDarker3:      #A07118 !default
-$sitelerYellowDarker2:      #B7811B !default
-$sitelerYellowDarker1:      #CE911F !default
-$sitelerYellow:             #E5A122 !default
-$sitelerYellowLighter1:     #E8AA38 !default
-$sitelerYellowLighter2:     #EAB44E !default
-$sitelerYellowLighter3:     #EDBD64 !default
-$sitelerYellowLighter4:     #EFC77A !default
-$sitelerYellowLighter5:     #F2D090 !default
-$sitelerYellowLighter6:     #F5D9A7 !default
-$sitelerYellowLighter7:     #F7E3BD !default
-$sitelerYellowLighter8:     #FAECD3 !default
-$sitelerYellowLighter9:     #FCF6E9 !default
-
-$sitelerRedDarker9:         #140606 !default
-$sitelerRedDarker8:         #280C0C !default
-$sitelerRedDarker7:         #3B1111 !default
-$sitelerRedDarker6:         #4F1717 !default
-$sitelerRedDarker5:         #631D1D !default
-$sitelerRedDarker4:         #772323 !default
-$sitelerRedDarker3:         #8B2929 !default
-$sitelerRedDarker2:         #9E2E2E !default
-$sitelerRedDarker1:         #B23434 !default
-$sitelerRed:                #C63A3A !default
-$sitelerRedLighter1:        #CC4E4E !default
-$sitelerRedLighter2:        #D16161 !default
-$sitelerRedLighter3:        #D77575 !default
-$sitelerRedLighter4:        #DD8989 !default
-$sitelerRedLighter5:        #E29C9C !default
-$sitelerRedLighter6:        #E8B0B0 !default
-$sitelerRedLighter7:        #EEC4C4 !default
-$sitelerRedLighter8:        #F4D8D8 !default
-$sitelerRedLighter9:        #F9EBEB !default
-
-// ----------------------------
-
-$sitelerSolidBlue1:         #36485c!default
-$sitelerSolidBlue2:         #293440!default
-$sitelerSolidBlue3:         #1f2833!default
-$sitelerSolidBlue4:         #191f26!default
-$sitelerSolidBlue5:         #11151a!default
-$sitelerSolidBlue6:         #080a0d!default
+//##############################################################################################################
+$sitelerYellow:                             #E5A122 !default
+$sitelerRed:                                #C63A3A !default
 
 
-$sitelerSolidGreen1:         #36485c!default
-$sitelerSolidGreen1:         #36485c!default
-$sitelerSolidGreen1:         #36485c!default
-$sitelerSolidGreen1:         #36485c!default
-$sitelerSolidGreen1:         #36485c!default
-$sitelerSolidGreen1:         #36485c!default
+//pastel
+$sitelerPastelBlue1:                        #5A759A !default
+
+$sitelerPastelBlue2:                        #5f8fbf !default
+
+$sitelerPastelGreen1:                       #14B694 !default
+
+$sitelerPastelGreen2:                       #24BCA4 !default
+
+$sitelerPastelPurple1:                      #9a74a5 !default
+
+$sitelerPastelRed1:                         #e54444 !default
+
+$sitelerPastelOrange1:                      #F8774B !default
+
+$sitelerPastelOrange2:                      #e56744 !default
+
+$sitelerPastelOrange3:                      #FD573B !default
 
 
-//$sitelerSuccessBg:          $sitelerLimeGreyLighter9 !default
 
+
+$q: #F75B42 //pastelie
+
+$q: #EB540A
+
+$q: #F9576A
+
+
+
+
+$q: #CF1332 //bold
+
+
+
+
+$q: #327CCB //boldie
+
+$q: #F7AB4E 
+
+$q: #5498EA
+
+
+
+
+$q: #982438 //greyish
+
+
+// ##############################################################################################################
 // Sitler Brand colors more
-// ----------------------------
-$brand-primary:             $sitelerGreyBlue
-$brand-primary-bg:          $sitelerGreyBlueLighter8
-$brand-primary-border:      $sitelerGreyBlueLighter8
+//$brand-primary:               $sitelerGreyBlue
+//$brand-primary-bg:            $sitelerGreyBlueLighter8
+//$brand-primary-border:        $sitelerGreyBlueLighter8
 
-$brand-success:             $sitelerGreen
-$brand-success-bg:          $sitelerGreenLighter7
+//$brand-success:               $sitelerGreen
+//$brand-success-bg:            $sitelerGreenLighter7
 
-$brand-warning:             $sitelerYellow
-$brand-warning-bg:          $sitelerYellowLighter7
+//$brand-warning:               $sitelerYellow
+//$brand-warning-bg:            $sitelerYellowLighter7
 
-$brand-danger:              $sitelerRed
-$brand-danger-bg:           $sitelerRedLighter7
+//$brand-danger:                $sitelerRed
+//$brand-danger-bg:             $sitelerRedLighter7
 
-$brand-info:                $sitelerBlue
-$brand-info-bg:             $sitelerBlueLighter7
+//$brand-info:                  $sitelerBlue
+//$brand-info-bg:               $sitelerBlueLighter7
 
 
-// a flag to toggle asset pipeline / compass integration
-// defaults to true if twbs-font-path function is present (no function => twbs-font-path('') parsed as string == right side)
-// in Sass 3.3 this can be improved with: function-exists(twbs-font-path)
-$bootstrap-sass-asset-helper: (twbs-font-path('') != unquote("twbs-font-path('')")) !default
-//
-// Variables
-// --------------------------------------------------
-
-
-// Global values
-// --------------------------------------------------
-
-// Grays
-// -------------------------
-
-// #222
-$gray-darker:            lighten(#000, 13.5%) !default 
-// #333
-$gray-dark:              lighten(#000, 20%) !default   
-// #555
-$gray:                   lighten(#000, 33.5%) !default 
-// #999
-$gray-light:             lighten(#000, 60%) !default   
-// #eee
-$gray-lighter:           lighten(#000, 93.5%) !default 
-
-// Brand colors
-// -------------------------
-
-//$brand-primary:         #428bca !default
-//$brand-success:         #5cb85c !default
-//$brand-warning:         #f0ad4e !default
-//$brand-danger:          #d9534f !default
-//$brand-info:            #5bc0de !default
-
-// Scaffolding
-// -------------------------
-
-$body-bg:               #c5c8cc !default
-$text-color:            darken($body-bg, 75%) 
-
-// Links
-// -------------------------
-
-$link-color:            $brand-primary !default
-$link-hover-color:      darken($link-color, 15%) !default
-
-// Typography
-// -------------------------
-
-$font-family-sans-serif:  CenturyGothic,"Helvetica Neue", Helvetica, Arial, sans-serif !default
-$font-family-serif:       Georgia, "Times New Roman", Times, serif !default
-$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default
-$font-family-base:        $font-family-sans-serif !default
-
-$font-size-base:          14px !default
-// ~18px
-$font-size-large:         ceil(($font-size-base * 1.25)) !default 
-// ~12px
-$font-size-small:         ceil(($font-size-base * 0.85)) !default 
-
-// ~36px
-$font-size-h1:            floor(($font-size-base * 2.6)) !default 
-// ~30px
-$font-size-h2:            floor(($font-size-base * 2.15)) !default 
-// ~24px
-$font-size-h3:            ceil(($font-size-base * 1.7)) !default 
-// ~18px
-$font-size-h4:            ceil(($font-size-base * 1.25)) !default 
-$font-size-h5:            $font-size-base !default
-// ~12px
-$font-size-h6:            ceil(($font-size-base * 0.85)) !default 
-
-// 20/14
-$line-height-base:        1.428571429 !default 
-// ~20px
-$line-height-computed:    floor(($font-size-base * $line-height-base)) !default 
-
-$headings-font-family:    inherit !default
-$headings-font-weight:    500 !default
-$headings-line-height:    1.1 !default
-$headings-color:          inherit !default
-
-
-// Iconography
-// -------------------------
-
-$icon-font-path: "bootstrap/" !default
-$icon-font-name:          "glyphicons-halflings-regular" !default
-
-
-// Components
-// -------------------------
-// Based on 14px font-size and 1.428 line-height (~20px to start)
-
-$padding-base-vertical:          6px !default
-$padding-base-horizontal:        12px !default
-
-$padding-large-vertical:         10px !default
-$padding-large-horizontal:       16px !default
-
-$padding-small-vertical:         5px !default
-$padding-small-horizontal:       10px !default
-
-$padding-xs-vertical:            1px !default
-$padding-xs-horizontal:          5px !default
-
-$line-height-large:              1.33 !default
-$line-height-small:              1.5 !default
-
-$border-radius-base:             4px !default
-$border-radius-large:            6px !default
-$border-radius-small:            3px !default
-
-$component-active-color:         #fff !default
-$component-active-bg:            $brand-primary !default
-
-$caret-width-base:               4px !default
-$caret-width-large:              5px !default
-
-// Tables
-// -------------------------
-
-$table-cell-padding:                 8px !default
-$table-condensed-cell-padding:       5px !default
-
-// overall background-color
-$table-bg:                           transparent !default 
-// for striping
-$table-bg-accent:                    #d9edf7  !default 
-$table-bg-hover:                     $brand-info !default
-$table-bg-active:                    #d9edf7  !default
-
-// table and cell borde
-$table-border-color:                 #d9edf7 !default
-
-
-// Buttons
-// -------------------------
-
-$btn-font-weight:                normal !default
-
-$btn-default-color:              #333 !default
-$btn-default-bg:                 #fff !default
-$btn-default-border:             #ccc !default
-
-$btn-primary-color:              #fff !default
-$btn-primary-bg:                 $brand-primary !default
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default
-
-$btn-success-color:              #fff !default
-$btn-success-bg:                 $brand-success !default
-$btn-success-border:             darken($btn-success-bg, 5%) !default
-
-$btn-warning-color:              #fff !default
-$btn-warning-bg:                 $brand-warning !default
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default
-
-$btn-danger-color:               #fff !default
-$btn-danger-bg:                  $brand-danger !default
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default
-
-$btn-info-color:                 #fff !default
-$btn-info-bg:                    $brand-info !default
-$btn-info-border:                darken($btn-info-bg, 5%) !default
-
-$btn-link-disabled-color:        $gray-light !default
-
-
-// Forms
-// -------------------------
-
-$input-bg:                       #fff !default
-$input-bg-disabled:              $gray-lighter !default
-
-$input-color:                    $gray !default
-$input-border:                   #ccc !default
-$input-border-radius:            $border-radius-base !default
-$input-border-focus:             #66afe9 !default
-
-$input-color-placeholder:        $gray-light !default
-
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default
-$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default
-$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default
-
-$legend-color:                   $gray-dark !default
-$legend-border-color:            #e5e5e5 !default
-
-$input-group-addon-bg:           $gray-lighter !default
-$input-group-addon-border-color: $input-border !default
-
-
-// Dropdowns
-// -------------------------
-
-$dropdown-bg:                    #fff !default
-$dropdown-border:                rgba(0,0,0,.15) !default
-$dropdown-fallback-border:       #ccc !default
-$dropdown-divider-bg:            #e5e5e5 !default
-
-$dropdown-link-color:            $gray-dark !default
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default
-$dropdown-link-hover-bg:         #f5f5f5 !default
-
-$dropdown-link-active-color:     $component-active-color !default
-$dropdown-link-active-bg:        $component-active-bg !default
-
-$dropdown-link-disabled-color:   $gray-light !default
-
-$dropdown-header-color:          $gray-light !default
-
-// Note: Deprecated $dropdown-caret-color as of v3.1.0
-$dropdown-caret-color:           #000 !default
-
-
-// COMPONENT VARIABLES
-// --------------------------------------------------
-
-
-// Z-index master list
-// -------------------------
-// Used for a bird's eye view of components dependent on the z-axis
-// Try to avoid customizing these :)
-
-$zindex-navbar:            1000 !default
-$zindex-dropdown:          1000 !default
-$zindex-popover:           1010 !default
-$zindex-tooltip:           1030 !default
-$zindex-navbar-fixed:      1030 !default
-$zindex-modal-background:  1040 !default
-$zindex-modal:             1050 !default
-
-// Media queries breakpoints
-// --------------------------------------------------
-
-// Extra small screen / phone
-// Note: Deprecated $screen-xs and $screen-phone as of v3.0.1
-$screen-xs:                  480px !default
-$screen-xs-min:              $screen-xs !default
-$screen-phone:               $screen-xs-min !default
-
-// Small screen / tablet
-// Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
-$screen-sm:                  768px !default
-$screen-sm-min:              $screen-sm !default
-$screen-tablet:              $screen-sm-min !default
-
-// Medium screen / desktop
-// Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
-$screen-md:                  992px !default
-$screen-md-min:              $screen-md !default
-$screen-desktop:             $screen-md-min !default
-
-// Large screen / wide desktop
-// Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
-$screen-lg:                  1200px !default
-$screen-lg-min:              $screen-lg !default
-$screen-lg-desktop:          $screen-lg-min !default
-
-// So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm-min - 1) !default
-$screen-sm-max:              ($screen-md-min - 1) !default
-$screen-md-max:              ($screen-lg-min - 1) !default
-
-
+// ##############################################################################################################
 // Grid system
-// --------------------------------------------------
+$grid-gutter-width:                         20px !default
 
-// Number of columns in the grid system
-$grid-columns:              12 !default
-// Padding, to be divided by two and applied to the left and right of all columns
-$grid-gutter-width:         30px !default
-
-// Navbar collapse
-
-// Point at which the navbar becomes uncollapsed
-$grid-float-breakpoint:     $screen-sm-min !default
-// Point at which the navbar begins collapsing
-$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default
-
-
+// ##############################################################################################################
 // Navbar
-// -------------------------
+$navbar-height:                             50px !default
 
-// Basics of a navbar
-$navbar-height:                    50px !default
-$navbar-margin-bottom:             $line-height-computed !default
-$navbar-border-radius:             $border-radius-base !default
-$navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default
-$navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default
-
-$navbar-default-color:             #777 !default
-$navbar-default-bg:                #f8f8f8 !default
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default
+$navbar-default-bg:                         $sitelerPastelBlue1 !default
+$navbar-default-color:                      lighten($navbar-default-bg, 47%) !default
 
 // Navbar links
-$navbar-default-link-color:                #777 !default
-$navbar-default-link-hover-color:          #333 !default
-$navbar-default-link-hover-bg:             transparent !default
-$navbar-default-link-active-color:         #555 !default
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default
-$navbar-default-link-disabled-color:       #ccc !default
-$navbar-default-link-disabled-bg:          transparent !default
+$navbar-default-link-color:                 lighten($navbar-default-bg, 50%) !default
+$navbar-default-link-hover-color:           $navbar-default-link-color !default
+$navbar-default-link-active-color:          $navbar-default-link-color !default
+$navbar-default-link-active-bg:             darken($navbar-default-bg, 6.5%) !default
 
-// Navbar brand label
-$navbar-default-brand-color:               $navbar-default-link-color !default
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default
-$navbar-default-brand-hover-bg:            transparent !default
+// ##############################################################################################################
+// Scaffolding
 
-// Navbar toggle
-$navbar-default-toggle-hover-bg:           #ddd !default
-$navbar-default-toggle-icon-bar-bg:        #888 !default
-$navbar-default-toggle-border-color:       #ddd !default
+$body-bg:                                   #c5c8cc !default
+$text-color:                                darken($body-bg, 75%) 
+$font-family-sans-serif:                    CenturyGothic,"Helvetica Neue", Helvetica, Arial, sans-serif !default
+$font-family-serif:                         Georgia, "Times New Roman", Times, serif !default
+$font-family-monospace:                     Menlo, Monaco, Consolas, "Courier New", monospace !default
+$font-family-base:                          $font-family-sans-serif !default
 
 
-// Inverted navbar
-//
-// Reset inverted navbar basics
-$navbar-inverse-color:                      $gray-light !default
-$navbar-inverse-bg:                         #222 !default
-$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default
-
-// Inverted navbar links
-$navbar-inverse-link-color:                 $gray-light !default
-$navbar-inverse-link-hover-color:           #fff !default
-$navbar-inverse-link-hover-bg:              transparent !default
-$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default
-$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%) !default
-$navbar-inverse-link-disabled-color:        #444 !default
-$navbar-inverse-link-disabled-bg:           transparent !default
-
-// Inverted navbar brand label
-$navbar-inverse-brand-color:                $navbar-inverse-link-color !default
-$navbar-inverse-brand-hover-color:          #fff !default
-$navbar-inverse-brand-hover-bg:             transparent !default
-
-// Inverted navbar toggle
-$navbar-inverse-toggle-hover-bg:            #333 !default
-$navbar-inverse-toggle-icon-bar-bg:         #fff !default
-$navbar-inverse-toggle-border-color:        #333 !default
-
-
+// ##############################################################################################################
 // Navs
-// -------------------------
-
-$nav-link-padding:                          10px 15px !default
-$nav-link-hover-bg:                         $gray-lighter !default
-
-$nav-disabled-link-color:                   $gray-light !default
-$nav-disabled-link-hover-color:             $gray-light !default
-
-$nav-open-link-hover-color:                 #fff !default
-
 // Tabs
-//$nav-tabs-border-color:                           $sitelerSolidBlue2 !default
-//$nav-tabs-link-hover-border-color:                $sitelerSolidBlue3 !default
+$nav-tabs-border-color:                     $sitelerBlue !default
+$nav-tabs-link-hover-border-color:          $sitelerBlue !default
 
-//$nav-tabs-active-link-hover-bg:                   $sitelerSolidBlue2 !default
-//$nav-tabs-active-link-hover-color:                $sitelerBlueGreyLighter6 !default
-//$nav-tabs-active-link-hover-border-color:         $sitelerSolidBlue3 !default
-
-$nav-tabs-justified-link-border-color:            #ddd !default
-$nav-tabs-justified-active-link-border-color:     $body-bg !default
-
-// Pills
-$nav-pills-border-radius:                         $border-radius-base !default
-$nav-pills-active-link-hover-bg:                  $component-active-bg !default
-$nav-pills-active-link-hover-color:               $component-active-color !default
-
-
-// Pagination
-// -------------------------
-
-$pagination-color:                     $link-color !default
-$pagination-bg:                        #fff !default
-$pagination-border:                    #ddd !default
-
-$pagination-hover-color:               $link-hover-color !default
-$pagination-hover-bg:                  $gray-lighter !default
-$pagination-hover-border:              #ddd !default
-
-$pagination-active-color:              #fff !default
-$pagination-active-bg:                 $brand-primary !default
-$pagination-active-border:             $brand-primary !default
-
-$pagination-disabled-color:            $gray-light !default
-$pagination-disabled-bg:               #fff !default
-$pagination-disabled-border:           #ddd !default
-
-
-// Pager
-// -------------------------
-
-$pager-bg:                             $pagination-bg !default
-$pager-border:                         $pagination-border !default
-$pager-border-radius:                  15px !default
-
-$pager-hover-bg:                       $pagination-hover-bg !default
-
-$pager-active-bg:                      $pagination-active-bg !default
-$pager-active-color:                   $pagination-active-color !default
-
-$pager-disabled-color:                 $pagination-disabled-color !default
-
-
-// Jumbotron
-// -------------------------
-
-$jumbotron-padding:              30px !default
-$jumbotron-color:                inherit !default
-$jumbotron-bg:                   $sitelerGreyBlueLighter4 !default
-$jumbotron-heading-color:        inherit !default
-$jumbotron-font-size:            ceil(($font-size-base * 1.5)) !default
-
-
-// Form states and alerts
-// -------------------------
-
-$state-success-text:             $brand-success !default
-$state-success-bg:               $brand-success-bg !default
-$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default
-
-$state-info-text:                $brand-info !default
-$state-info-bg:                  $brand-info-bg !default
-$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default
-
-$state-warning-text:             $brand-warning !default
-$state-warning-bg:               $brand-warning-bg !default
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default
-
-$state-danger-text:              $brand-danger !default
-$state-danger-bg:                $brand-danger-bg !default
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default
-
-// Tooltips
-// -------------------------
-$tooltip-max-width:           200px !default
-$tooltip-color:               #fff !default
-$tooltip-bg:                  #000 !default
-$tooltip-opacity:             .9 !default
-
-$tooltip-arrow-width:         5px !default
-$tooltip-arrow-color:         $tooltip-bg !default
-
-
-// Popovers
-// -------------------------
-$popover-bg:                          #fff !default
-$popover-max-width:                   276px !default
-$popover-border-color:                rgba(0,0,0,.2) !default
-$popover-fallback-border-color:       #ccc !default
-
-$popover-title-bg:                    darken($popover-bg, 3%) !default
-
-$popover-arrow-width:                 10px !default
-$popover-arrow-color:                 #fff !default
-
-$popover-arrow-outer-width:           ($popover-arrow-width + 1) !default
-$popover-arrow-outer-color:           rgba(0,0,0,.25) !default
-$popover-arrow-outer-fallback-color:  #999 !default
-
-
-// Labels
-// -------------------------
-
-$label-default-bg:            $gray-light !default
-$label-primary-bg:            $brand-primary !default
-$label-success-bg:            $brand-success !default
-$label-info-bg:               $brand-info !default
-$label-warning-bg:            $brand-warning !default
-$label-danger-bg:             $brand-danger !default
-
-$label-color:                 #fff !default
-$label-link-hover-color:      #fff !default
-
-
-// Modals
-// -------------------------
-$modal-inner-padding:         20px !default
-
-$modal-title-padding:         15px !default
-$modal-title-line-height:     $line-height-base !default
-
-$modal-content-bg:                             #fff !default
-$modal-content-border-color:                   rgba(0,0,0,.2) !default
-$modal-content-fallback-border-color:          #999 !default
-
-$modal-backdrop-bg:           #000 !default
-$modal-backdrop-opacity:      .5 !default
-$modal-header-border-color:   #e5e5e5 !default
-$modal-footer-border-color:   $modal-header-border-color !default
-
-$modal-lg:                    900px !default
-$modal-sm:                    300px !default
-
-
+$nav-tabs-active-link-hover-bg:             $sitelerBlue !default
+$nav-tabs-active-link-hover-color:          lighten($nav-tabs-active-link-hover-bg, 95%) !default
+$nav-tabs-active-link-hover-border-color:   darken($nav-tabs-active-link-hover-bg, 10%) !default
+// ##############################################################################################################// #######################################################
 // Alerts
-// -------------------------
-$alert-padding:               8px !default
-$alert-border-radius:         $border-radius-base !default
-$alert-link-font-weight:      bold !default
-
-$alert-success-bg:            $state-success-bg !default
-$alert-success-text:          $state-success-text !default
-$alert-success-border:        $state-success-border !default
-
-$alert-info-bg:               $state-info-bg !default
-$alert-info-text:             $state-info-text !default
-$alert-info-border:           $state-info-border !default
-
-$alert-warning-bg:            $state-warning-bg !default
-$alert-warning-text:          $state-warning-text !default
-$alert-warning-border:        $state-warning-border !default
-
-$alert-danger-bg:             $state-danger-bg !default
-$alert-danger-text:           $state-danger-text !default
-$alert-danger-border:         $state-danger-border !default
 
 .alert-dismissable
   top: 0px !important
   right: -18px !important
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.75)
 
-// Progress bars
-// -------------------------
-$progress-bg:                 #f5f5f5 !default
-$progress-bar-color:          #fff !default
-
-$progress-bar-bg:             $brand-primary !default
-$progress-bar-success-bg:     $brand-success !default
-$progress-bar-warning-bg:     $brand-warning !default
-$progress-bar-danger-bg:      $brand-danger !default
-$progress-bar-info-bg:        $brand-info !default
-
-
-// List group
-// -------------------------
-$list-group-bg:                 #fff !default
-$list-group-border:             #ddd !default
-$list-group-border-radius:      $border-radius-base !default
-
-$list-group-hover-bg:           #f5f5f5 !default
-$list-group-active-color:       $component-active-color !default
-$list-group-active-bg:          $component-active-bg !default
-$list-group-active-border:      $list-group-active-bg !default
-$list-group-active-text-color:  lighten($list-group-active-bg, 40%) !default
-
-$list-group-link-color:         #555 !default
-$list-group-link-heading-color: #333 !default
-
+// ##############################################################################################################
 // Panels
-// -------------------------
-$panel-bg:                    #ffffff !default
-$panel-body-padding:          15px !default
-$panel-border-radius:         $border-radius-base !default
-$panel-inner-border:          darken($panel-bg, 50%) !default
-$panel-footer-bg:             darken($panel-bg, 20%) !default
+$panel-bg:                                  #ffffff !default
+$panel-body-padding:                        15px !default
+$panel-inner-border:                        darken($panel-bg, 50%) !default
+$panel-footer-bg:                           darken($panel-bg, 20%) !default
 
-$panel-default-heading-bg:    #546f8c !default
-$panel-default-border:        lighten($panel-default-heading-bg, 11%) !default
-$panel-default-text:          lighten($panel-default-heading-bg, 60%) !default
+$panel-default-heading-bg:                  $sitelerBlue !default
+$panel-default-border:                      lighten($panel-default-heading-bg, 11%) !default
+$panel-default-text:                        lighten($panel-default-heading-bg, 60%) !default
 @include panel-settings("default", $panel-default-heading-bg)
 
-$panel-primary-heading-bg:    #628ab2 !default
-$panel-primary-border:        lighten($panel-primary-heading-bg, 11%) !default
-$panel-primary-text:          lighten($panel-primary-heading-bg, 60%) !default
+$panel-primary-heading-bg:                  $sitelerPastelBlue2 !default
+$panel-primary-border:                      lighten($panel-primary-heading-bg, 11%) !default
+$panel-primary-text:                        lighten($panel-primary-heading-bg, 60%) !default
 @include panel-settings("primary", $panel-primary-heading-bg)
 
-$panel-success-heading-bg:    #548c59 !default
-$panel-success-border:        lighten($panel-success-heading-bg, 11%) !default
-$panel-success-text:          lighten($panel-default-heading-bg, 70%) !default
+$panel-success-heading-bg:                  $sitelerPastelGreen2 !default
+$panel-success-border:                      lighten($panel-success-heading-bg, 11%) !default
+$panel-success-text:                        lighten($panel-default-heading-bg, 70%) !default
 @include panel-settings("success", $panel-success-heading-bg)
 
-$panel-info-heading-bg:       #69b8bf !default
-$panel-info-border:           lighten($panel-info-heading-bg, 20%) !default
-$panel-info-text:             lighten($panel-info-heading-bg, 60%) !default
-@include panel-settings("info",    $panel-info-heading-bg)
+$panel-info-heading-bg:                     $sitelerPastelOrange1 !default
+$panel-info-border:                         lighten($panel-info-heading-bg, 20%) !default
+$panel-info-text:                           lighten($panel-info-heading-bg, 60%) !default
+@include panel-settings("info", $panel-info-heading-bg)
 
-$panel-warning-heading-bg:    #DBC996 !default
-$panel-warning-border:        lighten($panel-warning-heading-bg, 3%) !default
-$panel-warning-text:          lighten($panel-warning-heading-bg, 60%) !default
+$panel-warning-heading-bg:                  #DBC996 !default
+$panel-warning-border:                      lighten($panel-warning-heading-bg, 3%) !default
+$panel-warning-text:                        lighten($panel-warning-heading-bg, 60%) !default
 @include panel-settings("warning", $panel-warning-heading-bg)
 
-$panel-danger-heading-bg:     #a55452 !default
-$panel-danger-border:         lighten($panel-danger-heading-bg, 11%)  !default
-$panel-danger-text:           lighten($panel-danger-heading-bg, 60%) !default
-@include panel-settings("danger",  $panel-danger-heading-bg)
+$panel-danger-heading-bg:                   $sitelerPastelRed1 !default
+$panel-danger-border:                       lighten($panel-danger-heading-bg, 11%)  !default
+$panel-danger-text:                         lighten($panel-danger-heading-bg, 60%) !default
+@include panel-settings("danger", $panel-danger-heading-bg)
 
-//.panel-default .nav.nav-tabs 
-  //margin-bottom: 15px
-  //li 
-    //a
-      ////border: $sitelerSolidBlue2
-      //color: $sitelerBlueGreyDarker8
-    //a:hover
-      //background-color: $sitelerSolidBlue3
-      //color: $sitelerBlueGreyLighter8
-  //li.active
-    //a, a:hover
-      //background-color: $sitelerSolidBlue2
-      //color: $sitelerBlueGreyLighter6
+// #########################################################################################
+//// COMPONENT VARIABLES
+$screen-sm:                  768px !default
+$screen-md:                  992px !default
 
+$screen-sm-min:              $screen-sm !default
+$screen-md-min:              $screen-md !default
+$screen-sm-max:              ($screen-md-min - 1) !default
 
-// Thumbnails
-// -------------------------
-$thumbnail-padding:           4px !default
-$thumbnail-bg:                $body-bg !default
-$thumbnail-border:            #ddd !default
-$thumbnail-border-radius:     $border-radius-base !default
-
-$thumbnail-caption-color:     $text-color !default
-$thumbnail-caption-padding:   9px !default
-
-
-// Wells
-// -------------------------
-$well-bg:                     #f5f5f5 !default
-$well-border:                 darken($well-bg, 7%) !default
-
-
-// Badges
-// -------------------------
-$badge-color:                 #fff !default
-$badge-link-hover-color:      #fff !default
-$badge-bg:                    $gray-light !default
-
-$badge-active-color:          $link-color !default
-$badge-active-bg:             #fff !default
-
-$badge-font-weight:           bold !default
-$badge-line-height:           1 !default
-$badge-border-radius:         10px !default
-
-
-// Breadcrumbs
-// -------------------------
-$breadcrumb-padding-vertical:   6px !default
-$breadcrumb-padding-horizontal: 12px !default
-$breadcrumb-separator:          "=>" !default
-
-$breadcrumb-bg:                 #f5f5f5 !default
-$breadcrumb-color:              #ccc !default
-$breadcrumb-active-color:       $gray-light !default
-
-//@include breadcumbs("default", $body-bg, $panel-default-heading-bg)
-
-//@include breadcumbs("primary", $body-bg, $panel-primary-heading-bg)
-
-// Carousel
-// ------------------------
-
-$carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default
-
-$carousel-control-color:                      #fff !default
-$carousel-control-width:                      15% !default
-$carousel-control-opacity:                    .5 !default
-$carousel-control-font-size:                  20px !default
-
-$carousel-indicator-active-bg:                #fff !default
-$carousel-indicator-border-color:             #fff !default
-
-$carousel-caption-color:                      #fff !default
-
-
-// Close
-// ------------------------
-$close-font-weight:           bold !default
-$close-color:                 #000 !default
-$close-text-shadow:           0 1px 0 #fff !default
-
-
-// Code
-// ------------------------
-$code-color:                  #c7254e !default
-$code-bg:                     #f9f2f4 !default
-
-$kbd-color:                   #fff !default
-$kbd-bg:                      #333 !default
-
-$pre-bg:                      #f5f5f5 !default
-$pre-color:                   $gray-dark !default
-$pre-border-color:            #ccc !default
-$pre-scrollable-max-height:   340px !default
-
-// Type
-// ------------------------
-$text-muted:                  $gray-light !default
-$abbr-border-color:           $gray-light !default
-$headings-small-color:        $gray-light !default
-$blockquote-small-color:      $gray-light !default
-$blockquote-border-color:     $gray-lighter !default
-$page-header-border-color:    $gray-lighter !default
-
-// Miscellaneous
-// -------------------------
-
-// Hr border color
-$hr-border:                   $gray-lighter !default
-
-// Horizontal forms & lists
-$component-offset-horizontal: 180px !default
-
-
-// Container sizes
-// --------------------------------------------------
-
-// Small screen / tablet
-$container-tablet:             ((720px + $grid-gutter-width)) !default
-$container-sm:                 $container-tablet !default
-
-// Medium screen / desktop
-$container-desktop:            ((940px + $grid-gutter-width)) !default
-$container-md:                 $container-desktop !default
-
-// Large screen / wide desktop
-$container-large-desktop:      ((1140px + $grid-gutter-width)) !default
-$container-lg:                 $container-large-desktop !default
-
-h4
-  margin-top: 6px
-  margin-bottom: 2px

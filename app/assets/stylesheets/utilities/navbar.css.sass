@@ -1,85 +1,36 @@
 @import "utilities/variables"
 @import "utilities/mixins"
+$light-color: lighten($navbar-default-bg, 25%)
 
 .navbar
-  background: $sitelerSolidBlue3
   margin-bottom: 50px
-  border: 1px solid $sitelerSolidBlue3
-
   .navbar-nav
     .nav-divider
       margin: 0px
-
-    li.active
-      a, a:hover
-        background: $sitelerSolidBlue3
-        color: $sitelerBlueLighter8!important
-    li
-      a
-        color: $sitelerBlueLighter8!important
+    li a
+      color: $navbar-default-color !important
 
 @media (min-width: 768px)
   .navbar
     min-height: 121px
     .navbar-nav
+      margin-top: 12px
       padding: 20px 0 0 0
-
       li
-        border-left: $sitelerBlueGreyLighter2 1px solid
+        border-left: 2px solid $light-color
         a
           padding: 18px 25px
         a:hover
-          @include navbar-link-mixin
-
+          @include navbar-link-mixin($light-color)
       li.active
         a, a:hover
-          @include navbar-link-mixin
-
+          @include navbar-link-mixin($light-color)
       li.open
         a, a:focus, a:hover
-          background: $sitelerSolidBlue3
-          @include navbar-link-mixin
-          .link_top
-            background: inherit
-          .link_bottom
-            background: inherit
-            border: 1px solid $sitelerBlueGreyLighter2
-            border-top: none
-
-        ul.dropdown-menu
-          border: 1px solid $sitelerBlueGreyLighter2
-          margin-left: -1px
-          margin-top: 45px
-          padding: 0px
-          background: $sitelerBlueGrey
-          background: -moz-linear-gradient(top, $sitelerBlueGrey, $sitelerBlueGreyDarker4)
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($sitelerSolidBlue1), to($sitelerSolidBlue6))
-          border-radius: 7px 45px
-          -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5)
-          li
-            border-left: none
-            a
-              background: none
-              padding: 23px 25px
-              .link_top
-                border-radius: 0px
-                background: $sitelerBlueGreyLighter2
-                height: 1px
-                top: -24px
-            a:hover
-              font-size: 20px
-              line-height: 20px
-
-          li.divider
-            background: $sitelerBlueGreyLighter2
-            margin: 0px
-          li:last-child
-            border-right: $sitelerBlueGreyLighter2 0px solid
-
+          @include li-opened($navbar-default-bg, $light-color)
+        @include ul-dropdonw-menu($navbar-default-bg, $light-color)
       li:last-child
-        border-right: $sitelerBlueGreyLighter2 1px solid
-
+        border-right: 2px solid $light-color
     .navbar-form
       display: none
       .form-group
