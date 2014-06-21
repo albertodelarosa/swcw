@@ -1,22 +1,74 @@
-@mixin navbar-link-mixin()
+@mixin li-opened($navbar-default-bg, $light-color)
+  background: $navbar-default-bg
+  @include navbar-link-mixin($light-color)
+  .link_top
+    background: inherit
+  .link_bottom
+    background: inherit
+    border: 2px solid $light-color
+    border-top: none
+
+@mixin ul-dropdonw-menu($bg, $light-color)
+  ul.dropdown-menu
+    border: 1px solid $bg
+    margin-left: -1px
+    margin-top: 33px
+    padding: 0px
+    background: $bg
+    border-radius: 0px 0px 8px 8px 
+    -webkit-box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6)
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6)
+    li
+      border-left: none
+      a
+        background: none
+        padding: 15px 25px
+        line-height: 20px
+        transition-timing-function: ease-in-out
+        -webkit-transition: font-size 0.25s
+        transition: font-size 0.25s
+        .link_top
+          border-radius: 0px
+          background: $bg
+          height: 1px
+          top: -24px
+      a:hover
+        font-size: 20px
+        line-height: 20px
+    li.divider
+      background: $light-color
+      margin: 0px
+    li:last-child
+      border-right: 0px solid $light-color
+
+@mixin navbar-link-mixin($light-color)
   .link_top, .link_bottom
     display: block
     position: relative
     height: 10px
   .link_top
-    margin: 0px -26px -10px -26px
+    margin: 0px -27px -10px -27px
     top: -28px
-    border: 1px solid $sitelerBlueGreyLighter2
+    border: 2px solid $light-color
     border-bottom: none
     border-radius: 5px 5px 0px 0px
   .link_bottom
-    margin: -10px -26px 0px -26px
+    margin: -10px -27px 0px -27px
     bottom: -28px
     border-radius: 0px 0px 5px 5px
-    background: $sitelerBlueLighter8
+    background: $light-color
 
 @mixin panel-settings($panel-name, $bg)
-  $background: if($panel-name == "default", lighten($bg, 50%), lighten($bg, 41%))
+  $background: #fff
+  @if $panel-name == "default" 
+    $background: lighten($bg, 50%)
+  @else if $panel-name == "success"
+    $background: lighten($bg, 50%)
+  @else if $panel-name == "info"
+    $background: lighten($bg, 34%)
+  @else
+    $background: lighten($bg, 40%)
+
   .panel.panel-#{$panel-name}
     margin-top: 10px
     box-shadow: 2px 2px 8px rgba(darken($bg, 80%), 0.4)
