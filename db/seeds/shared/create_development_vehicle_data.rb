@@ -1,4 +1,7 @@
+require "csv"
+
 options = {encoding: 'UTF-8', skip_blanks: true}
+
 printStarting("CREATING NEW VEHICLE VARIABLES")
 year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
 years = []
@@ -35,9 +38,9 @@ end
 
 def build_size_associations(type_name)
   if type_name.include?("Pickup") || type_name.include?("SUV/Crossover") || type_name.include?("Van/Minivan")
-    size = VehicleSize.find_or_create_by(name: "Large")
+    size = VehicleSize.find_or_create_by_name("Large")
   else
-    size = VehicleSize.find_or_create_by(name: "Small")
+    size = VehicleSize.find_or_create_by_name("Small")
   end
   return size
 end
@@ -118,10 +121,10 @@ CSV.read(csv_filename, options).each_with_index do |row, i|
   unless row[0].nil?
     years = []
     row_counter = 0
-    model = VehicleModel.find_by(name: row[0])
+    model = VehicleModel.find_by_name(row[0])
     make = model.vehicle_makes[0]
     row.drop(1).compact.each do |column|
-      years << VehicleYear.find_or_create_by(name: column)
+      years << VehicleYear.find_or_create_by_name(column)
     end
   else
     parse_row(row_counter, years, make, model, row)

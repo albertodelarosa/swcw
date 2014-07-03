@@ -15,4 +15,5 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :contact_info
 
+
 end

@@ -1,8 +1,13 @@
 printStarting("CREATING LOCATION LISTING")
+
+require "csv"
+
+options = {encoding: 'UTF-8', skip_blanks: true}
+
 temp_company = Company.new
-CSV.read("#{Rails.root}/lib/tasks/site.csv", "r:ISO-8859-1").each_with_index do |row, i|
+CSV.read("#{Rails.root}/lib/tasks/site.csv", options).each_with_index do |row, i|
   unless row[0].nil?
-    temp_company = Company.find_by(name: row[0])
+    temp_company = Company.find_by_name(row[0])
   else
     unless row[1].nil?
       name, street_address, city_state_zip = row[1], row[2], row[3].split(",")

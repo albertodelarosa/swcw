@@ -1,4 +1,7 @@
+require "csv"
+
 options = {encoding: 'UTF-8', skip_blanks: true}
+
 printStarting("CREATING NEW VEHICLE VARIABLES")
 year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
 years = []

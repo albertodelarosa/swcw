@@ -1,12 +1,11 @@
 printStarting("CREATING COMPANY LIST")
-CSV.read("#{Rails.root}/lib/tasks/company.csv", "r:ISO-8859-1").each_with_index do |row, i|
-  unless row[0].nil?
-    name, street_address, city_state_zip, created_at = row[0], row[1].split(","), row[2].split(","), row[3] || ""
-    puts name
-    puts street_address
-    puts city_state_zip
-    puts created_at
-    puts
+
+options = {encoding: 'UTF-8', skip_blanks: true}
+
+#CSV.read("#{Rails.root}/lib/tasks/company.csv", "r:ISO-8859-1").each_with_index do |row, i|
+CSV.read("#{Rails.root}/lib/tasks/company.csv", options).each_with_index do |fields, i|
+  unless fields[0].nil?
+    name, street_address, city_state_zip, created_at = fields[0], fields[1].split(","), fields[2].split(","), fields[3] || ""
     Company.create!(name:     name, 
                     corporate_email_domain: "corporate_info@#{name.gsub(/[ ]/, '')}.com",
                     description: "Example discription for #{name}. The address is #{street_address[0]}#{street_address.size > 1 ? ", #{street_address[1]}" : ""}, #{city_state_zip[0]}, #{city_state_zip[1]} #{city_state_zip[2]}. \n This company was added #{created_at}",

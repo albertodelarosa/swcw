@@ -1,6 +1,10 @@
 6.times{puts}
 5.times{simpleSeed()}
 
+printStarting("DELETING ADMIN USERS")
+AdminUser.all.each(&:destroy)
+printFinished()
+
 printStarting("DELETING EXISTING USERS")
 User.all.each(&:destroy)
 printFinished()
