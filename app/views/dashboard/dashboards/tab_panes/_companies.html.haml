@@ -79,26 +79,31 @@
                     = company.contact_info.fax
                     = "(415) 555-5555"
               %table.table.table-condensed.table-striped.table-hover
-                .col-sm-12.col-md-12
-                  %h5
-                    Address
-                %tr
-                  %th street1
-                  - if company.address.street2?
-                    %th street2
-                  %th city
-                  %th state
-                  %th zip
-                %tr
-                  %td
-                    = company.address.street1
-                  - if company.address.street2?
+                - if company.address.nil?
+                  .col-sm-12.col-md-12
+                    %h5
+                      NO ADDRESS ENTERED
+                - else
+                  .col-sm-12.col-md-12
+                    %h5
+                      Address
+                  %tr
+                    %th street1
+                    - if company.address.street2?
+                      %th street2
+                    %th city
+                    %th state
+                    %th zip
+                  %tr
                     %td
-                      = company.address.street2
-                  %td
-                    = company.address.city
-                  %td
-                    = company.address.state
-                  %td
-                    = company.address.zip
+                      = company.address.street1
+                    - if company.address.street2?
+                      %td
+                        = company.address.street2
+                    %td
+                      = company.address.city
+                    %td
+                      = company.address.state
+                    %td
+                      = company.address.zip
 
