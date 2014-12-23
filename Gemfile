@@ -9,18 +9,19 @@ gem 'thin'
 gem 'pg'
 gem 'activeadmin'
 gem 'hpricot'
-gem 'haml'
+gem 'haml', '~> 4.0.6'
 gem 'formtastic'
-gem "meta_search",    '>= 1.1.0.pre'
+gem "meta_search"
 gem 'haml-rails'
 gem 'sendgrid'
 
-gem 'sass-rails', '3.2.6'
-gem 'bootstrap-sass', '3.0.3.0'
-gem 'tilt',  '1.4.1'
+gem 'sass', '~> 3.2.15'
+gem 'sass-rails'
+gem 'bootstrap-sass'
+gem 'tilt'
 
 gem 'airbrake'
-gem 'jquery-rails', '~> 2.3.0'
+gem 'jquery-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -29,27 +30,29 @@ gem 'omniauth-twitter'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'draper', '~> 1.3'
+gem 'draper'
 
-gem 'money-rails', "~> 0.8.1"
+gem 'money-rails'
 gem 'cancan'
 gem 'uuid' #UUID.generate
 #gem 'ice_cube' for scheduling
 
+gem 'tzinfo'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.2.2'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
 group :development do
   gem 'ruby_parser'
-  gem 'brakeman', '2.3.1'
+  gem 'brakeman'
   gem 'letter_opener'
   gem 'rails-erd'
 
@@ -63,15 +66,15 @@ group :test do
   gem 'ci_reporter'
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
-  gem 'capybara' 
-  gem 'guard-rspec' 
+  gem 'capybara'
+  gem 'guard-rspec'
   gem 'launchy'
 end
 
 group :test, :development do
-  gem 'rspec-rails', '2.14.0'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'debugger'
+  gem 'pry-byebug'
 end
 
 # To use ActiveModel has_secure_password
