@@ -43,7 +43,22 @@
       padding: 5px 15px
   .copyright
     text-align: none
+    font-size: 8px
+    color: $navbar-default-color
     @media (min-width: 768px)
-      padding-top: 20px
+      padding-top: 28px
       text-align: right
-      color: $navbar-default-color
+
+@media (max-width: $screen-xs-max)
+  #footer
+    height: 90px
+    padding-top: 8px
+    .navbar-header
+      .navbar-brand
+        img
+          float: none
+          margin: auto
+    .copyright
+      padding-top: 10px
+      text-align: center
+

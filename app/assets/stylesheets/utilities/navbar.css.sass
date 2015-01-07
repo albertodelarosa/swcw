@@ -10,6 +10,10 @@ $light-color: lighten($navbar-default-bg, 25%)
     li a
       color: $navbar-default-color !important
 
+@media only screen and (max-device-width:$screen-sm-max)
+  .navbar-brand
+    margin-top: -10px
+
 @media (min-width: 768px)
   .navbar
     min-height: 121px
