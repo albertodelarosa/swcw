@@ -1,5 +1,35 @@
-.form-group
-  = f.label :name, "Company", class: "control-label col-sm-4 col-md-4"
-  .col-sm-6.col-md-6
-    = f.collection_select( :id, @companies, :id, :name, {prompt: "Select Company"}, {class: "form-control"})
+= form_for [:dashboard, @company], method: method, html: {class: "form-horizontal", role: "form"} do |f|
+  - if @company.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg
+  = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
+    = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Company #{current_user.first_name}"}
+    - panel.body do
+      -if current_user.companies.size > 1
+        .col-xs-12.col-md-6
+          .well.well-lg
+            %h4.list-group-item-heading Previous Companies
+            %ul.list_group
+              - my_companies = current_user.companies.reverse
+              - first_company = my_companies.shift
+              %li.list-group-item.active
+                %span.badge current
+                = first_company.name
+              - my_companies.each do |company|
+                %li.list-group-item.list-group-item-success
+                  %span.badge previous
+                  = company.name
+      .col-xs-12.col-md-6
+        .well.well-lg
+          %h4.list-group-item-heading Select A Company
+          .form-group
+            = f.label :name, "Company", class: "control-label col-xs-12 col-sm-4"
+            .col-xs-12.col-sm-6
+              = collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
+    - panel.footer do
+      .col-sm-offset-6.col-xs-12.col-sm-6.col-md-3
+        = f.submit 'Save', class: "btn btn-success btn-block"
 

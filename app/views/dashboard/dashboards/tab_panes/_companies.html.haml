@@ -38,72 +38,43 @@
               = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
                 %span.glyphicon.glyphicon-trash
           - panel.body do
-            .panel-body-pic.col-sm-3.col-md-3
+            .col-xs-12.col-sm-4.col-md-3
               = image_tag("holder.png", class: "img-responsive")
-            .panel-body-address.col-sm-9.col-md-9
-              %table.table.table-condensed.table-striped.table-hover
-                .col-sm-3.col-md-3
-                  %h5
-                    Contact Info
-                .col-sm-9.col-md-9
-                  %h6
-                    = company.corporate_email_domain
+            .well.well-lg.col-xs-12.col-sm-8.col-md-9
+              %ul.list-group.col-xs-12
+                %h4.lead Contact Info
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "Corporate Email", output: company.corporate_email_domain}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "email", output: company.contact_info.email}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "mobile", output: company.contact_info.mobile}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "phone1", output: company.contact_info.phone1}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "ext", output: company.contact_info.ext}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "phone2", output: company.contact_info.phone2}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "fax", output: company.contact_info.fax}
+            .well.well-lg.col-xs-12.col-sm-8.col-md-9
+              %ul.list-group.col-xs-12
+                %h4.lead Address Info
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "street1", output: company.address.street1}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "street2", output: company.address.street2}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "city", output: company.address.city}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "state", output: company.address.state}
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "zip", output: company.address.zip}
                 %tr
-                  %th email
-                  %th mobile
-                %tr
-                  %td
-                    = company.contact_info.email
-                    = company.corporate_email_domain
-                  %td
-                    = company.contact_info.mobile
-                    = "(415) 555-5555"
-                %tr
-                  %th phone1
-                  %th ext
-                %tr
-                  %td
-                    = company.contact_info.phone1
-                    = "(415) 555-5555"
-                  %td
-                    = company.contact_info.ext
-                    = "x3456"
-                %tr
-                  %th phone2
-                  %th fax
+                  %th street1
+                  - if company.address.street2?
+                    %th street2
+                  %th city
+                  %th state
+                  %th zip
                 %tr
                   %td
-                    = company.contact_info.phone2
-                    = "(415) 555-5555"
-                  %td
-                    = company.contact_info.fax
-                    = "(415) 555-5555"
-              %table.table.table-condensed.table-striped.table-hover
-                - if company.address.nil?
-                  .col-sm-12.col-md-12
-                    %h5
-                      NO ADDRESS ENTERED
-                - else
-                  .col-sm-12.col-md-12
-                    %h5
-                      Address
-                  %tr
-                    %th street1
-                    - if company.address.street2?
-                      %th street2
-                    %th city
-                    %th state
-                    %th zip
-                  %tr
+                    = company.address.street1
+                  - if company.address.street2?
                     %td
-                      = company.address.street1
-                    - if company.address.street2?
-                      %td
-                        = company.address.street2
-                    %td
-                      = company.address.city
-                    %td
-                      = company.address.state
-                    %td
-                      = company.address.zip
+                      = company.address.street2
+                  %td
+                    = company.address.city
+                  %td
+                    = company.address.state
+                  %td
+                    = company.address.zip
 
