@@ -32,7 +32,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def new
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
-    @companies = Company.all
+    @companies = current_user.companies || []
     @company = Company.new
 
     respond_to do |format|
@@ -64,12 +64,18 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # PUT /dashboard/companies/1.json
   def update
       @company = Company.find(params[:id])
-      @company.clients.delete(current_user) if @company.clients.exists? current_user
-      @company.clients << current_user
 
       respond_to do |format|
-        format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
-        format.json { head :no_content }
+        if @company.clients.exists? current_user
+          @company.clients.delete(current_user)
+          @company.clients << current_user
+
+          format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "new", notice: 'Company was successfully updated.' }
+          format.json { render json: @company.errors, status: :unprocessable_entity }
+        end
       end
   end
 

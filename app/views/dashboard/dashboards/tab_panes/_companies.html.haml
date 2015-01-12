@@ -40,41 +40,23 @@
           - panel.body do
             .col-xs-12.col-sm-4.col-md-3
               = image_tag("holder.png", class: "img-responsive")
-            .well.well-lg.col-xs-12.col-sm-8.col-md-9
-              %ul.list-group.col-xs-12
-                %h4.lead Contact Info
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "Corporate Email", output: company.corporate_email_domain}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "email", output: company.contact_info.email}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "mobile", output: company.contact_info.mobile}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "phone1", output: company.contact_info.phone1}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "ext", output: company.contact_info.ext}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "phone2", output: company.contact_info.phone2}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "fax", output: company.contact_info.fax}
-            .well.well-lg.col-xs-12.col-sm-8.col-md-9
-              %ul.list-group.col-xs-12
-                %h4.lead Address Info
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "street1", output: company.address.street1}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "street2", output: company.address.street2}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "city", output: company.address.city}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "state", output: company.address.state}
-                = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "zip", output: company.address.zip}
-                %tr
-                  %th street1
-                  - if company.address.street2?
-                    %th street2
-                  %th city
-                  %th state
-                  %th zip
-                %tr
-                  %td
-                    = company.address.street1
-                  - if company.address.street2?
-                    %td
-                      = company.address.street2
-                  %td
-                    = company.address.city
-                  %td
-                    = company.address.state
-                  %td
-                    = company.address.zip
+            .col-xs-12.col-sm-8.col-md-9
+              .well.col-xs-12
+                %ul.list-group
+                  %h4.lead Contact Info
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "Corporate Email", output: company.corporate_email_domain}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "email", output: company.contact_info.email}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "mobile", output: company.contact_info.mobile}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "phone1", output: company.contact_info.phone1}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "ext", output: company.contact_info.ext}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "phone2", output: company.contact_info.phone2}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "fax", output: company.contact_info.fax}
+              .well.col-xs-12
+                %ul.list-group
+                  %h4.lead Address Info
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "street1", output: company.address.street1}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "street2", output: company.address.street2}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "city", output: company.address.city}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "state", output: company.address.state}
+                  = render partial: "dashboard/dashboards/tab_panes/list_group_item", locals: {label: "zip", output: company.address.zip}
 

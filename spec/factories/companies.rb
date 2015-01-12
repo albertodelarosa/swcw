@@ -14,4 +14,8 @@ FactoryGirl.define do
       company.clients << FactoryGirl.create(:client)
     end
   end
+
+  factory :company_id_invalid, parent: :company do
+    id nil
+  end
 end
