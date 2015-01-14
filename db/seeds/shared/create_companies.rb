@@ -2,7 +2,6 @@ printStarting("CREATING COMPANY LIST")
 
 options = {encoding: 'UTF-8', skip_blanks: true}
 
-#CSV.read("#{Rails.root}/lib/tasks/company.csv", "r:ISO-8859-1").each_with_index do |row, i|
 CSV.read("#{Rails.root}/lib/tasks/company.csv", options).each_with_index do |fields, i|
   unless fields[0].nil?
     name, street_address, city_state_zip, created_at = fields[0], fields[1].split(","), fields[2].split(","), fields[3] || ""
@@ -16,12 +15,12 @@ CSV.read("#{Rails.root}/lib/tasks/company.csv", options).each_with_index do |fie
                                                      zip:         city_state_zip[2], 
                                                      created_at:  created_at
                                                     ),
-                    contact_info:  CompanyContactInfo.create!( email:  "company_info@#{name.gsub(/[ ]/, '')}.com",
-                                                               mobile: '',
-                                                               phone1: '',
-                                                               ext:    '',
-                                                               phone2: '',
-                                                               fax:    '' ))
+                    contact_info:  CompanyContactInfo.create!( email:  "company_info@#{name.gsub(/[ ]/, '')}",
+                                                              mobile: '',
+                                                              phone1: '555.555.5551',
+                                                               ext:    '3023',
+                                                               phone2: '555.555.5552',
+                                                               fax:    '555.555.5553' ))
   end
 end
 printFinished()

@@ -3,7 +3,9 @@ require "csv"
 options = {encoding: 'UTF-8', skip_blanks: true}
 
 printStarting("CREATING NEW VEHICLE VARIABLES")
-year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
+#year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
+make, model = VehicleMake.new, VehicleModel.new
+
 years = []
 row_counter = 0
 printFinished()
@@ -88,6 +90,7 @@ def parse_row(row_counter, years, make, model, row)
     year = years[row_counter]
     case column_items.size
     when  1
+      puts("forgot build")
       build_forgot(year,column_items[0])
     when  2
       build_vehicle_associations(year,make,model,column_items[0],column_items[1])
@@ -113,7 +116,7 @@ end
 
 5.times{puts}
 printStarting("CREATING VEHICLE YEARS, TRIMS, DOORS AND ASSOCIATING THEM WITH MAKES & MODELS")
-puts "fyi, using sample file..."
+puts "fyi, using small sample file..."
 
 csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_sample.csv"
 
@@ -131,5 +134,6 @@ CSV.read(csv_filename, options).each_with_index do |row, i|
     row_counter += 1
   end
 end
+
 printFinished()
 

@@ -1,43 +1,46 @@
 class CreateAppointments < ActiveRecord::Migration
   def change
     create_table  :appointments do |t|
-      t.datetime  :appointment_date
-      t.string    :appointment_number
-      t.datetime  :drop_off_time
-      t.datetime  :pick_up_time
-      t.text      :notes
+      t.string    :number
+      t.datetime  :date,          :null => false, :default => Time.now
+      t.datetime  :drop_off_time, :null => false, :default => Time.now
+      t.datetime  :pick_up_time,  :null => false, :default => Time.now
+      t.text      :notes,         :null => false, :default => ""
 
-      t.integer   :user_id
-      t.string    :username,   :null => false, :default => ""
-      t.string    :first_name, :null => false, :default => ""
-      t.string    :last_name,  :null => false, :default => ""
-      t.string    :salutation, :null => false, :default => ""
-      t.string    :suffix,     :null => false, :default => ""
+      t.string    :user_username,    :null => false, :default => ""
+      t.string    :user_email,       :null => false, :default => ""
+      t.string    :user_first_name,  :null => false, :default => ""
+      t.string    :user_last_name,   :null => false, :default => ""
+      t.string    :user_salutation,  :null => false, :default => ""
+      t.string    :user_suffix,      :null => false, :default => ""
 
-      t.integer   :company_id
-      t.string    :company_name
-      t.string    :corporate_id
-      t.string    :company_description
-      t.string    :corporate_email_domain
+      t.string    :company_corporate_id,    :null => false, :default => ""
+      t.string    :company_name,            :null => false, :default => ""
+      t.string    :company_email,           :null => false, :default => ""
+      t.string    :company_description,     :null => false, :default => ""
+      t.decimal   :company_siteler_dollars, :null => false, :default => 0.0
+      t.boolean   :company_remove_cc_info,  :null => false, :default => false
+      t.boolean   :company_user_reg,        :null => false, :default => false
+      t.boolean   :company_paypal,          :null => false, :default => false
+      t.boolean   :company_coupons,         :null => false, :default => false
+      t.boolean   :company_google_checkout, :null => false, :default => false
 
-      t.integer   :site_id
-      t.string    :site_name
-      t.text      :site_comments
-      t.float     :site_latitude
-      t.float     :site_longitude
+      t.string    :site_name,       :null => false, :default => ""
+      t.text      :site_comments,   :null => false, :default => ""
+      t.float     :site_latitude,   :null => false, :default => 0.0
+      t.float     :site_longitude,  :null => false, :default => 0.0
 
-      t.integer  :vehicle_id
-      t.string   :vehicle_year, length: 4
-      t.string   :vehicle_make
-      t.string   :vehicle_model
-      t.string   :vehicle_trim
-      t.string   :vehicle_type
-      t.string   :vehicle_doors
-      t.string   :vehicle_size
-      t.string   :license_plate_number, length: 8
-      t.string   :state_registered,     length: 2
-      t.string   :vehicle_color
-
+      t.string   :vehicle_year, length: 4,            :null => false, :default => ""
+      t.string   :vehicle_make,                       :null => false, :default => ""
+      t.string   :vehicle_model,                      :null => false, :default => ""
+      t.string   :vehicle_trim,                       :null => false, :default => ""
+      t.string   :vehicle_type,                       :null => false, :default => ""
+      t.string   :vehicle_doors,                      :null => false, :default => ""
+      t.string   :vehicle_size,                       :null => false, :default => ""
+      t.string   :vehicle_license_number, length: 8,  :null => false, :default => ""
+      t.string   :vehicle_state, length: 2,           :null => false, :default => ""
+      t.string   :vehicle_color,                      :null => false, :default => ""
+      t.string   :vehicle_comments,                   :null => false, :default => ""
 
       t.timestamps
     end

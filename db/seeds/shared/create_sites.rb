@@ -24,4 +24,3 @@ CSV.read("#{Rails.root}/lib/tasks/site.csv", options).each_with_index do |row, i
 end
 printFinished()
 
-

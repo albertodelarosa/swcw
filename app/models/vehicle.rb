@@ -25,3 +25,4 @@ class Vehicle < ActiveRecord::Base
   has_many :sites,     through: :locations
 
 end
+

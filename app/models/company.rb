@@ -1,9 +1,9 @@
 class Company < ActiveRecord::Base
-  attr_accessible :corporate_id, :name, :description, :corporate_email_domain, 
-                  :address, :contact_info,
+  attr_accessible :corporate_id, :name, :corporate_email_domain, :description, 
                   :siteler_dollars_percentage, :remove_cc_info, :user_reg_allowed, 
                   :paypal_allowed, :coupons_allowd, :google_checkout_allowed, 
-                  :address_attributes, :contact_info_attributes
+                  :address, :address_attributes,
+                  :contact_info, :contact_info_attributes
 
   has_one :address,      :class_name => 'CompanyAddress',     :as => :addressable, :dependent => :destroy
   has_one :contact_info, :class_name => 'CompanyContactInfo', :as => :contactable, :dependent => :destroy

@@ -1,5 +1,4 @@
-
-def simpleSeed()
+def seedEnvironment()
   puts "Seeding Environment: #{Rails.env}"
   puts " STARTING SEED FILE... ".rjust(120, "#")
   6.times{puts}

@@ -64,40 +64,44 @@ ActiveRecord::Schema.define(:version => 20130725015326) do
   add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
   create_table "appointments", :force => true do |t|
-    t.datetime "appointment_date"
-    t.string   "appointment_number"
-    t.datetime "drop_off_time"
-    t.datetime "pick_up_time"
-    t.text     "notes"
-    t.integer  "user_id"
-    t.string   "username",               :default => "", :null => false
-    t.string   "first_name",             :default => "", :null => false
-    t.string   "last_name",              :default => "", :null => false
-    t.string   "salutation",             :default => "", :null => false
-    t.string   "suffix",                 :default => "", :null => false
-    t.integer  "company_id"
-    t.string   "company_name"
-    t.string   "corporate_id"
-    t.string   "company_description"
-    t.string   "corporate_email_domain"
-    t.integer  "site_id"
-    t.string   "site_name"
-    t.text     "site_comments"
-    t.float    "site_latitude"
-    t.float    "site_longitude"
-    t.integer  "vehicle_id"
-    t.string   "vehicle_year"
-    t.string   "vehicle_make"
-    t.string   "vehicle_model"
-    t.string   "vehicle_trim"
-    t.string   "vehicle_type"
-    t.string   "vehicle_doors"
-    t.string   "vehicle_size"
-    t.string   "license_plate_number"
-    t.string   "state_registered"
-    t.string   "vehicle_color"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.string   "number"
+    t.datetime "date",                    :default => '2015-01-13 19:00:30', :null => false
+    t.datetime "drop_off_time",           :default => '2015-01-13 19:00:30', :null => false
+    t.datetime "pick_up_time",            :default => '2015-01-13 19:00:30', :null => false
+    t.text     "notes",                   :default => "",                    :null => false
+    t.string   "user_username",           :default => "",                    :null => false
+    t.string   "user_email",              :default => "",                    :null => false
+    t.string   "user_first_name",         :default => "",                    :null => false
+    t.string   "user_last_name",          :default => "",                    :null => false
+    t.string   "user_salutation",         :default => "",                    :null => false
+    t.string   "user_suffix",             :default => "",                    :null => false
+    t.string   "company_corporate_id",    :default => "",                    :null => false
+    t.string   "company_name",            :default => "",                    :null => false
+    t.string   "company_email",           :default => "",                    :null => false
+    t.string   "company_description",     :default => "",                    :null => false
+    t.decimal  "company_siteler_dollars", :default => 0.0,                   :null => false
+    t.boolean  "company_remove_cc_info",  :default => false,                 :null => false
+    t.boolean  "company_user_reg",        :default => false,                 :null => false
+    t.boolean  "company_paypal",          :default => false,                 :null => false
+    t.boolean  "company_coupons",         :default => false,                 :null => false
+    t.boolean  "company_google_checkout", :default => false,                 :null => false
+    t.string   "site_name",               :default => "",                    :null => false
+    t.text     "site_comments",           :default => "",                    :null => false
+    t.float    "site_latitude",           :default => 0.0,                   :null => false
+    t.float    "site_longitude",          :default => 0.0,                   :null => false
+    t.string   "vehicle_year",            :default => "",                    :null => false
+    t.string   "vehicle_make",            :default => "",                    :null => false
+    t.string   "vehicle_model",           :default => "",                    :null => false
+    t.string   "vehicle_trim",            :default => "",                    :null => false
+    t.string   "vehicle_type",            :default => "",                    :null => false
+    t.string   "vehicle_doors",           :default => "",                    :null => false
+    t.string   "vehicle_size",            :default => "",                    :null => false
+    t.string   "vehicle_license_number",  :default => "",                    :null => false
+    t.string   "vehicle_state",           :default => "",                    :null => false
+    t.string   "vehicle_color",           :default => "",                    :null => false
+    t.string   "vehicle_comments",        :default => "",                    :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
   end
 
   create_table "clienteles", :force => true do |t|
@@ -121,7 +125,6 @@ ActiveRecord::Schema.define(:version => 20130725015326) do
     t.boolean  "paypal_allowed"
     t.boolean  "coupons_allowd"
     t.boolean  "google_checkout_allowed"
-    t.integer  "user_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end

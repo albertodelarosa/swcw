@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
   validates_length_of :username, :minimum => 6
-#  validates_presence_of :work_contact_info
 
   has_one :work_contact_info, :class_name => 'CompanyContactInfo', :as => :contactable, :dependent => :destroy
   has_one :work_address, :class_name => 'CompanyAddress', :as => :addressable, :dependent => :destroy
@@ -41,30 +40,4 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :companies
 
   accepts_nested_attributes_for :vehicles
-
-
-
-  #has_and_belongs_to_many :managing_customers, :class_name => 'Customer',  :join_table => :customer_managers_customers
-
-  #has_many :management, foreign_key: "site_manager_id", dependent: :destroy
-  #has_many :site_managers, through: :management, source: :supervisor
-
-  #has_many :subordination, foreign_key: "van_manager_id", class_name: "Management", dependent: :destroy
-  #has_many :van_managers, through: :subordination, source: :subordinate
-
-  #has_many :staffs
-  #has_many :site_locaitons, through: :staffs
- #def following?(other_user)
-    #relationships.find_by_followed_id(other_user.id)
-  #end
-
-  #def follow!(other_user)
-    #relationships.create!(followed_id: other_user.id)
-  #end
-
-  #has_many :role_users
-  #has_many :roles, :through => :role_users
-
-  #accepts_nested_attributes_for :home_address
-
 end

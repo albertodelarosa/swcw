@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
 
-  attr_accessible :comments, :latitude, :longitude, :name, :address
+  attr_accessible :name, :comments, :latitude, :longitude, :address
 
   has_one :address, :class_name => 'CompanyAddress', :as => :addressable, :dependent => :destroy
 

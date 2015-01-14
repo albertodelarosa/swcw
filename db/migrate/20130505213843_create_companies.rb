@@ -11,7 +11,6 @@ class CreateCompanies < ActiveRecord::Migration
       t.boolean :paypal_allowed
       t.boolean :coupons_allowd
       t.boolean :google_checkout_allowed
-      t.integer :user_id
 
       t.timestamps
     end
