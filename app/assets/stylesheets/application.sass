@@ -12,12 +12,13 @@
  *= require dashboards/application
  *= require utilities/application
  */
-@-webkit-viewport   { width: device-width; }
-@-moz-viewport      { width: device-width; }
-@-ms-viewport       { width: device-width; }
-@-o-viewport        { width: device-width; }
-@viewport           { width: device-width; }
+@-webkit-viewport   { width: device-width }
+@-moz-viewport      { width: device-width }
+@-ms-viewport       { width: device-width }
+@-o-viewport        { width: device-width }
+@viewport           { width: device-width }
 @import "utilities/variables"
+@import "bootstrap-sprockets"
 @import "bootstrap"
 .main-body-wrapper
   padding: 10px 25px 5px 25px
@@ -29,14 +30,14 @@
   -moz-border-radius: 8px
   border-radius: 8px
 
-.nav.nav-tabs 
+.nav.nav-tabs
   margin-bottom: 15px
 
-.nav-tabs > li > a 
+.nav-tabs > li > a
   border-radius: 10px 10px 0 0
 
 .nav-tabs > li > a:hover
-  background: lighten($nav-tabs-active-link-hover-bg, 25%) 
-  color: lighten($nav-tabs-active-link-hover-bg, 95%) 
-  border: 1px solid lighten($nav-tabs-active-link-hover-bg, 20%) 
+  background: lighten($nav-tabs-active-link-hover-bg, 25%)
+  color: lighten($nav-tabs-active-link-hover-bg, 95%)
+  border: 1px solid lighten($nav-tabs-active-link-hover-bg, 20%)
 
