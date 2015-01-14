@@ -18,6 +18,8 @@ gem 'sendgrid'
 gem 'sass', '~> 3.2.15'
 gem 'sass-rails'
 gem 'bootstrap-sass'
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'tilt'
 
 gem 'airbrake'

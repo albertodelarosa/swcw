@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require utilities/
 //= require dashboard/
-
+//= require moment
+//= require bootstrap-datetimepicker

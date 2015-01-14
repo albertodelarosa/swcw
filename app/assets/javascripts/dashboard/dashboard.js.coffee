@@ -19,9 +19,15 @@ jQuery ->
   #$("#timepicker1").timepicker()
   $ ->
     $("#datetimepicker1").datetimepicker
+      format: "YYYY-MM-DD - hh:mm"
       startDate: 'today'
-      
-    
+      autoclose: true
+      calendarWeeks: true
+      todayHighlight: true
+
+      daysOfWeekDisabled: "0,6"
+      todayBtn: true
+      calendarWeeks: true
 
   #$ ->
     #$(".datetimepicker").datetimepicker
