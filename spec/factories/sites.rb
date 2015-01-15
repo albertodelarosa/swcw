@@ -8,10 +8,15 @@ FactoryGirl.define do
     longitude 1.5
 
     after do |site|
+      site.contact_info ||= FactoryGirl.build(:contact_info, :site => site)
       site.address ||= FactoryGirl.build(:address, :site => site)
       site.clients    << FactoryGirl.create(:client)
       site.companies  << FactoryGirl.create(:company)
       site.vehicles   << FactoryGirl.create(:vehicle)
     end
+  end
+
+  factory :site_id_invalid, parent: :site do
+    id nil
   end
 end
