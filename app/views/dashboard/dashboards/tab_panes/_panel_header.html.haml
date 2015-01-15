@@ -1,0 +1,15 @@
+- size = 3
+- panel.header_col(class: 'edit', xs: 4,sm: size,md:size,lg:size) do
+  .h5
+    = link_to edit_link do
+      %span.glyphicon.glyphicon-edit
+      edit
+- size = 8
+- panel.header_col(class: 'name', xs: 6,sm: size,md:size,lg:size) do
+  .h5= header_name
+- size = 1
+- panel.header_col(class: 'delete', xs: 2,sm: size,md:size,lg:size) do
+  .h5
+    = link_to delete_link, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+      %span.glyphicon.glyphicon-trash
+

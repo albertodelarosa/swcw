@@ -1,16 +1,20 @@
 .row
-  .col-xs-12.col-ms-6.col-md-6
-    = render partial: 'dashboard/appointments/form_new'
-  .col-xs-12.col-ms-6.col-md-6
-    = render partial: 'dashboard/appointments/listing'
-
-  -#- if @appointments.empty?
-    -#.col-xs-12
-      -#= render partial: 'dashboard/appointments/form_new'
-    -#.col-xs-12
-  -#- else
-    -#.col-xs-12.col-ms-6.col-md-6
-      -#= render partial: 'dashboard/appointments/form_new'
-    -#.col-xs-12.col-ms-6.col-md-6
+  -if @appointments.empty?
+    .col-xs-12
+      = render partial: 'dashboard/appointments/form_new'
+  -else
+    .col-xs-12.col-sm-6
+      = render partial: 'dashboard/appointments/form_new'
+    .col-xs-12.col-sm-6
       -#= render partial: 'dashboard/appointments/listing'
+      -@appointments.each do |appointment|
+        = BootstrapHelper::Panel.new(contextual: 'primary', title:"") do |panel|
+          = render partial: 'dashboard/dashboards/tab_panes/panel_header', locals: { panel: panel, edit_link: edit_dashboard_appointment_path(appointment), header_name: appointment.date, delete_link: dashboard_appointments_path(appointment)}
+          - panel.body do
+            %h4
+              %span.label.label-info Appointment Info
+            .well.col-xs-12
+              %ul.list-group
+                = render partial: "dashboard/dashboards/tab_panes/list_group_item", 
+                  locals: {label: "Date", output: appointment.date}
 

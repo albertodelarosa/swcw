@@ -23,20 +23,7 @@
     - else
       -@companies.each do |company|
         = BootstrapHelper::Panel.new(contextual: 'primary', title:"") do |panel|
-          - size = 3
-          - panel.header_col(class: 'edit', xs: 4,sm: size,md:size,lg:size) do
-            .h4
-              = link_to edit_dashboard_company_path(company) do
-                %span.glyphicon.glyphicon-edit
-                edit
-          - size = 8
-          - panel.header_col(class: 'name', xs: 6,sm: size,md:size,lg:size) do
-            .h4= company.name
-          - size = 1
-          - panel.header_col(class: 'delete', xs: 2,sm: size,md:size,lg:size) do
-            .h4
-              = link_to dashboard_company_path(company), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-                %span.glyphicon.glyphicon-trash
+          = render partial: 'dashboard/dashboards/tab_panes/panel_header', locals: { panel: panel, edit_link: edit_dashboard_company_path(company), header_name: company.name, delete_link: dashboard_company_path(company)}
           - panel.body do
             .col-xs-12.col-sm-4.col-md-3
               = image_tag("holder.png", class: "img-responsive")
