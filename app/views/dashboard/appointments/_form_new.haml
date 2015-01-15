@@ -10,14 +10,22 @@
     - panel.header_col(xs: size,sm: size,md:size,lg:size) do
       %h4= "New Appointment #{current_user.first_name}"
     - panel.body do
-      .form-group
-        = f.label :appointment_date, class: 'control-label col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          #datetimepicker1.input-group.date
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-calendar
-            = f.text_field(:appointment_date, { placeholder: "appointment date", class: "form-control" })
+      %h4
+        %span.label.label-info New Appointment
+      .well.col-xs-12
+        #datetimepicker1.input-group.date.input-group.input-group-sm
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+          = f.text_field(:date, placeholder: "appointment date", class: "form-control", "data-date-days-of-week-disabled" => "0,6", value: "", "aria_describedby" => "sizing-addon2")
+        #datetimepicker2.input-group.date.input-group.input-group-sm
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+          = f.text_field(:drop_off_time, placeholder: "drop-off time", value: "", class: "form-control", "aria_describedby" => "sizing-addon2")
+        #datetimepicker3.input-group.date.input-group.input-group-sm
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+          = f.text_field(:pick_up_time, placeholder: "pick-up time", value: "", class: "form-control", "aria_describedby" => "sizing-addon2")
       - panel.footer do
         .col-xs-3.col-sm-3.col-md-3.col-lg-3
-        .col-xs-3.col-sm-2.col-md-2.col-lg-2
+        .col-xs-12.col-sm-3.col-md-3.col-lg-2
           = f.submit 'Save', class: "btn btn-success btn-block"

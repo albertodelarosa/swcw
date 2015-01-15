@@ -1,4 +1,4 @@
-%h1 Listing dashboard_appointments
+%h1 Listing appointments
 
 %table
   %tr
@@ -6,7 +6,7 @@
     %th
     %th
 
-  - @dashboard_appointments.each do |dashboard_appointment|
+  - @appointments.each do |appointment|
     %tr
       %td= link_to 'Show', dashboard_appointment
       %td= link_to 'Edit', edit_dashboard_appointment_path(dashboard_appointment)
