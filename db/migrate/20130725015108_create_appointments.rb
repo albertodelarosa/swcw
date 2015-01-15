@@ -2,9 +2,9 @@ class CreateAppointments < ActiveRecord::Migration
   def change
     create_table  :appointments do |t|
       t.string    :number
-      t.datetime  :date,          :null => false, :default => Time.now
-      t.datetime  :drop_off_time, :null => false, :default => Time.now
-      t.datetime  :pick_up_time,  :null => false, :default => Time.now
+      t.datetime  :date,          :null => false, :default => ""
+      t.datetime  :drop_off_time, :null => false, :default => ""
+      t.datetime  :pick_up_time,  :null => false, :default => ""
       t.text      :notes,         :null => false, :default => ""
 
       t.string    :user_username,    :null => false, :default => ""
@@ -30,17 +30,18 @@ class CreateAppointments < ActiveRecord::Migration
       t.float     :site_latitude,   :null => false, :default => 0.0
       t.float     :site_longitude,  :null => false, :default => 0.0
 
-      t.string   :vehicle_year, length: 4,            :null => false, :default => ""
-      t.string   :vehicle_make,                       :null => false, :default => ""
-      t.string   :vehicle_model,                      :null => false, :default => ""
-      t.string   :vehicle_trim,                       :null => false, :default => ""
-      t.string   :vehicle_type,                       :null => false, :default => ""
-      t.string   :vehicle_doors,                      :null => false, :default => ""
-      t.string   :vehicle_size,                       :null => false, :default => ""
-      t.string   :vehicle_license_number, length: 8,  :null => false, :default => ""
-      t.string   :vehicle_state, length: 2,           :null => false, :default => ""
-      t.string   :vehicle_color,                      :null => false, :default => ""
-      t.string   :vehicle_comments,                   :null => false, :default => ""
+      t.string    :vehicle_license_number, length: 8,  :null => false, :default => ""
+      t.string    :vehicle_state, length: 2,           :null => false, :default => ""
+      t.string    :vehicle_color,                      :null => false, :default => ""
+      t.string    :vehicle_comments,                   :null => false, :default => ""
+
+      t.string    :vehicle_year, length: 4, :null => false, :default => ""
+      t.string    :vehicle_make,            :null => false, :default => ""
+      t.string    :vehicle_model,           :null => false, :default => ""
+      t.string    :vehicle_trim,            :null => false, :default => ""
+      t.string    :vehicle_type,            :null => false, :default => ""
+      t.string    :vehicle_doors,           :null => false, :default => ""
+      t.string    :vehicle_size,            :null => false, :default => ""
 
       t.timestamps
     end
