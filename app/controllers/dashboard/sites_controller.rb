@@ -68,23 +68,32 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # PUT /customers/sites/1
   # PUT /customers/sites/1.json
   def update
-    #@old_site = Site.find(params[:id])
-    site = Site.find(params[:site][:id])
-    current_user.sites.delete(site) if current_user.sites.include?(site)
-    @site = site
+    @site = Site.find(params[:site][:id])
 
     respond_to do |format|
-      #if current_user.sites.delete(@old_site)
-      if current_user.sites << @site
+      if current_user.sites.exists? @site
+        current_user.sites.delete(@site)
+        current_user.sites << @sites
         format.html { redirect_to root_path, notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "new" }
         format.json { render json: @site.errors.errors, status: :unprocessable_entity }
         #format.json { render json: @old_site.errors.errors, status: :unprocessable_entity }
       end
     end
   end
+#{
+  #"utf8"=>"✓", 
+  #"_method"=>"put", 
+  #"authenticity_token"=>"QErx4wlLZhuoOjuKY/O3u7H2ub6No2sQoY8WGiba8z4=", 
+  #"company"=>{"id"=>"11"}, 
+  #"site"=>{"id"=>"18"}, 
+  #"commit"=>"Edit", 
+  #"action"=>"update", 
+  #"controller"=>"dashboard/sites", 
+  #"id"=>"19"
+#}
 
   # DELETE /customers/sites/1
   # DELETE /customers/sites/1.json

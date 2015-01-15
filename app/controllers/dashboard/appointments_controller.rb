@@ -6,7 +6,7 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
   def index
     add_breadcrumb "all", nil, "glyphicon-list"
 
-    @appointments = Appointment.all
+    @appointments = current_user.appointments || []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,8 +32,9 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
   def new
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
-    @appointments = Appointment.all
     @appointment = Appointment.new
+    @current_appointments = get_current_appointments(current_user.appointments || [])
+    @past_appointments = current_user.appointments - @current_appointments
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,12 +52,12 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
   # POST /dashboard/appointments
   # POST /dashboard/appointments.json
   def create
-    #@appointment = Appointment.new(params[:Appointment])
-    @appointment = Appointment.find(params[:Appointment][:id])
-    current_user.companies << @appointment
+    @appointment = Appointment.new(params[:appointment])
 
     respond_to do |format|
       if @appointment.save
+        current_user.appointments << @appointment
+
         format.html { redirect_to root_path, notice: 'Appointment was successfully created.' }
         format.json { render json: @appointment, status: :created, location: @appointment }
       else
@@ -92,6 +93,14 @@ class Dashboard::AppointmentsController < Dashboard::DashboardsController
       format.html { redirect_to dashboard_appointments_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def get_current_appointments(appointments)
+    upcoming_appointments = []
+    appointments.each{|appointment| upcoming_appointments << appointment if appointment.appointment_date >= Time.current.to_date }
+    return upcoming_appointments
   end
 
 end
