@@ -1,0 +1,36 @@
+.col-xs-12.col-sm-4.col-lg-4
+  %ul#accordion-right1
+    %legend.lead Appointments
+    %li.panel.unpanel
+      .icon
+      %p.collapsed{"aria-controls" => "right1a", "aria-expanded" => "true", "data-parent" => "#accordion-right1", "data-toggle" => "collapse", :href => "#right1a"}
+        Why is Advanced Scheduling worry-free and easy to change?
+      #right1a.collapse
+    %li.panel.unpanel
+      .icon
+      %p.collapsed{"aria-controls" => "right1b", "aria-expanded" => "true", "data-parent" => "#accordion-right1", "data-toggle" => "collapse", :href => "#right1b"}
+        How do I change an appointment?
+      #right1b.collapse
+    %li.panel.unpanel
+      .icon
+      %p.collapsed{"aria-controls" => "right1c", "aria-expanded" => "true", "data-parent" => "#accordion-right1", "data-toggle" => "collapse", :href => "#right1c"}
+        What happens if I miss an appointment or cancel my service?
+      #right1c.collapse
+  %ul#accordion-right2
+    %legend.lead Siteler Dollars
+    %li.panel.unpanel
+      .icon
+      %p.collapsed{"aria-controls" => "right2a", "aria-expanded" => "true", "data-parent" => "#accordion-right2", "data-toggle" => "collapse", :href => "#right2a"}
+        What are Siteler Dollars and how are they used?
+      #right2a.collapse
+    %li.panel.unpanel
+      .icon
+      %p.collapsed{"aria-controls" => "right2b", "aria-expanded" => "true", "data-parent" => "#accordion-right2", "data-toggle" => "collapse", :href => "#right2b"}
+        How do I earn Free Siteler Dollars?
+      #right2b.collapse
+  %ul.social-media
+    %legend.lead Social Media
+    %li.panel.unpanel
+      = link_to( image_tag("icons/social/facebook64.png"), "http://www.facebook.com")
+      = link_to( image_tag("icons/social/twitter64.png"), "http://www.twitter.com")
+
