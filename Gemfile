@@ -57,7 +57,8 @@ group :development do
   gem 'brakeman'
   gem 'letter_opener'
   gem 'rails-erd'
-
+  gem 'guard-rspec', require: false
+  
   gem 'sextant' #rake routes on http://localhost:3000/rails/routes
   gem "better_errors"
   gem "binding_of_caller"
@@ -69,7 +70,6 @@ group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
 end
 
