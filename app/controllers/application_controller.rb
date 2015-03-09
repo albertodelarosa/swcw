@@ -49,9 +49,11 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller?
-      "dashboard"
-    else
+      "devise"
+    elsif user_signed_in?
       "application"
+    else
+      "welcome"
     end
   end
 

@@ -8,7 +8,7 @@ describe Dashboard::AppointmentsController do
 
   context "Happy Path" do
     describe "User signed in" do
-      before(:each) { register_user }
+      before(:each) { login_user }
 
       describe "GET index" do
         subject { get :index }

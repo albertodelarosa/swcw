@@ -8,7 +8,7 @@ describe Dashboard::CompaniesController do
 
   context "Happy Path" do
     describe "User signed in" do
-      before(:each) { register_user }
+      before(:each) { login_user }
 
       describe "GET index" do
         subject { get :index }
@@ -109,7 +109,7 @@ describe Dashboard::CompaniesController do
     end
 
     describe "Invalid params" do
-      before(:each) { register_user }
+      before(:each) { login_user }
 
       describe "PUT update" do
         subject { put :update, id: invalid_id }

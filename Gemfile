@@ -1,37 +1,57 @@
 source 'https://rubygems.org'
+ruby ENV['CUSTOM_RUBY_VERSION'] || '2.1.2'
 
-gem 'rails', '3.2.18'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.0'
+# Use thin as server
 gem 'thin'
+# Use postgresql as the database for Active Record
 gem 'pg'
-gem 'activeadmin'
-gem 'hpricot'
-gem 'haml', '~> 4.0.6'
-gem 'formtastic'
-gem "meta_search"
+# Use hamle for html
 gem 'haml-rails'
+# Use html2haml to hamlfy erb files
+gem "html2haml"
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.1.0'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.0'
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', '~> 0.4.0', group: :doc
+# Use bootstrap for front-end framework
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootstrap3-datetimepicker-rails'
+# User activeadmin for admin
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+
+gem 'hpricot'
+gem 'formtastic'
+
+# use ransack for extensible searching
+gem 'ransack'#, github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
+
 gem 'sendgrid'
 
-gem 'sass', '~> 3.2.15'
-gem 'sass-rails'
-gem 'bootstrap-sass'
 gem 'momentjs-rails', '>= 2.8.1'
-gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
-gem 'tilt'
-
 gem 'airbrake'
-gem 'jquery-rails'
-gem 'devise'
-gem 'omniauth'
+
+#Use omniauth for social media login
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 
-gem 'turbolinks'
-gem 'jquery-turbolinks'
 gem 'draper'
 
 gem 'money-rails'
@@ -43,22 +63,13 @@ gem 'tzinfo'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'coffee-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier'
-end
-
 group :development do
   gem 'ruby_parser'
   gem 'brakeman'
   gem 'letter_opener'
   gem 'rails-erd'
   gem 'guard-rspec', require: false
-  
+
   gem 'sextant' #rake routes on http://localhost:3000/rails/routes
   gem "better_errors"
   gem "binding_of_caller"
@@ -73,8 +84,10 @@ group :test do
   gem 'launchy'
 end
 
+# Use rspec for testing
+gem 'rspec-rails'
+
 group :test, :development do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-byebug'
 end

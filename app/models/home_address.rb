@@ -1,4 +1,4 @@
 class HomeAddress < Address
-  attr_accessible :apt_no
+  # attr_accessible :apt_no
 end
 

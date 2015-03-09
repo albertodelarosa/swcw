@@ -17,7 +17,7 @@ describe Dashboard::SitesController do
 
 
   describe "User signed in" do
-    before(:each) { register_user }
+    before(:each) { login_user }
 
     describe "GET index" do
       context "happy" do

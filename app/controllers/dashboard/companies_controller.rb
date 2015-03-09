@@ -66,7 +66,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
       @company = Company.find(params[:id])
 
       respond_to do |format|
-        if @company.clients.exists? current_user
+        if @company.clients.exists? current_user.id
           @company.clients.delete(current_user)
           @company.clients << current_user
 

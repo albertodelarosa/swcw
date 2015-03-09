@@ -2,18 +2,22 @@
 %html{lang: "en"}
   %head
     %title Siteler Wash
-    = stylesheet_link_tag    "welcome", :media => "all"
+    = stylesheet_link_tag    "application", :media => "all"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %meta{:content => "We use sendgrid", :name => "sendgrid"}
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
-    #bg
-    = render "shared/navbar"
-    = render "shared/alert", flash: flash
     #wrap
-      = yield
-      = render "welcome/pre_footer"
+      -if mobile_device?
+        = render "shared/navbar"
+        = render "shared/alert", flash: flash
+        = yield
+      -else
+        = render "shared/navbar"
+        = render "shared/alert", flash: flash
+        .container
+          .main-body-wrapper
+            = yield
     = render "shared/footer"
-    = javascript_include_tag "welcome/"
+    = javascript_include_tag "application"
     = render "shared/javascripts"
 

@@ -1,5 +1,4 @@
 class Dashboard::DashboardsController < ApplicationController
-  layout "dashboard"
 
   before_filter :authenticate_user!
   before_filter { add_breadcrumb "home", root_path, "glyphicon-home" }

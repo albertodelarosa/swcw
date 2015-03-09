@@ -1,7 +1,7 @@
 Sitelerwash::Application.routes.draw do
 
   namespace :dashboard do
-    match "/" => "dashboards#index"
+    get "/" => "dashboards#index"
 
     resources :appointments
     resources :sites
@@ -27,13 +27,13 @@ Sitelerwash::Application.routes.draw do
   }
 
   devise_scope :user do
-    get "sign_up" => "users/registrations#new"
-    get "login_in" => "users/sessions#new"
-    get "log_out" => "users/sessions#destroy"
+    get "register" => "users/registrations#new"
+    get "login" => "users/sessions#new"
+    get "logout" => "users/sessions#destroy"
   end
 
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   root :to => "welcome#index"
 

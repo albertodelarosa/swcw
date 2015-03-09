@@ -1,5 +1,5 @@
 class Appointment < ActiveRecord::Base
-  attr_accessible :date, :number, :drop_off_time, :pick_up_time, :notes
+  # attr_accessible :date, :number, :drop_off_time, :pick_up_time, :notes
 
   has_many :schedules
   has_many :clients,  through: :schedules, source: :user

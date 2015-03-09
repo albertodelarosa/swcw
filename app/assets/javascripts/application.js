@@ -11,11 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require bootstrap
-//= require bootstrap-sprockets
-//= require jquery.turbolinks
 //= require jquery_ujs
-//= require utilities/
-//= require dashboard/
-//= require moment
-//= require bootstrap-datetimepicker
+//= require turbolinks
+//= require bootstrap-sprockets
+//= require utilities/moment-with-langs
+//= require utilities/bootstrap-datetimepicker
+//= require utilities/navbar
+//= require_tree ./ie_utilities/
+//= require_tree ./dashboard/
+

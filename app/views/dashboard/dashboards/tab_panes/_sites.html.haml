@@ -46,11 +46,11 @@
                 %td
                   = site.address.zip
       - if @sites.size > 1
-        - @sites.pop
+        = @sites.class
         %h3
           - if @sites.size > 1
             Previous Sites
-          - else 
+          - else
             Previous Site
         - @sites.reverse.each do |site|
           = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|

@@ -2,6 +2,8 @@ Sitelerwash::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   config.action_mailer.default_url_options = { :host => 'enigmatic-inlet-5364.herokuapp.com/' }
+  config.eager_load = true
+  config.assets.js_compressor = :uglifier
 
   # Code is not reloaded between requests
   config.cache_classes = true
