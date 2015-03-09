@@ -33,6 +33,8 @@ class Dashboard::SitesController < Dashboard::DashboardsController
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
     @site = Site.new
+    @sites = current_user.sites || []
+    
 
     respond_to do |format|
       format.html # new.html.erb

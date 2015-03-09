@@ -5,19 +5,19 @@ describe Dashboard::SitesController do
   let!(:site2) { FactoryGirl.create(:site) }
 
   describe "User not signed in" do
-     describe "GET index" do 
+     describe "GET index" do
       subject { get :index }
       before(:each) { subject }
 
-      it {response.status.should == 302}
-      it {response.should_not be_successful}
+      it {expect(response.status).to eq(302)}
+      it {expect(response).to_not be_successful}
       it {expect(response).to redirect_to(new_user_session_path)}
     end
  end
 
 
   describe "User signed in" do
-    register_user
+    before(:each) { register_user }
 
     describe "GET index" do
       context "happy" do
@@ -26,9 +26,10 @@ describe Dashboard::SitesController do
 
         it "assigns all user sites as @sites" do
           @user.sites << site1 << site2
-          assigns(:sites).should eq(@user.sites)
+          expect(assigns(:sites)).to eq(@user.sites)
+          expect(assigns(:sites)).to eq([site1, site2])
         end
-        it { assigns(:sites).should eq([]) }
+        it { expect(assigns(:sites)).to eq([]) }
       end
     end
 
@@ -37,11 +38,8 @@ describe Dashboard::SitesController do
       subject { get :show, {:id => site1.to_param} }
       before(:each) { subject }
 
-      context "happy" do 
-        it "assigns the requested dashboard_site as @dashboard_site" do
-           subject
-          assigns(:site).should eq(site1)
-        end
+      context "happy" do
+        it {expect(assigns(:site)).to eq(site1)}
       end
     end
 
@@ -49,18 +47,24 @@ describe Dashboard::SitesController do
     describe "GET new" do
       subject { get :new }
       before(:each) { subject }
-      it { assigns(:site).should be_a_new(Site) }
+
+      it { expect(assigns(:site)).to be_a_new(Site) }
+      it "assigns all currrent_user's sites to @sites" do
+        site1.clients << @user
+        site2.clients << @user
+        expect(assigns(:sites)).to eq([site1, site2])
+      end
     end
 
 
     describe "GET edit" do
       subject { get :edit, {id: site1.to_param} }
       before(:each) { subject }
-      it { assigns(:site).should eq(site1) }
-      it { assigns(:site).should_not eq(site2) }
+      it { expect(assigns(:site)).to eq(site1) }
+      it { expect(assigns(:site)).to_not eq(site2) }
       it "assigns all users sites as @sites" do
         @user.sites << site1 << site2
-        assigns(:sites).should eq( @user.sites )
+        expect(assigns(:sites)).to eq( @user.sites )
       end
     end
 
@@ -69,25 +73,20 @@ describe Dashboard::SitesController do
       subject { post :create, { site: { id: site1.to_param } } }
 
       describe "with valid params" do
-        it "adds Site to current_user's sites" do
-          expect {
-            subject
-          }.to change(@user.sites, :count).by(1)
+        it "assign found company to @company" do
+          expect( assigns(:company).to eq(site1))
         end
-
-        it "redirects to root_path" do
-          subject
-          response.should redirect_to(root_path)
-        end
+        it{ expect { subject }.to change(@user.sites, :count).by(1) }
+        it{ expect(response).to render(root_path) }
       end
 
-      describe "with invalid params" do
-        it "re-renders the 'new' template" do
-          Site.any_instance.stub(:save).and_return(false)
-          subject
-          response.should render_template("new")
-        end
-      end
+      #describe "with invalid params" do
+        #it "re-renders the 'new' template" do
+          #Site.any_instance.stub(:save).and_return(false)
+          #subject
+          #expect(response).to render_template("new")
+        #end
+      #end
     end
 
 
@@ -141,7 +140,7 @@ describe Dashboard::SitesController do
       before(:each) { subject }
 
       it { expect( @user.sites ).not_to include( site1 ) }
-      it { response.should redirect_to( root_path ) }
+      it { expect(response).to redirect_to( root_path ) }
     end
   end
 
