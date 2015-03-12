@@ -1,0 +1,67 @@
+@import "utilities/variables";
+@import "utilities/mixins";
+
+$light-color: lighten($navbar-default-bg, 25%);
+
+.navbar {
+  margin-bottom: 50px;
+  .navbar-brand {
+    .aligner {
+      margin-top: -10px;
+    }
+  }
+  .navbar-nav {
+    .nav-divider {
+      margin: 0px;
+    }
+    li a {
+      color: $navbar-default-color !important;
+    }
+  }
+}
+
+@media only screen and (max-device-width: $screen-sm-max) {
+  .navbar-brand {
+    margin-top: -10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    min-height: 121px;
+    .navbar-nav {
+      margin-top: 12px;
+      padding: 20px 0 0 0;
+      li {
+        border-left: 2px solid $light-color;
+        a {
+          padding: 18px 25px;
+        }
+        a:hover {
+          @include navbar-link-mixin($light-color);
+        }
+      }
+      li.active {
+        a, a:hover {
+          @include navbar-link-mixin($light-color);
+        }
+      }
+      li.open {
+        a, a:focus, a:hover {
+          @include li-opened($navbar-default-bg, $light-color);
+        }
+        @include ul-dropdonw-menu($navbar-default-bg, $light-color);
+      }
+      li:last-child {
+        border-right: 2px solid $light-color;
+      }
+    }
+    .navbar-form {
+      display: none;
+      .form-group {
+        margin-left: 3px;
+      }
+    }
+  }
+}
+

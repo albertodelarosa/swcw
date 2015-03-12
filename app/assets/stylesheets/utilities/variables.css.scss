@@ -1,0 +1,175 @@
+@import "utilities/mixins";
+
+//##############################################################################################################
+h4 {
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+
+//##############################################################################################################
+// Siteler Brand colors
+//##############################################################################################################
+
+// Primary Colors
+//##############################################################################################################
+$sitelerBlue: #386697 !default;
+$sitelerGreen: #318c3d !default;
+$sitelerLime: #04cd1a !default;
+
+// Greys
+//##############################################################################################################
+$sitelerYellow: #e5a122 !default;
+$sitelerRed: #c63a3a !default;
+
+//pastel
+$sitelerPastelBlue1: #5a759a !default;
+
+$sitelerPastelBlue2: #5f8fbf !default;
+
+$sitelerPastelGreen1: #14b694 !default;
+
+$sitelerPastelGreen2: #24bca4 !default;
+
+$sitelerPastelPurple1: #9a74a5 !default;
+
+$sitelerPastelRed1: #e54444 !default;
+
+$sitelerPastelOrange1: #f8774b !default;
+
+$sitelerPastelOrange2: #e56744 !default;
+
+$sitelerPastelOrange3: #fd573b !default;
+
+$q: #f75b42;
+
+$q: #eb540a;
+
+$q: #f9576a;
+
+$q: #cf1332;
+
+$q: #327ccb;
+
+$q: #f7ab4e;
+
+$q: #5498ea;
+
+$q: #982438;
+
+// ##############################################################################################################
+// Sitler Brand colors more
+//$brand-primary:               $sitelerGreyBlue
+//$brand-primary-bg:            $sitelerGreyBlueLighter8
+//$brand-primary-border:        $sitelerGreyBlueLighter8
+
+//$brand-success:               $sitelerGreen
+//$brand-success-bg:            $sitelerGreenLighter7
+
+//$brand-warning:               $sitelerYellow
+//$brand-warning-bg:            $sitelerYellowLighter7
+
+//$brand-danger:                $sitelerRed
+//$brand-danger-bg:             $sitelerRedLighter7
+
+//$brand-info:                  $sitelerBlue
+//$brand-info-bg:               $sitelerBlueLighter7
+
+// ##############################################################################################################
+// Grid system
+$grid-gutter-width: 20px !default;
+
+// ##############################################################################################################
+// Navbar
+$navbar-height: 50px !default;
+
+$navbar-default-bg: $sitelerPastelBlue1 !default;
+$navbar-default-color: lighten($navbar-default-bg, 47%) !default;
+
+// Navbar links
+$navbar-default-link-color: lighten($navbar-default-bg, 50%) !default;
+$navbar-default-link-hover-color: $navbar-default-link-color !default;
+$navbar-default-link-active-color: $navbar-default-link-color !default;
+$navbar-default-link-active-bg: darken($navbar-default-bg, 6.5%) !default;
+
+// ##############################################################################################################
+// Scaffolding
+
+$body-bg: #c5c8cc !default;
+$text-color: darken($body-bg, 75%);
+$font-family-sans-serif: CenturyGothic, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif: Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+// ##############################################################################################################
+// Navs
+// Tabs
+$nav-tabs-border-color: $sitelerBlue !default;
+$nav-tabs-link-hover-border-color: $sitelerBlue !default;
+
+$nav-tabs-active-link-hover-bg: $sitelerBlue !default;
+$nav-tabs-active-link-hover-color: lighten($nav-tabs-active-link-hover-bg, 95%) !default;
+$nav-tabs-active-link-hover-border-color: darken($nav-tabs-active-link-hover-bg, 10%) !default;
+
+// ##############################################################################################################// #######################################################
+// Alerts
+
+.alert-dismissable {
+  top: 0px !important;
+  right: -18px !important;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.75);
+}
+
+// ##############################################################################################################
+// Panels
+$panel-bg: white !default;
+$panel-body-padding: 15px !default;
+$panel-inner-border: darken($panel-bg, 50%) !default;
+$panel-footer-bg: darken($panel-bg, 20%) !default;
+
+$panel-default-heading-bg: $sitelerBlue !default;
+$panel-default-border: lighten($panel-default-heading-bg, 11%) !default;
+$panel-default-text: lighten($panel-default-heading-bg, 60%) !default;
+
+@include panel-settings("default", $panel-default-heading-bg);
+
+$panel-primary-heading-bg: $sitelerPastelBlue2 !default;
+$panel-primary-border: lighten($panel-primary-heading-bg, 11%) !default;
+$panel-primary-text: lighten($panel-primary-heading-bg, 60%) !default;
+
+@include panel-settings("primary", $panel-primary-heading-bg);
+
+$panel-success-heading-bg: $sitelerPastelGreen2 !default;
+$panel-success-border: lighten($panel-success-heading-bg, 11%) !default;
+$panel-success-text: lighten($panel-default-heading-bg, 70%) !default;
+
+@include panel-settings("success", $panel-success-heading-bg);
+
+$panel-info-heading-bg: $sitelerPastelOrange1 !default;
+$panel-info-border: lighten($panel-info-heading-bg, 20%) !default;
+$panel-info-text: lighten($panel-info-heading-bg, 60%) !default;
+
+@include panel-settings("info", $panel-info-heading-bg);
+
+$panel-warning-heading-bg: #dbc996 !default;
+$panel-warning-border: lighten($panel-warning-heading-bg, 3%) !default;
+$panel-warning-text: lighten($panel-warning-heading-bg, 60%) !default;
+
+@include panel-settings("warning", $panel-warning-heading-bg);
+
+$panel-danger-heading-bg: $sitelerPastelRed1 !default;
+$panel-danger-border: lighten($panel-danger-heading-bg, 11%) !default;
+$panel-danger-text: lighten($panel-danger-heading-bg, 60%) !default;
+
+@include panel-settings("danger", $panel-danger-heading-bg);
+
+// #########################################################################################
+//// COMPONENT VARIABLES
+$screen-sm: 768px !default;
+$screen-md: 992px !default;
+
+$screen-sm-min: $screen-sm !default;
+$screen-md-min: $screen-md !default;
+$screen-sm-max: $screen-md-min - 1 !default;
+$screen-xs-max: $screen-sm-min - 1 !default;
+
