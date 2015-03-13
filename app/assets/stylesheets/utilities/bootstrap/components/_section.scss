@@ -1,0 +1,83 @@
+//
+// Sections
+// --------------------------------------------------
+
+
+// Base class
+.section {
+  min-height: 20px;
+  padding: 19px;
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+
+// Brand classes
+.section.section-default {
+  background-color: $brand-default;
+  color: $brand-default-color;
+  legend,
+  .legend{
+    color: lighten($brand-default-color, 20%);
+    border-bottom: 1px solid $brand-default-border;
+  }
+}
+.section.section-primary {
+  background-color: $brand-primary;
+  color: $brand-primary-color;
+  legend,
+  .legend{
+    color: lighten($brand-primary-color, 20%);
+    border-bottom: 1px solid $brand-primary-border;
+  }
+}
+.section.section-success {
+  background-color: $brand-success;
+  color: $brand-success-color;
+  legend,
+  .legend{
+    color: lighten($brand-success-color, 20%);
+    border-bottom: 1px solid $brand-success-border;
+  }
+}
+.section.section-info {
+  background-color: $brand-info;
+  color: $brand-info-color;
+  legend,
+  .legend{
+    color: lighten($brand-info-color, 20%);
+    border-bottom: 1px solid $brand-info-border;
+  }
+}
+.section.section-warning {
+  background-color: $brand-warning;
+  color: $brand-warning-color;
+  legend,
+  .legend{
+    color: lighten($brand-warning-color, 20%);
+    border-bottom: 1px solid $brand-warning-border;
+  }
+}
+.section.section-danger {
+  background-color: $brand-danger;
+  color: $brand-danger-color;
+  legend,
+  .legend{
+    color: lighten($brand-danger-color, 20%);
+    border-bottom: 1px solid $brand-danger-border;
+  }
+}
+.section.section-parallax {
+  min-height: 50px!important;
+}
+// Sizes
+.section-lg {
+  padding: 24px;
+  //border-radius: $border-radius-large;
+}
+.section-sm {
+  padding: 9px;
+  //border-radius: $border-radius-small;
+}
