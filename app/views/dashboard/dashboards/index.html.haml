@@ -1,46 +1,17 @@
-- opts={navs: 'nav-tabs', nav_tab_id: 'dashboardTab', tab_content_id: 'dashboardTabContent'}
-= BootstrapHelper::Nav.new(opts) do |nav|
-  - nav.nav_li(active: "", a_href: '#appointments') do
-    Appointments
-  - nav.nav_li(a_href: '#sites') do
-    Sites
-  - nav.nav_li(a_href: '#companies') do
-    Companies
-  - nav.nav_li(a_href: '#vehicles') do
-    Vehicles
-  - nav.nav_pane(tab_id: 'appointments', active: '') do
-    = render "dashboard/dashboards/tab_panes/appointments"
-  - nav.nav_pane(tab_id: 'sites') do
-    = render "dashboard/dashboards/tab_panes/sites"
-  - nav.nav_pane(tab_id: 'companies') do
-    = render "dashboard/dashboards/tab_panes/companies"
-  - nav.nav_pane(tab_id: 'vehicles') do
-    = render "dashboard/dashboards/tab_panes/vehicles"
-
-
--#= BootstrapHelper::Panel.new(contextual: 'default', title:"", footer: '', header_class: "#{controller.controller_name}_#{controller.action_name}" ) do |panel|
-  -#= render partial: 'shared/panel_header', locals: {panel: panel, title: "Dashboard"}
-  -#- panel.body do
-    -#- opts={navs: 'nav-tabs', nav_tab_id: 'dashboardTab', tab_content_id: 'dashboardTabContent'}
-    -#= BootstrapHelper::Nav.new(opts) do |nav|
-      -#- nav.nav_li(active: "", a_href: '#appointments') do
-        -#Appointments
-      -#- nav.nav_li(a_href: '#sites') do
-        -#Sites
-      -#- nav.nav_li(a_href: '#companies') do
-        -#Companies
-      -#- nav.nav_li(a_href: '#vehicles') do
-        -#Vehicles
-      -#- nav.nav_pane(tab_id: 'appointments', active: '') do
-        -#= render "dashboard/dashboards/tab_panes/appointments"
-      -#- nav.nav_pane(tab_id: 'sites') do
-        -#= render "dashboard/dashboards/tab_panes/sites"
-      -#- nav.nav_pane(tab_id: 'companies') do
-        -#= render "dashboard/dashboards/tab_panes/companies"
-      -#- nav.nav_pane(tab_id: 'vehicles') do
-        -#= render "dashboard/dashboards/tab_panes/vehicles"
-  -#- panel.footer do 
-    -#.col-sm-12.col-md-12
-      -#.h4
-        -#Sitelerwash - your onsite butler
+.section.section-primary
+  %legend appointments
+  = render "dashboard/dashboards/tab_panes/appointments"
+.section.section-parallax
+.section.section-success
+  - if @sites.empty?
+    %legend sites
+  = render "dashboard/dashboards/tab_panes/sites"
+.section.section-parallax
+  %legend companies
+.section.section-primary
+  = render "dashboard/dashboards/tab_panes/companies"
+.section.section-parallax
+.section.section-success
+  %legend vehicles
+  = render "dashboard/dashboards/tab_panes/vehicles"
 

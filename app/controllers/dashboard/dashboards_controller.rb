@@ -7,7 +7,7 @@ class Dashboard::DashboardsController < ApplicationController
     @appointments = current_user.appointments || []
     @appointment = Appointment.new
 
-    @sites = current_user.sites || []
+    @sites = current_user.sites.to_a || []
     @site = Site.new
 
     @companies = current_user.companies || []
