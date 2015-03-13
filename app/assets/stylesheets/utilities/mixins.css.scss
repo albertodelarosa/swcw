@@ -1,6 +1,6 @@
 @mixin li-opened($navbar-default-bg, $light-color) {
   background: $navbar-default-bg;
-  @include navbar-link-mixin($light-color);
+  @include navbar-link($light-color);
   .link_top {
     background: inherit;
   }
