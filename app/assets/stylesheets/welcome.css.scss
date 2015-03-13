@@ -9,8 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *- require_tree ./welcome
- *- require utilities/application
  */
 
 // change colors
@@ -18,9 +16,12 @@
 
 // import original bootstrap
 
-//@import 'utilities/bootstrap/bootstrap-sprockets';
-//@import 'utilities/bootstrap/bootstrap';
-@import "welcome/scaffold";
+@import "utilities/fonts";
+@import "utilities/colors";
+@import 'bootstrap-sprockets';
+@import 'utilities/bootstrap/all';
+@import "utilities/navbar";
 @import "utilities/animate";
 @import "utilities/footer";
+@import "welcome/scaffold";
 
