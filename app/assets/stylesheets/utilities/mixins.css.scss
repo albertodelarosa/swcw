@@ -73,85 +73,87 @@
   }
 }
 
-@mixin panel-settings($panel-name, $bg) {
-  $background: white;
-  @if $panel-name == "default" {
-    $background: lighten($bg, 50%);
-  }
-  @else if $panel-name == "success" {
-    $background: lighten($bg, 50%);
-  }
-  @else if $panel-name == "info" {
-    $background: lighten($bg, 34%);
-  }
-  @else {
-    $background: lighten($bg, 40%);
-  }
-  .panel.panel-#{$panel-name} {
-    margin-top: 10px;
-    box-shadow: 2px 2px 8px rgba(darken($bg, 80%), 0.4);
-    background: $background;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    .panel-heading {
-      padding: if($panel-name == "default", 8px 10px, 0px 10px);
-      -webkit-border-top-right-radius: 7px;
-      -webkit-border-top-left-radius: 7px;
-      -moz-border-top-right-radius: 7px;
-      -moz-border-top-left-radius: 7px;
-      border-top-right-radius: 7px;
-      border-top-left-radius: 7px;
-      a {
-        color: lighten($bg, 60%);
-      }
-    }
-    .panel-footer {
-      border-top: 1px solid $background;
-      background: $background;
-      color: darken($bg, 10%);
-      -webkit-border-bottom-right-radius: 7px;
-      -webkit-border-bottom-left-radius: 7px;
-      -moz-border-bottom-right-radius: 7px;
-      -moz-border-bottom-left-radius: 7px;
-      border-bottom-right-radius: 7px;
-      border-bottom-left-radius: 7px;
-    }
-    .breadcrumb {
-      $breadcrumb-bg: lighten($background, 10%);
-      border: 1px solid $breadcrumb-bg;
-      background-color: $breadcrumb-bg;
-      color: $bg;
-      padding: 5px 20px;
-      margin-top: 3px;
-      margin-bottom: 0px !important;
-      border-radius: 4px;
-      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5) inset;
-      li a, li:before {
-        color: darken($bg, 20%);
-      }
-      .active {
-        color: $bg;
-      }
-    }
-    .nav.nav-tabs {
-      margin-bottom: 15px;
-      li {
-        a {
-          color: darken($bg, 10%);
-        }
-        a:hover {
-          background-color: lighten($bg, 20%);
-          color: darken($bg, 20%);
-        }
-      }
-      li.active {
-        a, a:hover {
-          background-color: $bg;
-          color: lighten($bg, 60%);
-        }
-      }
-    }
-  }
-}
+
+//@mixin panel-settings($panel-name, $bg) {
+  //$background: white;
+  //@if $panel-name == "default" {
+    //$background: lighten($bg, 50%);
+  //}
+  //@else if $panel-name == "success" {
+    //$background: lighten($bg, 50%);
+  //}
+  //@else if $panel-name == "info" {
+    //$background: lighten($bg, 34%);
+  //}
+  //@else {
+    //$background: lighten($bg, 40%);
+  //}
+  //.panel.panel-#{$panel-name} {
+    //margin-top: 10px;
+    //box-shadow: 2px 2px 8px rgba(darken($bg, 80%), 0.4);
+    //background: $background;
+    //-webkit-border-radius: 8px;
+    //-moz-border-radius: 8px;
+    //border-radius: 8px;
+    //.panel-heading {
+      //padding: if($panel-name == "default", 8px 10px, 0px 10px);
+      //-webkit-border-top-right-radius: 7px;
+      //-webkit-border-top-left-radius: 7px;
+      //-moz-border-top-right-radius: 7px;
+      //-moz-border-top-left-radius: 7px;
+      //border-top-right-radius: 7px;
+      //border-top-left-radius: 7px;
+      //a {
+        //color: lighten($bg, 60%);
+      //}
+    //}
+    //.panel-footer {
+      //border-top: 1px solid $background;
+      //background: $background;
+      //color: darken($bg, 10%);
+      //-webkit-border-bottom-right-radius: 7px;
+      //-webkit-border-bottom-left-radius: 7px;
+      //-moz-border-bottom-right-radius: 7px;
+      //-moz-border-bottom-left-radius: 7px;
+      //border-bottom-right-radius: 7px;
+      //border-bottom-left-radius: 7px;
+    //}
+    //.breadcrumb {
+      //$breadcrumb-bg: lighten($background, 10%);
+      //border: 1px solid $breadcrumb-bg;
+      //background-color: $breadcrumb-bg;
+      //color: $bg;
+      //padding: 5px 20px;
+      //margin-top: 3px;
+      //margin-bottom: 0px !important;
+      //border-radius: 4px;
+      //box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5) inset;
+      //li a, li:before {
+        //color: darken($bg, 20%);
+      //}
+      //.active {
+        //color: $bg;
+      //}
+    //}
+    //.nav.nav-tabs {
+      //margin-bottom: 15px;
+      //li {
+        //a {
+          //color: darken($bg, 10%);
+        //}
+        //a:hover {
+          //background-color: lighten($bg, 20%);
+          //color: darken($bg, 20%);
+        //}
+      //}
+      //li.active {
+        //a, a:hover {
+          //background-color: $bg;
+          //color: lighten($bg, 60%);
+        //}
+      //}
+    //}
+  //}
+//}
+
 

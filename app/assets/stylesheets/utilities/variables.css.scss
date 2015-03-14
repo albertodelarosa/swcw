@@ -120,49 +120,6 @@ $nav-tabs-active-link-hover-border-color: darken($nav-tabs-active-link-hover-bg,
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.75);
 }
 
-// ##############################################################################################################
-// Panels
-$panel-bg: white !default;
-$panel-body-padding: 15px !default;
-$panel-inner-border: darken($panel-bg, 50%) !default;
-$panel-footer-bg: darken($panel-bg, 20%) !default;
-
-$panel-default-heading-bg: $sitelerBlue !default;
-$panel-default-border: lighten($panel-default-heading-bg, 11%) !default;
-$panel-default-text: lighten($panel-default-heading-bg, 60%) !default;
-
-@include panel-settings("default", $panel-default-heading-bg);
-
-$panel-primary-heading-bg: $sitelerPastelBlue2 !default;
-$panel-primary-border: lighten($panel-primary-heading-bg, 11%) !default;
-$panel-primary-text: lighten($panel-primary-heading-bg, 60%) !default;
-
-@include panel-settings("primary", $panel-primary-heading-bg);
-
-$panel-success-heading-bg: $sitelerPastelGreen2 !default;
-$panel-success-border: lighten($panel-success-heading-bg, 11%) !default;
-$panel-success-text: lighten($panel-default-heading-bg, 70%) !default;
-
-@include panel-settings("success", $panel-success-heading-bg);
-
-$panel-info-heading-bg: $sitelerPastelOrange1 !default;
-$panel-info-border: lighten($panel-info-heading-bg, 20%) !default;
-$panel-info-text: lighten($panel-info-heading-bg, 60%) !default;
-
-@include panel-settings("info", $panel-info-heading-bg);
-
-$panel-warning-heading-bg: #dbc996 !default;
-$panel-warning-border: lighten($panel-warning-heading-bg, 3%) !default;
-$panel-warning-text: lighten($panel-warning-heading-bg, 60%) !default;
-
-@include panel-settings("warning", $panel-warning-heading-bg);
-
-$panel-danger-heading-bg: $sitelerPastelRed1 !default;
-$panel-danger-border: lighten($panel-danger-heading-bg, 11%) !default;
-$panel-danger-text: lighten($panel-danger-heading-bg, 60%) !default;
-
-@include panel-settings("danger", $panel-danger-heading-bg);
-
 // #########################################################################################
 //// COMPONENT VARIABLES
 $screen-sm: 768px !default;
