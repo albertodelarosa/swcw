@@ -5,27 +5,27 @@
       %ul
         - @appointment.errors.full_messages.each do |msg|
           %li= msg
-  = BootstrapHelper::Panel.new(contextual: 'primary', title:"", footer:"") do |panel|
-    - size = 12
-    - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-      %h4= "New Appointment #{current_user.first_name}"
-    - panel.body do
-      %h4
-        %span.label.label-info New Appointment
-      .well.col-xs-12
-        #datetimepicker1.input-group.date.input-group.input-group-sm
-          %span.input-group-addon
-            %span.glyphicon.glyphicon-calendar
-          = f.text_field(:date, placeholder: "appointment date", class: "form-control", "data-date-days-of-week-disabled" => "0,6", value: "", "aria_describedby" => "sizing-addon2")
-        #datetimepicker2.input-group.date.input-group.input-group-sm
-          %span.input-group-addon
-            %span.glyphicon.glyphicon-calendar
-          = f.text_field(:drop_off_time, placeholder: "drop-off time", value: "", class: "form-control", "aria_describedby" => "sizing-addon2")
-        #datetimepicker3.input-group.date.input-group.input-group-sm
-          %span.input-group-addon
-            %span.glyphicon.glyphicon-calendar
-          = f.text_field(:pick_up_time, placeholder: "pick-up time", value: "", class: "form-control", "aria_describedby" => "sizing-addon2")
-      - panel.footer do
-        .col-xs-3.col-sm-3.col-md-3.col-lg-3
-        .col-xs-12.col-sm-3.col-md-3.col-lg-2
-          = f.submit 'Save', class: "btn btn-success btn-block"
+  .well.col-xs-12
+    .form-group
+      = f.label :date, class: "sr-only"
+      #datetimepicker1.date.input-group
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+        = f.text_field(:date, placeholder: "appointment date", class: "form-control input-sm", "data-date-days-of-week-disabled" => "0,6", value: "", "aria_describedby" => "sizing-addon2")
+    .form-group
+      = f.label :drop_off_time, class: "sr-only"
+      #datetimepicker2.date.input-group
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+        = f.text_field(:drop_off_time, placeholder: "drop-off time", value: "", class: "form-control input-sm", "aria_describedby" => "sizing-addon2")
+    .form-group
+      = f.label :pick_up_time, class: "sr-only"
+      #datetimepicker3.date.input-group
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+        = f.text_field(:pick_up_time, placeholder: "pick-up time", value: "", class: "form-control input-sm", "aria_describedby" => "sizing-addon2")
+    .form-group
+      = f.label :notes, class: "sr-only"
+      = f.text_area(:notes, size: '5x5',  placeholder: "notes", class: "form-control input-sm")
+  = f.submit 'Save', class: "btn btn-success btn-block"
+
