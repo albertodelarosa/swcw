@@ -28,6 +28,19 @@
   .open > &.dropdown-toggle {
     background-image: none;
   }
+  &:focus,
+  &.focus,
+  &:visited:active,
+  &:visited.active,
+  &.visited:active,
+  &.visited.active,
+  &:active:focus,
+  &.active:focus,
+  &:active.focus,
+  &.active.focus {
+    background-image: none;
+    outline: 5px auto rgba($border,0.5);
+  }
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
