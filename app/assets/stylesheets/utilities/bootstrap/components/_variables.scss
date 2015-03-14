@@ -509,21 +509,21 @@ $jumbotron-font-size:            ceil(($font-size-base * 1.5)) !default;
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #3c763d !default;
-$state-success-bg:               #dff0d8 !default;
-$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+$state-success-text:             $brand-success-color   !default;
+$state-success-bg:               $brand-success         !default;
+$state-success-border:           $brand-success-border  !default;; //darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
-$state-info-text:                #31708f !default;
-$state-info-bg:                  #d9edf7 !default;
-$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+$state-info-text:                $brand-info-color  !default;
+$state-info-bg:                  $brand-info        !default;
+$state-info-border:              $brand-info-border !default; //darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
-$state-warning-text:             #8a6d3b !default;
-$state-warning-bg:               #fcf8e3 !default;
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+$state-warning-text:             $brand-warning-color   !default;
+$state-warning-bg:               $brand-warning         !default;
+$state-warning-border:           $brand-warning-border  !default; //darken(adjust-hue($state-warning-bg, -10), 5%) !default;
 
-$state-danger-text:              #a94442 !default;
-$state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+$state-danger-text:              $brand-danger-color  !default;
+$state-danger-bg:                $brand-danger        !default;
+$state-danger-border:            $brand-danger-border !default; //darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
 
 //== Tooltips
@@ -725,29 +725,41 @@ $panel-border-radius:         $border-radius-base !default;
 $panel-inner-border:          #ddd !default;
 $panel-footer-bg:             #f5f5f5 !default;
 
-$panel-default-text:          $gray-dark !default;
+$panel-default-bg:            #fff !default;
+$panel-default-color:          $gray-dark !default;
 $panel-default-border:        #ddd !default;
 $panel-default-heading-bg:    #f5f5f5 !default;
+$panel-default-heading-color: $gray-dark !default;
 
-$panel-primary-text:          #fff !default;
-$panel-primary-border:        $brand-primary !default;
-$panel-primary-heading-bg:    $brand-primary !default;
+$panel-primary-bg:            $brand-primary-border !default;
+$panel-primary-color:         $brand-primary-color !default;
+$panel-primary-border:        $brand-primary-color !default;
+$panel-primary-heading-bg:    $panel-primary-bg !default;
+$panel-primary-heading-color: $brand-primary-color !default;
 
-$panel-success-text:          $state-success-text !default;
-$panel-success-border:        $state-success-border !default;
-$panel-success-heading-bg:    $state-success-bg !default;
+$panel-success-bg:            $brand-success-border !default;
+$panel-success-color:         $brand-success-color !default;
+$panel-success-border:        $brand-success-border !default;
+$panel-success-heading-bg:    $panel-success-bg !default;
+$panel-success-heading-color: $brand-success-color !default;
 
-$panel-info-text:             $state-info-text !default;
-$panel-info-border:           $state-info-border !default;
-$panel-info-heading-bg:       $state-info-bg !default;
+$panel-info-bg:            $brand-info-border !default;
+$panel-info-color:         $brand-info-color !default;
+$panel-info-border:        $brand-info-color !default;
+$panel-info-heading-bg:    $panel-info-bg !default;
+$panel-info-heading-color: $brand-info-color !default;
 
-$panel-warning-text:          $state-warning-text !default;
-$panel-warning-border:        $state-warning-border !default;
-$panel-warning-heading-bg:    $state-warning-bg !default;
+$panel-warning-bg:            $brand-warning-border !default;
+$panel-warning-color:         $brand-warning-color !default;
+$panel-warning-border:        $brand-warning-color !default;
+$panel-warning-heading-bg:    $panel-warning-bg !default;
+$panel-warning-heading-color: $brand-warning-color !default;
 
-$panel-danger-text:           $state-danger-text !default;
-$panel-danger-border:         $state-danger-border !default;
-$panel-danger-heading-bg:     $state-danger-bg !default;
+$panel-danger-bg:            $brand-danger-border !default;
+$panel-danger-color:         $brand-danger-color !default;
+$panel-danger-border:        $brand-danger-color !default;
+$panel-danger-heading-bg:    $panel-danger-bg !default;
+$panel-danger-heading-color: $brand-danger-color !default;
 
 
 //== Thumbnails

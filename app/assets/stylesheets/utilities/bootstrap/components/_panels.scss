@@ -6,7 +6,7 @@
 // Base class
 .panel {
   margin-bottom: $line-height-computed;
-  background-color: $panel-bg;
+  //background-color: $panel-bg;
   border: 1px solid transparent;
   border-radius: $panel-border-radius;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
@@ -48,8 +48,7 @@
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
   padding: $panel-footer-padding;
-  background-color: $panel-footer-bg;
-  border-top: 1px solid $panel-inner-border;
+  //background-color: $panel-footer-bg;
   @include border-bottom-radius(($panel-border-radius - 1));
 }
 
@@ -245,21 +244,9 @@
 
 
 // Contextual variations
-.panel-default {
-  @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-border);
-}
-.panel-primary {
-  @include panel-variant($panel-primary-border, $panel-primary-text, $panel-primary-heading-bg, $panel-primary-border);
-}
-.panel-success {
-  @include panel-variant($panel-success-border, $panel-success-text, $panel-success-heading-bg, $panel-success-border);
-}
-.panel-info {
-  @include panel-variant($panel-info-border, $panel-info-text, $panel-info-heading-bg, $panel-info-border);
-}
-.panel-warning {
-  @include panel-variant($panel-warning-border, $panel-warning-text, $panel-warning-heading-bg, $panel-warning-border);
-}
-.panel-danger {
-  @include panel-variant($panel-danger-border, $panel-danger-text, $panel-danger-heading-bg, $panel-danger-border);
-}
+.panel-default  {@include panel-variant($panel-default-bg,  $panel-default-color, $panel-default-border,  $panel-default-heading-bg,  $panel-default-heading-color)}
+.panel-primary  {@include panel-variant($panel-primary-bg,  $panel-primary-color, $panel-primary-border,  $panel-primary-heading-bg,  $panel-primary-heading-color)}
+.panel-success  {@include panel-variant($panel-success-bg,  $panel-success-color, $panel-success-border,  $panel-success-heading-bg,  $panel-success-heading-color)}
+.panel-info     {@include panel-variant($panel-info-bg,     $panel-info-color,    $panel-info-border,     $panel-info-heading-bg,     $panel-info-heading-color)}
+.panel-warning  {@include panel-variant($panel-warning-bg,  $panel-warning-color, $panel-warning-border,  $panel-warning-heading-bg,  $panel-warning-heading-color)}
+.panel-danger   {@include panel-variant($panel-danger-bg,   $panel-danger-color,  $panel-danger-border,   $panel-danger-heading-bg,   $panel-danger-heading-color)}
