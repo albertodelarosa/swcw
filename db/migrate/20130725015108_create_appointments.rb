@@ -2,9 +2,9 @@ class CreateAppointments < ActiveRecord::Migration
   def change
     create_table  :appointments do |t|
       t.string    :number
-      t.datetime  :date,          :null => false, :default => ""
-      t.datetime  :drop_off_time, :null => false, :default => ""
-      t.datetime  :pick_up_time,  :null => false, :default => ""
+      t.date      :date,          :null => false, :default => "2015-01-01"
+      t.time      :drop_off_time, :null => false, :default => "00:00:00"
+      t.time      :pick_up_time,  :null => false, :default => "00:00:00"
       t.text      :notes,         :null => false, :default => ""
 
       t.string    :user_username,    :null => false, :default => ""
