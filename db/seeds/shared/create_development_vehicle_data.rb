@@ -40,9 +40,9 @@ end
 
 def build_size_associations(type_name)
   if type_name.include?("Pickup") || type_name.include?("SUV/Crossover") || type_name.include?("Van/Minivan")
-    size = VehicleSize.find_or_create_by_name("Large")
+    size = VehicleSize.where(name: "Large").first_or_create
   else
-    size = VehicleSize.find_or_create_by_name("Small")
+    size = VehicleSize.where(name: "Small").first_or_create
   end
   return size
 end
@@ -127,7 +127,7 @@ CSV.read(csv_filename, options).each_with_index do |row, i|
     model = VehicleModel.find_by_name(row[0])
     make = model.vehicle_makes[0]
     row.drop(1).compact.each do |column|
-      years << VehicleYear.find_or_create_by_name(column)
+      years << VehicleYear.where(name: column).first_or_create
     end
   else
     parse_row(row_counter, years, make, model, row)

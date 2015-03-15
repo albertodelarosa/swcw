@@ -52,12 +52,12 @@ my_vehicle = Vehicle.create!(
   comments: "Please wash the mats"
 )
 
-my_vehicle.vehicle_years << VehicleYear.find_by_name("1997")
-my_vehicle.vehicle_makes << VehicleMake.find_by_name("Chevrolet")
-my_vehicle.vehicle_models << VehicleModel.find_by_name("Camaro")
-my_vehicle.vehicle_trims << VehicleTrim.find_by_name("Z28")
-my_vehicle.vehicle_types << VehicleType.find_by_name("Convertible")
-my_vehicle.vehicle_doors << VehicleDoor.find_by_name("2-door")
+my_vehicle.vehicle_years << VehicleYear.where(name: "1997")
+my_vehicle.vehicle_makes << VehicleMake.where(name: "Chevrolet")
+my_vehicle.vehicle_models << VehicleModel.where(name: "Camaro")
+my_vehicle.vehicle_trims << VehicleTrim.where(name: "Z28")
+my_vehicle.vehicle_types << VehicleType.where(name: "Convertible")
+my_vehicle.vehicle_doors << VehicleDoor.where(name: "2-door")
 developer.vehicles << my_vehicle
 printFinished()
 
