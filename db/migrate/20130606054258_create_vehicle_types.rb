@@ -5,5 +5,6 @@ class CreateVehicleTypes < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :vehicle_types, :name
   end
 end

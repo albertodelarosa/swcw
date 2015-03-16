@@ -5,5 +5,6 @@ class CreateVehicleSizes < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :vehicle_sizes, :name
   end
 end

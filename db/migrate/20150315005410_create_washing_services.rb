@@ -3,8 +3,8 @@ class CreateWashingServices < ActiveRecord::Migration
     create_table :washing_services do |t|
       t.string  :name
       t.text    :description
-      t.decimal :price_large, precision: 5, scale: 2
-      t.decimal :price_small, precision: 5, scale: 2
+      t.decimal :price_large, precision: 8, scale: 2
+      t.decimal :price_small, precision: 8, scale: 2
       t.integer :duration
 
       t.string  :child_class

@@ -18,7 +18,7 @@ class CreateLocations < ActiveRecord::Migration
     add_index :locations, :site_id
     add_index :locations, :vehicle_id
     add_index :locations, :user_id
-    #add_index :locations, :washing_serviceable_id
+    add_index :locations, :washing_service_id
     add_index :locations, :coupon_id
     add_index :locations, :siteler_dollar_id
 
@@ -26,31 +26,31 @@ class CreateLocations < ActiveRecord::Migration
     add_index :locations, [:appointment_id,  :site_id]
     add_index :locations, [:appointment_id,  :vehicle_id]
     add_index :locations, [:appointment_id,  :user_id]
-    #add_index :locations, [:appointment_id,  :washing_serviceable_id]
+    add_index :locations, [:appointment_id,  :washing_service_id]
     add_index :locations, [:appointment_id,  :coupon_id]
     add_index :locations, [:appointment_id,  :siteler_dollar_id]
 
     add_index :locations, [:company_id,  :site_id]
     add_index :locations, [:company_id,  :vehicle_id]
     add_index :locations, [:company_id,  :user_id]
-    #add_index :locations, [:company_id,  :washing_serviceable_id]
+    add_index :locations, [:company_id,  :washing_service_id]
     add_index :locations, [:company_id,  :coupon_id]
     add_index :locations, [:company_id,  :siteler_dollar_id]
 
     add_index :locations, [:site_id,  :vehicle_id]
     add_index :locations, [:site_id,  :user_id]
-    #add_index :locations, [:site_id,  :washing_serviceable_id]
+    add_index :locations, [:site_id,  :washing_service_id]
     add_index :locations, [:site_id,  :coupon_id]
     add_index :locations, [:site_id,  :siteler_dollar_id]
 
     add_index :locations, [:vehicle_id,  :user_id]
-    #add_index :locations, [:vehicle_id,  :washing_serviceable_id]
+    add_index :locations, [:vehicle_id,  :washing_service_id]
     add_index :locations, [:vehicle_id,  :coupon_id]
     add_index :locations, [:vehicle_id,  :siteler_dollar_id]
 
-    #add_index :locations, [:washing_serviceable_id,  :user_id]
-    #add_index :locations, [:washing_serviceable_id,  :coupon_id]
-    #add_index :locations, [:washing_serviceable_id,  :siteler_dollar_id]
+    add_index :locations, [:washing_service_id,  :user_id]
+    add_index :locations, [:washing_service_id,  :coupon_id]
+    add_index :locations, [:washing_service_id,  :siteler_dollar_id]
 
     add_index :locations, [:coupon_id,  :user_id]
     add_index :locations, [:coupon_id,  :siteler_dollar_id]

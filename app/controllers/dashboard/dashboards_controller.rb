@@ -16,12 +16,5 @@ class Dashboard::DashboardsController < ApplicationController
     @vehicles = current_user.vehicles || []
     @vehicle  = Vehicle.new
 
-    @years    = VehicleYear.all
-    @makes    = []
-    @models   = []
-    @trims    = []
-    @types    = []
-    @doors    = []
-    @sizes    = []
   end
 end

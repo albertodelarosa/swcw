@@ -32,19 +32,27 @@ ActiveRecord::Schema.define(version: 20150315010819) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "street1"
-    t.string   "suite_no"
-    t.string   "apt_no"
-    t.string   "street2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+    t.string   "street1",          default: "", null: false
+    t.string   "suite_no",         default: "", null: false
+    t.string   "apt_no",           default: "", null: false
+    t.string   "street2",          default: "", null: false
+    t.string   "city",             default: "", null: false
+    t.string   "state",            default: "", null: false
+    t.string   "zip",              default: "", null: false
     t.string   "child_class"
     t.string   "addressable_type"
     t.integer  "addressable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "addresses", ["apt_no"], name: "index_addresses_on_apt_no", using: :btree
+  add_index "addresses", ["city"], name: "index_addresses_on_city", using: :btree
+  add_index "addresses", ["state"], name: "index_addresses_on_state", using: :btree
+  add_index "addresses", ["street1"], name: "index_addresses_on_street1", using: :btree
+  add_index "addresses", ["street2"], name: "index_addresses_on_street2", using: :btree
+  add_index "addresses", ["suite_no"], name: "index_addresses_on_suite_no", using: :btree
+  add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "username",               default: "", null: false
@@ -107,48 +115,39 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.datetime "updated_at"
   end
 
-  create_table "clienteles", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "vehicle_id"
-    t.integer  "company_id"
-    t.integer  "site_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "clienteles", ["company_id", "site_id"], name: "index_clienteles_on_company_id_and_site_id", using: :btree
-  add_index "clienteles", ["company_id", "user_id"], name: "index_clienteles_on_company_id_and_user_id", using: :btree
-  add_index "clienteles", ["company_id", "vehicle_id"], name: "index_clienteles_on_company_id_and_vehicle_id", using: :btree
-  add_index "clienteles", ["company_id"], name: "index_clienteles_on_company_id", using: :btree
-  add_index "clienteles", ["site_id", "user_id"], name: "index_clienteles_on_site_id_and_user_id", using: :btree
-  add_index "clienteles", ["site_id", "vehicle_id"], name: "index_clienteles_on_site_id_and_vehicle_id", using: :btree
-  add_index "clienteles", ["site_id"], name: "index_clienteles_on_site_id", using: :btree
-  add_index "clienteles", ["user_id", "vehicle_id"], name: "index_clienteles_on_user_id_and_vehicle_id", using: :btree
-  add_index "clienteles", ["user_id"], name: "index_clienteles_on_user_id", using: :btree
-  add_index "clienteles", ["vehicle_id"], name: "index_clienteles_on_vehicle_id", using: :btree
-
   create_table "companies", force: :cascade do |t|
-    t.string   "corporate_id"
-    t.string   "name"
-    t.string   "description"
-    t.string   "corporate_email_domain"
-    t.decimal  "siteler_dollars_percentage"
-    t.boolean  "remove_cc_info"
-    t.boolean  "user_reg_allowed"
-    t.boolean  "paypal_allowed"
-    t.boolean  "coupons_allowd"
-    t.boolean  "google_checkout_allowed"
+    t.string   "corporate_id",                                       default: "",    null: false
+    t.string   "name",                                               default: "",    null: false
+    t.string   "description",                                        default: "",    null: false
+    t.string   "corporate_email_domain",                             default: "",    null: false
+    t.decimal  "siteler_dollars_percentage", precision: 4, scale: 2, default: 0.0,   null: false
+    t.boolean  "remove_cc_info",                                     default: false, null: false
+    t.boolean  "user_reg_allowed",                                   default: false, null: false
+    t.boolean  "paypal_allowed",                                     default: false, null: false
+    t.boolean  "coupons_allowd",                                     default: false, null: false
+    t.boolean  "google_checkout_allowed",                            default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "companies", ["corporate_email_domain"], name: "index_companies_on_corporate_email_domain", using: :btree
+  add_index "companies", ["corporate_id"], name: "index_companies_on_corporate_id", using: :btree
+  add_index "companies", ["coupons_allowd"], name: "index_companies_on_coupons_allowd", using: :btree
+  add_index "companies", ["description"], name: "index_companies_on_description", using: :btree
+  add_index "companies", ["google_checkout_allowed"], name: "index_companies_on_google_checkout_allowed", using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
+  add_index "companies", ["paypal_allowed"], name: "index_companies_on_paypal_allowed", using: :btree
+  add_index "companies", ["remove_cc_info"], name: "index_companies_on_remove_cc_info", using: :btree
+  add_index "companies", ["siteler_dollars_percentage"], name: "index_companies_on_siteler_dollars_percentage", using: :btree
+  add_index "companies", ["user_reg_allowed"], name: "index_companies_on_user_reg_allowed", using: :btree
 
   create_table "contact_infos", force: :cascade do |t|
-    t.string   "email"
-    t.string   "mobile"
-    t.string   "phone1"
-    t.string   "phone2"
-    t.string   "fax"
-    t.string   "ext"
+    t.string   "email",            default: "", null: false
+    t.string   "mobile",           default: "", null: false
+    t.string   "phone1",           default: "", null: false
+    t.string   "phone2",           default: "", null: false
+    t.string   "fax",              default: "", null: false
+    t.string   "ext",              default: "", null: false
     t.string   "child_class"
     t.string   "contactable_type"
     t.integer  "contactable_id"
@@ -156,16 +155,27 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.datetime "updated_at"
   end
 
+  add_index "contact_infos", ["email"], name: "index_contact_infos_on_email", using: :btree
+  add_index "contact_infos", ["ext"], name: "index_contact_infos_on_ext", using: :btree
+  add_index "contact_infos", ["fax"], name: "index_contact_infos_on_fax", using: :btree
+  add_index "contact_infos", ["mobile"], name: "index_contact_infos_on_mobile", using: :btree
+  add_index "contact_infos", ["phone1"], name: "index_contact_infos_on_phone1", using: :btree
+  add_index "contact_infos", ["phone2"], name: "index_contact_infos_on_phone2", using: :btree
+
   create_table "discounts", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "percentage"
-    t.boolean  "applied"
-    t.string   "transaction_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "name",                                   default: "",           null: false
+    t.decimal  "percentage",     precision: 4, scale: 2, default: 0.0,          null: false
+    t.boolean  "applied",                                default: false,        null: false
+    t.string   "transaction_id",                         default: "",           null: false
+    t.date     "expires",                                default: '2015-01-01', null: false
+    t.boolean  "expireable",                             default: false,        null: false
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
   end
 
   add_index "discounts", ["applied"], name: "index_discounts_on_applied", using: :btree
+  add_index "discounts", ["expireable"], name: "index_discounts_on_expireable", using: :btree
+  add_index "discounts", ["expires"], name: "index_discounts_on_expires", using: :btree
   add_index "discounts", ["name"], name: "index_discounts_on_name", using: :btree
   add_index "discounts", ["percentage"], name: "index_discounts_on_percentage", using: :btree
   add_index "discounts", ["transaction_id"], name: "index_discounts_on_transaction_id", using: :btree
@@ -189,12 +199,14 @@ ActiveRecord::Schema.define(version: 20150315010819) do
   add_index "locations", ["appointment_id", "siteler_dollar_id"], name: "index_locations_on_appointment_id_and_siteler_dollar_id", using: :btree
   add_index "locations", ["appointment_id", "user_id"], name: "index_locations_on_appointment_id_and_user_id", using: :btree
   add_index "locations", ["appointment_id", "vehicle_id"], name: "index_locations_on_appointment_id_and_vehicle_id", using: :btree
+  add_index "locations", ["appointment_id", "washing_service_id"], name: "index_locations_on_appointment_id_and_washing_service_id", using: :btree
   add_index "locations", ["appointment_id"], name: "index_locations_on_appointment_id", using: :btree
   add_index "locations", ["company_id", "coupon_id"], name: "index_locations_on_company_id_and_coupon_id", using: :btree
   add_index "locations", ["company_id", "site_id"], name: "index_locations_on_company_id_and_site_id", using: :btree
   add_index "locations", ["company_id", "siteler_dollar_id"], name: "index_locations_on_company_id_and_siteler_dollar_id", using: :btree
   add_index "locations", ["company_id", "user_id"], name: "index_locations_on_company_id_and_user_id", using: :btree
   add_index "locations", ["company_id", "vehicle_id"], name: "index_locations_on_company_id_and_vehicle_id", using: :btree
+  add_index "locations", ["company_id", "washing_service_id"], name: "index_locations_on_company_id_and_washing_service_id", using: :btree
   add_index "locations", ["company_id"], name: "index_locations_on_company_id", using: :btree
   add_index "locations", ["coupon_id", "siteler_dollar_id"], name: "index_locations_on_coupon_id_and_siteler_dollar_id", using: :btree
   add_index "locations", ["coupon_id", "user_id"], name: "index_locations_on_coupon_id_and_user_id", using: :btree
@@ -203,6 +215,7 @@ ActiveRecord::Schema.define(version: 20150315010819) do
   add_index "locations", ["site_id", "siteler_dollar_id"], name: "index_locations_on_site_id_and_siteler_dollar_id", using: :btree
   add_index "locations", ["site_id", "user_id"], name: "index_locations_on_site_id_and_user_id", using: :btree
   add_index "locations", ["site_id", "vehicle_id"], name: "index_locations_on_site_id_and_vehicle_id", using: :btree
+  add_index "locations", ["site_id", "washing_service_id"], name: "index_locations_on_site_id_and_washing_service_id", using: :btree
   add_index "locations", ["site_id"], name: "index_locations_on_site_id", using: :btree
   add_index "locations", ["siteler_dollar_id", "user_id"], name: "index_locations_on_siteler_dollar_id_and_user_id", using: :btree
   add_index "locations", ["siteler_dollar_id"], name: "index_locations_on_siteler_dollar_id", using: :btree
@@ -210,34 +223,44 @@ ActiveRecord::Schema.define(version: 20150315010819) do
   add_index "locations", ["vehicle_id", "coupon_id"], name: "index_locations_on_vehicle_id_and_coupon_id", using: :btree
   add_index "locations", ["vehicle_id", "siteler_dollar_id"], name: "index_locations_on_vehicle_id_and_siteler_dollar_id", using: :btree
   add_index "locations", ["vehicle_id", "user_id"], name: "index_locations_on_vehicle_id_and_user_id", using: :btree
+  add_index "locations", ["vehicle_id", "washing_service_id"], name: "index_locations_on_vehicle_id_and_washing_service_id", using: :btree
   add_index "locations", ["vehicle_id"], name: "index_locations_on_vehicle_id", using: :btree
+  add_index "locations", ["washing_service_id", "coupon_id"], name: "index_locations_on_washing_service_id_and_coupon_id", using: :btree
+  add_index "locations", ["washing_service_id", "siteler_dollar_id"], name: "index_locations_on_washing_service_id_and_siteler_dollar_id", using: :btree
+  add_index "locations", ["washing_service_id", "user_id"], name: "index_locations_on_washing_service_id_and_user_id", using: :btree
+  add_index "locations", ["washing_service_id"], name: "index_locations_on_washing_service_id", using: :btree
+
+  create_table "siteler_dollars", force: :cascade do |t|
+    t.string   "name",                                              default: "",  null: false
+    t.decimal  "amount_paid",               precision: 8, scale: 2, default: 0.0, null: false
+    t.decimal  "bonus_siteler_dollars",     precision: 8, scale: 2, default: 0.0, null: false
+    t.decimal  "percentage",                precision: 4, scale: 2, default: 0.0, null: false
+    t.decimal  "total_siteler_dollars",     precision: 8, scale: 2, default: 0.0, null: false
+    t.decimal  "siteler_dollars_remaining", precision: 8, scale: 2, default: 0.0, null: false
+    t.datetime "created_at",                                                      null: false
+    t.datetime "updated_at",                                                      null: false
+  end
+
+  add_index "siteler_dollars", ["amount_paid"], name: "index_siteler_dollars_on_amount_paid", using: :btree
+  add_index "siteler_dollars", ["bonus_siteler_dollars"], name: "index_siteler_dollars_on_bonus_siteler_dollars", using: :btree
+  add_index "siteler_dollars", ["name"], name: "index_siteler_dollars_on_name", using: :btree
+  add_index "siteler_dollars", ["percentage"], name: "index_siteler_dollars_on_percentage", using: :btree
+  add_index "siteler_dollars", ["siteler_dollars_remaining"], name: "index_siteler_dollars_on_siteler_dollars_remaining", using: :btree
+  add_index "siteler_dollars", ["total_siteler_dollars"], name: "index_siteler_dollars_on_total_siteler_dollars", using: :btree
 
   create_table "sites", force: :cascade do |t|
-    t.string   "name"
-    t.text     "comments"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.string   "name",       default: "",  null: false
+    t.text     "comments",   default: "",  null: false
+    t.float    "latitude",   default: 0.0, null: false
+    t.float    "longitude",  default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sitler_dollars", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "amount_paid"
-    t.decimal  "bonus_siteler_dollars"
-    t.decimal  "percentage"
-    t.decimal  "total_siteler_dollars"
-    t.decimal  "siteler_dollars_remaining"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "sitler_dollars", ["amount_paid"], name: "index_sitler_dollars_on_amount_paid", using: :btree
-  add_index "sitler_dollars", ["bonus_siteler_dollars"], name: "index_sitler_dollars_on_bonus_siteler_dollars", using: :btree
-  add_index "sitler_dollars", ["name"], name: "index_sitler_dollars_on_name", using: :btree
-  add_index "sitler_dollars", ["percentage"], name: "index_sitler_dollars_on_percentage", using: :btree
-  add_index "sitler_dollars", ["siteler_dollars_remaining"], name: "index_sitler_dollars_on_siteler_dollars_remaining", using: :btree
-  add_index "sitler_dollars", ["total_siteler_dollars"], name: "index_sitler_dollars_on_total_siteler_dollars", using: :btree
+  add_index "sites", ["comments"], name: "index_sites_on_comments", using: :btree
+  add_index "sites", ["latitude"], name: "index_sites_on_latitude", using: :btree
+  add_index "sites", ["longitude"], name: "index_sites_on_longitude", using: :btree
+  add_index "sites", ["name"], name: "index_sites_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "", null: false
@@ -269,33 +292,22 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   create_table "vehicle_doors", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "vehicle_makes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "vehicle_models", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "vehicle_doors", ["name"], name: "index_vehicle_doors_on_name", using: :btree
 
   create_table "vehicle_settings", force: :cascade do |t|
     t.integer  "vehicle_id"
-    t.integer  "vehicle_year_id"
-    t.integer  "vehicle_make_id"
-    t.integer  "vehicle_model_id"
-    t.integer  "vehicle_trim_id"
     t.integer  "vehicle_type_id"
     t.integer  "vehicle_door_id"
     t.integer  "vehicle_size_id"
@@ -303,27 +315,16 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.datetime "updated_at"
   end
 
-  add_index "vehicle_settings", ["vehicle_door_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_door_id_and_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_door_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_door_id_and_vehicle_size_id", using: :btree
   add_index "vehicle_settings", ["vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_door_id", using: :btree
   add_index "vehicle_settings", ["vehicle_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_door_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_make_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_make_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_model_id", using: :btree
   add_index "vehicle_settings", ["vehicle_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_size_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_trim_id", using: :btree
   add_index "vehicle_settings", ["vehicle_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_type_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_year_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_year_id", using: :btree
   add_index "vehicle_settings", ["vehicle_id"], name: "index_vehicle_settings_on_vehicle_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_model_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_make_id"], name: "index_vehicle_settings_on_vehicle_make_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_model_id", "vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_model_id_and_vehicle_trim_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_model_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_size_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_size_id_and_vehicle_type_id", using: :btree
   add_index "vehicle_settings", ["vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_size_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_type_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_year_id"], name: "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_year_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_trim_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_type_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_type_id_and_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_type_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_type_id_and_vehicle_size_id", using: :btree
   add_index "vehicle_settings", ["vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_type_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_year_id"], name: "index_vehicle_settings_on_vehicle_year_id", using: :btree
 
   create_table "vehicle_sizes", force: :cascade do |t|
     t.string   "name"
@@ -331,11 +332,7 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.datetime "updated_at"
   end
 
-  create_table "vehicle_trims", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "vehicle_sizes", ["name"], name: "index_vehicle_sizes_on_name", using: :btree
 
   create_table "vehicle_types", force: :cascade do |t|
     t.string   "name"
@@ -343,26 +340,35 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.datetime "updated_at"
   end
 
-  create_table "vehicle_years", force: :cascade do |t|
-    t.string   "name"
+  add_index "vehicle_types", ["name"], name: "index_vehicle_types_on_name", using: :btree
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "year",             default: "", null: false
+    t.string   "make",             default: "", null: false
+    t.string   "model",            default: "", null: false
+    t.string   "trim",             default: "", null: false
+    t.string   "license_plate",    default: "", null: false
+    t.string   "state_registered", default: "", null: false
+    t.string   "color",            default: "", null: false
+    t.text     "comments",         default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "vehicles", force: :cascade do |t|
-    t.string   "license_plate_number"
-    t.string   "state_registered"
-    t.string   "color"
-    t.text     "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "vehicles", ["color"], name: "index_vehicles_on_color", using: :btree
+  add_index "vehicles", ["comments"], name: "index_vehicles_on_comments", using: :btree
+  add_index "vehicles", ["license_plate"], name: "index_vehicles_on_license_plate", using: :btree
+  add_index "vehicles", ["make"], name: "index_vehicles_on_make", using: :btree
+  add_index "vehicles", ["model"], name: "index_vehicles_on_model", using: :btree
+  add_index "vehicles", ["state_registered"], name: "index_vehicles_on_state_registered", using: :btree
+  add_index "vehicles", ["trim"], name: "index_vehicles_on_trim", using: :btree
+  add_index "vehicles", ["year"], name: "index_vehicles_on_year", using: :btree
 
   create_table "washing_services", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price_large",              precision: 5, scale: 2
-    t.decimal  "price_small",              precision: 5, scale: 2
+    t.decimal  "price_large",              precision: 8, scale: 2
+    t.decimal  "price_small",              precision: 8, scale: 2
     t.integer  "duration"
     t.string   "child_class"
     t.string   "washing_serviceable_type"
