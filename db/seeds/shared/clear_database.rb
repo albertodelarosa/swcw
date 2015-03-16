@@ -60,11 +60,11 @@ unless @answer.eql?("n") || @answer.eql?("no")
 end
 
 printStarting("DELETING EXISTING ASSOCIATIONS")
-Clientele.all.each(&:destroy)
+#Clientele.all.each(&:destroy)
 ContactInfo.all.each(&:destroy)
 Location.all.each(&:destroy)
-Schedule.all.each(&:destroy)
-Transportation.all.each(&:destroy)
+#Schedule.all.each(&:destroy)
+#Transportation.all.each(&:destroy)
 printFinished()
 
 
