@@ -7,15 +7,15 @@
       -@appointments.each do |appointment|
         .well.col-xs-12
           .form-group
-            .sr-only= "Date"
+            .sr-only= "date"
             .form-control= appointment.date
           .form-group
-            .sr-only= "Date"
+            .sr-only= "drop-off time"
             .form-control= appointment.drop_off_time
           .form-group
-            .sr-only= "Date"
+            .sr-only= "drop-up time"
             .form-control= appointment.pick_up_time
           .form-group
-            .sr-only= "Date"
+            .sr-only= "notes"
             .form-control= appointment.notes
 

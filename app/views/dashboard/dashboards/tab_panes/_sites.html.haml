@@ -6,84 +6,49 @@
       - site = @sites.pop
       - unless site.nil?
         %legend current site
-        = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
-          - size = 3
-          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-            .h4
-              = link_to edit_dashboard_site_path(site) do
-                %span.glyphicon.glyphicon-edit
-                edit
-          - size = 8
-          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-            .h4
-              = site.name
-          - size = 1
-          - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-            .h4
-              = link_to dashboard_site_path(site), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-                %span.glyphicon.glyphicon-trash
-          - panel.body do
-            .panel-body-pic.col-sm-3.col-md-3.pull-left
-              = image_tag("holder.png", class: "img-responsive")
-            .panel-body-address.col-sm-9.col-md-9.pull-left
-              %table.table.table-condensed.table-striped.table-hover
-                %tr
-                  %th street1
-                  %th street2
-                  %th city
-                  %th state
-                  %th zip
-                %tr
-                  %td
-                    = site.address.street1
-                  %td
-                    = site.address.street2
-                  %td
-                    = site.address.city
-                  %td
-                    = site.address.state
-                  %td
-                    = site.address.zip
+        .well.col-xs-12
+          %legend= site.name
+          .col-xs-12.col-sm-3
+            = image_tag("holder.png", class: "img-responsive")
+          .col-xs-12.col-sm-9
+            .form-group
+              .sr-only= ""
+              .form-control= site.address.street1
+            .form-group
+              .sr-only= ""
+              .form-control= site.address.street2
+            .form-group
+              .sr-only= ""
+              .form-control= site.address.city
+            .form-group
+              .sr-only= ""
+              .form-control= site.address.state
+            .form-group
+              .sr-only= ""
+              .form-control= site.address.zip
+
         - unless @sites.empty?
           %legend
             = @sites.size > 1 ? "previous sites" : "previous site"
           - @sites.reverse.each do |site|
-            = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
-              - size = 3
-              - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-                .h4
-                  = link_to edit_dashboard_site_path(site) do
-                    %span.glyphicon.glyphicon-edit
-                    edit
-              - size = 8
-              - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-                .h4
-                  = site.name
-              - size = 1
-              - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-                .h4
-                  = link_to dashboard_site_path(site), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-                    %span.glyphicon.glyphicon-trash
-              - panel.body do
-                .panel-body-pic.col-sm-3.col-md-3.pull-left
-                  = image_tag("holder.png", class: "img-responsive")
-                .panel-body-address.col-sm-9.col-md-9.pull-left
-                  %table.table.table-condensed.table-striped.table-hover
-                    %tr
-                      %th street1
-                      %th street2
-                      %th city
-                      %th state
-                      %th zip
-                    %tr
-                      %td
-                        = site.address.street1
-                      %td
-                        = site.address.street2
-                      %td
-                        = site.address.city
-                      %td
-                        = site.address.state
-                      %td
-                        = site.address.zip
+            .well.col-xs-12
+              %legend= site.name
+              .col-xs-12.col-sm-3
+                = image_tag("holder.png", class: "img-responsive")
+              .col-xs-12.col-sm-9
+                .form-group
+                  .sr-only= ""
+                  .form-control= site.address.street1
+                .form-group
+                  .sr-only= ""
+                  .form-control= site.address.street2
+                .form-group
+                  .sr-only= ""
+                  .form-control= site.address.city
+                .form-group
+                  .sr-only= ""
+                  .form-control= site.address.state
+                .form-group
+                  .sr-only= ""
+                  .form-control= site.address.zip
 

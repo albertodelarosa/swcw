@@ -15,7 +15,7 @@
             %h4= "Add a Vehicle #{current_user.first_name}"
           - panel.body do
             = render partial: 'dashboard/vehicles/form', locals: {f: f}
-          - panel.footer do 
+          - panel.footer do
             .col-xs-8.col-sm-8.col-md-8.col-lg-8
             .col-xs-2.col-sm-2.col-md-2.col-lg-2
               = link_to "Cancel", :back, class: "btn btn-danger btn-block"
@@ -23,60 +23,36 @@
               = f.submit 'Add', class: "btn btn-success btn-block"
     - else
       -@vehicles.each_with_index do |vehicle, index|
-        = BootstrapHelper::Panel.new(contextual: 'primary', title:"") do |panel|
-          - size = 3
-          - panel.header_col(class: "edit", xs: 4,sm: size,md:size,lg:size) do
-            .h4
-              = link_to edit_dashboard_vehicle_path(vehicle) do
-                %span.glyphicon.glyphicon-edit
-                  edit
-          - size = 8
-          - panel.header_col(class: 'name', xs: 6,sm: size,md:size,lg:size) do
-            .h4
-              = "#{vehicle.vehicle_years.first.name} #{vehicle.vehicle_models.first.name} #{vehicle.vehicle_trims.first.name}"
-          - size = 1
-          - panel.header_col(class: 'delete', xs: 2,sm: size,md:size,lg:size) do
-            .h4
-              = link_to dashboard_vehicle_path(vehicle), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-                %span.glyphicon.glyphicon-trash
-          - panel.body do
-            .panel-body-pic.col-sm-3.col-md-3.pull-left
-              = image_tag("holder.png", class: "img-responsive")
-            .panel-body-address.col-sm-9.col-md-9.pull-left
-              %table.table.table-condensed.table-striped.table-hover
-                %tr
-                  %th Year
-                  %th Make
-                  %th Model
-                  %th Trim
-                  %th Type
-                %tr
-                  %td
-                    = vehicle.vehicle_years.first.name
-                  %td
-                    = vehicle.vehicle_makes.first.name
-                  %td
-                    = vehicle.vehicle_models.first.name
-                  %td
-                    = vehicle.vehicle_trims.first.name
-                  %td
-                    = vehicle.vehicle_types.first.name
-                %tr
-                  %th Color
-                  %th License Plate No.
-                  %th State
-                  %th Doors
-                  -#%th Size
-                %tr
-                  %td
-                    = vehicle.color
-                  %td
-                    = vehicle.license_plate_number
-                  %td
-                    = vehicle.state_registered
-                  %td
-                    = vehicle.vehicle_doors.first.name
-                  -#%td
-                    -#= vehicle_sizes.first.name 
+        .well.col-xs-12
+          .form-group
+            .sr-only= "year"
+            .form-control= vehicle.year
+          .form-group
+            .sr-only= "make"
+            .form-control= vehicle.make
+          .form-group
+            .sr-only= "model"
+            .form-control= vehicle.model
+          .form-group
+            .sr-only= "trim"
+            .form-control= vehicle.trim
+          .form-group
+            .sr-only= "color"
+            .form-control= vehicle.color
+          .form-group
+            .sr-only= "license plate"
+            .form-control= vehicle.license_plate
+          .form-group
+            .sr-only= "state registered"
+            .form-control= vehicle.state_registered
+          .form-group
+            .sr-only= "vehicle type"
+            .form-control= vehicle.vehicle_types.first.name
+          .form-group
+            .sr-only= "vehicle doors"
+            .form-control= vehicle.vehicle_doors.first.name
+          .form-group
+            .sr-only= "vehicle size"
+            .form-control= vehicle.vehicle_sizes.first.name
 
 
