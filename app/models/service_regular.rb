@@ -1,0 +1,3 @@
+class ServiceRegular < WashingService
+end
+

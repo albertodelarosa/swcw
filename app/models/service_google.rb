@@ -1,0 +1,3 @@
+class ServiceGoogle < WashingService
+end
+

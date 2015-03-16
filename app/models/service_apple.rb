@@ -1,0 +1,3 @@
+class ServiceApple < WashingService
+end
+
