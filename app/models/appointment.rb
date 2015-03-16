@@ -1,11 +1,11 @@
 class Appointment < ActiveRecord::Base
   # attr_accessible :date, :number, :drop_off_time, :pick_up_time, :notes
 
-  has_many :schedules
-  has_many :clients,  through: :schedules, source: :user
-  has_many :companies,  through: :schedules
-  has_many :sites,      through: :schedules
-  has_many :vehicles,   through: :schedules
+  has_many :locations
+  has_many :clients,    through: :locations, source: :user
+  has_many :companies,  through: :locations
+  has_many :sites,      through: :locations
+  has_many :vehicles,   through: :locations
 
   def populate
     populate_attributes
