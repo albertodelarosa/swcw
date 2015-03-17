@@ -310,6 +310,11 @@ GEM
       ruby-graphviz (~> 1.0.4)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
     railties (4.2.0)
       actionpack (= 4.2.0)
       activesupport (= 4.2.0)
@@ -391,6 +396,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sprockets_better_errors (0.0.4)
+      sprockets-rails (>= 1.0.0)
     systemu (2.6.4)
     terminal-table (1.4.5)
     thin (1.6.3)
@@ -453,6 +460,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   rails-erd
+  rails_12factor
   ransack
   rspec-rails
   ruby_parser
@@ -462,6 +470,7 @@ DEPENDENCIES
   sextant
   simplecov
   simplecov-rcov
+  sprockets_better_errors
   thin
   turbolinks
   tzinfo
