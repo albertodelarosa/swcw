@@ -1,5 +1,5 @@
 //@import "utilities/variables";
-//@import "utilities/mixins";
+@import "./bootstrap/components/mixins";
 
 $light-color: lighten($navbar-default-bg, 25%);
 

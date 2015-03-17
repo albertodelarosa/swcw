@@ -1,4 +1,4 @@
-@import "utilities/variables";
+@import "./bootstrap/components/mixins";
 
 .pre-footer {
   background: darken($sw-blue-3, 10%);
