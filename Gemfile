@@ -46,7 +46,7 @@ gem 'ransack'#, github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 gem 'sendgrid'
 
 gem 'momentjs-rails', '>= 2.8.1'
-gem 'airbrake'
+#gem 'airbrake'
 
 #Use omniauth for social media login
 gem 'omniauth-facebook'
