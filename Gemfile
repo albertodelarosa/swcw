@@ -4,6 +4,8 @@ ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+# Use thin as server
+gem 'thin'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use hamle for html
@@ -37,7 +39,7 @@ gem 'devise'
 gem 'hpricot'
 gem 'formtastic'
 
-gem 'sprockets_better_errors'
+#gem 'sprockets_better_errors'
 # use ransack for extensible searching
 gem 'ransack'#, github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 
@@ -91,6 +93,7 @@ group :test, :development do
   gem 'pry-byebug'
 end
 
+#gem 'rails_12factor', group: :production
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
