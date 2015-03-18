@@ -2,12 +2,12 @@
 require File.expand_path('../application', __FILE__)
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => 'betodelarosa',
-  :password => '1952Chevy',
-  :domain => 'enigmatic-inlet-5364.herokuapp.com',
   :address => 'smtp.sendgrid.net',
-  :port => 25,
+  :port => 587,
   :authentication => :plain,
+  :user_name => ENV['SENDGRID_USERNAME'],
+  :password => ENV['SENDGRID_PASSWORD'],
+  :domain => 'herokuapp.com',
   :enable_starttls_auto => true
 }
 
