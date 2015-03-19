@@ -4,7 +4,6 @@
 $light-color: lighten($navbar-default-bg, 25%);
 
 .navbar {
-  margin-bottom: 50px;
   .navbar-brand {
     .aligner {
       margin-top: -10px;
@@ -14,8 +13,10 @@ $light-color: lighten($navbar-default-bg, 25%);
     .nav-divider {
       margin: 0px;
     }
-    li a {
-      color: $navbar-default-color !important;
+    li {
+      a {
+        color: $navbar-default-color !important;
+      }
     }
   }
 }
@@ -28,29 +29,33 @@ $light-color: lighten($navbar-default-bg, 25%);
 
 @media (min-width: 768px) {
   .navbar {
-    min-height: 121px;
+    margin-bottom: 50px;
     .navbar-nav {
       margin-top: 12px;
-      padding: 20px 0 0 0;
+      padding: 2px 0 0 0;
+      float: right !important;
+
       li {
         border-left: 2px solid $light-color;
         a {
           padding: 18px 25px;
-        }
-        a:hover {
-          @include navbar-link($light-color);
+          &:hover {
+            @include navbar-link($light-color);
+          }
         }
       }
+
       li.active {
         a, a:hover {
           @include navbar-link($light-color);
         }
       }
+
       li.open {
+        @include ul-dropdonw-menu($navbar-default-bg, $light-color);
         a, a:focus, a:hover {
           @include li-opened($navbar-default-bg, $light-color);
         }
-        @include ul-dropdonw-menu($navbar-default-bg, $light-color);
       }
       li:last-child {
         border-right: 2px solid $light-color;

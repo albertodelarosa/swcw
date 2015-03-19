@@ -6,8 +6,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
     user_signed_in?
-    #add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
-    #add_breadcrumb 'Hotel Manager', 'Hotels'
     add_breadcrumb 'Edit User', 'Edit User'
     super
   end

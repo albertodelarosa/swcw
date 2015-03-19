@@ -20,3 +20,6 @@
 //= require_tree ./ie_utilities/
 //= require_tree ./dashboard/
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
