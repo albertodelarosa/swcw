@@ -1,4 +1,4 @@
-%ul.nav.navbar-nav
+%ul.nav.navbar-nav.hidden-xs.hidden-sm
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
       .link_top
@@ -18,19 +18,57 @@
         %a{href: "#{new_dashboard_company_path}"}
           Company
 
-
   - if user_signed_in?
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
         .link_top
-        My Profile
+        account
         %b.caret
         .link_bottom
       %ul.dropdown-menu
-        %li
-          %a{href: "#{edit_user_registration_path}"}
-            Edit
-        %li.divider
-        %li
-          = link_to "Sign Out", destroy_user_session_path, method: :delete
+        %li= link_to "profile", edit_user_registration_path
+  %li.divider
+  %li
+    .link_top
+    = link_to "Sign Out", destroy_user_session_path, method: :delete
+    .link_bottom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%ul.nav.navbar-nav.visible-xs.visible-sm
+  %li
+    %a{"data-toggle"=>"collapse", "data-target"=>"#collapseAdd", "aria-expanded"=>"false", "aria-controls"=>"collapseAdd"}
+      Add
+      %b.caret
+    %ul#collapseAdd.collapse
+      %li= link_to "vehicle", new_dashboard_vehicle_path, class: "btn btn-success btn-block"
+      %li= link_to "site",    new_dashboard_site_path,    class: "btn btn-success btn-block"
+      %li= link_to "company", new_dashboard_company_path, class: "btn btn-success btn-block"
+  - if user_signed_in?
+    %li
+      %a{"data-toggle"=>"collapse", "data-target"=>"#collapseAccount", "aria-expanded"=>"false", "aria-controls"=>"collapseAccount"}
+        account
+        %b.caret
+      %ul#collapseAccount.collapse
+        %li= link_to "profile",  edit_user_registration_path, class: "btn btn-success btn-block"
+  %li
+    = link_to "Sign Out", destroy_user_session_path, class: "btn btn-danger btn-block", method: :delete
+
 
