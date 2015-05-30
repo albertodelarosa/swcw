@@ -18,9 +18,12 @@ class User < ActiveRecord::Base
   has_many :companies,        through: :locations
   has_many :sites,            through: :locations
   has_many :appointments,     through: :locations
-  has_many :washing_services, through: :locations
-  has_many :coupons,          through: :locations
-  has_many :siteler_dollars,  through: :locations
+
+  has_many :accounts
+  has_many :washing_services, through: :accounts
+  has_many :siteler_dollars,  through: :accounts
+  has_many :discounts,        through: :accounts
+  has_many :service_plans,    through: :accounts
 
   accepts_nested_attributes_for :work_address
   accepts_nested_attributes_for :work_contact_info

@@ -1,3 +1,3 @@
-class ServiceApple < WashingService
+class ServiceApple < Service
 end
 

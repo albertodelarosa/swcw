@@ -1,3 +1,4 @@
-class ServiceGoogle < WashingService
+class ServiceGoogle < Service
+  include WashingServices
 end
 

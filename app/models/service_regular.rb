@@ -1,3 +1,4 @@
-class ServiceRegular < WashingService
+class ServiceRegular < Service
+  include WashingServices
 end
 

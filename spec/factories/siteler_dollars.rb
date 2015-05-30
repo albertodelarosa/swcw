@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :discount do
+  factory :siteler_dollar do
     
   end
 
