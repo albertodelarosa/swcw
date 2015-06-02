@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315010819) do
+ActiveRecord::Schema.define(version: 20150530193641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "account_number", default: "", null: false
+    t.string   "status",         default: "", null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "accounts", ["account_number"], name: "index_accounts_on_account_number", using: :btree
+  add_index "accounts", ["status"], name: "index_accounts_on_status", using: :btree
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   null: false
@@ -169,10 +181,12 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.string   "transaction_id",                         default: "",           null: false
     t.date     "expires",                                default: '2015-01-01', null: false
     t.boolean  "expireable",                             default: false,        null: false
+    t.integer  "account_id"
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
   end
 
+  add_index "discounts", ["account_id"], name: "index_discounts_on_account_id", using: :btree
   add_index "discounts", ["applied"], name: "index_discounts_on_applied", using: :btree
   add_index "discounts", ["expireable"], name: "index_discounts_on_expireable", using: :btree
   add_index "discounts", ["expires"], name: "index_discounts_on_expires", using: :btree
@@ -230,6 +244,41 @@ ActiveRecord::Schema.define(version: 20150315010819) do
   add_index "locations", ["washing_service_id", "user_id"], name: "index_locations_on_washing_service_id_and_user_id", using: :btree
   add_index "locations", ["washing_service_id"], name: "index_locations_on_washing_service_id", using: :btree
 
+  create_table "service_plans", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.string   "type",       default: "", null: false
+    t.integer  "account_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "service_plans", ["account_id"], name: "index_service_plans_on_account_id", using: :btree
+  add_index "service_plans", ["name"], name: "index_service_plans_on_name", using: :btree
+  add_index "service_plans", ["type"], name: "index_service_plans_on_type", using: :btree
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "chosen_price",             precision: 8, scale: 2
+    t.decimal  "small_price",              precision: 8, scale: 2
+    t.decimal  "large_price",              precision: 8, scale: 2
+    t.integer  "duration"
+    t.integer  "service_plan_id"
+    t.string   "child_class"
+    t.string   "washing_serviceable_type"
+    t.integer  "washing_serviceable_id"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  add_index "services", ["chosen_price"], name: "index_services_on_chosen_price", using: :btree
+  add_index "services", ["description"], name: "index_services_on_description", using: :btree
+  add_index "services", ["duration"], name: "index_services_on_duration", using: :btree
+  add_index "services", ["large_price"], name: "index_services_on_large_price", using: :btree
+  add_index "services", ["name"], name: "index_services_on_name", using: :btree
+  add_index "services", ["service_plan_id"], name: "index_services_on_service_plan_id", using: :btree
+  add_index "services", ["small_price"], name: "index_services_on_small_price", using: :btree
+
   create_table "siteler_dollars", force: :cascade do |t|
     t.string   "name",                                              default: "",  null: false
     t.decimal  "amount_paid",               precision: 8, scale: 2, default: 0.0, null: false
@@ -237,10 +286,12 @@ ActiveRecord::Schema.define(version: 20150315010819) do
     t.decimal  "percentage",                precision: 4, scale: 2, default: 0.0, null: false
     t.decimal  "total_siteler_dollars",     precision: 8, scale: 2, default: 0.0, null: false
     t.decimal  "siteler_dollars_remaining", precision: 8, scale: 2, default: 0.0, null: false
+    t.integer  "account_id"
     t.datetime "created_at",                                                      null: false
     t.datetime "updated_at",                                                      null: false
   end
 
+  add_index "siteler_dollars", ["account_id"], name: "index_siteler_dollars_on_account_id", using: :btree
   add_index "siteler_dollars", ["amount_paid"], name: "index_siteler_dollars_on_amount_paid", using: :btree
   add_index "siteler_dollars", ["bonus_siteler_dollars"], name: "index_siteler_dollars_on_bonus_siteler_dollars", using: :btree
   add_index "siteler_dollars", ["name"], name: "index_siteler_dollars_on_name", using: :btree
@@ -364,23 +415,9 @@ ActiveRecord::Schema.define(version: 20150315010819) do
   add_index "vehicles", ["trim"], name: "index_vehicles_on_trim", using: :btree
   add_index "vehicles", ["year"], name: "index_vehicles_on_year", using: :btree
 
-  create_table "washing_services", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.decimal  "price_large",              precision: 8, scale: 2
-    t.decimal  "price_small",              precision: 8, scale: 2
-    t.integer  "duration"
-    t.string   "child_class"
-    t.string   "washing_serviceable_type"
-    t.integer  "washing_serviceable_id"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-  end
-
-  add_index "washing_services", ["description"], name: "index_washing_services_on_description", using: :btree
-  add_index "washing_services", ["duration"], name: "index_washing_services_on_duration", using: :btree
-  add_index "washing_services", ["name"], name: "index_washing_services_on_name", using: :btree
-  add_index "washing_services", ["price_large"], name: "index_washing_services_on_price_large", using: :btree
-  add_index "washing_services", ["price_small"], name: "index_washing_services_on_price_small", using: :btree
-
+  add_foreign_key "accounts", "users"
+  add_foreign_key "discounts", "accounts"
+  add_foreign_key "service_plans", "accounts"
+  add_foreign_key "services", "service_plans"
+  add_foreign_key "siteler_dollars", "accounts"
 end

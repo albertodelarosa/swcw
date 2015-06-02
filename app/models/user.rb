@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_one :work_address,      :class_name => 'CompanyAddress',      :as => :addressable, :dependent => :destroy
   has_one :home_contact_info, :class_name => 'HomeContactInfo',     :as => :contactable, :dependent => :destroy
   has_one :home_address,      :class_name => 'HomeAddress',         :as => :addressable, :dependent => :destroy
+  has_one :account
 
 
   has_many :locations
@@ -19,11 +20,6 @@ class User < ActiveRecord::Base
   has_many :sites,            through: :locations
   has_many :appointments,     through: :locations
 
-  has_many :accounts
-  has_many :washing_services, through: :accounts
-  has_many :siteler_dollars,  through: :accounts
-  has_many :discounts,        through: :accounts
-  has_many :service_plans,    through: :accounts
 
   accepts_nested_attributes_for :work_address
   accepts_nested_attributes_for :work_contact_info
