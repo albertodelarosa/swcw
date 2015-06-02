@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use bootstrap for front-end framework
 gem 'bootstrap-sass', '~> 3.3.3'
-gem 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 # User activeadmin for admin
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
@@ -44,8 +45,6 @@ gem 'formtastic'
 gem 'ransack'#, github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 
 gem 'sendgrid'
-
-gem 'momentjs-rails', '>= 2.8.1'
 #gem 'airbrake'
 
 #Use omniauth for social media login

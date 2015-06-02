@@ -34,8 +34,8 @@ site is schedule. However, late drop offs must be accommodated as well.
       `-- comp service... it happens :(
   |-- allow selected services to be applied at drop off by
       |-- user
-      |-- site manager
-          |-- add vehicle for un-rvsp user
+      `-- site manager
+          `-- add vehicle for un-rvsp user
   |-- end of day completion by site manager
       |-- site manager to process appointment
           `-- apply services rendered
