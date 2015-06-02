@@ -10,11 +10,14 @@ jQuery ->
       autoclose: true
       calendarWeeks: true
       todayHighlight: true
-      pickTime: false
+      #pickTime: false
 
       daysOfWeekDisabled: "0,6"
       todayBtn: true
       calendarWeeks: true
+      sideBySide: true
+      inline: true
+      daysOfWeekDisabled: [0, 6]
     $("#datetimepicker2").datetimepicker
       pickDate: false
     $("#datetimepicker3").datetimepicker
