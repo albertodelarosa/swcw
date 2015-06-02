@@ -42,7 +42,7 @@ Discount.all.each(&:destroy)
 printFinished()
 
 printStarting("DELETING EXISTING WASHING SERVICES")
-WashingService.all.each(&:destroy)
+Service.all.each(&:destroy)
 printFinished()
 
 printStarting("DELETING EXISTING ASSOCIATIONS")
