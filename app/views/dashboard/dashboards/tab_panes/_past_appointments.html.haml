@@ -1,15 +1,15 @@
 .well
   %legend
-    =appointments.size == 1 ? "next appointment" : "next appointments"
+    =past_appointments.size == 1 ? "past appointment" : "past appointments"
   .row
-    -appointments.each do |appointment|
+    -past_appointments.each do |appointment|
       .col-sm-6.col-sm-12
         .well.appointment-format
           .visible-xs-block
             .row.top-row
               .col-xs-12.appointment-day-in-words.text-center
-                %h3
-                  ="#{time_ago_in_words(appointment.date)}"
+                %h4
+                  ="#{time_ago_in_words(appointment.date)} ago"
                 .space-div
               .col-xs-6.appointment-date
                 .well.text-center
@@ -51,8 +51,8 @@
                   =appointment.date.strftime("%A")
               .appointment-date.pull-left
                 .appointment-day-in-words
-                  %h3
-                    ="#{time_ago_in_words(appointment.date)}"
+                  %h5
+                    ="#{time_ago_in_words(appointment.date)} ago"
                 .appointment-month
                   %h4
                     ="#{appointment.date.strftime("%B").upcase} #{appointment.date.strftime("%Y")}"

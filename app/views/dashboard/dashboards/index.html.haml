@@ -1,17 +1,107 @@
+-#.section.section-primary
+  -#%legend @appointments.empty? ?  "new appointment" : "appointments"
+  -#= render "dashboard/dashboards/tab_panes/appointments"
+-#.section.section-parallax
+-#.section.section-success
+  -#- if @sites.empty?
+    -#%legend sites
+  -#= render "dashboard/dashboards/tab_panes/sites"
+-#.section.section-parallax
+-#.section.section-primary
+  -#%legend companies
+  -#= render "dashboard/dashboards/tab_panes/companies"
+-#.section.section-parallax
+-#.section.section-success
+  -#%legend vehicles
+  -#= render "dashboard/dashboards/tab_panes/vehicles"
+
+
 .section.section-primary
-  %legend appointments
-  = render "dashboard/dashboards/tab_panes/appointments"
-.section.section-parallax
-.section.section-success
-  - if @sites.empty?
-    %legend sites
-  = render "dashboard/dashboards/tab_panes/sites"
-.section.section-parallax
+  .row
+    .col-xs-12.col-md-4
+      .well
+        %legend
+          Washing Services Available
+        #accordion.panel-group{aria: {multiselectable: true}, role: "tablist"}
+          -@service_samples.each_with_index do |service, index|
+            .panel.panel-default
+              .panel-heading{id: "service#{index}", role: :tab}
+                %h4.panel-title
+                  %a{aria: {controls: "collapse#{index}", expanded: false}, data: {parent: "#accordion", toggle: "collapse"}, href: "#collapse#{index}"}
+                    =service.name
+              .panel-collapse.collapse{id: "collapse#{index}", aria: {labelledby: "service#{index}"}, role: "tabpanel"}
+                .panel-body
+                  .col-xs-12.col-sm-6
+                    %h4
+                      %small
+                        SUVs:
+                      =number_to_currency(service.large_price)
+                  .col-xs-12.col-sm-6
+                    %h4
+                      %small
+                        Sedans:
+                      =number_to_currency(service.small_price)
+                  .col-xs-12
+                    -desc_array = []
+                    -service.description.each do |desc|
+                      -if desc.downcase.include?("includes")
+                        -if desc_array.empty?
+                          -desc_array << desc
+                        -else
+                          -desc_array.reverse!
+                          %ul.list-group.list-group.service-ul
+                            %h5.service-title
+                              =desc_array.pop
+                          -desc_array.each do |line|
+                            %li.list-group-item
+                              = line
+                          -desc_array = []
+                          -desc_array << desc
+
+                      -else
+                        -desc_array << desc
+
+
+                    -desc_array.reverse!
+                    %ul.list-group.service-ul
+                      %h5.service-title
+                        =desc_array.pop
+                    -desc_array.each do |line|
+                      %li.list-group-item
+                        = line
+                    -desc_array = []
+
+
+
+
+
+
+
+
+
+
+
+-appointments = []
+-past_appointments = []
+
 .section.section-primary
-  %legend companies
-  = render "dashboard/dashboards/tab_panes/companies"
-.section.section-parallax
-.section.section-success
-  %legend vehicles
-  = render "dashboard/dashboards/tab_panes/vehicles"
+  .row
+    .col-xs-12.col-md-4
+      .well
+        %legend
+          ="make a new appointment"
+        = render partial: 'dashboard/appointments/form_new'
+    -unless @appointments.empty?
+      -now = Time.now
+      -@appointments.each do |appointment|
+        -if appointment.date < now
+          -past_appointments << appointment
+        -else
+          -appointments << appointment
+
+      .col-xs-12.col-md-4
+        = render partial: "dashboard/dashboards/tab_panes/appointments", locals: {appointments: appointments}
+      .col-xs-12.col-md-4
+        = render partial: "dashboard/dashboards/tab_panes/past_appointments", locals: {past_appointments: past_appointments}
+
 
