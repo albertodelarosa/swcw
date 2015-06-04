@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails'
 # Use thin as server
 gem 'thin'
 # Use postgresql as the database for Active Record
@@ -13,11 +12,11 @@ gem 'haml-rails'
 # Use html2haml to hamlfy erb files
 gem "html2haml"
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -26,13 +25,14 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc'
 # Use bootstrap for front-end framework
-gem 'bootstrap-sass', '~> 3.3.3'
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+gem 'bootstrap-sass'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
 # User activeadmin for admin
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
@@ -42,7 +42,7 @@ gem 'formtastic'
 
 #gem 'sprockets_better_errors'
 # use ransack for extensible searching
-gem 'ransack'#, github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
+gem 'ransack'
 
 gem 'sendgrid'
 #gem 'airbrake'
