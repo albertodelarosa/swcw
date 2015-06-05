@@ -61,6 +61,10 @@ gem 'uuid' #UUID.generate
 
 gem 'tzinfo'
 
+# Use intuit quickbooks for eCommerce
+gem 'quickeebooks'
+gem 'oauth-plugin'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :development do
