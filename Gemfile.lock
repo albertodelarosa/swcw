@@ -469,3 +469,6 @@ DEPENDENCIES
   tzinfo
   uglifier
   uuid
+
+BUNDLED WITH
+   1.10.2
