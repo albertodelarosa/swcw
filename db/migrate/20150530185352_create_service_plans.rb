@@ -7,7 +7,7 @@ class CreateServicePlans < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :service_plans, :name
+    add_index :service_plans, :status
     add_index :service_plans, :type
     add_foreign_key :service_plans, :accounts
   end

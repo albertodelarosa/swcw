@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 20150530193641) do
   add_index "locations", ["washing_service_id"], name: "index_locations_on_washing_service_id", using: :btree
 
   create_table "service_plans", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
+    t.string   "status",     default: "", null: false
     t.string   "type",       default: "", null: false
     t.integer  "account_id"
     t.datetime "created_at",              null: false
@@ -253,7 +253,7 @@ ActiveRecord::Schema.define(version: 20150530193641) do
   end
 
   add_index "service_plans", ["account_id"], name: "index_service_plans_on_account_id", using: :btree
-  add_index "service_plans", ["name"], name: "index_service_plans_on_name", using: :btree
+  add_index "service_plans", ["status"], name: "index_service_plans_on_status", using: :btree
   add_index "service_plans", ["type"], name: "index_service_plans_on_type", using: :btree
 
   create_table "services", force: :cascade do |t|
