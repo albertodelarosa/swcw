@@ -6,4 +6,6 @@ class Account < ActiveRecord::Base
   has_one :siteler_dollar
 
   has_many :discounts
+
+  STATUS = ["active","inactive"]
 end
