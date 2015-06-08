@@ -1,11 +1,10 @@
--#= form_for @dashboard_appointment do |f|
-  -#- if @dashboard_appointment.errors.any?
-    -##error_explanation
-      -#%h2= "#{pluralize(@dashboard_appointment.errors.count, "error")} prohibited this dashboard_appointment from being saved:"
-      -#%ul
-        -#- @dashboard_appointment.errors.full_messages.each do |msg|
-          -#%li= msg
-.well.col-xs-12
+= form_for [:dashboard, @appointment], html: {class: "", role: "form"} do |f|
+  - if @appointment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@appointment.errors.count, "error")} prohibited this appointment from being saved:"
+      %ul
+        - @appointment.errors.full_messages.each do |msg|
+          %li= msg
   .form-group
     = f.label :date, class: "sr-only"
     #datetimepicker1.date.input-group
@@ -27,4 +26,6 @@
   .form-group
     = f.label :notes, class: "sr-only"
     = f.text_area(:notes, size: '5x5',  placeholder: "notes", class: "form-control input-sm")
+  .form-group
+    = f.submit 'Save', class: "btn btn-success btn-block"
 

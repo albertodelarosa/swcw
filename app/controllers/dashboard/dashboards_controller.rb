@@ -16,12 +16,11 @@ class Dashboard::DashboardsController < ApplicationController
     @vehicles = current_user.vehicles || []
     @vehicle  = Vehicle.new
 
-    if current_user.account
-      @account = current_user.account
-    else
+    @service_samples =  generate_regular_samples
+
+    if current_user.account.nil?
       @account = Account.new
       @service_plan = ServicePlan.new
-      @service_plan.type = "new"
       @siteler_dollar = SitelerDollar.new
       @service = Service.new
       @discount = Discount.new
@@ -31,7 +30,16 @@ class Dashboard::DashboardsController < ApplicationController
       @service_plan.services << @service
       @account.discounts << @discount
 
-      @service_samples =  generate_regular_samples
+      @account.status = Account::STATUS[0]
+      @service_plan.status = ServicePlan::STATUS[0]
+
+      current_user.account = @account
+    else
+      @account = current_user.account
+      @siteler_dollar = @account.siteler_dollar
+      @service_plan = @account.service_plan
+      @services = @service_plan.services
+      #@discounts << @account.discounts
     end
   end
 

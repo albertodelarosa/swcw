@@ -7,5 +7,9 @@ class Account < ActiveRecord::Base
 
   has_many :discounts
 
-  STATUS = ["active","inactive"]
+  STATUS = ["new","active","inactive"]
+
+  def new?
+    self.status.eql?("new") ? true : false
+  end
 end

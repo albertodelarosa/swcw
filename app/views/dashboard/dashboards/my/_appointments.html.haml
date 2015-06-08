@@ -3,13 +3,14 @@
     =appointments.size == 1 ? "next appointment" : "next appointments"
   .row
     -appointments.each do |appointment|
-      .col-sm-6.col-sm-12
+      .col-xs-12
         .well.appointment-format
           .visible-xs-block
             .row.top-row
               .col-xs-12.appointment-day-in-words.text-center
                 %h3
                   ="#{time_ago_in_words(appointment.date)}"
+                  -#= link_to("edit", edit_dashboard_appointment_path(appointment), class: "btn btn-primary pull-left")
                 .space-div
               .col-xs-6.appointment-date
                 .well.text-center
@@ -40,7 +41,8 @@
                 .col-xs-12.text-center
                   %h3.appointment-time
                     =appointment.pick_up_time.strftime("%I:%M%p")
-
+              .col-xs-12.edit-section.center-text
+                = link_to("edit", edit_dashboard_appointment_path(appointment), class: "btn btn-primary btn-lg btn-block")
           .hidden-xs
             .row.top-row
               .col-sm-4.appointment-date
@@ -49,9 +51,20 @@
                     =appointment.date.strftime("%d")
                 %h4.text-center.appointment-day
                   =appointment.date.strftime("%A")
-              .appointment-date.pull-left
+              .visible-sm-block.appointment-date.col-sm-4
                 .appointment-day-in-words
                   %h3
+                    ="#{time_ago_in_words(appointment.date)}"
+                .appointment-month
+                  %h4
+                    ="#{appointment.date.strftime("%B").upcase} #{appointment.date.strftime("%Y")}"
+              .visible-sm-block.col-sm-4.edit-section
+                = link_to("edit", edit_dashboard_appointment_path(appointment), class: "btn btn-primary btn-lg btn-block")
+
+
+              .hidden-sm.appointment-date.pull-left
+                .appointment-day-in-words
+                  %h4
                     ="#{time_ago_in_words(appointment.date)}"
                 .appointment-month
                   %h4
@@ -68,6 +81,9 @@
                     ="pick up"
                   %h3.appointment-time
                     =appointment.pick_up_time.strftime("%I:%M%p")
+              .hidden-sm.col-md-12.edit-section.center-text
+                = link_to("edit", edit_dashboard_appointment_path(appointment), class: "btn btn-primary btn-block")
+
 
 
 

@@ -12,80 +12,118 @@ module BootstrapHelper
     end
   end
 
-  class Panel < Base
-    attr_accessor :id, :header, :body, :footer
+  class PanelGroup < Base
+    attr_accessor :id, :class, :header, :body, :footer
 
     def initialize(opts={}, &block)
-      @uuid = UUID.generate
-      @panel_id = opts[:id] || @uuid
-      @panel_class = opts[:class] || ''
-      @header_class = opts[:header_class] || ''
       @ctx = RequestStore.store.fetch(:current_view_context)
-
-      @contextual = ((!opts[:contextual]) or (opts[:contextual] == "")) ? @contextual = 'panel-default' : @contextual = opts[:contextual]
-      @has_heading = opts[:no_heading] ?  false : true
-      @has_title = opts[:title] ?  true : false
-      @has_footer = opts[:footer] ?  true : false
-      @header = ''
-      @body = ''
-      @footer = ''
+      @group  = ''
       yield(self)
-    end
-
-    def header_col(opts={}, &block)
-      uuid = UUID.generate
-      col_id = "#" + ("#{uuid}")
-      col_class = "col-xs-#{opts[:xs]} col-sm-#{opts[:sm]} col-md-#{opts[:md]} col-lg-#{opts[:lg]} #{opts[:class]}"
-
-      @header += content_tag :div, nil, {id: col_id, class: col_class} do
-        @ctx.capture(&block)
-      end
-      @header
     end
 
     def body(opts={}, &block)
       uuid = UUID.generate
-      col_id = "#" + "#{opts[:id]}" || "#{uuid}"
-      @body = content_tag :div, {id: col_id, class: "panel-body #{:class}"} do 
+      group_id = opts[:id] || uuid
+      group_role = opts[:role]
+      group_multiselectable = opts[:multiselectable]
+
+      @group += content_tag :div, nil, {id: group_id, class: "panel-group", role: group_role, aria: {multiselectable: group_multiselectable}} do
         @ctx.capture(&block)
       end
-      @body
+    end
+
+    def to_s
+      ret = @group
+      ret.html_safe
+    end
+  end
+
+  class Panel < Base
+    attr_accessor :id, :header, :body, :footer
+
+    def initialize(opts={}, &block)
+      @uuid         = UUID.generate
+      @ctx          = RequestStore.store.fetch(:current_view_context)
+
+      @type_id = opts[:id] || @uuid
+      @type_class = opts[:class] || "default"
+      @heading_id = ""
+      @collapse_id = ""
+
+      @group  = ''
+      @heading = ""
+      @body = ""
+      @footer = ""
+      yield(self)
+    end
+
+    def heading(opts={}, &block)
+      @heading_id = opts[:id] || nil
+      heading_role = opts[:role] || nil
+
+      @heading += content_tag :div, nil, {id: @heading_id, class: "panel-heading", role: heading_role} do
+        @ctx.capture(&block)
+      end
+    end
+
+    def title(opts={}, &block)
+      title_id = opts[:id] || nil
+      title_role = opts[:role] || nil
+
+      @heading += content_tag opts[:name], nil, {id: title_id, class: "panel-title", role: title_role} do
+        @ctx.capture(&block)
+      end
+    end
+
+    def link(opts={}, &block)
+      link_id       = opts[:id] || nil
+      link_class    = opts[:class] || nil
+      link_role     = opts[:role] || nil
+      link_parent   = opts[:parent]
+      link_expanded = opts[:expanded] || true
+      link_controls = opts[:controls]
+      link_href     = opts[:href]
+
+      @heading += content_tag opts[:name], nil, {id: link_id, class: link_class, role: link_role, data: {toggle: "collapse", parent: "##{link_parent}"}, aria: {expanded: link_expanded, controls: link_controls}, href: "##{link_href}"} do
+        @ctx.capture(&block)
+      end
+    end
+
+    def collapse(opts={}, &block)
+      @collapse_id    = opts[:id]
+      collapse_class  = opts[:class] || nil
+      collapse_role   = opts[:role]
+
+      @body += content_tag :div, nil, {id: @collapse_id, class: "panel-collapse collapse #{collapse_class}" , role: collapse_role, aria: {labelledby: @heading_id}} do
+        @ctx.capture(&block)
+      end
+    end
+
+    def body(opts={}, &block)
+      body_id         = opts[:id]     || nil
+      body_class      = opts[:class]  || nil
+      body_role       = opts[:role]   || nil
+
+      @body += content_tag :div, nil, {id: body_id, class: "panel-body #{body_class}", role: body_role} do
+        @ctx.capture(&block)
+      end
     end
 
     def footer(opts={}, &block)
       uuid = UUID.generate
-      col_id = "#" + "#{opts[:id]}" || "#{uuid}"
-      @footer = content_tag :div, {id: col_id, class: "panel-footer #{opts[:class]}"} do 
-        content_tag :div, { class: "row" } do 
-          @ctx.capture(&block)
-        end
+      footer_id = opts[:id] || uuid
+      footer_class = opts[:class] || nil
+
+      @footer = content_tag :div, {id: footer_id, class: "panel-footer #{footer_class}"} do 
+        @ctx.capture(&block)
       end
-      @footer
     end
 
     def to_s
-      uuid = UUID.generate
-      panel_id = "#" + @panel_id || uuid
-      ret = content_tag :div, {id: panel_id, class: "panel panel-#{@contextual} #{@panel_class}"} do
-        if @has_heading
-          content = content_tag :div, { class: "panel-heading #{@header_class}" } do
-            if @has_title
-              content_tag :div, { class: "panel-title" } do
-                content_tag :div, { class: "row" } do
-                  @header.html_safe
-                end
-              end
-            else
-              content_tag :div, { class: "row"} do
-                @header.html_safe
-              end
-            end
-          end
-        else
-          content = content_tag :div
-        end
+      ret = content_tag :div, nil, {id: @type_id, class: "panel panel-#{@type_class}"} do
+        content = @heading.html_safe
         content += @body.html_safe
-        @has_footer ? content += @footer.html_safe : content.html_safe
+        content += @footer.html_safe
       end
       ret.html_safe
     end
