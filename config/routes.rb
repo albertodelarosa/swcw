@@ -1,5 +1,11 @@
 Sitelerwash::Application.routes.draw do
 
+  get 'orders/new'
+
+  get 'orders/success'
+
+  get 'orders/failure'
+
   namespace :dashboard do
     get "/" => "dashboards#index"
 
