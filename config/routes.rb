@@ -1,5 +1,9 @@
 Sitelerwash::Application.routes.draw do
 
+  get 'carts/show'
+
+  get 'carts/purchase'
+
   get 'orders/new'
 
   get 'orders/success'
