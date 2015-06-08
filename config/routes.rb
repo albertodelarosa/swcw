@@ -1,5 +1,7 @@
 Sitelerwash::Application.routes.draw do
 
+  get 'line_items/create'
+
   get 'carts/show'
 
   get 'carts/purchase'
