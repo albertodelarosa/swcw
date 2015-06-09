@@ -11,6 +11,21 @@ class ApplicationController < ActionController::Base
     #end
   #end
 
+  # from your application log (in this case, all fields with names like "password")
+  #filter_parameter_logging :card_number, :card_verification
+
+  def current_cart
+    if session[:cart_id]
+      @current_cart ||= Cart.find(session[:cart_id])
+      session[:cart_id] = nil if @current_cart.purchased_at
+    end
+    if session[:cart_id].nil?
+      @current_cart = Cart.create!
+      session[:cart_id] = @current_cart.id
+    end
+    @current_cart
+  end
+
   def after_sign_in_path_for(resource)
     unless resource.instance_of?(AdminUser)
       dashboard_path()

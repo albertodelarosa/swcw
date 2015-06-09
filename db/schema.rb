@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530193641) do
+ActiveRecord::Schema.define(version: 20150608205134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,14 @@ ActiveRecord::Schema.define(version: 20150530193641) do
     t.datetime "updated_at"
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "purchased_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "carts", ["purchased_at"], name: "index_carts_on_purchased_at", using: :btree
+
   create_table "companies", force: :cascade do |t|
     t.string   "corporate_id",                                       default: "",    null: false
     t.string   "name",                                               default: "",    null: false
@@ -194,6 +202,20 @@ ActiveRecord::Schema.define(version: 20150530193641) do
   add_index "discounts", ["percentage"], name: "index_discounts_on_percentage", using: :btree
   add_index "discounts", ["transaction_id"], name: "index_discounts_on_transaction_id", using: :btree
 
+  create_table "line_items", force: :cascade do |t|
+    t.decimal  "unit_price"
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
+  add_index "line_items", ["quantity"], name: "index_line_items_on_quantity", using: :btree
+  add_index "line_items", ["unit_price"], name: "index_line_items_on_unit_price", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.integer  "vehicle_id"
     t.integer  "user_id"
@@ -243,6 +265,43 @@ ActiveRecord::Schema.define(version: 20150530193641) do
   add_index "locations", ["washing_service_id", "siteler_dollar_id"], name: "index_locations_on_washing_service_id_and_siteler_dollar_id", using: :btree
   add_index "locations", ["washing_service_id", "user_id"], name: "index_locations_on_washing_service_id_and_user_id", using: :btree
   add_index "locations", ["washing_service_id"], name: "index_locations_on_washing_service_id", using: :btree
+
+  create_table "order_transactions", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "order_transactions", ["action"], name: "index_order_transactions_on_action", using: :btree
+  add_index "order_transactions", ["amount"], name: "index_order_transactions_on_amount", using: :btree
+  add_index "order_transactions", ["authorization"], name: "index_order_transactions_on_authorization", using: :btree
+  add_index "order_transactions", ["message"], name: "index_order_transactions_on_message", using: :btree
+  add_index "order_transactions", ["order_id"], name: "index_order_transactions_on_order_id", using: :btree
+  add_index "order_transactions", ["params"], name: "index_order_transactions_on_params", using: :btree
+  add_index "order_transactions", ["success"], name: "index_order_transactions_on_success", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.string   "ip_address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "card_type"
+    t.date     "card_expires_on"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "orders", ["card_expires_on"], name: "index_orders_on_card_expires_on", using: :btree
+  add_index "orders", ["card_type"], name: "index_orders_on_card_type", using: :btree
+  add_index "orders", ["first_name"], name: "index_orders_on_first_name", using: :btree
+  add_index "orders", ["ip_address"], name: "index_orders_on_ip_address", using: :btree
+  add_index "orders", ["last_name"], name: "index_orders_on_last_name", using: :btree
 
   create_table "service_plans", force: :cascade do |t|
     t.string   "status",     default: "", null: false
