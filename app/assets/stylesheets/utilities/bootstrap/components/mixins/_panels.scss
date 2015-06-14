@@ -8,8 +8,7 @@
   & > .panel-heading {
     color: $heading-color;
     background-color: $heading-bg;
-    border-color: $border;
-    border-bottom-color: $heading-bg;
+    border-bottom-color: 1px solid $border;
 
     + .panel-collapse > .panel-body {
       border-top-color: $border;

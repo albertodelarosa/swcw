@@ -10,36 +10,41 @@ $bootstrap-sass-asset-helper: false !default;
 //## Gray and brand colors for use across Bootstrap.
 
 $gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-darker:            lighten($gray-base, 20%) !default;   // #333
+$gray-dark:              lighten($gray-base, 40%) !default;   // #666
+$gray:                   lighten($gray-base, 60%) !default;   // #999
+$gray-light:             lighten($gray-base, 80%) !default;   // #ccc
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 ////////////////////////////////////////////////////////////////
-$brand-default:         $sw-blue-0 !default;
-$brand-default-color:   $sw-blue-1 !default;
-$brand-default-border:  $sw-blue-3 !default;
+$brand-default:         $sw-black-0 !default;
+$brand-default-color:   $sw-black-1 !default;
+$brand-default-border:  $sw-black-1 !default;
 
-$brand-primary:         $spp-blue-0 !default;
-$brand-primary-color:   $spp-blue-1 !default;
-$brand-primary-border:  $spp-blue-3 !default;
+$brand-primary:         $sw-blue-0 !default;
+$brand-primary-bg:      $sw-blue-5 !default;
+$brand-primary-color:   #D5DEE5 !default;
+$brand-primary-border:  $sw-blue-0 !default;
 
-$brand-success:         $spp-green-0 !default;
-$brand-success-color:   $spp-green-1 !default;
-$brand-success-border:  $spp-green-3 !default;
+$brand-info:            $spp-blue-0 !default;
+$brand-info-bg:         $spp-blue-5 !default;
+$brand-info-color:      #E0E5EA !default;
+$brand-info-border:     $spp-blue-0 !default;
 
-$brand-info:            $spp-purple-0 !default;
-$brand-info-color:      $spp-purple-1 !default;
-$brand-info-border:     $spp-purple-3 !default;
+$brand-success:         $sw-green-0 !default;
+$brand-success-bg:      $sw-green-5 !default;
+$brand-success-color:   #CCEACE !default;
+$brand-success-border:  $sw-green-0 !default;
 
-$brand-warning:         $spp-orange-0 !default;
-$brand-warning-color:   $spp-orange-1 !default;
-$brand-warning-border:  $spp-orange-3 !default;
+$brand-warning:         $sorange-0 !default;
+$brand-warning-bg:      $sorange-5 !default;
+$brand-warning-color:   #FCE0D5 !default;
+$brand-warning-border:  $sorange-0 !default;
 
-$brand-danger:          $spp-red-0 !default;
-$brand-danger-color:    $spp-red-1 !default;
-$brand-danger-border:   $spp-red-3 !default;
+$brand-danger:          $sred-0 !default;
+$brand-danger-bg:       $sred-5 !default;
+$brand-danger-color:    #FCD5D5 !default;
+$brand-danger-border:   $sred-0 !default;
 
 //== Scaffolding
 //
@@ -200,7 +205,7 @@ $btn-link-disabled-color:        $gray-light !default;
 //##
 
 //** `<input>` background color
-$input-bg:                       #fff !default;
+$input-bg:                       $sw-black-0 !default;
 //** `<input disabled>` background color
 $input-bg-disabled:              $gray-lighter !default;
 
@@ -219,7 +224,7 @@ $input-border-radius-large:      $border-radius-large !default;
 $input-border-radius-small:      $border-radius-small !default;
 
 //** Border color for inputs on focus
-$input-border-focus:             #66afe9 !default;
+$input-border-focus:             $gray-lighter !default;
 
 //** Placeholder text color
 $input-color-placeholder:        #999 !default;
@@ -379,8 +384,8 @@ $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 20) !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             lighten($sw-blue-1, 20%) !default;
-$navbar-default-bg:                $sw-blue-0 !default;
+$navbar-default-color:             lighten($sw-blue-1, 40%) !default;
+$navbar-default-bg:                #1e374c !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
@@ -683,7 +688,7 @@ $progress-bar-info-bg:        $brand-info !default;
 //##
 
 //** Background color on `.list-group-item`
-$list-group-bg:                 #fff !default;
+$list-group-bg:                 transparent !default;
 //** `.list-group-item` border color
 $list-group-border:             #ddd !default;
 //** List group border radius
@@ -717,8 +722,9 @@ $list-group-link-heading-color: #333 !default;
 //##
 
 $panel-bg:                    #fff !default;
-$panel-body-padding:          15px !default;
-$panel-heading-padding:       10px 15px !default;
+$panel-padding:               8px !default;
+$panel-body-padding:          8px !default;
+$panel-heading-padding:       20px 15px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         $border-radius-base !default;
 
@@ -726,41 +732,42 @@ $panel-border-radius:         $border-radius-base !default;
 $panel-inner-border:          #ddd !default;
 $panel-footer-bg:             #f5f5f5 !default;
 
-$panel-default-bg:            #fff !default;
-$panel-default-color:          $gray-dark !default;
-$panel-default-border:        #ddd !default;
-$panel-default-heading-bg:    #f5f5f5 !default;
-$panel-default-heading-color: $gray-dark !default;
 
-$panel-primary-bg:            $brand-primary-border !default;
+$panel-default-bg:            $brand-default !default;
+$panel-default-color:         $brand-default-color !default;
+$panel-default-border:        $gray-lighter !default;
+$panel-default-heading-bg:    $sw-black-2 !default;
+$panel-default-heading-color: $gray-lighter !default;
+
+$panel-primary-bg:            $brand-primary-bg !default;
 $panel-primary-color:         $brand-primary-color !default;
-$panel-primary-border:        $brand-primary-color !default;
-$panel-primary-heading-bg:    $panel-primary-bg !default;
+$panel-primary-border:        $gray-lighter !default;
+$panel-primary-heading-bg:    $brand-primary !default;
 $panel-primary-heading-color: $brand-primary-color !default;
 
-$panel-success-bg:            $brand-success-border !default;
+$panel-success-bg:            $brand-success-bg !default;
 $panel-success-color:         $brand-success-color !default;
-$panel-success-border:        $brand-success-border !default;
-$panel-success-heading-bg:    $panel-success-bg !default;
+$panel-success-border:        $gray-lighter !default;
+$panel-success-heading-bg:    $brand-success !default;
 $panel-success-heading-color: $brand-success-color !default;
 
-$panel-info-bg:            $brand-info-border !default;
-$panel-info-color:         $brand-info-color !default;
-$panel-info-border:        $brand-info-color !default;
-$panel-info-heading-bg:    $panel-info-bg !default;
-$panel-info-heading-color: $brand-info-color !default;
+$panel-info-bg:               $brand-info-bg !default;
+$panel-info-color:            $brand-info-color !default;
+$panel-info-border:           $gray-lighter !default;
+$panel-info-heading-bg:       $brand-info !default;
+$panel-info-heading-color:    $brand-info-color !default;
 
-$panel-warning-bg:            $brand-warning-border !default;
+$panel-warning-bg:            $brand-warning-bg !default;
 $panel-warning-color:         $brand-warning-color !default;
-$panel-warning-border:        $brand-warning-color !default;
-$panel-warning-heading-bg:    $panel-warning-bg !default;
+$panel-warning-border:        $gray-lighter !default;
+$panel-warning-heading-bg:    $brand-warning !default;
 $panel-warning-heading-color: $brand-warning-color !default;
 
-$panel-danger-bg:            $brand-danger-border !default;
-$panel-danger-color:         $brand-danger-color !default;
-$panel-danger-border:        $brand-danger-color !default;
-$panel-danger-heading-bg:    $panel-danger-bg !default;
-$panel-danger-heading-color: $brand-danger-color !default;
+$panel-danger-bg:             $brand-danger-bg !default;
+$panel-danger-color:          $brand-danger-color !default;
+$panel-danger-border:         $gray-lighter !default;
+$panel-danger-heading-bg:     $brand-danger !default;
+$panel-danger-heading-color:  $brand-danger-color !default;
 
 
 //== Thumbnails
@@ -786,8 +793,47 @@ $thumbnail-caption-padding:   9px !default;
 //
 //##
 
-$well-bg:                     #f5f5f5 !default;
-$well-border:                 darken($well-bg, 7%) !default;
+$well-bg:                     $brand-default !default;
+$well-border:                 $gray-lighter !default;
+
+
+
+$well-default-bg:             $brand-default        !default;
+$well-default-color:          $brand-default-color  !default;
+$well-default-border:         $brand-default-border !default;
+$well-default-heading-color:  $gray-lighter         !default;
+$well-default-heading-border: $sw-black-2           !default;
+
+$well-primary-bg:             $brand-primary-bg     !default;
+$well-primary-color:          $brand-primary-color  !default;
+$well-primary-border:         $brand-primary-border !default;
+$well-primary-heading-color:  $brand-primary-color  !default;
+$well-primary-heading-border: $brand-primary        !default;
+
+$well-success-bg:             $brand-success-bg     !default;
+$well-success-color:          $brand-success-color  !default;
+$well-success-border:         $brand-success-border !default;
+$well-success-heading-color:  $brand-success-color  !default;
+$well-success-heading-border: $brand-success        !default;
+
+$well-info-bg:                $brand-info-bg        !default;
+$well-info-color:             $brand-info-color     !default;
+$well-info-border:            $brand-info-border    !default;
+$well-info-heading-color:     $brand-info-color     !default;
+$well-info-heading-border:    $brand-info           !default;
+
+$well-warning-bg:             $brand-warning-bg     !default;
+$well-warning-color:          $brand-warning-color  !default;
+$well-warning-border:         $brand-warning-border !default;
+$well-warning-heading-color:  $brand-warning-color  !default;
+$well-warning-heading-border: $brand-warning        !default;
+
+$well-danger-bg:              $brand-danger-bg      !default;
+$well-danger-color:           $brand-danger-color   !default;
+$well-danger-border:          $brand-danger-border  !default;
+$well-danger-heading-color:   $brand-danger-color   !default;
+$well-danger-heading-border:  $brand-danger         !default;
+
 
 
 //== Badges
