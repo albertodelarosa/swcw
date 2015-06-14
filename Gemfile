@@ -62,6 +62,7 @@ gem 'uuid' #UUID.generate
 gem 'tzinfo'
 
 # Use intuit quickbooks for eCommerce
+gem 'activemerchant'
 gem 'quickeebooks'
 gem 'oauth-plugin'
 
