@@ -1,32 +1,30 @@
-= BootstrapHelper::Panel.new(contextual: 'info', title: '') do |business_contact_info_panel|
-  - business_contact_info_panel.header_col(xs: size,sm: size,md:size,lg:size) do 
-    .h4
-      Business Contact Information
-  - business_contact_info_panel.body do
+=BootstrapHelper::Panel.new(class: 'info') do |panel|
+  -panel.heading() do
+    -panel.title() do
+      .h4
+        Business Contact Information
+  - panel.body do
     - resource.work_contact_info ||= resource.build_work_contact_info
     = f.fields_for :work_contact_info do |wci|
-      .form-group
-        = f.label :email, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = wci.text_field :email, class: "form-control", placeholder: "email"
-      .form-group
-        = f.label :mobile, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = wci.text_field :mobile, class: "form-control", placeholder: "mobile"
-      .form-group
-        = f.label :phone1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = wci.text_field :phone1, class: "form-control", placeholder: "phone 1"
-      .form-group
-        = f.label :ext, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-4.col-md-4
-          = wci.text_field :ext, class: "form-control", placeholder: "ext"
-      .form-group
-        = f.label :phone2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = wci.text_field :phone2, class: "form-control", placeholder: "phone 2"
-      .form-group
-        = f.label :fax, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = wci.text_field :fax, class: "form-control", placeholder: "fax"
+      .row
+        .col-xs-12
+          .container-fluid
+            .form-group
+              = wci.label :email, class: 'sr-only'
+              = wci.text_field :email, class: "form-control", placeholder: "email"
+            .form-group
+              = wci.label :mobile, class: 'sr-only'
+              = wci.text_field :mobile, class: "form-control", placeholder: "mobile"
+            .form-group
+              = wci.label :phone1, class: 'sr-only'
+              = wci.text_field :phone1, class: "form-control", placeholder: "phone 1"
+            .form-group
+              = wci.label :ext, class: 'sr-only'
+              = wci.text_field :ext, class: "form-control", placeholder: "ext"
+            .form-group
+              = wci.label :phone2, class: 'sr-only'
+              = wci.text_field :phone2, class: "form-control", placeholder: "phone 2"
+            .form-group
+              = wci.label :fax, class: 'sr-only'
+              = wci.text_field :fax, class: "form-control", placeholder: "fax"
 

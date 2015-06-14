@@ -1,0 +1,25 @@
+.row
+  .col-xs-12
+    .container-fluid
+      - if controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
+        .form-group
+          .col-xs-12
+            = f.submit "Update", class: "btn btn-success btn-block"
+      - else
+        .form-group
+          .btn-group.btn-group-justified{role: "group"}
+            .btn-group
+              = f.submit "register", class: 'btn btn-large btn-success'
+        .form-group
+          .btn-group.btn-group-justified{role: "group"}
+            .btn-group
+              = render "devise/shared/links_omniauthable"
+        .form-group
+          .btn-group.btn-group-justified{role: "group"}
+            .btn-group
+              = render "devise/shared/links_sign_in"
+        .form-group
+          .btn-group.btn-group-justified{role: "group"}
+            .btn-group
+              %button.btn.btn-danger.btn-block{"data-dismiss" => "modal", :type => "button"} cancel
+

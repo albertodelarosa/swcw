@@ -1,24 +1,31 @@
-.well
-  .legend login info
-  .form-group
-    = f.label :username, class: 'sr-only'
-    = f.text_field :username, class: "form-control", placeholder: "username", :autofocus => true
-  .form-group
-    = f.label :email, class: 'sr-only'
-    = f.email_field :email, class: "form-control", placeholder: "email"
-  .form-group
-    = f.label :current_password, class: 'sr-only'
-    = f.password_field :current_password, class: "form-control", "data-toggle" => "tooltip", "data-placement" => "left", "title" => "(leave blank )", placeholder: "current password"
-  .form-group
-    = f.label :password, class: 'sr-only'
-    = f.password_field :password, class: "form-control", "data-toggle" => "tooltip", "data-placement" => "left", "title" => "(leave blank if you don't want to change it)", placeholder: "new password"
-  .form-group
-    = f.label :password_confirmation, class: 'sr-only'
-    = f.password_field :password_confirmation, class: "form-control", placeholder: "password confirmation"
-  - if devise_mapping.rememberable?
-    .form-group
-      .checkbox
-        = f.label :remember_me do
-          = f.check_box :remember_me
-          remember me
-
+=BootstrapHelper::Panel.new(class: 'primary') do |panel|
+  -panel.heading() do
+    -panel.title() do
+      .h4
+        login information
+  - panel.body do
+    .row
+      .col-xs-12
+        .container-fluid
+          .form-group
+            = f.label :username, class: 'sr-only'
+            = f.text_field :username, class: "form-control", placeholder: "username", :autofocus => true
+          .form-group
+            = f.label :email, class: 'sr-only'
+            = f.email_field :email, class: "form-control", placeholder: "email"
+          - unless controller.controller_name.eql?("welcome") && controller.action_name.eql?("index")
+            .form-group
+              = f.label :current_password, class: 'sr-only'
+              = f.password_field :current_password, class: "form-control", "data-toggle" => "tooltip", "data-placement" => "left", "title" => "(leave blank )", placeholder: "current password"
+          .form-group
+            = f.label :password, class: 'sr-only'
+            = f.password_field :password, class: "form-control", "data-toggle" => "tooltip", "data-placement" => "left", "title" => "(leave blank if you don't want to change it)", placeholder: "new password"
+          .form-group
+            = f.label :password_confirmation, class: 'sr-only'
+            = f.password_field :password_confirmation, class: "form-control", placeholder: "password confirmation"
+          - if devise_mapping.rememberable?
+            .form-group
+              .checkbox
+                = f.label :remember_me do
+                  = f.check_box :remember_me
+                  remember me

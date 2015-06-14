@@ -1,32 +1,29 @@
-= BootstrapHelper::Panel.new(contextual: 'info', title: '') do |personal_address_panel|
-  - personal_address_panel.header_col(xs: size,sm: size,md:size,lg:size) do 
-    .h4
+=BootstrapHelper::Panel.new(class: 'info') do |personal_address_panel|
+  -personal_address_panel.heading() do
+    -personal_address_panel.title() do
+      .h4
       Personal Address Information
   - personal_address_panel.body do
     - resource.home_address ||= resource.build_home_address
     = f.fields_for :home_address do |ha|
-      .form-group
-        = f.label :street1, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = ha.text_field :street1, class: "form-control", placeholder: "street address 1"
-      .form-group
-        = f.label :apt_no, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = ha.text_field :apt_no, class: "form-control", placeholder: "apt no."
-      .form-group
-        = f.label :street2, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = ha.text_field :street2, class: "form-control", placeholder: "street address 2"
-      .form-group
-        = f.label :city, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = ha.text_field :city, class: "form-control", placeholder: "city"
-      .form-group
-        = f.label :state, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = ha.text_field :state, class: "form-control", placeholder: "state"
-      .form-group
-        = f.label :zip, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
-        .col-sm-6.col-md-6
-          = ha.text_field :zip, class: "form-control", placeholder: "zip code"
-
+      .row
+        .col-xs-12
+          .container-fluid
+            .form-group
+              = ha.label :street1, class: 'sr-only'
+              = ha.text_field :street1, class: "form-control", placeholder: "street address 1"
+            .form-group
+              = ha.label :apt_no, class: 'sr-only'
+              = ha.text_field :apt_no, class: "form-control", placeholder: "apt no."
+            .form-group
+              = ha.label :street2, class: 'sr-only'
+              = ha.text_field :street2, class: "form-control", placeholder: "street address 2"
+            .form-group
+              = ha.label :city, class: 'sr-only'
+              = ha.text_field :city, class: "form-control", placeholder: "city"
+            .form-group
+              = ha.label :state, class: 'sr-only'
+              = ha.text_field :state, class: "form-control", placeholder: "state"
+            .form-group
+              = ha.label :zip, class: 'sr-only'
+              = ha.text_field :zip, class: "form-control", placeholder: "zip code"

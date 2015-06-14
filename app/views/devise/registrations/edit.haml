@@ -1,12 +1,15 @@
 - if user_signed_in?
   .row
-    .col-sm-3.col-md-3
-      %h3
-        Unhappy?
-      %h3
-        #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger"}
-    .col-sm-9.col-md-9
-      = render "form"
+    .col-xs-12.col-sm-3
+      .container-fluid
+        .well.well-default.text-center
+          %h3
+            Unhappy?
+          %h3
+            #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger"}
+    .col-xs-12.col-sm-9
+      .container-fluid
+        = render "form"
 -#%h2
   -#Edit #{resource_name.to_s.humanize}
 -#= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
