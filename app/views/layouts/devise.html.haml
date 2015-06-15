@@ -14,7 +14,9 @@
       -else
         = render "shared/navbar"
         = render "shared/alert", flash: flash
-        = yield
+        .section.section-default
+          .row
+            = yield
     = render "shared/footer"
     = javascript_include_tag "application"
     = render "shared/javascripts"

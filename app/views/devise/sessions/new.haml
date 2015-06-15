@@ -6,6 +6,10 @@
           %h4 Sign in
         .panel-body
           .form-group
+            = f.label :email, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
+            .col-sm-6.col-md-6
+              = f.email_field :email, placeholder: "email", class: "form-control", autofocus: true
+          .form-group
             = f.label :username, class: 'control-label col-sm-offset-1 col-md-offset-1 col-sm-3 col-md-3'
             .col-sm-6.col-md-6
               = f.text_field :username, placeholder: "username", class: "form-control", autofocus: true

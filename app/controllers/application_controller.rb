@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
   layout :layout_by_resource
+
   def stored_location_for(resource)
     nil
   end
@@ -32,6 +34,10 @@ class ApplicationController < ActionController::Base
     else
       super
     end
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    dashboard_path()
   end
 
   def add_breadcrumb name, url = "", icon = ""

@@ -35,10 +35,11 @@
       .panel.well
         %legend.center-block
           Detailing Packages
-        #packageHeading{role: "tab"}
+        #packageHeading.collapse-heading{role: "tab"}
           %button.btn.btn-primary.btn-block{href:"#collapsePackage1", data: {toggle: "collapse", parent: "#packageAccordion"}, aria: {expanded: "true", controls: "collapsePackage1"}}Interior Package
           %button.btn.btn-primary.btn-block{href:"#collapsePackage2", data: {toggle: "collapse", parent: "#packageAccordion"}, aria: {expanded: "true", controls: "collapsePackage2"}}Exterior Package
           %button.btn.btn-primary.btn-block{href:"#collapsePackage3", data: {toggle: "collapse", parent: "#packageAccordion"}, aria: {expanded: "true", controls: "collapsePackage3"}}Complete Package
+          %br/
         #collapsePackage1.collapse{aria: {labelledby: "packageHeading"}, role: "tabpanel"}
           .well
             %legend
@@ -157,7 +158,7 @@
       .panel.well
         %legend.center-block
           Detailing Services
-        #serviceHeading{role: "tab"}
+        #serviceHeading.collapse-heading{role: "tab"}
           -@service_samples.each_with_index do |service, index|
             %button.btn.btn-primary.btn-block{aria: {controls: "serviceCollapse#{index}", expanded: true}, data: {parent: "#serviceAccordion", toggle: "collapse"}, href: "#serviceCollapse#{index}"}
               =service.name
