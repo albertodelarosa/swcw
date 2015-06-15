@@ -69,8 +69,9 @@ module BootstrapHelper
     def title(opts={}, &block)
       title_id = opts[:id] || nil
       title_role = opts[:role] || nil
+      title_name = opts[:name] || 'div'
 
-      @heading += content_tag opts[:name], nil, {id: title_id, class: "panel-title", role: title_role} do
+      @heading += content_tag title_name, nil, {id: title_id, class: "panel-title", role: title_role} do
         @ctx.capture(&block)
       end
     end
