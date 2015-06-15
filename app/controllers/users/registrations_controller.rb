@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to after_sign_in_path_for(@user)
     else
       render root_path()
+      format.json { render json: @user.errors, status: :unprocessable_entity }
     end
   end
 
@@ -44,20 +45,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   private
-    # Using a private method to encapsulate the permissible parameters is just a good pattern
-    # since you'll be able to reuse the same permit list between create and update. Also, you
-    # can specialize this method with per-user checking of permissible attributes.
-    def params_update_user
-      params.required(:user).permit(:username, :email, :current_password, :password, :password_confirmation, :remember_me,
-                                    home_contact_info_attributes: [         :mobile, :phone1,       :phone2, :fax, :id ],
-                                    work_contact_info_attributes: [ :email, :mobile, :phone1, :ext, :phone2, :fax, :id ],
-                                    home_address_attributes:      [ :street1, :apt_no,    :street2, :city, :state, :zip, :id ],
-                                    work_address_attributes:      [ :street1, :suite_no,  :street2, :city, :state, :zip, :id ]
-                                   )
-    end
 
-    def params_new_user
-      params.required(:user).permit(:username, :email, :password, :password_confirmation, :remember_me)
-    end
+  def params_new_user
+    params.required(:user).permit(:username, :email, :password, :password_confirmation, :remember_me)
+  end
+
+  def params_update_user
+    params.required(:user).permit(:username, :email, :current_password, :password, :password_confirmation, :remember_me,
+                                  home_contact_info_attributes: [         :mobile, :phone1,       :phone2, :fax, :id ],
+                                  work_contact_info_attributes: [ :email, :mobile, :phone1, :ext, :phone2, :fax, :id ],
+                                  home_address_attributes:      [ :street1, :apt_no,    :street2, :city, :state, :zip, :id ],
+                                  work_address_attributes:      [ :street1, :suite_no,  :street2, :city, :state, :zip, :id ]
+                                 )
+  end
 end
 
