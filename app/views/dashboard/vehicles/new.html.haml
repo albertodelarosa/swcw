@@ -1,17 +1,60 @@
-= form_for [:dashboard, @vehicle], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
-  - if @vehicle.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this company from being saved:"
-      %ul
-        - @vehicle.errors.full_messages.each do |msg|
-          %li= msg
+.section.section-primary
+  .row
+    .col-xs-12
+      = form_for [:dashboard, @vehicle], method: "post", html: {class: "form-horizontal", role: "form"} do |f|
+        - if @vehicle.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this company from being saved:"
+            %ul
+              - @vehicle.errors.full_messages.each do |msg|
+                %li= msg
 
-  = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
-    = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Vehicle #{current_user.first_name}"}
-    - panel.body do
-      = render partial: 'form', locals: {f: f}
-    - panel.footer do 
-      .col-xs-10.col-sm-10.col-md-10.col-lg-10
-      .col-xs-2.col-sm-2.col-md-2.col-lg-2
-        = f.submit 'Add Vehicle', class: "btn btn-success btn-block", id: "add_vehicle"
+        = BootstrapHelper::Panel.new(class: 'primary') do |panel|
+          -panel.heading do
+            -panel.title do
+              .row
+                .col-xs-8.col-sm-3
+                  %h4
+                    ="new vehicle"
+                - if controller.controller_name.eql?("dashboards") && controller.action_name.eql?("index")
+                  .hidden-xs.col-sm-9
+                    = render "shared/breadcrumbs"
+                - else
+                  .hidden-xs.col-sm-7
+                    = render "shared/breadcrumbs"
+                  .col-xs-4.col-sm-2
+                    = link_to "Back", :back, class: "btn btn-warning btn-block"
+          -panel.body do
+            %legend
+            .container-fluid
+              .row
+                .col-xs-12
+                  = render partial: 'form', locals: {f: f}
+          - panel.footer do
+            = f.submit 'Add Vehicle', class: "btn btn-success btn-block", id: "add_vehicle"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  -#= BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
+    -#= render partial: 'shared/panel_header', 
+      -#locals: {
+      -#panel: panel, 
+      -#title: "Add a Vehicle #{current_user.first_name}"}
+    -#- panel.body do
+      -#= render partial: 'form', locals: {f: f}
+    -#- panel.footer do 
+      -#.col-xs-10.col-sm-10.col-md-10.col-lg-10
+      -#.col-xs-2.col-sm-2.col-md-2.col-lg-2
+        -#= f.submit 'Add Vehicle', class: "btn btn-success btn-block", id: "add_vehicle"
 

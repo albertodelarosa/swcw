@@ -36,13 +36,13 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
     @vehicle  = Vehicle.new
-    @years    = VehicleYear.all
-    @makes    = []
-    @models   = []
-    @trims    = []
-    @types    = []
-    @doors    = []
-    @sizes    = []
+    #@years    = VehicleYear.all
+    #@makes    = []
+    #@models   = []
+    #@trims    = []
+    #@types    = []
+    #@doors    = []
+    #@sizes    = []
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,10 +60,11 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # POST /customers/vehicles
   # POST /customers/vehicles.json
   def create
-    @vehicle = Vehicle.new(color: params[:vehicle][:color], 
-                           comments: params[:vehicle][:comments], 
-                           license_plate_number: params[:vehicle][:license_plate_number], 
-                           state_registered: params[:vehicle][:state_registered] 
+    @vehicle = Vehicle.new(params_new_vehicle)
+    #@vehicle = Vehicle.new(color: params[:vehicle][:color], 
+                           #comments: params[:vehicle][:comments], 
+                           #license_plate_number: params[:vehicle][:license_plate_number], 
+                           #state_registered: params[:vehicle][:state_registered] 
                            #vehicle_years:   VehicleYear.find(params[:vehicle][:vehicle_years][:id]), 
                            #vehicle_makes:   VehicleMake.find(params[:vehicle][:vehicle_makes][:id]), 
                            #vehicle_models:  VehicleModel.find(params[:vehicle][:vehicle_models][:id]), 
@@ -71,19 +72,19 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
                            #vehicle_types:   VehicleType.find(params[:vehicle][:vehicle_types][:id]), 
                            #vehicle_doors:   VehicleDoor.find(params[:vehicle][:vehicle_doors][:id]) 
                            #vehicle_sizes:   VehicleSize.find(params[:vehicle][:vehicle_sizes][:id])
-                          )
-    @vehicle.vehicle_years        << VehicleYear.find(params[:vehicle][:vehicle_years][:id])
-    @vehicle.vehicle_makes        << VehicleMake.find(params[:vehicle][:vehicle_makes][:id])
-    @vehicle.vehicle_models       << VehicleModel.find(params[:vehicle][:vehicle_models][:id])
-    @vehicle.vehicle_trims        << VehicleTrim.find(params[:vehicle][:vehicle_trims][:id])
-    @vehicle.vehicle_types        << VehicleType.find(params[:vehicle][:vehicle_types][:id])
-    @vehicle.vehicle_doors        << VehicleDoor.find(params[:vehicle][:vehicle_doors][:id])
+                          #)
+    #@vehicle.vehicle_years        << VehicleYear.find(params[:vehicle][:vehicle_years][:id])
+    #@vehicle.vehicle_makes        << VehicleMake.find(params[:vehicle][:vehicle_makes][:id])
+    #@vehicle.vehicle_models       << VehicleModel.find(params[:vehicle][:vehicle_models][:id])
+    #@vehicle.vehicle_trims        << VehicleTrim.find(params[:vehicle][:vehicle_trims][:id])
+    #@vehicle.vehicle_types        << VehicleType.find(params[:vehicle][:vehicle_types][:id])
+    #@vehicle.vehicle_doors        << VehicleDoor.find(params[:vehicle][:vehicle_doors][:id])
 
     respond_to do |format|
-      if @vehicle.save
+      if @vehicle.save!
         @vehicle.owners << current_user
         format.html { redirect_to root_path, notice: 'Vehicle was successfully created.' }
-        format.json { render params[:id]}#json: @vehicle, status: :created, location: @vehicle }
+        format.json { render @vehicle.id}#json: @vehicle, status: :created, location: @vehicle }
       else
         format.html { render action: "new" }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
@@ -91,35 +92,35 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
     end
   end
 
-  def update_make
-    makes = VehicleMake.joins(vehicle_models: [vehicle_trims: :vehicle_years]).where(vehicle_years: {id: params[:vehicle_year]}).uniq
-    @makes = makes.map{|make| [make.name, make.id]}.insert(0, "Select Make")
-  end
+  #def update_make
+    #makes = VehicleMake.joins(vehicle_models: [vehicle_trims: :vehicle_years]).where(vehicle_years: {id: params[:vehicle_year]}).uniq
+    #@makes = makes.map{|make| [make.name, make.id]}.insert(0, "Select Make")
+  #end
 
-  def update_model
-    models = VehicleModel.joins(:vehicle_makes, :vehicle_trims => :vehicle_years).where(vehicle_makes: {id: params[:vehicle_make]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
-    @models = models.map{|model| [model.name, model.id]}.insert(0, "Select Model")
-  end
+  #def update_model
+    #models = VehicleModel.joins(:vehicle_makes, :vehicle_trims => :vehicle_years).where(vehicle_makes: {id: params[:vehicle_make]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
+    #@models = models.map{|model| [model.name, model.id]}.insert(0, "Select Model")
+  #end
 
-  def update_trim
-    trims = VehicleTrim.joins(:vehicle_years, :vehicle_models).where(vehicle_models: {id: params[:vehicle_model]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
-    @trims = trims.map{|trim| [trim.name, trim.id]}.insert(0, "Select Trim")
-  end
+  #def update_trim
+    #trims = VehicleTrim.joins(:vehicle_years, :vehicle_models).where(vehicle_models: {id: params[:vehicle_model]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
+    #@trims = trims.map{|trim| [trim.name, trim.id]}.insert(0, "Select Trim")
+  #end
 
-  def update_type
-    types = VehicleType.joins(:vehicle_trims, :vehicle_years).where(vehicle_trims: {id: params[:vehicle_trim]}).where(vehicle_years: {id: params[:vehicle_year]})
-    @types = types.map{|type| [type.name, type.id]}.insert(0, "Select Type")
-  end
+  #def update_type
+    #types = VehicleType.joins(:vehicle_trims, :vehicle_years).where(vehicle_trims: {id: params[:vehicle_trim]}).where(vehicle_years: {id: params[:vehicle_year]})
+    #@types = types.map{|type| [type.name, type.id]}.insert(0, "Select Type")
+  #end
 
-  def update_doors
-    doors = VehicleDoor.joins(:vehicle_types, :vehicle_years).where(vehicle_types: {id: params[:vehicle_type]}).where(vehicle_years: {id: params[:vehicle_year]})
-    @doors = doors.map{|door| [door.name, door.id]}.insert(0, "Select Doors")
-  end
+  #def update_doors
+    #doors = VehicleDoor.joins(:vehicle_types, :vehicle_years).where(vehicle_types: {id: params[:vehicle_type]}).where(vehicle_years: {id: params[:vehicle_year]})
+    #@doors = doors.map{|door| [door.name, door.id]}.insert(0, "Select Doors")
+  #end
 
-  def update_size
-    sizes = VehicleSize.joins(:vehicle_types).where(vehicle_types: {id: params[:vehicle_type]})
-    @sizes = sizes.map{|size| [size.name, size.id]}.insert(0, "Select Size")
-  end
+  #def update_size
+    #sizes = VehicleSize.joins(:vehicle_types).where(vehicle_types: {id: params[:vehicle_type]})
+    #@sizes = sizes.map{|size| [size.name, size.id]}.insert(0, "Select Size")
+  #end
 
   # PUT /customers/vehicles/1
   # PUT /customers/vehicles/1.json
@@ -127,7 +128,7 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
     @vehicle = Vehicle.find(params[:id])
 
     respond_to do |format|
-      if @vehicle.update_attributes(params[:vehicle])
+      if @vehicle.update_attributes(params_update_vehicle)
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
         format.json { head :no_content }
       else
@@ -148,4 +149,15 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def params_new_vehicle
+    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :vehicle_size, :color, :license_plate, :state_registered, :comments)
+  end
+
+  def params_update_vehicle
+    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_doors, :vehicle_size, :color, :license_plate, :state_registered, :comments, :id)
+  end
+
 end

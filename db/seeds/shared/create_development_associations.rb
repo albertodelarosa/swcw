@@ -55,24 +55,23 @@ developer.work_address =
   )
 printFinished()
 
-printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
-my_vehicle =
-  Vehicle.create!(
-    year:             "1997",
-    make:             "Chevrolet",
-    model:            "Camaro",
-    trim:             "Z28",
-    license_plate:    "hotweel",
-    state_registered: "CA",
-    color:            "Artic White",
-    comments:         "Please wash the mats"
-  )
-
-my_vehicle.vehicle_types << VehicleType.find_by_name("Convertible")
-my_vehicle.vehicle_doors << VehicleDoor.find_by_name("2 Door")
-my_vehicle.vehicle_sizes << VehicleSize.find_by_name("Small")
-developer.vehicles       << my_vehicle
-printFinished()
+#printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
+#my_vehicle =
+  #Vehicle.create!(
+    #year:             "1997",
+    #make:             "Chevrolet",
+    #model:            "Camaro",
+    #trim:             "Z28",
+    #type:             "Convertible",
+    #doors:            "2 Door",
+    #size:             "Small",
+    #license_plate:    "hotweel",
+    #state_registered: "CA",
+    #color:            "Artic White",
+    #comments:         "Please wash the mats"
+  #)
+#developer.vehicles << my_vehicle
+#printFinished()
 
 
 printStarting("ASSOCIATING DEFAULT APPOINTMENTS")
@@ -84,16 +83,16 @@ appointment_last_week = Appointment.find(first_appointment_id + 2)
 
 appointment_last_week.sites     << site1
 appointment_last_week.companies << site1.companies[0]
-appointment_last_week.vehicles  << my_vehicle
+#appointment_last_week.vehicles  << my_vehicle
 
 
 appointment_today.sites     << site1
 appointment_today.companies << site1.companies[0]
-appointment_today.vehicles  << my_vehicle
+#appointment_today.vehicles  << my_vehicle
 
 appointment_tomorrow.sites      << site1
 appointment_tomorrow.companies  << site1.companies[0]
-appointment_tomorrow.vehicles   << my_vehicle
+#appointment_tomorrow.vehicles   << my_vehicle
 printFinished()
 
 printFinished()

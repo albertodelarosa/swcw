@@ -1,43 +1,76 @@
-.row
-  .span10.offset1
-    %table.table.table-striped.table-hover.table-condensed
-      %tr
-        %th Year
-        %th Make
-        %th Model
-        %th Trim
-        %th Type
-        %th Doors
-        -#%th Size
-        %th Color
-        %th Comments
-        %th License Plate Number
-        %th State Registered
-
-      - @vehicles.each do |vehicle|
-        %tr
-          %td 
-            = vehicle.vehicle_years[0].name
-          %td 
-            = vehicle.vehicle_makes[0].name
-          %td 
-            = vehicle.vehicle_models[0].name
-          %td 
-            = vehicle.vehicle_trims[0].name
-          %td 
-            = vehicle.vehicle_types[0].name
-          %td 
-            = vehicle.vehicle_doors[0].name
-          -#%td 
-            -#= vehicle.vehicle_sizes[0].name
-          %td 
-            = vehicle.color
-          %td 
-            = vehicle.comments
-          %td 
-            = vehicle.license_plate_number
-          %td 
-            = vehicle.state_registered
+.section.section-default
+  - @vehicles.each_with_index do |vehicle, index|
+    .well.well-info
+      %legend
+        = "license#: #{vehicle.license_plate}"
+      .row
+        .col-xs-12.col-sm-8
+          .well.well-primary.col-xs-12
+            %h3
+              picture unavailable
+            %h3
+              picture unavailable
+            %h3
+              picture unavailable
+            %h3
+              picture unavailable
+            %h3
+              picture unavailable
+            %h3
+              picture unavailable
+          .well.well-primary.col-xs-12
+            %ul.list-group.list-group
+              Comments
+              -if vehicle.comments.empty?
+                %li.list-group-item
+                  no comments avaiable
+              -else
+                %li.list-group-item
+                  = vehicle.comments
+        .col-xs-12.col-sm-4
+          %ul.list-group.list-group.service-ul
+            %li.list-group-item
+              %ul.list-group.list-group
+                Year
+                %li.list-group-item
+                  = vehicle.vehicle_year
+              %ul.list-group.list-group
+                Make
+                %li.list-group-item
+                  = vehicle.vehicle_make
+              %ul.list-group.list-group
+                Model
+                %li.list-group-item
+                  = vehicle.vehicle_model
+              %ul.list-group.list-group
+                Trim
+                %li.list-group-item
+                  = vehicle.vehicle_trim
+              %ul.list-group.list-group
+                Type
+                %li.list-group-item
+                  = vehicle.vehicle_type
+              %ul.list-group.list-group
+                Doors
+                %li.list-group-item
+                  = vehicle.vehicle_door
+              %ul.list-group.list-group
+                Size
+                %li.list-group-item
+                  = vehicle.vehicle_size
+              %ul.list-group.list-group
+                Color
+                %li.list-group-item
+                  = vehicle.color
+              %ul.list-group.list-group
+                State Registered
+                %li.list-group-item
+                  = vehicle.state_registered
+              -unless vehicle.comments.empty?
+                %ul.list-group.list-group
+                  Comments
+                  %li.list-group-item
+                    = vehicle.comments
 
 -#%h1 Listing vehicles
 

@@ -1,55 +1,34 @@
-.col-sm-6.col-md-6.vehicle_selects
-  = f.fields_for :vehicle_years do |vyr|
-    .form-group
-      = vyr.label :year, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vyr.collection_select( :id, @years, :id, :name, {prompt: "Select Year"}, {class: "form-control"})
-  = f.fields_for :vehicle_makes do |vma|
-    .form-group
-      = vma.label :make, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vma.collection_select(:id, @makes, :id, :name, {prompt: "Select Make"}, {class: "form-control"})
-  = f.fields_for :vehicle_models do |vmo|
-    .form-group
-      = vmo.label :model, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vmo.collection_select(:id, @models, :id, :name, {prompt: "Select Model"}, {class: "form-control"})
-  = f.fields_for :vehicle_trims do |vtm|
-    .form-group
-      = vtm.label :trim, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vtm.collection_select(:id, @trims, :id, :name, {prompt: "Select Trim"}, {class: "form-control"})
-  = f.fields_for :vehicle_types do |vty|
-    .form-group
-      = vty.label :type, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vty.collection_select(:id, @types, :id, :name, {prompt: "Select Type"}, {class: "form-control"})
-  = f.fields_for :vehicle_doors do |vdr|
-    .form-group
-      = vdr.label :door, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vdr.collection_select(:id, @doors, :id, :name, {prompt: "Select Doors"}, {class: "form-control"})
-  = f.fields_for :vehicle_sizes do |vsz|
-    .form-group
-      = vsz.label :size, class: "control-label col-sm-4 col-md-4"
-      .col-sm-8.col-md-8
-        = vsz.collection_select(:id, @sizes, :id, :name, {prompt: "Select Size"}, {class: "form-control"})
-
-.col-sm-6.col-md-6
-  .form-group
-    = f.label :color, class: "control-label col-sm-5 col-md-5"
-    .col-sm-7.col-md-7
-      = f.text_field :color, class: "form-control"
-  .form-group
-    = f.label :comments, class: "control-label col-sm-5 col-md-5"
-    .col-sm-7.col-md-7
-      = f.text_area :comments, rows: 3, class: "form-control"
-  .form-group
-    = f.label :license_plate_number, class: "control-label col-sm-5 col-md-5"
-    .col-sm-7.col-md-7
-      = f.text_field :license_plate_number, class: "form-control"
-  .form-group
-    = f.label :state_registered, class: "control-label col-sm-5 col-md-5"
-    .col-sm-7.col-md-7
-      = f.text_field :state_registered, class: "form-control"
+.form-group
+  = f.label :vehicle_year, class: 'sr-only'
+  = f.text_field :vehicle_year, class: "form-control", placeholder: "year"
+.form-group
+  = f.label :vehicle_make, class: 'sr-only'
+  = f.text_field :vehicle_make, class: "form-control", placeholder: "make"
+.form-group
+  = f.label :vehicle_model, class: 'sr-only'
+  = f.text_field :vehicle_model, class: "form-control", placeholder: "model"
+.form-group
+  = f.label :vehicle_trim, class: 'sr-only'
+  = f.text_field :vehicle_trim, class: "form-control", placeholder: "trim"
+.form-group
+  = f.label :vehicle_type, class: 'sr-only'
+  = f.text_field :vehicle_type, class: "form-control", placeholder: "type"
+.form-group
+  = f.label :vehicle_door, class: 'sr-only'
+  = f.text_field :vehicle_door, class: "form-control", placeholder: "doors"
+.form-group
+  = f.label :vehicle_size, class: 'sr-only'
+  = f.text_field :vehicle_size, class: "form-control", placeholder: "size"
+.form-group
+  = f.label :color, class: 'sr-only'
+  = f.text_field :color, class: "form-control", placeholder: "color"
+.form-group
+  = f.label :license_plate, class: 'sr-only'
+  = f.text_field :license_plate, class: "form-control", placeholder: "license plate no."
+.form-group
+  = f.label :state_registered, class: 'sr-only'
+  = f.text_field :state_registered, class: "form-control", placeholder: "state registered"
+.form-group
+  = f.label :comments, class: 'sr-only'
+  = f.text_area :comments, class: "form-control", placeholder: "comments"
 

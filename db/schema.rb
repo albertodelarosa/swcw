@@ -453,10 +453,13 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "vehicle_types", ["name"], name: "index_vehicle_types_on_name", using: :btree
 
   create_table "vehicles", force: :cascade do |t|
-    t.string   "year",             default: "", null: false
-    t.string   "make",             default: "", null: false
-    t.string   "model",            default: "", null: false
-    t.string   "trim",             default: "", null: false
+    t.string   "vehicle_year",     default: "", null: false
+    t.string   "vehicle_make",     default: "", null: false
+    t.string   "vehicle_model",    default: "", null: false
+    t.string   "vehicle_trim",     default: "", null: false
+    t.string   "vehicle_type",     default: "", null: false
+    t.string   "vehicle_door",     default: "", null: false
+    t.string   "vehicle_size",     default: "", null: false
     t.string   "license_plate",    default: "", null: false
     t.string   "state_registered", default: "", null: false
     t.string   "color",            default: "", null: false
@@ -468,11 +471,14 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "vehicles", ["color"], name: "index_vehicles_on_color", using: :btree
   add_index "vehicles", ["comments"], name: "index_vehicles_on_comments", using: :btree
   add_index "vehicles", ["license_plate"], name: "index_vehicles_on_license_plate", using: :btree
-  add_index "vehicles", ["make"], name: "index_vehicles_on_make", using: :btree
-  add_index "vehicles", ["model"], name: "index_vehicles_on_model", using: :btree
   add_index "vehicles", ["state_registered"], name: "index_vehicles_on_state_registered", using: :btree
-  add_index "vehicles", ["trim"], name: "index_vehicles_on_trim", using: :btree
-  add_index "vehicles", ["year"], name: "index_vehicles_on_year", using: :btree
+  add_index "vehicles", ["vehicle_door"], name: "index_vehicles_on_vehicle_door", using: :btree
+  add_index "vehicles", ["vehicle_make"], name: "index_vehicles_on_vehicle_make", using: :btree
+  add_index "vehicles", ["vehicle_model"], name: "index_vehicles_on_vehicle_model", using: :btree
+  add_index "vehicles", ["vehicle_size"], name: "index_vehicles_on_vehicle_size", using: :btree
+  add_index "vehicles", ["vehicle_trim"], name: "index_vehicles_on_vehicle_trim", using: :btree
+  add_index "vehicles", ["vehicle_type"], name: "index_vehicles_on_vehicle_type", using: :btree
+  add_index "vehicles", ["vehicle_year"], name: "index_vehicles_on_vehicle_year", using: :btree
 
   add_foreign_key "accounts", "users"
   add_foreign_key "discounts", "accounts"
