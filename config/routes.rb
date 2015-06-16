@@ -1,25 +1,26 @@
 Sitelerwash::Application.routes.draw do
 
-  get 'line_items/create'
+  resources :line_items, only: [:create]
 
-  get 'carts/show'
+  resources :carts, only: [:show] do
+    get 'purchase', on: :member
+  end
 
-  get 'carts/purchase'
-
-  get 'orders/new'
-
-  get 'orders/success'
-
-  get 'orders/failure'
+  resources :orders, only: [:new, :create] do
+    member do
+      get 'success'
+      get 'failure'
+    end
+  end
 
   namespace :dashboard do
-    get "/" => "dashboards#index"
+    root to: "dashboards#index"
 
     resources :appointments
     resources :sites
     resources :companies
-    resources :vehicles do 
-      collection do 
+    resources :vehicles do
+      collection do
         get :update_make, :update_model, :update_trim, :update_type, :update_doors, :update_size
       end
     end
@@ -29,13 +30,13 @@ Sitelerwash::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  devise_for :users, :controllers => {
-    :sessions           => "users/sessions",
-    :confirmations      => "users/confirmations",
-    :passwords          => "users/passwords",
-    :registrations      => "users/registrations",
-    :unlocks            => "users/unlocks",
-    :omniauth_callbacks => "users/omniauth_callbacks"
+  devise_for :users, controllers: {
+    sessions:           "users/sessions",
+    confirmations:      "users/confirmations",
+    passwords:          "users/passwords",
+    registrations:      "users/registrations",
+    unlocks:            "users/unlocks",
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   devise_scope :user do
@@ -48,7 +49,7 @@ Sitelerwash::Application.routes.draw do
 
   #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
-  root :to => "welcome#index"
+  root to: "welcome#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

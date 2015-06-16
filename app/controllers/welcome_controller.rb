@@ -5,24 +5,7 @@ class WelcomeController < ApplicationController
     #add_breadcrumb 'Hotel Manager', '<a href="/hotelmanager/">Hotel Manager</a>'
     #add_breadcrumb 'Hotel Manager', 'Hotels'
     if user_signed_in?
-      redirect_to dashboard_path()
+      redirect_to dashboard_root_path()
     end
-  end
-
-  def dashboard
-    @vehicles = current_user.vehicles || []
-    @new_vehicle = Vehicle.new
-  end
-
-  def create_vehicle
-
-  end
-
-  def update_vehicle
-
-  end
-
-  def vehicles
-    @models = Model.all
   end
 end

@@ -30,14 +30,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     unless resource.instance_of?(AdminUser)
-      dashboard_path()
+      dashboard_root_path()
     else
       super
     end
   end
 
   def after_inactive_sign_up_path_for(resource)
-    dashboard_path()
+    dashboard_root_path()
   end
 
   def add_breadcrumb name, url = "", icon = ""
