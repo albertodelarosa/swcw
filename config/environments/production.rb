@@ -81,9 +81,11 @@ Sitelerwash::Application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :production
     ::GATEWAY = ActiveMerchant::Billing::QuickbooksGateway.new(
-      :login => "seller_1229899173_biz_api1.railscasts.com",
-      :password => "FXWU58S7KXFC6HBE",
-      :signature => "AGjv6SW.mTiKxtkm6L9DcSUCUgePAUDQ3L-kTdszkPG8mRfjaRZDYtSu"
+      realm:            Rails.application.secrets.gb_realm,
+      consumer_key:     Rails.application.secrets.qb_consumer_key,
+      consumer_secret:  Rails.application.secrets.qb_consumer_secret,
+      access_token:     Rails.application.secrets.qb_access_token,
+      token_secret:     Rails.application.secrets.qb_token_secret
     )
   end
 

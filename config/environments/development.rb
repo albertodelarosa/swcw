@@ -55,28 +55,16 @@ Sitelerwash::Application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  #:consumer_key, 
-  #:consumer_secret, 
-  #:access_token, 
-  #:token_secret, 
-  #:realm
-  #
-  #
-  #credit_card_options = {first_name: "Alberto", last_name: "de la Rosa", month: '9', year: "2016", brand: "visa", number: "4242424242424242", verification_value: "123"}
-  #credit_card = ActiveMerchant::Billing::CreditCard.new(credit_card_options)
-  #gateway_options = {billing_address: {name: "Alberto de la Rosa", address: "123 Main Street", city: "New York", state: "NY", country: "US", zip: "10001"}}
-  #gateway_options = {ip: "", billing_address: {name: "Alberto de la Rosa", address: "123 Main Street", city: "New York", state: "NY", country: "US", zip: "10001"}}
-  #gateway_response = GATEWAY.purchase(13000, credit_card, gateway_options)
-
+  # Gateway for Quickbooks
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
 
     ::GATEWAY = ActiveMerchant::Billing::QuickbooksGateway.new(
-      consumer_key:     QB_CREDS['dev_secret'],
-      consumer_secret:  QB_CREDS['secret'],
-      access_token:     QB_CREDS['access_token'],
-      token_secret:     QB_CREDS['access_token_secret'],
-      realm:            QB_CREDS['dev_realm']
+      realm:            Rails.application.secrets.gb_realm,
+      consumer_key:     Rails.application.secrets.qb_consumer_key,
+      consumer_secret:  Rails.application.secrets.qb_consumer_secret,
+      access_token:     Rails.application.secrets.qb_access_token,
+      token_secret:     Rails.application.secrets.qb_token_secret
     )
   end
 end

@@ -10,17 +10,10 @@
     #bg
     = render "shared/navbar"
     = render "shared/alert", flash: flash
-    - unless session[:token]
-      %ipp:connectToIntuit
-    - if notice
-      %div{:style => "padding: 10px;background: gainsboro;font-weight: 900;width: 50%;"}= notice
     #wrap
       = yield
       = render "welcome/pre_footer"
     = render "shared/footer"
     = javascript_include_tag "welcome"
-    %script{:src => "https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js", :type => "text/javascript"}
-    :javascript
-      intuit.ipp.anywhere.setup({menuProxy: '/path/to/blue-dot', grantUrl: ' authenticate_vendors_url '});
     = render "shared/javascripts"
 
