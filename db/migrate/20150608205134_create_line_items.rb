@@ -1,16 +1,16 @@
 class CreateLineItems < ActiveRecord::Migration
   def change
     create_table :line_items do |t|
-      t.decimal :unit_price
-      t.integer :product_id
-      t.integer :cart_id
-      t.integer :quantity
+      t.decimal     :unit_price,   index: true, null: false, default: 0.0
+      t.integer     :quantity,     index: true, null: false, default: 0
+      t.belongs_to  :cart,         index: true
+      t.belongs_to  :service_plan, index: true
 
       t.timestamps null: false
     end
-    add_index :line_items, :unit_price
-    add_index :line_items, :product_id
-    add_index :line_items, :cart_id
-    add_index :line_items, :quantity
+    add_index :line_items, [:unit_price, :quantity]
+
+    add_foreign_key :line_items, :carts
+    add_foreign_key :line_items, :service_plans
   end
 end
