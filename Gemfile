@@ -75,6 +75,9 @@ group :development do
   gem 'rails-erd'
   gem 'guard-rspec', require: false
 
+  # Generate Entity-Relationship Diagrams
+  gem "rails-erd"
+
   gem 'sextant' #rake routes on http://localhost:3000/rails/routes
   gem "better_errors"
   gem "binding_of_caller"
