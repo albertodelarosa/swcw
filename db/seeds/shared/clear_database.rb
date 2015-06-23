@@ -5,6 +5,10 @@ printStarting("DELETING ADMIN USERS")
 AdminUser.all.each(&:destroy)
 printFinished()
 
+printStarting("DELETING EXISTING ACCOUNTS")
+Account.all.each(&:destroy)
+printFinished()
+
 printStarting("DELETING EXISTING USERS")
 User.all.each(&:destroy)
 printFinished()
@@ -37,11 +41,19 @@ printStarting("DELETING EXISTING SIZES")
 VehicleSize.all.each(&:destroy)
 printFinished()
 
+printStarting("DELETING EXISTING SITELER DOLLARS")
+SitelerDollar.all.each(&:destroy)
+printFinished()
+
 printStarting("DELETING EXISTING DISCOUNTS")
 Discount.all.each(&:destroy)
 printFinished()
 
-printStarting("DELETING EXISTING WASHING SERVICES")
+printStarting("DELETING EXISTING SERVICE PLANS")
+ServicePlan.all.each(&:destroy)
+printFinished()
+
+printStarting("DELETING EXISTING SERVICES")
 Service.all.each(&:destroy)
 printFinished()
 
