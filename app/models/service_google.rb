@@ -1,4 +1,4 @@
 class ServiceGoogle < Service
-  include WashingServices
+  include DetailingServicesGoogle
 end
 

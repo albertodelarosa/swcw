@@ -1,4 +1,4 @@
 class ServiceRegular < Service
-  include WashingServices
+  include DetailingServicesRegular
 end
 
