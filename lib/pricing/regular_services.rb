@@ -92,4 +92,25 @@ module Pricing::RegularServices
   PALACE_COMPLETE_DURATION  = 720
 
 
+
+################ PLANS ################
+  PACKAGE_NAMES = ["Complete Package",
+                   "Exterior Package",
+                   "Interior Package"]
+
+  COMPLETE_PACKAGE = ["Palace Complete",
+                      "Villa",
+                      "Villa",
+                      "Villa"]
+  EXTERIOR_PACKAGE = ["Palace Exterior",
+                      "Villa",
+                      "Villa",
+                      "Villa"]
+  INTERIOR_PACKAGE = ["Palace Interior",
+                      "Villa",
+                      "Villa",
+                      "Villa"]
+
+
+
 end
