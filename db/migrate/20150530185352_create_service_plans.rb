@@ -1,10 +1,11 @@
 class CreateServicePlans < ActiveRecord::Migration
   def change
     create_table :service_plans do |t|
-      t.string :name,         index: true, null: false, default: ""
-      t.string :status,       index: true, null: false, default: ""
-      t.string :package_type, index: true, null: false, default: ""
-      t.belongs_to :account
+      t.string      :name,          index: true, null: false, default: ""
+      t.string      :status,        index: true, null: false, default: ""
+      t.string      :package_type,  index: true, null: false, default: ""
+      t.decimal     :price,         index: true, null: false, default: 0.0, precision: 8, scale: 2
+      t.belongs_to  :account
       #t.belongs_to :accounts
 
       t.timestamps null: false

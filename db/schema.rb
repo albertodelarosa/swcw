@@ -467,18 +467,20 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "orders", ["last_name"], name: "index_orders_on_last_name", using: :btree
 
   create_table "service_plans", force: :cascade do |t|
-    t.string   "name",         default: "", null: false
-    t.string   "status",       default: "", null: false
-    t.string   "package_type", default: "", null: false
+    t.string   "name",                                 default: "",  null: false
+    t.string   "status",                               default: "",  null: false
+    t.string   "package_type",                         default: "",  null: false
+    t.decimal  "price",        precision: 8, scale: 2, default: 0.0, null: false
     t.integer  "account_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "service_plans", ["name", "package_type"], name: "index_service_plans_on_name_and_package_type", using: :btree
   add_index "service_plans", ["name", "status"], name: "index_service_plans_on_name_and_status", using: :btree
   add_index "service_plans", ["name"], name: "index_service_plans_on_name", using: :btree
   add_index "service_plans", ["package_type"], name: "index_service_plans_on_package_type", using: :btree
+  add_index "service_plans", ["price"], name: "index_service_plans_on_price", using: :btree
   add_index "service_plans", ["status", "package_type"], name: "index_service_plans_on_status_and_package_type", using: :btree
   add_index "service_plans", ["status"], name: "index_service_plans_on_status", using: :btree
 
