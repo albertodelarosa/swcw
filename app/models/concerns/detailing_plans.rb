@@ -3,25 +3,20 @@ module DetailingPlans
 
   def populate_regular_plan(options = {})
     self.status = ServicePlan::STATUS[0]
-    self.type = ServicePlan::TYPE[options[:package_type]]
-    if self.type == "individual"
+    self.package_type = ServicePlan::TYPE[options[:package_type]]
+    if self.package_type == "individual"
       service_name = options[:service_name]
-      temp_service = get_regular_service(service_name)
-      puts
-      puts("self type: #{self.type}")
-      puts("self status: #{self.status}")
-      puts("package type: #{options[:package_type]}")
-      puts("package name: #{options[:package_name]}")
-      puts("service name: #{options[:service_name]}")
-      puts("temp service: #{temp_service.class}")
-      puts("temp service: #{temp_service.to_s}")
-      puts
-
+      self.name = "#{service_name} Service"
       self.services << get_regular_service(service_name)
     else
-      Pricing::RegularServices.const_get(("#{options[:package_name]}").upcase.tr(" ","_")).each do |service_name|
+      package_name = options[:package_name]
+      self.name = package_name
+      Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_")).each do |service_name|
         self.services << get_regular_service(service_name)
       end
+      service_name = Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_")).last
+      options[:comp] = true
+      self.services << get_regular_service(service_name, options)
     end
   end
 
