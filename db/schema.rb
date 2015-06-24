@@ -467,21 +467,20 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "orders", ["last_name"], name: "index_orders_on_last_name", using: :btree
 
   create_table "service_plans", force: :cascade do |t|
-    t.string   "name",       default: "", null: false
-    t.string   "status",     default: "", null: false
-    t.string   "type",       default: "", null: false
+    t.string   "name",         default: "", null: false
+    t.string   "status",       default: "", null: false
+    t.string   "package_type", default: "", null: false
     t.integer  "account_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "service_plans", ["account_id"], name: "index_service_plans_on_account_id", using: :btree
+  add_index "service_plans", ["name", "package_type"], name: "index_service_plans_on_name_and_package_type", using: :btree
   add_index "service_plans", ["name", "status"], name: "index_service_plans_on_name_and_status", using: :btree
-  add_index "service_plans", ["name", "type"], name: "index_service_plans_on_name_and_type", using: :btree
   add_index "service_plans", ["name"], name: "index_service_plans_on_name", using: :btree
-  add_index "service_plans", ["status", "type"], name: "index_service_plans_on_status_and_type", using: :btree
+  add_index "service_plans", ["package_type"], name: "index_service_plans_on_package_type", using: :btree
+  add_index "service_plans", ["status", "package_type"], name: "index_service_plans_on_status_and_package_type", using: :btree
   add_index "service_plans", ["status"], name: "index_service_plans_on_status", using: :btree
-  add_index "service_plans", ["type"], name: "index_service_plans_on_type", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "name",                                             default: "",  null: false
@@ -516,7 +515,6 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "services", ["name", "large_price"], name: "index_services_on_name_and_large_price", using: :btree
   add_index "services", ["name", "small_price"], name: "index_services_on_name_and_small_price", using: :btree
   add_index "services", ["name"], name: "index_services_on_name", using: :btree
-  add_index "services", ["service_plan_id"], name: "index_services_on_service_plan_id", using: :btree
   add_index "services", ["small_price", "duration"], name: "index_services_on_small_price_and_duration", using: :btree
   add_index "services", ["small_price", "large_price"], name: "index_services_on_small_price_and_large_price", using: :btree
   add_index "services", ["small_price"], name: "index_services_on_small_price", using: :btree
@@ -734,7 +732,6 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_foreign_key "discounts", "accounts"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "service_plans"
-  add_foreign_key "service_plans", "accounts"
   add_foreign_key "services", "service_plans"
   add_foreign_key "siteler_dollars", "accounts"
 end
