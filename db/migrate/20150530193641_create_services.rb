@@ -7,7 +7,7 @@ class CreateServices < ActiveRecord::Migration
       t.decimal :small_price,     index: true, null: false, default: 0.0, precision: 8, scale: 2
       t.decimal :large_price,     index: true, null: false, default: 0.0, precision: 8, scale: 2
       t.integer :duration,        index: true, null: false, default: 0
-      t.belongs_to :service_plan, index: true
+      t.belongs_to :service_plan
 
       t.string  :child_class
       t.string  :washing_serviceable_type
