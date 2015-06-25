@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "account_number",                            default: "",    null: false
-    t.string   "status",                                    default: "",    null: false
+    t.string   "status",                                    default: "new", null: false
     t.decimal  "sd_percent",        precision: 4, scale: 2, default: 0.0,   null: false
     t.boolean  "remove_cc_info",                            default: false, null: false
     t.boolean  "regular_allowed",                           default: false, null: false

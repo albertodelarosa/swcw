@@ -1,23 +1,27 @@
 =BootstrapHelper::Panel.new(class: 'primary') do |panel|
   -panel.heading() do
-    -panel.title(name: "legend") do
-      .h3 sign in
+    -panel.title(name: "h3") do
+      sign in
   -panel.body() do
     .container
       =form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |main_f|
-        .row
-          = main_f.label :email, class: "col-xs-5 text-center"
-          = main_f.label :or, class: "col-xs-2 text-center"
-          = main_f.label :username, class: "col-xs-5 text-center"
         .form-group
-          .col-xs-6
-            = main_f.text_field :email, placeholder: "email", class: "form-control", autofocus: true
-          .col-xs-6
-            = main_f.text_field :username, placeholder: "username", class: "form-control col-xs-12", autofocus: true
-
+          .input-group
+            %span.input-group-addon email
+            = main_f.email_field :email, placeholder: "email", class: "form-control", autofocus: true
         .form-group
-          = main_f.label :password, class: "sr-only"
-          = main_f.password_field :password, placeholder: "password", class: "form-control col-xs-12"
+          .input-group
+            %span.input-group-addon username
+            = main_f.text_field :username, placeholder: "username", class: "form-control", autofocus: true
+        .form-group
+          .input-group
+            %span.input-group-addon password
+            = main_f.password_field :password, placeholder: "password", class: "form-control"
+        - if devise_mapping.rememberable?
+          .form-group
+            = main_f.label :remember_me do
+              = main_f.check_box :remember_me
+              remember me
         .form-group
           .btn-group.btn-group-justified{role: "group"}
             .btn-group{role: "group"}
@@ -30,13 +34,13 @@
                   = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-primary", role: "button"
         - if devise_mapping.recoverable?
           .form-group
-            .btn-group.btn-group-justified{"aria-label" => "...", :role => "group"}
+            .btn-group.btn-group-justified{:role => "group"}
               - if controller_name != 'passwords' && controller_name != 'registrations'
                 .btn-group{:role => "group"}
-                  = link_to "forgot password", new_password_path(resource_name), class: "btn btn-info btn-xs", role: "button"
+                  = link_to "forgot password", new_password_path(resource_name), class: "btn btn-warning btn-xs", role: "button"
               - if controller_name != 'confirmations'
                 .btn-group{:role => "group"}
-                  = link_to "resend confirmation", new_confirmation_path(resource_name), class: "btn btn-info btn-xs", role: "button"
+                  = link_to "resend confirmation", new_confirmation_path(resource_name), class: "btn btn-warning btn-xs", role: "button"
               - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
                 .btn-group{:role => "group"}
                   = link_to "resend unlock", new_unlock_path(resource_name), class: "btn btn-info btn-xs", role: "button"
