@@ -7,9 +7,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(params_new_user)
     if @user.save!
+      account = Account.new
+      account.user = @user
+      account.generate_number
+      account.save!
       set_flash_message :notice, :signed_up
-      # Sign in the user bypassing validation in case his password changed
-      sign_in @user, :bypass => true
+      sign_in @user, :bypass => true # Sign in the user bypassing validation in case his password changed
       redirect_to after_sign_in_path_for(@user)
     else
       render root_path()
@@ -47,11 +50,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def params_new_user
-    params.required(:user).permit(:username, :email, :password, :password_confirmation, :remember_me)
+    params.required(:user).permit(:email, :username, :first_name, :last_name, :password, :password_confirmation, :remember_me)
   end
 
   def params_update_user
-    params.required(:user).permit(:username, :email, :current_password, :password, :password_confirmation, :remember_me,
+    params.required(:user).permit(:email, :username, :first_name, :last_name, :current_password, :password, :password_confirmation, :remember_me,
                                   home_contact_info_attributes: [         :mobile, :phone1,       :phone2, :fax, :id ],
                                   work_contact_info_attributes: [ :email, :mobile, :phone1, :ext, :phone2, :fax, :id ],
                                   home_address_attributes:      [ :street1, :apt_no,    :street2, :city, :state, :zip, :id ],
