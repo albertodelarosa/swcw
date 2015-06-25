@@ -1,9 +1,6 @@
 module DetailingServicesRegular
   extend ::ActiveSupport::Concern
 
-  included do
-    serialize :description, Array
-  end
   def populate(name, options = {})
     self.name = name
     self.description = Pricing::RegularServices.const_get((name + " service").upcase.tr(" ","_"))
