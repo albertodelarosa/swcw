@@ -2,7 +2,7 @@ class CreateServices < ActiveRecord::Migration
   def change
     create_table :services do |t|
       t.string  :name,            index: true, null: false, default: ""
-      t.text    :description,     index: true, null: true
+      t.text    :description,     index: true
       t.decimal :chosen_price,    index: true, null: false, default: 0.0, precision: 8, scale: 2
       t.decimal :small_price,     index: true, null: false, default: 0.0, precision: 8, scale: 2
       t.decimal :large_price,     index: true, null: false, default: 0.0, precision: 8, scale: 2
