@@ -1,10 +1,6 @@
 module DetailingServicesGoogle
   extend ::ActiveSupport::Concern
 
-  included do
-    serialize :description, Array
-  end
-
   def populate(name, comp = false)
     self.name = name
     self.description = Pricing::GoogleServices.const_get((name + " service").upcase.tr(" ","_"))
