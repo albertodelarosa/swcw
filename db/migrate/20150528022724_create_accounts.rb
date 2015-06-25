@@ -2,7 +2,7 @@ class CreateAccounts < ActiveRecord::Migration
   def change
     create_table :accounts do |t|
       t.string  :account_number,    index: true, null: false, default: ""
-      t.string  :status,            index: true, null: false, default: ""
+      t.string  :status,            index: true, null: false, default: "new"
       t.decimal :sd_percent,        index: true, null: false, default: 0.0,   precision: 4, scale: 2
       t.boolean :remove_cc_info,    index: true, null: false, default: false
       t.boolean :regular_allowed,   index: true, null: false, default: false
