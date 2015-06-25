@@ -82,7 +82,7 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
 
     respond_to do |format|
       if @vehicle.save!
-        @vehicle.owners << current_user
+        @vehicle.accounts << current_user.account
         format.html { redirect_to root_path, notice: 'Vehicle was successfully created.' }
         format.json { render @vehicle.id}#json: @vehicle, status: :created, location: @vehicle }
       else
@@ -145,7 +145,7 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
     @vehicle.destroy
 
     respond_to do |format|
-      format.html { redirect_to vehicles_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

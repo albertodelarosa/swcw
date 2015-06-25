@@ -6,7 +6,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def index
     add_breadcrumb "all", nil, "glyphicon-list"
 
-    @companies = current_user.companies || []
+    @companies = current_user.account.companies || []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,7 +32,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def new
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
-    @companies = current_user.companies || []
+    @companies = current_user.account.companies || []
     @company = Company.new
 
     respond_to do |format|
@@ -54,7 +54,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     @company = Company.find(params[:company][:id])
 
     respond_to do |format|
-      @company.clients << current_user
+      @company.accounts << current_user.account
       format.html { redirect_to root_path, notice: 'Company was successfully created.' }
       format.json
     end
@@ -66,9 +66,9 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
       @company = Company.find(params[:id])
 
       respond_to do |format|
-        if @company.clients.exists? current_user.id
-          @company.clients.delete(current_user)
-          @company.clients << current_user
+        if @company.accounts.user.exists? current_user.id
+          @company.accounts.user.delete(current_user)
+          @company.accounts.user << current_user
 
           format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
           format.json { head :no_content }
@@ -83,7 +83,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # DELETE /dashboard/companies/1.json
   def destroy
     @company = Company.find(params[:id])
-    @company.clients.delete(current_user)
+    @company.accounts.user.delete(current_user)
     #current_user.companies.delete(@company)
     #@company.destroy
 

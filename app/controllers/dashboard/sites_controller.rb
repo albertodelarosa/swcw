@@ -6,7 +6,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def index
     add_breadcrumb "all", nil, "glyphicon-list"
 
-    @sites =  current_user.sites || []
+    @sites =  current_user.account.sites || []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,8 +33,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
     @site = Site.new
-    @sites = current_user.sites || []
-    
+    @companies = Company.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,19 +45,19 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def edit
     add_breadcrumb "edit", nil, "glyphicon-edit"
 
-    @sites = current_user.sites
+    @sites = current_user.account.sites
     @site = Site.find(params[:id])
   end
 
   # POST /customers/sites
   # POST /customers/sites.json
   def create
-    @site = Site.find(params[:site][:id])
+    current_user.account.sites << Site.find(params_new_site)
+    current_user.account.companies << Company.find(params_new_company)
 
     respond_to do |format|
-      if @site.save
-        current_user.sites << @site
-        format.html { redirect_to root_path, notice: 'Site was successfully created.' }
+      if current_user.account.save
+        format.html { redirect_to root_path, notice: 'site and company was successfully created.' }
         format.json { render json: @site, status: :created, location: @site }
       else
         format.html { render action: "new" }
@@ -85,17 +84,6 @@ class Dashboard::SitesController < Dashboard::DashboardsController
       end
     end
   end
-#{
-  #"utf8"=>"✓", 
-  #"_method"=>"put", 
-  #"authenticity_token"=>"QErx4wlLZhuoOjuKY/O3u7H2ub6No2sQoY8WGiba8z4=", 
-  #"company"=>{"id"=>"11"}, 
-  #"site"=>{"id"=>"18"}, 
-  #"commit"=>"Edit", 
-  #"action"=>"update", 
-  #"controller"=>"dashboard/sites", 
-  #"id"=>"19"
-#}
 
   # DELETE /customers/sites/1
   # DELETE /customers/sites/1.json
@@ -110,4 +98,17 @@ class Dashboard::SitesController < Dashboard::DashboardsController
       end
     end
   end
+
+  private
+
+  def params_new_site
+    id = params.required(:site).permit(:id)
+    return id[:id]
+  end
+
+  def params_new_company
+    id = params.required(:company).permit(:id)
+    return id[:id]
+  end
+
 end
