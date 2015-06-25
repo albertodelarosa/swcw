@@ -1,46 +1,77 @@
-= form_for [:dashboard, @site], html: {class: "form-horizontal", role: "form"} do |f|
+= form_for [:dashboard, @site],  method: method, html: {class: "form-horizontal", role: "form"} do |f|
   - if @site.errors.any?
     #error_explanation
       %h2= "#{pluralize(@site.errors.count, "error")} prohibited this site from being saved:"
       %ul
         - @site.errors.full_messages.each do |msg|
           %li= msg
-  - if controller.controller_name.eql?("dashboards") && controller.action_name.eql?("index")
-    = BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
-      - size = 12
-      - panel.header_col(xs: size,sm: size,md:size,lg:size) do
-        %h4= "Add a Site #{current_user.first_name}"
-      - panel.body do
-        .form-group
-          = f.label :company_id, class: "control-label col-sm-4 col-md-4"
-          .col-sm-6.col-md-6
-            = collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
-        .form-group
-          = f.label :site_id, class: "control-label col-sm-4 col-md-4"
-          .col-sm-6.col-md-6
-            = f.grouped_collection_select( :id, Company.order(:name), :sites, :name, :id, :name, {prompt: "Select a Site"}, {class: "form-control"})
-      - panel.footer do 
-        .col-xs-8.col-sm-8.col-md-8.col-lg-8
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2
-          = link_to "Cancel", :back, class: "btn btn-danger btn-block"
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2
-          = f.submit 'Add', class: "btn btn-success btn-block"
-  - else
-    = BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
-      = render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Site #{current_user.first_name}"}
-      - panel.body do
-        .form-group
-          = f.label :company_id, class: "control-label col-sm-4 col-md-4"
-          .col-sm-6.col-md-6
-            = collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
-        .form-group
-          = f.label :site_id, class: "control-label col-sm-4 col-md-4"
-          .col-sm-6.col-md-6
-            = f.grouped_collection_select( :id, Company.order(:name), :sites, :name, :id, :name, {prompt: "Select a Site"}, {class: "form-control"})
-      - panel.footer do 
-        .col-xs-8.col-sm-8.col-md-8.col-lg-8
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2
-          = link_to "Cancel", :back, class: "btn btn-danger btn-block"
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2
-          = f.submit 'Add', class: "btn btn-success btn-block", id:"add_site"
+  =BootstrapHelper::Panel.new(class: 'primary') do |panel|
+    -panel.heading() do
+      -panel.title() do
+        .h4
+          = current_user.salutation.empty? ? "#{current_user.first_name} add a Site" : "#{current_user.salutation} add a Company"
+    - panel.body do
+      .row
+        .col-xs-12
+          .container-fluid
+            .form-group
+              = f.label :company_id, class: 'sr-only'
+              = collection_select(:company, :id, @companies.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
+            .form-group
+              = f.label :site_id, class: 'sr-only'
+              = f.grouped_collection_select( :id, @companies.order(:name), :sites, :name, :id, :name, {prompt: "Select a Site"}, {class: "form-control"})
+    - panel.footer do
+      .row
+        .col-xs-6
+          .container-fluid
+            .form-group
+              = link_to "Cancel", :back, class: "btn btn-danger btn-block"
+        .col-xs-6
+          .container-fluid
+            .form-group
+              = f.submit 'Save', class: "btn btn-success btn-block"
+
+
+
+
+
+
+  -#- if controller.controller_name.eql?("dashboards") && controller.action_name.eql?("index")
+    -#= BootstrapHelper::Panel.new(contextual: 'info', footer: '', title:"") do |panel|
+      -#- size = 12
+      -#- panel.header_col(xs: size,sm: size,md:size,lg:size) do
+        -#%h4= "Add a Site #{current_user.first_name}"
+      -#- panel.body do
+        -#.form-group
+          -#= f.label :company_id, class: "control-label col-sm-4 col-md-4"
+          -#.col-sm-6.col-md-6
+            -#= collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
+        -#.form-group
+          -#= f.label :site_id, class: "control-label col-sm-4 col-md-4"
+          -#.col-sm-6.col-md-6
+            -#= f.grouped_collection_select( :id, Company.order(:name), :sites, :name, :id, :name, {prompt: "Select a Site"}, {class: "form-control"})
+      -#- panel.footer do 
+        -#.col-xs-8.col-sm-8.col-md-8.col-lg-8
+        -#.col-xs-2.col-sm-2.col-md-2.col-lg-2
+          -#= link_to "Cancel", :back, class: "btn btn-danger btn-block"
+        -#.col-xs-2.col-sm-2.col-md-2.col-lg-2
+          -#= f.submit 'Add', class: "btn btn-success btn-block"
+  -#- else
+    -#= BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
+      -#= render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Site #{current_user.first_name}"}
+      -#- panel.body do
+        -#.form-group
+          -#= f.label :company_id, class: "control-label col-sm-4 col-md-4"
+          -#.col-sm-6.col-md-6
+            -#= collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
+        -#.form-group
+          -#= f.label :site_id, class: "control-label col-sm-4 col-md-4"
+          -#.col-sm-6.col-md-6
+            -#= f.grouped_collection_select( :id, Company.order(:name), :sites, :name, :id, :name, {prompt: "Select a Site"}, {class: "form-control"})
+      -#- panel.footer do 
+        -#.col-xs-8.col-sm-8.col-md-8.col-lg-8
+        -#.col-xs-2.col-sm-2.col-md-2.col-lg-2
+          -#= link_to "Cancel", :back, class: "btn btn-danger btn-block"
+        -#.col-xs-2.col-sm-2.col-md-2.col-lg-2
+          -#= f.submit 'Add', class: "btn btn-success btn-block", id:"add_site"
 
