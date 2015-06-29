@@ -24,6 +24,48 @@
       background-color: $heading-color;
     }
   }
+
+  & > .panel-body {
+    .input-group-addon{
+      color: $heading-color;
+      background-color: $heading-bg;
+      border-top: 1px solid $border;
+      border-right: 0px solid $border;
+      border-bottom: 1px solid $border;
+      border-left: 1px solid $border;
+    }
+
+    input, textarea, select {
+      &:focus{
+        -webkit-box-shadow: 0 8px $heading-bg;
+        box-shadow: 0 0 8px $heading-bg;
+        border-top:   1px solid $heading-bg;
+        border-right: 1px solid $heading-bg;
+        border-bottom:1px solid $heading-bg;
+        border-left:  1px solid $border;
+      }
+    }
+
+    input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px $bg inset;
+      -webkit-text-fill-color: $bg-color !important;
+
+      &:focus{
+        -webkit-box-shadow: 0 0 0px 1000px $bg inset, 0 0 8px $heading-bg;
+        box-shadow: 0 0 0px 1000px $bg inset, 0 0 8px $heading-bg;
+        border-top:   1px solid $heading-bg;
+        border-right: 1px solid $heading-bg;
+        border-bottom:1px solid $heading-bg;
+        border-left:  1px solid $border;
+        /*+ .input-group-addon {*/
+          /*-webkit-box-shadow: 0 0 8px green;//$heading-bg;*/
+          /*box-shadow: 0 0 8px green;//$heading-bg;*/
+          /*border: 1px solid green;*/
+        /*}*/
+      }
+    }
+  }
+
   & > .panel-footer {
     + .panel-collapse > .panel-body {
       border-top: 1px solid darken($bg, 15%) !important;

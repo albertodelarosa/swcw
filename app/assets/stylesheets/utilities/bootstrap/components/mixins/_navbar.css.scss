@@ -7,17 +7,18 @@
     height: 10px;
   }
   .link_top {
-    margin: 0px -27px -10px -27px;
-    top: -28px;
-    border: 2px solid $color;
+    margin: 0px -16px -10px -16px;
+    top: -20px;
+    border: 1px solid $color;
+    border-radius: 3px 3px 0px 0px;
     border-bottom: none;
-    border-radius: 5px 5px 0px 0px;
   }
   .link_bottom {
-    margin: -10px -27px 0px -27px;
-    bottom: -28px;
-    border-radius: 0px 0px 5px 5px;
-    background: $color;
+    margin: -10px -16px 0px -16px;
+    bottom: -20px;
+    border: 1px solid $color;
+    border-radius: 0px 0px 3px 3px;
+    border-top: none;
   }
 }
 
@@ -29,7 +30,7 @@
   }
   .link_bottom {
     background: inherit;
-    border: 2px solid $light-color;
+    border: 1px solid $light-color;
     border-top: none;
   }
 }
@@ -38,7 +39,7 @@
   ul.dropdown-menu {
     border: 1px solid $bg;
     margin-left: -1px;
-    margin-top: 16px;
+    margin-top: 12px;
     padding: 0px;
     background: $bg;
     @include border-top-radius(0px);

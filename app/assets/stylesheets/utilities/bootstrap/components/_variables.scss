@@ -18,42 +18,42 @@ $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 ////////////////////////////////////////////////////////////////
 $brand-default:         $sw-black-0 !default;
-$brand-default-color:   $sw-black-1 !default;
-$brand-default-border:  $sw-black-1 !default;
+$brand-default-color:   $sw-black-6 !default;
+$brand-default-border:  $sw-black-6 !default;
 
 $brand-primary:         $sw-blue-0 !default;
 $brand-primary-bg:      $sw-blue-5 !default;
-$brand-primary-color:   #D5DEE5 !default;
-$brand-primary-border:  $sw-blue-0 !default;
+$brand-primary-color:   $sw-blue-6 !default;
+$brand-primary-border:  $sw-blue-1 !default;
 
-$brand-info:            $spp-blue-0 !default;
-$brand-info-bg:         $spp-blue-5 !default;
-$brand-info-color:      #E0E5EA !default;
-$brand-info-border:     $spp-blue-0 !default;
+$brand-info:            $sblue-0 !default;
+$brand-info-bg:         $sblue-5 !default;
+$brand-info-color:      $sblue-6 !default;
+$brand-info-border:     $sblue-1 !default;
 
-$brand-success:         $sw-green-0 !default;
-$brand-success-bg:      $sw-green-5 !default;
-$brand-success-color:   #CCEACE !default;
-$brand-success-border:  $sw-green-0 !default;
+$brand-success:         $sgreen-0 !default;
+$brand-success-bg:      $sgreen-5 !default;
+$brand-success-color:   $sgreen-6 !default;
+$brand-success-border:  $sgreen-1 !default;
 
 $brand-warning:         $sorange-0 !default;
 $brand-warning-bg:      $sorange-5 !default;
-$brand-warning-color:   #FCE0D5 !default;
-$brand-warning-border:  $sorange-0 !default;
+$brand-warning-color:   $sorange-6 !default;
+$brand-warning-border:  $sorange-1 !default;
 
 $brand-danger:          $sred-0 !default;
 $brand-danger-bg:       $sred-5 !default;
-$brand-danger-color:    #FCD5D5 !default;
-$brand-danger-border:   $sred-0 !default;
+$brand-danger-color:    $sred-6 !default;
+$brand-danger-border:   $sred-1 !default;
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               $sw-blue-1 !default;
+$body-bg:               $brand-default !default;
 //** Global text color on `<body>`.
-$text-color:            $sw-blue-1 !default;
+$text-color:            $brand-default-color !default;
 
 //** Global textual link color.
 $link-color:            $sw-blue-2 !default;
@@ -171,33 +171,33 @@ $table-border-color:            #ddd !default;
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
-$btn-font-weight:                normal !default;
+$btn-font-weight:         normal !default;
 
-$btn-default-color:              $sw-blue-1 !default;
-$btn-default-bg:                 $sw-blue-0 !default;
-$btn-default-border:             $sw-blue-1 !default;
+$btn-default-bg:          $brand-default        !default;
+$btn-default-color:       $brand-default-color  !default;
+$btn-default-border:      $brand-default-border !default;
 
-$btn-primary-color:              $sw-blue-1 !default;
-$btn-primary-bg:                 $sw-blue-0 !default;
-$btn-primary-border:             $sw-blue-1 !default;
+$btn-primary-bg:          $brand-primary        !default;
+$btn-primary-color:       $brand-primary-color  !default;
+$btn-primary-border:      $brand-primary-border !default;
 
-$btn-success-color:              $sgreen-1  !default;
-$btn-success-bg:                 $sgreen-0  !default;
-$btn-success-border:             $sgreen-1  !default;
+$btn-info-bg:             $brand-info         !default;
+$btn-info-color:          $brand-info-color   !default;
+$btn-info-border:         $brand-info-border  !default;
 
-$btn-info-color:                 $spp-blue-1 !default;
-$btn-info-bg:                    $spp-blue-0 !default;
-$btn-info-border:                $spp-blue-1 !default;
+$btn-success-bg:          $brand-success        !default;
+$btn-success-color:       $brand-success-color  !default;
+$btn-success-border:      $btn-success-color    !default;
 
-$btn-warning-color:              $sorange-1 !default;
-$btn-warning-bg:                 $sorange-0 !default;
-$btn-warning-border:             $sorange-1 !default;
+$btn-warning-bg:          $brand-warning        !default;
+$btn-warning-color:       $brand-warning-color  !default;
+$btn-warning-border:      $brand-warning-border !default;
 
-$btn-danger-color:               $sred-1    !default;
-$btn-danger-bg:                  $sred-0    !default;
-$btn-danger-border:              $sred-1    !default;
+$btn-danger-bg:           $brand-danger         !default;
+$btn-danger-color:        $brand-danger-color   !default;
+$btn-danger-border:       $brand-danger-border  !default;
 
-$btn-link-disabled-color:        $gray-light !default;
+$btn-link-disabled-color: $gray-light          !default;
 
 
 //== Forms
@@ -384,9 +384,9 @@ $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 20) !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             lighten($sw-blue-1, 40%) !default;
-$navbar-default-bg:                #1e374c !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-color:             $brand-primary-color !default;
+$navbar-default-bg:                $brand-primary       !default;
+$navbar-default-border:            $navbar-default-bg   !default;
 
 // Navbar links
 $navbar-default-link-color:                $navbar-default-color !default;
@@ -541,7 +541,7 @@ $tooltip-max-width:           200px !default;
 //** Tooltip text color
 $tooltip-color:               #fff !default;
 //** Tooltip background color
-$tooltip-bg:                  $spp-red-0 !default;
+$tooltip-bg:                  $brand-danger-bg !default;
 $tooltip-opacity:             .9 !default;
 
 //** Tooltip arrow width
@@ -739,35 +739,35 @@ $panel-default-border:        $gray-lighter !default;
 $panel-default-heading-bg:    $sw-black-2 !default;
 $panel-default-heading-color: $gray-lighter !default;
 
-$panel-primary-bg:            $brand-primary-bg !default;
-$panel-primary-color:         $brand-primary-color !default;
-$panel-primary-border:        $gray-lighter !default;
-$panel-primary-heading-bg:    $brand-primary !default;
-$panel-primary-heading-color: $brand-primary-color !default;
+$panel-primary-bg:            $brand-primary-bg     !default;
+$panel-primary-color:         $brand-primary-color  !default;
+$panel-primary-border:        $brand-primary-border !default;
+$panel-primary-heading-bg:    $brand-primary        !default;
+$panel-primary-heading-color: $brand-primary-color  !default;
 
-$panel-success-bg:            $brand-success-bg !default;
-$panel-success-color:         $brand-success-color !default;
-$panel-success-border:        $gray-lighter !default;
-$panel-success-heading-bg:    $brand-success !default;
-$panel-success-heading-color: $brand-success-color !default;
+$panel-info-bg:               $brand-info-bg        !default;
+$panel-info-color:            $brand-info-color     !default;
+$panel-info-border:           $brand-info-border    !default;
+$panel-info-heading-bg:       $brand-info           !default;
+$panel-info-heading-color:    $brand-info-color     !default;
 
-$panel-info-bg:               $brand-info-bg !default;
-$panel-info-color:            $brand-info-color !default;
-$panel-info-border:           $gray-lighter !default;
-$panel-info-heading-bg:       $brand-info !default;
-$panel-info-heading-color:    $brand-info-color !default;
+$panel-success-bg:            $brand-success-bg     !default;
+$panel-success-color:         $brand-success-color  !default;
+$panel-success-border:        $brand-success-border !default;
+$panel-success-heading-bg:    $brand-success        !default;
+$panel-success-heading-color: $brand-success-color  !default;
 
-$panel-warning-bg:            $brand-warning-bg !default;
-$panel-warning-color:         $brand-warning-color !default;
-$panel-warning-border:        $gray-lighter !default;
-$panel-warning-heading-bg:    $brand-warning !default;
-$panel-warning-heading-color: $brand-warning-color !default;
+$panel-warning-bg:            $brand-warning-bg     !default;
+$panel-warning-color:         $brand-warning-color  !default;
+$panel-warning-border:        $brand-warning-border !default;
+$panel-warning-heading-bg:    $brand-warning        !default;
+$panel-warning-heading-color: $brand-warning-color  !default;
 
-$panel-danger-bg:             $brand-danger-bg !default;
-$panel-danger-color:          $brand-danger-color !default;
-$panel-danger-border:         $gray-lighter !default;
-$panel-danger-heading-bg:     $brand-danger !default;
-$panel-danger-heading-color:  $brand-danger-color !default;
+$panel-danger-bg:             $brand-danger-bg      !default;
+$panel-danger-color:          $brand-danger-color   !default;
+$panel-danger-border:         $brand-danger-border  !default;
+$panel-danger-heading-bg:     $brand-danger         !default;
+$panel-danger-heading-color:  $brand-danger-color   !default;
 
 
 //== Thumbnails
