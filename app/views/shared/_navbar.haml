@@ -11,8 +11,7 @@
       -if mobile_device?
         = image_tag("logo-50.png", height: 40)
       -else
-        .aligner
-          = image_tag("logo-50.png", height: 40)
+        = image_tag("logo-50.png", height: 50)
   .collapse.navbar-collapse
     = render user_signed_in? ? "shared/navbar/navbar_nav_dashboard" : "shared/navbar/navbar_nav_welcome"
 

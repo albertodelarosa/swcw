@@ -1,21 +1,21 @@
-%ul.nav.navbar-nav.hidden-xs.hidden-sm
+%ul.nav.navbar-nav.hidden-xs
   %li.dropdown
-    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    %a.dropdown-toggle{data: {toggle:  "dropdown"}, href:"#"}
       .link_top
       Add
       %b.caret
       .link_bottom
     %ul.dropdown-menu
       %li
-        %a{href: "#{new_dashboard_vehicle_path}"}
+        %a{href: new_dashboard_vehicle_path}
           Vehicle
       %li.divider
       %li
-        %a{href: "#{new_dashboard_site_path}"}
+        %a{href: new_dashboard_site_path}
           Site
       %li.divider
       %li
-        %a{href: "#{new_dashboard_company_path}"}
+        %a{href: new_dashboard_company_path}
           Company
 
   - if user_signed_in?
@@ -33,42 +33,23 @@
     = link_to "Sign Out", destroy_user_session_path, method: :delete
     .link_bottom
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%ul.nav.navbar-nav.visible-xs.visible-sm
+%ul.nav.navbar-nav.visible-xs
   %li
     %a{"data-toggle"=>"collapse", "data-target"=>"#collapseAdd", "aria-expanded"=>"false", "aria-controls"=>"collapseAdd"}
       Add
       %b.caret
     %ul#collapseAdd.collapse
-      %li= link_to "vehicle", new_dashboard_vehicle_path, class: "btn btn-success btn-block"
-      %li= link_to "site",    new_dashboard_site_path,    class: "btn btn-success btn-block"
-      %li= link_to "company", new_dashboard_company_path, class: "btn btn-success btn-block"
+      %li= link_to "vehicle", new_dashboard_vehicle_path, class: "btn btn-primary btn-block"
+      %li= link_to "site",    new_dashboard_site_path,    class: "btn btn-primary btn-block"
+      %li= link_to "company", new_dashboard_company_path, class: "btn btn-primary btn-block"
   - if user_signed_in?
     %li
       %a{"data-toggle"=>"collapse", "data-target"=>"#collapseAccount", "aria-expanded"=>"false", "aria-controls"=>"collapseAccount"}
         account
         %b.caret
       %ul#collapseAccount.collapse
-        %li= link_to "profile",  edit_user_registration_path, class: "btn btn-success btn-block"
+        %li= link_to "profile",  edit_user_registration_path, class: "btn btn-primary btn-block"
   %li
-    = link_to "Sign Out", destroy_user_session_path, class: "btn btn-danger btn-block", method: :delete
-
+    .container-fluid
+      = link_to "Sign Out", destroy_user_session_path, class: "btn btn-primary btn-block", method: :delete
 
