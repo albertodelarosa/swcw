@@ -23,35 +23,29 @@ class Dashboard::DashboardsController < ApplicationController
       end
     end
 
+    unless current_user.account.new?
+      @appointments = current_user.account.appointments || []
+      @appointment = Appointment.new
 
+      @sites = current_user.account.sites.to_a || []
+      @site = Site.new
 
+      @companies = current_user.account.companies || []
+      @company = Company.new
 
+      @vehicles = current_user.account.vehicles || []
+      @vehicle  = Vehicle.new
 
+      @sample_individual_plans = ServicePlan.where(package_type: ServicePlan::TYPE[0])
+      @sample_plans = ServicePlan.where(package_type: ServicePlan::TYPE[1])
 
-
-
-
-
-
-
-
-
-
-
-    @appointments = current_user.account.appointments || []
-    @appointment = Appointment.new
-
-    @sites = current_user.account.sites.to_a || []
-    @site = Site.new
-
-    @companies = current_user.account.companies || []
-    @company = Company.new
-
-    @vehicles = current_user.account.vehicles || []
-    @vehicle  = Vehicle.new
-
-    @sample_individual_plans = ServicePlan.where(package_type: ServicePlan::TYPE[0])
-    @sample_plans = ServicePlan.where(package_type: ServicePlan::TYPE[1])
+      @sample_individual_plans.each do |plan|
+        plan.set_prices(@vehicles.first)
+      end
+      @sample_plans.each do |plan|
+        plan.set_prices(@vehicles.first)
+      end
+    end
 
     #if current_user.account.nil?
       #@account = Account.new

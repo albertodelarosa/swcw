@@ -37,10 +37,9 @@
                   %td{colspan: 2, align: "right"}="Total"
                   %td=number_to_currency(price_small)
                   %td=number_to_currency(price_large)
+          .row
             .col-xs-12
-              %a.btn.btn-success.btn-block{href: "#"}
-                ="Purchase"
-                = link_to "Add to Cart"
+              = link_to "Add to Cart", line_items_path(package: {package_name: plan.name, package_price: price_small}), class: "btn btn-success btn-block", :method => :post
 
 
 

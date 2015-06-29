@@ -61,6 +61,15 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # POST /customers/vehicles.json
   def create
     @vehicle = Vehicle.new(params_new_vehicle)
+    if (@vehicle.vehicle_type.casecmp("Pickup") == 0)     || (@vehicle.vehicle_type.casecmp("SUV") == 0)      ||
+        (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0)      ||
+        (@vehicle.vehicle_type.casecmp("Van") == 0)       || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
+      @vehicle.vehicle_size = "Large"
+    elsif(@vehicle.vehicle_type.casecmp("Convertible") == 0)  || (@vehicle.vehicle_type.casecmp("Coupe") == 0)  ||
+         (@vehicle.vehicle_type.casecmp("Sedan") == 0)        || (@vehicle.vehicle_type.casecmp("Wagon") == 0)  ||
+         (@vehicle.vehicle_type.casecmp("Hatchback") == 0)
+      @vehicle.vehicle_size = "Small"
+    end
     #@vehicle = Vehicle.new(color: params[:vehicle][:color], 
                            #comments: params[:vehicle][:comments], 
                            #license_plate_number: params[:vehicle][:license_plate_number], 
@@ -125,7 +134,16 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # PUT /customers/vehicles/1
   # PUT /customers/vehicles/1.json
   def update
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle = Vehicle.new(params_update_vehicle)
+    if (@vehicle.vehicle_type.casecmp("Pickup") == 0)     || (@vehicle.vehicle_type.casecmp("SUV") == 0)      ||
+        (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0)      ||
+        (@vehicle.vehicle_type.casecmp("Van") == 0)       || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
+      @vehicle.size = "Large"
+    elsif(@vehicle.vehicle_type.casecmp("Convertible") == 0)  || (@vehicle.vehicle_type.casecmp("Coupe") == 0)  ||
+         (@vehicle.vehicle_type.casecmp("Sedan") == 0)        || (@vehicle.vehicle_type.casecmp("Wagon") == 0)  ||
+         (@vehicle.vehicle_type.casecmp("Hatchback") == 0)
+      @vehicle.size = "Small"
+    end
 
     respond_to do |format|
       if @vehicle.update_attributes(params_update_vehicle)
@@ -153,11 +171,11 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   private
 
   def params_new_vehicle
-    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :vehicle_size, :color, :license_plate, :state_registered, :comments)
+    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :color, :license_plate, :state_registered, :comments)
   end
 
   def params_update_vehicle
-    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_doors, :vehicle_size, :color, :license_plate, :state_registered, :comments, :id)
+    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_doors, :color, :license_plate, :state_registered, :comments, :id)
   end
 
 end

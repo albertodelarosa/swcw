@@ -27,6 +27,24 @@ module DetailingPlans
     end
   end
 
+  def set_prices(vehicle)
+    if vehicle.size_set?
+      plan_price = 0.0
+      if vehicle.vehicle_size.eql?("Small")
+        self.services.each do |service|
+          service.chosen_price = service.small_price
+          plan_price += service.chosen_price
+        end
+        self.price = plan_price
+      elsif vehicle.vehicle_size.eql?("Large")
+        self.services.each do |service|
+          service.chosen_price = service.large_price
+          plan_price += service.chosen_price
+        end
+      end
+    end
+  end
+
   private
 
   def get_regular_service(name, options = {})
