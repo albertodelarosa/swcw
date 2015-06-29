@@ -1,7 +1,8 @@
 #footer
-  .navbar-header.col-xs-12.col-sm-8
-    %a.navbar-brand.col-xs-12{href: root_path}
-      = image_tag("logo-50.png")
-  .col-xs-12.col-sm-4
-    .copyright
-      Copyright © 2014. Siteler Wash All Rights Reserved
+  .row
+    .col-xs-12.col-sm-8
+      =link_to root_path do
+        = image_tag("logo-50.png")
+    .col-xs-12.col-sm-4
+      .copyright
+        Copyright © 2015. Siteler Wash All Rights Reserved
