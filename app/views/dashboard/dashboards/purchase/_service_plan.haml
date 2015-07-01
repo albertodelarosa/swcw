@@ -1,0 +1,19 @@
+-unless @current_cart.nil?
+  .section.section-default
+    .row
+      = link_to "view my cart", cart_path(@current_cart), class: "btn btn-success btn-block"
+.section.section-default
+  .row
+    .h2
+      Purchase a Package Plan and save
+  .row
+    -@sample_plans.each do |plan|
+      .col-xs-12.col-sm-4
+        = render partial: "dashboard/dashboards/accordions/package", locals: {plan: plan}
+.section.section-default
+  .row
+    .h2
+      Purchase an Individual Plan
+  .row
+    = render partial: "dashboard/dashboards/accordions/service"
+

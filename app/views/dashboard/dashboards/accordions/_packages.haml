@@ -1,31 +1,13 @@
-.well.well-primary
-  %legend
-    %small
-      =plan.name
-  .row
-    .table-responsive.col-xs-12
-      %table.table.table-condensed.table-bordered
-        %tr.info
-          %th="Qty"
-          %th="Service"
-          %th="Price"
-        -plan.services.each_with_index do |service|
-          %tr
-            %td=1.to_s
-            %td=service.name
-            -if service.small_price == 0.0
-              %td.success="FREE!"
-            -else
-              %td=number_to_currency(service.price)
-        %tr
-          %td{colspan: 2, align: "right"}="Total"
-          %td=number_to_currency(plan.price)
-  .row
-    .col-xs-12
-      = link_to "Add to Cart", line_items_path(package: {package_name: plan.name, package_type: plan.package_type, package_price: plan.price, vehicle_size: @account.vehicles.first.vehicle_size}), class: "btn btn-success btn-block", :method => :post
-
-
-
+#accordionPackage.col-xs-12.col-sm-6.col-md-4{aria: {multiselectable: true}, role: "tablist"}
+  .panel.well
+    %legend.center-block
+      Detailing Packages
+    #headingPackage.collapse-heading{role: "tab"}
+      -@sample_plans.each_with_index do |plan, index|
+        %button.btn.btn-primary.btn-block{href:"#collapsePackage#{index}", data: {toggle: "collapse", parent: "#accordionPackage"}, aria: {expanded: "true", controls: "collapsePackage#{index}"}}=plan.name
+    -@sample_plans.each_with_index do |plan, index|
+      .collapse{id: "collapsePackage#{index}", aria: {labelledby: "headingPackage"}, role: "tabpanel"}
+        = render partial: "dashboard/dashboards/accordions/package", locals: {plan: plan}
 
 
 
