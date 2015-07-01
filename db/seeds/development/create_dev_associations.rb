@@ -19,6 +19,29 @@ printStarting("COMPANIES")
 account.companies << site1.companies[0] << site2.companies[0]
 printFinished()
 
+printStarting("VEHICLE")
+account.vehicles << Vehicle.first
+printFinished()
+
+#printStarting("SITELER DOLLARS")
+#account.siteler_dollar = SitelerDollar.first
+#printFinished()
+
+#printStarting("DISCOUNT")
+#account.discounts << Discount.first
+#printFinished()
+
+#printStarting("APPOINTMENTS")
+#first_appointment_id = Appointment.first.id
+
+#appointment_today =     Appointment.find(first_appointment_id)
+#appointment_tomorrow =  Appointment.find(first_appointment_id + 1)
+#appointment_last_week = Appointment.find(first_appointment_id + 2)
+
+#account.appointments << appointment_last_week << appointment_today  << appointment_tomorrow
+
+#printFinished()
+
 printStarting("DEFAULT COMPANY ADDRESS FOR DEVELOPER")
 develper.work_address =
   CompanyAddress.create!(
@@ -30,30 +53,6 @@ develper.work_address =
     zip:      site1.companies[0].address.zip
   )
 develper.save!
-printFinished()
-
-printStarting("VEHICLE")
-account.vehicles << Vehicle.first
-printFinished()
-
-
-printStarting("SITELER DOLLARS")
-account.siteler_dollar = SitelerDollar.first
-printFinished()
-
-printStarting("DISCOUNT")
-account.discounts << Discount.first
-printFinished()
-
-printStarting("APPOINTMENTS")
-first_appointment_id = Appointment.first.id
-
-appointment_today =     Appointment.find(first_appointment_id)
-appointment_tomorrow =  Appointment.find(first_appointment_id + 1)
-appointment_last_week = Appointment.find(first_appointment_id + 2)
-
-account.appointments << appointment_last_week << appointment_today  << appointment_tomorrow
-
 printFinished()
 
 account.save!
