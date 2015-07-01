@@ -57,6 +57,10 @@ printStarting("DELETING EXISTING SERVICES")
 Service.all.each(&:destroy)
 printFinished()
 
+printStarting("DELETING EXISTING CARTS")
+Cart.all.each(&:destroy)
+printFinished()
+
 printStarting("DELETING EXISTING ASSOCIATIONS")
 VehicleSetting.all.each(&:destroy)
 ContactInfo.all.each(&:destroy)
