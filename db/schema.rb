@@ -246,9 +246,9 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "appointments", ["vehicle_year"], name: "index_appointments_on_vehicle_year", using: :btree
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "purchased_at", default: '2015-01-01 00:00:00', null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "purchased_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "carts", ["purchased_at"], name: "index_carts_on_purchased_at", using: :btree
@@ -471,23 +471,28 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.string   "status",                               default: "",  null: false
     t.string   "package_type",                         default: "",  null: false
     t.decimal  "price",        precision: 8, scale: 2, default: 0.0, null: false
+    t.string   "vehicle_size",                         default: "",  null: false
     t.integer  "account_id"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
 
   add_index "service_plans", ["name", "package_type"], name: "index_service_plans_on_name_and_package_type", using: :btree
+  add_index "service_plans", ["name", "price"], name: "index_service_plans_on_name_and_price", using: :btree
   add_index "service_plans", ["name", "status"], name: "index_service_plans_on_name_and_status", using: :btree
   add_index "service_plans", ["name"], name: "index_service_plans_on_name", using: :btree
+  add_index "service_plans", ["package_type", "price"], name: "index_service_plans_on_package_type_and_price", using: :btree
   add_index "service_plans", ["package_type"], name: "index_service_plans_on_package_type", using: :btree
   add_index "service_plans", ["price"], name: "index_service_plans_on_price", using: :btree
   add_index "service_plans", ["status", "package_type"], name: "index_service_plans_on_status_and_package_type", using: :btree
+  add_index "service_plans", ["status", "price"], name: "index_service_plans_on_status_and_price", using: :btree
   add_index "service_plans", ["status"], name: "index_service_plans_on_status", using: :btree
+  add_index "service_plans", ["vehicle_size"], name: "index_service_plans_on_vehicle_size", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "name",                                             default: "",  null: false
     t.text     "description"
-    t.decimal  "chosen_price",             precision: 8, scale: 2, default: 0.0, null: false
+    t.decimal  "price",                    precision: 8, scale: 2, default: 0.0, null: false
     t.decimal  "small_price",              precision: 8, scale: 2, default: 0.0, null: false
     t.decimal  "large_price",              precision: 8, scale: 2, default: 0.0, null: false
     t.integer  "duration",                                         default: 0,   null: false
@@ -499,24 +504,24 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.datetime "updated_at",                                                     null: false
   end
 
-  add_index "services", ["chosen_price", "duration"], name: "index_services_on_chosen_price_and_duration", using: :btree
-  add_index "services", ["chosen_price", "large_price"], name: "index_services_on_chosen_price_and_large_price", using: :btree
-  add_index "services", ["chosen_price", "small_price"], name: "index_services_on_chosen_price_and_small_price", using: :btree
-  add_index "services", ["chosen_price"], name: "index_services_on_chosen_price", using: :btree
-  add_index "services", ["description", "chosen_price"], name: "index_services_on_description_and_chosen_price", using: :btree
   add_index "services", ["description", "duration"], name: "index_services_on_description_and_duration", using: :btree
   add_index "services", ["description", "large_price"], name: "index_services_on_description_and_large_price", using: :btree
+  add_index "services", ["description", "price"], name: "index_services_on_description_and_price", using: :btree
   add_index "services", ["description", "small_price"], name: "index_services_on_description_and_small_price", using: :btree
   add_index "services", ["description"], name: "index_services_on_description", using: :btree
   add_index "services", ["duration"], name: "index_services_on_duration", using: :btree
   add_index "services", ["large_price", "duration"], name: "index_services_on_large_price_and_duration", using: :btree
   add_index "services", ["large_price"], name: "index_services_on_large_price", using: :btree
-  add_index "services", ["name", "chosen_price"], name: "index_services_on_name_and_chosen_price", using: :btree
   add_index "services", ["name", "description"], name: "index_services_on_name_and_description", using: :btree
   add_index "services", ["name", "duration"], name: "index_services_on_name_and_duration", using: :btree
   add_index "services", ["name", "large_price"], name: "index_services_on_name_and_large_price", using: :btree
+  add_index "services", ["name", "price"], name: "index_services_on_name_and_price", using: :btree
   add_index "services", ["name", "small_price"], name: "index_services_on_name_and_small_price", using: :btree
   add_index "services", ["name"], name: "index_services_on_name", using: :btree
+  add_index "services", ["price", "duration"], name: "index_services_on_price_and_duration", using: :btree
+  add_index "services", ["price", "large_price"], name: "index_services_on_price_and_large_price", using: :btree
+  add_index "services", ["price", "small_price"], name: "index_services_on_price_and_small_price", using: :btree
+  add_index "services", ["price"], name: "index_services_on_price", using: :btree
   add_index "services", ["small_price", "duration"], name: "index_services_on_small_price_and_duration", using: :btree
   add_index "services", ["small_price", "large_price"], name: "index_services_on_small_price_and_large_price", using: :btree
   add_index "services", ["small_price"], name: "index_services_on_small_price", using: :btree
