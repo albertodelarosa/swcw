@@ -6,12 +6,6 @@ class ApplicationController < ActionController::Base
   def stored_location_for(resource)
     nil
   end
-  #def after_sign_in_path_for(resource)
-    #path_to_redirect_to
-    #if current_user.customer?
-      #customers_root_path
-    #end
-  #end
 
   # from your application log (in this case, all fields with names like "password")
   #filter_parameter_logging :card_number, :card_verification
