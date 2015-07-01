@@ -3,22 +3,27 @@ module DetailingPlans
 
   def populate_regular_plan(options = {})
     self.status = ServicePlan::STATUS[0]
-    self.package_type = ServicePlan::TYPE[options[:package_type]]
+    package_type = options[:package_type]
+    if package_type.is_a?(String)
+      self.package_type = package_type
+    else
+      self.package_type = ServicePlan::TYPE[package_type]
+    end
 
-    if self.package_type == "individual"
+    if self.package_type.include?("individual")
       service_name = options[:service_name]
       temp_service = get_regular_service(service_name)
 
-      self.name = "#{service_name} Service"
-      self.price = temp_service.chosen_price
+      self.name = service_name
+      self.price = temp_service.price
       self.services << temp_service
     else
       package_name = options[:package_name]
       self.name = package_name
-
-      Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_")).each do |service_name|
+      service_names = Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_"))
+      service_names.each do |service_name|
         temp_service = get_regular_service(service_name)
-        self.price += temp_service.chosen_price
+        self.price += temp_service.price
         self.services << temp_service
       end
       service_name = Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_")).last
@@ -27,20 +32,18 @@ module DetailingPlans
     end
   end
 
-  def set_prices(vehicle)
-    if vehicle.size_set?
-      plan_price = 0.0
-      if vehicle.vehicle_size.eql?("Small")
-        self.services.each do |service|
-          service.chosen_price = service.small_price
-          plan_price += service.chosen_price
-        end
-        self.price = plan_price
-      elsif vehicle.vehicle_size.eql?("Large")
-        self.services.each do |service|
-          service.chosen_price = service.large_price
-          plan_price += service.chosen_price
-        end
+  def set_prices()
+    plan_price = 0.0
+    if self.vehicle_size.eql?("Small")
+      self.services.each do |service|
+        service.price = service.small_price
+        plan_price += service.price
+      end
+      self.price = plan_price
+    elsif self.vehicle_size.eql?("Large")
+      self.services.each do |service|
+        service.price = service.large_price
+        plan_price += service.price
       end
     end
   end
