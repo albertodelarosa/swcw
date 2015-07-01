@@ -4,6 +4,7 @@ class Dashboard::DashboardsController < ApplicationController
   before_filter { add_breadcrumb "home", root_path, "glyphicon-home" }
 
   def index
+    @account = current_user.account
     if current_user.account.new?
       if current_user.account.vehicles.empty?
         @vehicle = Vehicle.new
@@ -18,59 +19,30 @@ class Dashboard::DashboardsController < ApplicationController
           format.json { render json: @vehicle }
         end
       else
-        @account = current_user.account
         @account.status = Account::STATUS[0]
       end
     end
 
-    unless current_user.account.new?
-      @appointments = current_user.account.appointments || []
-      @appointment = Appointment.new
-
-      @sites = current_user.account.sites.to_a || []
-      @site = Site.new
-
-      @companies = current_user.account.companies || []
-      @company = Company.new
-
-      @vehicles = current_user.account.vehicles || []
-      @vehicle  = Vehicle.new
+    unless @account.new?
+      @appointments = @account.appointments || []
+      @sites        = @account.sites        || []
+      @companies    = @account.companies    || []
+      @vehicles     = @account.vehicles     || []
 
       @sample_individual_plans = ServicePlan.where(package_type: ServicePlan::TYPE[0])
       @sample_plans = ServicePlan.where(package_type: ServicePlan::TYPE[1])
 
       @sample_individual_plans.each do |plan|
-        plan.set_prices(@vehicles.first)
+        plan.vehicle_size = @vehicles.first.vehicle_size
+        plan.set_prices()
       end
       @sample_plans.each do |plan|
-        plan.set_prices(@vehicles.first)
+        plan.vehicle_size = @vehicles.first.vehicle_size
+        plan.set_prices()
       end
+      @current_cart = current_cart unless session[:cart_id].nil?
+      #session[:cart_id]= nil
     end
-
-    #if current_user.account.nil?
-      #@account = Account.new
-      #@service_plan = ServicePlan.new
-      #@siteler_dollar = SitelerDollar.new
-      #@service = Service.new
-      #@discount = Discount.new
-
-      #@account.service_plan = @service_plan
-      #@account.siteler_dollar = @siteler_dollar
-      #@service_plan.services << @service
-      #@account.discounts << @discount
-
-      #@account.status = Account::STATUS[0]
-      #@service_plan.status = ServicePlan::STATUS[0]
-
-      #current_user.account = @account
-    #else
-      #@cart = current_cart
-      #@account = current_user.account
-      #@siteler_dollar = @account.siteler_dollar
-      #@service_plan = @account.service_plan
-      #@services = @service_plan.services
-      ##@discounts << @account.discounts
-    #end
   end
 
   private
