@@ -2,22 +2,25 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
 
-      t.string :username,   null: false, default: ""
-      t.string :first_name, null: false, default: ""
-      t.string :last_name,  null: false, default: ""
-      t.string :salutation, null: false, default: ""
-      t.string :suffix,     null: false, default: ""
+      t.string :username,   index: true, null: false, default: "", unique: true
+      t.string :first_name, index: true, null: false, default: ""
+      t.string :last_name,  index: true, null: false, default: ""
+      t.string :salutation, index: true, null: false, default: ""
+      t.string :suffix,     index: true, null: false, default: ""
+      t.string :name,       index: true, null: false, default: ""
+      t.string :image_url,  index: true, null: false, default: ""
+      t.string :urls,       index: true, null: false, default: ""
 
       ## Omniauthable
       t.string :provider, null: false, default: ""
       t.string :uid,      null: false, default: ""
 
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email, index: true, null: false, default: "", unique: true
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
-      t.string   :reset_password_token
+      t.string   :reset_password_token, index: true, unique: true
       t.datetime :reset_password_sent_at
 
       ## Rememberable
@@ -31,31 +34,21 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :last_sign_in_ip
 
       ## Confirmable
-      t.string   :confirmation_token
+      t.string   :confirmation_token, index: true, unique: true
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at
       t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
       t.integer  :failed_attempts, default: 0 # Only if lock strategy is :failed_attempts
-      t.string   :unlock_token # Only if unlock strategy is :email or :both
+      t.string   :unlock_token,    index: true, unique: true # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
       ## Token authenticatable
-      t.string :authentication_token
+      t.string :authentication_token, index: true, unique: true
 
       t.timestamps
     end
-
-    add_index :users, :username
-    add_index :users, :first_name
-    add_index :users, :last_name
-    add_index :users, :salutation
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    add_index :users, :confirmation_token,   unique: true
-    add_index :users, :unlock_token,         unique: true
-    add_index :users, :authentication_token, unique: true
 
   end
 end

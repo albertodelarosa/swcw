@@ -1,7 +1,7 @@
 printStarting("ADDING DEVELOPER USER")
 developer = User.create!(
-  email:      'alberto.g.delrosa+sitelerwash_developer@gmail.com',
-  username:   'developers',
+  email:      'alberto.g.delarosa@gmail.com',
+  username:   'developer',
   password:   'password',
   last_name:  'de la Rosa',
   first_name: 'Alberto',

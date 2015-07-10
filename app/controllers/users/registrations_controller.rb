@@ -7,10 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(params_new_user)
     if @user.save!
-      account = Account.new
-      account.user = @user
-      account.generate_number
-      account.save!
+      generate_account(@user)
       set_flash_message :notice, :signed_up
       sign_in @user, :bypass => true # Sign in the user bypassing validation in case his password changed
       redirect_to after_sign_in_path_for(@user)

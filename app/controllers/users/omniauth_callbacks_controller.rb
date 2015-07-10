@@ -1,9 +1,12 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_filter :redirect_to_login_if_required
+
   def all
     user = User.from_omniauth(request.env["omniauth.auth"])
+    generate_account(user)
     if user.persisted?
       flash.notice = "Signed in!"
-      sign_in_and_redirect user, notice: "Signed in!"
+      sign_in_and_redirect user#, notice: "Signed in!"
     else
       session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url

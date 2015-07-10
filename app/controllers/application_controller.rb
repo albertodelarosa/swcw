@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  #before_action :configure_permitted_parameters, if: :devise_controller?
+
   layout :layout_by_resource
+
+  before_action :authenticate_user!
 
   def stored_location_for(resource)
     nil
@@ -9,6 +13,15 @@ class ApplicationController < ActionController::Base
 
   # from your application log (in this case, all fields with names like "password")
   #filter_parameter_logging :card_number, :card_verification
+
+  def generate_account(user)
+    if user.account.nil?
+      account = Account.new
+      account.user = user
+      account.generate_number
+      account.save!
+    end
+  end
 
   def current_cart
     if session[:cart_id]
@@ -71,5 +84,11 @@ class ApplicationController < ActionController::Base
       "welcome"
     end
   end
+
+  #def configure_permitted_parameters
+    #devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
+    #devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
+    #devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+  #end
 
 end
