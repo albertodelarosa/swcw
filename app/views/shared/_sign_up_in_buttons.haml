@@ -11,10 +11,6 @@
             = main_f.email_field :email, placeholder: "email", class: "form-control", autofocus: true
         .form-group
           .input-group
-            %span.input-group-addon username
-            = main_f.text_field :username, placeholder: "username", class: "form-control", autofocus: true
-        .form-group
-          .input-group
             %span.input-group-addon password
             = main_f.password_field :password, placeholder: "password", class: "form-control"
         - if devise_mapping.rememberable?
@@ -25,7 +21,7 @@
         .form-group
           .btn-group.btn-group-justified{role: "group"}
             .btn-group{role: "group"}
-              = main_f.submit "sign in", class: 'btn btn-success'
+              = main_f.submit "login", class: 'btn btn-success'
         - if devise_mapping.omniauthable?
           .form-group
             .btn-group.btn-group-justified{role: "group"}
