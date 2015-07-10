@@ -70,14 +70,19 @@
     }
   }
 }
-// .color1 { color: #000000}
-// .color2 { color: #009608}
-// .color3 { color: #04cd1a}
-// .color4 { color: #03cd19}
-// .color5 { color: #d7e0ea}
-// 80cb84
-// 81e68c
-// 003c03
-// 003c03
-// 01520a
+.flash-notice {
+  position: absolute;
+  top: 95px;
+  width: 100%;
+}
+
+@media (max-width: $screen-xs-max) {
+  .navbar{
+    min-height: 65px;
+    margin-bottom: 47px;
+  }
+  .flash-notice {
+    top: 66px;
+  }
+}
 
