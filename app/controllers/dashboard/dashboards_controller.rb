@@ -41,7 +41,6 @@ class Dashboard::DashboardsController < ApplicationController
         plan.set_prices()
       end
       @current_cart = current_cart unless session[:cart_id].nil?
-      #session[:cart_id]= nil
     end
   end
 
