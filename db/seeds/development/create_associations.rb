@@ -46,26 +46,26 @@ printFinished()
 #printFinished()
 
 
-printStarting("ASSOCIATING DEFAULT APPOINTMENTS")
-first_appointment_id = Appointment.first.id
+#printStarting("ASSOCIATING DEFAULT APPOINTMENTS")
+#first_appointment_id = Appointment.first.id
 
-appointment_today =     Appointment.find(first_appointment_id)
-appointment_tomorrow =  Appointment.find(first_appointment_id + 1)
-appointment_last_week = Appointment.find(first_appointment_id + 2)
+#appointment_today =     Appointment.find(first_appointment_id)
+#appointment_tomorrow =  Appointment.find(first_appointment_id + 1)
+#appointment_last_week = Appointment.find(first_appointment_id + 2)
 
-appointment_last_week.sites     << site1
-appointment_last_week.companies << site1.companies[0]
-#appointment_last_week.vehicles  << my_vehicle
+#appointment_last_week.sites     << site1
+#appointment_last_week.companies << site1.companies[0]
+##appointment_last_week.vehicles  << my_vehicle
 
 
-appointment_today.sites     << site1
-appointment_today.companies << site1.companies[0]
-#appointment_today.vehicles  << my_vehicle
+#appointment_today.sites     << site1
+#appointment_today.companies << site1.companies[0]
+##appointment_today.vehicles  << my_vehicle
 
-appointment_tomorrow.sites      << site1
-appointment_tomorrow.companies  << site1.companies[0]
-#appointment_tomorrow.vehicles   << my_vehicle
+#appointment_tomorrow.sites      << site1
+#appointment_tomorrow.companies  << site1.companies[0]
+##appointment_tomorrow.vehicles   << my_vehicle
 
-developer.appointments << appointment_last_week << appointment_today << appointment_tomorrow
-printFinished()
+#developer.appointments << appointment_last_week << appointment_today << appointment_tomorrow
+#printFinished()
 
