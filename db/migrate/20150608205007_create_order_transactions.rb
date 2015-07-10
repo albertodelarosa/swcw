@@ -1,13 +1,13 @@
 class CreateOrderTransactions < ActiveRecord::Migration
   def change
     create_table :order_transactions do |t|
-      t.integer :order_id,      index: true, null: false, default: 0
-      t.string  :action,        index: true, null: false, default: ""
-      t.integer :amount,        index: true, null: false, default: 0
-      t.boolean :success,       index: true, null: false, default: false
-      t.string  :authorization, index: true, null: false, default: ""
-      t.string  :message,       index: true, null: false, default: ""
-      t.text    :params,        index: true, null: false, default: ""
+      t.integer :order_id,      index: true
+      t.string  :action,        index: true
+      t.integer :amount,        index: true
+      t.boolean :success,       index: true
+      t.string  :authorization, index: true
+      t.string  :message,       index: true
+      t.text    :params,        index: true
 
       t.timestamps null: false
     end

@@ -393,15 +393,15 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "locations", ["vehicle_id"], name: "index_locations_on_vehicle_id", using: :btree
 
   create_table "order_transactions", force: :cascade do |t|
-    t.integer  "order_id",      default: 0,     null: false
-    t.string   "action",        default: "",    null: false
-    t.integer  "amount",        default: 0,     null: false
-    t.boolean  "success",       default: false, null: false
-    t.string   "authorization", default: "",    null: false
-    t.string   "message",       default: "",    null: false
-    t.text     "params",        default: "",    null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "order_transactions", ["action", "amount"], name: "index_order_transactions_on_action_and_amount", using: :btree
@@ -584,6 +584,9 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.string   "last_name",              default: "", null: false
     t.string   "salutation",             default: "", null: false
     t.string   "suffix",                 default: "", null: false
+    t.string   "name",                   default: "", null: false
+    t.string   "image_url",              default: "", null: false
+    t.string   "urls",                   default: "", null: false
     t.string   "provider",               default: "", null: false
     t.string   "uid",                    default: "", null: false
     t.string   "email",                  default: "", null: false
@@ -608,14 +611,18 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["first_name"], name: "index_users_on_first_name", using: :btree
+  add_index "users", ["image_url"], name: "index_users_on_image_url", using: :btree
   add_index "users", ["last_name"], name: "index_users_on_last_name", using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
   add_index "users", ["salutation"], name: "index_users_on_salutation", using: :btree
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["suffix"], name: "index_users_on_suffix", using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", using: :btree
+  add_index "users", ["urls"], name: "index_users_on_urls", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   create_table "vehicle_doors", force: :cascade do |t|
