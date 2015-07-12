@@ -1,36 +1,38 @@
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}, role: 'form') do |f|
-  .well.well-default
-    %legend.well-heading.pull-left
-      - if controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
-        %h3.pull-left
-          Edit #{resource_name.to_s.humanize}
-        %h4.pull-right
-          = link_to "Back", :back, class: "btn btn-warning btn-block"
-      - else
+  -if controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
+    #userAccordion{aria: {multiselectable: true}, role: "tablist"}
+      .panel.well.well-default
+        .well-heading
+          .row
+            .container-fluid
+              %h3.pull-left
+                Edit #{resource_name.to_s.humanize}
+              %h4.pull-right
+                = link_to "Back", :back, class: "btn btn-warning btn-block"
+        #userHeading.collapse-heading{role: "tab"}
+          %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse1", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse1"}
+            login informaiton
+          %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse2", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse2"}
+            work info
+          %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse3", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse3"}
+            personal info
+        #userCollapse1.collapse.in{aria: {labelledby: "userHeading"}, role: "tabpanel"}
+          = render partial: "/devise/registrations/panels/login_info", locals: {f: f}
+        #userCollapse2.collapse{aria: {labelledby: "userHeading"}, role: "tabpanel"}
+          = render partial: "/devise/registrations/panels/business_contact_info", locals: {f: f}
+          = render partial: "/devise/registrations/panels/business_address_info", locals: {f: f}
+        #userCollapse3.collapse{aria: {labelledby: "userHeading"}, role: "tabpanel"}
+          = render partial: "/devise/registrations/panels/personal_contact_info", locals: {f: f}
+          = render partial: "/devise/registrations/panels/personal_address_info", locals: {f: f}
+        .panel-footer
+          = render partial: "/devise/registrations/components/footer", locals: {f: f}
+  -else
+    .well.well-default
+      .well-heading
         %h4
           register an account
-    .row
-      .col-xs-12
-        .container-fluid
-          #userAccordion.col-xs-12{aria: {multiselectable: true}, role: "tablist"}
-            .panel.well
-              %legend.center-block
-                User Collapsible
-              #userHeading.collapse-heading{role: "tab"}
-                %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse1", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse1"}
-                  login informaiton
-                %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse2", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse2"}
-                  work info
-                %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse3", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse3"}
-                  personal info
-              #userCollapse1.collapse{aria: {labelledby: "userHeading"}, role: "tabpanel"}
-                = render partial: "/devise/registrations/panels/login_info", locals: {f: f}
-              #userCollapse2.collapse{aria: {labelledby: "userHeading"}, role: "tabpanel"}
-                = render partial: "/devise/registrations/panels/business_contact_info", locals: {f: f}
-                = render partial: "/devise/registrations/panels/business_address_info", locals: {f: f}
-              #userCollapse3.collapse{aria: {labelledby: "userHeading"}, role: "tabpanel"}
-                = render partial: "/devise/registrations/panels/personal_contact_info", locals: {f: f}
-                = render partial: "/devise/registrations/panels/personal_address_info", locals: {f: f}
-    %br
-    = render partial: "/devise/registrations/components/footer", locals: {f: f}
+      .well-body
+        = render partial: "/devise/registrations/panels/login_info", locals: {f: f}
+      .well-footer
+        = render partial: "/devise/registrations/components/footer", locals: {f: f}
 

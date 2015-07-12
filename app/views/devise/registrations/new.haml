@@ -1,4 +1,14 @@
-- unless user_signed_in?
-  .row
-    = render "form"
+.col-xs-12.col-sm-8
+  = render "form"
+.col-xs-12.col-sm-4
+  .well.well-default
+    .well-heading
+      %h3
+        social media
+    .well-body
+      .form-group
+        .btn-group.btn-group-justified{role: "group"}
+          .btn-group
+            = render "devise/shared/links_omniauthable"
+
 
