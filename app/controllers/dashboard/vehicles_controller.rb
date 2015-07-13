@@ -36,13 +36,21 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
     @vehicle  = Vehicle.new
-    #@years    = VehicleYear.all
-    #@makes    = []
-    #@models   = []
-    #@trims    = []
-    #@types    = []
-    #@doors    = []
-    #@sizes    = []
+    @years    = VehicleYear.all
+    @makes    = []
+    @models   = []
+    @trims    = []
+    @types    = []
+    @doors    = []
+    @sizes    = []
+
+    @select_years    = VehicleYear.all
+    @select_makes    = VehicleMake.all
+    @select_models   = VehicleModel.all
+    @select_trims    = VehicleTrim.all
+    @select_types    = VehicleType.all
+    @select_doors    = VehicleDoor.all
+    @select_sizes    = VehicleSize.all
 
     respond_to do |format|
       format.html # new.html.erb
