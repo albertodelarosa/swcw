@@ -18,6 +18,6 @@ require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle.rb')
 #require File.join(File.dirname(__FILE__), '..', 'shared', 'create_siteler_dollars.rb')
 require File.join(File.dirname(__FILE__), 'create_associations.rb')
 #require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle_settings.rb')
-#require File.join(File.dirname(__FILE__), '..', 'shared', 'create_make_model.rb')
-#require File.join(File.dirname(__FILE__), 'create_vehicle_data.rb')
+require File.join(File.dirname(__FILE__), '..', 'shared', 'create_make_model.rb')
+require File.join(File.dirname(__FILE__), 'create_vehicle_data.rb')
 
