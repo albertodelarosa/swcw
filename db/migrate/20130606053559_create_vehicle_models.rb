@@ -1,6 +1,6 @@
-class CreateVehicleSizes < ActiveRecord::Migration
+class CreateVehicleModels < ActiveRecord::Migration
   def change
-    create_table :vehicle_sizes do |t|
+    create_table :vehicle_models do |t|
       t.string :name, null: false, default: "", index: true
 
       t.timestamps
