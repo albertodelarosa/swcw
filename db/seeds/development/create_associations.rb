@@ -1,6 +1,10 @@
 developer = User.first
 account = Account.first
 
+account.user = developer
+account.generate_number
+account.save!
+
 printStarting("ADDING DEVELOPER ASSOCIATIONS")
 
 printStarting("ASSOCIATING DEVELOPER DEFAULT SITES")
