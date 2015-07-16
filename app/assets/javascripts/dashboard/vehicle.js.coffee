@@ -2,34 +2,38 @@
  #All this logic will automatically be available in application.js.
  #You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+
+
 ready = ->
-  #$("#add_vehicle").attr "disabled", "disabled"
-  $("#vehicle_vehicle_makes_id").attr "disabled", "disabled"
-  $("#vehicle_vehicle_models_id").attr "disabled", "disabled"
-  $("#vehicle_vehicle_trims_id").attr "disabled", "disabled"
-  $("#vehicle_vehicle_types_id").attr "disabled", "disabled"
-  $("#vehicle_vehicle_doors_id").attr "disabled", "disabled"
-  #$("#vehicle_vehicle_sizes_id").parent().parent().hide()
+  selector_controls = $('.vehicle-selectors').find('.form-control')
+  years   = $('#vehicle_vehicle_years_id')
+  makes   = $('#vehicle_vehicle_makes_id')
+  models  = $('#vehicle_vehicle_models_id')
+  trims   = $('#vehicle_vehicle_trims_id')
+  types   = $('#vehicle_vehicle_types_id')
+  doors   = $('#vehicle_vehicle_doors_id')
+  last    = $(selector_controls.last())
+
+  $("#add_vehicle").attr "disabled", "disabled"
+  $(selector_controls).slice(selector_controls.index(makes), selector_controls.index(last) + 1).attr "disabled", "disabled"
 
   $("#vehicle_vehicle_years_id").change ->
-    value = $('#vehicle_vehicle_years_id :selected').val()
-    $('#vehicle_vehicle_models_id').empty().prepend('<option>Select Model</option>').attr "disabled", "disabled"
-    $('#vehicle_vehicle_trims_id').empty().prepend('<option>Select Trim</option>').attr "disabled", "disabled"
-    $('#vehicle_vehicle_types_id').empty().prepend('<option>Select Type</option>').attr "disabled", "disabled"
-    $('#vehicle_vehicle_doors_id').empty().prepend('<option>Select Doors</option>').attr "disabled", "disabled"
-    $("#add_vehicle").attr "disabled", "disabled"
     $.ajax
       url: "/dashboard/vehicles/update_make"
       data:
         vehicle_year: $('#vehicle_vehicle_years_id :selected').val()
       dataType: "script"
-    $("#vehicle_vehicle_makes_id").removeAttr "disabled"
+    value = $('#vehicle_vehicle_years_id :selected').val()
+    if value > 0
+      makes.removeAttr "disabled"
+    else
+      makes.attr("disabled", "disabled").find('option:gt(0)').remove()
+
+    $(selector_controls).slice(selector_controls.index(models), selector_controls.index(last) + 1).attr("disabled", "disabled").find('option:gt(0)').remove()
+    $("#add_vehicle").attr "disabled", "disabled"
 
   $("#vehicle_vehicle_makes_id").change ->
-    $('#vehicle_vehicle_trims_id').empty().prepend('<option>Select Trim</option>').attr "disabled", "disabled"
-    $('#vehicle_vehicle_types_id').empty().prepend('<option>Select Type</option>').attr "disabled", "disabled"
-    $('#vehicle_vehicle_doors_id').empty().prepend('<option>Select Doors</option>').attr "disabled", "disabled"
-    $("#add_vehicle").attr "disabled", "disabled"
     $.ajax
       url: "/dashboard/vehicles/update_model"
       data:
@@ -38,11 +42,10 @@ ready = ->
         vehicle_trim: $('#vehicle_vehicle_trims_id :selected').val()
       dataType: "script"
     $("#vehicle_vehicle_models_id").removeAttr "disabled"
+    $(selector_controls).slice(selector_controls.index(trims), selector_controls.index(last) + 1).attr("disabled", "disabled").find('option:gt(0)').remove()
+    $("#add_vehicle").attr "disabled", "disabled"
 
   $("#vehicle_vehicle_models_id").change ->
-    $('#vehicle_vehicle_types_id').empty().prepend('<option>Select Type</option>').attr "disabled", "disabled"
-    $('#vehicle_vehicle_doors_id').empty().prepend('<option>Select Doors</option>').attr "disabled", "disabled"
-    $("#add_vehicle").attr "disabled", "disabled"
     $.ajax
       url: "/dashboard/vehicles/update_trim"
       data:
@@ -50,21 +53,23 @@ ready = ->
         vehicle_model: $('#vehicle_vehicle_models_id :selected').val()
       dataType: "script"
     $("#vehicle_vehicle_trims_id").removeAttr "disabled"
+    $(selector_controls).slice(selector_controls.index(types), selector_controls.index(last) + 1).attr("disabled", "disabled").find('option:gt(0)').remove()
+    $("#add_vehicle").attr "disabled", "disabled"
 
   $("#vehicle_vehicle_trims_id").change ->
-    $('#vehicle_vehicle_doors_id').empty().prepend('<option>Select Doors</option>').attr "disabled", "disabled"
-    $("#add_vehicle").attr "disabled", "disabled"
     $.ajax
       url: "/dashboard/vehicles/update_type"
       data:
         vehicle_year: $('#vehicle_vehicle_years_id :selected').val()
+        vehicle_make: $('#vehicle_vehicle_makes_id :selected').val()
         vehicle_model: $('#vehicle_vehicle_models_id :selected').val()
         vehicle_trim: $('#vehicle_vehicle_trims_id :selected').val()
       dataType: "script"
-    $("#vehicle_vehicle_types_id").removeAttr "disabled"
+    doors.attr("disabled", "disabled").find('option:gt(0)').remove()
+    $("#add_vehicle").attr "disabled", "disabled"
+    types.removeAttr "disabled"
 
   $("#vehicle_vehicle_types_id").change ->
-    $("#add_vehicle").attr "disabled", "disabled"
     $.ajax
       url: "/dashboard/vehicles/update_doors"
       data:
@@ -72,6 +77,7 @@ ready = ->
         vehicle_type: $('#vehicle_vehicle_types_id :selected').val()
       dataType: "script"
     $("#vehicle_vehicle_doors_id").removeAttr "disabled"
+    $("#add_vehicle").attr "disabled", "disabled"
 
   $("#vehicle_vehicle_doors_id").change ->
     $.ajax
@@ -80,8 +86,6 @@ ready = ->
         vehicle_type: $('#vehicle_vehicle_types_id :selected').val()
       dataType: "script"
     $("#add_vehicle").removeAttr "disabled"
-
-
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
