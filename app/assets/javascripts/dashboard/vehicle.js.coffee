@@ -90,3 +90,26 @@ ready = ->
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
+ready = ->
+  $('.vehicle-unfound').click ->
+    if $('.vehicle-unfound').is(':checked')
+      $('.vehicle-selectors').addClass("hidden")
+      $('.vehicle-inputs').removeClass("hidden")
+      $('#vehicle_vehicle_years_id').val('0')
+      $('#vehicle_vehicle_makes_id').empty().prepend('<option>Select Make</option>').attr "disabled", "disabled"
+      $('#vehicle_vehicle_models_id').empty().prepend('<option>Select Model</option>').attr "disabled", "disabled"
+      $('#vehicle_vehicle_trims_id').empty().prepend('<option>Select Trim</option>').attr "disabled", "disabled"
+      $('#vehicle_vehicle_types_id').empty().prepend('<option>Select Type</option>').attr "disabled", "disabled"
+      $('#vehicle_vehicle_doors_id').empty().prepend('<option>Select Doors</option>').attr "disabled", "disabled"
+      $("#add_vehicle").attr "disabled", "disabled"
+    else
+      $('.vehicle-inputs').addClass("hidden")
+      $('.vehicle-selectors').removeClass("hidden")
+      $('.vehicle-input').val('')
+      $('#vehicle_vehicle_type').val('')
+      $('#vehicle_vehicle_door').val('')
+      $("#add_vehicle").removeAttr "disabled"
+    return
+$(document).ready(ready)
+$(document).on('page:load', ready)
+

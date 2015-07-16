@@ -68,35 +68,19 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # POST /customers/vehicles
   # POST /customers/vehicles.json
   def create
-    @vehicle = Vehicle.new(params_new_vehicle)
-    if (@vehicle.vehicle_type.casecmp("Pickup") == 0)     || (@vehicle.vehicle_type.casecmp("SUV") == 0)      ||
-        (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0)      ||
-        (@vehicle.vehicle_type.casecmp("Van") == 0)       || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
+    temp = params_vehicle_unfound
+    vehicle_unfound = temp[:vehicle_unfound].to_i
+    if vehicle_unfound == 0
+      @vehicle = Vehicle.new(params_custom_vehicle)
+    elsif vehicle_unfound == 1
+      @vehicle = Vehicle.new(params_new_vehicle)
+    end
+
+    if (@vehicle.vehicle_type.casecmp("Pickup") == 0) || (@vehicle.vehicle_type.casecmp("SUV") == 0) || (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0) || (@vehicle.vehicle_type.casecmp("Van") == 0) || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
       @vehicle.vehicle_size = "Large"
-    elsif(@vehicle.vehicle_type.casecmp("Convertible") == 0)  || (@vehicle.vehicle_type.casecmp("Coupe") == 0)  ||
-         (@vehicle.vehicle_type.casecmp("Sedan") == 0)        || (@vehicle.vehicle_type.casecmp("Wagon") == 0)  ||
-         (@vehicle.vehicle_type.casecmp("Hatchback") == 0)
+    elsif (@vehicle.vehicle_type.casecmp("Convertible") == 0) || (@vehicle.vehicle_type.casecmp("Coupe") == 0) || (@vehicle.vehicle_type.casecmp("Sedan") == 0) || (@vehicle.vehicle_type.casecmp("Wagon") == 0) || (@vehicle.vehicle_type.casecmp("Hatchback") == 0)
       @vehicle.vehicle_size = "Small"
     end
-    #@vehicle = Vehicle.new(color: params[:vehicle][:color], 
-                           #comments: params[:vehicle][:comments], 
-                           #license_plate_number: params[:vehicle][:license_plate_number], 
-                           #state_registered: params[:vehicle][:state_registered] 
-                           #vehicle_years:   VehicleYear.find(params[:vehicle][:vehicle_years][:id]), 
-                           #vehicle_makes:   VehicleMake.find(params[:vehicle][:vehicle_makes][:id]), 
-                           #vehicle_models:  VehicleModel.find(params[:vehicle][:vehicle_models][:id]), 
-                           #vehicle_trims:   VehicleTrim.find(params[:vehicle][:vehicle_trims][:id]), 
-                           #vehicle_types:   VehicleType.find(params[:vehicle][:vehicle_types][:id]), 
-                           #vehicle_doors:   VehicleDoor.find(params[:vehicle][:vehicle_doors][:id]) 
-                           #vehicle_sizes:   VehicleSize.find(params[:vehicle][:vehicle_sizes][:id])
-                          #)
-    #@vehicle.vehicle_years        << VehicleYear.find(params[:vehicle][:vehicle_years][:id])
-    #@vehicle.vehicle_makes        << VehicleMake.find(params[:vehicle][:vehicle_makes][:id])
-    #@vehicle.vehicle_models       << VehicleModel.find(params[:vehicle][:vehicle_models][:id])
-    #@vehicle.vehicle_trims        << VehicleTrim.find(params[:vehicle][:vehicle_trims][:id])
-    #@vehicle.vehicle_types        << VehicleType.find(params[:vehicle][:vehicle_types][:id])
-    #@vehicle.vehicle_doors        << VehicleDoor.find(params[:vehicle][:vehicle_doors][:id])
-
     respond_to do |format|
       if @vehicle.save!
         @vehicle.accounts << current_user.account
@@ -115,7 +99,7 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   end
 
   def update_model
-    models = VehicleModel.joins(:vehicle_makes, :vehicle_trims => :vehicle_years).where(vehicle_makes: {id: params[:vehicle_make]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
+    models = VehicleModel.joins(:vehicle_makes, vehicle_trims: :vehicle_years).where(vehicle_makes: {id: params[:vehicle_make]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
     @models = models.map{|model| [model.name, model.id]}.insert(0, "Select Model")
   end
 
@@ -125,17 +109,17 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   end
 
   def update_type
-    types = VehicleType.joins(:vehicle_trims, :vehicle_years).where(vehicle_trims: {id: params[:vehicle_trim]}).where(vehicle_years: {id: params[:vehicle_year]})
+    types = VehicleType.joins(:vehicle_trims, :vehicle_years).where(vehicle_trims:  {id: params[:vehicle_trim ]}).where(vehicle_years:  {id: params[:vehicle_year ]}).uniq
     @types = types.map{|type| [type.name, type.id]}.insert(0, "Select Type")
   end
 
   def update_doors
-    doors = VehicleDoor.joins(:vehicle_types, :vehicle_years).where(vehicle_types: {id: params[:vehicle_type]}).where(vehicle_years: {id: params[:vehicle_year]})
+    doors = VehicleDoor.joins(:vehicle_types, :vehicle_years).where(vehicle_types: {id: params[:vehicle_type]}).where(vehicle_years: {id: params[:vehicle_year]}).uniq
     @doors = doors.map{|door| [door.name, door.id]}.insert(0, "Select Doors")
   end
 
   def update_size
-    sizes = VehicleSize.joins(:vehicle_types).where(vehicle_types: {id: params[:vehicle_type]})
+    sizes = VehicleSize.joins(:vehicle_types).where(vehicle_types: {id: params[:vehicle_type]}).uniq
     @sizes = sizes.map{|size| [size.name, size.id]}.insert(0, "Select Size")
   end
 
@@ -143,13 +127,9 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
   # PUT /customers/vehicles/1.json
   def update
     @vehicle = Vehicle.new(params_update_vehicle)
-    if (@vehicle.vehicle_type.casecmp("Pickup") == 0)     || (@vehicle.vehicle_type.casecmp("SUV") == 0)      ||
-        (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0)      ||
-        (@vehicle.vehicle_type.casecmp("Van") == 0)       || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
+    if (@vehicle.vehicle_type.casecmp("Pickup") == 0) || (@vehicle.vehicle_type.casecmp("SUV") == 0) || (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0) || (@vehicle.vehicle_type.casecmp("Van") == 0) || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
       @vehicle.size = "Large"
-    elsif(@vehicle.vehicle_type.casecmp("Convertible") == 0)  || (@vehicle.vehicle_type.casecmp("Coupe") == 0)  ||
-         (@vehicle.vehicle_type.casecmp("Sedan") == 0)        || (@vehicle.vehicle_type.casecmp("Wagon") == 0)  ||
-         (@vehicle.vehicle_type.casecmp("Hatchback") == 0)
+    elsif(@vehicle.vehicle_type.casecmp("Convertible") == 0) || (@vehicle.vehicle_type.casecmp("Coupe") == 0) || (@vehicle.vehicle_type.casecmp("Sedan") == 0) || (@vehicle.vehicle_type.casecmp("Wagon") == 0) || (@vehicle.vehicle_type.casecmp("Hatchback") == 0)
       @vehicle.size = "Small"
     end
 
@@ -180,6 +160,20 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
 
   def params_new_vehicle
     params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :color, :license_plate, :state_registered, :comments)
+  end
+
+  def params_vehicle_unfound
+    params.required(:vehicle).permit(:vehicle_unfound)
+  end
+
+  def params_custom_vehicle
+    params[:vehicle][:vehicle_year]  = VehicleYear.find(params.required( :vehicle ).permit(vehicle_years: [:id])[:vehicle_years][:id].to_i).name
+    params[:vehicle][:vehicle_make]  = VehicleMake.find(params.required( :vehicle ).permit(vehicle_makes: [:id])[:vehicle_makes][:id].to_i).name
+    params[:vehicle][:vehicle_model] = VehicleModel.find(params.required(:vehicle ).permit(vehicle_models: [:id])[:vehicle_models][:id].to_i).name
+    params[:vehicle][:vehicle_trim]  = VehicleTrim.find(params.required( :vehicle ).permit(vehicle_trims: [:id])[:vehicle_trims][:id].to_i).name
+    params[:vehicle][:vehicle_type]  = VehicleType.find(params.required( :vehicle ).permit(vehicle_types: [:id])[:vehicle_types][:id].to_i).name
+    params[:vehicle][:vehicle_door]  = VehicleDoor.find(params.required( :vehicle ).permit(vehicle_doors: [:id])[:vehicle_doors][:id].to_i).name
+    params_new_vehicle
   end
 
   def params_update_vehicle

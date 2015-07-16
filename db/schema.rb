@@ -633,8 +633,27 @@ ActiveRecord::Schema.define(version: 20150608205134) do
 
   add_index "vehicle_doors", ["name"], name: "index_vehicle_doors_on_name", using: :btree
 
+  create_table "vehicle_makes", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vehicle_makes", ["name"], name: "index_vehicle_makes_on_name", using: :btree
+
+  create_table "vehicle_models", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vehicle_models", ["name"], name: "index_vehicle_models_on_name", using: :btree
+
   create_table "vehicle_settings", force: :cascade do |t|
-    t.integer  "vehicle_id"
+    t.integer  "vehicle_year_id"
+    t.integer  "vehicle_make_id"
+    t.integer  "vehicle_model_id"
+    t.integer  "vehicle_trim_id"
     t.integer  "vehicle_type_id"
     t.integer  "vehicle_door_id"
     t.integer  "vehicle_size_id"
@@ -644,30 +663,64 @@ ActiveRecord::Schema.define(version: 20150608205134) do
 
   add_index "vehicle_settings", ["vehicle_door_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_door_id_and_vehicle_size_id", using: :btree
   add_index "vehicle_settings", ["vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_door_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_door_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_size_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_type_id", using: :btree
-  add_index "vehicle_settings", ["vehicle_id"], name: "index_vehicle_settings_on_vehicle_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_model_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_size_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_trim_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_make_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_make_id"], name: "index_vehicle_settings_on_vehicle_make_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_model_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_model_id_and_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_model_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_model_id_and_vehicle_size_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_model_id", "vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_model_id_and_vehicle_trim_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_model_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_model_id_and_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_model_id", using: :btree
   add_index "vehicle_settings", ["vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_size_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_size_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_trim_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_trim_id_and_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_trim_id", using: :btree
   add_index "vehicle_settings", ["vehicle_type_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_type_id_and_vehicle_door_id", using: :btree
   add_index "vehicle_settings", ["vehicle_type_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_type_id_and_vehicle_size_id", using: :btree
   add_index "vehicle_settings", ["vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_year_id_and_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id", "vehicle_make_id"], name: "index_vehicle_settings_on_vehicle_year_id_and_vehicle_make_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id", "vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_year_id_and_vehicle_model_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_year_id_and_vehicle_size_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id", "vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_year_id_and_vehicle_trim_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_year_id_and_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_year_id"], name: "index_vehicle_settings_on_vehicle_year_id", using: :btree
 
   create_table "vehicle_sizes", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "vehicle_sizes", ["name"], name: "index_vehicle_sizes_on_name", using: :btree
 
+  create_table "vehicle_trims", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vehicle_trims", ["name"], name: "index_vehicle_trims_on_name", using: :btree
+
   create_table "vehicle_types", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "vehicle_types", ["name"], name: "index_vehicle_types_on_name", using: :btree
+
+  create_table "vehicle_years", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vehicle_years", ["name"], name: "index_vehicle_years_on_name", using: :btree
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "vehicle_year",     default: "", null: false
