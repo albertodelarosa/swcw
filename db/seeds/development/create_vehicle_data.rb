@@ -51,21 +51,17 @@ def build_trim_associations(trim_name, model)
 end
 
 def build_vehicle_associations(year, make, model, type_name, door_name, trim_name="base")
-  make.vehicle_models << model unless make.vehicle_models.include?(model)
+  make.vehicle_models << model unless make.vehicle_models.exists?(model)
 
   trim = build_trim_associations(trim_name, model)
-  trim.vehicle_years << year
+  trim.vehicle_years << year unless trim.vehicle_years.exists?(year)
   trim.save!
 
   type = build_type_associations(trim, type_name)
-  type.vehicle_years << year
+  type.vehicle_years << year unless type.vehicle_years.exists?(year)
 
   door = build_door_associations(type, door_name)
-  door.vehicle_years << year
-
-  #size = build_size_associations(type_name)
-  #type.vehicle_sizes << size unless type.vehicle_sizes.include?(size)
-
+  door.vehicle_years << year unless door.vehicle_years.exists?(year)
 end
 
 def build_forgot(year,forgot)
