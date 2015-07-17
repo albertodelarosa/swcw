@@ -101,7 +101,7 @@ ready = ->
       $('#vehicle_vehicle_trims_id').empty().prepend('<option>Select Trim</option>').attr "disabled", "disabled"
       $('#vehicle_vehicle_types_id').empty().prepend('<option>Select Type</option>').attr "disabled", "disabled"
       $('#vehicle_vehicle_doors_id').empty().prepend('<option>Select Doors</option>').attr "disabled", "disabled"
-      $("#add_vehicle").attr "disabled", "disabled"
+      $("#add_vehicle").removeAttr "disabled"
     else
       $('.vehicle-inputs').addClass("hidden")
       $('.vehicle-selectors').removeClass("hidden")
@@ -109,6 +109,7 @@ ready = ->
       $('#vehicle_vehicle_type').val('')
       $('#vehicle_vehicle_door').val('')
       $("#add_vehicle").removeAttr "disabled"
+      $("#add_vehicle").attr "disabled", "disabled"
     return
 $(document).ready(ready)
 $(document).on('page:load', ready)
