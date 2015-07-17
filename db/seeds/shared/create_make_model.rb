@@ -10,7 +10,7 @@ CSV.read("#{Rails.root}/lib/tasks/make_model.csv", options).each_with_index do |
   else
     row.compact.each do |column|
       model = VehicleModel.where(name: column).first_or_create
-      make.vehicle_models << model unless make.vehicle_models.include?(model)
+      make.vehicle_models << model unless make.vehicle_models.exists?(model)
     end
   end
 end
