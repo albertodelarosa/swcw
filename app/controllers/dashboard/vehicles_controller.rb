@@ -71,9 +71,9 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
     temp = params_vehicle_unfound
     vehicle_unfound = temp[:vehicle_unfound].to_i
     if vehicle_unfound == 0
-      @vehicle = Vehicle.new(params_custom_vehicle)
+      @vehicle = Vehicle.new(params_new_vehicle )
     elsif vehicle_unfound == 1
-      @vehicle = Vehicle.new(params_new_vehicle)
+      @vehicle = Vehicle.new(params_custom_vehicle)
     end
 
     if (@vehicle.vehicle_type.casecmp("Pickup") == 0) || (@vehicle.vehicle_type.casecmp("SUV") == 0) || (@vehicle.vehicle_type.casecmp("Crossover") == 0) || (@vehicle.vehicle_type.casecmp("CUV") == 0) || (@vehicle.vehicle_type.casecmp("Van") == 0) || (@vehicle.vehicle_type.casecmp("Minivan") == 0)
@@ -158,22 +158,40 @@ class Dashboard::VehiclesController < Dashboard::DashboardsController
 
   private
 
-  def params_new_vehicle
-    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :color, :license_plate, :state_registered, :comments)
+  def params_custom_vehicle
+    new_vehicle = params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :color, :license_plate, :state_registered, :comments)
+    year   = VehicleYear.where(name:  new_vehicle[:vehicle_year] ).first_or_create
+    make   = VehicleMake.where(name:  new_vehicle[:vehicle_make] ).first_or_create
+    model  = VehicleModel.where(name: new_vehicle[:vehicle_model]).first_or_create
+    trim   = VehicleTrim.where(name:  new_vehicle[:vehicle_trim] ).first_or_create
+    v_type = VehicleType.find(new_vehicle[:vehicle_type])
+    door   = VehicleDoor.find(new_vehicle[:vehicle_door])
+
+    new_vehicle[:vehicle_type] = v_type.name
+    new_vehicle[:vehicle_door] = door.name
+
+    trim.vehicle_years   << year   unless trim.vehicle_years.exists?(year)
+    trim.vehicle_models  << model  unless trim.vehicle_models.exists?(model)
+    trim.vehicle_types   << v_type unless trim.vehicle_types.exists?(v_type)
+    model.vehicle_makes  << make   unless model.vehicle_makes.exists?(make)
+    year.vehicle_types   << v_type unless year.vehicle_types.exists?(v_type)
+    year.vehicle_doors   << door   unless year.vehicle_doors.exists?(door)
+    v_type.vehicle_doors << door   unless v_type.vehicle_doors.exists?(door)
+    return new_vehicle
   end
 
   def params_vehicle_unfound
     params.required(:vehicle).permit(:vehicle_unfound)
   end
 
-  def params_custom_vehicle
+  def params_new_vehicle
     params[:vehicle][:vehicle_year]  = VehicleYear.find(params.required( :vehicle ).permit(vehicle_years: [:id])[:vehicle_years][:id].to_i).name
     params[:vehicle][:vehicle_make]  = VehicleMake.find(params.required( :vehicle ).permit(vehicle_makes: [:id])[:vehicle_makes][:id].to_i).name
     params[:vehicle][:vehicle_model] = VehicleModel.find(params.required(:vehicle ).permit(vehicle_models: [:id])[:vehicle_models][:id].to_i).name
     params[:vehicle][:vehicle_trim]  = VehicleTrim.find(params.required( :vehicle ).permit(vehicle_trims: [:id])[:vehicle_trims][:id].to_i).name
     params[:vehicle][:vehicle_type]  = VehicleType.find(params.required( :vehicle ).permit(vehicle_types: [:id])[:vehicle_types][:id].to_i).name
     params[:vehicle][:vehicle_door]  = VehicleDoor.find(params.required( :vehicle ).permit(vehicle_doors: [:id])[:vehicle_doors][:id].to_i).name
-    params_new_vehicle
+    params.required(:vehicle).permit(:vehicle_year, :vehicle_make, :vehicle_model, :vehicle_trim, :vehicle_type, :vehicle_door, :color, :license_plate, :state_registered, :comments)
   end
 
   def params_update_vehicle
