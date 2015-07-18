@@ -31,23 +31,23 @@ developer.work_address =
   )
 printFinished()
 
-#printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
-#my_vehicle =
-  #Vehicle.create!(
-    #year:             "1997",
-    #make:             "Chevrolet",
-    #model:            "Camaro",
-    #trim:             "Z28",
-    #type:             "Convertible",
-    #doors:            "2 Door",
-    #size:             "Small",
-    #license_plate:    "hotweel",
-    #state_registered: "CA",
-    #color:            "Artic White",
-    #comments:         "Please wash the mats"
-  #)
-#developer.vehicles << my_vehicle
-#printFinished()
+printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
+my_vehicle =
+  Vehicle.create!(
+    year:             "1997",
+    make:             "Chevrolet",
+    model:            "Camaro",
+    trim:             "Z28",
+    type:             "Convertible",
+    doors:            "2 Door",
+    size:             "Small",
+    license_plate:    "hotweel",
+    state_registered: "CA",
+    color:            "Artic White",
+    comments:         "Please wash the mats"
+  )
+developer.vehicles << my_vehicle
+printFinished()
 
 
 #printStarting("ASSOCIATING DEFAULT APPOINTMENTS")
