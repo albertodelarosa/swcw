@@ -17,7 +17,7 @@ $gray-light:             lighten($gray-base, 80%) !default;   // #ccc
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 ////////////////////////////////////////////////////////////////
-$brand-default:         $sw-black-0 !default;
+$brand-default:         $sw-black-4 !default;
 $brand-default-color:   $sw-black-6 !default;
 $brand-default-border:  $sw-black-6 !default;
 
@@ -26,7 +26,7 @@ $brand-primary-bg:      $sw-blue-5 !default;
 $brand-primary-color:   $sw-blue-6 !default;
 $brand-primary-border:  $sw-blue-1 !default;
 
-$brand-info:            $sblue-0 !default;
+$brand-info:            $slw-blue-1 !default;
 $brand-info-bg:         $sblue-5 !default;
 $brand-info-color:      $sblue-6 !default;
 $brand-info-border:     $sblue-1 !default;
