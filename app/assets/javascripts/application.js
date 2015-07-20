@@ -15,6 +15,8 @@
 //= require utilities/bootstrap/bootstrap-sprockets
 //= require utilities/moment-with-langs
 //= require utilities/bootstrap-datetimepicker
+//= require parallax
+//= require jquery.parallax
 //= require utilities/navbar
 //= require_tree ./ie_utilities/
 //= require_tree ./dashboard/

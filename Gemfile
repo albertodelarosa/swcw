@@ -68,6 +68,7 @@ gem 'oauth-plugin'
 
 # Use for parallax scroll
 #gem 'skrollr-rails'
+gem 'parallax-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
