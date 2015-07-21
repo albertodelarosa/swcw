@@ -4,12 +4,12 @@
 //= require utilities/bootstrap/bootstrap-sprockets
 //= require utilities/moment-with-langs
 //= require utilities/bootstrap-datetimepicker
-//= require parallax
-//= require jquery.parallax
+//= require skrollr
+//= require skrollr.ie
+//= require skrollr.menu
+//= require skrollr.stylesheets
 //= require utilities/navbar
 //= require_tree ./ie_utilities/
 
-$('.parallax-on').parallax
+s = skrollr.init()
 
-//scene = document.getElementById('scene')
-//parallax = new Parallax(scene)
