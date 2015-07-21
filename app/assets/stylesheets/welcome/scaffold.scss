@@ -1,22 +1,26 @@
 #bg {
-  //background-image: image-url("welcome/index/spash_vertical_trans.jpeg");
-  position: fixed;
-  height: 575px;
+  background-image: image-url("welcome/index/spash_vertical_trans.jpeg");
+  position: relative;
+  height: 525px;
   width: 100%;
   z-index: -1;
-  margin-top: -156px;
 }
 
 .jumbotron.intro-page {
   background: none;
   line-height: inherit;
   margin: 0px;
-  padding: 70px 0px 50px 0px;
+  padding: 0px;
   .form-group {
     line-height: 1.42857;
   }
 }
-
+.splash_page_login{
+  margin: 59px 0px;
+  .panel{
+    background-color: rgba($sw-blue-rgb-5, 0.75)!important;
+  }
+}
 @media (min-width: $screen-md-min) {
   .jumbotron.intro-page {
     margin-top: 0px;
