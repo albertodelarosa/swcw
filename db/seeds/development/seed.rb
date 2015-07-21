@@ -13,7 +13,7 @@ require File.join(File.dirname(__FILE__), '..', 'shared', 'create_service_plans.
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_account.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_companies.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_sites.rb')
-#require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle.rb')
+require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle.rb')
 
 #require File.join(File.dirname(__FILE__), '..', 'shared', 'create_appointments.rb')
 #require File.join(File.dirname(__FILE__), '..', 'shared', 'create_discounts.rb')
