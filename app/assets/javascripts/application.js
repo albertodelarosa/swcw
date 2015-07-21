@@ -15,12 +15,13 @@
 //= require utilities/bootstrap/bootstrap-sprockets
 //= require utilities/moment-with-langs
 //= require utilities/bootstrap-datetimepicker
-//= require parallax
-//= require jquery.parallax
 //= require utilities/navbar
+//= require skrollr
+//= require skrollr.ie
+//= require skrollr.menu
+//= require skrollr.stylesheets
 //= require_tree ./ie_utilities/
 //= require_tree ./dashboard/
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+s = skrollr.init()
+
