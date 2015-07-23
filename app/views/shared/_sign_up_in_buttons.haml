@@ -3,7 +3,7 @@
     -panel.title(name: "h3") do
       sign in
   -panel.body() do
-    .container
+    .container-fluid
       =form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |main_f|
         .form-group
           .input-group

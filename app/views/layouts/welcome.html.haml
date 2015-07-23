@@ -9,12 +9,10 @@
     = render "shared/navbar"
     = render "shared/alert", flash: flash
     #wrap
-      .jumbotron.intro-page.section.section-default
+      .section.section-default.section-intro{data: {type: "background", yspeed: "-6.5"}}
         .container-fluid
           .row
-            #bg{data: {"96" =>{top: "background-position: 0% 0px; opacity:1"}, top: {bottom: " background-position: 0% -200px; opacity: 0"}, anchor: {target: ".jumbotron"}}}
-              //= image_tag "welcome/index/spash_vertical_trans.jpg", width: 1312, length: 756
-              = yield
+            = yield
     = render "welcome/pre_footer"
     = render "shared/footer"
     = javascript_include_tag "welcome"
