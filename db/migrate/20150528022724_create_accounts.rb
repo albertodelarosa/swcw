@@ -11,7 +11,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.boolean :apple_pay_allowed, index: true, null: false, default: false
       t.boolean :coupons_allowed,   index: true, null: false, default: false
 
-      t.belongs_to :user,       index: true
+      t.belongs_to :user,           index: true
 
       t.timestamps null: false
     end
