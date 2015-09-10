@@ -45,7 +45,7 @@ gem 'formtastic'
 gem 'ransack'
 
 gem 'sendgrid'
-#gem 'airbrake'
+gem 'airbrake'
 
 #Use omniauth for social media login
 gem 'omniauth-facebook'
@@ -67,7 +67,9 @@ gem 'quickeebooks'
 gem 'oauth-plugin'
 
 # Use for parallax scroll
-gem 'skrollr-rails'
+#gem 'scrollmagicjs-rails'
+#gem 'modernizr-rails'
+#gem 'skrollr-rails'
 #gem 'parallax-rails'
 
 # Gems used only for assets and not required
@@ -100,7 +102,7 @@ end
 gem 'rspec-rails'
 
 group :test, :development do
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'pry-byebug'
 end
 

@@ -60,6 +60,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    airbrake (4.3.0)
+      builder
+      multi_json
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
@@ -389,8 +392,6 @@ GEM
     simplecov-html (0.10.0)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    skrollr-rails (0.6.29)
-      rails (>= 3.1.0)
     slop (3.6.0)
     sprockets (3.2.0)
       rack (~> 1.0)
@@ -430,6 +431,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   activemerchant
+  airbrake
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -472,7 +474,6 @@ DEPENDENCIES
   sextant
   simplecov
   simplecov-rcov
-  skrollr-rails
   thin
   turbolinks
   tzinfo
