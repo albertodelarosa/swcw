@@ -2,14 +2,17 @@
 %html{lang: "en"}
   %head
     %title Siteler Wash
-    = stylesheet_link_tag "welcome", media: "all"
+    = stylesheet_link_tag :welcome, media: :all
+    = javascript_include_tag :modernizr
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
     = render "shared/navbar"
     = render "shared/alert", flash: flash
     #wrap
-      .section.section-default.section-intro{data: {type: "background", yspeed: "-6.5"}}
+      .section.section-default.section-one
+        .section-intro
+      .section.section-default
         .container-fluid
           .row
             = yield
