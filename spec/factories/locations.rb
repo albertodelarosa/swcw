@@ -2,9 +2,20 @@
 
 FactoryGirl.define do
   factory :location do
-    vehicle nil
-    user nil
-    company nil
-    site nil
+    account     nil
+    user        nil
+    appointment nil
+    vehicle     nil
+    site        nil
+    company     nil
+
+    after do |location|
+    account       << FactoryGirl.create(:account)
+    user          << FactoryGirl.create(:user)
+    appointment   << FactoryGirl.create(:appointment)
+    vehicle       << FactoryGirl.create(:vehicle)
+    site          << FactoryGirl.create(:site)
+    company       << FactoryGirl.create(:company)
+    end
   end
 end

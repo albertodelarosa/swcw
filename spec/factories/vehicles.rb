@@ -1,4 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+require 'spec_helper'
 
 FactoryGirl.define do
   factory :vehicle do

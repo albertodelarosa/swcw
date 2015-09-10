@@ -1,4 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+require 'spec_helper'
 
 FactoryGirl.define do
   factory :company do
@@ -8,10 +9,13 @@ FactoryGirl.define do
     corporate_email_domain "factorygirl@myfactorygirl.com"
 
     after do |company|
-      company.contact_info ||= FactoryGirl.build(:contact_info, :company => company)
       company.address ||= FactoryGirl.build(:address, :company => company)
+      company.contact_info ||= FactoryGirl.build(:contact_info, :company => company)
+
+      company.appointments << FactoryGirl.create(:appointment)
+      company.accounts << FactoryGirl.create(:account)
       company.sites << FactoryGirl.create(:site)
-      company.clients << FactoryGirl.create(:client)
+      company.vehicles << FactoryGirl.create(:vehicle)
     end
   end
 
