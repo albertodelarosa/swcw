@@ -7,13 +7,10 @@ class Account < ActiveRecord::Base
   has_many :discounts
 
   has_many :locations
-  has_many :appointments
-
-  has_many :locations
+  has_many :appointments,     through: :locations
   has_many :vehicles,         through: :locations
   has_many :companies,        through: :locations
   has_many :sites,            through: :locations
-  has_many :appointments,     through: :locations
 
   accepts_nested_attributes_for :companies
   accepts_nested_attributes_for :sites
