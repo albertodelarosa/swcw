@@ -5,13 +5,6 @@
 //= require utilities/bootstrap-datetimepicker
 //= require utilities/navbar
 //= require_tree ./ie_utilities/
-//= require skrollr
-//= require skrollr.ie
-//= require skrollr.menu
-//= require skrollr.stylesheets
 //= require utilities/parallax
-
-//$( document ).ready(function() {
-  //s = skrollr.init();
-//});
+//= require_tree ./utilities/scrollmagic/
 
