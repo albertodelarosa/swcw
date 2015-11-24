@@ -6,5 +6,4 @@
 //= require utilities/navbar
 //= require_tree ./ie_utilities/
 //= require utilities/parallax
-//= require_tree ./utilities/scrollmagic/
-
+//- require utilities/background_slider
