@@ -76,6 +76,7 @@
     height: 80px;
     padding-top: 8px;
     text-align: center;
+    margin-top: 0px;
     img {
       float: none;
     }
@@ -87,3 +88,8 @@
   }
 }
 
+@media (max-width: $screen-sm-max){
+  #footer {
+    margin-top: 0px;
+  }
+}

@@ -3,20 +3,16 @@
   %head
     %title Siteler Wash
     = stylesheet_link_tag :welcome, media: :all
-    = javascript_include_tag :modernizr
+    -#= javascript_include_tag :modernizr
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
     = render "shared/navbar"
     = render "shared/alert", flash: flash
-    #wrap
-      .section.section-default.section-one
-        .section-intro
-      .section.section-default
-        .container-fluid
-          .row
-            = yield
-    = render "welcome/pre_footer"
+    //.init-stats
+    //.my-stats
+    .container-fluid
+      = yield
     = render "shared/footer"
     = javascript_include_tag "welcome"
     = render "shared/javascripts"

@@ -20,6 +20,28 @@
 
 // Body reset
 
+html, body {
+  height: 100vh;
+}
+
+#wrap{
+  height: -moz-calc(100% - 86px);
+  height: -webkit-calc(100% - 86px);
+  height: -o-calc(100% - 86px);
+  height: calc(100% - 86px);
+}
+
+@media (max-width: $screen-xs-max){
+  #wrap{
+    height: -moz-calc(100% - 65px);
+    height: -webkit-calc(100% - 65px);
+    height: -o-calc(100% - 65px);
+    height: calc(100% - 65px);
+  }
+  .footer{
+  }
+}
+
 html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
