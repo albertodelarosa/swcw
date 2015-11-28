@@ -1,134 +1,109 @@
-/*(function ( $ ) {
-  $.fn.myStats = function(options) {
-    var settings = $.extend({}, options );
+(function($, undefined) {
+  var version = "0.0.2";
+  "use strict";
 
-    this.html(
-      "<div class='in-place-container'>" +
-      "  <div> Parallax Type  = " + settings.parallaxType + "</div>" +
-      "  <div> Window height  = " + settings.windowHeight + "</div>" +
-      "  <div> My height      = " + settings.height       + "</div>" +
-      "  <div> My new height  = " + settings.newHeight    + "</div>" +
-      "  <div> My bgImgWidth  = " + settings.bgImgWidth   + "</div>" +
-      "  <div> My bgImgLength = " + settings.bgImgHeight  + "</div>" +
-      "  <div> My xPos        = " + settings.myXPos       + "</div>" +
-      "  <div> My yPos        = " + settings.myYPos       + "</div>" +
-      "  <div> yPos           = " + settings.yPos         + "</div>" +
-      "  <div> objInWindow    = " + settings.objInWindow  + "</div>" +
-      "  <div> objOutWindow   = " + settings.objOutWindow + "</div>" +
-      "  <div> scrollSpeed    = " + settings.scrollSpeed  + "</div>" +
-      "  <div> scrollTop()    = " + settings.scrollTop    + "</div>" +
-      "</div>"
-    );
-    return this; 
-  };
-}( jQuery ));
-*/
-
-(function ($){
   $.fn.parallaxMe = function(options) {
-    var settings = $.extend({}, options );
+
+    return this.each(function() {
+    	$window = $(window);
+      var $bgobj = $(this);
+      var objInWindow = $bgobj.offset().top - $window.height();
+      var objOutWindow = $bgobj.offset().top + $bgobj.height();
+      var yPos = '';
+      var coords = '';
+      var opts = $.extend({}, $.fn.parallaxMe.defaults, options );
+      var myData = $.extend({}, opts, {
+        myWindow: $window,
+        myObj: $bgobj,
+        objInWindow:  objInWindow,
+        objOutWindow: objOutWindow,
+        scrollSpeed:  opts.scrollSpeed,
+        height: $bgobj.height()
+      });
+
+      setMyParallaxPosition($bgobj, myData, yPos, ".init-stats");
+      $window.scroll(function() {
+        if( ($window.scrollTop() >= objInWindow) && ($window.scrollTop() <= objOutWindow) ){
+          setMyParallaxPosition($bgobj, myData, yPos, ".my-stats");
+        }
+      });
+    });
   };
-})(jQuery);
+
+  function setMyParallaxPosition($bgobj, myData, yPos, debugName){
+    yPos = eval("withinWindow" + myData.direction + "(myData)");
+    $bgobj.css({ backgroundPosition: '50% '+ yPos + '%' });
+    if (myData.debug) displayMyStats(debugName,$bgobj,myData);
+  }
+
+  function withinWindowreverse(myData){
+    return 100 - withinWindowRange(myData);
+  }
+  function withinWindowforward(myData){
+    return withinWindowRange(myData);
+  }
 
 
-$(document).ready(function(){
-	$window = $(window);
+  function withinWindowRange(myData){
+    var scrollSpeedPercentage = myData.scrollSpeed * 0.1;
+    var windowRange = myData.objOutWindow - myData.objInWindow;
+    windowRange = windowRange * ( 1 + (scrollSpeedPercentage));
+    var currentScrollPosition = myData.myWindow.scrollTop() - myData.objInWindow;
+    var currentScrollRangePercentage = currentScrollPosition / windowRange;
+    scrollSpeedPercentage = scrollSpeedPercentage * 0.1;
 
-  var introNewHeight = $window.height();
-  introNewHeight -= 124;
-  $(".section-intro").height(introNewHeight);
+    return (currentScrollRangePercentage + (scrollSpeedPercentage)) * 100;
+  };
 
-  $window.resize(function(){
-    introNewHeight = $window.height();
-    introNewHeight -= 124;
-    $(".section-intro").height(introNewHeight);
-  });
-
-  $('.parallax').each(function(){
-    var $bgobj = $(this);
-
-    var yPos = '';
-    var windowHeight = $window.height();
-    var objInWindow  = $bgobj.offset().top - $window.height();
-    var objOutWindow = $bgobj.offset().top + $bgobj.height();
-    var scrollSpeed = $bgobj.data('speed');
-    var newHeight = "";
-    var newReverseHeight = $bgobj.height() / 6;
-    var newNormalHeight = $bgobj.height() / 8;
+  function displayMyStats(myName,$bgobj,opts){
     var backgroundPosition = $bgobj.css('backgroundPosition').split(" ");
-    var coords = "";
-    var myType = "";
     var img = new Image;
     img.src = $bgobj.css('background-image').replace(/url\(|\)$/ig, "");
     var bgImgWidth = img.width;
     var bgImgHeight = img.height;
 
-    if ($bgobj.index() == 0){
-      if($bgobj.hasClass( "parallax-reverse" )){
-        yPos = -(objInWindow - $window.scrollTop()) / scrollSpeed;
-        yPos = yPos - newReverseHeight;
-        myType = "Reverse";
-        newHeight = newReverseHeight;
-      }else{
-        yPos = -( ($window.scrollTop() - objInWindow ) / scrollSpeed);
-        yPos = yPos + newNormalHeight;
-        myType = "Normal";
-        newHeight = newNormalHeight;
-      }
-      coords = '50% '+ yPos + 'px';
-      $bgobj.css({ backgroundPosition: coords });
-      //$( ".init-stats" ).myStats({
-        //parallaxType: myType,
-        //windowHeight: windowHeight,
-        //height:       $bgobj.height(),
-        //newHeight:    newHeight,
-        //bgImgWidth:   bgImgWidth,
-        //bgImgHeight:  bgImgHeight,
-        //myXPos:       backgroundPosition[0],
-        //myYPos:       backgroundPosition[1],
-        //yPos:         yPos,
-        //objInWindow:  objInWindow,
-        //objOutWindow: objOutWindow,
-        //scrollSpeed:  scrollSpeed,
-        //scrollTop:    $window.scrollTop()
-      //});
-    }
-
-    $window.scroll(function() {
-      if( ($window.scrollTop() >= objInWindow) && ($window.scrollTop() <= objOutWindow)){
-        if($bgobj.hasClass( "parallax-reverse" )){
-          yPos = -(objInWindow - $window.scrollTop()) / scrollSpeed;
-          yPos = yPos - newReverseHeight;
-          myType = "Reverse";
-          newHeight = newReverseHeight;
-        }else{
-          yPos = -( ($window.scrollTop() - objInWindow ) / scrollSpeed);
-          yPos = yPos + newNormalHeight;
-          myType = "Normal";
-          newHeight = newNormalHeight;
-        }
-        /*$( ".my-stats" ).myStats({
-          parallaxType: myType,
-          height:       $bgobj.height(),
-          newHeight:    newHeight,
-          bgImgWidth:   bgImgWidth,
-          bgImgHeight:  bgImgHeight,
-          myXPos:       backgroundPosition[0],
-          myYPos:       backgroundPosition[1],
-          yPos:         yPos,
-          objInWindow:  objInWindow,
-          objOutWindow: objOutWindow,
-          scrollSpeed:  scrollSpeed,
-          scrollTop:    $window.scrollTop()
-        });*/
-      }else{
-        yPos = '0';
-      }
-      coords = '50% '+ yPos + 'px';
-      $bgobj.css({ backgroundPosition: coords });
+    $( myName ).myStats({
+      parallaxType: opts.direction,
+      height:       $bgobj.height(),
+      bgImgWidth:   bgImgWidth,
+      bgImgHeight:  bgImgHeight,
+      myXPos:       backgroundPosition[0],
+      myYPos:       backgroundPosition[1],
+      objInWindow:  opts.objInWindow,
+      objOutWindow: opts.objOutWindow,
+      scrollSpeed:  opts.scrollSpeed,
+      scrollTop:    $window.scrollTop()
     });
-  });
-});
+  }
+
+  $.fn.myStats = function(settings) {
+    "use strict";
+    this.fadeIn().html(
+      "<div class='in-place-container'>" +
+      "  <div> Parallax Type  = " + settings.parallaxType     + "</div>"    +
+      "  <div> My height      = " + settings.height           + "px</div>"  +
+      "  <div> My height X 2  = " + settings.height * 2  + "px</div>"  +
+      "  <div> My bgImgWidth  = " + settings.bgImgWidth       + "px</div>"  +
+      "  <div> My bgImgHeight = " + settings.bgImgHeight      + "px</div>"  +
+      "  <div> My xPos        = " + settings.myXPos           + "</div>"    +
+      "  <div> My yPos        = " + settings.myYPos           + "</div>"    +
+      "  <div> yPos           = " + settings.yPos             + "px</div>"  +
+      "  <div> objInWindow    @ " + settings.objInWindow      + "px</div>"  +
+      "  <div> objOutWindow   @ " + settings.objOutWindow     + "px</div>"  +
+      "  <div> scrollSpeed    = " + settings.scrollSpeed      + "</div>"    +
+      "  <div> scrollTop()    @ " + settings.scrollTop        + "px</div>"  +
+      "</div>"
+    );
+    return this;
+  };
+
+  $.fn.parallaxMe.defaults = {
+    direction: 'forward', //type of parallax to be used: Forward, Reverse
+    scrollSpeed: 10,     // parallax img scroll speed in relation to mouse.
+    debug: false
+  };
+
+})(jQuery);
 
 document.createElement("article");
 document.createElement("section");

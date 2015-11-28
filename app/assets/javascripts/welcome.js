@@ -7,3 +7,10 @@
 //= require_tree ./ie_utilities/
 //= require utilities/parallax
 //- require utilities/background_slider
+
+
+$(document).ready(function(){
+  $(".parallax").parallaxMe({scrollSpeed: 0});
+  $(".parallax-reverse").parallaxMe({direction: "reverse"});
+});
+
