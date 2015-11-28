@@ -1,41 +1,25 @@
-.row.section.section-default.section-intro.parallax.parallax-reverse{data: {speed: 15, slides: ["assets/welcome/index/spash_vertical_trans.jpeg", "assets/welcome/index/mercedes_carpet_kit.jpg"]}}
+#section1.row.section.section-default.section-intro.parallax-reverse{data: { slides: ["assets/welcome/index/spash_vertical_trans.jpeg", "assets/welcome/index/mercedes_carpet_kit.jpg"]}}
   .col-xs-12.col-sm-offset-6.col-sm-.col-md-offset-8.col-md-4
     .splash_page_login
       = render "shared/sign_up_in_buttons"
       = render "/devise/registrations/form_modal"
-.row.section.section-default
-  .col-xs-12
-    = render "welcome/pre_footer"
-
-.row.section.section-default.section-intro.parallax.parallax-reverse{data: {speed: 15}}
-  .col-xs-12
-
-.row.section.section-primary
-  .col-xs-12
-    = render "welcome/pre_footer"
-
-.row.section.section-primary.section-intro.parallax{data: {speed: 15}}
-  .col-xs-12
-
-.row.section.section-info
-  .col-xs-12
-    = render "welcome/pre_footer"
-.row.section.section-info.section-intro.parallax{data: {speed: 15}}
-  .col-xs-12
-
 .row.section.section-success
   .col-xs-12
-    = render "welcome/pre_footer"
+    = render "welcome/sections/section1"
 
-.row.section.section-success.section-intro.parallax{data: {speed: 15}}
+#section2.row.section.section-success.section-intro.parallax
   .col-xs-12
 
 .row.section.section-warning
   .col-xs-12
-    = render "welcome/pre_footer"
+    = render "welcome/sections/section2"
 
-.row.section.section-warning.section-intro.parallax{data: {speed: 15}}
+#section3.row.section.section-warning.section-intro.parallax-reverse
   .col-xs-12
+
+.row.section.section-default
+  .col-xs-12
+    = render "welcome/sections/section3"
 
 -#.section.section-default
   -#.container-fluid

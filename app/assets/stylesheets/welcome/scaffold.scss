@@ -1,7 +1,9 @@
+.section, .section.parallax{
+  min-height: 400px;
+  padding: 19px;
+}
+
 .section-intro {
-  background: image-url("welcome/index/spash_vertical_trans.jpeg") 50% 100% no-repeat fixed;
-  //background-size: cover;
-  //height: calc(100% - 86px)!important;
   .splash_page_login{
     margin: auto 0px;
 
@@ -10,6 +12,23 @@
       margin-bottom: 0px!important;
     }
   }
+}
+
+#section1{
+  background: image-url("welcome/index/spash_vertical_trans.jpeg") 50% 100% no-repeat fixed;
+  height: 600px;
+}
+
+#section2{
+  background: image-url("welcome/index/wash.jpg") 50% 100% no-repeat fixed;
+  background-size: cover;
+  height: 400px;
+}
+
+#section3{
+  background: image-url("welcome/index/van_detail.jpg") 50% 100% no-repeat fixed;
+  background-size: cover;
+  height: 400px;
 }
 
 @media (min-width: $screen-md-min) {
