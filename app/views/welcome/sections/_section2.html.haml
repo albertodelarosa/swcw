@@ -1,69 +1,74 @@
 .col-xs-12
-  %ul#accordion-center1
-    %legend.lead General Questions
-    .col-xs-12.col-sm-4
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1a", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1a"}
-          Who is Siteler?
-        #center1a.collapse
-          %p Siteler is the figurehead of our company. His name is Siteler because he’s your OnSite Butler. He is there to serve you and save you time. You can read more about Siteler here.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1b", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1b"}
-          What does Siteler Certified mean?
-        #center1b.collapse
-          %p Each member of Siteler’s team of professional washers, waxers and detailers are rigorously trained in the particular processes they perform. In fact, before they work on your vehicle, they must become “Siteler Certified.” That means they complete a thorough training program in a particular area and then have to pass a series of challenging tests certifying them as an expert in whatever processes they perform.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1c", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1c"}
-          Why is Siteler Wash better than taking your car to a "normal" car wash, or washing from home?
-        #center1c.collapse
-          %p First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean.
-          %p Additionally, at Siteler Wash we are very concerned about protecting the environment. Unfortunately, washing your vehicle at home is actually very bad for the environment. To begin, a regular garden hose uses about 10 times more water than our specially designed pressure washers. Further, runoff from washing your car at home goes directly into the storm drains which bypass water treatment plants. That’s very bad for the environment (you can read more from the EPA about that here). At Siteler Wash, we wash your vehicles with 100% non-toxic, biodegradable, environmentally-friendly products. Hence, we not only ensure that dirt and grease are deeply dissolved and removed from your vehicle, but also ensure that the rinse from your vehicle is safe for the environment.
-    .col-xs-12.col-sm-4
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1d", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1d"}
-          How does Siteler Wash save you time?
-        #center1d.collapse
-          %p At Siteler Wash we know how busy you are, and we know that saving you time on your mundane chores helps you spend more time with your friends, family, work or anything else. That’s why Siteler Wash brings valuable, convenient, time saving services to you! You don’t have to spend the time driving to the car wash and waiting for your vehicle to washed, waxed or detailed. You simply schedule services with a few clicks of your mouse, drop your vehicle off when you arrive to work in the morning, and pick up your sparklingly clean Siteler Washed vehicle at the end of the day. It’s that easy and convenient!
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1e", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1e"}
-          What is Siteler Wash's 100% satisfaction guarantee?
-        #center1e.collapse
-          %p Siteler Wash is focused on giving you a high quality wash, wax or detail. Our work is always 100% guaranteed. If you are ever unhappy with your service, just let us know and we will wash, wax and detail your vehicle until you are satisfied.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1f", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1f"}
-          How do you get discounts on Siteler’s services?
-        #center1f.collapse
-          %ul
-            %p At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:
-            %li
-              %p.lead
-                %small Volume Ordering
-              %p You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!
-            %li
-              %p.lead
-                %small Advanced Scheduling
-              %p Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!
-            %li
-              %p.lead
-                %small The bottom line is this
-              %p The more services you use, the more you earn, and the more you save!
-    .col-xs-12.col-sm-4
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1g", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1g"}
-          How does Siteler Wash help protect the environment?
-        #center1g.collapse
-          %p At Siteler Wash we are very concerned about protecting the environment. That’s why when we wash your vehicles, we only wash with 100% non-toxic, environmentally friendly products. In fact, the products we use not only ensure that dirt and grease are deeply dissolved and removed, but also ensure that the rinse from your vehicle is safer for the environment.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "center1h", "aria-expanded" => "true", "data-parent" => "#accordion-center1", "data-toggle" => "collapse", :href => "#center1h"}
-          How does Siteler Wash help the community?
-        #center1h.collapse
-          %p Siteler Wash cares about the community. In fact, with every wash, wax and detail, we contribute to help underprivileged members of our local community.
+  %legend.lead General Questions
+.col-xs-12
+  %ul#accordion-section-questions-top
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-top", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-top", "data-toggle" => "collapse", :href => "#questions-top"}
+        Who is Siteler?
+      #questions-top.collapse
+        %p Siteler is the figurehead of our company. His name is Siteler because he’s your OnSite Butler. He is there to serve you and save you time. You can read more about Siteler here.
+
+.col-xs-12.col-sm-6
+  %ul#accordion-section-questions-left
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-left-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-left", "data-toggle" => "collapse", :href => "#questions-left-a"}
+        What does Siteler Certified mean?
+      #questions-left-a.collapse
+        %p Each member of Siteler’s team of professional washers, waxers and detailers are rigorously trained in the particular processes they perform. In fact, before they work on your vehicle, they must become “Siteler Certified.” That means they complete a thorough training program in a particular area and then have to pass a series of challenging tests certifying them as an expert in whatever processes they perform.
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-left-b", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-left", "data-toggle" => "collapse", :href => "#questions-left-b"}
+        Why is Siteler Wash better than taking your car to a "normal" car wash, or washing from home?
+      #questions-left-b.collapse
+        %p First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean.
+        %p Additionally, at Siteler Wash we are very concerned about protecting the environment. Unfortunately, washing your vehicle at home is actually very bad for the environment. To begin, a regular garden hose uses about 10 times more water than our specially designed pressure washers. Further, runoff from washing your car at home goes directly into the storm drains which bypass water treatment plants. That’s very bad for the environment (you can read more from the EPA about that here). At Siteler Wash, we wash your vehicles with 100% non-toxic, biodegradable, environmentally-friendly products. Hence, we not only ensure that dirt and grease are deeply dissolved and removed from your vehicle, but also ensure that the rinse from your vehicle is safe for the environment.
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-left-c", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-left", "data-toggle" => "collapse", :href => "#questions-left-c"}
+        How does Siteler Wash save you time?
+      #questions-left-c.collapse
+        %p At Siteler Wash we know how busy you are, and we know that saving you time on your mundane chores helps you spend more time with your friends, family, work or anything else. That’s why Siteler Wash brings valuable, convenient, time saving services to you! You don’t have to spend the time driving to the car wash and waiting for your vehicle to washed, waxed or detailed. You simply schedule services with a few clicks of your mouse, drop your vehicle off when you arrive to work in the morning, and pick up your sparklingly clean Siteler Washed vehicle at the end of the day. It’s that easy and convenient!
+.col-xs-12.col-sm-6
+  %ul#accordion-section-questions-right
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-right-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-right", "data-toggle" => "collapse", :href => "#questions-right-a"}
+        What is Siteler Wash's 100% satisfaction guarantee?
+      #questions-right-a.collapse
+        %p Siteler Wash is focused on giving you a high quality wash, wax or detail. Our work is always 100% guaranteed. If you are ever unhappy with your service, just let us know and we will wash, wax and detail your vehicle until you are satisfied.
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-right-b", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-right", "data-toggle" => "collapse", :href => "#questions-right-b"}
+        How do you get discounts on Siteler’s services?
+      #questions-right-b.collapse
+        %ul
+          %p At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:
+          %li
+            %p.lead
+              %small Volume Ordering
+            %p You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!
+          %li
+            %p.lead
+              %small Advanced Scheduling
+            %p Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!
+          %li
+            %p.lead
+              %small The bottom line is this
+            %p The more services you use, the more you earn, and the more you save!
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-right-c", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-right", "data-toggle" => "collapse", :href => "#questions-right-c"}
+        How does Siteler Wash help protect the environment?
+      #questions-right-c.collapse
+        %p At Siteler Wash we are very concerned about protecting the environment. That’s why when we wash your vehicles, we only wash with 100% non-toxic, environmentally friendly products. In fact, the products we use not only ensure that dirt and grease are deeply dissolved and removed, but also ensure that the rinse from your vehicle is safer for the environment.
+.col-xs-12
+  %ul#accordion-section-questions-bottom
+    %li.panel.unpanel
+      .icon
+      %p.section-questions-control.collapsed{"aria-controls" => "questions-bottom", "aria-expanded" => "true", "data-parent" => "#accordion-section-questions-bottom", "data-toggle" => "collapse", :href => "#questions-bottom"}
+        How does Siteler Wash help the community?
+      #questions-bottom.collapse
+        %p Siteler Wash cares about the community. In fact, with every wash, wax and detail, we contribute to help underprivileged members of our local community.
 

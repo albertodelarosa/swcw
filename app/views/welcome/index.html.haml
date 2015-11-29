@@ -1,30 +1,17 @@
 #section1.row.section.section-default.section-intro.parallax-reverse{data: { slides: ["assets/welcome/index/spash_vertical_trans.jpeg", "assets/welcome/index/mercedes_carpet_kit.jpg"]}}
-  .col-xs-12.col-sm-offset-6.col-sm-.col-md-offset-8.col-md-4
+  .col-xs-12.col-sm-offset-6.col-sm-6.col-md-offset-8.col-md-4
     .splash_page_login
       = render "shared/sign_up_in_buttons"
       = render "/devise/registrations/form_modal"
-.row.section.section-success
+#section1a.section1.row.section.section-success
   .col-xs-12
     = render "welcome/sections/section1"
-
 #section2.row.section.section-success.section-intro.parallax
-  .col-xs-12
-
-.row.section.section-warning
+#section2a.section2.row.section.section-warning
   .col-xs-12
     = render "welcome/sections/section2"
-
 #section3.row.section.section-warning.section-intro.parallax-reverse
-  .col-xs-12
-
-.row.section.section-default
+#section3a.section3.row.section.section-default
   .col-xs-12
     = render "welcome/sections/section3"
 
--#.section.section-default
-  -#.container-fluid
-    -#.row
--#.col-xs-12.col-sm-offset-3.col-sm-6
-  -#.splash_page_login
-    -#= render "shared/sign_up_in_buttons"
-    -#= render "/devise/registrations/form_modal"

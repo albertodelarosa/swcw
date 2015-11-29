@@ -10,7 +10,7 @@
 
 
 $(document).ready(function(){
-  $(".parallax").parallaxMe({scrollSpeed: 0});
-  $(".parallax-reverse").parallaxMe({direction: "reverse"});
+  $(".parallax").parallaxMe({scrollSpeed: 50});
+  $(".parallax-reverse").parallaxMe({direction: "reverse",scrollSpeed: 5});
 });
 
