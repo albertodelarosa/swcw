@@ -1,0 +1,10 @@
+@mixin section-variant($bg, $bg-color, $border){
+  background-color: $bg !important;
+  border-color: $border !important;
+  color: $bg-color !important;
+
+  legend, .legend{
+    color: lighten($bg-color, 20%);
+    border-bottom: 1px solid $border;
+  }
+}
