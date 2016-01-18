@@ -49,12 +49,12 @@ printStarting("DELETING EXISTING DISCOUNTS")
 Discount.all.each(&:destroy)
 printFinished()
 
-printStarting("DELETING EXISTING SERVICE PLANS")
-ServicePlan.all.each(&:destroy)
-printFinished()
-
 printStarting("DELETING EXISTING SERVICES")
 Service.all.each(&:destroy)
+printFinished()
+
+printStarting("DELETING EXISTING SERVICE PLANS")
+ServicePlan.all.each(&:destroy)
 printFinished()
 
 printStarting("DELETING EXISTING CARTS")
