@@ -1,0 +1,52 @@
+#accordionService.col-xs-12.col-sm-6.col-md-4{aria: {multiselectable: true}, role: "tablist"}
+  .panel.well
+    %legend.center-block
+      Detailing Services
+    #headingService.collapse-heading{role: "tab"}
+      -@sample_individual_plans.each_with_index do |individual_plan, individual_index|
+        -individual_plan.services.each do |service|
+          %button.btn.btn-primary.btn-block{aria: {controls: "collapseService#{individual_index}", expanded: true}, data: {parent: "#accordionService", toggle: "collapse"}, href: "#collapseService#{individual_index}"}
+            =service.name
+    -@sample_individual_plans.each_with_index do |individual_plan, individual_index|
+      -individual_plan.services.each do |service|
+        .collapse{id: "collapseService#{individual_index}", aria: {labelledby: "headingService"}, role: "tabpanel"}
+          .well.well-primary
+            .row
+              .col-xs-6
+                .legend
+                  %small
+                    ="SUVs: "
+                  =number_to_currency(service.large_price)
+              .col-xs-6
+                .legend
+                  %small
+                    ="Sedans: "
+                  =number_to_currency(service.small_price)
+            .row
+              .col-xs-12
+                -desc_array = []
+                -service.description.each do |desc|
+                  -if desc.downcase.include?("includes")
+                    -if desc_array.empty?
+                      -desc_array << desc
+                    -else
+                      -desc_array.reverse!
+                      %h4
+                        =desc_array.pop
+                      %ul.list-group.list-group.service-ul
+                      -desc_array.each do |line|
+                        %li.list-group-item
+                          = line
+                      -desc_array = []
+                      -desc_array << desc
+                  -else
+                    -desc_array << desc
+                -desc_array.reverse!
+                %h4
+                  =desc_array.pop
+                %ul.list-group.service-ul
+                -desc_array.each do |line|
+                  %li.list-group-item
+                    = line
+                -desc_array = []
+

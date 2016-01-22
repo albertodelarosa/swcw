@@ -1,15 +1,13 @@
-.well.well-primary.thumbnail
-  %img.img.img-responsive{src: "/assets/services/Estates1_PNG_White_500x500.png", alt: ""}
+.thumbnail.well.well-primary
   .caption
     .h4
-      =pakage.name
+      =plan.name
+  %img.img.img-responsive{src: plan.image_url, alt: ""}
   %p
-    =number_to_currency(pakage.price)
+    =number_to_currency(plan.price)
   %p
-    %button.btn.btn-block
+    %button.btn.btn-default.btn-block
       ="add to cart"
-
-
 
 -##accordionPackage.col-xs-12.col-sm-6.col-md-4{aria: {multiselectable: true}, role: "tablist"}
   -#.panel.well

@@ -9,12 +9,15 @@ require 'factory_girl_rails'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+#Dir[Rails.root.join("spec/factories/*.rb")].each {|f| require f}
+#require_relative '../spec/factories/companies.rb'
+#require_relative '../spec/factories/services.rb'
 
 RSpec.configure do |config|
-  #config.include FactoryGirl::Syntax::Methods
-  config.include Devise::TestHelpers, :type => :controller
-  config.include ControllerMacros, :type => :controller
+  #config.include ControllerMacros, :type => :controller
   config.infer_spec_type_from_file_location!
+  config.include ControllerMacros, :type => :controller
+
 
   # ## Mock Framework
   #

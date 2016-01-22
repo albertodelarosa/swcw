@@ -1,7 +1,7 @@
 printStarting("ADDING DEVELOPER USER")
 developer = User.create!(
   email:      'alberto.g.delarosa@gmail.com',
-  username:   'developer',
+  #username:   'developer',
   password:   'password',
   last_name:  'de la Rosa',
   first_name: 'Alberto',
@@ -27,15 +27,15 @@ printFinished()
 printStarting("ASSOCIATING DEVELOPER HOME CONTACT INFO")
 developer.home_contact_info =
   HomeContactInfo.create!(
-    phone1: "415.661.7226",
-    mobile: "415.845.0274"
+    phone1: "415.555.5555",
+    mobile: "415.555.5556"
   )
 printFinished()
 
 printStarting("ASSOCIATING DEVELOPER WORK CONTACT INFO")
 developer.work_contact_info =
   CompanyContactInfo.create!(
-    phone1: "(650) 333-0168",
+    phone1: "(650) 555-5555",
     ext: "329"
   )
 printFinished()

@@ -1,59 +1,68 @@
 module DetailingPlans
   extend ::ActiveSupport::Concern
 
-  def populate_regular_plan(options = {})
-    self.status = ServicePlan::STATUS[0]
-    package_type = options[:package_type]
-    if package_type.is_a?(String)
-      self.package_type = package_type
-    else
-      self.package_type = ServicePlan::TYPE[package_type]
-    end
+  def populate_regular_plan()
 
-    if self.package_type.include?("individual")
-      service_name = options[:service_name]
-      temp_service = get_regular_service(service_name)
+    self.status     = ServicePlan::STATUS.first
+    self.price        = 0.00
+    self.price_small  = 0.00
+    self.price_large  = 0.00
 
-      self.name = service_name
-      self.price = temp_service.price
-      self.services << temp_service
-    else
-      package_name = options[:package_name]
-      self.name = package_name
-      service_names = Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_"))
-      service_names.each do |service_name|
-        temp_service = get_regular_service(service_name)
-        self.price += temp_service.price
-        self.services << temp_service
+    if self.name.include?(ServicePlan::PLAN_NAMES[0]) || self.name.include?(ServicePlan::PLAN_NAMES[1]) || self.name.include?(ServicePlan::PLAN_NAMES[2])
+      self.plan_type  = ServicePlan::TYPE.first
+      self.image_url  = ServicePlan.const_get( (self.name + " image url").upcase.tr(" ","_") )
+      ServicePlan.const_get( (self.name).upcase.tr(" ","_")).each do |service_name|
+        service = ServiceRegular.new(name: service_name)
+        service.populate_regular_service()
+        self.price_small += service.small_price
+        self.price_large += service.large_price
+        self.services << service
       end
-      service_name = Pricing::RegularServices.const_get((package_name).upcase.tr(" ","_")).last
-      options[:comp] = true
-      self.services << get_regular_service(service_name, options)
+    else
+      self.plan_type  = ServicePlan::TYPE.last
+      service = ServiceRegular.new(name: self.name)
+      service.populate_regular_service()
+      self.price_small += service.small_price
+      self.price_large += service.large_price
+      self.image_url    = service.image_url
+      self.services << service
     end
   end
 
   def set_prices()
-    plan_price = 0.0
-    if self.vehicle_size.eql?("Small")
+    if self.plan_type.include?(ServicePlan::TYPE.first)
       self.services.each do |service|
-        service.price = service.small_price
-        plan_price += service.price
+        set_price(self, service)
       end
-      self.price = plan_price
-    elsif self.vehicle_size.eql?("Large")
-      self.services.each do |service|
-        service.price = service.large_price
-        plan_price += service.price
-      end
+    elsif self.plan_type.include?(ServicePlan::TYPE.last)
+      set_price(self, self.services.first)
     end
   end
 
   private
 
-  def get_regular_service(name, options = {})
-    temp_service = ServiceRegular.create!()
-    temp_service.populate(name, options)
-    return temp_service
+  def set_price(plan, service)
+    if plan.vehicle_size.eql?("Small")
+      set_small_price(plan, service)
+    elsif plan.vehicle_size.eql?("Large")
+      set_large_price(plan, service)
+    end
   end
+
+  def set_small_price(plan, service)
+    service.price = service.small_price
+    plan.price +=service.price
+  end
+
+  def set_large_price(plan, service)
+    service.price = service.large_price
+    plan.price +=service.price
+  end
+
+  #def get_regular_service(name, options = {})
+    #temp_service = ServiceRegular.create!()
+    #temp_service.populate(name, options)
+    #return temp_service
+  #end
 end
 

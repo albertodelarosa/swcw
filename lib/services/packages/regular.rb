@@ -1,52 +1,8 @@
-module Pricing::RegularServices
+module Pricing::RegularPackages
 
-  SERVICE_NAMES = ["Cottage",
-                   "Villa",
-                   "Estate",
-                   "Palace Exterior",
+  PACKAGE_NAMES = ["Palace Exterior",
                    "Palace Interior",
                    "Palace Complete"]
-
-
-
-################ COTTAGE ################
-  COTTAGE_LABEL     = ["Cottage Service includes:"]
-  COTTAGE_BODY      = ["Exterior Hand Wash",
-                        "Hand cleaning of outside windows",
-                        "Hand cleaning of rims"]
-  COTTAGE_SERVICE   = COTTAGE_LABEL + COTTAGE_BODY
-  COTTAGE_PRICE     = {"Small" => 14.95,  "Large" => 16.95}
-  COTTAGE_DURATION  = 30
-
-################ VILLA ################
-  VILLA_LABEL =  ["Villa Service includes:"]
-  VILLA_BODY      = ["Hand cleaning of inside windows",
-                      "Vacuum of carpets and mats",
-                      "Dusting of dash with a dry towel",
-                      "Cleaning of cup holders",
-                      "Tire dressing"]
-  VILLA_END       = ["Also includes Cottage Service:"]
-  VILLA_SERVICE   = VILLA_LABEL+
-                    VILLA_BODY+
-                    VILLA_END+
-                    COTTAGE_BODY
-  VILLA_PRICE     = {"Small" => 24.95,  "Large" => 29.95}
-  VILLA_DURATION  = 60
-
-################ ESTATE ################
-  ESTATE_LABEL      = ["Estate Service includes:"]
-  ESTATE_BODY       = ["Hand wax of exterior",
-                        "Interior wipe down with a wet cloth",
-                        "Vacuum of seats and between seats and center console or doors"]
-  ESTATE_END        = ["Also includes Villa Service:"]
-  ESTATE_SERVICE    = ESTATE_LABEL+
-                      ESTATE_BODY+
-                      ESTATE_END+
-                      VILLA_BODY+
-                      VILLA_END+
-                      COTTAGE_BODY
-  ESTATE_PRICE      = {"Small" => 59.95,  "Large" => 69.95}
-  ESTATE_DURATION   = 120
 
 ################ PALACE EXTERIOR ################
   PALACE_EXTERIOR_LABEL     = ["Palace Exterior Service includes:"]
@@ -63,6 +19,7 @@ module Pricing::RegularServices
                               COTTAGE_BODY
   PALACE_EXTERIOR_PRICE     = {"Small" => 149.95, "Large" => 169.95}
   PALACE_EXTERIOR_DURATION  = 180
+  PALACE_EXTERIOR_IMAGE_URL = ["/assets/dashboard/services/packages/Palaces1-Exterior_PNG_White_500x500.png"]
 
 ################ PALACE INTERIOR ################
   PALACE_INTERIOR_LABEL     = ["Palace Interior Service includes:"]
@@ -79,6 +36,7 @@ module Pricing::RegularServices
                               COTTAGE_BODY
   PALACE_INTERIOR_PRICE     = {"Small" => 149.95, "Large" => 169.95}
   PALACE_INTERIOR_DURATION  = 360
+  PALACE_INTERIOR_IMAGE_URL = ["/assets/dashboard/services/packages/Palaces1-Interior_PNG_White_500x500.png"]
 
 ################ PALACE COMPLETE ################
   PALACE_COMPLETE_SERVICE   = ["Includes Palace Interior and Exterior Service:"] +
@@ -90,8 +48,7 @@ module Pricing::RegularServices
                               COTTAGE_BODY
   PALACE_COMPLETE_PRICE     = {"Small" => 269.95, "Large" => 299.95}
   PALACE_COMPLETE_DURATION  = 720
-
-
+  PALACE_COMPLETE_IMAGE_URL = ["/assets/dashboard/services/packages/Palaces1-Interior-and-Exterior_PNG_White_500x500.png"]
 
 ################ PLANS ################
   PACKAGE_NAMES = ["Complete Package",

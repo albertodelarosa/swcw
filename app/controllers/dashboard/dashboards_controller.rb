@@ -29,8 +29,8 @@ class Dashboard::DashboardsController < ApplicationController
       @companies    = @account.companies    || []
       @vehicles     = @account.vehicles     || []
 
-      @sample_individual_plans = ServicePlan.where(package_type: ServicePlan::TYPE[0])
-      @sample_plans = ServicePlan.where(package_type: ServicePlan::TYPE[1])
+      @sample_plans = ServicePlan.where(plan_type: ServicePlan::TYPE.first)
+      @sample_individual_plans = ServicePlan.where(plan_type: ServicePlan::TYPE.last)
 
       @sample_individual_plans.each do |plan|
         plan.vehicle_size = @vehicles.first.vehicle_size

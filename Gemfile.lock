@@ -443,7 +443,7 @@ DEPENDENCIES
   coffee-rails
   devise
   draper
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   formtastic
   guard-rspec
   haml-rails
