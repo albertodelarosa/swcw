@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   #before_action :configure_permitted_parameters, if: :devise_controller?
+  #before_action :detect_browser ### when ready
 
   layout :layout_by_resource
 
@@ -91,4 +92,21 @@ class ApplicationController < ActionController::Base
     #devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   #end
 
+private
+  def detect_browser
+    case request.user_agent
+      when /iPad/i
+        request.variant = :tablet
+      when /iPhone/i
+        request.variant = :phone
+      when /Android/i && /mobile/i
+        request.variant = :phone
+      when /Android/i
+        request.variant = :tablet
+      when /Windows Phone/i
+        request.variant = :phone
+      else
+        request.variant = :desktop
+    end
+  end
 end
