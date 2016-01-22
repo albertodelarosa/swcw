@@ -1,7 +1,6 @@
 printStarting("ADDING DEVELOPER USER")
 developer = User.create!(
   email:      Rails.application.secrets.user_email,
-  username:   Rails.application.secrets.user_username,
   password:   Rails.application.secrets.user_password,
   last_name:  Rails.application.secrets.user_last_name,
   first_name: Rails.application.secrets.user_first_name,
@@ -10,6 +9,7 @@ developer = User.create!(
 developer.skip_confirmation!
 developer.save!
 printFinished()
+
 
 printStarting("ADDING ALL DEVELOPER ASSOCIATIONS")
 

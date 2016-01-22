@@ -36,6 +36,7 @@ def build_door_associations(type, door_name)
     door = VehicleDoor.where(name: door_name).first_or_create
     type.vehicle_doors << door
   end
+
   return door
 end
 
@@ -47,6 +48,7 @@ def build_trim_associations(trim_name, model)
   else
     trim = trims[0]
   end
+
   return trim
 end
 

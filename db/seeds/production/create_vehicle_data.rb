@@ -3,7 +3,7 @@ require "csv"
 options = {encoding: 'UTF-8', skip_blanks: true}
 
 printStarting("CREATING NEW VEHICLE VARIABLES")
-year, make, model, trim, type, door, size = VehicleYear.new, VehicleMake.new, VehicleModel.new, VehicleTrim.new, VehicleType.new, VehicleDoor.new, VehicleSize.new 
+make, model = VehicleMake.new, VehicleModel.new
 
 years = []
 row_counter = 0
@@ -15,6 +15,7 @@ def build_size_associations(type)
   else
     type.vehicle_sizes << VehicleSize.where(name: "Small").first_or_create
   end
+
   return type
 end
 
@@ -25,6 +26,7 @@ def build_type_associations(trim, type_name)
     trim.vehicle_types << type
   end
   type = build_size_associations(type)
+
   return type
 end
 
@@ -34,9 +36,9 @@ def build_door_associations(type, door_name)
     door = VehicleDoor.where(name: door_name).first_or_create
     type.vehicle_doors << door
   end
+
   return door
 end
-
 
 def build_trim_associations(trim_name, model)
   trims = VehicleTrim.joins(:vehicle_models).where(vehicle_trims: {name: trim_name}).where(vehicle_models: {name: model.name}).readonly(false)
@@ -46,10 +48,9 @@ def build_trim_associations(trim_name, model)
   else
     trim = trims[0]
   end
+
   return trim
 end
-
-
 
 def build_vehicle_associations(year, make, model, type_name, door_name, trim_name="base")
   make.vehicle_models << model unless make.vehicle_models.exists?(model)
@@ -101,6 +102,7 @@ end
 
 5.times{puts}
 printStarting("CREATING VEHICLE YEARS, TRIMS, DOORS AND ASSOCIATING THEM WITH MAKES & MODELS")
+
 
 csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
 
