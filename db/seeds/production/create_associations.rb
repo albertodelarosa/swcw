@@ -8,7 +8,7 @@ account.save!
 
 printStarting("ASSOCIATING DEVELOPER DEFAULT SITES")
 first_site_id = Site.first.id
-limit = Site.count - 1
+limit = (Site.count - 1) + first_site_id
 site1 = Site.find(rand(first_site_id..limit))
 site2 = Site.find(rand(first_site_id..limit))
 account.sites << site1 << site2
