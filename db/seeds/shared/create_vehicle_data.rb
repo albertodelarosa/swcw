@@ -102,12 +102,13 @@ end
 
 5.times{puts}
 printStarting("CREATING VEHICLE YEARS, TRIMS, DOORS AND ASSOCIATING THEM WITH MAKES & MODELS")
-puts "fyi, using small sample file..."
 
 if Rails.env == "development"
   csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_dev_sample.csv"
+  puts "fyi, using small sample file..."
 elsif Rails.env == "production"
   csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
+  puts "fyi, using large sample file... this is going to take a while, so get some coffee and relax"
 end
 
 CSV.read(csv_filename, options).each_with_index do |row, i|
