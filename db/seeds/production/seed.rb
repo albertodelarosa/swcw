@@ -10,7 +10,6 @@ require File.join(File.dirname(__FILE__), 'create_vehicle_data.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_services.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_service_plans.rb')
 
-require File.join(File.dirname(__FILE__), '..', 'shared', 'create_account.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_companies.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_sites.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle.rb')
@@ -22,5 +21,6 @@ require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle.rb')
 require File.join(File.dirname(__FILE__), 'create_admin.rb')
 require File.join(File.dirname(__FILE__), 'create_user.rb')
 
+require File.join(File.dirname(__FILE__), '..', 'shared', 'create_account.rb')
 require File.join(File.dirname(__FILE__), 'create_associations.rb')
 

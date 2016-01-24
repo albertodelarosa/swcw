@@ -1,7 +1,8 @@
 def seedEnvironment()
   puts "Seeding Environment: #{Rails.env}"
-  puts " STARTING SEED FILE... ".rjust(120, "#")
-  6.times{puts}
+  puts " STARTING SEED FILE... ".rjust(10, "#")
+  2.times{puts}
+  puts
 end
 
 def printStartingSeedFile()
@@ -9,14 +10,15 @@ def printStartingSeedFile()
 end
 
 def printStarting(starting)
-  temp = " #{starting}...".ljust(70, ".")
-  puts "#{temp}...".rjust(120, "#")
-  puts ".".ljust(120, ".")
+  temp = " #{starting}...".ljust(10, ".")
+  puts "#{temp}...".rjust(10, "#")
+  puts ".".ljust(10, ".")
+  puts
 end
 
 def printFinished()
-  finished = "Finished ".ljust(70, "#")
-  puts finished.rjust(120, ".")
+  finished = "Finished ".ljust(10, "#")
+  puts finished.rjust(10, ".")
   6.times{puts}
 end
 

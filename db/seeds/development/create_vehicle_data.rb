@@ -104,7 +104,11 @@ end
 printStarting("CREATING VEHICLE YEARS, TRIMS, DOORS AND ASSOCIATING THEM WITH MAKES & MODELS")
 puts "fyi, using small sample file..."
 
-csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_dev_sample.csv"
+if Rails.env == "development"
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_dev_sample.csv"
+elsif Rails.env == "production"
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
+end
 
 CSV.read(csv_filename, options).each_with_index do |row, i|
   unless row[0].nil?

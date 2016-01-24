@@ -3,7 +3,8 @@ require "csv"
 options = {encoding: 'UTF-8', skip_blanks: true}
 
 printStarting("CREATING NEW VEHICLE VARIABLES")
-make, model = VehicleMake.new, VehicleModel.new
+make = VehicleMake.new
+model = VehicleModel.new
 
 years = []
 row_counter = 0

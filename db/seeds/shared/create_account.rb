@@ -6,7 +6,9 @@ account = Account.create!(
   regular_allowed:  true,
   coupons_allowed:  true
 )
-account.user = User.find_by(email: Rails.application.secrets.user_email)
+developer = User.find_by(email: Rails.application.secrets.user_email)
+account.user = developer
+developer.account = account
 
 printFinished()
 

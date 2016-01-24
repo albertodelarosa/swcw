@@ -1,23 +1,48 @@
-developer = User.first
-account = Account.first
+printStarting("ADDING ACCOUNT ASSOCIATIONS")
 
-account.user = developer
+developer = User.find_by(email: Rails.application.secrets.user_email)
+account = developer.account
 account.generate_number
 account.save!
 
-printStarting("ADDING DEVELOPER ASSOCIATIONS")
 
-printStarting("ASSOCIATING DEVELOPER DEFAULT SITES")
+printStarting("ASSOCIATING ACCOUNT DEFAULT SITES")
 first_site_id = Site.first.id
-limit = Site.count - 1
+limit = (Site.count - 1) + first_site_id
 site1 = Site.find(rand(first_site_id..limit))
 site2 = Site.find(rand(first_site_id..limit))
 account.sites << site1 << site2
 printFinished()
 
-printStarting("ASSOCIATING DEVELOPER DEFAULT COMPANIES")
+printStarting("ASSOCIATING ACCOUNT DEFAULT COMPANIES")
 account.companies << site1.companies[0] << site2.companies[0]
 printFinished()
+
+printStarting("ASSOCIATING ACCOUNT DEFAULT VEHICLE")
+account.vehicles << Vehicle.all.first
+printFinished()
+
+
+printStarting("ADDING ALL DEVELOPER ASSOCIATIONS")
+
+printStarting("ASSOCIATING DEVELOPER HOME ADDRESS")
+developer.home_address =
+  HomeAddress.create!(
+    street1: Rails.application.secrets.user_street1,
+    city:    Rails.application.secrets.user_city,
+    state:   Rails.application.secrets.user_state,
+    zip:     Rails.application.secrets.user_zip
+  )
+printFinished()
+
+printStarting("ASSOCIATING DEVELOPER HOME CONTACT INFO")
+developer.home_contact_info =
+  HomeContactInfo.create!(
+    phone1: Rails.application.secrets.user_phone1,
+    mobile: Rails.application.secrets.user_mobile
+  )
+printFinished()
+
 
 printStarting("ADDING MY DEFAULT COMPANY ADDRESSES")
 developer.work_address =
@@ -31,8 +56,12 @@ developer.work_address =
   )
 printFinished()
 
-printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
-account.vehicles << Vehicle.all.first
+printStarting("ASSOCIATING DEVELOPER WORK CONTACT INFO")
+developer.work_contact_info =
+  CompanyContactInfo.create!(
+    phone1: "(650) 555-5555",
+    ext: "329"
+  )
 printFinished()
 
 

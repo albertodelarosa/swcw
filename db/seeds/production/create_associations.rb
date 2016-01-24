@@ -1,11 +1,10 @@
+printStarting("ADDING ACCOUNT ASSOCIATIONS")
+
 developer = User.find_by(email: Rails.application.secrets.user_email)
 account = developer.account
-#account.save!
 
+account.save!
 
-
-
-printStarting("ADDING DEVELOPER ASSOCIATIONS")
 
 printStarting("ASSOCIATING DEVELOPER DEFAULT SITES")
 first_site_id = Site.first.id
@@ -19,6 +18,32 @@ printStarting("ASSOCIATING DEVELOPER DEFAULT COMPANIES")
 account.companies << site1.companies[0] << site2.companies[0]
 printFinished()
 
+printStarting("ASSOCIATING ACCOUNT DEFAULT VEHICLE")
+account.vehicles << Vehicle.all.first
+printFinished()
+
+
+printStarting("ADDING ALL DEVELOPER ASSOCIATIONS")
+
+printStarting("ASSOCIATING DEVELOPER HOME ADDRESS")
+developer.home_address =
+  HomeAddress.create!(
+    street1: Rails.application.secrets.user_street1,
+    city:    Rails.application.secrets.user_city,
+    state:   Rails.application.secrets.user_state,
+    zip:     Rails.application.secrets.user_zip
+  )
+printFinished()
+
+printStarting("ASSOCIATING DEVELOPER HOME CONTACT INFO")
+developer.home_contact_info =
+  HomeContactInfo.create!(
+    phone1: Rails.application.secrets.user_phone1,
+    mobile: Rails.application.secrets.user_mobile
+  )
+printFinished()
+
+
 printStarting("ADDING MY DEFAULT COMPANY ADDRESSES")
 developer.work_address =
   CompanyAddress.create!(
@@ -30,6 +55,15 @@ developer.work_address =
     zip:      site1.companies[0].address.zip
   )
 printFinished()
+
+printStarting("ASSOCIATING DEVELOPER HOME CONTACT INFO")
+developer.home_contact_info =
+  HomeContactInfo.create!(
+    phone1: Rails.application.secrets.user_phone1,
+    mobile: Rails.application.secrets.user_mobile
+  )
+printFinished()
+
 
 #printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
 #my_vehicle =
