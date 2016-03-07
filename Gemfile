@@ -66,6 +66,7 @@ gem 'activemerchant'
 gem 'quickeebooks'
 gem 'oauth-plugin'
 
+gem 'nokogiri'
 # Use for parallax scroll
 #gem 'scrollmagicjs-rails'
 #gem 'modernizr-rails'
