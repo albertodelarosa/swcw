@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Dashboard::Sites" do
   describe "GET /dashboard_sites" do

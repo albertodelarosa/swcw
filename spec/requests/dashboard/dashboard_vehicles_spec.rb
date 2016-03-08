@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Dashboard::Vehicles" do
   describe "GET /dashboard_vehicles" do

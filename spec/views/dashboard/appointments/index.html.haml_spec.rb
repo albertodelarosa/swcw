@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "dashboard/appointments/index" do
   before(:each) do

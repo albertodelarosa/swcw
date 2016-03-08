@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "dashboard/vehicles/new" do
   before(:each) do

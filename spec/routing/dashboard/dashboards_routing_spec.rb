@@ -1,4 +1,4 @@
-#require "spec_helper"
+#require "rails_helper"
 
 #describe Dashboard::DashboardsController do
   #describe "routing" do
