@@ -4,9 +4,9 @@
 FactoryGirl.define do
   factory :company do
     name "My Factory Girl Company"
-    corporate_id "oefeiu3q9h"
+    corp_id "oefeiu3q9h"
     description "My Factory Girl Company"
-    corporate_email_domain "factorygirl@myfactorygirl.com"
+    corp_email "factorygirl@myfactorygirl.com"
 
     after do |company|
       company.address ||= FactoryGirl.build(:address, :company => company)

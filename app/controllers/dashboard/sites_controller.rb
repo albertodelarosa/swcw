@@ -19,7 +19,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def show
     add_breadcrumb "all", nil, "glyphicon-screenshot"
 
-    @site = Site.find(params[:id])
+    @site = Site.find(id_from_params)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,12 +32,19 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   def new
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
-    @site = Site.new
-    @companies = Company.all
+    if current_user.account.companies.empty?
+      respond_to do |format|
+        format.html { redirect_to new_dashboard_company_url, notice: 'You need to pick a company first.' }
+      end
+    else
+      @company = Company.find(current_user.account.companies.last)
+      @sites = @company.sites
+      @site = Site.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @site }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @sites }
+      end
     end
   end
 
@@ -46,18 +53,17 @@ class Dashboard::SitesController < Dashboard::DashboardsController
     add_breadcrumb "edit", nil, "glyphicon-edit"
 
     @sites = current_user.account.sites
-    @site = Site.find(params[:id])
+    @site = Site.find(id_from_params)
   end
 
   # POST /customers/sites
   # POST /customers/sites.json
   def create
-    current_user.account.sites << Site.find(params_new_site)
-    current_user.account.companies << Company.find(params_new_company)
+    @site = Site.find(entity_id_from_params(:site))
 
     respond_to do |format|
-      if current_user.account.save
-        format.html { redirect_to root_path, notice: 'site and company was successfully created.' }
+      if current_user.account.sites << @site
+        format.html { redirect_to root_path, notice: "The site #{@site.name} @ #{@site.companies.last.name} was successfully added." }
         format.json { render json: @site, status: :created, location: @site }
       else
         format.html { render action: "new" }
@@ -69,7 +75,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # PUT /customers/sites/1
   # PUT /customers/sites/1.json
   def update
-    @site = Site.find(params[:site][:id])
+    @site = Site.find(entity_id_from_params(:site))
 
     respond_to do |format|
       if current_user.sites.exists? @site
@@ -88,7 +94,7 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # DELETE /customers/sites/1
   # DELETE /customers/sites/1.json
   def destroy
-    @site = Site.find(params[:id])
+    @site = Site.find(id_from_params)
     #@site.destroy #only admin can destroy a site
 
     respond_to do |format|
@@ -97,18 +103,6 @@ class Dashboard::SitesController < Dashboard::DashboardsController
         format.json { head :no_content }
       end
     end
-  end
-
-  private
-
-  def params_new_site
-    id = params.required(:site).permit(:id)
-    return id[:id]
-  end
-
-  def params_new_company
-    id = params.required(:company).permit(:id)
-    return id[:id]
   end
 
 end

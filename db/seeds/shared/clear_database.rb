@@ -126,7 +126,7 @@ end
 
 
 printStarting("DELETING EXISTING ASSOCIATIONS")
-VehicleSetting.all.each(&:destroy)
+#VehicleSetting.all.each(&:destroy)
 ContactInfo.all.each(&:destroy)
 Location.all.each(&:destroy)
 Address.all.each(&:destroy)

@@ -9,9 +9,8 @@
 
     .col-xs-12.col-sm-6
       .well.well-success
-        %img.img-rounded.img-responsive{src: "/assets/vehicles/new_vehicle_img_PNG_White_1200x1000.png", alt: ""}
+        %img.img-rounded.img-responsive{src: "/assets/vehicles/new_vehicle4_outline.png", alt: ""}
+      = f.submit 'Add Vehicle', class: "btn btn-success btn-block", id: "add_vehicle"
     .col-xs-12.col-sm-6
       = render partial: 'form', locals: {f: f}
-    .col-xs-12
-      = f.submit 'Add Vehicle', class: "btn btn-success btn-block", id: "add_vehicle"
 

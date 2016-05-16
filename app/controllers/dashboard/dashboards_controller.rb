@@ -4,46 +4,46 @@ class Dashboard::DashboardsController < ApplicationController
   before_filter { add_breadcrumb "home", root_path, "glyphicon-home" }
 
   def index
-    @account = current_user.account
-    if current_user.account.new?
-      if current_user.account.vehicles.empty?
+    @account = Account.includes(:companies, :sites, :vehicles, :appointments).find(current_user.id)
+
+    if @account.new?
+      if @account.companies.empty?
+        @company = Company.new
+        respond_to do |format|
+          format.html { redirect_to new_dashboard_company_path, notice: "you must select your site..." }
+          format.json { render json: @company }
+        end
+      elsif @account.sites.empty?
+        @site = Site.new
+        respond_to do |format|
+          format.html { redirect_to new_dashboard_site_path, notice: "you must select your site..." }
+          format.json { render json: @site }
+        end
+      elsif @account.vehicles.empty?
         @vehicle = Vehicle.new
         respond_to do |format|
           format.html { redirect_to new_dashboard_vehicle_path, notice: "you must first enter your vehicle..." }
           format.json { render json: @vehicle }
         end
-      elsif current_user.account.companies.empty? || current_user.account.sites.empty?
-        @site = Site.new
-        respond_to do |format|
-          format.html { redirect_to new_dashboard_site_path, notice: "you must select your site..." }
-          format.json { render json: @vehicle }
-        end
       else
-        @account.status = Account::STATUS[0]
+        @account.status = Account::STATUS.first
       end
     end
+    @appointments = @account.appointments || []
+    @sites        = @account.sites        || []
+    @companies    = @account.companies    || []
+    @vehicles     = @account.vehicles     || []
+    @current_cart = current_cart unless session[:cart_id].nil?
 
-    unless @account.new?
-      @appointments = @account.appointments || []
-      @sites        = @account.sites        || []
-      @companies    = @account.companies    || []
-      @vehicles     = @account.vehicles     || []
+    unless @service_plan = @account.service_plan
+      @sample_plans = []
+      @sample_individual_plans = []
 
-      @sample_plans = ServicePlan.where(plan_type: ServicePlan::TYPE.first)
-      @sample_individual_plans = ServicePlan.where(plan_type: ServicePlan::TYPE.last)
-
-      @sample_individual_plans.each do |plan|
-        plan.vehicle_size = @vehicles.first.vehicle_size
-        plan.set_prices()
-      end
-      @sample_plans.each do |plan|
-        plan.vehicle_size = @vehicles.first.vehicle_size
-        plan.set_prices()
-      end
-      @current_cart = current_cart unless session[:cart_id].nil?
-
-      @appointment = Appointment.new
+      ServicePlan::PLAN_NAMES.each{|name| @sample_plans << ServicePlan.where(["name = ?", name]).first}
+      ServiceRegular::SERVICE_NAMES.each{|name| @sample_individual_plans << ServicePlan.where(["name = ?", name]).first}
     end
+    @appointment = Appointment.new
+
   end
 
   private
@@ -81,6 +81,26 @@ class Dashboard::DashboardsController < ApplicationController
       packages << {package: temp_package, services: services_array}
     end
     return packages
+  end
+
+  def entity_id_from_params(entity)
+    puts "in: entity_id_from_params"
+    puts
+    id = params.required(entity).permit(:id)
+    puts id[:id]
+    puts
+    puts
+    return id[:id]
+  end
+
+  def id_from_params
+    puts "in: id_from_params"
+    puts
+    id = params.permit(:id)[:id]
+    puts id[:id]
+    puts
+    puts
+    return id[:id]
   end
 
 end

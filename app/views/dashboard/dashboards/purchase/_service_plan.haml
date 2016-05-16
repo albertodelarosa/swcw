@@ -12,7 +12,6 @@
       Individual Plans
   .col-xs-12
     -@sample_individual_plans.each do |plan|
-      .col-xs-12.col-sm-4
-        = render partial: "shared/purchase/package", locals: {plan: plan}
-
+      .col-xs-12.col-sm-3
+        = render partial: "shared/purchase/packages", locals: {plan: plan}
 

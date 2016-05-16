@@ -6,7 +6,7 @@ class ServicePlan < ActiveRecord::Base
   has_one :line_item
   has_many :services
 
-  TYPE = ["package", "individual"]
+  PLAN_TYPE = ["package", "individual"]
   STATUS = ["initialized", "purchased", "consumed"]
   PLAN_NAMES = ["Palace Complete Plan", "Palace Exterior Plan", "Palace Interior Plan"]
   ################################################################################################

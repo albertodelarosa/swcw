@@ -7,9 +7,8 @@ class Site < ActiveRecord::Base
 
   has_many :locations
   has_many :companies,  through: :locations
-  has_many :clients,    through: :locations, source: :user
   has_many :vehicles,   through: :locations
-  has_many :account,    through: :locations
+  has_many :accounts,   through: :locations
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :contact_info

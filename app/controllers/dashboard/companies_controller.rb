@@ -19,7 +19,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def show
     add_breadcrumb "all", nil, "glyphicon-screenshot"
 
-    @company = Company.find_by_id(params[:id])
+    @company = Company.find(id_from_params)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,12 +32,19 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def new
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
 
-    @companies = current_user.account.companies || []
-    @company = Company.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @company }
+    if current_user.account.companies.empty?
+      @companies = Company.all
+      @company = @companies.first
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @companies }
+      end
+    else
+      @company = current_user.account.companies.last
+      respond_to do |format|
+        format.html { redirect_to edit_dashboard_company(@company), notice: 'Please update your company listing' }
+        format.json { render json: current_user.accounts.companies.last }
+      end
     end
   end
 
@@ -45,13 +52,13 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   def edit
     add_breadcrumb "edit", nil, "glyphicon-edit"
 
-    @company = Company.find(params[:id])
+    @company = Company.find(id_from_params)
   end
 
   # POST /dashboard/companies
   # POST /dashboard/companies.json
   def create
-    @company = Company.find(params[:company][:id])
+    @company = Company.find(entity_id_from_params(:company))
 
     respond_to do |format|
       @company.accounts << current_user.account
@@ -63,17 +70,18 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # PUT /dashboard/companies/1
   # PUT /dashboard/companies/1.json
   def update
-      @company = Company.find(params[:id])
+      @company = Company.find(entity_id_from_params(:company))
 
       respond_to do |format|
-        if @company.accounts.user.exists? current_user.id
-          @company.accounts.user.delete(current_user)
-          @company.accounts.user << current_user
+        if @company.accounts.exists? current_user.account
+          @company.accounts.delete(current_user.account)
+          @company.accounts << current_user.account
 
           format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
           format.json { head :no_content }
         else
-          format.html { render action: "new", notice: 'Company was successfully updated.' }
+          @company.accounts << current_user.account
+          format.html { redirect_to root_path, notice: 'Company was successfully updated.' }
           format.json { render json: @company.errors, status: :unprocessable_entity }
         end
       end
@@ -82,8 +90,8 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # DELETE /dashboard/companies/1
   # DELETE /dashboard/companies/1.json
   def destroy
-    @company = Company.find(params[:id])
-    @company.accounts.user.delete(current_user)
+    @company = Company.find(id_from_params)
+    @company.accounts.delete(current_user.account)
     #current_user.companies.delete(@company)
     #@company.destroy
 
@@ -92,4 +100,5 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
       format.json { head :no_content }
     end
   end
+
 end

@@ -5,7 +5,7 @@ class ServiceRegular < Service
   ################################################################################################
   COTTAGE_PRICE     = {"Small" => 14.95,  "Large" => 16.95}
   COTTAGE_DURATION  = 30
-  COTTAGE_IMAGE_URL = ["/assets/dashboard/purchase/individuals/Cottage2_PNG_White_Filled_500x500.png"]
+  COTTAGE_IMAGE_URL = "/assets/dashboard/purchase/individuals/Cottage2_PNG_White_Filled_500x500.png"
   ################################################################################################
   VILLA_PRICE     = {"Small" => 24.95,  "Large" => 29.95}
   VILLA_DURATION  = 60

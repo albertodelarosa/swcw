@@ -1,5 +1,5 @@
 printStarting("ADDING DEVELOPER USER")
-developer = User.create!(
+developer = User.new(
   email:      Rails.application.secrets.user_email,
   password:   Rails.application.secrets.user_password,
   last_name:  Rails.application.secrets.user_last_name,

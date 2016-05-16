@@ -4,6 +4,7 @@ describe Dashboard::SitesController do
 
   let!(:site1) { FactoryGirl.create(:site) }
   let!(:site2) { FactoryGirl.create(:site) }
+  let!(:company1) { FactoryGirl.create(:company) }
 
   describe "User not signed in" do
      describe "GET index" do
@@ -18,16 +19,19 @@ describe Dashboard::SitesController do
 
 
   describe "User signed in" do
-    before(:each) { login_user }
+    before(:each) {
+      login_user
+      Account.first == nil ? controller.current_user.account = FactoryGirl.create(:account) : controller.current_user.account = Account.first
+    }
 
     describe "GET index" do
       context "happy" do
         subject { get :index }
-        before(:each) { subject }
+        before(:each) {subject}
 
         it "assigns all user sites as @sites" do
-          @user.sites << site1 << site2
-          expect(assigns(:sites)).to eq(@user.sites)
+          controller.current_user.account.sites << site1 << site2
+          expect(assigns(:sites)).to eq(controller.current_user.account.sites)
           expect(assigns(:sites)).to eq([site1, site2])
         end
         it { expect(assigns(:sites)).to eq([]) }
@@ -49,11 +53,15 @@ describe Dashboard::SitesController do
       subject { get :new }
       before(:each) { subject }
 
-      it { expect(assigns(:site)).to be_a_new(Site) }
+      #it "current_user must have a company to associate a site"do
+      #end
+      #it "redirects to edit if user has a site assocaited" do
+      #end
       it "assigns all currrent_user's sites to @sites" do
-        site1.clients << @user
-        site2.clients << @user
-        expect(assigns(:sites)).to eq([site1, site2])
+        #sites = Company.last.sites
+        company1.sites << site1 << site2
+        #controller.current_user.account.companies << company1
+        expect(assigns(:sites)).to eq( company1.sites )
       end
     end
 

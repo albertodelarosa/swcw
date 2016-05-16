@@ -1,98 +1,65 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User do
   context 'unhappy' do ####################################################################
 
-    context 'when username is somehow incorrect like: ' do 
-      it "field not entered then validation fails" do
-        expect(User.new).to have(2).error_on(:username)
-      end
-      it "too short then validation fails" do
-        expect(User.new(username: 'steve')).to have(1).error_on(:username)
-      end
+    context 'when username is somehow incorrect like: ' do
+      attribute = "username"
+      it{ should_not_save(User.new(),attribute, 0) }
+      it{ should_not_save(User.new(attribute.to_sym => 'steve'),attribute, 0) }
     end
 
-
-
-    context 'when email is somehow incorrect like: ' do 
-      it "not entered then should not save" do
-        expect(User.new).to have(1).error_on(:email)
-      end
-      it "no (@) symbol not entered then should not save" do
-        expect(User.new(email: 'sfd')).to have(1).error_on(:email)
-      end
-      it "no (@) symbol not entered before the dot(.) then should not save" do
-        expect(User.new(email: 'sfd.com')).to have(1).error_on(:email)
-      end
-      it "no dot(.) after (@) symbol not entered should not save" do
-        expect(User.new(email: 'sfd@sitelerwash')).to have(1).error_on(:email)
-      end
-      it "too few letters after dot(.) not entered should not save" do
-        expect(User.new(email: 'sfd@sitelerwash.i')).to have(1).error_on(:email)
-      end
-      it "too many letters after dot(.) not entered should not save" do
-        expect(User.new(email: 'sfd@sitelerwash.infos')).to have(1).error_on(:email)
-      end
-      it "digit entered after the dot(.) not entered should not save" do
-        expect(User.new(email: 'sfd@sitelerwash.in3s')).to have(1).error_on(:email)
-      end
-      it "digit entered after the dot(.) not entered should not save" do
-        expect(User.new(email: 'sfd@sitelerwash.%ins')).to have(1).error_on(:email)
-      end
-      it "digit entered after the dot(.) not entered should not save" do
-        expect(User.new(email: 'sfd@sitelerwash.inso^')).to have(1).error_on(:email)
-      end
+    context 'when email is somehow incorrect like: ' do
+      attribute = "email"
+      it{ should_not_save(User.new(),attribute, 2) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd.com'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.i'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.infos'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.in3s'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.%ins'), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.inso^'), attribute) }
     end
 
-
-
-    context 'when password is not correct like: ' do 
-      it "not entered should not save" do
-        expect(User.new).to have(1).error_on(:password)
-      end
-      it "is too short should not save" do
-        expect(User.new(password: 'passw')).to have(1).error_on(:password)
-      end
+    context 'when password is not correct like: ' do
+      attribute = "password"
+      it{ should_not_save(User.new(), attribute) }
+      it{ should_not_save(User.new(attribute.to_sym => 'passw'), attribute)}
     end
 
+    def should_not_save(my_user,attribute, equals=1)
+      expect(my_user.valid?).to be_falsey
+      expect(my_user.errors[attribute.to_sym].size).to eq(equals)
+    end
   end
-
-
-
 
 
   context 'happy' do ####################################################################
 
     context 'when username is correct like: ' do
-      it "username has minimum length (6) then validation passes" do
-        expect(User.new(username: 'albert')).to have(0).error_on(:username)
-      end
+      attribute = "username"
+      it{ should_save(User.new(attribute.to_sym => 'albert'), attribute) }
     end
 
-
-
-    context 'when email is correct like: ' do 
-      it "has minimum letters after dot(.) should save" do
-        expect(User.new(email: 'sfd@sitelerwash.AZ')).to have(0).error_on(:email)
-      end
-      it "has a dot(.)com should save" do
-        expect(User.new(email: 'sfd@sitelerwash.com')).to have(0).error_on(:email)
-      end
-      it "has maximum letters after dot(.) should save" do
-        expect(User.new(email: 'sfd@sitelerwash.info')).to have(0).error_on(:email)
-      end
+    context 'when email is correct like: ' do
+      attribute = "email"
+      it{ should_save(User.new(attribute.to_sym => 'sfd@sitelerwash.AZ'), attribute) }
+      it{ should_save(User.new(attribute.to_sym => 'sfd@sitelerwash.com'), attribute) }
+      it{ should_save(User.new(attribute.to_sym => 'sfd@sitelerwash.info'), attribute) }
     end
 
+    context 'when password is correct like: ' do
+      attribute = "password"
+      it{ should_save(User.new(attribute.to_sym => 'steven'), attribute) }
+      it{ should_save(User.new(attribute.to_sym => 'delarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosa'), attribute) }
+    end
 
-
-    context 'when password is correct like: ' do 
-      it "password has mininum length (6) then validation passes" do
-        expect(User.new(password: 'steven')).to have(0).error_on(:password)
-      end
-      it "password has maximum length (128) then validation passes" do
-        expect(User.new(password: 'delarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosa')).to have(0).error_on(:password)
-      end
+    def should_save(my_user,attribute, equals=0)
+      expect(my_user.valid?).to be_falsey
+      expect(my_user.errors[attribute.to_sym].size).to eq(equals)
     end
   end
+
 end
 
