@@ -7,6 +7,6 @@ developer = User.create!(
   salutation: Rails.application.secrets.user_salutation
 )
 developer.skip_confirmation!
-developer.save!
+#developer.save!
 printFinished()
 

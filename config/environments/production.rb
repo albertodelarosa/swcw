@@ -78,15 +78,15 @@ Sitelerwash::Application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :production
-    ::GATEWAY = ActiveMerchant::Billing::QuickbooksGateway.new(
-      realm:            Rails.application.secrets.gb_realm,
-      consumer_key:     Rails.application.secrets.qb_consumer_key,
-      consumer_secret:  Rails.application.secrets.qb_consumer_secret,
-      access_token:     Rails.application.secrets.qb_access_token,
-      token_secret:     Rails.application.secrets.qb_token_secret
-    )
-  end
+  #config.after_initialize do
+    #ActiveMerchant::Billing::Base.mode = :production
+    #::GATEWAY = ActiveMerchant::Billing::QuickbooksGateway.new(
+      #realm:            Rails.application.secrets.gb_realm,
+      #consumer_key:     Rails.application.secrets.qb_consumer_key,
+      #consumer_secret:  Rails.application.secrets.qb_consumer_secret,
+      #access_token:     Rails.application.secrets.qb_access_token,
+      #token_secret:     Rails.application.secrets.qb_token_secret
+    #)
+  #end
 
 end
