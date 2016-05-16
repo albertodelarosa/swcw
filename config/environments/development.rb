@@ -56,23 +56,23 @@ Sitelerwash::Application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Gateway for Quickbooks
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
+#  config.after_initialize do
+    #ActiveMerchant::Billing::Base.mode = :test
 
-    ::QB_GATEWAY = ActiveMerchant::Billing::QuickbooksGateway.new(
-      realm:            Rails.application.secrets.gb_realm,
-      consumer_key:     Rails.application.secrets.qb_consumer_key,
-      consumer_secret:  Rails.application.secrets.qb_consumer_secret,
-      access_token:     Rails.application.secrets.qb_access_token,
-      token_secret:     Rails.application.secrets.qb_token_secret
-    )
-  end
+    #::QB_GATEWAY = ActiveMerchant::Billing::QuickbooksGateway.new(
+      #realm:            Rails.application.secrets.gb_realm,
+      #consumer_key:     Rails.application.secrets.qb_consumer_key,
+      #consumer_secret:  Rails.application.secrets.qb_consumer_secret,
+      #access_token:     Rails.application.secrets.qb_access_token,
+      #token_secret:     Rails.application.secrets.qb_token_secret
+    #)
+  #end
 
-  $qb_oauth_consumer = OAuth::Consumer.new( Rails.application.secrets.qb_consumer_key, Rails.application.secrets.qb_consumer_secret, {
-    site:                "https://oauth.intuit.com",
-    request_token_path:  "/oauth/v1/get_request_token",
-    authorize_url:       "https://appcenter.intuit.com/Connect/Begin",
-    access_token_path:   "/oauth/v1/get_access_token"
-  })
+  #$qb_oauth_consumer = OAuth::Consumer.new( Rails.application.secrets.qb_consumer_key, Rails.application.secrets.qb_consumer_secret, {
+    #site:                "https://oauth.intuit.com",
+    #request_token_path:  "/oauth/v1/get_request_token",
+    #authorize_url:       "https://appcenter.intuit.com/Connect/Begin",
+    #access_token_path:   "/oauth/v1/get_access_token"
+  #})
 
 end
