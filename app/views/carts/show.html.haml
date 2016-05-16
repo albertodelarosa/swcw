@@ -13,16 +13,26 @@
                 %th Qty
                 %th.price Unit Price
                 %th.price Full Price
+                %th.modify Modify
+                - line_item_count = 0
               - for line_item in @cart.line_items
                 %tr
-                  %td
-                  -#%td= h line_item.service.name
+                  %td.name= line_item.service_plan.name
+                  -line_item_count += line_item.quantity
                   %td.qty= line_item.quantity
                   %td.price= number_to_currency(line_item.unit_price)
                   %td.price= number_to_currency(line_item.full_price)
+                  %td.delete= link_to "delete", delete_line_item_path(line_item.id), method: :delete, data: {confirm: "are you sure?"}
               %tr
-                %td.total.price{:colspan => "4"}
-                  Total: #{number_to_currency @cart.total_price}
+                %td{:colspan => "5"}
+              %tr
+                %td.total= "TOTAL"
+                %td.qty_total= line_item_count
+                %td
+                %td.total.price
+                  #{number_to_currency @cart.total_price}
+                %td
+
   .row
     .col-xs-6
       =link_to "Continue Shopping", root_path, {class: "btn btn-warning btn-block"}

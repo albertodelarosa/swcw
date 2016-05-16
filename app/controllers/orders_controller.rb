@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
+    @cart = current_cart
   end
 
   def create
