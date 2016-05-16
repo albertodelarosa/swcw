@@ -1,6 +1,7 @@
 Sitelerwash::Application.routes.draw do
 
-  resources :line_items, only: [:create]
+  match "/line_items" => 'line_items#create', as: :line_items, via: [:post, :patch]
+  match "/line_items/:id" => 'line_items#destroy', as: :delete_line_item, via: [:delete, :post]
 
   resources :carts, only: [:show] do
     get 'purchase', on: :member
