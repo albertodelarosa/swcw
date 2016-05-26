@@ -29,21 +29,19 @@ class Dashboard::DashboardsController < ApplicationController
         @account.status = Account::STATUS.first
       end
     end
-    @appointments = @account.appointments || []
-    @sites        = @account.sites        || []
-    @companies    = @account.companies    || []
-    @vehicles     = @account.vehicles     || []
-    @current_cart = current_cart unless session[:cart_id].nil?
 
-    unless @service_plan = @account.service_plan
-      @sample_plans = []
-      @sample_individual_plans = []
-
-      ServicePlan::PLAN_NAMES.each{|name| @sample_plans << ServicePlan.where(["name = ?", name]).first}
-      ServiceRegular::SERVICE_NAMES.each{|name| @sample_individual_plans << ServicePlan.where(["name = ?", name]).first}
+    if @service_plan = @account.service_plan
+      @appointments = @account.appointments || []
+      @sites        = @account.sites        || []
+      @companies    = @account.companies    || []
+      @vehicles     = @account.vehicles     || []
+      @current_cart = current_cart unless session[:cart_id].nil?
+      @appointment = Appointment.new
+    else
+      respond_to do |format|
+        format.html { redirect_to service_plan_purchase, notice: "#{@account.user.first_name}, you must first purchase a plan" }
+      end
     end
-    @appointment = Appointment.new
-
   end
 
   private
@@ -94,13 +92,7 @@ class Dashboard::DashboardsController < ApplicationController
   end
 
   def id_from_params
-    puts "in: id_from_params"
-    puts
-    id = params.permit(:id)[:id]
-    puts id[:id]
-    puts
-    puts
-    return id[:id]
+    return params.permit(:id)[:id].to_i
   end
 
 end

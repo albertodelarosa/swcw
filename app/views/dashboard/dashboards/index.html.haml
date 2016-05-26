@@ -1,38 +1,34 @@
--if @account.service_plan.nil?
-  = render partial: "dashboard/dashboards/purchase/service_plan"
--else
-  .section.section-default
-    .row
-      #sectionHeading1.col-xs-12.col-sm-4
-        %button.btn.btn-primary.btn-block{href:"#sectionCollapse1", data: {toggle: "collapse"}, aria: {expanded: "true", controls: "sectionCollapse1"}}services available
-      -##sectionHeading2.col-xs-12.col-sm-4.col-md-3
-        -#%button.btn.btn-primary.btn-block{href:"#sectionCollapse2", data: {toggle: "collapse"}, aria: {expanded: "true", controls: "sectionCollapse2"}}appointments
-      -unless @cart.nil?
-        .col-xs-12.col-sm-4
-          = link_to "my cart", cart_path(@cart.id), {class: "btn btn-primary btn-block"}
-  #sectionCollapse1.collapse.section.section-primary{role: "tabpanel", aria:{labelledby: "sectionHeading1"}}
-    .row
-      = render partial: "dashboard/dashboards/accordions/packages"
-      = render partial: "dashboard/dashboards/accordions/services"
-  .section.section-default
-    -appointments = []
-    -past_appointments = []
-    .row
+.section.section-default
+  .row
+    #sectionHeading1.col-xs-12.col-sm-4
+      %button.btn.btn-primary.btn-block{href:"#sectionCollapse1", data: {toggle: "collapse"}, aria: {expanded: "true", controls: "sectionCollapse1"}}services available
+    -##sectionHeading2.col-xs-12.col-sm-4.col-md-3
+      -#%button.btn.btn-primary.btn-block{href:"#sectionCollapse2", data: {toggle: "collapse"}, aria: {expanded: "true", controls: "sectionCollapse2"}}appointments
+    -unless @cart.nil?
+      .col-xs-12.col-sm-4
+        = link_to "my cart", cart_path(@cart.id), {class: "btn btn-primary btn-block"}
+#sectionCollapse1.collapse.section.section-primary{role: "tabpanel", aria:{labelledby: "sectionHeading1"}}
+  .row
+    = render partial: "dashboard/dashboards/accordions/packages"
+    = render partial: "dashboard/dashboards/accordions/services"
+.section.section-default
+  -appointments = []
+  -past_appointments = []
+  .row
+    .col-xs-12.col-md-4
+      .well
+        %legend
+          ="make a new appointment"
+        = render partial: 'dashboard/appointments/form'
+    -unless @appointments.empty?
+      -now = Time.now
+      -@appointments.each do |appointment|
+        -if appointment.date < now
+          -past_appointments << appointment
+        -else
+          -appointments << appointment
       .col-xs-12.col-md-4
-        .well
-          %legend
-            ="make a new appointment"
-          = render partial: 'dashboard/appointments/form'
-      -unless @appointments.empty?
-        -now = Time.now
-        -@appointments.each do |appointment|
-          -if appointment.date < now
-            -past_appointments << appointment
-          -else
-            -appointments << appointment
-        .col-xs-12.col-md-4
-          = render partial: "dashboard/dashboards/my/appointments", locals: {appointments: appointments}
-        .col-xs-12.col-md-4
-          = render partial: "dashboard/dashboards/my/past_appointments", locals: {past_appointments: past_appointments}
-
+        = render partial: "dashboard/dashboards/my/appointments", locals: {appointments: appointments}
+      .col-xs-12.col-md-4
+        = render partial: "dashboard/dashboards/my/past_appointments", locals: {past_appointments: past_appointments}
 

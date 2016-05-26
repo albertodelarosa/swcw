@@ -70,7 +70,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # PUT /dashboard/companies/1
   # PUT /dashboard/companies/1.json
   def update
-      @company = Company.find(entity_id_from_params(:company))
+      @company = Company.find(id_from_params)
 
       respond_to do |format|
         if @company.accounts.exists? current_user.account

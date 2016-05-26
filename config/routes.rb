@@ -1,5 +1,7 @@
 Sitelerwash::Application.routes.draw do
 
+  get 'service_plan/purchase'
+
   match "/line_items" => 'line_items#create', as: :line_items, via: [:post, :patch]
   match "/line_items/:id" => 'line_items#destroy', as: :delete_line_item, via: [:delete, :post]
 
