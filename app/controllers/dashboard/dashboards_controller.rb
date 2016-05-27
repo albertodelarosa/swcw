@@ -82,13 +82,7 @@ class Dashboard::DashboardsController < ApplicationController
   end
 
   def entity_id_from_params(entity)
-    puts "in: entity_id_from_params"
-    puts
-    id = params.required(entity).permit(:id)
-    puts id[:id]
-    puts
-    puts
-    return id[:id]
+    return params.required(entity).permit(:id)[:id].to_i
   end
 
   def id_from_params
