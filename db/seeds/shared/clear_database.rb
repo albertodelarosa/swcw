@@ -90,43 +90,7 @@ else
   puts("No #{Cart.to_s}s found")
 end
 
-
-#printStarting("DELETING EXISTING YEARS")
-#VehicleYear.all.each(&:destroy)
-#printFinished()
-
-#printStarting("DELETING EXISTING MAKES")
-#VehicleMake.all.each(&:destroy)
-#printFinished()
-
-#printStarting("DELETING EXISTING MODELS")
-#VehicleModel.all.each(&:destroy)
-#printFinished()
-
-#printStarting("DELETING EXISTING TRIM")
-#VehicleTrim.all.each(&:destroy)
-#printFinished()
-
-#printStarting("DELETING EXISTING TYPES")
-#VehicleType.all.each(&:destroy)
-#printFinished()
-
-#printStarting("DELETING EXISTING DOORS")
-#VehicleDoor.all.each(&:destroy)
-#printFinished()
-
-#printStarting("DELETING EXISTING SIZES")
-#VehicleSize.all.each(&:destroy)
-#printFinished()
-
-
-#printStarting("DELETING EXISTING VEHICLES")
-#Vehicle.all.each(&:destroy)
-#printFinished()
-
-
 printStarting("DELETING EXISTING ASSOCIATIONS")
-#VehicleSetting.all.each(&:destroy)
 ContactInfo.all.each(&:destroy)
 Location.all.each(&:destroy)
 Address.all.each(&:destroy)

@@ -752,13 +752,13 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "vehicle_years", ["name"], name: "index_vehicle_years_on_name", using: :btree
 
   create_table "vehicles", force: :cascade do |t|
-    t.string   "vehicle_year",     default: "", null: false
-    t.string   "vehicle_make",     default: "", null: false
-    t.string   "vehicle_model",    default: "", null: false
-    t.string   "vehicle_trim",     default: "", null: false
-    t.string   "vehicle_type",     default: "", null: false
-    t.string   "vehicle_door",     default: "", null: false
-    t.string   "vehicle_size",     default: "", null: false
+    t.string   "my_year",          default: "", null: false
+    t.string   "my_make",          default: "", null: false
+    t.string   "my_model",         default: "", null: false
+    t.string   "my_trim",          default: "", null: false
+    t.string   "my_type",          default: "", null: false
+    t.string   "my_door",          default: "", null: false
+    t.string   "my_size",          default: "", null: false
     t.string   "license_plate",    default: "", null: false
     t.string   "state_registered", default: "", null: false
     t.string   "color",            default: "", null: false
@@ -772,57 +772,57 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "vehicles", ["license_plate", "color"], name: "index_vehicles_on_license_plate_and_color", using: :btree
   add_index "vehicles", ["license_plate", "state_registered"], name: "index_vehicles_on_license_plate_and_state_registered", using: :btree
   add_index "vehicles", ["license_plate"], name: "index_vehicles_on_license_plate", using: :btree
+  add_index "vehicles", ["my_door", "color"], name: "index_vehicles_on_my_door_and_color", using: :btree
+  add_index "vehicles", ["my_door", "license_plate"], name: "index_vehicles_on_my_door_and_license_plate", using: :btree
+  add_index "vehicles", ["my_door", "my_size"], name: "index_vehicles_on_my_door_and_my_size", using: :btree
+  add_index "vehicles", ["my_door", "state_registered"], name: "index_vehicles_on_my_door_and_state_registered", using: :btree
+  add_index "vehicles", ["my_door"], name: "index_vehicles_on_my_door", using: :btree
+  add_index "vehicles", ["my_make", "color"], name: "index_vehicles_on_my_make_and_color", using: :btree
+  add_index "vehicles", ["my_make", "license_plate"], name: "index_vehicles_on_my_make_and_license_plate", using: :btree
+  add_index "vehicles", ["my_make", "my_door"], name: "index_vehicles_on_my_make_and_my_door", using: :btree
+  add_index "vehicles", ["my_make", "my_model"], name: "index_vehicles_on_my_make_and_my_model", using: :btree
+  add_index "vehicles", ["my_make", "my_size"], name: "index_vehicles_on_my_make_and_my_size", using: :btree
+  add_index "vehicles", ["my_make", "my_trim"], name: "index_vehicles_on_my_make_and_my_trim", using: :btree
+  add_index "vehicles", ["my_make", "my_type"], name: "index_vehicles_on_my_make_and_my_type", using: :btree
+  add_index "vehicles", ["my_make", "state_registered"], name: "index_vehicles_on_my_make_and_state_registered", using: :btree
+  add_index "vehicles", ["my_make"], name: "index_vehicles_on_my_make", using: :btree
+  add_index "vehicles", ["my_model", "color"], name: "index_vehicles_on_my_model_and_color", using: :btree
+  add_index "vehicles", ["my_model", "license_plate"], name: "index_vehicles_on_my_model_and_license_plate", using: :btree
+  add_index "vehicles", ["my_model", "my_door"], name: "index_vehicles_on_my_model_and_my_door", using: :btree
+  add_index "vehicles", ["my_model", "my_size"], name: "index_vehicles_on_my_model_and_my_size", using: :btree
+  add_index "vehicles", ["my_model", "my_trim"], name: "index_vehicles_on_my_model_and_my_trim", using: :btree
+  add_index "vehicles", ["my_model", "my_type"], name: "index_vehicles_on_my_model_and_my_type", using: :btree
+  add_index "vehicles", ["my_model", "state_registered"], name: "index_vehicles_on_my_model_and_state_registered", using: :btree
+  add_index "vehicles", ["my_model"], name: "index_vehicles_on_my_model", using: :btree
+  add_index "vehicles", ["my_size", "color"], name: "index_vehicles_on_my_size_and_color", using: :btree
+  add_index "vehicles", ["my_size", "license_plate"], name: "index_vehicles_on_my_size_and_license_plate", using: :btree
+  add_index "vehicles", ["my_size", "state_registered"], name: "index_vehicles_on_my_size_and_state_registered", using: :btree
+  add_index "vehicles", ["my_size"], name: "index_vehicles_on_my_size", using: :btree
+  add_index "vehicles", ["my_trim", "color"], name: "index_vehicles_on_my_trim_and_color", using: :btree
+  add_index "vehicles", ["my_trim", "license_plate"], name: "index_vehicles_on_my_trim_and_license_plate", using: :btree
+  add_index "vehicles", ["my_trim", "my_door"], name: "index_vehicles_on_my_trim_and_my_door", using: :btree
+  add_index "vehicles", ["my_trim", "my_size"], name: "index_vehicles_on_my_trim_and_my_size", using: :btree
+  add_index "vehicles", ["my_trim", "my_type"], name: "index_vehicles_on_my_trim_and_my_type", using: :btree
+  add_index "vehicles", ["my_trim", "state_registered"], name: "index_vehicles_on_my_trim_and_state_registered", using: :btree
+  add_index "vehicles", ["my_trim"], name: "index_vehicles_on_my_trim", using: :btree
+  add_index "vehicles", ["my_type", "color"], name: "index_vehicles_on_my_type_and_color", using: :btree
+  add_index "vehicles", ["my_type", "license_plate"], name: "index_vehicles_on_my_type_and_license_plate", using: :btree
+  add_index "vehicles", ["my_type", "my_door"], name: "index_vehicles_on_my_type_and_my_door", using: :btree
+  add_index "vehicles", ["my_type", "my_size"], name: "index_vehicles_on_my_type_and_my_size", using: :btree
+  add_index "vehicles", ["my_type", "state_registered"], name: "index_vehicles_on_my_type_and_state_registered", using: :btree
+  add_index "vehicles", ["my_type"], name: "index_vehicles_on_my_type", using: :btree
+  add_index "vehicles", ["my_year", "color"], name: "index_vehicles_on_my_year_and_color", using: :btree
+  add_index "vehicles", ["my_year", "license_plate"], name: "index_vehicles_on_my_year_and_license_plate", using: :btree
+  add_index "vehicles", ["my_year", "my_door"], name: "index_vehicles_on_my_year_and_my_door", using: :btree
+  add_index "vehicles", ["my_year", "my_make"], name: "index_vehicles_on_my_year_and_my_make", using: :btree
+  add_index "vehicles", ["my_year", "my_model"], name: "index_vehicles_on_my_year_and_my_model", using: :btree
+  add_index "vehicles", ["my_year", "my_size"], name: "index_vehicles_on_my_year_and_my_size", using: :btree
+  add_index "vehicles", ["my_year", "my_trim"], name: "index_vehicles_on_my_year_and_my_trim", using: :btree
+  add_index "vehicles", ["my_year", "my_type"], name: "index_vehicles_on_my_year_and_my_type", using: :btree
+  add_index "vehicles", ["my_year", "state_registered"], name: "index_vehicles_on_my_year_and_state_registered", using: :btree
+  add_index "vehicles", ["my_year"], name: "index_vehicles_on_my_year", using: :btree
   add_index "vehicles", ["state_registered", "color"], name: "index_vehicles_on_state_registered_and_color", using: :btree
   add_index "vehicles", ["state_registered"], name: "index_vehicles_on_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_door", "color"], name: "index_vehicles_on_vehicle_door_and_color", using: :btree
-  add_index "vehicles", ["vehicle_door", "license_plate"], name: "index_vehicles_on_vehicle_door_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_door", "state_registered"], name: "index_vehicles_on_vehicle_door_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_door", "vehicle_size"], name: "index_vehicles_on_vehicle_door_and_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_door"], name: "index_vehicles_on_vehicle_door", using: :btree
-  add_index "vehicles", ["vehicle_make", "color"], name: "index_vehicles_on_vehicle_make_and_color", using: :btree
-  add_index "vehicles", ["vehicle_make", "license_plate"], name: "index_vehicles_on_vehicle_make_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_make", "state_registered"], name: "index_vehicles_on_vehicle_make_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_make", "vehicle_door"], name: "index_vehicles_on_vehicle_make_and_vehicle_door", using: :btree
-  add_index "vehicles", ["vehicle_make", "vehicle_model"], name: "index_vehicles_on_vehicle_make_and_vehicle_model", using: :btree
-  add_index "vehicles", ["vehicle_make", "vehicle_size"], name: "index_vehicles_on_vehicle_make_and_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_make", "vehicle_trim"], name: "index_vehicles_on_vehicle_make_and_vehicle_trim", using: :btree
-  add_index "vehicles", ["vehicle_make", "vehicle_type"], name: "index_vehicles_on_vehicle_make_and_vehicle_type", using: :btree
-  add_index "vehicles", ["vehicle_make"], name: "index_vehicles_on_vehicle_make", using: :btree
-  add_index "vehicles", ["vehicle_model", "color"], name: "index_vehicles_on_vehicle_model_and_color", using: :btree
-  add_index "vehicles", ["vehicle_model", "license_plate"], name: "index_vehicles_on_vehicle_model_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_model", "state_registered"], name: "index_vehicles_on_vehicle_model_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_model", "vehicle_door"], name: "index_vehicles_on_vehicle_model_and_vehicle_door", using: :btree
-  add_index "vehicles", ["vehicle_model", "vehicle_size"], name: "index_vehicles_on_vehicle_model_and_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_model", "vehicle_trim"], name: "index_vehicles_on_vehicle_model_and_vehicle_trim", using: :btree
-  add_index "vehicles", ["vehicle_model", "vehicle_type"], name: "index_vehicles_on_vehicle_model_and_vehicle_type", using: :btree
-  add_index "vehicles", ["vehicle_model"], name: "index_vehicles_on_vehicle_model", using: :btree
-  add_index "vehicles", ["vehicle_size", "color"], name: "index_vehicles_on_vehicle_size_and_color", using: :btree
-  add_index "vehicles", ["vehicle_size", "license_plate"], name: "index_vehicles_on_vehicle_size_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_size", "state_registered"], name: "index_vehicles_on_vehicle_size_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_size"], name: "index_vehicles_on_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_trim", "color"], name: "index_vehicles_on_vehicle_trim_and_color", using: :btree
-  add_index "vehicles", ["vehicle_trim", "license_plate"], name: "index_vehicles_on_vehicle_trim_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_trim", "state_registered"], name: "index_vehicles_on_vehicle_trim_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_trim", "vehicle_door"], name: "index_vehicles_on_vehicle_trim_and_vehicle_door", using: :btree
-  add_index "vehicles", ["vehicle_trim", "vehicle_size"], name: "index_vehicles_on_vehicle_trim_and_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_trim", "vehicle_type"], name: "index_vehicles_on_vehicle_trim_and_vehicle_type", using: :btree
-  add_index "vehicles", ["vehicle_trim"], name: "index_vehicles_on_vehicle_trim", using: :btree
-  add_index "vehicles", ["vehicle_type", "color"], name: "index_vehicles_on_vehicle_type_and_color", using: :btree
-  add_index "vehicles", ["vehicle_type", "license_plate"], name: "index_vehicles_on_vehicle_type_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_type", "state_registered"], name: "index_vehicles_on_vehicle_type_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_type", "vehicle_door"], name: "index_vehicles_on_vehicle_type_and_vehicle_door", using: :btree
-  add_index "vehicles", ["vehicle_type", "vehicle_size"], name: "index_vehicles_on_vehicle_type_and_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_type"], name: "index_vehicles_on_vehicle_type", using: :btree
-  add_index "vehicles", ["vehicle_year", "color"], name: "index_vehicles_on_vehicle_year_and_color", using: :btree
-  add_index "vehicles", ["vehicle_year", "license_plate"], name: "index_vehicles_on_vehicle_year_and_license_plate", using: :btree
-  add_index "vehicles", ["vehicle_year", "state_registered"], name: "index_vehicles_on_vehicle_year_and_state_registered", using: :btree
-  add_index "vehicles", ["vehicle_year", "vehicle_door"], name: "index_vehicles_on_vehicle_year_and_vehicle_door", using: :btree
-  add_index "vehicles", ["vehicle_year", "vehicle_make"], name: "index_vehicles_on_vehicle_year_and_vehicle_make", using: :btree
-  add_index "vehicles", ["vehicle_year", "vehicle_model"], name: "index_vehicles_on_vehicle_year_and_vehicle_model", using: :btree
-  add_index "vehicles", ["vehicle_year", "vehicle_size"], name: "index_vehicles_on_vehicle_year_and_vehicle_size", using: :btree
-  add_index "vehicles", ["vehicle_year", "vehicle_trim"], name: "index_vehicles_on_vehicle_year_and_vehicle_trim", using: :btree
-  add_index "vehicles", ["vehicle_year", "vehicle_type"], name: "index_vehicles_on_vehicle_year_and_vehicle_type", using: :btree
-  add_index "vehicles", ["vehicle_year"], name: "index_vehicles_on_vehicle_year", using: :btree
 
   add_foreign_key "accounts", "users"
   add_foreign_key "discounts", "accounts"

@@ -6,7 +6,7 @@ require File.join(File.dirname(__FILE__), '..', 'shared', 'clear_database.rb')
 require File.join(File.dirname(__FILE__), '..', 'shared', 'create_account.rb')
 require File.join(File.dirname(__FILE__), 'create_user.rb')
 
-if Vehicle.all.size == 0
+if VehicleSetting.all.size == 0
   require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle_settings.rb')
   require File.join(File.dirname(__FILE__), '..', 'shared', 'create_make_model.rb')
   require File.join(File.dirname(__FILE__), '..', 'shared', 'create_vehicle_data.rb')
