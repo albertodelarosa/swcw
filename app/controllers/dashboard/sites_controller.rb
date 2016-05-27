@@ -34,12 +34,12 @@ class Dashboard::SitesController < Dashboard::DashboardsController
 
     if current_user.account.companies.empty?
       respond_to do |format|
-        format.html { redirect_to new_dashboard_company_url, notice: 'You need to pick a company first.' }
+        format.html { redirect_to new_dashboard_company_url, status: 302, notice: 'You need to pick a company first.' }
       end
     else
-      @company = Company.find(current_user.account.companies.last)
-      @sites = @company.sites
-      @site = Site.new
+      @company = Company.find(current_user.account.companies.last.id)
+      @sites = current_user.account.sites
+      @site = current_user.account.sites.last
 
       respond_to do |format|
         format.html # new.html.erb
@@ -59,10 +59,9 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # POST /customers/sites
   # POST /customers/sites.json
   def create
-    @site = Site.find(entity_id_from_params(:site))
-
     respond_to do |format|
-      if current_user.account.sites << @site
+      if @site = Site.find(entity_id_from_params(:site))
+        current_user.account.sites << @site
         format.html { redirect_to root_path, notice: "The site #{@site.name} @ #{@site.companies.last.name} was successfully added." }
         format.json { render json: @site, status: :created, location: @site }
       else
@@ -75,12 +74,12 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # PUT /customers/sites/1
   # PUT /customers/sites/1.json
   def update
-    @site = Site.find(entity_id_from_params(:site))
+    @site = Site.find(id_from_params)
 
     respond_to do |format|
-      if current_user.sites.exists? @site
-        current_user.sites.delete(@site)
-        current_user.sites << @sites
+      if current_user.account.sites.exists? @site.id
+        current_user.account.sites.delete(@site)
+        current_user.account.sites << @sites
         format.html { redirect_to root_path, notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
@@ -95,10 +94,9 @@ class Dashboard::SitesController < Dashboard::DashboardsController
   # DELETE /customers/sites/1.json
   def destroy
     @site = Site.find(id_from_params)
-    #@site.destroy #only admin can destroy a site
 
     respond_to do |format|
-      if current_user.sites.delete(@site)
+      if current_user.account.sites.delete(@site)
         format.html { redirect_to root_path }
         format.json { head :no_content }
       end

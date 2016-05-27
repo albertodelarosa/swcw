@@ -19,3 +19,18 @@ module ControllerMacros
     #end
   #end
 end
+
+RSpec.shared_examples "not login redirect" do
+  it {expect(response.status).to eq(302)}
+  it {expect(response).to_not be_successful}
+  it {expect(response).to redirect_to(new_user_session_path)}
+end
+RSpec.shared_examples "login render" do
+  it {expect(response.status).to eq(200)}
+  it {expect(response).to be_successful}
+end
+RSpec.shared_examples "login redirect" do
+  it {expect(response.status).to eq(302)}
+  it {expect(response).to_not be_successful}
+end
+
