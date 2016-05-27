@@ -1,4 +1,4 @@
-printStarting("ADDING DEVELOPER USER")
+printStarting("ADDING USER")
 developer = User.new(
   email:      Rails.application.secrets.user_email,
   password:   Rails.application.secrets.user_password,
@@ -7,6 +7,6 @@ developer = User.new(
   salutation: Rails.application.secrets.user_salutation
 )
 developer.skip_confirmation!
-developer.save!
+developer.save! if Rails.env.eql?( "development" )
 printFinished()
 

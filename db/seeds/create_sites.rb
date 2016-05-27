@@ -11,12 +11,12 @@ CSV.read("#{Rails.root}/lib/tasks/site.csv", options).each_with_index do |row, i
   else
     unless row[1].nil?
       name, street_address, city_state_zip = row[1], row[2], row[3].split(",")
-      temp_company.sites << Site.create!( name:     name, 
+      temp_company.sites << Site.create!( name:     name,
                                           comments: 'Found in back. Please see Google map provided.',
                                           address:  CompanyAddress.create!( street1: street_address,
-                                                                            city:    city_state_zip[0], 
-                                                                            state:   city_state_zip[1], 
-                                                                            zip:     city_state_zip[2], 
+                                                                            city:    city_state_zip[0],
+                                                                            state:   city_state_zip[1],
+                                                                            zip:     city_state_zip[2],
                                                                           ),
                                         )
     end

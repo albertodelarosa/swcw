@@ -1,6 +1,6 @@
 def seedEnvironment()
   puts "Seeding Environment: #{Rails.env}"
-  puts " STARTING SEED FILE... ".rjust(10, "#")
+  puts " STARTING SEED FILE... ".rjust(5, "#")
   2.times{puts}
   puts
 end
@@ -10,15 +10,15 @@ def printStartingSeedFile()
 end
 
 def printStarting(starting)
-  temp = " #{starting}...".ljust(10, ".")
-  puts "#{temp}...".rjust(10, "#")
-  puts ".".ljust(10, ".")
+  temp = " #{starting}... ".rjust(5, ".")
+  puts "#{temp}".ljust(5, "#")
+  #puts ".".ljust(5, ".")
   puts
 end
 
 def printFinished()
-  finished = "Finished ".ljust(10, "#")
-  puts finished.rjust(10, ".")
+  finished = "Finished ".ljust(5, "#")
+  puts finished.rjust(5, ".")
   6.times{puts}
 end
 
@@ -32,7 +32,7 @@ def associate_account_user(account)
 end
 
 def create_user_home_info(user)
-  printStarting("ASSOCIATING DEVELOPER HOME INFORMATION")
+  printStarting("ASSOCIATING HOME INFORMATION")
   user.home_address =
     HomeAddress.create!(
       street1: Rails.application.secrets.user_street1,

@@ -3,8 +3,7 @@ require "csv"
 options = {encoding: 'UTF-8', skip_blanks: true}
 
 printStarting("CREATING NEW VEHICLE VARIABLES")
-make = VehicleMake.new
-model = VehicleModel.new
+make, model = VehicleMake.new, VehicleModel.new
 
 years = []
 row_counter = 0
@@ -101,11 +100,16 @@ def parse_row(row_counter, years, make, model, row)
 
 end
 
-5.times{puts}
+2.times{puts}
 printStarting("CREATING VEHICLE YEARS, TRIMS, DOORS AND ASSOCIATING THEM WITH MAKES & MODELS")
 
-
-csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
+if Rails.env == "development"
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim_small_dev_sample.csv"
+  puts "using #{ Rails.env } sample file..."
+elsif Rails.env == "production"
+  csv_filename = "#{Rails.root}/lib/tasks/year_model_trim.csv"
+  puts "using #{ Rails.env } sample file... this is going to take a while, so get some coffee and relax"
+end
 
 CSV.read(csv_filename, options).each_with_index do |row, i|
   unless row[0].nil?
@@ -117,8 +121,10 @@ CSV.read(csv_filename, options).each_with_index do |row, i|
       years << VehicleYear.where(name: column).first_or_create
     end
   else
+    puts "parsing row: #{row_counter}"
     parse_row(row_counter, years, make, model, row)
     row_counter += 1
+    puts
   end
 end
 

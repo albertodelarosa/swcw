@@ -1,6 +1,6 @@
 begin
-  require File.join(File.dirname(__FILE__), 'seeds', Rails.env, 'seed.rb')
-  puts "DATABASE DONE"
+  require File.join(File.dirname(__FILE__), 'seeds', 'seed.rb')
+  puts "#{Rails.env.upcase} DATABASE DONE"
   15.times{puts}
 rescue => e
   puts e.backtrace

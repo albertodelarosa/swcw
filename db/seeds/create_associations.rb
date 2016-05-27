@@ -1,4 +1,4 @@
-printStarting("ADDING ALL DEVELOPER ASSOCIATIONS")
+printStarting("ADDING ALL ASSOCIATIONS")
 account = Account.all.first
 associate_account_user(account)
 create_user_home_info(account.user)

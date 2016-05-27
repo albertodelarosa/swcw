@@ -1,4 +1,4 @@
-printStarting("ASSOCIATING DEVELOPER DEFAULT VEHICLE")
+printStarting("CREATING DEFAULT VEHICLE")
 Vehicle.create!(
   my_year:     "1997",
   my_make:     "Chevrolet",

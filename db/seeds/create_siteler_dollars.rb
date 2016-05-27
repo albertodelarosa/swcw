@@ -1,4 +1,4 @@
-printStarting("CREATING REGULAR SERVICE PLANS")
+printStarting("CREATING SITELER DOLLARS")
 SitelerDollar.create!(name: "temp")
 printFinished()
 

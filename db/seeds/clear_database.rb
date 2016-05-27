@@ -1,5 +1,5 @@
 3.times{puts}
-5.times{seedEnvironment()}
+1.times{seedEnvironment()}
 
 if AdminUser.all.size > 0
   printStarting("DELETING ADMIN USERS")
@@ -7,6 +7,7 @@ if AdminUser.all.size > 0
   printFinished()
 else
   puts("No #{AdminUser.to_s}s found")
+  puts
 end
 
 
@@ -16,6 +17,7 @@ if Account.all.size > 0
   printFinished()
 else
   puts("No #{Account.to_s}s found")
+  puts
 end
 
 if User.all.size > 0
@@ -24,6 +26,7 @@ if User.all.size > 0
   printFinished()
 else
   puts("No #{User.to_s}s found")
+  puts
 end
 
 if Site.all.size > 0
@@ -32,6 +35,7 @@ if Site.all.size > 0
   printFinished()
 else
   puts("No #{Site.to_s}s found")
+  puts
 end
 
 if Company.all.size > 0
@@ -40,6 +44,7 @@ if Company.all.size > 0
   printFinished()
 else
   puts("No #{Company.to_s}s found")
+  puts
 end
 
 if Appointment.all.size > 0
@@ -48,6 +53,7 @@ if Appointment.all.size > 0
   printFinished()
 else
   puts("No #{Appointment.to_s}s found")
+  puts
 end
 
 if SitelerDollar.all.size > 0
@@ -56,6 +62,7 @@ if SitelerDollar.all.size > 0
   printFinished()
 else
   puts("No #{SitelerDollar.to_s}s found")
+  puts
 end
 
 if Discount.all.size > 0
@@ -64,6 +71,7 @@ if Discount.all.size > 0
   printFinished()
 else
   puts("No #{Discount.to_s}s found")
+  puts
 end
 
 if Service.all.size > 0
@@ -72,6 +80,7 @@ if Service.all.size > 0
   printFinished()
 else
   puts("No #{Service.to_s}s found")
+  puts
 end
 
 if ServicePlan.all.size > 0
@@ -80,6 +89,7 @@ if ServicePlan.all.size > 0
   printFinished()
 else
   puts("No #{ServicePlan.to_s}s found")
+  puts
 end
 
 if Cart.all.size > 0
@@ -88,6 +98,7 @@ if Cart.all.size > 0
   printFinished()
 else
   puts("No #{Cart.to_s}s found")
+  puts
 end
 
 printStarting("DELETING EXISTING ASSOCIATIONS")
