@@ -42,7 +42,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
     else
       @company = current_user.account.companies.last
       respond_to do |format|
-        format.html { redirect_to edit_dashboard_company(@company), notice: 'Please update your company listing' }
+        format.html { redirect_to edit_dashboard_company_path(@company), notice: 'Please update your company listing' }
         format.json { render json: current_user.accounts.companies.last }
       end
     end
@@ -58,12 +58,12 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # POST /dashboard/companies
   # POST /dashboard/companies.json
   def create
-    @company = Company.find(entity_id_from_params(:company))
-
-    respond_to do |format|
-      @company.accounts << current_user.account
-      format.html { redirect_to root_path, notice: 'Company was successfully created.' }
-      format.json
+    if @company = Company.find(entity_id_from_params(:company))
+      respond_to do |format|
+        current_user.account.companies << @company
+        format.html { redirect_to root_path, notice: 'Company was successfully created.' }
+        format.json
+      end
     end
   end
 
@@ -73,7 +73,7 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
       @company = Company.find(id_from_params)
 
       respond_to do |format|
-        if @company.accounts.exists? current_user.account
+        if @company.accounts.exists? current_user.account.id
           @company.accounts.delete(current_user.account)
           @company.accounts << current_user.account
 
