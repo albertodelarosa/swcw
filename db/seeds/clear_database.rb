@@ -101,6 +101,15 @@ else
   puts
 end
 
+if Vehicle.all.size > 0
+  printStarting("DELETING EXISTING VEHICLES")
+  Vehicle.all.each(&:destroy)
+  printFinished()
+else
+  puts("No #{Vehicle.to_s}s found")
+  puts
+end
+
 printStarting("DELETING EXISTING ASSOCIATIONS")
 ContactInfo.all.each(&:destroy)
 Location.all.each(&:destroy)

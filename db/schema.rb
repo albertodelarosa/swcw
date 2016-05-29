@@ -679,6 +679,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "vehicle_models", ["name"], name: "index_vehicle_models_on_name", using: :btree
 
   create_table "vehicle_settings", force: :cascade do |t|
+    t.integer  "vehicle_id"
     t.integer  "vehicle_year_id"
     t.integer  "vehicle_make_id"
     t.integer  "vehicle_model_id"
@@ -692,6 +693,14 @@ ActiveRecord::Schema.define(version: 20150608205134) do
 
   add_index "vehicle_settings", ["vehicle_door_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_door_id_and_vehicle_size_id", using: :btree
   add_index "vehicle_settings", ["vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_door_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_make_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_make_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_model_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_size_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_trim_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_trim_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_type_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_type_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id", "vehicle_year_id"], name: "index_vehicle_settings_on_vehicle_id_and_vehicle_year_id", using: :btree
+  add_index "vehicle_settings", ["vehicle_id"], name: "index_vehicle_settings_on_vehicle_id", using: :btree
   add_index "vehicle_settings", ["vehicle_make_id", "vehicle_door_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_door_id", using: :btree
   add_index "vehicle_settings", ["vehicle_make_id", "vehicle_model_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_model_id", using: :btree
   add_index "vehicle_settings", ["vehicle_make_id", "vehicle_size_id"], name: "index_vehicle_settings_on_vehicle_make_id_and_vehicle_size_id", using: :btree

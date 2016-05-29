@@ -9,11 +9,11 @@ require File.join(File.dirname(__FILE__), 'create_account.rb')
 require File.join(File.dirname(__FILE__), 'create_user.rb')
 
 unless VehicleSetting.all.size > 0
-  require File.join(File.dirname(__FILE__), 'create_vehicle_settings.rb')
+  require File.join(File.dirname(__FILE__), 'create_vehicle_year_door_size_type.rb')
   require File.join(File.dirname(__FILE__), 'create_make_model.rb')
   require File.join(File.dirname(__FILE__), 'create_vehicle_data.rb')
-  require File.join(File.dirname(__FILE__), 'create_vehicle.rb')
 end
+require File.join(File.dirname(__FILE__), 'create_vehicle.rb')
 
 #require File.join(File.dirname(__FILE__), 'create_appointments.rb')
 #require File.join(File.dirname(__FILE__), 'create_discounts.rb')
