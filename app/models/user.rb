@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   validates_presence_of :last_name
 
   validates :email,    presence: true, uniqueness: { case_sensitive: false }
-  #validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { in: 6..20 }
 
   has_one :account
   has_one :work_contact_info, class_name: 'CompanyContactInfo',  as: :contactable, dependent: :destroy

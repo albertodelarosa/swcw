@@ -1,64 +1,79 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  context 'unhappy' do ####################################################################
 
-    context 'when username is somehow incorrect like: ' do
-      attribute = "username"
-      it{ should_not_save(User.new(),attribute, 0) }
-      it{ should_not_save(User.new(attribute.to_sym => 'steve'),attribute, 0) }
+  me = FactoryGirl.create(:user)
+  has_one_associations = {
+    account:  FactoryGirl.create(:account),
+    home_contact_info:  FactoryGirl.create(:home_contact_info),
+    work_contact_info:  FactoryGirl.create(:company_contact_info),
+    home_address:  FactoryGirl.create(:home_address),
+    work_address: FactoryGirl.create(:company_address)
+  }
+  not_associations = [
+    "companies",
+    "sites",
+    "vehicles",
+    "vehicle_years",
+    "vehicle_makes",
+    "vehicle_models",
+    "vehicle_trims",
+    "vehicle_types",
+    "vehicle_doors",
+    "vehicle_sizes"
+  ]
+
+  my_parameters = {
+    username: [ "String", "developer" ],
+    password: [ "String", "password" ],
+    first_name: [ "String", "Unix" ],
+    last_name: [ "String", "Android" ],
+    salutation: [ "String", "Nerd" ],
+    suffix: [ "String", "III" ]
+  }
+
+  context "HAPPY PATH" do
+
+    describe "base parameters" do
+      it_behaves_like "it is valid object", me, my_parameters
+      it_behaves_like "has_one associations", me, has_one_associations
     end
 
-    context 'when email is somehow incorrect like: ' do
-      attribute = "email"
-      it{ should_not_save(User.new(),attribute, 2) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd.com'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.i'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.infos'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.in3s'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.%ins'), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'sfd@sitelerwash.inso^'), attribute) }
+    describe 'when email is correct like: ' do
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.az" ).save ).to be_truthy }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.com" ).save).to be_truthy }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.info" ).save).to be_truthy }
     end
 
-    context 'when password is not correct like: ' do
-      attribute = "password"
-      it{ should_not_save(User.new(), attribute) }
-      it{ should_not_save(User.new(attribute.to_sym => 'passw'), attribute)}
+    describe 'when password is correct like: ' do
+      it { expect( FactoryGirl.build( :user, password: 'steven' ).save ).to be_truthy }
+      it { expect( FactoryGirl.build( :user, password: 'delarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosa' ).save ).to be_truthy }
     end
 
-    def should_not_save(my_user,attribute, equals=1)
-      expect(my_user.valid?).to be_falsey
-      expect(my_user.errors[attribute.to_sym].size).to eq(equals)
-    end
   end
 
+  context "UNHAPPY PATH" do
 
-  context 'happy' do ####################################################################
-
-    context 'when username is correct like: ' do
-      attribute = "username"
-      it{ should_save(User.new(attribute.to_sym => 'albert'), attribute) }
+    describe "base parameters" do
+      it_behaves_like "it has a missing method", me, not_associations
     end
 
-    context 'when email is correct like: ' do
-      attribute = "email"
-      it{ should_save(User.new(attribute.to_sym => 'sfd@sitelerwash.AZ'), attribute) }
-      it{ should_save(User.new(attribute.to_sym => 'sfd@sitelerwash.com'), attribute) }
-      it{ should_save(User.new(attribute.to_sym => 'sfd@sitelerwash.info'), attribute) }
+    describe 'when email is correct like: ' do
+      it{ expect( FactoryGirl.build( :user, email: "sfd" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd.com" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.a" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.in3s" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.%ins'" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.inso^" ).save ).to be_falsey }
+      it{ expect( FactoryGirl.build( :user, email: "sfd@sitelerwash.infos" ).save).to be_falsey }
     end
 
-    context 'when password is correct like: ' do
-      attribute = "password"
-      it{ should_save(User.new(attribute.to_sym => 'steven'), attribute) }
-      it{ should_save(User.new(attribute.to_sym => 'delarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosadelarosa'), attribute) }
+    describe 'when password is not correct like: ' do
+      it { expect( FactoryGirl.build( :user, password: '' ).save ).to be_falsey }
+      it { expect( FactoryGirl.build( :user, password: 'passw' ).save ).to be_falsey }
     end
 
-    def should_save(my_user,attribute, equals=0)
-      expect(my_user.valid?).to be_falsey
-      expect(my_user.errors[attribute.to_sym].size).to eq(equals)
-    end
   end
 
 end

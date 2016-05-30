@@ -1,8 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+
   factory :user do
-    sequence(:email) { |n| "developer#{n}@sitelerwash.com" }
+    sequence(:email) { |n| "user#{ Random.new.rand(100) }@sitelerwash.com" }
     username    "developer"
     password    "password"
     password_confirmation { |u| u.password }
@@ -11,15 +12,11 @@ FactoryGirl.define do
     salutation  "Nerd"
     suffix      "III"
 
-
-    after do |user|
-      user.account ||= FactoryGirl.create(:account)
-      user.work_contact_info ||= FactoryGirl.create(:work_contact_info)
-      user.work_address ||= FactoryGirl.create(:work_address)
-      user.home_contact_info ||= FactoryGirl.create(:home_contact_info)
-      user.home_address ||= FactoryGirl.create(:home_address)
-    end
-
-
+    association :account,           factory: :account,           strategy: :build
+    association :home_contact_info, factory: :home_contact_info, strategy: :build
+    association :work_contact_info, factory: :company_contact_info,   strategy: :build
+    association :home_address,      factory: :home_address,      strategy: :build
+    association :work_address,      factory: :company_address,   strategy: :build
   end
+
 end
