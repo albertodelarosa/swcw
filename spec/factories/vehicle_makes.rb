@@ -5,7 +5,7 @@ FactoryGirl.define do
     name "Chevrolet"
 
     after do |vehicle_make|
-      vehicle_door.vehicles       << FactoryGirl.create(:vehicle)
+      vehicle_door.vehicles        << FactoryGirl.create(:vehicle)
       vehicle_door.vehicle_models  << FactoryGirl.create(:vehicle_model)
     end
   end

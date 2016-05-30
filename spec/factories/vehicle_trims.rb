@@ -5,10 +5,10 @@ FactoryGirl.define do
     name "Z28"
 
     after do |vehicle_trim|
-      vehicle_door.vehicles       << FactoryGirl.create(:vehicle)
-      vehicle_door.vehicle_years  << FactoryGirl.create(:vehicle_year)
-      vehicle_door.vehicle_models  << FactoryGirl.create(:vehicle_model)
-      vehicle_door.vehicle_types  << FactoryGirl.create(:vehicle_type)
+      vehicle_trim.vehicles       << FactoryGirl.create(:vehicle)
+      vehicle_trim.vehicle_years  << FactoryGirl.create(:vehicle_year)
+      vehicle_trim.vehicle_models << FactoryGirl.create(:vehicle_model)
+      vehicle_trim.vehicle_types  << FactoryGirl.create(:vehicle_type)
     end
   end
 end

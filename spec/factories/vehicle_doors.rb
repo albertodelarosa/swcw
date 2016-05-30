@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :vehicle_door do
-    name "2-doors"
+    name "2 Door"
 
     after do |vehicle_door|
       vehicle_door.vehicles       << FactoryGirl.create(:vehicle)
