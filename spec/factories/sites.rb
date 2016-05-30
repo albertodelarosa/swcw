@@ -7,12 +7,13 @@ FactoryGirl.define do
     latitude 1.5
     longitude 1.5
 
+    association :contact_info, factory: :company_contact_info, strategy: :build
+    association :address,      factory: :company_address,      strategy: :build
+
     after do |site|
-      site.contact_info ||= FactoryGirl.build(:contact_info, :site => site)
-      site.address ||= FactoryGirl.build(:address, :site => site)
-      site.clients    << FactoryGirl.create(:client)
-      site.companies  << FactoryGirl.create(:company)
-      site.vehicles   << FactoryGirl.create(:vehicle)
+      site.accounts   << FactoryGirl.create(:account)
+      site.companies << FactoryGirl.create(:company)
+      site.vehicles  << FactoryGirl.create(:vehicle)
     end
   end
 

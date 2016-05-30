@@ -3,19 +3,19 @@
 
 FactoryGirl.define do
   factory :company do
-    name "My Factory Girl Company"
-    corp_id "oefeiu3q9h"
-    description "My Factory Girl Company"
-    corp_email "factorygirl@myfactorygirl.com"
+    name        "My Factory Girl Company"
+    corp_id     "oefeiu3q9h"
+    description "A Factory Girl Company"
+    corp_email  "factorygirl@myfactorygirl.com"
+
+    association :contact_info, factory: :company_contact_info, strategy: :build
+    association :address,      factory: :company_address,      strategy: :build
 
     after do |company|
-      company.address ||= FactoryGirl.build(:address, :company => company)
-      company.contact_info ||= FactoryGirl.build(:contact_info, :company => company)
-
       company.appointments << FactoryGirl.create(:appointment)
-      company.accounts << FactoryGirl.create(:account)
-      company.sites << FactoryGirl.create(:site)
-      company.vehicles << FactoryGirl.create(:vehicle)
+      company.accounts     << FactoryGirl.create(:account)
+      company.sites        << FactoryGirl.create(:site)
+      company.vehicles     << FactoryGirl.create(:vehicle)
     end
   end
 
