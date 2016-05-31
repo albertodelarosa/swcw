@@ -2,9 +2,19 @@ require 'rails_helper'
 
 RSpec.describe Service do
 
-  #let!(:service1) { FactoryGirl.create(:service) }
-
   describe 'happy path' do
+
+    me = FactoryGirl.create(:service)
+
+    my_parameters = {
+      description: [ "Array", ["what!"] ]
+    }
+
+    describe "base parameters" do
+      it_behaves_like "it is valid object", me, my_parameters
+     end
+
+
     describe 'expect to have constants' do
 
       it{ expect(Service).to have_constant(:STATUS) }

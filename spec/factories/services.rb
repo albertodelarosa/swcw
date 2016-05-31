@@ -2,9 +2,6 @@ FactoryGirl.define do
   factory :service do
     description ["what!"]
 
-    after do |service|
-      service.service_plan  ||= FactoryGirl.create(:service_plan)
-    end
   end
 
   factory :cottage_service, parent: :service do
