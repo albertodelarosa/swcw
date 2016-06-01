@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
 
-  describe 'happy path' do
+  describe '=>happy path' do
 
     me = FactoryGirl.create(:order)
 
@@ -18,7 +18,7 @@ RSpec.describe Order, type: :model do
       cart: FactoryGirl.create(:cart)
     }
 
-    describe "base parameters" do
+    describe "~>base parameters:" do
       it_behaves_like "it is valid object", me, my_parameters
       it_behaves_like "has_one associations", me, has_one_associations
      end
