@@ -1,15 +1,12 @@
 FactoryGirl.define do
-  factory :order_transaction do
-    action "MyString"
-    amount 1
-    success false
-    authorization "MyString"
-    message "MyString"
-    params "MyText"
+  factory :order_transaction, aliases: [:transaction] do
+    action        "action"
+    amount        1
+    success       true
+    authorization "authorized"
+    message       "Card approved, thank you for your business"
+    params        "params"
 
-    after do |order_transaction|
-      order_transaction.order_id  ||= FactoryGirl.create(:order).id
-    end
+    association :order, factory: :order, strategy: :build
   end
-
 end
