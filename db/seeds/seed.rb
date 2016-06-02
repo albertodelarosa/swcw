@@ -3,8 +3,6 @@ require "csv"
 require File.join(File.dirname(__FILE__), 'utilities.rb')
 require File.join(File.dirname(__FILE__), 'clear_database.rb')
 
-require File.join(File.dirname(__FILE__), 'create_admin.rb')
-
 require File.join(File.dirname(__FILE__), 'create_account.rb')
 require File.join(File.dirname(__FILE__), 'create_user.rb')
 

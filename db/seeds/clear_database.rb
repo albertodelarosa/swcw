@@ -1,16 +1,6 @@
 3.times{puts}
 1.times{seedEnvironment()}
 
-if AdminUser.all.size > 0
-  printStarting("DELETING ADMIN USERS")
-  AdminUser.all.each(&:destroy)
-  printFinished()
-else
-  puts("No #{AdminUser.to_s}s found")
-  puts
-end
-
-
 if Account.all.size > 0
   printStarting("DELETING EXISTING ACCOUNTS")
   Account.all.each(&:destroy)
