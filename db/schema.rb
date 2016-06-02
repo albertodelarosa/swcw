@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
-    t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -155,7 +154,6 @@ ActiveRecord::Schema.define(version: 20150608205134) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
-  add_index "admin_users", ["username"], name: "index_admin_users_on_username", unique: true, using: :btree
 
   create_table "appointments", force: :cascade do |t|
     t.string   "number"
