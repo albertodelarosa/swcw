@@ -2,65 +2,72 @@
   .well-heading
     .row
       .container-fluid
-        .col-xs-6
-          %h4
-            %strong Select your Vehicle
-        .col-xs-6
-          .checkbox.pull-right
-            %label
-              = f.check_box(:vehicle_unfound, class: "vehicle-unfound")
-              = "Can't find my vehicle"
-  .well-body.vehicle-selectors
+        - if my_method.include?( "post" )
+          .col-xs-12
+            %h4
+              %strong Your Vehicle
+        - else
+          .col-xs-6
+            %h4
+              %strong Select your Vehicle
+          .col-xs-6
+            .checkbox.pull-right
+              %label
+                = f.check_box(:vehicle_unfound, class: "vehicle-unfound")
+                = "Can't find my vehicle"
+
+  - unless my_method.include?( "post" )
+    .well-body.vehicle-selectors
+      .container-fluid
+        .row
+          .col-xs-12
+            = f.fields_for :vehicle_years do |vyr|
+              .form-group
+                = vyr.label :year, class: "sr-only"
+                = vyr.collection_select( :id, @years, :id, :name, {prompt: "Select Year"}, {class: "form-control"})
+            = f.fields_for :vehicle_makes do |vma|
+              .form-group
+                = vma.label :make, class: "sr-only"
+                = vma.collection_select(:id, @makes, :id, :name, {prompt: "Select Make"}, {class: "form-control"})
+            = f.fields_for :vehicle_models do |vmo|
+              .form-group
+                = vmo.label :model, class: "sr-only"
+                = vmo.collection_select(:id, @models, :id, :name, {prompt: "Select Model"}, {class: "form-control"})
+            = f.fields_for :vehicle_trims do |vtm|
+              .form-group
+                = vtm.label :trim, class: "sr-only"
+                = vtm.collection_select(:id, @trims, :id, :name, {prompt: "Select Trim"}, {class: "form-control"})
+            = f.fields_for :vehicle_types do |vty|
+              .form-group
+                = vty.label :type, class: "sr-only"
+                = vty.collection_select(:id, @types, :id, :name, {prompt: "Select Type"}, {class: "form-control"})
+            = f.fields_for :vehicle_doors do |vdr|
+              .form-group
+                = vdr.label :door, class: "sr-only"
+                = vdr.collection_select(:id, @doors, :id, :name, {prompt: "Select Doors"}, {class: "form-control"})
+              .form-group
+  %div{class: my_method.include?( "post" ) ? "well-body vehicle-inputs" : "well-body vehicle-inputs hidden" }
     .container-fluid
       .row
         .col-xs-12
-          = f.fields_for :vehicle_years do |vyr|
-            .form-group
-              = vyr.label :year, class: "sr-only"
-              = vyr.collection_select( :id, @years, :id, :name, {prompt: "Select Year"}, {class: "form-control"})
-          = f.fields_for :vehicle_makes do |vma|
-            .form-group
-              = vma.label :make, class: "sr-only"
-              = vma.collection_select(:id, @makes, :id, :name, {prompt: "Select Make"}, {class: "form-control"})
-          = f.fields_for :vehicle_models do |vmo|
-            .form-group
-              = vmo.label :model, class: "sr-only"
-              = vmo.collection_select(:id, @models, :id, :name, {prompt: "Select Model"}, {class: "form-control"})
-          = f.fields_for :vehicle_trims do |vtm|
-            .form-group
-              = vtm.label :trim, class: "sr-only"
-              = vtm.collection_select(:id, @trims, :id, :name, {prompt: "Select Trim"}, {class: "form-control"})
-          = f.fields_for :vehicle_types do |vty|
-            .form-group
-              = vty.label :type, class: "sr-only"
-              = vty.collection_select(:id, @types, :id, :name, {prompt: "Select Type"}, {class: "form-control"})
-          = f.fields_for :vehicle_doors do |vdr|
-            .form-group
-              = vdr.label :door, class: "sr-only"
-              = vdr.collection_select(:id, @doors, :id, :name, {prompt: "Select Doors"}, {class: "form-control"})
-            .form-group
-  .well-body.vehicle-inputs.hidden
-    .container-fluid
-      .row
-        .col-xs-12
           .form-group
-            = f.label :vehicle_year, class: 'sr-only'
-            = f.text_field :vehicle_year, class: "form-control", placeholder: "year"
+            = f.label :year, class: 'sr-only'
+            = f.text_field :my_year, class: "form-control", placeholder: "year"
           .form-group
-            = f.label :vehicle_make, class: 'sr-only'
-            = f.text_field :vehicle_make, class: "form-control", placeholder: "make"
+            = f.label :make, class: 'sr-only'
+            = f.text_field :my_make, class: "form-control", placeholder: "make"
           .form-group
-            = f.label :vehicle_model, class: 'sr-only'
-            = f.text_field :vehicle_model, class: "form-control", placeholder: "model"
+            = f.label :model, class: 'sr-only'
+            = f.text_field :my_model, class: "form-control", placeholder: "model"
           .form-group
-            = f.label :vehicle_trim, class: 'sr-only'
-            = f.text_field :vehicle_trim, class: "form-control", placeholder: "trim"
+            = f.label :trim, class: 'sr-only'
+            = f.text_field :my_trim, class: "form-control", placeholder: "trim"
           .form-group
-            = f.label :vehicle_type, class: 'sr-only'
-            = f.collection_select(:vehicle_type, VehicleType.all, :id, :name, { include_blank: "type" }, {class: "form-control"})
+            = f.label :type, class: 'sr-only'
+            = f.collection_select(:my_type, VehicleType.all, :id, :name, { include_blank: "type" }, {class: "form-control"})
           .form-group
-            = f.label :vehicle_door, class: 'sr-only'
-            = f.collection_select(:vehicle_door, VehicleDoor.all, :id, :name, { include_blank: "door" }, {class: "form-control"})
+            = f.label :door, class: 'sr-only'
+            = f.collection_select(:my_door, VehicleDoor.all, :id, :name, { include_blank: "door" }, {class: "form-control"})
           .form-group
   .well-body
     .container-fluid

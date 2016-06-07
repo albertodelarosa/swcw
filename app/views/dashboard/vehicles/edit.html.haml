@@ -1,7 +1,20 @@
-%h1 Editing vehicle
+- my_method = "post"
+.row.section.section-default
+  .col-xs-12
+    = link_to 'Back', dashboard_vehicles_path, class: "btn btn-warning btn-lg"
+.row.section.section-default
+  = form_for [:dashboard, @vehicle], method: :method, html: {class: "form-horizontal", role: "form"} do |f|
+    - if @vehicle.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this company from being saved:"
+        %ul
+          - @vehicle.errors.full_messages.each do |msg|
+            %li= msg
 
-= render 'form'
+    .col-xs-12.col-sm-6
+      .well.well-success
+        %img.img-rounded.img-responsive{src: "/assets/vehicles/new_vehicle4_outline.png", alt: ""}
+      = f.submit 'Submit', class: "btn btn-success btn-block", id: "add_vehicle"
+    .col-xs-12.col-sm-6
+      = render partial: 'form', locals: {f: f, my_method: my_method}
 
-= link_to 'Show', @vehicle
-\|
-= link_to 'Back', dashboard_vehicles_path

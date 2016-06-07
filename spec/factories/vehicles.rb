@@ -2,17 +2,17 @@
 
 FactoryGirl.define do
   factory :vehicle do
-    license_plate "betos2"
+    my_year   "1997"
+    my_make   "Chevrolet"
+    my_model  "Camaro"
+    my_trim   "Z28"
+    my_type   "Convertible"
+    my_door   "2 Door"
+    my_size   "Small"
+    color     "Aritic White"
+    comments  "My Precious"
+    license_plate    "BETOS97"
     state_registered "CA"
-    color "White"
-    comments "My Precious"
-    my_year     "1997"
-    my_make     "Chevrolet"
-    my_model    "Camaro"
-    my_trim     "Z28"
-    my_type     "Convertible"
-    my_door     "2 Door"
-    my_size     "Small"
 
     association :vehicle_year,  factory: :vehicle_year,  strategy: :build
     association :vehicle_make,  factory: :vehicle_make,  strategy: :build

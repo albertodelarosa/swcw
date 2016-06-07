@@ -2,7 +2,10 @@
  #All this logic will automatically be available in application.js.
  #You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$("#vehicles-new").ready = ->
+
+
+
+ready = ->
   selector_controls = $('.vehicle-selectors').find('.form-control')
   years   = $('#vehicle_vehicle_years_id')
   makes   = $('#vehicle_vehicle_makes_id')
@@ -110,4 +113,5 @@ ready = ->
     return
 $(document).ready(ready)
 $(document).on('page:load', ready)
+
 
