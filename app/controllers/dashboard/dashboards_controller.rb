@@ -6,11 +6,10 @@ class Dashboard::DashboardsController < ApplicationController
   def index
     @account = Account.includes(:companies, :sites, :vehicles, :appointments).find(current_user.id)
 
-    if @account.new?
       if @account.companies.empty?
         @company = Company.new
         respond_to do |format|
-          format.html { redirect_to new_dashboard_company_path, notice: "you must select your site..." }
+          format.html { redirect_to new_dashboard_company_path, notice: "you must select your company..." }
           format.json { render json: @company }
         end
       elsif @account.sites.empty?
@@ -25,23 +24,24 @@ class Dashboard::DashboardsController < ApplicationController
           format.html { redirect_to new_dashboard_vehicle_path, notice: "you must first enter your vehicle..." }
           format.json { render json: @vehicle }
         end
-      else
-        @account.status = Account::STATUS.first
-      end
-    end
+      elsif( ( @service_plan = @account.service_plan ) || ( @current_cart = current_cart unless session[:cart_id].nil? ) )
 
-    if @service_plan = @account.service_plan
-      @appointments = @account.appointments || []
-      @sites        = @account.sites        || []
-      @companies    = @account.companies    || []
-      @vehicles     = @account.vehicles     || []
-      @current_cart = current_cart unless session[:cart_id].nil?
-      @appointment = Appointment.new
-    else
-      respond_to do |format|
-        format.html { redirect_to service_plan_purchase, notice: "#{@account.user.first_name}, you must first purchase a plan" }
+        @account.status = Account::STATUS.first
+        @appointments = @account.appointments || []
+        @sites        = @account.sites        || []
+        @companies    = @account.companies    || []
+        @vehicles     = @account.vehicles     || []
+        @appointment = Appointment.new
+
+        respond_to do |format|
+          format.html
+          format.json { render json: @account }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to service_plan_purchase_path, notice: "#{@account.user.first_name}, you must first purchase a plan" }
+        end
       end
-    end
   end
 
   private
@@ -87,6 +87,11 @@ class Dashboard::DashboardsController < ApplicationController
 
   def id_from_params
     return params.permit(:id)[:id].to_i
+  end
+
+  def params_process_vehicle
+    params[:vehicle][:my_year] = params.require( :vehicle ).require( :vehicle_year )
+    puts;puts params.require( :vehicle ).require( :my_year );puts;puts
   end
 
 end

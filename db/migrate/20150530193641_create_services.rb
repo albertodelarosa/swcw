@@ -8,7 +8,8 @@ class CreateServices < ActiveRecord::Migration
       t.decimal :large_price,     index: true, null: false, default: 0.0, precision: 8, scale: 2
       t.integer :duration,        index: true, null: false, default: 0
       t.string  :image_url,       index: true, null: false, default: ""
-      t.belongs_to :service_plan
+
+      t.belongs_to :service_plan, index: true
 
       t.string  :child_class
       t.string  :serviceable_type

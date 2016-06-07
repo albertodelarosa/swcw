@@ -9,7 +9,9 @@ class CreateServicePlans < ActiveRecord::Migration
       t.decimal     :price_large,   index: true, null: false, default: 0.0, precision: 8, scale: 2
       t.string      :vehicle_size,  index: true, null: false, default: ""
       t.string      :image_url,     index: true, null: false, default: ""
-      t.belongs_to  :account
+
+      t.belongs_to  :account,       index: true
+      t.belongs_to  :line_item,     index: true
 
       t.timestamps null: false
     end

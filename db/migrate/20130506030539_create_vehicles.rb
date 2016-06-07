@@ -13,6 +13,8 @@ class CreateVehicles < ActiveRecord::Migration
       t.string :color,                        null: false, default: "", index: true
       t.text   :comments,                     null: false, default: "", index: true
 
+      t.belongs_to :line_item,                index: true
+
       t.timestamps
     end
     add_index :vehicles, [:my_year, :my_make]

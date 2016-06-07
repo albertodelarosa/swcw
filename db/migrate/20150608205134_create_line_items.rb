@@ -5,6 +5,7 @@ class CreateLineItems < ActiveRecord::Migration
       t.integer     :quantity,     index: true, null: false, default: 0
       t.belongs_to  :cart,         index: true
       t.belongs_to  :service_plan, index: true
+      t.belongs_to  :vehicle,      index: true
 
       t.timestamps null: false
     end
@@ -12,5 +13,6 @@ class CreateLineItems < ActiveRecord::Migration
 
     add_foreign_key :line_items, :carts
     add_foreign_key :line_items, :service_plans
+    add_foreign_key :line_items, :vehicles
   end
 end

@@ -358,6 +358,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.integer  "quantity",        default: 0,   null: false
     t.integer  "cart_id"
     t.integer  "service_plan_id"
+    t.integer  "vehicle_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -367,6 +368,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "line_items", ["service_plan_id"], name: "index_line_items_on_service_plan_id", using: :btree
   add_index "line_items", ["unit_price", "quantity"], name: "index_line_items_on_unit_price_and_quantity", using: :btree
   add_index "line_items", ["unit_price"], name: "index_line_items_on_unit_price", using: :btree
+  add_index "line_items", ["vehicle_id"], name: "index_line_items_on_vehicle_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.integer  "account_id"
@@ -485,11 +487,14 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.string   "vehicle_size",                         default: "",  null: false
     t.string   "image_url",                            default: "",  null: false
     t.integer  "account_id"
+    t.integer  "line_item_id"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
 
+  add_index "service_plans", ["account_id"], name: "index_service_plans_on_account_id", using: :btree
   add_index "service_plans", ["image_url"], name: "index_service_plans_on_image_url", using: :btree
+  add_index "service_plans", ["line_item_id"], name: "index_service_plans_on_line_item_id", using: :btree
   add_index "service_plans", ["name", "image_url"], name: "index_service_plans_on_name_and_image_url", using: :btree
   add_index "service_plans", ["name", "plan_type"], name: "index_service_plans_on_name_and_plan_type", using: :btree
   add_index "service_plans", ["name", "price"], name: "index_service_plans_on_name_and_price", using: :btree
@@ -559,6 +564,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "services", ["price", "large_price"], name: "index_services_on_price_and_large_price", using: :btree
   add_index "services", ["price", "small_price"], name: "index_services_on_price_and_small_price", using: :btree
   add_index "services", ["price"], name: "index_services_on_price", using: :btree
+  add_index "services", ["service_plan_id"], name: "index_services_on_service_plan_id", using: :btree
   add_index "services", ["small_price", "duration"], name: "index_services_on_small_price_and_duration", using: :btree
   add_index "services", ["small_price", "image_url"], name: "index_services_on_small_price_and_image_url", using: :btree
   add_index "services", ["small_price", "large_price"], name: "index_services_on_small_price_and_large_price", using: :btree
@@ -781,6 +787,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
     t.string   "state_registered", default: "", null: false
     t.string   "color",            default: "", null: false
     t.text     "comments",         default: "", null: false
+    t.integer  "line_item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -790,6 +797,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_index "vehicles", ["license_plate", "color"], name: "index_vehicles_on_license_plate_and_color", using: :btree
   add_index "vehicles", ["license_plate", "state_registered"], name: "index_vehicles_on_license_plate_and_state_registered", using: :btree
   add_index "vehicles", ["license_plate"], name: "index_vehicles_on_license_plate", using: :btree
+  add_index "vehicles", ["line_item_id"], name: "index_vehicles_on_line_item_id", using: :btree
   add_index "vehicles", ["my_door", "color"], name: "index_vehicles_on_my_door_and_color", using: :btree
   add_index "vehicles", ["my_door", "license_plate"], name: "index_vehicles_on_my_door_and_license_plate", using: :btree
   add_index "vehicles", ["my_door", "my_size"], name: "index_vehicles_on_my_door_and_my_size", using: :btree
@@ -846,6 +854,7 @@ ActiveRecord::Schema.define(version: 20150608205134) do
   add_foreign_key "discounts", "accounts"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "service_plans"
+  add_foreign_key "line_items", "vehicles"
   add_foreign_key "services", "service_plans"
   add_foreign_key "siteler_dollars", "accounts"
 end

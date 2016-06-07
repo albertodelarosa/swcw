@@ -18,8 +18,8 @@
             %p
               =number_to_currency(plan.price)
             %p
-              %button.btn.btn-default.btn-block
-                ="add to cart"
+              = link_to "Add to Cart", line_items_path( service_plan: { name: plan.name, plan_type: plan.plan_type, price: plan.price, status: plan.status, vehicle: @vehicle } ), class: "btn btn-default btn-block", method: :post
+
 .section.section-default.row
   .col-xs-12
     .h2
