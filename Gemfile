@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-
+ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 #gem 'rails', '~> 4.2', '>= 4.2.6'
-
+gem 'rails_12factor'
 # Use thin as server
 gem 'thin'
 
@@ -15,7 +15,7 @@ gem 'pg'
 gem 'haml-rails'
 
 # Use html2haml to hamlfy erb files
-gem "html2haml"
+gem 'html2haml'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -94,14 +94,14 @@ group :development do
   gem 'guard-rspec', require: false
 
   # Generate Entity-Relationship Diagrams
-  gem "rails-erd"
+  gem 'rails-erd'
 
   gem 'sextant' #rake routes on http://localhost:3000/rails/routes
 
-  #gem "better_errors" replacement
+  #gem 'better_errors' replacement
   gem 'web-console', '~> 3.0'
 
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
   gem 'quiet_assets' #turns off the Rails asset pipeline log. E.g. Served asset /application.js - 304 Not Modified (8ms)
 end
 
@@ -122,7 +122,7 @@ group :test, :development do
   # Use rspec for testing
   gem 'rspec-rails'
 
-  gem 'factory_girl_rails', "~> 4.0"
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-byebug'
 end
 
