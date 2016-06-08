@@ -1,0 +1,30 @@
+.col-sm-3.col-md-2.sidebar.section-default
+  %ul.nav.nav-sidebar
+    %li.active
+      %a{:href => "#"}
+        Overview
+        %span.sr-only (current)
+    %li
+      %a{:href => ""} Service Plan
+    %li
+      = link_to "previous appts", dashboard_appointments_path
+    %li
+      = link_to "my vehicles", dashboard_vehicles_path
+    %li
+      = link_to "my sites", dashboard_sites_path
+    %li
+      = link_to "my companies", dashboard_companies_path
+  %ul.nav.nav-sidebar
+    %li.title
+      %a Add
+    %li
+      = link_to "vehicle", new_dashboard_vehicle_path
+    %li
+      = link_to "site", new_dashboard_site_path
+    %li
+      = link_to "company", new_dashboard_company_path
+    -#%li
+      -#= link_to "appointment", new_dashboard_appointment_path
+    -#%li
+      -#%a{:href => ""} Service Plan
+

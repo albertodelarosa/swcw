@@ -8,17 +8,20 @@
   %body{id: "#{controller.controller_name}-#{controller.action_name}"}
     = render "shared/navbar"
     = render "shared/alert", flash: flash
-    .container-fluid.main-container
-      = yield
-    -#-if mobile_device?
-      -#= render "shared/navbar"
-      -#= render "shared/alert", flash: flash
-      -#= yield
-    -#-else
-      -#= render "shared/navbar"
-      -#= render "shared/alert", flash: flash
-      -#= yield
-    = render "shared/footer"
+
+    .container-fluid
+      .row
+        = render "shared/sidebar/sidebar"
+        .col-sm-9.col-md-10.main
+          = yield
+          -#-if mobile_device?
+            -#= render "shared/navbar"
+            -#= render "shared/alert", flash: flash
+            -#= yield
+          -#-else
+            -#= render "shared/navbar"
+            -#= render "shared/alert", flash: flash
+            -#= yield
     = javascript_include_tag "application"
     = render "shared/javascripts"
 

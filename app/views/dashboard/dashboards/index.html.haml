@@ -1,24 +1,12 @@
-.section.section-default
-  .row
-    #sectionHeading1.col-xs-12.col-sm-4
-      %button.btn.btn-primary.btn-block{href:"#sectionCollapse1", data: {toggle: "collapse"}, aria: {expanded: "true", controls: "sectionCollapse1"}}services available
-    -##sectionHeading2.col-xs-12.col-sm-4.col-md-3
-      -#%button.btn.btn-primary.btn-block{href:"#sectionCollapse2", data: {toggle: "collapse"}, aria: {expanded: "true", controls: "sectionCollapse2"}}appointments
-    -unless @cart.nil?
-      .col-xs-12.col-sm-4
-        = link_to "my cart", cart_path(@cart.id), {class: "btn btn-primary btn-block"}
-#sectionCollapse1.collapse.section.section-primary{role: "tabpanel", aria:{labelledby: "sectionHeading1"}}
-  .row
-    = render partial: "dashboard/dashboards/accordions/packages"
-    = render partial: "dashboard/dashboards/accordions/services"
-.section.section-default
+.row.section.section-warning
+  %h1.page-header Dashboard
   -appointments = []
   -past_appointments = []
   .row
     .col-xs-12.col-md-4
       .well
         %legend
-          ="make a new appointment"
+          ="make an appointment"
         = render partial: 'dashboard/appointments/form'
     -unless @appointments.empty?
       -now = Time.now

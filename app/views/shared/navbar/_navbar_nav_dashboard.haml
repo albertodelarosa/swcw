@@ -1,35 +1,12 @@
 %ul.nav.navbar-nav.hidden-xs
   -unless @current_cart.nil?
     %li
-      = link_to "view my cart", cart_path(@current_cart), class: "btn btn-success btn-block"
-  -unless @cart.nil?
-    %li.dropdown
-      = link_to "my cart", cart_path(@cart.id), {class: "btn btn-primary btn-block"}
-  %li.dropdown
-    %a.dropdown-toggle{data: {toggle:  "dropdown"}, href:"#"}
-      .link_top
-      add
-      %span.glyphicon.glyphicon-menu-down{"aria-hidden" => "true"}
-      %b.caret
-      .link_bottom
-    %ul.dropdown-menu
-      %li
-        %a{href: new_dashboard_vehicle_path}
-          vehicle
-      %li.divider
-      %li
-        %a{href: new_dashboard_site_path}
-          site
-      %li.divider
-      %li
-        %a{href: new_dashboard_company_path}
-          company
-
+      = link_to "view cart", cart_path(@current_cart)
   - if user_signed_in?
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
         .link_top
-        =current_user.username.empty? ? current_user.email : current_user.username
+        =current_user.salutation.empty? ? current_user.first_name : current_user.first_name
         %b.caret
         .link_bottom
       %ul.dropdown-menu
