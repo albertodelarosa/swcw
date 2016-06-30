@@ -1,0 +1,2750 @@
+/ MEMO: update me with `git checkout gh-pages &amp;&amp; git merge master &amp;&amp; git push origin gh-pages`
+.head
+  :css
+    body {
+      padding-top: 50px
+    }
+
+    #banner {
+      border-bottom: none
+    }
+
+    .page-header h1 {
+      font-size: 4em
+    }
+
+    .bs-docs-section {
+      margin-top: 8em
+    }
+
+    .bs-component {
+      position: relative
+    }
+
+    .bs-component .modal {
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      bottom: auto;
+      z-index: 1;
+      display: block
+    }
+
+    .bs-component .modal-dialog {
+      width: 90%
+    }
+
+    .bs-component .popover {
+      position: relative;
+      display: inline-block;
+      width: 220px;
+      margin: 20px
+    }
+
+    #source-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+
+    .progress {
+      margin-bottom: 10px
+    }
+
+    footer {
+      margin: 5em 0
+    }
+
+    footer li {
+      float: left;
+      margin-right: 1.5em;
+      margin-bottom: 1.5em
+    }
+
+    footer p {
+      clear: left;
+      margin-bottom: 0
+    }
+
+    .splash {
+      padding: 4em 0 0;
+      background-color: #141d27;
+      color: #fff;
+      text-align: center
+    }
+
+    .splash h1 {
+      font-size: 4em
+    }
+
+    .splash #social {
+      margin: 2em 0
+    }
+
+    .splash .alert {
+      margin: 2em 0
+    }
+
+    .section-tout {
+      padding: 4em 0 3em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: #eaf1f1
+    }
+
+    .section-tout .fa {
+      margin-right: .5em
+    }
+
+    .section-tout p {
+      margin-bottom: 3em
+    }
+
+    .section-preview {
+      padding: 4em 0 4em
+    }
+
+    .section-preview .preview {
+      margin-bottom: 4em;
+      background-color: #eaf1f1
+    }
+
+    .section-preview .preview .image {
+      position: relative
+    }
+
+    .section-preview .preview .image:before {
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      pointer-events: none
+    }
+
+    .section-preview .preview .options {
+      padding: 1em 2em 2em;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-top: none;
+      text-align: center
+    }
+
+    .section-preview .preview .options p {
+      margin-bottom: 2em
+    }
+
+    .section-preview .dropdown-menu {
+      text-align: left
+    }
+
+    .section-preview .lead {
+      margin-bottom: 2em
+    }
+
+    @media (max-width: 767px) {
+      .section-preview .image img {
+        width: 100%
+      }
+    }
+
+    .sponsor {
+      text-align: center
+    }
+
+    .sponsor a:hover {
+      text-decoration: none
+    }
+
+    @media (max-width: 767px) {
+      #banner {
+        margin-bottom: 2em;
+        text-align: center
+      }
+    }
+
+    .infobox .btn-sup {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 30px;
+    }
+
+    .infobox .btn-sup img {
+      opacity: 0.5;
+      height: 30px;
+    }
+
+    .infobox .btn-sup span {
+      padding-left: 10px;
+      position: relative;
+      top: 2px;
+    }
+
+    .icons-material .row {
+      margin-bottom: 20px;
+    }
+
+    .icons-material .col-xs-2 {
+      text-align: center;
+    }
+
+    .icons-material i {
+      font-size: 34pt;
+    }
+
+    .icon-preview {
+      display: inline-block;
+      padding: 10px;
+      margin: 10px;
+      background: #D5D5D5;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .icon-preview span {
+      display: none;
+      position: absolute;
+      background: black;
+      color: #EEE;
+      padding: 5px 8px;
+      font-size: 15px;
+      border-radius: 2px;
+      z-index: 10;
+    }
+
+    .icon-preview:hover i {
+      color: #4285f4;
+    }
+
+    .icon-preview:hover span {
+      display: block;
+      cursor: text;
+    }
+
+.body
+  %a{:href => "https://github.com/FezVrasta/bootstrap-material-design"}
+    %img{:alt => "Fork me on GitHub", "data-canonical-src" => "https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png", :src => "https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67", :style => "position: absolute; top: 0; right: 0; border: 0;"}/
+  .container
+    #banner.page-header
+      .row
+        .col-sm-6
+          %h1 Material Design
+          %p.lead Based on Google Material design
+        .col-sm-6
+          .well.infobox
+            %p
+              %em Material Design for Bootstrap
+              is a theme for Bootstrap 3 which lets you use the new
+              %a{:href => "http://www.google.com/design/spec/material-design/"} Google Material Design
+              in your favorite front-end framework.
+            %p
+              If you like this project you can support me by donating something on Gittip, starring this repository, or
+              = succeed "." do
+                %a{:href => "https://github.com/FezVrasta/bootstrap-material-design/issues"} reporting bugs and ideas
+            %p
+              Read more about
+              %em Material Design for Bootstrap
+              = succeed "." do
+                %a{:href => "https://github.com/FezVrasta/bootstrap-material-design"} at the Github page
+            %a.btn.btn-sup.btn-material-pink.btn-raised{:href => "https://github.com/FezVrasta/bootstrap-material-design/archive/master.zip"}
+              %i.material-icons file_download
+              %span DOWNLOAD
+            %a.btn.btn-sup.btn-material-brown{:href => "https://www.gittip.com/FezVrasta/"}
+              %i.material-icons favorite_border
+              %span GITTIP
+            %a.btn.btn-sup.btn-material-deeppurple{:href => "https://github.com/FezVrasta/bootstrap-material-design/issues"}
+              %i.material-icons info_outline
+              %span ISSUES
+    /
+      Navbar
+      \==================================================
+    .bs-docs-section.clearfix
+      .row
+        .col-md-12
+          .page-header
+            %h1#navbar Navbar
+          .bs-component
+            .navbar.navbar-default
+              .container-fluid
+                .navbar-header
+                  %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
+                    %span.icon-bar
+                    %span.icon-bar
+                    %span.icon-bar
+                  %a.navbar-brand{:href => "javascript:void(0)"} Brand
+                .navbar-collapse.collapse.navbar-responsive-collapse
+                  %ul.nav.navbar-nav
+                    %li.active
+                      %a{:href => "javascript:void(0)"} Active
+                    %li
+                      %a{:href => "javascript:void(0)"} Link
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                        Dropdown
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => "javascript:void(0)"} Action
+                        %li
+                          %a{:href => "javascript:void(0)"} Another action
+                        %li
+                          %a{:href => "javascript:void(0)"} Something else here
+                        %li.divider
+                        %li.dropdown-header Dropdown header
+                        %li
+                          %a{:href => "javascript:void(0)"} Separated link
+                        %li
+                          %a{:href => "javascript:void(0)"} One more separated link
+                  %form.navbar-form.navbar-left
+                    .form-group
+                      %input.form-control.col-md-8{:placeholder => "Search", :type => "text"}
+                  %ul.nav.navbar-nav.navbar-right
+                    %li
+                      %a{:href => "javascript:void(0)"} Link
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                        Dropdown
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => "javascript:void(0)"} Action
+                        %li
+                          %a{:href => "javascript:void(0)"} Another action
+                        %li
+                          %a{:href => "javascript:void(0)"} Something else here
+                        %li.divider
+                        %li
+                          %a{:href => "javascript:void(0)"} Separated link
+          .bs-component
+            .navbar.navbar-warning
+              .container-fluid
+                .navbar-header
+                  %button.navbar-toggle{"data-target" => ".navbar-warning-collapse", "data-toggle" => "collapse", :type => "button"}
+                    %span.icon-bar
+                    %span.icon-bar
+                    %span.icon-bar
+                  %a.navbar-brand{:href => "javascript:void(0)"} Brand
+                .navbar-collapse.collapse.navbar-warning-collapse
+                  %ul.nav.navbar-nav
+                    %li.active
+                      %a{:href => "javascript:void(0)"} Active
+                    %li
+                      %a{:href => "javascript:void(0)"} Link
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                        Dropdown
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => "javascript:void(0)"} Action
+                        %li
+                          %a{:href => "javascript:void(0)"} Another action
+                        %li
+                          %a{:href => "javascript:void(0)"} Something else here
+                        %li.divider
+                        %li.dropdown-header Dropdown header
+                        %li
+                          %a{:href => "javascript:void(0)"} Separated link
+                        %li
+                          %a{:href => "javascript:void(0)"} One more separated link
+                  %form.navbar-form.navbar-left
+                    .form-group
+                      %input.form-control.col-md-8{:placeholder => "Search", :type => "text"}
+                  %ul.nav.navbar-nav.navbar-right
+                    %li
+                      %a{:href => "javascript:void(0)"} Link
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                        Dropdown
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => "javascript:void(0)"} Action
+                        %li
+                          %a{:href => "javascript:void(0)"} Another action
+                        %li
+                          %a{:href => "javascript:void(0)"} Something else here
+                        %li.divider
+                        %li
+                          %a{:href => "javascript:void(0)"} Separated link
+          / /example
+          .bs-component
+            .navbar.navbar-inverse
+              .container-fluid
+                .navbar-header
+                  %button.navbar-toggle{"data-target" => ".navbar-inverse-collapse", "data-toggle" => "collapse", :type => "button"}
+                    %span.icon-bar
+                    %span.icon-bar
+                    %span.icon-bar
+                  %a.navbar-brand{:href => "javascript:void(0)"} Brand
+                .navbar-collapse.collapse.navbar-inverse-collapse
+                  %ul.nav.navbar-nav
+                    %li.active
+                      %a{:href => "javascript:void(0)"} Active
+                    %li
+                      %a{:href => "javascript:void(0)"} Link
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                        Dropdown
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => "javascript:void(0)"} Action
+                        %li
+                          %a{:href => "javascript:void(0)"} Another action
+                        %li
+                          %a{:href => "javascript:void(0)"} Something else here
+                        %li.divider
+                        %li.dropdown-header Dropdown header
+                        %li
+                          %a{:href => "javascript:void(0)"} Separated link
+                        %li
+                          %a{:href => "javascript:void(0)"} One more separated link
+                  %form.navbar-form.navbar-left
+                    .form-group
+                      %input.form-control.col-md-8{:placeholder => "Search", :type => "text"}
+                  %ul.nav.navbar-nav.navbar-right
+                    %li
+                      %a{:href => "javascript:void(0)"} Link
+                    %li.dropdown
+                      %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                        Dropdown
+                        %b.caret
+                      %ul.dropdown-menu
+                        %li
+                          %a{:href => "javascript:void(0)"} Action
+                        %li
+                          %a{:href => "javascript:void(0)"} Another action
+                        %li
+                          %a{:href => "javascript:void(0)"} Something else here
+                        %li.divider
+                        %li
+                          %a{:href => "javascript:void(0)"} Separated link
+          / /example
+    /
+      Buttons
+      \==================================================
+    .bs-docs-section
+      .page-header
+        .row
+          .col-md-12
+            %h1#buttons Buttons
+      .row
+        .col-md-6
+          %h3
+            Flat buttons
+            %small default - no class needed
+          %p.bs-component
+            %a.btn{:href => "javascript:void(0)"}
+              %code btn
+              only
+            %a.btn.active{:href => "javascript:void(0)"}
+              %code .active
+            %a.btn.btn-default{:href => "javascript:void(0)"} Default
+            %a.btn.btn-primary{:href => "javascript:void(0)"} Primary
+            %a.btn.btn-success{:href => "javascript:void(0)"} Success
+            %a.btn.btn-info{:href => "javascript:void(0)"} Info
+            %a.btn.btn-warning{:href => "javascript:void(0)"} Warning
+            %a.btn.btn-danger{:href => "javascript:void(0)"} Danger
+            %a.btn.btn-link{:href => "javascript:void(0)"} Link
+          %h3
+            Raised buttons
+            %small
+              %code .btn-raised
+          %p.bs-component
+            %a.btn.btn-raised.active{:href => "javascript:void(0)"}
+              %code .active
+            %a.btn.btn-raised.btn-default{:href => "javascript:void(0)"} Default
+            %a.btn.btn-raised.btn-primary{:href => "javascript:void(0)"} Primary
+            %a.btn.btn-raised.btn-success{:href => "javascript:void(0)"} Success
+            %a.btn.btn-raised.btn-info{:href => "javascript:void(0)"} Info
+            %a.btn.btn-raised.btn-warning{:href => "javascript:void(0)"} Warning
+            %a.btn.btn-raised.btn-danger{:href => "javascript:void(0)"} Danger
+            %a.btn.btn-raised.btn-link{:href => "javascript:void(0)"} Link
+          %h3 Disabled buttons
+          %fieldset{:disabled => ""}
+            %h3
+              %small flat - default - no class needed
+            %p.bs-component
+              %a.btn{:href => "javascript:void(0)"}
+                %code btn
+                only
+              %a.btn.btn-default{:href => "javascript:void(0)"} Default
+              %a.btn.btn-primary{:href => "javascript:void(0)"} Primary
+              %a.btn.btn-success{:href => "javascript:void(0)"} Success
+              %a.btn.btn-info{:href => "javascript:void(0)"} Info
+              %a.btn.btn-warning{:href => "javascript:void(0)"} Warning
+              %a.btn.btn-danger{:href => "javascript:void(0)"} Danger
+              %a.btn.btn-link{:href => "javascript:void(0)"} Link
+            %h3
+              %small
+                %code .btn-raised
+            %p.bs-component
+              %a.btn.btn-raised.btn-default{:href => "javascript:void(0)"} Default
+              %a.btn.btn-raised.btn-primary{:href => "javascript:void(0)"} Primary
+              %a.btn.btn-raised.btn-success{:href => "javascript:void(0)"} Success
+              %a.btn.btn-raised.btn-info{:href => "javascript:void(0)"} Info
+              %a.btn.btn-raised.btn-warning{:href => "javascript:void(0)"} Warning
+              %a.btn.btn-raised.btn-danger{:href => "javascript:void(0)"} Danger
+              %a.btn.btn-raised.btn-link{:href => "javascript:void(0)"} Link
+          %h3 Button sizes
+          %p.bs-component
+            %a.btn.btn-raised.btn-lg{:href => "javascript:void(0)"} Large button
+            %a.btn.btn-raised{:href => "javascript:void(0)"} Default button
+            %a.btn.btn-raised.btn-sm{:href => "javascript:void(0)"} Small button
+            %a.btn.btn-raised.btn-xs{:href => "javascript:void(0)"} xs button
+          %h3
+            Floating action buttons
+            %small a.k.a fab
+          %p.bs-component
+            %a.btn.btn-default.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-primary.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-success.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-info.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-warning.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-danger.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+          %h4
+            %small
+              %code .btn-group-sm .btn-fab
+              or
+              %code .btn-fab-mini
+          %p.bs-component.btn-group-sm
+            %a.btn.btn-default.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-primary.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-success.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-info.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-warning.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+            %a.btn.btn-danger.btn-fab{:href => "javascript:void(0)"}
+              %i.material-icons grade
+        .col-md-6
+          %h2
+            Group variations with
+            %small
+              %code .btn-raised
+          %h3 Button groups
+          %div{:style => "margin-bottom: 15px;"}
+            .btn-toolbar.bs-component{:style => "margin: 0;"}
+              .btn-group
+                %a.btn{:href => "javascript:void(0)"} btn only
+                %a.btn.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+              .btn-group
+                %a.btn.btn-default.btn-raised{:href => "javascript:void(0)"} Default raised
+                %a.btn.btn-default.btn-raised.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+              .btn-group
+                %a.btn.btn-primary.btn-raised{:href => "javascript:void(0)"} Primary raised
+                %a.btn.btn-primary.btn-raised.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+              .btn-group
+                %a.btn.btn-success{:href => "javascript:void(0)"} Success
+                %a.btn.btn-success.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+              .btn-group
+                %a.btn.btn-info{:href => "javascript:void(0)"} Info
+                %a.btn.btn-info.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+              .btn-group
+                %a.btn.btn-warning{:href => "javascript:void(0)"} Warning
+                %a.btn.btn-warning.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+              .btn-group
+                %a.btn.btn-danger{:href => "javascript:void(0)"} Danger
+                %a.btn.btn-danger.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+          %h3
+            %small
+              %code btn-lg.btn-block.btn-raised
+          .bs-component
+            %a.btn.btn-default.btn-lg.btn-block.btn-raised{:href => "javascript:void(0)"} Block level button
+            %fieldset{:disabled => ""}
+              %a.btn.btn-default.btn-lg.btn-block.btn-raised{:href => "javascript:void(0)"} Block level button disabled
+          .bs-component{:style => "margin-bottom: 15px;"}
+            %h3
+              %small
+                %code btn-group.btn-group-justified.btn-group-raised
+            .btn-group.btn-group-justified.btn-group-raised
+              %a.btn{:href => "javascript:void(0)"} Left
+              %a.btn{:href => "javascript:void(0)"} Middle
+              %a.btn{:href => "javascript:void(0)"} Right
+            %h3
+              %small
+                disabled
+                %code btn-group.btn-group-justified.btn-group-raised
+            %fieldset{:disabled => ""}
+              .btn-group.btn-group-justified.btn-group-raised
+                %a.btn{:href => "javascript:void(0)"} Left
+                %a.btn{:href => "javascript:void(0)"} Middle
+                %a.btn{:href => "javascript:void(0)"} Right
+          .bs-component{:style => "margin-bottom: 15px;"}
+            %h3
+              %small
+                %code btn-toolbar
+            .btn-toolbar
+              .btn-group
+                %a.btn{:href => "javascript:void(0)"} 1
+                %a.btn{:href => "javascript:void(0)"} 2
+                %a.btn{:href => "javascript:void(0)"} 3
+                %a.btn{:href => "javascript:void(0)"} 4
+              .btn-group
+                %a.btn.btn-raised{:href => "javascript:void(0)"} 5
+                %a.btn.btn-raised{:href => "javascript:void(0)"} 6
+                %a.btn.btn-raised{:href => "javascript:void(0)"} 7
+              .btn-group
+                %a.btn.btn-raised{:href => "javascript:void(0)"} 8
+                .btn-group
+                  %a.btn.btn-raised.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                    Dropdown
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "javascript:void(0)"} Dropdown link
+                    %li
+                      %a{:href => "javascript:void(0)"} Dropdown link
+                    %li
+                      %a{:href => "javascript:void(0)"} Dropdown link
+          .bs-component
+            %h3
+              %small
+                %code .btn-group-vertical
+            .btn-group-vertical
+              %a.btn.btn-raised{:href => "javascript:void(0)"} Button
+              %a.btn.btn-raised{:href => "javascript:void(0)"} Button
+              %a.btn.btn-raised{:href => "javascript:void(0)"} Button
+              %a.btn.btn-raised{:href => "javascript:void(0)"} Button
+
+      .row
+        .col-md-6
+          %h3
+            Outline buttons
+      .row
+        .col-md-12
+          %p.bs-component
+            %a.btn.btn-outline{href: "javascript:void(0)"}
+              %code .btn-outline
+            %a.btn.btn-outline.active{href: "javascript:void(0)"}
+              %code .active
+            %a.btn.btn-outline.btn-link{href: "javascript:void(0)"} Link
+      .row
+        .col-md-12
+          %p.bs-component
+            %a.btn.btn-outline.btn-default{href: "javascript:void(0)"} Default
+            %a.btn.btn-outline.btn-primary{href: "javascript:void(0)"} Primary
+            %a.btn.btn-outline.btn-success{href: "javascript:void(0)"} Success
+            %a.btn.btn-outline.btn-info{href: "javascript:void(0)"} Info
+            %a.btn.btn-outline.btn-warning{href: "javascript:void(0)"} Warning
+            %a.btn.btn-outline.btn-danger{href: "javascript:void(0)"} Danger
+      .row
+        .col-md-6
+          %h3
+            Raised Outline buttons
+      .row
+        .col-md-12
+          %p.bs-component
+            %a.btn.btn-raised.btn-outline{href: "javascript:void(0)"}
+              %code .btn-outline
+            %a.btn.btn-raised.btn-outline.active{href: "javascript:void(0)"}
+              %code .active
+            %a.btn.btn-raised.btn-outline.btn-link{href: "javascript:void(0)"} Link
+      .row
+        .col-md-12
+          %p.bs-component
+            %a.btn.btn-raised.btn-outline.btn-default{href: "javascript:void(0)"} Default
+            %a.btn.btn-raised.btn-outline.btn-primary{href: "javascript:void(0)"} Primary
+            %a.btn.btn-raised.btn-outline.btn-success{href: "javascript:void(0)"} Success
+            %a.btn.btn-raised.btn-outline.btn-info{href: "javascript:void(0)"} Info
+            %a.btn.btn-raised.btn-outline.btn-warning{href: "javascript:void(0)"} Warning
+            %a.btn.btn-raised.btn-outline.btn-danger{href: "javascript:void(0)"} Danger
+
+
+
+
+
+    /
+      Typography
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#type Typography
+      / Headings
+      .row
+        .col-md-4
+          .bs-component
+            %h1 Heading 1
+            %h2 Heading 2
+            %h3 Heading 3
+            %h4 Heading 4
+            %h5 Heading 5
+            %h6 Heading 6
+            %p.lead Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+        .col-md-4
+          .bs-component
+            %h2 Example body text
+            %p
+              Nullam quis risus eget
+              %a{:href => "javascript:void(0)"} urna mollis ornare
+              vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+            %p
+              %small This line of text is meant to be treated as fine print.
+            %p
+              The following snippet of text is
+              = succeed "." do
+                %strong rendered as bold text
+            %p
+              The following snippet of text is
+              = succeed "." do
+                %em rendered as italicized text
+            %p
+              An abbreviation of the word attribute is
+              = succeed "." do
+                %abbr{:title => "attribute"} attr
+        .col-md-4
+          .bs-component
+            %h2 Emphasis classes
+            %p.text-muted Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.
+            %p.text-primary Nullam id dolor id nibh ultricies vehicula ut id elit.
+            %p.text-warning Etiam porta sem malesuada magna mollis euismod.
+            %p.text-danger Donec ullamcorper nulla non metus auctor fringilla.
+            %p.text-success Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            %p.text-info Maecenas sed diam eget risus varius blandit sit amet non magna.
+      / Blockquotes
+      .row
+        .col-md-12
+          %h2#type-blockquotes Blockquotes
+      .row
+        .col-md-6
+          .bs-component
+            %blockquote
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+              %small
+                Someone famous in
+                %cite{:title => "Source Title"} Source Title
+        .col-md-6
+          .bs-component
+            %blockquote.pull-right
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+              %small
+                Someone famous in
+                %cite{:title => "Source Title"} Source Title
+    /
+      Icons
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#icon Icons
+            %p
+              Bootstrap Material Design supports the full range of original Material Design icons!
+              %br
+                %a{:href => "https://www.google.com/design/icons/"} See the full set of material design icons at the material icons library.
+            %p
+              It’s easy to incorporate icons into your web page. Here’s a small example:
+              %br
+                %code &lt;i class="material-icons"&gt;face&lt;/i&gt;
+                %i.material-icons face
+            %p
+              Please be sure that the fonts are properly setup, see
+              = succeed "." do
+                %a{:href => "https://github.com/FezVrasta/bootstrap-material-design#getting-started"} Getting Started
+    /
+      Tables
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#tables Tables
+          .bs-component
+            %table.table.table-striped.table-hover
+              %thead
+                %tr
+                  %th #
+                  %th Column heading
+                  %th Column heading
+                  %th Column heading
+              %tbody
+                %tr
+                  %td 1
+                  %td Column content
+                  %td Column content
+                  %td Column content
+                %tr
+                  %td 2
+                  %td Column content
+                  %td Column content
+                  %td Column content
+                %tr.info
+                  %td 3
+                  %td Column content
+                  %td Column content
+                  %td Column content
+                %tr.success
+                  %td 4
+                  %td Column content
+                  %td Column content
+                  %td Column content
+                %tr.danger
+                  %td 5
+                  %td Column content
+                  %td Column content
+                  %td Column content
+                %tr.warning
+                  %td 6
+                  %td Column content
+                  %td Column content
+                  %td Column content
+                %tr.active
+                  %td 7
+                  %td Column content
+                  %td Column content
+                  %td Column content
+          / /example
+    /
+      Forms
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#forms Forms
+      .row
+        .col-md-6
+          .well.bs-component
+            %form.form-horizontal
+              %fieldset
+                %legend Legend
+                .form-group
+                  %label.col-md-2.control-label{:for => "inputEmail"} Email
+                  .col-md-10
+                    %input#inputEmail.form-control{:placeholder => "Email", :type => "email"}
+                .form-group
+                  %label.col-md-2.control-label{:for => "inputPassword"} Password
+                  .col-md-10
+                    %input#inputPassword.form-control{:placeholder => "Password", :type => "password"}
+                .form-group{:style => "margin-top: 0;"}
+                  / inline style is just to demo custom css to put checkbox below input above
+                  .col-md-offset-2.col-md-10
+                    .checkbox
+                      %label
+                        %input{:type => "checkbox"}
+                          Checkbox
+                      %label
+                        %input{:disabled => "", :type => "checkbox"}
+                          Disabled Checkbox
+                .form-group
+                  .col-md-offset-2.col-md-10
+                    .togglebutton
+                      %label
+                        %input{:checked => "", :type => "checkbox"}
+                          Toggle button
+                .form-group
+                  %label.col-md-2.control-label{:for => "inputFile"} File
+                  .col-md-10
+                    %input.form-control{:placeholder => "Browse...", :readonly => "", :type => "text"}
+                      %input#inputFile{:multiple => "", :type => "file"}
+                .form-group
+                  %label.col-md-2.control-label{:for => "textArea"} Textarea
+                  .col-md-10
+                    %textarea#textArea.form-control{:rows => "3"}
+                    %span.help-block A longer block of help text that breaks onto a new line and may extend beyond one line.
+                .form-group
+                  %label.col-md-2.control-label Radios
+                  .col-md-10
+                    .radio.radio-primary
+                      %label
+                        %input#optionsRadios1{:checked => "", :name => "optionsRadios", :type => "radio", :value => "option1"}
+                          Option one is this
+                    .radio.radio-primary
+                      %label
+                        %input#optionsRadios2{:name => "optionsRadios", :type => "radio", :value => "option2"}
+                          Option two can be something else
+                .form-group
+                  %label.col-md-2.control-label{:for => "select111"} Select
+                  .col-md-10
+                    %select#select111.form-control
+                      %option 1
+                      %option 2
+                      %option 3
+                      %option 4
+                      %option 5
+                .form-group
+                  %label.col-md-2.control-label{:for => "select222"} Select Multiple
+                  .col-md-10
+                    %select#select222.form-control{:multiple => ""}
+                      %option 1
+                      %option 2
+                      %option 3
+                      %option 4
+                      %option 5
+                .form-group
+                  .col-md-10.col-md-offset-2
+                    %button.btn.btn-default{:type => "button"} Cancel
+                    %button.btn.btn-primary{:type => "submit"} Submit
+        .col-md-4.col-md-offset-1
+          %form.bs-component
+            .form-group.label-floating
+              %label.control-label{:for => "focusedInput1"} Write something to make the label float
+              %input#focusedInput1.form-control{:type => "text"}
+            .form-group.label-floating
+              %label.control-label{:for => "focusedInput2"} Focus to show the help-block
+              %input#focusedInput2.form-control{:type => "text"}
+                %p.help-block You should really write something here
+            .form-group
+              %label.control-label{:for => "disabledInput"} Disabled input
+              %input#disabledInput.form-control{:disabled => "", :placeholder => "Disabled input here...", :type => "text"}
+            .form-group.has-warning
+              %label.control-label{:for => "inputWarning"} Input warning
+              %input#inputWarning.form-control{:type => "text"}
+            .form-group.has-error
+              %label.control-label{:for => "inputError"} Input error
+              %input#inputError.form-control{:type => "text"}
+            .form-group.has-success
+              %label.control-label{:for => "inputSuccess"} Input success
+              %input#inputSuccess.form-control{:type => "text"}
+            .form-group
+              %label.control-label{:for => "inputLarge"} Large input
+              %input#inputLarge.form-control.input-lg{:type => "text"}
+            .form-group
+              %label.control-label{:for => "inputDefault"} Default input
+              %input#inputDefault.form-control{:type => "text"}
+            .form-group
+              %label.control-label{:for => "inputSmall"} Small input
+              %input#inputSmall.form-control.input-sm{:type => "text"}
+            .form-group
+              %label.control-label{:for => "addon1"} Default label w/input addons
+              .input-group
+                %span.input-group-addon $
+                %input#addon1.form-control{:type => "text"}
+                  %span.input-group-btn
+                    %button.btn.btn-primary{:type => "button"} Button
+            .form-group.label-floating
+              .input-group
+                %span.input-group-addon $
+                %label.control-label{:for => "addon3a"} Floating label w/2 addons
+                %input#addon3a.form-control{:type => "text"}
+                  %p.help-block
+                    The label is inside the
+                    %code input-group
+                    so that it is positioned properly as a placeholder.
+                  %span.input-group-btn
+                    %button.btn.btn-fab.btn-fab-mini{:type => "button"}
+                      %i.material-icons send
+            .form-group.label-floating
+              %label.control-label{:for => "addon2"} Floating label w/right addon
+              .input-group
+                %input#addon2.form-control{:type => "text"}
+                  %span.input-group-btn
+                    %button.btn.btn-fab.btn-fab-mini{:type => "button"}
+                      %i.material-icons functions
+            .form-group
+              %input#inputFile4{:multiple => "", :type => "file"}
+                .input-group
+                  %input.form-control{:placeholder => "Placeholder w/file chooser...", :readonly => "", :type => "text"}
+                    %span.input-group-btn.input-group-sm
+                      %button.btn.btn-fab.btn-fab-mini{:type => "button"}
+                        %i.material-icons attach_file
+    /
+      Navs
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#nav Navs
+      .row
+        .col-md-4
+          %h2#nav-tabs Tabs
+          .bs-component
+            %ul.nav.nav-tabs{:style => "margin-bottom: 15px;"}
+              %li.active
+                %a{"data-toggle" => "tab", :href => "#home"} Home
+              %li
+                %a{"data-toggle" => "tab", :href => "#profile"} Profile
+              %li.disabled
+                %a Disabled
+              %li.dropdown
+                %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  Dropdown
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#dropdown1"} Action
+                  %li.divider
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#dropdown2"} Another action
+            #myTabContent.tab-content
+              #home.tab-pane.fade.active.in
+                %p Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+              #profile.tab-pane.fade
+                %p Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.
+              #dropdown1.tab-pane.fade
+                %p Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+              #dropdown2.tab-pane.fade
+                %p Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.
+        .col-md-4
+          %h2#nav-pills Pills
+          .bs-component
+            %ul.nav.nav-pills
+              %li.active
+                %a{:href => "javascript:void(0)"} Home
+              %li
+                %a{:href => "javascript:void(0)"} Profile
+              %li.disabled
+                %a{:href => "javascript:void(0)"} Disabled
+              %li.dropdown
+                %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                  Dropdown
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "javascript:void(0)"} Action
+                  %li
+                    %a{:href => "javascript:void(0)"} Another action
+                  %li
+                    %a{:href => "javascript:void(0)"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "javascript:void(0)"} Separated link
+          %br
+            .bs-component
+              %ul.nav.nav-pills.nav-stacked{:style => "max-width: 300px;"}
+                %li.active
+                  %a{:href => "javascript:void(0)"} Home
+                %li
+                  %a{:href => "javascript:void(0)"} Profile
+                %li.disabled
+                  %a{:href => "javascript:void(0)"} Disabled
+                %li.dropdown
+                  %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+                    Dropdown
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "javascript:void(0)"} Action
+                    %li
+                      %a{:href => "javascript:void(0)"} Another action
+                    %li
+                      %a{:href => "javascript:void(0)"} Something else here
+                    %li.divider
+                    %li
+                      %a{:href => "javascript:void(0)"} Separated link
+        .col-md-4
+          %h2#nav-breadcrumbs Breadcrumbs
+          .bs-component
+            %ul.breadcrumb
+              %li.active Home
+            %ul.breadcrumb
+              %li
+                %a{:href => "javascript:void(0)"} Home
+              %li.active Library
+            %ul.breadcrumb{:style => "margin-bottom: 5px;"}
+              %li
+                %a{:href => "javascript:void(0)"} Home
+              %li
+                %a{:href => "javascript:void(0)"} Library
+              %li.active Data
+      .row
+        .col-md-4
+          %h2#pagination Pagination
+          .bs-component
+            %ul.pagination
+              %li.disabled
+                %a{:href => "javascript:void(0)"} &laquo;
+              %li.active
+                %a{:href => "javascript:void(0)"} 1
+              %li
+                %a{:href => "javascript:void(0)"} 2
+              %li
+                %a{:href => "javascript:void(0)"} 3
+              %li
+                %a{:href => "javascript:void(0)"} 4
+              %li
+                %a{:href => "javascript:void(0)"} 5
+              %li
+                %a{:href => "javascript:void(0)"} &raquo;
+            %ul.pagination.pagination-lg
+              %li.disabled
+                %a{:href => "javascript:void(0)"} &laquo;
+              %li.active
+                %a{:href => "javascript:void(0)"} 1
+              %li
+                %a{:href => "javascript:void(0)"} 2
+              %li
+                %a{:href => "javascript:void(0)"} 3
+              %li
+                %a{:href => "javascript:void(0)"} &raquo;
+            %ul.pagination.pagination-sm
+              %li.disabled
+                %a{:href => "javascript:void(0)"} &laquo;
+              %li.active
+                %a{:href => "javascript:void(0)"} 1
+              %li
+                %a{:href => "javascript:void(0)"} 2
+              %li
+                %a{:href => "javascript:void(0)"} 3
+              %li
+                %a{:href => "javascript:void(0)"} 4
+              %li
+                %a{:href => "javascript:void(0)"} 5
+              %li
+                %a{:href => "javascript:void(0)"} &raquo;
+        .col-md-4
+          %h2#pager Pager
+          .bs-component
+            %ul.pager
+              %li
+                %a.withripple{:href => "javascript:void(0)"} Previous
+              %li
+                %a.withripple{:href => "javascript:void(0)"} Next
+            %ul.pager
+              %li.previous.disabled
+                %a{:href => "javascript:void(0)"} &larr; Older
+              %li.next
+                %a.withripple{:href => "javascript:void(0)"} Newer &rarr;
+        .col-md-4
+    /
+      Indicators
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#indicators Indicators
+      .row
+        .col-md-12
+          %h2 Alerts
+          .bs-component
+            .alert.alert-dismissible.alert-warning
+              %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+              %h4 Warning!
+              %p
+                Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna,
+                = succeed "." do
+                  %a.alert-link{:href => "javascript:void(0)"} vel scelerisque nisl consectetur et
+      .row
+        .col-md-4
+          .bs-component
+            .alert.alert-dismissible.alert-danger
+              %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+              %strong Oh snap!
+              %a.alert-link{:href => "javascript:void(0)"} Change a few things up
+              and try submitting again.
+        .col-md-4
+          .bs-component
+            .alert.alert-dismissible.alert-success
+              %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+              %strong Well done!
+              You successfully read
+              = succeed "." do
+                %a.alert-link{:href => "javascript:void(0)"} this important alert message
+        .col-md-4
+          .bs-component
+            .alert.alert-dismissible.alert-info
+              %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+              %strong Heads up!
+              This
+              = succeed "," do
+                %a.alert-link{:href => "javascript:void(0)"} alert needs your attention
+              but it's not super important.
+      .row
+        .col-md-4
+          %h2 Labels
+          .bs-component{:style => "margin-bottom: 40px;"}
+            %span.label.label-default Default
+            %span.label.label-primary Primary
+            %span.label.label-success Success
+            %span.label.label-warning Warning
+            %span.label.label-danger Danger
+            %span.label.label-info Info
+        .col-md-4
+          %h2 Badges
+          .bs-component
+            %ul.nav.nav-pills
+              %li.active
+                %a{:href => "javascript:void(0)"}
+                  Home
+                  %span.badge 42
+              %li
+                %a{:href => "javascript:void(0)"}
+                  Profile
+                  %span.badge
+              %li
+                %a{:href => "javascript:void(0)"}
+                  Messages
+                  %span.badge 3
+    /
+      Progress bars
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#progress Progress bars
+          %h3#progress-basic Basic
+          .bs-component
+            .progress
+              .progress-bar{:style => "width: 60%;"}
+          %h3#progress-alternatives Contextual alternatives
+          .bs-component
+            .progress
+              .progress-bar.progress-bar-info{:style => "width: 20%"}
+            .progress
+              .progress-bar.progress-bar-success{:style => "width: 40%"}
+            .progress
+              .progress-bar.progress-bar-warning{:style => "width: 60%"}
+            .progress
+              .progress-bar.progress-bar-danger{:style => "width: 80%"}
+          %h3#progress-striped Striped
+          .bs-component
+            .progress.progress-striped
+              .progress-bar.progress-bar-info{:style => "width: 20%"}
+            .progress.progress-striped
+              .progress-bar.progress-bar-success{:style => "width: 40%"}
+            .progress.progress-striped
+              .progress-bar.progress-bar-warning{:style => "width: 60%"}
+            .progress.progress-striped
+              .progress-bar.progress-bar-danger{:style => "width: 80%"}
+          %h3#progress-animated Animated
+          .bs-component
+            .progress.progress-striped.active
+              .progress-bar{:style => "width: 45%"}
+          %h3#progress-stacked Stacked
+          .bs-component
+            .progress
+              .progress-bar.progress-bar-success{:style => "width: 35%"}
+              .progress-bar.progress-bar-warning{:style => "width: 20%"}
+              .progress-bar.progress-bar-danger{:style => "width: 10%"}
+    /
+      Sliders (noUiSlider)
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#slider
+              Sliders
+              %span{:style => "font-size: 50%"} (with noUiSlider)
+          .bs-component
+            .row
+              .col-sm-6
+                .slider.shor
+                .slider.shor.slider-success
+                .slider.shor.slider-material-pink
+              .col-sm-6{:style => "height: 150px"}
+                .slider.svert
+                .slider.svert.slider-success
+                .slider.svert.slider-material-pink
+          %p
+            Read more about
+            = succeed "." do
+              %a{:href => "http://refreshless.com/nouislider/"} noUiSlider here
+    /
+      Containers
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#container Containers
+          .bs-component
+            .jumbotron
+              %h1 Jumbotron
+              %p This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+              %p
+                %a.btn.btn-primary.btn-lg Learn more
+      .row
+        .col-md-12
+          %h2 List groups
+      .row
+        .col-md-4
+          .bs-component
+            .list-group
+              .list-group-item
+                .row-action-primary
+                  %i.material-icons folder
+                .row-content
+                  .least-content 15m
+                  %h4.list-group-item-heading Tile with a label
+                  %p.list-group-item-text Donec id elit non mi porta gravida at eget metus.
+              .list-group-separator
+              .list-group-item
+                .row-action-primary
+                  %i.material-icons folder
+                .row-content
+                  .least-content 10m
+                  %h4.list-group-item-heading Tile with a label
+                  %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
+              .list-group-separator
+              .list-group-item
+                .row-action-primary
+                  %i.material-icons folder
+                .row-content
+                  .least-content 8m
+                  %h4.list-group-item-heading Tile with a label
+                  %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
+              .list-group-separator
+        .col-md-4
+          .bs-component
+            .list-group
+              .list-group-item
+                .row-action-primary
+                  %i.material-icons folder
+                .row-content
+                  .action-secondary
+                    %i.material-icons info
+                  %h4.list-group-item-heading Tile with an icon
+                  %p.list-group-item-text Donec id elit non mi porta gravida at eget metus.
+              .list-group-separator
+              .list-group-item
+                .row-action-primary
+                  %i.material-icons folder
+                .row-content
+                  .action-secondary
+                    %i.material-icons info
+                  %h4.list-group-item-heading Tile with an icon
+                  %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
+              .list-group-separator
+              .list-group-item
+                .row-action-primary
+                  %i.material-icons folder
+                .row-content
+                  .action-secondary
+                    %i.material-icons info
+                  %h4.list-group-item-heading Tile with an icon
+                  %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
+              .list-group-separator
+        .col-md-4
+          .bs-component
+            .list-group
+              .list-group-item
+                .row-picture
+                  %img.circle{:alt => "icon", :src => "http://lorempixel.com/56/56/people/1"}
+                .row-content
+                  %h4.list-group-item-heading Tile with avatar
+                  %p.list-group-item-text Donec id elit non mi porta gravida at eget metus
+              .list-group-separator
+              .list-group-item
+                .row-picture
+                  %img.circle{:alt => "icon", :src => "http://lorempixel.com/56/56/people/6"}
+                .row-content
+                  %h4.list-group-item-heading Tile with another avatar
+                  %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
+              .list-group-separator
+              .list-group-item
+                .row-action-primary.checkbox
+                  %label
+                    %input{:type => "checkbox"}/
+                .row-content
+                  %h4.list-group-item-heading Tile with a checkbox in it
+                  %p.list-group-item-text Donec id elit non mi risus varius blandit.
+              .list-group-separator
+      .row
+        .col-md-12
+          %h2 Panels
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-default
+              .panel-body
+                Basic panel
+            .panel.panel-default
+              .panel-heading Panel heading
+              .panel-body
+                Panel content
+            .panel.panel-default
+              .panel-body
+                Panel content
+              .panel-footer Panel footer
+        .col-md-4
+          .bs-component
+            .panel.panel-primary
+              .panel-heading
+                %h3.panel-title Panel primary
+              .panel-body
+                Panel content
+            .panel.panel-success
+              .panel-heading
+                %h3.panel-title Panel success
+              .panel-body
+                Panel content
+            .panel.panel-warning
+              .panel-heading
+                %h3.panel-title Panel warning
+              .panel-body
+                Panel content
+        .col-md-4
+          .bs-component
+            .panel.panel-danger
+              .panel-heading
+                %h3.panel-title Panel danger
+              .panel-body
+                Panel content
+            .panel.panel-info
+              .panel-heading
+                %h3.panel-title Panel info
+              .panel-body
+                Panel content
+
+      .row
+        .col-md-12
+          %h2 Custom Panels
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-default
+              .panel-heading
+                %h3.panel-title Custom Panel Default
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-primary
+              .panel-heading
+                %h3.panel-title Custom Panel Primary
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-info
+              .panel-heading
+                %h3.panel-title Custom Panel Info
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-success
+              .panel-heading
+                %h3.panel-title Custom Panel Success
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-warning
+              .panel-heading
+                %h3.panel-title Custom Panel Warning
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-danger
+              .panel-heading
+                %h3.panel-title Custom Panel Danger
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+      .row
+        .col-md-12
+          %h2 Custom Dark Panels
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-default-dark
+              .panel-heading
+                %h3.panel-title Custom Panel Default Dark
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-primary-dark
+              .panel-heading
+                %h3.panel-title Custom Panel Primary Dark
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-info-dark
+              .panel-heading
+                %h3.panel-title Custom Panel Info Dark
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-success-dark
+              .panel-heading
+                %h3.panel-title Custom Panel Success Dark
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-warning-dark
+              .panel-heading
+                %h3.panel-title Custom Panel Warning Dark
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-danger-dark
+              .panel-heading
+                %h3.panel-title Custom Panel Danger Dark
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+      .row
+        .col-md-12
+          %h2 Custom Outline Panels
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-default-outline
+              .panel-heading
+                %h3.panel-title Custom Panel Default Transparent
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-primary-outline
+              .panel-heading
+                %h3.panel-title Custom Panel Primary Transparent
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-info-outline
+              .panel-heading
+                %h3.panel-title Custom Panel Info Transparent
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+      .row
+        .col-md-4
+          .bs-component
+            .panel.panel-success-outline
+              .panel-heading
+                %h3.panel-title Custom Panel Success Transparent
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-warning-outline
+              .panel-heading
+                %h3.panel-title Custom Panel Warning Transparent
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+        .col-md-4
+          .bs-component
+            .panel.panel-danger-outline
+              .panel-heading
+                %h3.panel-title Custom Panel Danger Transparent
+              .panel-body
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+                Panel content
+                %br
+              .panel-footer Panel footer
+
+      .row
+        .col-md-12
+          %h2 Wells
+      .row
+        .col-md-4
+          .bs-component
+            .well
+              Look, I'm in a well!
+        .col-md-4
+          .bs-component
+            .well.well-sm
+              Look, I'm in a small well!
+        .col-md-4
+          .bs-component
+            .well.well-lg
+              Look, I'm in a large well!
+    /
+      Dialogs
+      \==================================================
+    .bs-docs-section
+      .row
+        .col-md-12
+          .page-header
+            %h1#dialogs Dialogs
+      .row
+        .col-md-6
+          %h2 Modals
+          .bs-component
+            .modal
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                    %h4.modal-title Modal title
+                  .modal-body
+                    %p One fine body…
+                  .modal-footer
+                    %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+                    %button.btn.btn-primary{:type => "button"} Save changes
+        .col-md-6
+          %h2 Popovers
+          .bs-component
+            %button.btn.btn-default{"data-container" => "body", "data-content" => "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement" => "left", "data-toggle" => "popover", :type => "button"} Left
+            %button.btn.btn-default{"data-container" => "body", "data-content" => "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement" => "top", "data-toggle" => "popover", :type => "button"} Top
+            %button.btn.btn-default{"data-container" => "body", "data-content" => "Vivamus\n                                                                                                                                                            sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement" => "bottom", "data-toggle" => "popover", :type => "button"}
+              Bottom
+            %button.btn.btn-default{"data-container" => "body", "data-content" => "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.", "data-placement" => "right", "data-toggle" => "popover", :type => "button"} Right
+          %h2 Tooltips
+          .bs-component
+            %button.btn.btn-default{"data-original-title" => "Tooltip on left", "data-placement" => "left", "data-toggle" => "tooltip", :title => "", :type => "button"} Left
+            %button.btn.btn-default{"data-original-title" => "Tooltip on top", "data-placement" => "top", "data-toggle" => "tooltip", :title => "", :type => "button"} Top
+            %button.btn.btn-default{"data-original-title" => "Tooltip on bottom", "data-placement" => "bottom", "data-toggle" => "tooltip", :title => "", :type => "button"} Bottom
+            %button.btn.btn-default{"data-original-title" => "Tooltip on right", "data-placement" => "right", "data-toggle" => "tooltip", :title => "", :type => "button"} Right
+
+      .row
+        .col-xs-12
+          %h2 Custom Modals
+      .row
+        .col-xs-6
+          .bs-component
+            .modal.modal-default
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Default Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-primary
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Primary Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-success
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Success Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-info
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Info Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-warning
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Warning Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-danger
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Danger Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+      .row
+        .col-xs-12
+          %h2 Custom Dark Modals
+      .row
+        .col-xs-6
+          .bs-component
+            .modal.modal-default-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Default Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-primary-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Primary Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-success-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Success Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-info-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Info Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-warning-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Warning Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-danger-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Danger Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+
+      .row
+        .col-xs-12
+          %h2 Custom Outline Modals
+      .row
+        .col-xs-6
+          .bs-component
+            .modal.modal-default-outline
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Default Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-primary-outline
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Primary Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-success-outline
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Success Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-info-outline
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Info Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-warning-outline
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Warning Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+        .col-xs-6
+          .bs-component
+            .modal.modal-danger-outline
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{ aria: { hidden: true }, data: { dismiss: :modal }, type: :button } ×
+                    %h4.modal-title Danger Modal
+                  .modal-body
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                    %p One fine body…
+                    %br
+                    %br
+                  .modal-footer
+                    %button.btn.btn-raised.btn-default.btn-cancel{ data: { dismiss: :modal }, type: :button } Close
+                    %button.btn.btn-raised.btn-primary.btn-save{ type: :button } Save changes
+
+      .row
+        .col-md-6
+          %h2
+            Snackbars and toasts
+            %span{:style => "font-size: 50%"} (with SnackbarJS)
+          %p
+            SnackbarJS is the ad-hoc developed plugin to create snackbars and toasts, read more about it on the
+            %a{:href => "http://fezvrasta.github.io/snackbarjs/"} official page
+            of the project.
+          .bs-component
+            %button.btn.btn-default{"data-content" => "This is a snackbar! Lorem lipsum dolor sit amet...", "data-timeout" => "0", "data-toggle" => "snackbar", :type => "button"} Show snackbar
+            %button.btn.btn-default{"data-content" => "This is a toast! Lorem lipsum dolor sit amet...", "data-style" => "toast", "data-timeout" => "0", "data-toggle" => "snackbar", :type => "button"} Show toast
+    #source-modal.modal.fade{:tabindex => "-1"}
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+            %h4.modal-title Source Code
+          .modal-body
+            %pre
+  %br
+

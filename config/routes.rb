@@ -1,5 +1,7 @@
 Sitelerwash::Application.routes.draw do
 
+  get 'theme' => 'welcome#theme', as: :theme, via: :get
+  get 'dmtheme' => 'welcome#design_material_theme', as: :dmtheme, via: :get
   get 'service_plan/purchase'
 
   match "/line_items" => 'line_items#create', as: :line_items, via: [:post, :patch]
