@@ -1,0 +1,84 @@
+//
+// Modals
+// --------------------------------------------------
+
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and shit
+
+// Kill the scroll on the body
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// Modal background
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal-background;
+  background-color: $modal-backdrop-bg;
+  // Fade for backdrop
+  &.fade { @include opacity(0); }
+  &.in { @include opacity($modal-backdrop-opacity); }
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+// Scale up the modal
+@media (min-width: $screen-sm-min) {
+  // Automatically set modal's width for larger viewports
+  .modal-dialog {
+    width: $modal-md;
+    margin: 30px auto;
+  }
+  .modal-content {
+    @include box-shadow(0 5px 15px rgba(0,0,0,.5));
+  }
+
+  // Modal sizes
+  .modal-sm { width: $modal-sm; }
+}
+
+@media (min-width: $screen-md-min) {
+  .modal-lg { width: $modal-lg; }
+}
+
+.modal-default{ @include modal-variant( $brand-default, $brand-default-color, $brand-default, $brand-default-color, #333333, lighten($brand-default, 15%) ) }
+.modal-primary{ @include modal-variant( $brand-primary, $brand-primary-color, $brand-primary, $brand-primary-color, #333333, lighten($brand-primary, 15%) ) }
+.modal-success{ @include modal-variant( $brand-success, $brand-success-color, $brand-success, $brand-success-color, #333333, lighten($brand-success, 15%) ) }
+.modal-info{    @include modal-variant( $brand-info,    $brand-info-color,    $brand-info,    $brand-info-color,    #333333, lighten($brand-info,    15%) ) }
+.modal-warning{ @include modal-variant( $brand-warning, $brand-warning-color, $brand-warning, $brand-warning-color, #333333, lighten($brand-warning, 15%) ) }
+.modal-danger{  @include modal-variant( $brand-danger,  $brand-danger-color,  $brand-danger,  $brand-danger-color,  #333333, lighten($brand-danger,  15%) ) }
+
+.modal-default-dark{ @include modal-variant( $brand-default, $brand-default-color, $brand-default-dark, $brand-default-dark, #eeeeee, $brand-default-dark ) }
+.modal-primary-dark{ @include modal-variant( $brand-primary, $brand-primary-color, $brand-primary-dark, $brand-primary-dark, #eeeeee, $brand-primary-dark ) }
+.modal-success-dark{ @include modal-variant( $brand-success, $brand-success-color, $brand-success-dark, $brand-success-dark, #eeeeee, $brand-success-dark ) }
+.modal-info-dark{    @include modal-variant( $brand-info,    $brand-info-color,    $brand-info-dark,    $brand-info-dark,    #eeeeee, $brand-info-dark    ) }
+.modal-warning-dark{ @include modal-variant( $brand-warning, $brand-warning-color, $brand-warning-dark, $brand-warning-dark, #eeeeee, $brand-warning-dark ) }
+.modal-danger-dark{  @include modal-variant( $brand-danger,  $brand-danger-color,  $brand-danger-dark,  $brand-danger-dark,  #eeeeee, $brand-danger-dark  ) }
+
+.modal-default-outline{ @include modal-variant( transparent, $brand-default, $brand-default, transparent, #333333, transparent ) }
+.modal-primary-outline{ @include modal-variant( transparent, $brand-primary, $brand-primary, transparent, #333333, transparent ) }
+.modal-success-outline{ @include modal-variant( transparent, $brand-success, $brand-success, transparent, #333333, transparent ) }
+.modal-info-outline{    @include modal-variant( transparent, $brand-info,    $brand-info,    transparent, #333333, transparent ) }
+.modal-warning-outline{ @include modal-variant( transparent, $brand-warning, $brand-warning, transparent, #333333, transparent ) }
+.modal-danger-outline{  @include modal-variant( transparent, $brand-danger,  $brand-danger,  transparent, #333333, transparent ) }
+
+
+

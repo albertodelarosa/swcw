@@ -1,0 +1,108 @@
+@import "material-design/variables";
+
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and shit
+
+@mixin modal-variant($bg, $color, $border, $content-bg, $content-color, $footer-bg){
+  $modal-content-bg:                             $content-bg;
+  //** Modal content border color
+  $modal-content-border-color:                   $border;
+  //** Modal content border color **for IE8**
+  $modal-content-fallback-border-color:          $border;
+
+  $modal-header-border-color:   $border;
+  //** Modal footer border color
+  $modal-footer-border-color:   $modal-header-border-color;
+
+
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  -webkit-overflow-scrolling: touch;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+
+  // When fading in the modal, animate it to slide down
+  &.fade .modal-dialog {
+    @include translate(0, -25%);
+    @include transition-transform(0.3s ease-out);
+  }
+  &.in .modal-dialog { @include translate(0, 0) }
+
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+
+    .modal-content {
+      position: relative;
+      border: 1px solid $modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
+      border: 1px solid $modal-content-border-color;
+      border-radius: $border-radius-large;
+      @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+      background-clip: padding-box;
+      background-color: $content-bg;
+      color: $content-color;
+      // Remove focus outline from opened modal
+      outline: 0;
+
+      .modal-header {
+        padding: $modal-title-padding;
+        border-bottom: 1px solid $modal-header-border-color;
+        @include clearfix;
+        background: $bg;
+        color: $color;
+
+        .close {
+          margin-top: -2px;
+        }
+        .modal-title {
+          margin: 0;
+          line-height: $modal-title-line-height;
+        }
+      }
+      .modal-body {
+        position: relative;
+        padding: $modal-inner-padding;
+      }
+      .modal-footer {
+        padding: $modal-inner-padding;
+        text-align: right; // right align buttons
+        border-top: 1px solid $modal-footer-border-color;
+        @include clearfix; // clear it in case folks use .pull-* classes on buttons
+        background-color: darken($footer-bg, 5%);
+        @include border-bottom-radius( $border-radius-large );
+
+        // Properly space out buttons
+        .btn + .btn {
+          margin-left: 5px;
+          margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+        }
+        // but override that for button groups
+        .btn-group .btn + .btn {
+          margin-left: -1px;
+        }
+        // and override it for block buttons as well
+        .btn-block + .btn-block {
+          margin-left: 0;
+        }
+
+        .btn.btn-cancel {
+          color: darken($color,5%);
+        }
+        .btn.btn-save {
+          color: $color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+// Panels
+
+@mixin panel-variant( 
+$body-bg, $body-color, $border, $heading-bg, $heading-color, $heading-border, $footer-bg, $margin:10px 10px 0px 10px ) {
+  border: 1px solid $border !important;
+  background-color: $body-bg !important;
+  color: $body-color !important;
+
+  & > .panel-heading {
+    border-bottom: 1px solid $heading-border !important;
+    background-color: $heading-bg !important;
+    color: $heading-color !important;
+    margin: $margin;
+    padding: 15px;
+
+    > .dropdown .dropdown-toggle {
+      color: inherit;
+    }
+
+    & > .panel-title {
+      color: inherit;
+    }
+
+    + .panel-collapse > .panel-body {
+      border-top-color: $border;
+    }
+    .badge {
+      color: $heading-bg;
+      background-color: $heading-color;
+    }
+  }
+  & > .panel-footer {
+    background-color: lighten($footer-bg, 5%) !important;
+    color: $heading-color !important;
+    border-top: 1px solid $heading-border !important;
+
+    + .panel-collapse > .panel-body {
+      border-bottom-color: $border;
+    }
+  }
+
+}
