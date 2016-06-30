@@ -21,13 +21,13 @@
         .form-group
           .btn-group.btn-group-justified{role: "group"}
             .btn-group{role: "group"}
-              = main_f.submit "login", class: 'btn btn-success'
+              = main_f.submit "login", class: 'btn btn-raised btn-success'
         - if devise_mapping.omniauthable?
           .form-group
             .btn-group.btn-group-justified{role: "group"}
               - resource_class.omniauth_providers.each do |provider|
                 .btn-group{role: "group"}
-                  = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-primary", role: "button"
+                  = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-outline btn-primary", role: "button"
         - if devise_mapping.recoverable?
           .form-group
             .btn-group.btn-group-justified{:role => "group"}
@@ -40,8 +40,7 @@
               - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
                 .btn-group{:role => "group"}
                   = link_to "resend unlock", new_unlock_path(resource_name), class: "btn btn-info btn-xs", role: "button"
-  -panel.footer() do
-    .btn-group.btn-group-justified{role: "group"}
-      .btn-group{role: "group"}
-        %button.btn.btn-primary{data: {toggle: "modal", target: "#welcome_modal"}}register
+        .btn-group.btn-group-justified{role: "group"}
+          .btn-group{role: "group"}
+            %button.btn.btn-raised.btn-primary{data: {toggle: "modal", target: "#welcome_modal"}}register
 

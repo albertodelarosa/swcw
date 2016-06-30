@@ -1,17 +1,17 @@
-%nav.navbar.navbar-default.navbar-static-top{:role => "navigation"}
-  .navbar-header
-    %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-      %span.sr-only Toggle navigation
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
+%nav.navbar.navbar-default.navbar-static-top
+  .navbar.navbar-default
+    .navbar-header
+      %button.navbar-toggle{ data: { target: ".navbar-responsive-collapse", toggle: "collapse" }, type: "button" }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
     %a.navbar-brand.hidden-xs{href: root_path}
-      = image_tag('logo-90.png', height: 80)
+      = image_tag('logo_50.png', height: 50)
     %a.navbar-brand.visible-xs{href: root_path}
       -if mobile_device?
-        = image_tag("logo-50.png", height: 40)
+        = image_tag("logo_50.png", height: 40)
       -else
-        = image_tag("logo-50.png", height: 50)
-  .collapse.navbar-collapse
-    = render user_signed_in? ? "shared/navbar/navbar_nav_dashboard" : "shared/navbar/navbar_nav_welcome"
+        = image_tag("logo_50.png", height: 50)
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      = render user_signed_in? ? "shared/navbar/navbar_nav_dashboard" : "shared/navbar/navbar_nav_welcome"
 

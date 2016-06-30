@@ -8,20 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  */
 
-// change colors
-//$link-color: red;
-
-// import original bootstrap
-
-@import "utilities/fonts";
-@import "utilities/colors";
-@import 'bootstrap-sprockets';
-@import 'utilities/bootstrap/all';
+@import 'utilities/bootstrap-sprockets';
+@import 'utilities/bootstrap';
 @import "utilities/navbar";
-@import "utilities/animate";
 @import "utilities/footer";
 @import "welcome/scaffold";
 

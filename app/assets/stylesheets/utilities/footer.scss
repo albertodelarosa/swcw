@@ -1,71 +1,17 @@
-@import "./bootstrap/components/mixins";
-
-.pre-footer {
-  background: $slw-blue-1;
-  min-height: 250px;
-  margin-bottom: -35px;
-  padding: 20px 0px 30px 0px;
-  color: $sblue-6;
-  ul {
-    list-style: none;
-    margin-bottom: 0px;
-    padding: 15px 5px;
-    legend {
-      margin-bottom: 5px;
-      color: $sw-blue-6;
-      padding-left: 10px;
-      border-bottom: 1px solid lighten($navbar-default-bg, 45%);
-    }
-    .unpanel {
-      background-color: inherit;
-      border: none;
-      border-radius: 0;
-      -webkit-box-shadow: 0;
-      box-shadow: none;
-      padding: 0px 0px;
-      margin: 0px 0px 0px 30px;
-      color: #acbacc;
-      .icon {
-        position: relative;
-        width: 26px;
-        height: 18px;
-        left: -33px;
-        top: 22px;
-        background: image-url("icons/glyphicons_005_car_sporty.png") no-repeat;
-      }
-      .in, .collapsing, .collapse {
-        color: $sw-blue-6;
-        background-color: #6b8499;
-        padding: 10px 16px;
-        text-align: justify;
-        text-justify: inter-word;
-
-      }
-    }
-  }
-  ul.social-media{
-    .unpanel{
-      margin: -10px 5px 5px 0px;
-      a{
-        position: relative;
-        top: 20px;
-      }
-    }
-  }
-}
-
+@import "./bootstrap/mixins/extended/material-design/_variables";
 #footer {
   height: 60px;
   margin: 0;
   padding: 5px;
-  background-color: $slw-blue-0;
+  background-color: $footer-bg;
+  color: $ltpp-p2-hex;
   .navbar-header,
   .copyright {
     padding: 10px;
   }
   .copyright {
     font-size: 8px;
-    color: $brand-primary-color;
+    color: $ltpp-p1-hex;
     text-align: right;
     line-height: 35px;
   }

@@ -7,7 +7,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  */
 
 @-webkit-viewport { width: device-width };
@@ -16,14 +15,9 @@
 @-o-viewport { width: device-width };
 @viewport { width: device-width };
 
-@import "utilities/fonts";
-@import "utilities/colors";
-@import 'bootstrap-sprockets';
-@import 'utilities/bootstrap/all';
-@import "bootstrap-datetimepicker";
+@import 'utilities/bootstrap-sprockets';
+@import "utilities/bootstrap";
 @import "utilities/navbar";
-@import "utilities/scaffolds";
-@import "utilities/animate";
 @import "utilities/footer";
-//@import "dashboards/all";
+@import "dashboards/all";
 

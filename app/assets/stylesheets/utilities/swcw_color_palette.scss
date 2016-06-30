@@ -1,0 +1,606 @@
+// SASS style sheet */
+// Palette color codes */
+// Palette URL: http://paletton.com/#uid=73B2m0kmZzOd2OMixGtrYvjuPp4 */
+
+// Feel free to copy&paste color codes to your application */
+
+
+// As hex codes */
+
+$d0-hex:   #19466E;	// Main Default color */
+$d1-hex:   #376288;
+$d2-hex:   #255580;
+$d3-hex:   #0D3960;
+$d4-hex:   #052C4E;
+
+$p0-hex:   #3C73B1;	// Main Primary color */
+$p1-hex:   #8AB1DD;
+$p2-hex:   #5D8EC6;
+$p3-hex:   #205EA3;
+$p4-hex:   #0F4582;
+
+$c0-hex:   #FFB748;	// Main Complement color */
+$c1-hex:   #FFD697;
+$c2-hex:   #FFC56B;
+$c3-hex:   #F9A31F;
+$c4-hex:   #C87C07;
+
+$s1-0-hex: #FF8848;	// Main Secondary color (1) */
+$s1-1-hex: #FFBB97;
+$s1-2-hex: #FF9F6B;
+$s1-3-hex: #F96C1F;
+$s1-4-hex: #C84A07;
+
+$s2-0-hex: #32B38C;	// Main Secondary color (2) */
+$s2-1-hex: #84DEC3;
+$s2-2-hex: #54C7A5;
+$s2-3-hex: #15A579;
+$s2-4-hex: #05845E;
+
+$s3-0-hex: #5147BB;	// Main Secondary color (3) */
+$s3-1-hex: #9992E1;
+$s3-2-hex: #7067CD;
+$s3-3-hex: #362BAD;
+$s3-4-hex: #22178B;
+
+$s4-0-hex: #FF5148;	// Main Secondary color (4) */
+$s4-1-hex: #FF9C97;
+$s4-2-hex: #FF736B;
+$s4-3-hex: #F92A20;
+$s4-4-hex: #C81107;
+
+$s5-0-hex: #3ACD4C;	// Main Secondary color (5) */
+$s5-1-hex: #8AE996;
+$s5-2-hex: #5CDA6B;
+$s5-3-hex: #18C12D;
+$s5-4-hex: #069B18;
+
+// As RGBa codes */
+
+$d-0-rgb:  rgb( 25, 70,110);	// Main Default color */
+$d-1-rgb:  rgb( 55, 98,136);
+$d-2-rgb:  rgb( 37, 85,128);
+$d-3-rgb:  rgb( 13, 57, 96);
+$d-4-rgb:  rgb(  5, 44, 78);
+
+$p0-rgb:   rgb( 60,115,177);	// Main Primary color */
+$p1-rgb:   rgb(138,177,221);
+$p2-rgb:   rgb( 93,142,198);
+$p3-rgb:   rgb( 32, 94,163);
+$p4-rgb:   rgb( 15, 69,130);
+
+$c0-rgb:   rgb(255,183, 72);	// Main Complement color */
+$c1-rgb:   rgb(255,214,151);
+$c2-rgb:   rgb(255,197,107);
+$c3-rgb:   rgb(249,163, 31);
+$c4-rgb:   rgb(200,124,  7);
+
+$s1-0-rgb: rgb(255,136, 72);	// Main Secondary color (1) */
+$s1-1-rgb: rgb(255,187,151);
+$s1-2-rgb: rgb(255,159,107);
+$s1-3-rgb: rgb(249,108, 31);
+$s1-4-rgb: rgb(200, 74,  7);
+
+$s2-0-rgb: rgb( 50,179,140);	// Main Secondary color (2) */
+$s2-1-rgb: rgb(132,222,195);
+$s2-2-rgb: rgb( 84,199,165);
+$s2-3-rgb: rgb( 21,165,121);
+$s2-4-rgb: rgb(  5,132, 94);
+
+$s3-0-rgb: rgb( 81, 71,187);	// Main Secondary color (3) */
+$s3-1-rgb: rgb(153,146,225);
+$s3-2-rgb: rgb(112,103,205);
+$s3-3-rgb: rgb( 54, 43,173);
+$s3-4-rgb: rgb( 34, 23,139);
+
+$s4-0-rgb: rgb(255, 81, 72);	// Main Secondary color (4) */
+$s4-1-rgb: rgb(255,156,151);
+$s4-2-rgb: rgb(255,115,107);
+$s4-3-rgb: rgb(249, 42, 32);
+$s4-4-rgb: rgb(200, 17,  7);
+
+$s5-0-rgb: rgb( 58,205, 76);	// Main Secondary color (5) */
+$s5-1-rgb: rgb(138,233,150);
+$s5-2-rgb: rgb( 92,218,107);
+$s5-3-rgb: rgb( 24,193, 45);
+$s5-4-rgb: rgb(  6,155, 24);
+
+
+// SASS style sheet */
+// Palette Lightest Pale Pastel color codes */
+// Palette URL: http://paletton.com/#uid=13B0u0k7UUa3cZA5wXlaiQ5cFL3 */
+
+// Feel free to copy&paste color codes to your application */
+
+// As hex codes */
+
+$ltpp-d0-hex:   #B6D2EC;	// Main Default color */
+$ltpp-d1-hex:   #E4F0FB;
+$ltpp-d2-hex:   #CEE2F5;
+$ltpp-d3-hex:   #9DC1E0;
+$ltpp-d4-hex:   #85AED2;
+
+$ltpp-p0-hex:   #B7D0EC;	// Main Primary color */
+$ltpp-p1-hex:   #E4EFFB;
+$ltpp-p2-hex:   #CEE0F5;
+$ltpp-p3-hex:   #9EBEE1;
+$ltpp-p4-hex:   #86AAD3;
+
+$ltpp-c0-hex:   #FFE6C0;	// Main Complement color */
+$ltpp-c1-hex:   #FFF5E6;
+$ltpp-c2-hex:   #FFEED3;
+$ltpp-c3-hex:   #FFDFAD;
+$ltpp-c4-hex:   #FFD79A;
+
+$ltpp-s1-0-hex: #FFD6C0;	// Main Secondary color (1) */
+$ltpp-s1-1-hex: #FFEEE6;
+$ltpp-s1-2-hex: #FFE2D3;
+$ltpp-s1-3-hex: #FFCAAD;
+$ltpp-s1-4-hex: #FFBD9A;
+
+$ltpp-s2-0-hex: #B2EDDB;	// Main Secondary color (2) */
+$ltpp-s2-1-hex: #E2FBF4;
+$ltpp-s2-2-hex: #CBF5E8;
+$ltpp-s2-3-hex: #99E1CC;
+$ltpp-s2-4-hex: #80D4BB;
+
+$ltpp-s3-0-hex: #C0BCEE;	// Main Secondary color (3) */
+$ltpp-s3-1-hex: #E8E6FC;
+$ltpp-s3-2-hex: #D5D2F6;
+$ltpp-s3-3-hex: #ABA5E5;
+$ltpp-s3-4-hex: #958ED8;
+
+$ltpp-s4-0-hex: #FFC3C0;	// Main Secondary color (4) */
+$ltpp-s4-1-hex: #FFE7E6;
+$ltpp-s4-2-hex: #FFD5D3;
+$ltpp-s4-3-hex: #FFB1AD;
+$ltpp-s4-4-hex: #FF9F9A;
+
+$ltpp-s5-0-hex: #B7F3BE;	// Main Secondary color (5) */
+$ltpp-s5-1-hex: #E3FCE6;
+$ltpp-s5-2-hex: #CEF8D3;
+$ltpp-s5-3-hex: #A0EBA9;
+$ltpp-s5-4-hex: #89E294;
+
+
+// As RGBa codes */
+
+$ltpp-d0-rgb:   rgb(182,210,236);	// Main Default color */
+$ltpp-d1-rgb:   rgb(228,240,251);
+$ltpp-d2-rgb:   rgb(206,226,245);
+$ltpp-d3-rgb:   rgb(157,193,224);
+$ltpp-d4-rgb:   rgb(133,174,210);
+
+$ltpp-p0-rgb:   rgb(183,208,236);	// Main Primary color */
+$ltpp-p1-rgb:   rgb(228,239,251);
+$ltpp-p2-rgb:   rgb(206,224,245);
+$ltpp-p3-rgb:   rgb(158,190,225);
+$ltpp-p4-rgb:   rgb(134,170,211);
+
+$ltpp-c0-rgb:   rgb(255,230,192);	// Main Complement color */
+$ltpp-c1-rgb:   rgb(255,245,230);
+$ltpp-c2-rgb:   rgb(255,238,211);
+$ltpp-c3-rgb:   rgb(255,223,173);
+$ltpp-c4-rgb:   rgb(255,215,154);
+
+$ltpp-s1-0-rgb: rgb(255,214,192);	// Main Secondary color (1) */
+$ltpp-s1-1-rgb: rgb(255,238,230);
+$ltpp-s1-2-rgb: rgb(255,226,211);
+$ltpp-s1-3-rgb: rgb(255,202,173);
+$ltpp-s1-4-rgb: rgb(255,189,154);
+
+$ltpp-s2-0-rgb: rgb(178,237,219);	// Main Secondary color (2) */
+$ltpp-s2-1-rgb: rgb(226,251,244);
+$ltpp-s2-2-rgb: rgb(203,245,232);
+$ltpp-s2-3-rgb: rgb(153,225,204);
+$ltpp-s2-4-rgb: rgb(128,212,187);
+
+$ltpp-s3-0-rgb: rgb(192,188,238);	// Main Secondary color (3) */
+$ltpp-s3-1-rgb: rgb(232,230,252);
+$ltpp-s3-2-rgb: rgb(213,210,246);
+$ltpp-s3-3-rgb: rgb(171,165,229);
+$ltpp-s3-4-rgb: rgb(149,142,216);
+
+$ltpp-s4-0-rgb: rgb(255,195,192);	// Main Secondary color (4) */
+$ltpp-s4-1-rgb: rgb(255,231,230);
+$ltpp-s4-2-rgb: rgb(255,213,211);
+$ltpp-s4-3-rgb: rgb(255,177,173);
+$ltpp-s4-4-rgb: rgb(255,159,154);
+
+$ltpp-s5-0-rgb: rgb(183,243,190);	// Main Secondary color (5) */
+$ltpp-s5-1-rgb: rgb(227,252,230);
+$ltpp-s5-2-rgb: rgb(206,248,211);
+$ltpp-s5-3-rgb: rgb(160,235,169);
+$ltpp-s5-4-rgb: rgb(137,226,148);
+
+
+
+
+
+// SASS style sheet */
+// Palette Very Light Pale Pastel color codes */
+// Palette URL: http://paletton.com/#uid=13B0u0kaVz84jP27qHbeJtFiHpX */
+
+// Feel free to copy&paste color codes to your application */
+
+
+// As hex codes */
+
+$vlpp-d0-hex:   #7794AE;	// Main Default color */
+$vlpp-d1-hex:   #C2D0DD;
+$vlpp-d2-hex:   #9CB3C7;
+$vlpp-d3-hex:   #587A99;
+$vlpp-d4-hex:   #3D6386;
+
+$vlpp-p0-hex:   #7892AF;	// Main Primary color */
+$vlpp-p1-hex:   #C3CFDE;
+$vlpp-p2-hex:   #9EB2C8;
+$vlpp-p3-hex:   #59789A;
+$vlpp-p4-hex:   #3E6187;
+
+$vlpp-c0-hex:   #FFDDA8;	// Main Complement color */
+$vlpp-c1-hex:   #FFF2DD;
+$vlpp-c2-hex:   #FFE8C4;
+$vlpp-c3-hex:   #ECC180;
+$vlpp-c4-hex:   #CF9F56;
+
+$vlpp-s1-0-hex: #FFC6A8;	// Main Secondary color (1) */
+$vlpp-s1-1-hex: #FFE9DD;
+$vlpp-s1-2-hex: #FFD9C4;
+$vlpp-s1-3-hex: #ECA680;
+$vlpp-s1-4-hex: #CF8056;
+
+$vlpp-s2-0-hex: #75B19F;	// Main Secondary color (2) */
+$vlpp-s2-1-hex: #C1DFD6;
+$vlpp-s2-2-hex: #9BC9BB;
+$vlpp-s2-3-hex: #549C86;
+$vlpp-s2-4-hex: #398970;
+
+$vlpp-s3-0-hex: #8783B9;	// Main Secondary color (3) */
+$vlpp-s3-1-hex: #CAC8E2;
+$vlpp-s3-2-hex: #A9A6CF;
+$vlpp-s3-3-hex: #6963A4;
+$vlpp-s3-4-hex: #4E4790;
+
+$vlpp-s4-0-hex: #FFACA8;	// Main Secondary color (4) */
+$vlpp-s4-1-hex: #FFDEDD;
+$vlpp-s4-2-hex: #FFC7C4;
+$vlpp-s4-3-hex: #EC8580;
+$vlpp-s4-4-hex: #CF5C56;
+
+$vlpp-s5-0-hex: #86CB8F;	// Main Secondary color (5) */
+$vlpp-s5-1-hex: #CAEACE;
+$vlpp-s5-2-hex: #A9DCAF;
+$vlpp-s5-3-hex: #63B76D;
+$vlpp-s5-4-hex: #43A04E;
+
+
+
+// As RGBa codes */
+
+$vlpp-d0-rgb: rgb(119,148,174);	// Main Default color */
+$vlpp-d1-rgb: rgb(194,208,221);
+$vlpp-d2-rgb: rgb(156,179,199);
+$vlpp-d3-rgb: rgb( 88,122,153);
+$vlpp-d4-rgb: rgb( 61, 99,134);
+
+$vlpp-p0-rgb:   rgb(120,146,175);	// Main Primary color */
+$vlpp-p1-rgb:   rgb(195,207,222);
+$vlpp-p2-rgb:   rgb(158,178,200);
+$vlpp-p3-rgb:   rgb( 89,120,154);
+$vlpp-p4-rgb:   rgb( 62, 97,135);
+
+$vlpp-c0-rgb:   rgb(255,221,168);	// Main Complement color */
+$vlpp-c1-rgb:   rgb(255,242,221);
+$vlpp-c2-rgb:   rgb(255,232,196);
+$vlpp-c3-rgb:   rgb(236,193,128);
+$vlpp-c4-rgb:   rgb(207,159, 86);
+
+$vlpp-s1-0-rgb: rgb(255,198,168);	// Main Secondary color (1) */
+$vlpp-s1-1-rgb: rgb(255,233,221);
+$vlpp-s1-2-rgb: rgb(255,217,196);
+$vlpp-s1-3-rgb: rgb(236,166,128);
+$vlpp-s1-4-rgb: rgb(207,128, 86);
+
+$vlpp-s2-0-rgb: rgb(117,177,159);	// Main Secondary color (2) */
+$vlpp-s2-1-rgb: rgb(193,223,214);
+$vlpp-s2-2-rgb: rgb(155,201,187);
+$vlpp-s2-3-rgb: rgb( 84,156,134);
+$vlpp-s2-4-rgb: rgb( 57,137,112);
+
+$vlpp-s3-0-rgb: rgb(135,131,185);	// Main Secondary color (3) */
+$vlpp-s3-1-rgb: rgb(202,200,226);
+$vlpp-s3-2-rgb: rgb(169,166,207);
+$vlpp-s3-3-rgb: rgb(105, 99,164);
+$vlpp-s3-4-rgb: rgb( 78, 71,144);
+
+$vlpp-s4-0-rgb: rgb(255,172,168);	// Main Secondary color (4) */
+$vlpp-s4-1-rgb: rgb(255,222,221);
+$vlpp-s4-2-rgb: rgb(255,199,196);
+$vlpp-s4-3-rgb: rgb(236,133,128);
+$vlpp-s4-4-rgb: rgb(207, 92, 86);
+
+$vlpp-s5-0-rgb: rgb(134,203,143);	// Main Secondary color (5) */
+$vlpp-s5-1-rgb: rgb(202,234,206);
+$vlpp-s5-2-rgb: rgb(169,220,175);
+$vlpp-s5-3-rgb: rgb( 99,183,109);
+$vlpp-s5-4-rgb: rgb( 67,160, 78);
+
+
+
+
+
+
+// Palette darkest greyish color codes */
+// Palette URL: http://paletton.com/#uid=73B2m0k3V4WaYgf7Lb1ac80gJaQ */
+
+// As hex codes */
+
+$dgreyish-d0-hex:   #171819;	// Main Default color */
+$dgreyish-d1-hex:   #394754;
+$dgreyish-d2-hex:   #2C3339;
+$dgreyish-d3-hex:   #1D2329;
+$dgreyish-d4-hex:   #1D2B38;
+
+$dgreyish-p0-hex:   #17181A;	// Main Primary color */
+$dgreyish-p1-hex:   #3A4654;
+$dgreyish-p2-hex:   #2D3339;
+$dgreyish-p3-hex:   #1D232A;
+$dgreyish-p4-hex:   #1D2A38;
+
+$dgreyish-c0-hex:   #272522;	// Main Complement color */
+$dgreyish-c1-hex:   #817055;
+$dgreyish-c2-hex:   #584F43;
+$dgreyish-c3-hex:   #40382B;
+$dgreyish-c4-hex:   #564529;
+
+$dgreyish-s1-0-hex: #272422;	// Main Secondary color (1) */
+$dgreyish-s1-1-hex: #816555;
+$dgreyish-s1-2-hex: #584A43;
+$dgreyish-s1-3-hex: #40332B;
+$dgreyish-s1-4-hex: #563929;
+
+$dgreyish-s2-0-hex: #171A19;	// Main Secondary color (2) */
+$dgreyish-s2-1-hex: #38554D;
+$dgreyish-s2-2-hex: #2C3A36;
+$dgreyish-s2-3-hex: #1D2A26;
+$dgreyish-s2-4-hex: #1B3930;
+
+$dgreyish-s3-0-hex: #19181B;	// Main Secondary color (3) */
+$dgreyish-s3-1-hex: #423F5A;
+$dgreyish-s3-2-hex: #31303D;
+$dgreyish-s3-3-hex: #21202C;
+$dgreyish-s3-4-hex: #23213C;
+
+$dgreyish-s4-0-hex: #272322;	// Main Secondary color (4) */
+$dgreyish-s4-1-hex: #815755;
+$dgreyish-s4-2-hex: #584443;
+$dgreyish-s4-3-hex: #402C2B;
+$dgreyish-s4-4-hex: #562B29;
+
+$dgreyish-s5-0-hex: #1B1E1B;	// Main Secondary color (5) */
+$dgreyish-s5-1-hex: #426446;
+$dgreyish-s5-2-hex: #344436;
+$dgreyish-s5-3-hex: #223124;
+$dgreyish-s5-4-hex: #204324;
+
+// As RGBa codes */
+
+$dgreyish-d0-rgb: rgb( 23, 24, 25);	// Main Default color */
+$dgreyish-d1-rgb: rgb( 57, 71, 84);
+$dgreyish-d2-rgb: rgb( 44, 51, 57);
+$dgreyish-d3-rgb: rgb( 29, 35, 41);
+$dgreyish-d4-rgb: rgb( 29, 43, 56);
+
+$dgreyish-p0-rgb:   rgb( 23, 24, 26);	// Main Primary color */
+$dgreyish-p1-rgb:   rgb( 58, 70, 84);
+$dgreyish-p2-rgb:   rgb( 45, 51, 57);
+$dgreyish-p3-rgb:   rgb( 29, 35, 42);
+$dgreyish-p4-rgb:   rgb( 29, 42, 56);
+
+$dgreyish-c0-rgb:   rgb( 39, 37, 34);	// Main Complement color */
+$dgreyish-c1-rgb:   rgb(129,112, 85);
+$dgreyish-c2-rgb:   rgb( 88, 79, 67);
+$dgreyish-c3-rgb:   rgb( 64, 56, 43);
+$dgreyish-c4-rgb:   rgb( 86, 69, 41);
+
+$dgreyish-s1-0-rgb: rgb( 39, 36, 34);	// Main Secondary color (1) */
+$dgreyish-s1-1-rgb: rgb(129,101, 85);
+$dgreyish-s1-2-rgb: rgb( 88, 74, 67);
+$dgreyish-s1-3-rgb: rgb( 64, 51, 43);
+$dgreyish-s1-4-rgb: rgb( 86, 57, 41);
+
+$dgreyish-s2-0-rgb: rgb( 23, 26, 25);	// Main Secondary color (2) */
+$dgreyish-s2-1-rgb: rgb( 56, 85, 77);
+$dgreyish-s2-2-rgb: rgb( 44, 58, 54);
+$dgreyish-s2-3-rgb: rgb( 29, 42, 38);
+$dgreyish-s2-4-rgb: rgb( 27, 57, 48);
+
+$dgreyish-s3-0-rgb: rgb( 25, 24, 27);	// Main Secondary color (3) */
+$dgreyish-s3-1-rgb: rgb( 66, 63, 90);
+$dgreyish-s3-2-rgb: rgb( 49, 48, 61);
+$dgreyish-s3-3-rgb: rgb( 33, 32, 44);
+$dgreyish-s3-4-rgb: rgb( 35, 33, 60);
+
+$dgreyish-s4-0-rgb: rgb( 39, 35, 34);	// Main Secondary color (4) */
+$dgreyish-s4-1-rgb: rgb(129, 87, 85);
+$dgreyish-s4-2-rgb: rgb( 88, 68, 67);
+$dgreyish-s4-3-rgb: rgb( 64, 44, 43);
+$dgreyish-s4-4-rgb: rgb( 86, 43, 41);
+
+$dgreyish-s5-0-rgb: rgb( 27, 30, 27);	// Main Secondary color (5) */
+$dgreyish-s5-1-rgb: rgb( 66,100, 70);
+$dgreyish-s5-2-rgb: rgb( 52, 68, 54);
+$dgreyish-s5-3-rgb: rgb( 34, 49, 36);
+$dgreyish-s5-4-rgb: rgb( 32, 67, 36);
+
+
+
+
+
+
+// Generated by Paletton.com Â© 2002-2014 */
+// http://paletton.com */
+
+
+
+
+// ##################### OLD #####################
+
+
+/*// new colors*/
+
+/*$slw-blue-0: #19466e;*/
+/*$slw-blue-1: #1f578a;*/
+/*$slw-blue-2: #748ea6;*/
+
+
+/*$sw-black-0: #302E2F;*/
+/*$sw-black-1: #AEA29F;*/
+/*$sw-black-2: #5D5C5D;*/
+/*$sw-black-3: #262223;*/
+/*$sw-black-4: #242021;*/
+/*$sw-black-6: #E0DFDF;*/
+
+/*$sw-black-rgb-0: rgb(48 , 46, 47);*/
+/*$sw-black-rgb-1: rgb(136,129,133);*/
+/*$sw-black-rgb-2: rgb(94 , 90, 92);*/
+/*$sw-black-rgb-3: rgb(11 ,  9, 10);*/
+/*$sw-black-rgb-4: rgb(16 ,  9, 13);*/
+
+
+/*$sw-blue-0: #2F587F;*/
+/*$sw-blue-1: #7595B4;*/
+/*$sw-blue-2: #4A7096;*/
+/*$sw-blue-3: #1C446B;*/
+/*$sw-blue-4: #092E50;*/
+/*$sw-blue-5: #2f3030;*/
+/*$sw-blue-6: #EAEEF2;*/
+
+/*$sw-blue-rgb-0: rgba( 47, 88,127,1);*/
+/*$sw-blue-rgb-1: rgba(117,149,180,1);*/
+/*$sw-blue-rgb-2: rgba( 74,112,150,1);*/
+/*$sw-blue-rgb-3: rgba( 28, 68,107,1);*/
+/*$sw-blue-rgb-4: rgba(  9, 46, 80,1);*/
+/*$sw-blue-rgb-5: rgb(  47, 48, 48);*/
+
+
+/*$sw-green-0: #00960A;*/
+/*$sw-green-1: #36C23F;*/
+/*$sw-green-2: #09BC15;*/
+/*$sw-green-3: #007A08;*/
+/*$sw-green-4: #005906;*/
+/*$sw-green-5: #2f302f;*/
+/*$sw-green-6: #E6F4E6;*/
+
+/*$sw-green-rgb-0: rgb(0  ,150, 10);*/
+/*$sw-green-rgb-1: rgb(54 ,194, 63);*/
+/*$sw-green-rgb-2: rgb(9  ,188, 21);*/
+/*$sw-green-rgb-3: rgb(0  ,122,  8);*/
+/*$sw-green-rgb-4: rgb(0  , 89,  6);*/
+
+
+/*$sw-lime-green-0: #04CD1D;*/
+/*$sw-lime-green-1: #56DB67;*/
+/*$sw-lime-green-2: #2FD143;*/
+/*$sw-lime-green-3: #00A614;*/
+/*$sw-lime-green-4: #008210;*/
+/*$sw-lime-green-5: #2f302f;*/
+/*$sw-lime-green-6: #E6FAE8;*/
+
+/*$sw-lime-green-rgb-0: rgb(4  ,205, 29);*/
+/*$sw-lime-green-rgb-1: rgb(86 ,219,103);*/
+/*$sw-lime-green-rgb-2: rgb(47 ,209, 67);*/
+/*$sw-lime-green-rgb-3: rgb(0  ,166, 20);*/
+/*$sw-lime-green-rgb-4: rgb(0  ,130, 16);*/
+
+
+/*$sblue-0: #1E69B0;*/
+/*$sblue-1: #6399CD;*/
+/*$sblue-2: #3E7DBB;*/
+/*$sblue-3: #0A5094;*/
+/*$sblue-4: #073E73;*/
+/*$sblue-5: #2f3030;*/
+/*$sblue-6: #E8F0F7;*/
+
+/*$sblue-rgb-0: rgb(30 ,104,176);*/
+/*$sblue-rgb-1: rgb(99 ,153,205);*/
+/*$sblue-rgb-2: rgb(62 ,125,187);*/
+/*$sblue-rgb-3: rgb(10 , 80,148);*/
+/*$sblue-rgb-4: rgb(7  , 62,115);*/
+
+
+/*$syellow-0: #F2DE29;*/
+/*$syellow-1: #FFF27B;*/
+/*$syellow-2: #FFED53;*/
+/*$syellow-3: #CBB80B;*/
+/*$syellow-4: #A19100;*/
+/*$syellow-5: #30302f;*/
+/*$syellow-6: #FEFCEA;*/
+
+/*$syellow-rgb-0: rgb(242,222, 41);*/
+/*$syellow-rgb-1: rgb(255,242,123);*/
+/*$syellow-rgb-2: rgb(255,237, 83);*/
+/*$syellow-rgb-3: rgb(203,184, 11);*/
+/*$syellow-rgb-4: rgb(161,145,  0);*/
+
+
+/*$sorange-0: #F3692A;*/
+/*$sorange-1: #FFA57C;*/
+/*$sorange-2: #FF8953;*/
+/*$sorange-3: #CD470B;*/
+/*$sorange-4: #A23300;*/
+/*$sorange-5: #302f2f;*/
+/*$sorange-6: #FEF0EA;*/
+
+/*$sorange-rgb-0: rgb(243,105, 42);*/
+/*$sorange-rgb-1: rgb(255,165,124);*/
+/*$sorange-rgb-2: rgb(255,137, 83);*/
+/*$sorange-rgb-3: rgb(205, 71, 11);*/
+/*$sorange-rgb-4: rgb(162, 51,  0);*/
+
+
+/*$sred-0: #CC2D2D;*/
+/*$sred-1: #FF8787;*/
+/*$sred-2: #E15454;*/
+/*$sred-3: #A41616;*/
+/*$sred-4: #7D0000;*/
+/*$sred-5: #302f2f;*/
+/*$sred-6: #FAEAEA;*/
+
+/*$sred-rgb-0: rgba(204, 45, 45,1);*/
+/*$sred-rgb-1: rgba(255,135,135,1);*/
+/*$sred-rgb-2: rgba(225, 84, 84,1);*/
+/*$sred-rgb-3: rgba(164, 22, 22,1);*/
+/*$sred-rgb-4: rgba(125,  0,  0,1);*/
+
+/*$sgreen-0: #399939;*/
+/*$sgreen-1: #95D695;*/
+/*$sgreen-2: #62BA62;*/
+/*$sgreen-3: #1E7E1E;*/
+/*$sgreen-4: #065B06;*/
+/*$sgreen-5: #2f302f;*/
+/*$sgreen-6: #EBF5EB;*/
+
+/*$sgreen-rgb-0: rgba(57 ,153, 57,1);*/
+/*$sgreen-rgb-1: rgba(149,214,149,1);*/
+/*$sgreen-rgb-2: rgba(98 ,186, 98,1);*/
+/*$sgreen-rgb-3: rgba(30 ,126, 30,1);*/
+/*$sgreen-rgb-4: rgba(6  , 91,  6,1);*/
+
+
+/*$spurple-0: #655ABF;*/
+/*$spurple-1: #B5AFEB;*/
+/*$spurple-2: #887FD6;*/
+/*$spurple-3: #4A3EAB;*/
+/*$spurple-4: #2E2298;*/
+/*$spurple-5: #2f2f30;*/
+/*$spurple-6: #F0EEF9;*/
+
+/*$spurple-rgb-0: rgba(101, 90,191,1);*/
+/*$spurple-rgb-1: rgba(181,175,235,1);*/
+/*$spurple-rgb-2: rgba(136,127,214,1);*/
+/*$spurple-rgb-3: rgba(74 , 62,171,1);*/
+/*$spurple-rgb-4: rgba(46 , 34,152,1);*/
+
+

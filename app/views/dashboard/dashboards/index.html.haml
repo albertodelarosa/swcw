@@ -1,22 +1,49 @@
-.row.section.section-warning
-  %h1.page-header Dashboard
-  -appointments = []
-  -past_appointments = []
-  .row
-    .col-xs-12.col-md-4
-      .well
-        %legend
-          ="make an appointment"
-        = render partial: 'dashboard/appointments/form'
-    -unless @appointments.empty?
-      -now = Time.now
-      -@appointments.each do |appointment|
-        -if appointment.date < now
-          -past_appointments << appointment
-        -else
-          -appointments << appointment
-      .col-xs-12.col-md-4
-        = render partial: "dashboard/dashboards/my/appointments", locals: {appointments: appointments}
-      .col-xs-12.col-md-4
-        = render partial: "dashboard/dashboards/my/past_appointments", locals: {past_appointments: past_appointments}
+-fist_value = [ 230, "#1ca8dd", "Returning" ]
+-second_value = [ 130, "#1bc98e", "New" ]
+.row
+  .section.section-warning
+    %h1.page-header Dashboard
+    -appointments = []
+    -past_appointments = []
+    .row
+      .col-xs-12
+        .well
+          %legend
+            ="make an appointment"
+          = render partial: 'dashboard/appointments/form'
+        .row
+          .col-xs-12.col-md-4
+            .well
+              %legend
+                ="make an appointment"
+              .center-block
+                %canvas.ant{ data: {chart: "doughnut", animation: "!0", segment_stroke_color: "#FFA57C", segment_stroke_width: "1", percentage_inner_cutout: 80, value: "[{ value: #{fist_value[0]}, color: '#{fist_value[1]}', label: '#{fist_value[2]}' }, { value: #{second_value[0]}, color: '#{second_value[1]}', label: '#{second_value[2]}' }]"} }
+
+
+
+
+          .col-xs-12.col-md-4
+            .well
+              %legend
+                ="make an appointment"
+              = render partial: 'dashboard/appointments/form'
+
+          .col-xs-12.col-md-4
+            .well
+              %legend
+                ="make an appointment"
+              = render partial: 'dashboard/appointments/form'
+
+
+    -#-unless @appointments.empty?
+      -#-now = Time.now
+      -#-@appointments.each do |appointment|
+        -#-if appointment.date < now
+          -#-past_appointments << appointment
+        -#-else
+          -#-appointments << appointment
+      -#.col-xs-12.col-md-4
+        -#= render partial: "dashboard/dashboards/my/appointments", locals: {appointments: appointments}
+      -#.col-xs-12.col-md-4
+        -#= render partial: "dashboard/dashboards/my/past_appointments", locals: {past_appointments: past_appointments}
 
