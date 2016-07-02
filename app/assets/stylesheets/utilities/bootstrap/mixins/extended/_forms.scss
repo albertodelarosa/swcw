@@ -1,0 +1,4 @@
+@import "./material-design/mixins";
+
+// Base class
+.form{@include md-variation( "form" )}
