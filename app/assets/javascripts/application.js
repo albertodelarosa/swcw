@@ -17,7 +17,7 @@
 //= require utilities/snackbar.min
 //= require utilities/ripples
 //= require utilities/material
-//= require utilities/toolkit.min
+//= require utilities/chart
 //= require utilities/moment-with-langs
 //= require utilities/bootstrap-datetimepicker
 //= require utilities/navbar
