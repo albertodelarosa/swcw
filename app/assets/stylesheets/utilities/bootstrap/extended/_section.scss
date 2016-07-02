@@ -1,13 +1,63 @@
-//@import "./mixins";
+@import "../mixins/extended/material-design/mixins";
 
 // Base class
 .section {
+  min-height: 400px;
+  //padding: 25px 10px;
   height: auto;
   padding: 50px 10px;
+
   blockquote {
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);
   }
+
+  ul {
+
+    .panel {
+
+      div { font-weight: normal; }
+
+      p {
+        min-height:70px;
+        padding: 14px;
+        border-radius: 2px;
+        border: 1px solid transparent;
+      }
+
+    }
+
+    .unpanel {
+      background-color: inherit;
+      border: none;
+      border-radius: 0;
+      padding: 0px 0px;
+      margin: 0px 0px 0px 30px;
+
+      .in, .collapsing, .collapse {
+        padding: 10px 16px;
+        text-align: justify;
+        text-justify: inter-word;
+        margin-bottom: 10px;
+
+      }
+    }
+  }
+
+  ul.social-media {
+
+    .unpanel {
+      //margin: -10px 5px 5px 0px;
+
+      a {
+        position: relative;
+        top: 20px;
+      }
+
+    }
+
+  }
+
 }
 
 .section.section-parallax{min-height: 50px!important;}
@@ -17,10 +67,17 @@
 .section-sm{padding: 9px;}
 
 // Brand classes
-.section-default{@include section-variant($brand-default,$brand-default-color,$brand-default-border)}
-.section-primary{@include section-variant($brand-primary,$brand-primary-color,$brand-primary-border)}
-.section-success{@include section-variant($brand-success,$brand-success-color,$brand-success-border)}
-.section-info{@include section-variant($brand-info,$brand-info-color,$brand-info-border)}
-.section-warning{@include section-variant($brand-warning,$brand-warning-color,$brand-warning-border)}
-.section-danger{@include section-variant($brand-danger,$brand-danger-color,$brand-danger-border)}
+/*.section-default{@include section-variant($brand-default,$brand-default-color,$brand-default-border)}*/
+/*.section-primary{@include section-variant($brand-primary,$brand-primary-color,$brand-primary-border)}*/
+/*.section-success{@include section-variant($brand-success,$brand-success-color,$brand-success-border)}*/
+/*.section-info{@include section-variant($brand-info,$brand-info-color,$brand-info-border)}*/
+/*.section-warning{@include section-variant($brand-warning,$brand-warning-color,$brand-warning-border)}*/
+/*.section-danger{@include section-variant($brand-danger,$brand-danger-color,$brand-danger-border)}*/
+
+// Dark classes
+//.section-dark{@include section-variant($brand-default,$brand-default-color,$brand-default-border)}
+
+.section {
+  @include md-variation( "section" );
+}
 

@@ -141,6 +141,41 @@
   }
 }
 
+@mixin md-variation($component, $selector-suffix:"") {
+  $mixin-name: "#{$component}-variations-content";
+  $component: ".#{$component}";
+  @include extra-variations($component, $selector-suffix, $mixin-name);
+}
+
+@mixin section-variations-content($args){
+  $background-color: map-get($args, variation-color);
+  $text-color:       map-get($args, variation-color-text);
+  $border-color:     map-get($args, variation-color-border);
+
+  background-color: $background-color;
+  color:            $text-color;
+  border: 1px solid $border-color;
+
+  & legend, .legend {
+    color: lighten($text-color, 20%);
+    border-bottom: 1px solid $border-color;
+  }
+
+  & ul > .panel > p.collapsed { border: 1px solid lighten($background-color, 25); }
+
+  & .unpanel {
+    color: $text-color;
+
+    & .in, .collapsing, .collapse {
+      background-color: lighten($background-color, 5%);
+      color: $text-color;
+    }
+
+  }
+
+
+}
+
 // interpolation of mixin-name is not allowed evidently, so we statically include based on the mixin-name given
 @mixin call-variations-content-mixin($args) {
   $mixin-name: map-get($args, mixin-name);
@@ -162,6 +197,8 @@
     @include navbar-variations-content($args);
   }@else if $mixin-name == alert-variations-content {
     @include alert-variations-content($args);
+  }@else if $mixin-name == section-variations-content {
+    @include section-variations-content($args);
   } @else {
     @error "Unknown mixin: #{$mixin-name}"
   }
@@ -177,6 +214,236 @@
 // $variation-color-text ---> rgba(255,255,255,0.84), rgba(0,0,0,0.84), rgba(255,255,255,0.84) ...
 //
 
+@mixin extra-variations( $component, $selector-suffix, $mixin-name ){
+  $args: (mixin-name: $mixin-name);
+
+  &#{$component}-default {
+    $args-default: map-merge($args, (
+            variation-color:        $brand-default,
+            variation-color-text:   $brand-default-color,
+            variation-color-border: $brand-default
+    ));
+    @include call-variations-content-mixin($args-default);
+
+    &#{$component}-dark {
+      $args-default-dark: map-merge($args, (
+              variation-color:        $brand-default-dark,
+              variation-color-text:   $brand-default-dark-color,
+              variation-color-border: $brand-default-dark-border
+      ));
+      @include call-variations-content-mixin($args-default-dark);
+    }
+
+    &#{$component}-light {
+      $args-default-light: map-merge($args, (
+              variation-color:        $brand-default-light,
+              variation-color-text:   $brand-default-light-color,
+              variation-color-border: $brand-default-light-border
+      ));
+      @include call-variations-content-mixin($args-default-light);
+    }
+
+    &#{$component}-outline {
+      $args-default-outline: map-merge($args, (
+              variation-color:        $brand-default-outline,
+              variation-color-text:   $brand-default-outline-color,
+              variation-color-border: $brand-default-outline-border
+      ));
+      @include call-variations-content-mixin($args-default-outline);
+    }
+  }
+
+  &#{$component}-primary {
+    $args-primary: map-merge($args, (
+            variation-color: $brand-primary,
+            variation-color-text: $brand-primary-color,
+            variation-color-border:$brand-primary
+    ));
+    @include call-variations-content-mixin($args-primary);
+
+    &#{$component}-dark {
+      $args-primary-dark: map-merge($args, (
+              variation-color:        $brand-primary-dark,
+              variation-color-text:   $brand-primary-dark-color,
+              variation-color-border: $brand-primary-dark-border
+      ));
+      @include call-variations-content-mixin($args-primary-dark);
+    }
+
+    &#{$component}-light {
+      $args-primary-light: map-merge($args, (
+              variation-color:        $brand-primary-light,
+              variation-color-text:   $brand-primary-light-color,
+              variation-color-border: $brand-primary-light-border
+      ));
+      @include call-variations-content-mixin($args-primary-light);
+    }
+
+    &#{$component}-outline {
+      $args-primary-outline: map-merge($args, (
+              variation-color:        $brand-primary-outline,
+              variation-color-text:   $brand-primary-outline-color,
+              variation-color-border: $brand-primary-outline-border
+      ));
+      @include call-variations-content-mixin($args-primary-outline);
+    }
+  }
+
+  &#{$component}-info {
+    $args-info: map-merge($args, (
+            variation-color: $brand-info,
+            variation-color-text: $brand-info-color,
+            variation-color-border:$brand-info
+    ));
+    @include call-variations-content-mixin($args-info);
+
+    &#{$component}-dark {
+      $args-info-dark: map-merge($args, (
+              variation-color:        $brand-info-dark,
+              variation-color-text:   $brand-info-dark-color,
+              variation-color-border: $brand-info-dark-border
+      ));
+      @include call-variations-content-mixin($args-info-dark);
+    }
+
+    &#{$component}-light {
+      $args-info-light: map-merge($args, (
+              variation-color:        $brand-info-light,
+              variation-color-text:   $brand-info-light-color,
+              variation-color-border: $brand-info-light-border
+      ));
+      @include call-variations-content-mixin($args-info-light);
+    }
+
+    &#{$component}-outline {
+      $args-info-outline: map-merge($args, (
+              variation-color:        $brand-info-outline,
+              variation-color-text:   $brand-info-outline-color,
+              variation-color-border: $brand-info-outline-border
+      ));
+      @include call-variations-content-mixin($args-info-outline);
+    }
+
+    &#{$component}-parallax, .parallax-reverse, .parallax {
+      border: none !important;
+    }
+  }
+
+  &#{$component}-success {
+    $args-success: map-merge($args, (
+            variation-color: $brand-success,
+            variation-color-text: $brand-success-color,
+            variation-color-border:$brand-success
+    ));
+    @include call-variations-content-mixin($args-success);
+
+    &#{$component}-dark {
+      $args-success-dark: map-merge($args, (
+              variation-color:        $brand-success-dark,
+              variation-color-text:   $brand-success-dark-color,
+              variation-color-border: $brand-success-dark-border
+      ));
+      @include call-variations-content-mixin($args-success-dark);
+    }
+
+    &#{$component}-light {
+      $args-success-light: map-merge($args, (
+              variation-color:        $brand-success-light,
+              variation-color-text:   $brand-success-light-color,
+              variation-color-border: $brand-success-light-border
+      ));
+      @include call-variations-content-mixin($args-success-light);
+    }
+
+    &#{$component}-outline {
+      $args-success-outline: map-merge($args, (
+              variation-color:        $brand-success-outline,
+              variation-color-text:   $brand-success-outline-color,
+              variation-color-border: $brand-success-outline-border
+      ));
+      @include call-variations-content-mixin($args-success-outline);
+    }
+  }
+
+  &#{$component}-warning {
+    $args-warning: map-merge($args, (
+            variation-color: $brand-warning,
+            variation-color-text: $brand-warning-color,
+            variation-color-border:$brand-warning
+    ));
+    @include call-variations-content-mixin($args-warning);
+
+    &#{$component}-dark {
+      $args-warning-dark: map-merge($args, (
+              variation-color:        $brand-warning-dark,
+              variation-color-text:   $brand-warning-dark-color,
+              variation-color-border: $brand-warning-dark-border
+      ));
+      @include call-variations-content-mixin($args-warning-dark);
+    }
+
+    &#{$component}-light {
+      $args-warning-light: map-merge($args, (
+              variation-color:        $brand-warning-light,
+              variation-color-text:   $brand-warning-light-color,
+              variation-color-border: $brand-warning-light-border
+      ));
+      @include call-variations-content-mixin($args-warning-light);
+    }
+
+    &#{$component}-outline {
+      $args-warning-outline: map-merge($args, (
+              variation-color:        $brand-warning-outline,
+              variation-color-text:   $brand-warning-outline-color,
+              variation-color-border: $brand-warning-outline-border
+      ));
+      @include call-variations-content-mixin($args-warning-outline);
+    }
+  }
+
+  &#{$component}-danger {
+    $args-danger: map-merge($args, (
+            variation-color: $brand-danger,
+            variation-color-text: $brand-danger-color,
+            variation-color-border:$brand-danger
+    ));
+    @include call-variations-content-mixin($args-danger);
+
+    &#{$component}-dark {
+      $args-danger-dark: map-merge($args, (
+              variation-color:        $brand-danger-dark,
+              variation-color-text:   $brand-danger-dark-color,
+              variation-color-border: $brand-danger-dark-border
+      ));
+      @include call-variations-content-mixin($args-danger-dark);
+    }
+
+    &#{$component}-light {
+      $args-danger-light: map-merge($args, (
+              variation-color:        $brand-danger-light,
+              variation-color-text:   $brand-danger-light-color,
+              variation-color-border: $brand-danger-light-border
+      ));
+      @include call-variations-content-mixin($args-danger-light);
+    }
+
+    &#{$component}-outline {
+      $args-danger-outline: map-merge($args, (
+              variation-color:        $brand-danger-outline,
+              variation-color-text:   $brand-danger-outline-color,
+              variation-color-border: $brand-danger-outline-border
+      ));
+      @include call-variations-content-mixin($args-danger-outline);
+    }
+
+  }
+  &#{$component}-parallax, &.parallax-reverse, &.parallax {
+    border: none;
+  }
+
+
+}
+
 @mixin generic-variations($component, $selector-suffix, $color-default, $mixin-name, $mdb-param-1) {
 
   //setup map to pass parameters (instead of the incredibly long-error-prone list for each and every @include)
@@ -186,6 +453,7 @@
           mixin-name: $mixin-name,
           material-param-1: $mdb-param-1
   );
+
 
   // bootstrap styles
   &#{$selector-suffix},
@@ -239,4 +507,5 @@
     ));
     @include call-variations-content-mixin($args-danger);
   }
+
 }
