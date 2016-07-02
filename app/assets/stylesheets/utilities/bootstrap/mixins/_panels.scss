@@ -10,16 +10,6 @@ $body-bg, $body-color, $border, $heading-bg, $heading-color, $heading-border, $f
     border-bottom: 1px solid $heading-border !important;
     background-color: $heading-bg !important;
     color: $heading-color !important;
-    margin: $margin;
-    padding: 15px;
-
-    > .dropdown .dropdown-toggle {
-      color: inherit;
-    }
-
-    & > .panel-title {
-      color: inherit;
-    }
 
     + .panel-collapse > .panel-body {
       border-top-color: $border;
