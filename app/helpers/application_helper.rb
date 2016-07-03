@@ -16,18 +16,20 @@ module ApplicationHelper
   end
 
   def alert_class_for type
+    alert_hash= {}
     case type
       when "success"
-        "alert-success"
+        alert_hash={ type: "alert-success", heading: "Sweet!"}
       when "error"
-        "alert-danger"
+        alert_hash={ type: "alert-danger", heading: "Aww Snamp!"}
       when "alert"
-        "alert-warning"
+        alert_hash={ type: "alert-warning", heading: "Peep This!"}
       when "notice"
-        "alert-info"
+        alert_hash={ type: "alert-info", heading: "Heads Up!"}
       else
-        type.to_s
+        alert_hash={ type: type.to_s, heading: "Error Unknown"}
     end
+    return alert_hash
   end
 
 end
