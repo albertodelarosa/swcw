@@ -1,16 +1,4 @@
 - if devise_mapping.omniauthable?
-  .hidden-xs
-    .col-xs-12
-      .container-fluid
-        .form-group
-          .btn-group.btn-group-justified{role: "group"}
-            - resource_class.omniauth_providers.each do |provider|
-              .btn-group
-                = link_to provider.to_s.titleize, omniauth_authorize_path(resource_name, provider), class: "btn btn-primary", role: "button"
-  .visible-xs-block
-    - resource_class.omniauth_providers.each do |provider|
-      .col-xs-12
-        .container-fluid
-          .form-group
-            = link_to provider.to_s.titleize, omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-block", role: "button"
+  - resource_class.omniauth_providers.each do |provider|
+    = link_to provider.to_s.titleize, omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-raised", role: "button"
 

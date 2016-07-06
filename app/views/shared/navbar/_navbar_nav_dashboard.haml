@@ -1,11 +1,10 @@
 %ul.nav.navbar-nav.navbar-right.hidden-xs
-  -unless @current_cart.nil?
-    %li
-      .link_top
-      = link_to "view cart", cart_path(@current_cart)
-      .link_bottom
+  - if controller.controller_name.include?( "dashboards" ) || controller.controller_name.include?( "vehicles" ) || controller.controller_name.include?( "sites" ) || controller.controller_name.include?( "companies" ) || controller.controller_name.include?( "appointments" )
+    - unless @current_cart.nil?
+      %li
+        = link_to "view cart", cart_path( @current_cart ), class: "btn btn-outline"
   %li.dropdown
-    %a.dropdown-toggle{ data: { toggle: "dropdown" }, href: "#" }
+    %a.dropdown-toggle.btn.btn-outline{ data: { toggle: "dropdown" }, href: "#" }
       = "profile"
       %b.caret
     %ul.dropdown-menu

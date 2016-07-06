@@ -27,7 +27,7 @@ $light-color: lighten($navbar-default-bg, 25%);
       padding: 1px 0 0 0;
 
       li {
-        border-left: 1px solid $light-color;
+        margin-left: 10px;
         a {
           padding: 10px 15px;
           &:hover {
@@ -47,9 +47,6 @@ $light-color: lighten($navbar-default-bg, 25%);
         a, a:focus, a:hover {
           @include li-opened($navbar-default-bg, $light-color);
         }
-      }
-      li:last-child {
-        border-right: 1px solid $light-color;
       }
     }
 

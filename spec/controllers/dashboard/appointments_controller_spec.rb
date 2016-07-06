@@ -5,8 +5,11 @@ RSpec.describe Dashboard::AppointmentsController, type: :controller do
   let!(:appointment_tomorrow) { FactoryGirl.create(:appointment) }
   let!(:appointment_today)    { FactoryGirl.create(:appointment, date: (DateTime.now.to_date).to_s(:db), drop_off_time: '09:00:00', pick_up_time: '14:00:00') }
   let!(:appointment_last_week){ FactoryGirl.create(:appointment, date: (Time.current.to_date - 7.day).to_s(:db), drop_off_time: '09:00:00', pick_up_time: '14:00:00') }
+
   context "Happy Path" do
-      describe "GET index" do
+    before(:each) { login_user }
+
+    describe "GET index" do
         subject { get :index }
         before(:each) { subject }
 
@@ -61,6 +64,13 @@ RSpec.describe Dashboard::AppointmentsController, type: :controller do
         end
       end
 
+    describe "POST create" do
+      before { post :create, appointment: appointment_tomorrow }
+      it "does something" do
+        expect( assigns( :appointment ) ).to eq( appointment_tomorrow )
+        expect( assigns( :appointment ) ).to eq( Appointment )
+      end
+    end
   end
 
 end

@@ -7,8 +7,9 @@ class Order < ActiveRecord::Base
   validate :validate_card, on: :create
 
   def purchase
-    response = QB_GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
-    transactions.create!(action: "purchase", amount: price_in_cents, response: response)
+    #response = QB_GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
+    #transactions.create!(action: "purchase", amount: price_in_cents, response: response)
+    #
     cart.update_attribute(:purchased_at, Time.now) if 1==1
     return true
   end
