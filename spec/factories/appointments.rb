@@ -5,8 +5,8 @@ FactoryGirl.define do
   factory :appointment do
     current_time = (Time.current.to_date + 10.hour).to_s(:db)
 
-    number        UUID.generate
-    date          (current_time.to_date + 1.day + 10.hour).to_s(:db)
+    #number        UUID.generate
+    #date          (current_time.to_date + 1.day + 10.hour).to_s(:db)
     drop_off_time (current_time.to_date + 1.day + 10.hour).to_s(:db)
     pick_up_time  (current_time.to_date + 6.hour).to_s(:db)
     notes         "please make sure you clean my mats"

@@ -10,19 +10,19 @@
     #datetimepicker1.date.input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-calendar
-      = f.text_field(:date, placeholder: "appointment date", class: "form-control input-sm", "data-date-days-of-week-disabled" => "0,6", value: "", "aria_describedby" => "sizing-addon2")
+      = f.text_field(:date, placeholder: "appointment date", class: "form-control input-lg", "data-date-days-of-week-disabled" => "0,6", value: "", "aria_describedby" => "sizing-addon2")
   .form-group
     = f.label :drop_off_time, class: "sr-only"
     #datetimepicker2.date.input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-calendar
-      = f.text_field(:drop_off_time, placeholder: "drop-off time", value: "", class: "form-control input-sm", "aria_describedby" => "sizing-addon2")
+      = f.text_field(:drop_off_time, placeholder: "drop-off time", value: "", class: "form-control input-lg")
   .form-group
     = f.label :pick_up_time, class: "sr-only"
     #datetimepicker3.date.input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-calendar
-      = f.text_field(:pick_up_time, placeholder: "pick-up time", value: "", class: "form-control input-sm", "aria_describedby" => "sizing-addon2")
+      = f.text_field(:pick_up_time, placeholder: "pick-up time", value: "", class: "form-control input-lg", "aria_describedby" => "sizing-addon2")
   .form-group
     = f.label :notes, class: "sr-only"
     = f.text_area(:notes, size: '5x5',  placeholder: "notes", class: "form-control input-sm")
