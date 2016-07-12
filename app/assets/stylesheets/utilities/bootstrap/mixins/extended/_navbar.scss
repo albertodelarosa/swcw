@@ -37,22 +37,36 @@
 
 @mixin ul-dropdonw-menu($bg, $light-color) {
   ul.dropdown-menu {
-    border: 1px solid $bg;
-    margin-left: -1px;
-    margin-top: 12px;
+    border: 1px solid #ddd;
+    margin: 0px;
+    margin-top: 15px;
     padding: 0px;
     background: $bg;
+    min-width: 280px;
+    list-style: none;
+    font-size: 14px;
+    line-height: 20px;
+    max-height: 200px;
+    overflow: hidden;
     @include border-top-radius(0px);
-    @include border-bottom-radius(3px);
-    @include box-shadow(3px 3px 4px rgba(0, 0, 0, 0.6));
+    @include border-bottom-radius(4px);
+    //@include box-shadow(3px 3px 4px rgba(0, 0, 0, 0.6));
     li {
       border-left: none;
       a {
         background: none;
-        padding: 15px 25px;
+        padding: 10px;
         line-height: 20px;
         @include transition-timing-function(ease-in-out);
         @include transition(font-size 0.5s);
+        border: none;
+        font-size: 14px;
+        line-height: 20px;
+        border-bottom: 1px solid #f4f4f4;
+        white-space: nowrap;
+        .glyphicon {
+          width: 20px;
+        }
         .link_top {
           border-radius: 0px;
           background: $bg;
@@ -61,7 +75,7 @@
         }
       }
       a:hover {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 20px;
       }
     }

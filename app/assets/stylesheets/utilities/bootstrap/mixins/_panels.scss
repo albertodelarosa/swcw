@@ -10,6 +10,9 @@ $body-bg, $body-color, $border, $heading-bg, $heading-color, $heading-border, $f
     border-bottom: 1px solid $heading-border !important;
     background-color: $heading-bg !important;
     color: $heading-color !important;
+  & > .panel-footer > .panel-body > .form-control {
+    color: $body-color !important;
+  }
 
     + .panel-collapse > .panel-body {
       border-top-color: $border;

@@ -17,8 +17,12 @@
 
 .collapse {
   display: none;
+  -webkit-padding-start: 10px;
+  -webkit-padding-end: 10px;
 
-  &.in      { display: block; }
+  &.in {
+    display: block;
+  }
   // [converter] extracted tr&.in to tr.collapse.in
   // [converter] extracted tbody&.in to tbody.collapse.in
 }
@@ -31,6 +35,8 @@ tbody.collapse.in { display: table-row-group; }
   position: relative;
   height: 0;
   overflow: hidden;
+  -webkit-padding-start: 10px;
+  -webkit-padding-end: 10px;
   @include transition-property(height, visibility);
   @include transition-duration(.35s);
   @include transition-timing-function(ease);
