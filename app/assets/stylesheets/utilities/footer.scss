@@ -1,6 +1,6 @@
 @import "./bootstrap/mixins/extended/material-design/_variables";
 #footer {
-  height: 60px;
+  height: 50px;
   margin: 0;
   padding: 5px;
   background-color: $footer-bg;
@@ -13,13 +13,13 @@
     font-size: 8px;
     color: $ltpp-p1-hex;
     text-align: right;
-    line-height: 35px;
+    line-height: 26px;
   }
 }
 
 @media (max-width: $screen-xs-max) {
   #footer {
-    height: 80px;
+    height: 60px;
     padding-top: 8px;
     text-align: center;
     margin-top: 0px;
