@@ -342,3 +342,40 @@ $bs-datetimepicker-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         cursor: pointer;
     }
 }
+
+.bootstrap-datetimepicker-widget {
+  background-color: #3E3E3E;
+  color: #F0652C;
+  table{
+    td.active,
+    td.active:hover {
+      background-color: #F0652C;
+      border-radius: 36px;
+      -webkit-transition: border-radius 1s, background-color 1s; /* Safari */
+      transition: border-radius 1s, background-color 1s;
+    }
+    td.day:hover,
+    td.hour:hover,
+    td.minute:hover,
+    td.second:hover,
+    td span:hover {
+      background: #FCE0D5;
+      color: #783216;
+    }
+  }
+  .btn-primary {
+    color: #FEF0EA;
+    background-color: #F0652C;
+    border-color: #FAD1C0;
+  }
+  .btn-primary:hover {
+    color: #783216;
+    background-color: #F6A380;
+    border-color: #FCE0D5;
+    border-radius: 36px;
+    -webkit-transition: border-radius 1s; /* Safari */
+    transition: border-radius 1s;
+  }
+}
+
+
