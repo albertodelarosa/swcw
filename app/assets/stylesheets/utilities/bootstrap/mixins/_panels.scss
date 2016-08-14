@@ -1,7 +1,9 @@
 // Panels
 
 @mixin panel-variant( 
-$body-bg, $body-color, $border, $heading-bg, $heading-color, $heading-border, $footer-bg, $margin:10px 10px 0px 10px ) {
+$body-bg, $body-color, $border, 
+$heading-bg, $heading-color, $heading-border, 
+$footer-bg, $margin:10px 10px 0px 10px ) {
   border: 1px solid $border !important;
   background-color: $body-bg !important;
   color: $body-color !important;
@@ -32,4 +34,28 @@ $body-bg, $body-color, $border, $heading-bg, $heading-color, $heading-border, $f
     }
   }
 
+
+  &.appointment-format{
+    & > .panel-heading{
+      //background-color: #F0652C;
+      border-bottom: 3px solid $heading-color !important;
+      & > .panel-title > .hidden-xs {
+        .appt-date {
+          background: $heading-color;
+          & > h1, h2, h3, h4, h5, h6 {
+            color: $heading-bg !important;
+          }
+        }
+      }
+      & > .panel-title > .visible-xs-block {
+        .appt-date {
+          background: $heading-color;
+          & > h1, h2, h3, h4, h5, h6 {
+            color: $heading-bg !important;
+          }
+        }
+      }
+    }
+
+  }
 }
