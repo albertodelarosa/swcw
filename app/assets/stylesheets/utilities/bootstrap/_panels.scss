@@ -276,3 +276,47 @@
 
 
 
+.panel {
+  &.appointment-format{
+    & > .panel-heading{
+      padding: 10px;
+      & > .panel-title > .hidden-xs {
+        .appt-date {
+          padding: 10px;
+          border-radius: 60px;
+          width: 86px;
+          margin: 0 auto;
+          & > h1, h2, h3, h4, h5, h6 {
+            margin: 13px 0px 12px -6px !important;
+          }
+        }
+        .appt-day {
+          margin-top: 5px;
+          margin-bottom: 0px;
+        }
+      }
+      & > .panel-title > .visible-xs-block {
+        .appt-date {
+          border-radius: 60px;
+          height: 75px;
+          width: 75px;
+          margin: 0 auto;
+          padding: 20px 23px;
+          & > h1, h2, h3, h4, h5, h6 {
+            margin: 0px !important;
+          }
+        }
+      }
+    }
+
+    & > .panel-body > .visible-xs-block {
+      & > h1.appt-time, h2.appt-time,
+          h3.appt-time, h4.appt-time,
+          h5.appt-time, h6.appt-time {
+        margin-top: 4px!important;
+      }
+    }
+  }
+}
+
+
