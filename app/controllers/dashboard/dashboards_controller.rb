@@ -37,6 +37,7 @@ class Dashboard::DashboardsController < ApplicationController
       @companies    = @account.companies    || []
       @vehicles     = @account.vehicles     || []
       @appointment = Appointment.new
+      @next_app = @appointments.last unless @appointments.empty?
 
       respond_to do |format|
         format.html
