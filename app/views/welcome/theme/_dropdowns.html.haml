@@ -1,0 +1,17 @@
+.page-header
+  %h1 Dropdown menus
+.dropdown.theme-dropdown.clearfix
+  %a#dropdownMenu1.sr-only.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+    Dropdown
+    %span.caret
+  %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+    %li.active
+      %a{:href => "#"} Action
+    %li
+      %a{:href => "#"} Another action
+    %li
+      %a{:href => "#"} Something else here
+    %li.divider{:role => "separator"}
+    %li
+      %a{:href => "#"} Separated link
+

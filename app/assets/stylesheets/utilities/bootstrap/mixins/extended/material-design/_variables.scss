@@ -38,6 +38,10 @@ $brand-default-outline:        transparent;
 $brand-default-outline-color:  #353535;
 $brand-default-outline-border: $d0-hex;
 
+$brand-default-lightest-grey:        $lestgrey-d0-hex;
+$brand-default-lightest-grey-color:  $lestgrey-d4-hex;
+$brand-default-lightest-grey-border: $lestgrey-d2-hex;
+
 
 $brand-primary:                $blue;
 $brand-primary-color:          $ltpp-p1-hex;
@@ -54,6 +58,11 @@ $brand-primary-light-border:   $blue;
 $brand-primary-outline:        transparent;
 $brand-primary-outline-color:  #353535;
 $brand-primary-outline-border: $blue;
+
+$brand-primary-lightest-grey:        $lestgrey-p0-hex;
+$brand-primary-lightest-grey-color:  $lestgrey-p4-hex;
+$brand-primary-lightest-grey-border: $lestgrey-p2-hex;
+
 
 
 $brand-info:                $light-blue;
@@ -72,6 +81,11 @@ $brand-info-outline:        transparent;
 $brand-info-outline-color:  #353535;
 $brand-info-outline-border: $light-blue;
 
+$brand-info-lightest-grey:        $lestgrey-s3-0-hex;
+$brand-info-lightest-grey-color:  $lestgrey-s3-4-hex;
+$brand-info-lightest-grey-border: $lestgrey-s3-2-hex;
+
+
 
 $brand-success:                $teal;
 $brand-success-color:          $ltpp-s2-1-hex;
@@ -88,6 +102,11 @@ $brand-success-light-border:   $teal;
 $brand-success-outline:        transparent;
 $brand-success-outline-color:  #353535;
 $brand-success-outline-border: $teal;
+
+$brand-success-lightest-grey:        $lestgrey-s2-0-hex;
+$brand-success-lightest-grey-color:  $lestgrey-s2-4-hex;
+$brand-success-lightest-grey-border: $lestgrey-s2-2-hex;
+
 
 
 $brand-warning:                $deep-orange;
@@ -106,6 +125,11 @@ $brand-warning-outline:        transparent;
 $brand-warning-outline-color:  #353535;
 $brand-warning-outline-border: $deep-orange;
 
+$brand-warning-lightest-grey:        $lestgrey-s1-0-hex;
+$brand-warning-lightest-grey-color:  $lestgrey-s1-4-hex;
+$brand-warning-lightest-grey-border: $lestgrey-s1-2-hex;
+
+
 
 $brand-danger:                $red;
 $brand-danger-color:          $ltpp-s4-1-hex;
@@ -122,6 +146,11 @@ $brand-danger-light-border:   $red;
 $brand-danger-outline:        transparent;
 $brand-danger-outline-color:  #353535;
 $brand-danger-outline-border: $red;
+
+$brand-danger-lightest-grey:        $lestgrey-s4-0-hex;
+$brand-danger-lightest-grey-color:  $lestgrey-s4-4-hex;
+$brand-danger-lightest-grey-border: $lestgrey-s4-2-hex;
+
 
 
 $border-radius-base: 2px;

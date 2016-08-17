@@ -279,6 +279,16 @@
       ));
       @include call-variations-content-mixin($args-default-outline);
     }
+
+    &#{$component}-lightest-grey {
+      $args-default-lightest-grey: map-merge($args, (
+              variation-color:        $brand-default-lightest-grey,
+              variation-color-text:   $brand-default-lightest-grey-color,
+              variation-color-border: $brand-default-lightest-grey-border
+      ));
+      @include call-variations-content-mixin($args-default-lightest-grey);
+    }
+
     &.section-light {
       border: none;
     }
@@ -318,6 +328,16 @@
       ));
       @include call-variations-content-mixin($args-primary-outline);
     }
+
+    &#{$component}-lightest-grey {
+      $args-primary-lightest-grey: map-merge($args, (
+              variation-color:        $brand-primary-lightest-grey,
+              variation-color-text:   $brand-primary-lightest-grey-color,
+              variation-color-border: $brand-primary-lightest-grey-border
+      ));
+      @include call-variations-content-mixin($args-primary-lightest-grey);
+    }
+
     &.section-light {
       border: none;
     }
@@ -356,6 +376,15 @@
               variation-color-border: $brand-info-outline-border
       ));
       @include call-variations-content-mixin($args-info-outline);
+    }
+
+    &#{$component}-lightest-grey {
+      $args-info-lightest-grey: map-merge($args, (
+              variation-color:        $brand-info-lightest-grey,
+              variation-color-text:   $brand-info-lightest-grey-color,
+              variation-color-border: $brand-info-lightest-grey-border
+      ));
+      @include call-variations-content-mixin($args-info-lightest-grey);
     }
 
     &#{$component}-parallax, .parallax-reverse, .parallax {
@@ -400,6 +429,16 @@
       ));
       @include call-variations-content-mixin($args-success-outline);
     }
+
+    &#{$component}-lightest-grey {
+      $args-success-lightest-grey: map-merge($args, (
+              variation-color:        $brand-success-lightest-grey,
+              variation-color-text:   $brand-success-lightest-grey-color,
+              variation-color-border: $brand-success-lightest-grey-border
+      ));
+      @include call-variations-content-mixin($args-success-lightest-grey);
+    }
+
     &.section-light {
       border: none;
     }
@@ -439,6 +478,16 @@
       ));
       @include call-variations-content-mixin($args-warning-outline);
     }
+
+    &#{$component}-lightest-grey {
+      $args-warning-lightest-grey: map-merge($args, (
+              variation-color:        $brand-warning-lightest-grey,
+              variation-color-text:   $brand-warning-lightest-grey-color,
+              variation-color-border: $brand-warning-lightest-grey-border
+      ));
+      @include call-variations-content-mixin($args-warning-lightest-grey);
+    }
+
     &.section-light {
       border: none;
     }
@@ -478,6 +527,16 @@
       ));
       @include call-variations-content-mixin($args-danger-outline);
     }
+
+    &#{$component}-lightest-grey {
+      $args-danger-lightest-grey: map-merge($args, (
+              variation-color:        $brand-danger-lightest-grey,
+              variation-color-text:   $brand-danger-lightest-grey-color,
+              variation-color-border: $brand-danger-lightest-grey-border
+      ));
+      @include call-variations-content-mixin($args-danger-lightest-grey);
+    }
+
     &.section-light {
       border: none;
     }
