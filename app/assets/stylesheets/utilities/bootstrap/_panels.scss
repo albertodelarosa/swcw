@@ -282,17 +282,22 @@
       padding: 10px;
       & > .panel-title > .hidden-xs {
         .appt-date {
-          padding: 10px;
-          border-radius: 60px;
-          width: 86px;
+          padding: 1px;
+          border-radius: 33px;
+          width: 66px;
           margin: 0 auto;
           & > h1, h2, h3, h4, h5, h6 {
-            margin: 13px 0px 12px -6px !important;
+            margin: 13px auto 12px auto !important;
           }
         }
         .appt-day {
           margin-top: 5px;
           margin-bottom: 0px;
+        }
+        .appt-day-in-words{
+          h1, h2, h3, h4, h5, h6 {
+            margin-top: 0px;
+          }
         }
       }
       & > .panel-title > .visible-xs-block {
@@ -316,6 +321,15 @@
         margin-top: 4px!important;
       }
     }
+
+    & > .panel-body > .hidden-xs {
+      & > h1.appt-time, h2.appt-time,
+          h3.appt-time, h4.appt-time,
+          h5.appt-time, h6.appt-time {
+        margin-top: 10px!important;
+      }
+    }
+
   }
 }
 
