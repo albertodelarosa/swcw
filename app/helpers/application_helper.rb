@@ -32,4 +32,11 @@ module ApplicationHelper
     return alert_hash
   end
 
+  def data_chart
+    fist_value = [ 230, "#1ca8dd", "Returning" ]
+    second_value = [ 130, "#1bc98e", "New" ]
+
+    { data: {chart: "doughnut", animation: "!0", segment_stroke_color: "#FFA57C", segment_stroke_width: "1", percentage_inner_cutout: 80, value: "[{ value: #{fist_value[0]}, color: '#{fist_value[1]}', label: '#{fist_value[2]}' }, { value: #{second_value[0]}, color: '#{second_value[1]}', label: '#{second_value[2]}' }]"} }
+  end
+
 end

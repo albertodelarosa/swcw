@@ -1,0 +1,103 @@
+.page-header
+  %h1 Tables
+.row
+  .col-md-6
+    %table.table
+      %thead
+        %tr
+          %th #
+          %th First Name
+          %th Last Name
+          %th Username
+      %tbody
+        %tr
+          %td 1
+          %td Mark
+          %td Otto
+          %td @mdo
+        %tr
+          %td 2
+          %td Jacob
+          %td Thornton
+          %td @fat
+        %tr
+          %td 3
+          %td Larry
+          %td the Bird
+          %td @twitter
+  .col-md-6
+    %table.table.table-striped
+      %thead
+        %tr
+          %th #
+          %th First Name
+          %th Last Name
+          %th Username
+      %tbody
+        %tr
+          %td 1
+          %td Mark
+          %td Otto
+          %td @mdo
+        %tr
+          %td 2
+          %td Jacob
+          %td Thornton
+          %td @fat
+        %tr
+          %td 3
+          %td Larry
+          %td the Bird
+          %td @twitter
+.row
+  .col-md-6
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th #
+          %th First Name
+          %th Last Name
+          %th Username
+      %tbody
+        %tr
+          %td{:rowspan => "2"} 1
+          %td Mark
+          %td Otto
+          %td @mdo
+        %tr
+          %td Mark
+          %td Otto
+          %td @TwBootstrap
+        %tr
+          %td 2
+          %td Jacob
+          %td Thornton
+          %td @fat
+        %tr
+          %td 3
+          %td{:colspan => "2"} Larry the Bird
+          %td @twitter
+  .col-md-6
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th #
+          %th First Name
+          %th Last Name
+          %th Username
+      %tbody
+        %tr
+          %td 1
+          %td Mark
+          %td Otto
+          %td @mdo
+        %tr
+          %td 2
+          %td Jacob
+          %td Thornton
+          %td @fat
+        %tr
+          %td 3
+          %td{:colspan => "2"} Larry the Bird
+          %td @twitter
+

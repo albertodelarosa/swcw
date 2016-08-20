@@ -7,6 +7,10 @@
   height: auto;
   padding: 50px 10px;
 
+  &.section-intro{
+    padding-top: 10px;
+  }
+
   blockquote {
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);

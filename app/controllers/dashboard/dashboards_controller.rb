@@ -4,44 +4,47 @@ class Dashboard::DashboardsController < ApplicationController
   before_filter { add_breadcrumb "home", root_path, "glyphicon-home" }
 
   def index
-    @account = Account.includes(:companies, :sites, :vehicles, :appointments).find(current_user.id)
+    @account = Account.includes(:companies, :sites, :vehicles, :appointments, :service_plan).find(current_user.id)
+    @current_cart = current_cart unless session[:cart_id].nil?
 
-      if @account.companies.empty?
-        @company = Company.new
-        respond_to do |format|
-          format.html { redirect_to new_dashboard_company_path, notice: "you must select your company..." }
-          format.json { render json: @company }
-        end
-      elsif @account.sites.empty?
-        @site = Site.new
-        respond_to do |format|
-          format.html { redirect_to new_dashboard_site_path, notice: "you must select your site..." }
-          format.json { render json: @site }
-        end
-      elsif @account.vehicles.empty?
-        @vehicle = Vehicle.new
-        respond_to do |format|
-          format.html { redirect_to new_dashboard_vehicle_path, notice: "you must first enter your vehicle..." }
-          format.json { render json: @vehicle }
-        end
-      elsif( ( @service_plan = @account.service_plan ) || ( @current_cart = current_cart unless session[:cart_id].nil? ) )
-
-        @account.status = Account::STATUS.first
-        @appointments = @account.appointments || []
-        @sites        = @account.sites        || []
-        @companies    = @account.companies    || []
-        @vehicles     = @account.vehicles     || []
-        @appointment = Appointment.new
-
-        respond_to do |format|
-          format.html
-          format.json { render json: @account }
-        end
-      else
-        respond_to do |format|
-          format.html { redirect_to service_plan_purchase_path, notice: "#{@account.user.first_name}, you must first purchase a plan" }
-        end
+    if @account.companies.empty?
+      @company = Company.new
+      respond_to do |format|
+        format.html { redirect_to new_dashboard_company_path, notice: "you must select your company..." }
+        format.json { render json: @company }
       end
+    elsif @account.sites.empty?
+      @site = Site.new
+      respond_to do |format|
+        format.html { redirect_to new_dashboard_site_path, notice: "you must select your site..." }
+        format.json { render json: @site }
+      end
+    elsif @account.vehicles.empty?
+      @vehicle = Vehicle.new
+      respond_to do |format|
+        format.html { redirect_to new_dashboard_vehicle_path, notice: "you must first enter your vehicle..." }
+        format.json { render json: @vehicle }
+      end
+    elsif ( ( @account.service_plan.nil? ) && ( @current_cart.nil? ) )
+      respond_to do |format|
+        format.html { redirect_to service_plan_purchase_path, notice: "#{@account.user.first_name}, you must first purchase a plan" }
+      end
+    else
+      @service_plan = @account.service_plan
+      @account.status = Account::STATUS.first
+      @appointments = @account.appointments || []
+      @sites        = @account.sites        || []
+      @companies    = @account.companies    || []
+      @vehicles     = @account.vehicles     || []
+      @appointment = Appointment.new
+      @next_app = @appointments.last unless @appointments.empty?
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @account }
+      end
+    end
+
   end
 
   private
@@ -82,7 +85,7 @@ class Dashboard::DashboardsController < ApplicationController
   end
 
   def entity_id_from_params(entity)
-    return params.required(entity).permit(:id)[:id].to_i
+    return params.require(entity).permit(:id)[:id].to_i
   end
 
   def id_from_params
@@ -91,7 +94,6 @@ class Dashboard::DashboardsController < ApplicationController
 
   def params_process_vehicle
     params[:vehicle][:my_year] = params.require( :vehicle ).require( :vehicle_year )
-    puts;puts params.require( :vehicle ).require( :my_year );puts;puts
   end
 
 end

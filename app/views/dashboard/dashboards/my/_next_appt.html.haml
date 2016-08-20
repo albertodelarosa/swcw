@@ -1,0 +1,67 @@
+.panel.panel-warning-dark.appointment-format
+  .panel-heading
+    .panel-title.row
+      .visible-xs-block
+        .col-xs-12.appointment-day-in-words.text-center
+          %h2
+            ="#{time_ago_in_words(appointment.date)} ago"
+          .space-div
+        .col-xs-6
+          .appt-date.text-center
+            %h2
+              =appointment.date.strftime("%d")
+          %h4.appt-day.text-center
+            =appointment.date.strftime("%A")
+        .col-xs-6
+          .appt-month.text-center
+            %h4
+              =appointment.date.strftime("%B").upcase
+          .appt-year.text-center
+            %h3
+              =appointment.date.strftime("%Y")
+      .hidden-xs
+        .col-sm-5.text-center
+          .appt-date.text-center
+            %h1
+              =appointment.date.strftime("%d")
+          %h4.appt-day
+            =appointment.date.strftime("%A")
+        .col-sm-7
+          .appt-day-in-words
+            %h3
+              = appointment.date < Date.today ? "#{time_ago_in_words(appointment.date)} ago" : "in #{ time_ago_in_words(appointment.date) }"
+          .appt-month
+            %h4
+              ="#{appointment.date.strftime("%B").upcase} #{appointment.date.strftime("%Y")}"
+  .panel-body
+    .visible-xs-block
+      .row
+        .col-xs-6.text-center
+          %h4.appt-time-label
+            ="pick up"
+        .col-xs-6.text-center
+          %h4.appt-time-label
+            ="drop off"
+      .row
+        .col-xs-6.text-center
+          %h2.appt-time
+            =appointment.pick_up_time.strftime("%I:%M%p")
+        .col-xs-6.text-center
+          %h2.appt-time
+            =appointment.drop_off_time.strftime("%I:%M%p")
+    .hidden-xs
+      .row
+        .col-sm-6.text-center
+          %h5.appt-time-label
+            ="drop off"
+          %h3.appt-time
+            =appointment.drop_off_time.strftime("%I:%M%p")
+        .col-sm-6.text-center
+          %h5.appt-time-label
+            ="pick up"
+          %h3.appt-time
+            =appointment.pick_up_time.strftime("%I:%M%p")
+
+    .col-sm-offset-2.col-sm-8.center-text
+      = link_to("edit", edit_dashboard_appointment_path(appointment), class: "btn btn-warning btn-block btn-outline")
+

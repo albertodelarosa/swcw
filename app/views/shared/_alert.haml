@@ -1,5 +1,5 @@
 -unless flash.empty?
-  .col-xs-12.col-sm-offset-1.col-sm-10.section.section-primary
+  .col-xs-12.col-sm-offset-1.col-sm-10.flash-notice
     - flash.each do |type, message|
       - msg = alert_class_for(type)
       %div{ class: "alert #{ msg[ :type ] } alert-dismissable fade in"}

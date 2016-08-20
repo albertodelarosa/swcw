@@ -1,6 +1,21 @@
-%p#notice= notice
+%table.table.table-striped.table-hover
+  %tr
+    %th Date
+    %th Drop Off Time
+    %th Pick Up Time
+    %th Notes
+    %th Options
+  %tr
+    %td= @appointment.date.strftime( "%a %b %d, %Y" )
+    %td= @appointment.drop_off_time.strftime("%I:%M %p" )
+    %td= @appointment.pick_up_time.strftime("%I:%M %p" )
+    %td= @appointment.notes
+    %td
+      = link_to 'Edit', edit_dashboard_appointment_path( @appointment ), class: "btn btn-warning btn-outline btn-sm"
+      = link_to 'Destroy', dashboard_appointment_path( @appointment ), class: "btn btn-danger btn-outline btn-sm", :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
-= link_to 'Edit', edit_dashboard_appointment_path(@dashboard_appointment)
+
+= link_to 'Edit', edit_dashboard_appointment_path(@appointment)
 \|
 = link_to 'Back', dashboard_appointments_path

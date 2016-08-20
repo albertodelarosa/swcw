@@ -1,3 +1,4 @@
+@import "./mixins";
 //
 // Wells
 // --------------------------------------------------
@@ -6,15 +7,19 @@
 // Base class
 .well {
   min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: $well-bg;
-  border: 1px solid $well-border;
-  border-radius: $border-radius-base;
-  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  padding: 12px;
+  margin-bottom: 13px;
+  background-color: inherit;
+  //border: 1px solid $well-border;
+  //border-radius: $border-radius-base;
+  //@include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
   blockquote {
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);
+  }
+  & > .well-heading {
+    border-bottom: 1px solid;
+    margin-bottom: 18px;
   }
 }
 
@@ -27,3 +32,12 @@
   padding: 9px;
   border-radius: $border-radius-small;
 }
+
+// Contextual variations
+.well-default  {@include well-variant($well-default-bg,  $well-default-color, $well-default-border,  $well-default-heading-color,  $well-default-heading-border)}
+.well-primary  {@include well-variant($well-primary-bg,  $well-primary-color, $well-primary-border,  $well-primary-heading-color,  $well-primary-heading-border)}
+.well-success  {@include well-variant($well-success-bg,  $well-success-color, $well-success-border,  $well-success-heading-color,  $well-success-heading-border)}
+.well-info     {@include well-variant($well-info-bg,     $well-info-color,    $well-info-border,     $well-info-heading-color,     $well-info-heading-border)}
+.well-warning  {@include well-variant($well-warning-bg,  $well-warning-color, $well-warning-border,  $well-warning-heading-color,  $well-warning-heading-border)}
+.well-danger   {@include well-variant($well-danger-bg,   $well-danger-color,  $well-danger-border,   $well-danger-heading-color,   $well-danger-heading-border)}
+

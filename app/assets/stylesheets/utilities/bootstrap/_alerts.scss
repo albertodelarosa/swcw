@@ -5,6 +5,9 @@
 
 // Base styles
 // -------------------------
+.flash-notice {
+  min-height: 0px !important;
+}
 
 .alert {
   padding: $alert-padding;
