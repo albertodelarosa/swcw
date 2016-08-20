@@ -3,43 +3,42 @@
     -appointments = []
     -past_appointments = []
 
-    .row
-      .col-xs-12.col-md-4
-        -if @appointments.empty?
-          .panel.panel-warning
-            .panel-heading
-              .panel-title
-                ="make an appointment"
-            .panel-body
-              = render partial: 'dashboard/appointments/form'
-        -elsif  @next_app.date >= Date.today
-          = render partial: 'dashboard/dashboards/my/next_appt', locals: { appointment: @next_app }
-        -else
-          .panel.panel-warning
-            .panel-heading
-              .panel-title
-                ="make an appointment"
-            .panel-body
-              = render partial: 'dashboard/appointments/form'
-
-      .col-xs-12.col-sm-4
-        .panel.panel-primary
+    .col-xs-12.col-md-4
+      -if @appointments.empty?
+        .panel.panel-warning
           .panel-heading
             .panel-title
-              ="Service Plan"
+              ="make an appointment"
           .panel-body
-            .col-xs-12
-              .canvas
-                %canvas.ant{ data_chart }
-            .col-xs-12
-              %br
-              %p what!
-
-      .col-xs-12.col-md-4
-        .panel.panel-primary
+            = render partial: 'dashboard/appointments/form'
+      -elsif  @next_app.date >= Date.today
+        = render partial: 'dashboard/dashboards/my/next_appt', locals: { appointment: @next_app }
+      -else
+        .panel.panel-warning
           .panel-heading
             .panel-title
-              ="#{@sites.last.name}'s available \nappointments dates"
+              ="make an appointment"
           .panel-body
-            %p Coming soon!
+            = render partial: 'dashboard/appointments/form'
+
+    .col-xs-12.col-sm-4
+      .panel.panel-primary
+        .panel-heading
+          .panel-title
+            ="Service Plan"
+        .panel-body
+          .col-xs-12
+            .canvas
+              %canvas.ant{ data_chart }
+          .col-xs-12
+            %br
+            %p what!
+
+    .col-xs-12.col-md-4
+      .panel.panel-primary
+        .panel-heading
+          .panel-title
+            ="#{@sites.last.name}'s available \nappointments dates"
+        .panel-body
+          %p Coming soon!
 
