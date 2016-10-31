@@ -1,14 +1,17 @@
 -unless flash.empty?
-  .col-xs-12.col-sm-offset-1.col-sm-10.flash-notice
-    - flash.each do |type, message|
-      - msg = alert_class_for(type)
-      %div{ class: "alert #{ msg[ :type ] } alert-dismissable fade in"}
-        %button.close{ data: { dismiss: :alert } } ×
-        %p.lead
-          = msg[ :heading ]
-        %p
-          = message
-
-        -#- if controller.controller_name.eql?("dashboard") && controller.action_name.eql?("index")
-          -#= render "shared/navbar/welcome_back"
+- flash_hash = alert_class_for( flash.first.first )
+  #flashModal.col-xs-offset-1.col-xs-10.col-sm-offset-2.col-sm-8.modal.fade{ class: "modal-#{ flash_hash[ :type ] }-dark", aria: { labelledby: "flashModalLabel" }, role: "dialog", tabindex: -1 }
+    .modal-dialog{ role: "document" }
+      .modal-content
+        .modal-header
+          %button.close{ arial: { label: "Close" }, data: { dismiss: "modal" }, type: "button" }
+            %span{ aria: { hidden: true } } ×
+          %h4#flashModalLabel.modal-title
+            = flash_hash[ :heading ]
+        .modal-body
+          - flash.each do |type, message|
+            %p
+              = message
+        .modal-footer
+          %button.btn.btn-outline{ class: "btn-#{ flash_hash[ :type ] }", data: { dismiss: "modal" }, type: "button" } Close
 

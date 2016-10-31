@@ -24,4 +24,4 @@ jQuery ->
     $("#datetimepicker3").datetimepicker
       format: "hh:mm a"
       pickDate: false
-
+    $('#flashModal').modal( 'show' )

@@ -19,13 +19,13 @@ module ApplicationHelper
     alert_hash= {}
     case type
       when "success"
-        alert_hash={ type: "alert-success", heading: "Sweet!"}
+        alert_hash={ type: "success", heading: "Sweet!"}
       when "error"
-        alert_hash={ type: "alert-danger", heading: "Aww Snamp!"}
+        alert_hash={ type: "danger", heading: "Aww Snamp!"}
       when "alert"
-        alert_hash={ type: "alert-warning", heading: "Peep This!"}
+        alert_hash={ type: "warning", heading: "Peep This!"}
       when "notice"
-        alert_hash={ type: "alert-info", heading: "Heads Up!"}
+        alert_hash={ type: "info", heading: "Heads Up!"}
       else
         alert_hash={ type: type.to_s, heading: "Error Unknown"}
     end
