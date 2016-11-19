@@ -54,7 +54,29 @@ RSpec.describe Dashboard::SitesController do
 
     describe "GET new" do
 
-      describe "valid params" do
+      describe "company has 1 site, account has 0 company, account has 0 sites" do
+        before {
+          company1.sites << site1
+          get :new
+        }
+
+        it { expect( response.status ).to be( 302 )}
+        it { expect( response ).to redirect_to( new_dashboard_company_url ) }
+      end
+
+      describe "company has 1 site, account has 1 company, account has 0 sites" do
+        before {
+          company1.sites << site1
+          controller.current_user.account.companies << company1
+          get :new
+        }
+
+        it { expect( assigns( :companies_sites ) ).to eq( [ [ company1, nil ] ] ) }
+        it { expect( assigns( :current_company ) ).to eq( company1 ) }
+        it { expect( assigns( :current_company_sites ) ).to eq( [ site1 ] ) }
+      end
+
+      describe "company has 1 site, account has 1 company, account has 2 sites" do
         before {
           controller.current_user.account.companies << company1
           controller.current_user.account.sites << site1 << site2

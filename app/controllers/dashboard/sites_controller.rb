@@ -37,13 +37,13 @@ class Dashboard::SitesController < Dashboard::DashboardsController
         format.html { redirect_to new_dashboard_company_url, status: 302, notice: 'You need to pick a company first.' }
       end
     else
-      @company = Company.find(current_user.account.companies.last.id)
-      @sites = current_user.account.sites
-      @site = current_user.account.sites.last
+      @companies_sites = current_user.account.companies.zip( current_user.account.sites )
+      @current_company = @companies_sites.last.first
+      @current_company_sites = @current_company.sites
 
       respond_to do |format|
         format.html # new.html.erb
-        format.json { render json: @sites }
+        format.json { render json: [ @companies_sites, @current_company, @current_company_sites ] }
       end
     end
   end
@@ -77,15 +77,14 @@ class Dashboard::SitesController < Dashboard::DashboardsController
     @site = Site.find(id_from_params)
 
     respond_to do |format|
-      if current_user.account.sites.exists? @site.id
         current_user.account.sites.delete(@site)
-        current_user.account.sites << @sites
+        current_user.account.sites << @site
+      if current_user.account.sites.exists? @site
         format.html { redirect_to root_path, notice: 'Site was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "new" }
         format.json { render json: @site.errors.errors, status: :unprocessable_entity }
-        #format.json { render json: @old_site.errors.errors, status: :unprocessable_entity }
       end
     end
   end

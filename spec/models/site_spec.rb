@@ -10,9 +10,10 @@ describe Site do
   }
 
   has_many_associations = {
-    accounts:  FactoryGirl.create(:account),
-    companies: FactoryGirl.create(:company),
-    vehicles:  FactoryGirl.create(:vehicle)
+        accounts:  FactoryGirl.create( :account ),
+        companies: FactoryGirl.create( :company ),
+        vehicles:  FactoryGirl.create( :vehicle ),
+    appointments:  FactoryGirl.create( :appointment )
   }
 
   my_parameters = {

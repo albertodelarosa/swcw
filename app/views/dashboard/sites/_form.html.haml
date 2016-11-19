@@ -1,9 +1,9 @@
-= form_for [:dashboard, @site], method: method, html: {class: "form-horizontal", role: "form"} do |f|
-  - if @site.errors.any?
+= form_for [:dashboard, @current_company_sites.first], method: method, html: {class: "form-horizontal", role: "form"} do |f|
+  - if @current_company_sites.first.errors.any?
     #error_exploration
-      %h2= "#{pluralize(@site.errors.count, "error")} prohibited this site from being saved:"
+      %h2= "#{pluralize(@current_company_sites.first.errors.count, "error")} prohibited this site from being saved:"
       %ul
-        - @site.errors.full_messages.each do |message|
+        - @current_company_sites.first.errors.full_messages.each do |message|
           %li= message
   = BootstrapHelper::Panel.new(class: "primary") do |panel|
     - panel.heading() do
@@ -19,7 +19,7 @@
               -#= collection_select(:site, :id, @company.sites, :id, :name)
               %select.form-control{name: "site[id]"}
                 %option{value: ""}Select a Site
-                - @company.sites.each do |site|
+                - @current_company_sites.each do |site|
                   %option{value: site.id.to_s}=site.name
     - panel.footer do
       .row

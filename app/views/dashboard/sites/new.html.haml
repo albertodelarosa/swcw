@@ -1,3 +1,23 @@
-.section.section-default
-  = render partial: 'form', locals: {method: "post"}
+.row
+  .section.section-default
+    .col-xs-12.col-sm-9
+      = render partial: '/dashboard/shared/form', locals: { method: "patch", collection_item: @current_company_sites.first, collection: @current_company_sites }
+    .col-xs-12.col-sm-3
+      %h2 Prev Sites
+      .list-group
+        - @current_company_sites.each do |co_site|
+          .list-group-item
+            - if current_user.account.sites.size > 1
+              - current_user.accaount.sites.each do |site|
+                .row-action-primary
+                  %span.glyphicon.glyphicon-briefcase
+                .row-content
+                  .list-group-item-text
+                    = site.name
+            - else
+              .row-action-primary
+                %span.glyphicon.glyphicon-warning-sign
+              .row-content
+                .list-group-item-text You have no previous sites
+
 
