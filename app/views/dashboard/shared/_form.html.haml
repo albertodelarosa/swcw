@@ -1,0 +1,65 @@
+- collection_item_class = collection_item.class.to_s
+
+= form_for [:dashboard, collection_item], method: method, html: {class: "form-horizontal", role: "form"} do |f|
+  - if collection_item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(collection_item.errors.count, "error")} prohibited this #{ collection_item_class } from being saved:"
+      %ul
+        - collection_item.errors.full_messages.each do |msg|
+          %li= msg
+  =BootstrapHelper::Panel.new(class: 'primary') do |panel|
+    -panel.heading() do
+      -panel.title() do
+        .h4
+          = current_user.salutation.empty? ? "#{current_user.first_name} add a #{ collection_item_class }" : "#{current_user.salutation} add a #{ collection_item_class }"
+    - panel.body do
+      .row
+        .col-xs-12
+          .container-fluid
+            .form-group
+              = f.label :name, collection_item_class, class: 'sr-only'
+              = collection_select(:"#{ collection_item_class.downcase }", :id, collection, :id, :name, {prompt: "Select a #{ collection_item_class }"}, {class: "form-control"})
+    - panel.footer do
+      .row
+        .col-xs-6
+          .container-fluid
+            .form-group
+              = link_to "Cancel", :back, class: "btn btn-danger btn-raised btn-block"
+        .col-xs-6
+          .container-fluid
+            .form-group
+              = f.submit 'Save', class: "btn btn-success btn-raised btn-block"
+
+
+
+
+
+
+  -#= BootstrapHelper::Panel.new(contextual: 'primary', footer: '', title:"") do |panel|
+    -#= render partial: 'shared/panel_header', locals: {panel: panel, title: "Add a Company #{current_user.first_name}"}
+    -#- panel.body do
+      -#-if current_user.companies.size > 1
+        -#.col-xs-12.col-md-6
+          -#.well.well-lg
+            -#%h4.list-group-item-heading Previous Companies
+            -#%ul.list_group
+              -#- my_companies = current_user.companies.reverse
+              -#- first_company = my_companies.shift
+              -#%li.list-group-item.active
+                -#%span.badge current
+                -#= first_company.name
+              -#- my_companies.each do |company|
+                -#%li.list-group-item.list-group-item-success
+                  -#%span.badge previous
+                  -#= company.name
+      -#.col-xs-12.col-md-6
+        -#.well.well-lg
+          -#%h4.list-group-item-heading Select A Company
+          -#.form-group
+            -#= f.label :name, "Company", class: "control-label col-xs-12 col-sm-4"
+            -#.col-xs-12.col-sm-6
+              -#= collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
+    -#- panel.footer do
+      -#.col-sm-offset-6.col-xs-12.col-sm-6.col-md-3
+        -#= f.submit 'Save', class: "btn btn-success btn-block"
+

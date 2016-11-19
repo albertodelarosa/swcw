@@ -25,6 +25,7 @@
 //= require utilities/parallax
 //- require utilities/background_slider
 //= require_tree ./dashboard/
+//= require utilities/braintree
 
 $(document).ready(function(){
   $.material.init();

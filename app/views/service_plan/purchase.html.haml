@@ -18,7 +18,7 @@
             %p
               =number_to_currency(plan.price)
             %p
-              = link_to "Add to Cart", line_items_path( service_plan: { name: plan.name, plan_type: plan.plan_type, price: plan.price, status: plan.status, vehicle: @vehicle } ), class: "btn btn-default btn-block", method: :post
+              = link_to "Add to Cart", line_items_path( service_plan: { name: plan.name, plan_type: plan.plan_type, price: plan.price, status: plan.status, vehicle: @vehicle } ), class: "btn btn-success btn-raised btn-block", method: :post
 
 .section.section-default.row
   .col-xs-12
@@ -26,7 +26,7 @@
       Individual Plans
   .col-xs-12
     -@sample_individual_plans.each do |plan|
-      .col-xs-12.col-sm-3
+      .col-xs-12.col-sm-4
         = form_for plan, url: line_items_url, html: {class: "nifty_form"} do |f|
           = f.hidden_field(:name)
           = f.hidden_field(:plan_type)
@@ -40,6 +40,6 @@
             %p
               =number_to_currency(plan.price)
             %p
-              %button.btn.btn-default.btn-block
+              %button.btn.btn-success.btn-raised.btn-block
                 ="add to cart"
 

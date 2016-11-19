@@ -1,44 +1,57 @@
-.row.section.section-default
-  .col-xs-12.col-sm-offset-2.col-sm-8
-    -title "New Order"
-    = form_for @order, html: {class: "form-horizontal", role: "form"} do |f|
-      - if @order.errors.any?
-        #error_explanation
-          %h3= "#{pluralize(@order.errors.count, "error")} prohibited your credit card from being processed:"
-          %ul
-            - @order.errors.full_messages.each do |msg|
-              %li= msg
-      =BootstrapHelper::Panel.new(class: 'info-dark') do |panel|
-        -panel.heading() do
-          -panel.title() do
-            .h4="New Order"
-        - panel.body do
-          .form-group
-            .col-xs-12.col-sm-6
-              = f.label :first_name, class: 'sr-only'
-              = f.text_field :first_name, placeholder: "first name", class: "form-control", value: current_user.first_name
-            .col-xs-12.col-sm-6
-              = f.label :last_name, class: 'sr-only'
-              = f.text_field :last_name, placeholder: "last name", class: "form-control", value: current_user.last_name
-          .form-group
-            .col-xs-12.col-sm-3
-              = f.label :card_type, class: 'sr-only'
-              = f.select(:card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]],{include_blank: "card type"}, class: "form-control")
-            .col-xs-12.col-sm-7
-              = f.label :card_number, class: 'sr-only'
-              = f.text_field :card_number, placeholder: "card number", class: "form-control"
-            .col-xs-12.col-sm-2
-              = f.label :card_verification, class: 'sr-only'
-              = f.text_field :card_verification, placeholder: "(CVV)", class: "form-control"
-          .form-group
-            .col-xs-12.col-sm-6
-              = f.label :card_expires_on, class: 'sr-only'
-              = f.date_select(:card_expires_on_month, {discard_day: true, discard_year: true, add_month_numbers: false}, {class: "form-control"})
-            .col-xs-12.col-sm-6
-              = f.label :card_expires_on, class: 'sr-only'
-              = f.date_select(:card_expires_on_year, {discard_day: true, start_year: Date.today.year + 1, end_year: (Date.today.year+10), discard_month: true,}, {class: "form-control"})
-          .col-xs-12.col-sm-6.col-md-3.col-md-offset-2
-            = link_to "Cancel", :back, class: "btn btn-danger btn-outline btn-block"
-          .col-xs-12.col-sm-6.col-md-3.col-md-offset-2
-            = f.submit "Submit", class: "btn btn-success btn-outline btn-block"
+%form#checkout{ action: "/checkout", method: "post" }
+  #payment-form
+  %input{ type: "submit", value: "Pay $#{ @cart.total_price }" }/
+%script{ src: "https://js.braintreegateway.com/js/braintree-2.30.0.min.js" }
+:javascript
+  // We generated a client token for you so you can test out this code
+  // immediately. In a production-ready integration, you will need to
+  // generate a client token on your server (see section below).
+  var clientToken = "#{@token}";
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+  });
+
+-#.row.section.section-default
+  -#.col-xs-12.col-sm-offset-2.col-sm-8
+    -#-title "New Order"
+    -#= form_for @order, html: {class: "form-horizontal", role: "form"} do |f|
+      -#- if @order.errors.any?
+        -##error_explanation
+          -#%h3= "#{pluralize(@order.errors.count, "error")} prohibited your credit card from being processed:"
+          -#%ul
+            -#- @order.errors.full_messages.each do |msg|
+              -#%li= msg
+      -#=BootstrapHelper::Panel.new(class: 'info-dark') do |panel|
+        -#-panel.heading() do
+          -#-panel.title() do
+            -#.h4="New Order"
+        -#- panel.body do
+          -#.form-group
+            -#.col-xs-12.col-sm-6
+              -#= f.label :first_name, class: 'sr-only'
+              -#= f.text_field :first_name, placeholder: "first name", class: "form-control", value: current_user.first_name
+            -#.col-xs-12.col-sm-6
+              -#= f.label :last_name, class: 'sr-only'
+              -#= f.text_field :last_name, placeholder: "last name", class: "form-control", value: current_user.last_name
+          -#.form-group
+            -#.col-xs-12.col-sm-3
+              -#= f.label :card_type, class: 'sr-only'
+              -#= f.select(:card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]],{include_blank: "card type"}, class: "form-control")
+            -#.col-xs-12.col-sm-7
+              -#= f.label :card_number, class: 'sr-only'
+              -#= f.text_field :card_number, placeholder: "card number", class: "form-control"
+            -#.col-xs-12.col-sm-2
+              -#= f.label :card_verification, class: 'sr-only'
+              -#= f.text_field :card_verification, placeholder: "(CVV)", class: "form-control"
+          -#.form-group
+            -#.col-xs-12.col-sm-6
+              -#= f.label :card_expires_on, class: 'sr-only'
+              -#= f.date_select(:card_expires_on_month, {discard_day: true, discard_year: true, add_month_numbers: false}, {class: "form-control"})
+            -#.col-xs-12.col-sm-6
+              -#= f.label :card_expires_on, class: 'sr-only'
+              -#= f.date_select(:card_expires_on_year, {discard_day: true, start_year: Date.today.year + 1, end_year: (Date.today.year+10), discard_month: true,}, {class: "form-control"})
+          -#.col-xs-12.col-sm-6.col-md-3.col-md-offset-2
+            -#= link_to "Cancel", :back, class: "btn btn-danger btn-outline btn-block"
+          -#.col-xs-12.col-sm-6.col-md-3.col-md-offset-2
+            -#= f.submit "Submit", class: "btn btn-success btn-outline btn-block"
 

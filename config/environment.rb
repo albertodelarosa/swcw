@@ -10,6 +10,10 @@ ActionMailer::Base.smtp_settings = {
   :domain => 'herokuapp.com',
   :enable_starttls_auto => true
 }
+Braintree::Configuration.environment = :sandbox
+Braintree::Configuration.merchant_id = Rails.application.secrets.bt_merchant_id
+Braintree::Configuration.public_key  = Rails.application.secrets.bt_public_key
+Braintree::Configuration.private_key = Rails.application.secrets.bt_private_key
 
 # Initialize the rails application
 Sitelerwash::Application.initialize!

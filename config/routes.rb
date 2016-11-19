@@ -51,6 +51,7 @@ Sitelerwash::Application.routes.draw do
     get "logout"    => "users/sessions#destroy",    as: :sign_out
   end
 
+  post "checkout", to: "orders#checkout", as: :checkout
 
   #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 

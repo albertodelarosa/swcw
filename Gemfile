@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+#ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 #gem 'rails', '~> 4.2', '>= 4.2.6'
@@ -77,7 +77,9 @@ gem 'uuid' #UUID.generate
 gem 'tzinfo'
 
 # use braintree for merchant processing
-#gem 'braintree'
+gem "braintree", "~> 2.68.2 "
+
+#gem "dotenv-rails"
 
 # Use for parallax scroll
 #gem 'scrollmagicjs-rails'

@@ -13,12 +13,12 @@ unless VehicleSetting.all.size > 0
 end
 require File.join(File.dirname(__FILE__), 'create_vehicle.rb')
 
-#require File.join(File.dirname(__FILE__), 'create_appointments.rb')
 #require File.join(File.dirname(__FILE__), 'create_discounts.rb')
 #require File.join(File.dirname(__FILE__), 'create_siteler_dollars.rb')
 
 require File.join(File.dirname(__FILE__), 'create_companies.rb')
 require File.join(File.dirname(__FILE__), 'create_sites.rb')
+require File.join(File.dirname(__FILE__), 'create_appointments.rb')
 
 require File.join(File.dirname(__FILE__), 'create_services.rb')
 require File.join(File.dirname(__FILE__), 'create_service_plans.rb')

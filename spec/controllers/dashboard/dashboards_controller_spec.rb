@@ -4,9 +4,39 @@ describe Dashboard::DashboardsController do
   let(:valid_attributes) { { "index" => "MyString" } }
   let(:valid_session) { {} }
 
+  let!(:site1) { FactoryGirl.create(:site) }
+  let!(:site2) { FactoryGirl.create(:site) }
+
+  let!(:company1) { FactoryGirl.create(:company) }
+  let!(:company2) { FactoryGirl.create(:company) }
+
+  let!(:vehicle1) { FactoryGirl.create(:vehicle) }
+  let!(:vehicle2) { FactoryGirl.create(:vehicle) }
+
+  let!(:appointment_tomorrow) { FactoryGirl.create(:appointment) }
+  let!(:appointment_today)    { FactoryGirl.create(:appointment, date: (DateTime.now.to_date).to_s(:db), drop_off_time: '09:00:00', pick_up_time: '14:00:00') }
+  let!(:appointment_last_week){ FactoryGirl.create(:appointment, date: (Time.current.to_date - 7.day).to_s(:db), drop_off_time: '09:00:00', pick_up_time: '14:00:00') }
+
+  context "Happy Path" do
+    before { login_user }
+
+    describe "key association is empty" do
+      it "redirects to companies" do
+        expect( response ).to redirect_to( new_dashboard_company_path )
+      end
+    end
+
+  end
+
+
+
+
   before(:each) { login_user }
 
   describe "GET index" do
+
+
+
 
     it "assigns all current_user's appointments as @appointments" do
       appointments = @user.appointments
