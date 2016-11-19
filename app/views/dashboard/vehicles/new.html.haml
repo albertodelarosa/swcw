@@ -1,18 +1,18 @@
-- my_method = "put"
 .row.section.section-default
-  = link_to 'Back', dashboard_vehicles_path
-  = form_for [:dashboard, @vehicle], method: :method, html: {class: "form-horizontal", role: "form"} do |f|
-    - if @vehicle.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this company from being saved:"
-        %ul
-          - @vehicle.errors.full_messages.each do |msg|
-            %li= msg
+  .col-xs-12
+    = form_for [:dashboard, @vehicle], method: :method, html: {class: "form-horizontal", role: "form"} do |f|
+      - if @vehicle.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@vehicle.errors.count, "error")} prohibited this company from being saved:"
+          %ul
+            - @vehicle.errors.full_messages.each do |msg|
+              %li= msg
 
-    .col-xs-12.col-sm-6
-      .well.well-success
-        %img.img-rounded.img-responsive{src: "/assets/vehicles/new_vehicle4_outline.png", alt: ""}
-      = f.submit 'Submit', class: "btn btn-success btn-block", id: "add_vehicle"
-    .col-xs-12.col-sm-6
-      = render partial: 'form', locals: {f: f, my_method: my_method}
+      .row
+        .col-xs-12.col-sm-6
+          .well.well-primary
+            %img.img-rounded.img-responsive{src: "/assets/vehicles/new_vehicle4_outline.png", alt: ""}
+          = f.submit 'Submit', class: "btn btn-success btn-raised btn-block", id: "add_vehicle"
+        .col-xs-12.col-sm-6
+          = render partial: 'form', locals: {f: f, my_method: "put"}
 
