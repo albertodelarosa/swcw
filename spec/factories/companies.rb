@@ -3,7 +3,7 @@
 
 FactoryGirl.define do
   factory :company do
-    name        "My Factory Girl Company"
+    name        "My Factory Girl Company #{ Random.new.rand( 1..10 ) }"
     corp_id     "oefeiu3q9h"
     description "A Factory Girl Company"
     corp_email  "factorygirl@myfactorygirl.com"

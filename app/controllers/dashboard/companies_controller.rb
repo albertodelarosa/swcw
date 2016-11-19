@@ -31,9 +31,9 @@ class Dashboard::CompaniesController < Dashboard::DashboardsController
   # GET /dashboard/companies/new.json
   def new
     add_breadcrumb "add", nil, "glyphicon-plus-sign"
+    @companies = Company.all
 
     if current_user.account.companies.empty?
-      @companies = Company.all
       @company = @companies.first
       respond_to do |format|
         format.html # new.html.erb

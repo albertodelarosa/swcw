@@ -16,17 +16,17 @@
           .container-fluid
             .form-group
               = f.label :name, "Company", class: 'sr-only'
-              = collection_select(:company, :id, Company.order(:name), :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
+              = collection_select(:company, :id, @companies, :id, :name, {prompt: "Select a Company"}, {class: "form-control"})
     - panel.footer do
       .row
         .col-xs-6
           .container-fluid
             .form-group
-              = link_to "Cancel", :back, class: "btn btn-danger btn-block"
+              = link_to "Cancel", :back, class: "btn btn-danger btn-raised btn-block"
         .col-xs-6
           .container-fluid
             .form-group
-              = f.submit 'Save', class: "btn btn-success btn-block"
+              = f.submit 'Save', class: "btn btn-success btn-raised btn-block"
 
 
 

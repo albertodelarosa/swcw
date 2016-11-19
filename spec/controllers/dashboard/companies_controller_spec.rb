@@ -52,9 +52,31 @@ RSpec.describe Dashboard::CompaniesController do
           get :new
         end
 
-        it { expect( assigns(:companies) ).to eq( Company.all ) }
+        it { expect( assigns( :companies ) ).to eq( [ company1, company2, invalid_id ] ) }
         it { expect( assigns(:company) ).to eq( company1 ) }
         it { expect( response.status ).to be( 200 )}
+      end
+      describe "current_user.account.companies size is 1" do
+        before do
+          controller.current_user.account.companies.each( &:destroy )
+          controller.current_user.account.companies << company1
+          get :new
+        end
+
+        it { expect( assigns( :companies ) ).to eq( [ company1, company2, invalid_id ] ) }
+        it { expect( assigns(:company) ).to eq( company1 ) }
+        it { expect( response.status ).to be( 302 )}
+      end
+      describe "current_user.account.companies size is 2" do
+        before do
+          controller.current_user.account.companies.each( &:destroy )
+          controller.current_user.account.companies << company1 << company2
+          get :new
+        end
+
+        it { expect( assigns( :companies ) ).to eq( [ company1, company2, invalid_id ] ) }
+        it { expect( assigns(:company) ).to eq( company2 ) }
+        it { expect( response.status ).to be( 302 )}
       end
     end
 

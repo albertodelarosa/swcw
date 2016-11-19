@@ -8,23 +8,11 @@ class Dashboard::DashboardsController < ApplicationController
     @current_cart = current_cart unless session[:cart_id].nil?
 
     if @account.companies.empty?
-      @company = Company.new
-      respond_to do |format|
-        format.html { redirect_to new_dashboard_company_path, notice: "you must select your company..." }
-        format.json { render json: @company }
-      end
+      redirect_empty_association( @account.companies )
     elsif @account.sites.empty?
-      @site = Site.new
-      respond_to do |format|
-        format.html { redirect_to new_dashboard_site_path, notice: "you must select your site..." }
-        format.json { render json: @site }
-      end
+      redirect_empty_association( @account.sites )
     elsif @account.vehicles.empty?
-      @vehicle = Vehicle.new
-      respond_to do |format|
-        format.html { redirect_to new_dashboard_vehicle_path, notice: "you must first enter your vehicle..." }
-        format.json { render json: @vehicle }
-      end
+      redirect_empty_association( @account.vehicles )
     elsif ( ( @account.service_plan.nil? ) && ( @current_cart.nil? ) )
       respond_to do |format|
         format.html { redirect_to service_plan_purchase_path, notice: "#{@account.user.first_name}, you must first purchase a plan" }
@@ -48,6 +36,17 @@ class Dashboard::DashboardsController < ApplicationController
   end
 
   private
+
+  def redirect_empty_association( association )
+    new_class = association.scope.class.to_s.split('::').first.constantize.new
+    new_class_name = new_class.class.to_s.downcase
+    instance_variable_set("@" + new_class_name, new_class)
+
+    respond_to do |format|
+      format.html { redirect_to public_send( "new_dashboard_#{ new_class_name }_path" ), notice: "you must select your #{ new_class_name }..." }
+      format.json { render json: instance_variable_get( "@" + new_class_name ) }
+    end
+  end
 
   def generate_regular_services
     services = []
@@ -89,6 +88,7 @@ class Dashboard::DashboardsController < ApplicationController
   end
 
   def id_from_params
+    puts params.permit(:id)[:id].to_i
     return params.permit(:id)[:id].to_i
   end
 

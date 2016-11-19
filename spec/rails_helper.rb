@@ -33,6 +33,7 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerMacros, :type => :controller
+  config.include Devise::TestHelpers, :type => :view
   config.include FactoryGirl::Syntax::Methods
   #config.render_views
 

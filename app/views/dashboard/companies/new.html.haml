@@ -1,3 +1,20 @@
-.section.section-default
-  = render partial: 'form', locals: {method: "patch"}
+.row
+  .section.section-default
+    - if current_user.account.companies.size > 1
+      .col-xs-12.col-sm-9
+        = render partial: '/dashboard/shared/form', locals: { method: "patch", collection_item: @company, collection: @companies }
+      .col-xs-12.col-sm-3
+        %h2 Prev Companies
+        .list-group
+          - current_user.account.companies.each do |comppany|
+            .list-group-item
+              .row-action-primary
+                %span.material-icons.glyphicon.glyphicon-briefcase
+              .row-content
+                .list-group-item-text
+                  company.name
+
+    - else
+      .col-xs-12
+        = render partial: '/dashboard/shared/form', locals: { method: "patch", collection_item: @company, collection: @companies }
 
