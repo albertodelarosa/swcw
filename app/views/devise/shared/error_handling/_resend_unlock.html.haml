@@ -1,0 +1,6 @@
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  .hidden-xs
+    = link_to "Resend unlock instructions?", new_unlock_path(resource_name), class: "btn btn-warning btn-sm btn-outline col-sm-4", role: "button"
+  .visible-xs-block
+    = link_to "Resend unlock instructions?", new_unlock_path(resource_name), class: "btn btn-warning btn-sm btn-outline btn-block", role: "button"
+

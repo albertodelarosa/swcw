@@ -8,13 +8,13 @@
               %h3.pull-left
                 Edit #{resource_name.to_s.humanize}
               %h4.pull-right
-                = link_to "Back", :back, class: "btn btn-warning btn-block"
+                = link_to "Back", :back, class: "btn btn-warning btn-outline btn-block"
         #userHeading.collapse-heading{role: "tab"}
-          %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse1", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse1"}
+          %button.btn.btn-primary.btn-outline.btn-block{aria: {controls: "userCollapse1", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse1"}
             login informaiton
-          %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse2", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse2"}
+          %button.btn.btn-primary.btn-outline.btn-block{aria: {controls: "userCollapse2", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse2"}
             work info
-          %button.btn.btn-primary.btn-block{aria: {controls: "userCollapse3", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse3"}
+          %button.btn.btn-primary.btn-outline.btn-block{aria: {controls: "userCollapse3", expanded: true}, data: {parent: "#userAccordion", toggle: "collapse"}, href: "#userCollapse3"}
             personal info
         #userCollapse1.collapse.in{aria: {labelledby: "userHeading"}, role: "tabpanel"}
           = render partial: "/devise/registrations/panels/login_info", locals: {f: f}
@@ -24,8 +24,7 @@
         #userCollapse3.collapse{aria: {labelledby: "userHeading"}, role: "tabpanel"}
           = render partial: "/devise/registrations/panels/personal_contact_info", locals: {f: f}
           = render partial: "/devise/registrations/panels/personal_address_info", locals: {f: f}
-        .panel-footer
-          = render partial: "/devise/registrations/components/footer", locals: {f: f}
+        = render partial: "/devise/registrations/components/footer", locals: {f: f}
   -else
     .well.well-default
       .well-heading

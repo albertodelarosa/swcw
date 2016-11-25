@@ -1,0 +1,6 @@
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  .hidden-xs
+    = link_to "Resend confirmation?", new_confirmation_path(resource_name), class: "btn btn-default btn-sm btn-outline col-sm-4", role: "button"
+  .visible-xs-block
+    = link_to "Resend confirmation?", new_confirmation_path(resource_name), class: "btn btn-default btn-sm btn-outline btn-block", role: "button"
+

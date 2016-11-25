@@ -1,19 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-  #before_action :configure_permitted_parameters, if: :devise_controller?
-  #before_action :detect_browser ### when ready
-
   layout :layout_by_resource
-
   before_action :authenticate_user!
 
   def stored_location_for(resource)
     nil
   end
-
-  # from your application log (in this case, all fields with names like "password")
-  #filter_parameter_logging :card_number, :card_verification
 
   def generate_account(user)
     if user.account.nil?

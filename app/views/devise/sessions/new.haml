@@ -1,4 +1,4 @@
-.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2.col-lg-4.col-lg-offset-4
+.col-xs-12.col-sm-offset-1.col-sm-10.col-md-offset-2.col-md-8
   .container-fluid
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}, role: 'role') do |f|
       =BootstrapHelper::Panel.new(class: 'primary') do |panel|
@@ -6,59 +6,65 @@
           -panel.title() do
             .h4 login
         - panel.body do
-          .container-fluid
-            .form-group
-              .input-group
-                %span.input-group-addon email
-                = f.email_field :email, class: "form-control", autofocus: true
+          .col-xs-12
+            .container-fluid
+              .form-group
+                .input-group
+                  %span.input-group-addon email
+                  = f.email_field :email, class: "form-control", autofocus: true
           -#.container-fluid
             -#.form-group
               -#.input-group
                 -#%span.input-group-addon username
                 -#= f.text_field :username, class: "form-control", autofocus: true
-          .container-fluid
-            .form-group
-              .input-group
-                %span.input-group-addon password
-                = f.password_field :password, class: "form-control"
-          - if devise_mapping.rememberable?
+          .col-xs-12
             .container-fluid
               .form-group
-                = f.label :remember_me do
-                  = f.check_box :remember_me
-                  remember me
+                .input-group
+                  %span.input-group-addon password
+                  = f.password_field :password, class: "form-control"
+          - if devise_mapping.rememberable?
+            .col-xs-12
+              .container-fluid
+                .container-fluid
+                  .form-group
+                    = f.label :remember_me do
+                      = f.check_box :remember_me
+                      remember me
 
+          .hidden-xs
+            .row
+              .col-xs-12
+                .container-fluid
+                  .pull-right
+                    = f.submit 'login', class: "btn btn-success btn-raised", role: "button"
+                    = link_to "register", new_registration_path(resource_name), class: "btn btn-raised btn-success", role: "button"
+            .row
+              .col-xs-12
+                .container-fluid
+                  = render "devise/shared/error_handling/forgot_password"
+                  = render "devise/shared/error_handling/resend_conformation"
+                  = render "devise/shared/error_handling/resend_unlock"
 
-
-
-          .row.hidden-xs
-            .col-xs-12
-              .container-fluid
-                .btn-group.pull-right{role: "group"}
-                  = f.submit 'login', class: "btn btn-success btn-raised", role: "button"
-                  = link_to "register", new_registration_path(resource_name), class: "btn btn-raised btn-success", role: "button"
-                .btn-group.pull-left{role: "group"}
-                  = render "devise/shared/links_omniauthable"
-            .col-xs-12
-              .container-fluid
-                .btn-group.pull-right{role: "group"}
-                  = render "devise/shared/links_error_handling"
-          .row.visible-xs-block
-            .col-xs-12
-              .container-fluid
-                .btn-group
-                  = f.submit 'login', class: "btn btn-primary btn-block", role: "button"
-            .col-xs-12
-              .container-fluid
-                .btn-group
-                  = render "devise/shared/links_sign_up"
-                  = link_to "register", new_registration_path(resource_name), class: "btn btn-success btn-block", role: "button"
-            .col-xs-12
-              .container-fluid
-                .btn-group
-                  = render "devise/shared/links_omniauthable"
-            .col-xs-12
-              .container-fluid
-                .btn-group
-                  = render "devise/shared/links_error_handling"
+          .visible-xs-block
+            .row
+              .col-xs-12
+                .container-fluid
+                  = f.submit 'login', class: "btn btn-primary btn-raised btn-block", role: "button"
+            .row
+              .col-xs-12
+                .container-fluid
+                  -#= render "devise/shared/links_sign_up"
+                  = link_to "register", new_registration_path(resource_name), class: "btn btn-success btn-raised btn-block", role: "button"
+            -#.row
+              -#.col-xs-12
+                -#.container-fluid
+                  -#.btn-group
+                    -#= render "devise/shared/links_omniauthable"
+            .row
+              .col-xs-12
+                .container-fluid
+                  = render "devise/shared/error_handling/forgot_password"
+                  = render "devise/shared/error_handling/resend_conformation"
+                  = render "devise/shared/error_handling/resend_unlock"
 

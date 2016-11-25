@@ -1,13 +1,12 @@
 .hidden-xs
   .col-xs-12
-    .container-fluid
-      .btn-group.btn-group-justified{role: "group"}
-        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-          = link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-default btn-sm", role: "button"
-        - if devise_mapping.confirmable? && controller_name != 'confirmations'
-          = link_to "Resend confirmation instructions?", new_confirmation_path(resource_name), class: "btn btn-default btn-sm", role: "button"
-        - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-          = link_to "Resend unlock instructions?", new_unlock_path(resource_name), class: "btn btn-warning btn-raised btn-sm", role: "button"
+    -#.btn-group.btn-group-justified{role: "group"}
+    - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+      = link_to "Forgot password?", new_password_path(resource_name), class: "btn btn-default btn-sm btn-outline", role: "button"
+    - if devise_mapping.confirmable? && controller_name != 'confirmations'
+      = link_to "Resend confirmation?", new_confirmation_path(resource_name), class: "btn btn-default btn-sm btn-outline", role: "button"
+    - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+      = link_to "Resend unlock instructions?", new_unlock_path(resource_name), class: "btn btn-warning btn-raised btn-sm", role: "button"
 .visible-xs-block
   .col-xs-12
     .container-fluid
