@@ -1,8 +1,9 @@
 module DetailingServicesRegular
   extend ::ActiveSupport::Concern
 
-  def generate_regular_service(vehicle_size)
-    self.price        = self.class.const_get( (self.name + " price").upcase.tr(" ","_") )[vehicle_size]
+  def generate_regular_service
+    self.small_price        = self.class.const_get( (self.name + " price").upcase.tr(" ","_") )[ "Small" ]
+    self.large_price        = self.class.const_get( (self.name + " price").upcase.tr(" ","_") )[ "Large" ]
     self.description  = self.class.const_get( (self.name + " service").upcase.tr(" ", "_") )
     self.duration     = self.class.const_get( (self.name + " duration" ).upcase.tr(" ", "_"))
     self.image_url    = self.class.const_get( (self.name + " image_url").upcase.tr(" ", "_") )

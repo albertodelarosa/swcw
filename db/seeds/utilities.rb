@@ -28,7 +28,7 @@ def associate_account_user(account)
   account.generate_number
   account.save!
   printFinished()
-  return account
+  #return account
 end
 
 def create_user_home_info(user)
@@ -91,6 +91,13 @@ end
 def associate_account_vehicle(account)
   printStarting("ASSOCIATING ACCOUNT DEFAULT VEHICLE")
   account.vehicles << Vehicle.all.first
+  account.save!
+  printFinished()
+end
+
+def associate_account_plan(account)
+  printStarting("ASSOCIATING ACCOUNT DEFAULT PLAN")
+  account.service_plan = ServicePlan.last
   account.save!
   printFinished()
 end

@@ -1,13 +1,12 @@
 module DetailingPlans
   extend ::ActiveSupport::Concern
 
-  def generate_regular_plan(vehicle_size, plan_type_index = 0)
+  def generate_regular_plan(plan_type_index = 0)
     self.plan_type   = self.class::PLAN_TYPE[plan_type_index]
     self.status = self.class::STATUS.first
-    if plan_type_index == 0
-      self.price  = self.class.const_get( (self.name + " price").upcase.tr(" ","_"))[vehicle_size]
-      self.image_url = self.class.const_get( (self.name + " image url").upcase.tr(" ","_"))
-    end
+    #self.price  = self.class.const_get( (self.name + " price").upcase.tr(" ","_"))[vehicle_size]
+    #self.price  = self.class.const_get( (self.name + " price").upcase.tr(" ","_"))[vehicle_size]
+    self.image_url = self.class.const_get( (self.name + " image url").upcase.tr(" ","_")) unless plan_type_index > 0
   end
 
   def populate_regular_plan()

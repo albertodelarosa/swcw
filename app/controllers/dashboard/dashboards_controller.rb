@@ -15,7 +15,7 @@ class Dashboard::DashboardsController < ApplicationController
       redirect_empty_association( @account.vehicles )
     elsif ( ( @account.service_plan.nil? ) && ( @current_cart.nil? ) )
       respond_to do |format|
-        format.html { redirect_to service_plan_purchase_path, notice: "#{@account.user.first_name}, you must first purchase a plan" }
+        format.html { redirect_to service_plan_purchase_path, alert: "#{@account.user.first_name}, you must first purchase a plan" }
       end
     else
       @service_plan = @account.service_plan
