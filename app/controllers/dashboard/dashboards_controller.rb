@@ -4,8 +4,7 @@ class Dashboard::DashboardsController < ApplicationController
   before_filter { add_breadcrumb "home", root_path, "glyphicon-home" }
 
   def index
-    @account = current_user.account
-    #@account = Account.includes(:companies, :sites, :vehicles, :appointments, :service_plan).find(current_user.id)
+    @account = Account.includes(:companies, :sites, :vehicles, :appointments, :service_plan).find(current_user.account.id)
     @current_cart = current_cart unless session[:cart_id].nil?
 
     if @account.companies.empty?

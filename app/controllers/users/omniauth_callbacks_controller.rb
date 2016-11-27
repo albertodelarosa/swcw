@@ -10,8 +10,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         format.html { redirect_to register_password_url, alert: 'Almost done. Simply enter a password!' }
       end
     end
-    #generate_account(user)
-    #redirect_to password_url
   end
 
   alias_method :twitter,  :all
