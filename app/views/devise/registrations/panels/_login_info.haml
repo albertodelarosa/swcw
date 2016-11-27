@@ -11,8 +11,10 @@
           .form-group
             .input-group
               %span.input-group-addon email
-              = f.email_field :email, class: "form-control", autofocus: true
-          .form-group
+              - if controller.controller_name.eql?("passwords") && controller.action_name.eql?("register_password")
+                = f.email_field :email, class: "form-control"
+              - else
+                = f.email_field :email, class: "form-control", autofocus: true
     -#.row
       -#.col-xs-12
         -#.container-fluid
@@ -20,7 +22,6 @@
             -#.input-group
               -#%span.input-group-addon username
               -#= f.text_field :username, class: "form-control"
-          -#.form-group
     .row
       .col-xs-12.col-sm-6
         .container-fluid
@@ -28,14 +29,12 @@
             .input-group
               %span.input-group-addon first name
               = f.text_field :first_name, class: "form-control"
-          .form-group
       .col-xs-12.col-sm-6
         .container-fluid
           .form-group
             .input-group
               %span.input-group-addon last name
               = f.text_field :last_name, class: "form-control"
-          .form-group
     -if controller.controller_name.eql?("registrations") && controller.action_name.eql?("edit")
       .row
         .col-xs-12
@@ -44,30 +43,30 @@
               .input-group
                 %span.input-group-addon current password
                 = f.password_field :current_password, class: "form-control", data: {toggle: "tooltip", placement: "top"}, title: "(leave blank )"
-            .form-group
     .row
       .col-xs-12.col-sm-6
         .container-fluid
           .form-group
             .input-group
               %span.input-group-addon password
-              = f.password_field :password, class: "form-control", data: {toggle: "tooltip", placement: "top"}, title: "(leave blank if you don't want to change it)"
-          .form-group
+              - if controller.controller_name.eql?("passwords") && controller.action_name.eql?("register_password")
+                = f.password_field :password, class: "form-control", autofocus: true, data: {toggle: "tooltip", placement: "top"}, title: "(leave blank if you don't want to change it)"
+              - else
+                = f.password_field :password, class: "form-control", data: {toggle: "tooltip", placement: "top"}, title: "(leave blank if you don't want to change it)"
       .col-xs-12.col-sm-6
         .container-fluid
           .form-group
             .input-group
               %span.input-group-addon confirm password
               = f.password_field :password_confirmation, class: "form-control"
-          .form-group
-    - if devise_mapping.rememberable?
-      .row
-        .col-xs-12.col-sm-6
-          .container-fluid
-            .form-group
-              .checkbox
-                = f.label :remember_me do
-                  = f.check_box :remember_me
-                  remember me
-            .form-group
+    -unless controller.controller_name.eql?("passwords") && controller.action_name.eql?("register_password")
+      - if devise_mapping.rememberable?
+        .row
+          .col-xs-12.col-sm-6
+            .container-fluid
+              .form-group
+                .checkbox
+                  = f.label :remember_me do
+                    = f.check_box :remember_me
+                    remember me
 
