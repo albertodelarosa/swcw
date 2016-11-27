@@ -45,10 +45,11 @@ Sitelerwash::Application.routes.draw do
   }
 
   devise_scope :user do
-    get "register"  => "users/registrations#new",   as: :register
-    get "edit"      => "users/registrations#edit",  as: :edit
-    get "login"     => "users/sessions#new",        as: :sign_in
-    get "logout"    => "users/sessions#destroy",    as: :sign_out
+    get "register" => "users/registrations#new",  as: :register
+    get "edit"     => "users/registrations#edit", as: :edit
+    get "login"    => "users/sessions#new",       as: :sign_in
+    get "logout"   => "users/sessions#destroy",   as: :sign_out
+    get "register_password" => "users/passwords#register_password", as: :password
   end
 
   post "checkout", to: "orders#checkout", as: :checkout

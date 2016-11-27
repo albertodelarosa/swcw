@@ -1,11 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
-    super
   end
 
   def create
     @user = User.new(params_new_user)
+    unless session[ "devise.user_attributes" ].nil?
+      @user.register_omniauth( session[ "devise.user_attributes" ] )
+      session[ "devise.user_attributes" ] = nil
+    end
     if @user.save!
       generate_account(@user)
       set_flash_message :notice, :signed_up
@@ -40,9 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
-
-
-
 
   private
 
