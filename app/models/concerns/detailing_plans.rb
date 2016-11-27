@@ -38,12 +38,12 @@ module DetailingPlans
   end
 
   def set_prices()
-    if self.plan_type.include?(ServicePlan::TYPE.first)
-      self.services.each do |service|
-        set_price(self, service)
-      end
-    elsif self.plan_type.include?(ServicePlan::TYPE.last)
-      set_price(self, self.services.first)
+    if self.account.vehicles.first.my_size.eql?("Small")
+      self.price = self.price_small
+      self.services.each{ | service | service.price = service.small_price }
+    elsif self.account.vehicles.first.my_size.eql?("Large")
+      self.price = self.price_large
+      self.services.each{ | service | service.price = service.large_price }
     end
   end
 
