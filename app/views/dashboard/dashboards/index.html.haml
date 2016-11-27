@@ -3,12 +3,12 @@
     -appointments = []
     -past_appointments = []
 
-    .col-xs-12.col-md-4
+    .col-xs-12.col-md-6
       -if @appointments.empty?
         .panel.panel-warning
           .panel-heading
             .panel-title
-              ="make an appointment"
+              %h3="Schedule Appointment"
           .panel-body
             = render partial: 'dashboard/appointments/form'
       -elsif  @next_app.date >= Date.today
@@ -21,11 +21,11 @@
           .panel-body
             = render partial: 'dashboard/appointments/form'
 
-    .col-xs-12.col-sm-4
+    .col-xs-12.col-md-6
       .panel.panel-primary
         .panel-heading
           .panel-title
-            ="Service Plan"
+            %h3=@service_plan.name
         .panel-body
           .col-xs-12
             .canvas
@@ -34,11 +34,11 @@
             %br
             %p what!
 
-    .col-xs-12.col-md-4
+    .col-xs-12.col-md-6
       .panel.panel-primary
         .panel-heading
           .panel-title
-            ="#{@sites.last.name}'s available \nappointments dates"
+            %h3="#{@sites.last.name}'s available \nappointments dates"
         .panel-body
           %p Coming soon!
 

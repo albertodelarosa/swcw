@@ -19,6 +19,7 @@ class Dashboard::DashboardsController < ApplicationController
       end
     else
       @service_plan = @account.service_plan
+      @service_plan.set_prices if @service_plan.price == 0
       @account.status = Account::STATUS.first
       @appointments = @account.appointments || []
       @sites        = @account.sites        || []
