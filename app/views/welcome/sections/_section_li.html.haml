@@ -1,0 +1,8 @@
+%li{ class: "panel panel-#{ panel_type }-outline splash-page", data: {  parent: "##{ parent_id }" } }
+  %a.text-center{ aria: { controls: body_id, expanded: true }, data: {  parent: "##{ parent_id }", toggle: "collapse" }, href: "##{ body_id }" }
+    %div{ id: heading_id, class: "splash-page" }
+      %h3
+        = accordian_heading
+  %div.panel-collapse.collapse{ id: body_id, aria: { labelledby: heading_id },  role: "tabpanel"}
+    = accordian_body
+

@@ -1,64 +1,119 @@
-.col-xs-12.col-sm-5
+- panel_type = "default"
+- li_index = 1
+- ul_name = "appointments"
+- ul_id = "#{ ul_name }_id"
+- accordian_body = ""
+
+.col-xs-12
   %legend.lead Appointments
-  .col-xs-12
-    %ul#accordion-appointments
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "appointments-a", "aria-expanded" => "true", "data-parent" => "#accordion-appointments", "data-toggle" => "collapse", :href => "#appointments-a"}
-          Why is Advanced Scheduling worry-free and easy to change?
-        #appointments-a.collapse
-          %p At Siteler Wash, scheduling services in advance not only guarantees you one of our limited wash, wax or detail spots it also saves you money by giving you Free Siteler Dollars (link to discount question above). Advanced scheduling is also worry-free because we remind you several days before your appointment, and you can always reschedule or cancel it at any time. You can read more about canceling and rescheduling below.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "appointments-b", "aria-expanded" => "true", "data-parent" => "#accordion-appointments", "data-toggle" => "collapse", :href => "#appointments-b"}
-          How do I change an appointment?
-        #appointments-b.collapse
-          %p You can easily change or reschedule your service online in the Account Management section of our web site while signed in.
-          %p We will always remind you over email about your appointment several days in advance, and you can change it at any time up until the end of the day of your appointment with no penalty. After that it’s considered a missed appointment. Read more about missed appointments here. Any time you cancel your service, before it’s “missed” we will credit your account for the full value of the service. The next time you visit us to schedule an appointment, you will see your credited amount in your Siteler Dollar balance. As always, those Siteler Dollars can be applied against any new service you schedule.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "appointments-c", "aria-expanded" => "true", "data-parent" => "#accordion-appointments", "data-toggle" => "collapse", :href => "#appointments-c"}
-          What happens if I miss an appointment or cancel my service?
-        #appointments-c.collapse
-          %p You can change or cancel your appointment up until the end of the day of your appointment with no penalty. If you miss your appointment without canceling or changing, it doesn’t give us enough time to shift our Siteler Certified washers around, or fill your reserved slot with someone else. Hence, we will refund your account with your full credit minus a 5% Missed Appointment fee.
-.col-xs-12.col-sm-5
+.col-xs-12
+  %ul{ id: ul_id }
+    - accordian_heading = content_tag( :h3, "Who is Siteler?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "Siteler is the figurehead of our company. His name is Siteler because he’s your OnSite Butler. He is there to serve you and save you time. You can read more about Siteler here."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "Why is Advanced Scheduling worry-free and easy to change?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "At Siteler Wash, scheduling services in advance not only guarantees you one of our limited wash, wax or detail spots it also saves you money by giving you Free Siteler Dollars (link to discount question above). Advanced scheduling is also worry-free because we remind you several days before your appointment, and you can always reschedule or cancel it at any time. You can read more about canceling and rescheduling below."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "How do I change an appointment?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "You can easily change or reschedule your service online in the Account Management section of our web site while signed in."
+      = content_tag :li do
+        = content_tag :p do
+          = "We will always remind you over email about your appointment several days in advance, and you can change it at any time up until the end of the day of your appointment with no penalty. After that it’s considered a missed appointment. Read more about missed appointments here. Any time you cancel your service, before it’s “missed” we will credit your account for the full value of the service. The next time you visit us to schedule an appointment, you will see your credited amount in your Siteler Dollar balance. As always, those Siteler Dollars can be applied against any new service you schedule."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "What happens if I miss an appointment or cancel my service?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "You can change or cancel your appointment up until the end of the day of your appointment with no penalty. If you miss your appointment without canceling or changing, it doesn’t give us enough time to shift our Siteler Certified washers around, or fill your reserved slot with someone else. Hence, we will refund your account with your full credit minus a 5% Missed Appointment fee."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+.col-xs-12
   %legend.lead Siteler Dollars
-  .col-xs-12
-    %ul#accordion-sdollars
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "sdollars-a", "aria-expanded" => "true", "data-parent" => "#accordion-sdollars", "data-toggle" => "collapse", :href => "#sdollars-a"}
-          What are Siteler Dollars and how are they used?
-        #sdollars-a.collapse
-          %p Siteler Dollars are just like real money at Siteler Wash. You buy them with real money and then use them to purchase Siteler Wash services. Depending on the amount of Siteler Dollars you purchase at one time, you can earn up to 45% more for FREE! Whatever you don’t use immediately is saved in your account for future use.
-      %li.panel.unpanel
-        .icon
-        %p.collapsed{"aria-controls" => "sdollars-b", "aria-expanded" => "true", "data-parent" => "#accordion-sdollars", "data-toggle" => "collapse", :href => "#sdollars-b"}
-          How do I earn Free Siteler Dollars?
-        #sdollars-b.collapse
-          %p You earn Free Siteler Dollars in three ways:
-          %p 1) Volume Ordering: Depending on the amount of Siteler Dollars you purchase at one time, you can earn up to 40% more for Free!
-          %p The following chart explains how you earn Siteler Dollars for Volume Ordering:
+- li_index = 1
+- ul_name = "sDollars"
+- ul_id = "#{ ul_name }_id"
+- accordian_body = ""
+.col-xs-12
+  %ul{ id: ul_id }
+    - accordian_heading = content_tag( :h3, "What are Siteler Dollars and how are they used?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "Siteler Dollars are just like real money at Siteler Wash. You buy them with real money and then use them to purchase Siteler Wash services. Depending on the amount of Siteler Dollars you purchase at one time, you can earn up to 45% more for FREE! Whatever you don’t use immediately is saved in your account for future use."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
 
-          %p 2) Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "How do I earn Free Siteler Dollars?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :p do
+        = "You earn Free Siteler Dollars in three ways:"
+      = content_tag :li do
+        = content_tag :p do
+          = "1) Volume Ordering: Depending on the amount of Siteler Dollars you purchase at one time, you can earn up to 40% more for Free!"
+        = content_tag :p do
+          = "The following chart explains how you earn Siteler Dollars for Volume Ordering:"
+      = content_tag :li do
+        = content_tag :p do
+          = "2) Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!"
+        = content_tag :ul do
+          = "Plus, when you schedule in advance:"
+          = content_tag :li do
+            = content_tag :p do
+              = "You guarantee one of our limited wash spots that day"
+          = content_tag :li do
+            = content_tag :p do
+              = "You can change your date of service at any time*"
+          = content_tag :li do
+            = content_tag :p do
+              = "You get a service reminder by email several days before your service"
+          = content_tag :li do
+            = content_tag :p do
+              = "* If you miss an appointment without canceling or rescheduling, it does not give us the opportunity to fill your spot or plan our staffing properly, so there is a 5% “no show” fee."
+      = content_tag :li do
+        = content_tag :p do
+          = "3) Promotions: From time to time, special Siteler Wash promotions may include Free Siteler Dollars for you to earn. Examples of current promotions are Refer-a-friend and Ambassador."
+        = content_tag :ul do
+          = "Let's look at an example:"
+          = content_tag :li do
+            = content_tag :p do
+              = "If you scheduled $400 worth of services in advance, you would earn 20 Free Siteler Dollars (5% bonus), bringing the cost of your purchase down to $380. Then, if you purchased the Platinum level of Siteler Dollars, you would get another 150 Free Siteler Dollars, bringing the cost of your purchase down to $230! That’s a savings of 42.5%! Plus you’d have 270 Siteler Dollars left over for future purchases."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
 
-          %p Plus, when you schedule in advance:
-          %p check	You guarantee one of our limited wash spots that day
-          %p check	You can change your date of service at any time*
-          %p check	You get a service reminder by email several days before your service
-          %p * If you miss an appointment without canceling or rescheduling, it does not give us the opportunity to fill your spot or plan our staffing properly, so there is a 5% “no show” fee.
-          %p 3) Promotions: From time to time, special Siteler Wash promotions may include Free Siteler Dollars for you to earn. Examples of current promotions are Refer-a-friend and Ambassador.
-
-          %p Let's look at an example:
-          %p If you scheduled $400 worth of services in advance, you would earn 20 Free Siteler Dollars (5% bonus), bringing the cost of your purchase down to $380. Then, if you purchased the Platinum level of Siteler Dollars, you would get another 150 Free Siteler Dollars, bringing the cost of your purchase down to $230! That’s a savings of 42.5%! Plus you’d have 270 Siteler Dollars left over for future purchases.
-.col-xs-12.col-sm-2
+- li_index = 1
+- ul_name = "social_media"
+- li_id = "#{ ul_name }_id"
+- accordian_body = ""
+.col-xs-6
   %legend.lead Social Media
-  %ul.social-media
-    %li.panel.unpanel
-      .col-xs-12
-        .row
-          = link_to( image_tag("icons/social/facebook64.png"), "http://www.facebook.com")
-      .col-xs-12
-        .row
-          = link_to( image_tag("icons/social/twitter64.png"), "http://www.twitter.com")
+  %ul{ id: li_id }
+    %li
+      = link_to( image_tag("icons/social/facebook64.png"), "http://www.facebook.com")
+      = link_to( image_tag("icons/social/twitter64.png"), "http://www.twitter.com")
+- li_index = 1
+- ul_name = "developer"
+- li_id = "#{ ul_name }_id"
+- accordian_body = ""
+.col-xs-6
+  %legend.lead Developer
+  %ul{ id: li_id }
+    %li
 

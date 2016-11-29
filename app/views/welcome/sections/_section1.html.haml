@@ -1,73 +1,124 @@
+- panel_type = "success"
+- li_index = 1
+- ul_name = "about"
+- ul_id = "#{ ul_name }_id"
+- accordian_body = ""
+
 .col-xs-12
   %legend.lead About Siteler
-.col-xs-12.col-sm-6
-  %ul#accordion-section-about-left
-    %li.panel.unpanel
-      .icon
-      %p.section-about-control.collapsed{"aria-controls" => "about-left-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-about-left", "data-toggle" => "collapse", :href => "#about-left-a"}
-        How do you get discounts on Siteler’s services?
-      #about-left-a.collapse
-        %p At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:
-        %p Volume Ordering: You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!
-        %p Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!
-        %p The bottom line is this: The more services you use, the more you earn, and the more you save!
-    %li.panel.unpanel
-      .icon
-      %p.section-about-control.collapsed{"aria-controls" => "about-left-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-about-left", "data-toggle" => "collapse", :href => "#about-left-b"}
-        What is Siteler Wash's 100% satisfaction guarantee?
-      #about-left-b.collapse
-        %p At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:
-        %p Volume Ordering: You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!
-        %p Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!
-        %p The bottom line is this: The more services you use, the more you earn, and the more you save!
-    %li.panel.unpanel
-      .icon
-      %p.section-about-control.collapsed{"aria-controls" => "about-left-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-about-left", "data-toggle" => "collapse", :href => "#about-left-c"}
-        How does Siteler Wash save you time?
-      #about-left-c.collapse
-        %p At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:
-        %p Volume Ordering: You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!
-        %p Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!
-        %p The bottom line is this: The more services you use, the more you earn, and the more you save!
-.col-xs-12.col-sm-6
-  %ul#accordion-section-about-right
-    %li.panel.unpanel
-      .icon
-      %p.section-about-control.collapsed{"aria-controls" => "about-right-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-about-right", "data-toggle" => "collapse", :href => "#about-right-a"}
-        Why is Advanced Scheduling worry-free and easy to change?
-      #about-right-a.collapse
-        %p At Siteler Wash, scheduling services in advance not only guarantees you one of our limited wash, wax or detail spots it also saves you money by giving you Free Siteler Dollars (link to discount question above). Advanced scheduling is also worry-free because we remind you several days before your appointment, and you can always reschedule or cancel it at any time. You can read more about canceling and rescheduling
-    %li.panel.unpanel
-      .icon
-      %p.section-about-control.collapsed{"aria-controls" => "about-right-b", "aria-expanded" => "true", "data-parent" => "#accordion-section-about-right", "data-toggle" => "collapse", :href => "#about-right-b"}
-        Why is Siteler Wash better than taking your car to a "normal" car wash, or washing from home?
-      #about-right-b.collapse
-        %p First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean.
-        %p Additionally, at Siteler Wash we are very concerned about protecting the environment. Unfortunately, washing your vehicle at home is actually very bad for the environment. To begin, a regular garden hose uses about 10 times more water than our specially designed pressure washers. Further, runoff from washing your car at home goes directly into the storm drains which bypass water treatment plants. That’s very bad for the environment (you can read more from the EPA about that here). At Siteler Wash, we wash your vehicles with 100% non-toxic, biodegradable, environmentally-friendly products. Hence, we not only ensure that dirt and grease are deeply dissolved and removed from your vehicle, but also ensure that the rinse from your vehicle is safe for the environment.
-    %li.panel.unpanel
-      .icon
-      %p.section-about-control.collapsed{"aria-controls" => "about-right-c", "aria-expanded" => "true", "data-parent" => "#accordion-section-about-right", "data-toggle" => "collapse", :href => "#about-right-c"}
-        How do I get a refund?
-      #about-right-c.collapse
-        %ul
-          %p.lead
-            %small Our Worry-free Refund Policy
-          %p You never have to worry about buying Siteler Dollars because you can always get a refund. Here's how it works:
-          %li
-            %p If you ever cancel a service or miss an appointment we will credit your Siteler Dollar balance so you can schedule another service in the future.
-          %li
-            %p If you ever want a cash refund for Siteler Dollars you purchased, just contact us and let us know you want a refund. We will take what you paid, add some of the bonus Siteler Dollars we gave you, and subtract the services that were performed on your vehicle. Refunds are given on a full account basis: we will refund your entire account at once.
-          %p Also, remember that Siteler Wash has a 100% satisfaction guarantee. If you are ever unhappy with your service, just let us know and we will wash, wax, and detail your vehicle until you are satisfied.
+.col-xs-12
+  %ul{ id: ul_id }
+    - accordian_heading = content_tag( :h3, "How do you get discounts on Siteler’s services?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :p, nil, { class: "lead" } do
+        = content_tag( :small, "Our Worry-free Refund Policy" )
+      = content_tag :li do
+        = content_tag :p do
+          = "At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:"
+      = content_tag :li do
+        = content_tag :ul do
+          = content_tag :li do
+            = content_tag :p do
+              = "Volume Ordering: You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!"
+          = content_tag :li do
+            = content_tag :p do
+              = "Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!"
+      = content_tag :li do
+        = content_tag :p do
+          = "The bottom line is this: The more services you use, the more you earn, and the more you save!"
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "What is Siteler Wash's 100% satisfaction guarantee?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:"
+      = content_tag :li do
+        = content_tag :p do
+          = "Volume Ordering: You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!"
+      = content_tag :li do
+        = content_tag :p do
+          = "Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!"
+      = content_tag :li do
+        = content_tag :p do
+          = "The bottom line is this: The more services you use, the more you earn, and the more you save!"
+
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "How does Siteler Wash save you time?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:"
+      = content_tag :li do
+        = content_tag :p do
+          = "Volume Ordering: You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!"
+      = content_tag :li do
+        = content_tag :p do
+          = "Advanced Scheduling: Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!"
+      = content_tag :li do
+        = content_tag :p do
+          = "The bottom line is this: The more services you use, the more you earn, and the more you save!"
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "Why is Advanced Scheduling worry-free and easy to change?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "At Siteler Wash, scheduling services in advance not only guarantees you one of our limited wash, wax or detail spots it also saves you money by giving you Free Siteler Dollars (link to discount question above). Advanced scheduling is also worry-free because we remind you several days before your appointment, and you can always reschedule or cancel it at any time. You can read more about canceling and rescheduling"
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "Why is Siteler Wash better than taking your car to a \"normal\" car wash, or washing from home?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean."
+      = content_tag :li do
+        = content_tag :p do
+          = "Additionally, at Siteler Wash we are very concerned about protecting the environment. Unfortunately, washing your vehicle at home is actually very bad for the environment. To begin, a regular garden hose uses about 10 times more water than our specially designed pressure washers. Further, runoff from washing your car at home goes directly into the storm drains which bypass water treatment plants. That’s very bad for the environment (you can read more from the EPA about that here). At Siteler Wash, we wash your vehicles with 100% non-toxic, biodegradable, environmentally-friendly products. Hence, we not only ensure that dirt and grease are deeply dissolved and removed from your vehicle, but also ensure that the rinse from your vehicle is safe for the environment."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
+    - li_index += 1
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "How do I get a refund?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :p, nil, { class: "lead" } do
+        = content_tag( :small, "Our Worry-free Refund Policy" )
+      = content_tag :p do
+        = "You never have to worry about buying Siteler Dollars because you can always get a refund. Here's how it works:"
+      = content_tag :li do
+        = content_tag :p do
+          ="If you ever cancel a service or miss an appointment we will credit your Siteler Dollar balance so you can schedule another service in the future."
+      = content_tag :li do
+        = content_tag :p do
+          = "If you ever want a cash refund for Siteler Dollars you purchased, just contact us and let us know you want a refund. We will take what you paid, add some of the bonus Siteler Dollars we gave you, and subtract the services that were performed on your vehicle. Refunds are given on a full account basis: we will refund your entire account at once."
+      = content_tag :li do
+        = content_tag :p do
+          = "Also, remember that Siteler Wash has a 100% satisfaction guarantee. If you are ever unhappy with your service, just let us know and we will wash, wax, and detail your vehicle until you are satisfied."
+      = content_tag :p do
+        = "Also, remember that Siteler Wash has a 100% satisfaction guarantee. If you are ever unhappy with your service, just let us know and we will wash, wax, and detail your vehicle until you are satisfied."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+
 .col-xs-12
   %legend.lead Products
+- li_index = 1
+- ul_name = "products"
+- li_id = "#{ ul_name }_id"
 .col-xs-12
-  %ul#accordion-section-products-left
-    %li.panel.unpanel
-      .icon
-      %p.section-products-control.collapsed{"aria-controls" => "products-left-a", "aria-expanded" => "true", "data-parent" => "#accordion-section-products-left", "data-toggle" => "collapse", :href => "#products-left-a"}
-        What type of products do you use?
-      #products-left-a.collapse
-        %p As you have probably already come to understand, we only use top of the line products, many of which we’ve created in our Siteler Wash lab. From ultra soft hand mitts, to environmentally friendly wash products, we are fully committed to the best possible care for your vehicle. You can read more about our products in our services description.
-
-
+  %ul{ id: li_id }
+    - accordian_body = ""
+    - accordian_heading = content_tag( :h3, "How do you get discounts on Siteler’s services?" )
+    - accordian_body += content_tag :ul do
+      = content_tag :li do
+        = content_tag :p do
+          = "First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean."
+    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
 

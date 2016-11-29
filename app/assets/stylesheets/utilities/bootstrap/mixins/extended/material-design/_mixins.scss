@@ -173,18 +173,35 @@
     border-bottom: 1px solid $border-color;
   }
 
-  & ul > .panel > p.collapsed { border: 1px solid lighten($background-color, 25); }
+  //& ul > .panel > p.collapsed { border: 1px solid lighten($background-color, 25); }
+  .panel.splash-page {
+    background-color: lighten($background-color, 3) !important;
+    color: lighten($background-color, 50) !important;
 
-  & .unpanel {
-    color: $text-color;
-
-    & .in, .collapsing, .collapse {
-      background-color: lighten($background-color, 5%);
-      color: $text-color;
+    a, a:focus, a:active {
+      color: lighten($background-color, 50);
+      text-decoration: none!important;
+      & :hover {
+        color: lighten($background-color, 35);
+      }
     }
 
-  }
+    & > a > div.splash-page {
+        border: 1px solid lighten($background-color, 25);
+    }
 
+    & > div > p,
+    & > div > ul > p,
+    & > div > ul > li > p,
+    & > div > ul > li > ul > p,
+    & > div > ul > li > ul > li > p {
+      margin: 0px;
+      padding: 8px 10px 0px 10px;
+      min-height: 32px;
+      border: none;
+      font-weight: normal;
+    }
+  }
 
 }
 
