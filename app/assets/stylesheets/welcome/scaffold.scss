@@ -13,21 +13,25 @@
   }
 }
 
+#section1, #section2, #section3 {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 400px;
+}
+
 #section1{
-  background: image-url("welcome/index/spash_vertical_trans.jpeg") 50% 100% no-repeat fixed;
+  background-image: url("welcome/index/spash_vertical_trans.jpeg");
+  background-size: auto;
   height: 600px;
 }
 
 #section2{
-  background: image-url("welcome/index/wash.jpg") 50% 100% no-repeat fixed;
-  background-size: cover;
-  height: 400px;
+  background-image: url("welcome/index/wash.jpg");
+  background-position: center;
 }
 
 #section3{
-  background: image-url("welcome/index/van_detail.jpg") 50% 100% no-repeat fixed;
-  background-size: cover;
-  height: 400px;
+  background-image: image-url("welcome/index/van_detail.jpg");
 }
 
 .section1, .section2, .section3{

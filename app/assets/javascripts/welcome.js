@@ -12,9 +12,11 @@
 //= require utilities/parallax
 //- require utilities/background_slider
 
-
 $(document).ready(function(){
-  $(".parallax").parallaxMe({scrollSpeed: 50});
-  $(".parallax-reverse").parallaxMe({direction: "reverse",scrollSpeed: 5});
+  if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  }else{
+  	$( ".parallax" ).parallaxMe( { scrollSpeed: 50 } );
+  	$( ".parallax-reverse" ).parallaxMe( { direction: "reverse", scrollSpeed: 2 } );
+  }
 });
 
