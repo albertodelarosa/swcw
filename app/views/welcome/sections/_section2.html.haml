@@ -2,99 +2,98 @@
 - li_index = 1
 - ul_name = "questions"
 - ul_id = "#{ ul_name }_id"
-- accordian_body = ""
+- accordian = { panel_type: panel_type, parent_id: ul_id }
 
 .col-xs-12
   %legend.lead General Questions
 .col-xs-12
-  %ul{ id: ul_id }
-    - accordian_heading = content_tag( :h3, "Who is Siteler?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "Siteler is the figurehead of our company. His name is Siteler because he’s your OnSite Butler. He is there to serve you and save you time. You can read more about Siteler here."
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+  .col-xs-12
+    %ul{ id: ul_id }
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "Siteler is the figurehead of our company. His name is Siteler because he’s your OnSite Butler. He is there to serve you and save you time. You can read more about Siteler here." )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "Who is Siteler?" )
+      = render "welcome/sections/section_li", accordian: accordian
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "What does Siteler Certified mean?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "Each member of Siteler’s team of professional washers, waxers and detailers are rigorously trained in the particular processes they perform. In fact, before they work on your vehicle, they must become “Siteler Certified.” That means they complete a thorough training program in a particular area and then have to pass a series of challenging tests certifying them as an expert in whatever processes they perform."
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+  .col-xs-6
+    - li_index = 1
+    - ul_name = "questions_left"
+    - ul_id = "#{ ul_name }_id"
+    - accordian = { panel_type: panel_type, parent_id: ul_id }
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "Why is Siteler Wash better than taking your car to a \"normal\" car wash, or washing from home?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean."
-      = content_tag :li do
-        = content_tag :p do
-          = "Additionally, at Siteler Wash we are very concerned about protecting the environment. Unfortunately, washing your vehicle at home is actually very bad for the environment. To begin, a regular garden hose uses about 10 times more water than our specially designed pressure washers. Further, runoff from washing your car at home goes directly into the storm drains which bypass water treatment plants. That’s very bad for the environment (you can read more from the EPA about that here). At Siteler Wash, we wash your vehicles with 100% non-toxic, biodegradable, environmentally-friendly products. Hence, we not only ensure that dirt and grease are deeply dissolved and removed from your vehicle, but also ensure that the rinse from your vehicle is safe for the environment."
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+    %ul{ id: ul_id }
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "How does Siteler Wash save you time?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "At Siteler Wash we know how busy you are, and we know that saving you time on your mundane chores helps you spend more time with your friends, family, work or anything else. That’s why Siteler Wash brings valuable, convenient, time saving services to you! You don’t have to spend the time driving to the car wash and waiting for your vehicle to washed, waxed or detailed. You simply schedule services with a few clicks of your mouse, drop your vehicle off when you arrive to work in the morning, and pick up your sparklingly clean Siteler Washed vehicle at the end of the day. It’s that easy and convenient!"
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "Each member of Siteler’s team of professional washers, waxers and detailers are rigorously trained in the particular processes they perform. In fact, before they work on your vehicle, they must become “Siteler Certified.” That means they complete a thorough training program in a particular area and then have to pass a series of challenging tests certifying them as an expert in whatever processes they perform." )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "What does Siteler Certified mean?" )
+      = render "welcome/sections/section_li", accordian: accordian
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "What is Siteler Wash's 100% satisfaction guarantee?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "Siteler Wash is focused on giving you a high quality wash, wax or detail. Our work is always 100% guaranteed. If you are ever unhappy with your service, just let us know and we will wash, wax and detail your vehicle until you are satisfied."
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+      - li_index += 1
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "First, Siteler Wash’s services are always done 100% by hand. A hand wash, wax, and detail is much safer for your vehicle. The automatic machines at regular car washes are abrasive and can leave scratches in your vehicle’s paint and enamel. Even worse, they can tear off plastic siding and even damage your brakes. In Siteler Wash’s hand cleaning processes we use ultra soft wash mitts and specially designed towels which have 200,000 strands of loop-woven polyester/polyamide fiber in every square inch. These are the safest possible products that help protect your vehicle as we clean." )
+        = li_content( "Additionally, at Siteler Wash we are very concerned about protecting the environment. Unfortunately, washing your vehicle at home is actually very bad for the environment. To begin, a regular garden hose uses about 10 times more water than our specially designed pressure washers. Further, runoff from washing your car at home goes directly into the storm drains which bypass water treatment plants. That’s very bad for the environment (you can read more from the EPA about that here). At Siteler Wash, we wash your vehicles with 100% non-toxic, biodegradable, environmentally-friendly products. Hence, we not only ensure that dirt and grease are deeply dissolved and removed from your vehicle, but also ensure that the rinse from your vehicle is safe for the environment." )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "Why is Siteler Wash better than taking your car to a \"normal\" car wash, or washing from home?" )
+      = render "welcome/sections/section_li", accordian: accordian
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "How do you get discounts on Siteler’s services?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :p do
-        = "At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:"
-      = content_tag :li do
-        = content_tag :p, nil, { class: "lead" } do
-          = content_tag :small do
-            = "Volume Ordering"
-        = content_tag :p do
-          = "You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!"
-      = content_tag :li do
-        = content_tag :p, nil, { class: "lead" } do
-          = content_tag :small do
-            = "Advanced Scheduling"
-        = content_tag :p do
-          = "Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!"
-      = content_tag :li do
-        = content_tag :p, nil, { class: "lead" } do
-          = content_tag :small do
-            = "The bottom line is this"
-        = content_tag :p do
-          = "The more services you use, the more you earn, and the more you save!"
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+      - li_index += 1
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "At Siteler Wash we know how busy you are, and we know that saving you time on your mundane chores helps you spend more time with your friends, family, work or anything else. That’s why Siteler Wash brings valuable, convenient, time saving services to you! You don’t have to spend the time driving to the car wash and waiting for your vehicle to washed, waxed or detailed. You simply schedule services with a few clicks of your mouse, drop your vehicle off when you arrive to work in the morning, and pick up your sparklingly clean Siteler Washed vehicle at the end of the day. It’s that easy and convenient!" )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "How does Siteler Wash save you time?" )
+      = render "welcome/sections/section_li", accordian: accordian
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "How does Siteler Wash help protect the environment?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "At Siteler Wash we are very concerned about protecting the environment. That’s why when we wash your vehicles, we only wash with 100% non-toxic, environmentally friendly products. In fact, the products we use not only ensure that dirt and grease are deeply dissolved and removed, but also ensure that the rinse from your vehicle is safer for the environment."
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+  .col-xs-6
+    - li_index = 1
+    - ul_name = "questions_right"
+    - ul_id = "#{ ul_name }_id"
+    - accordian = { panel_type: panel_type, parent_id: ul_id }
 
-    - li_index += 1
-    - accordian_body = ""
-    - accordian_heading = content_tag( :h3, "How does Siteler Wash help the community?" )
-    - accordian_body += content_tag :ul do
-      = content_tag :li do
-        = content_tag :p do
-          = "Siteler Wash cares about the community. In fact, with every wash, wax and detail, we contribute to help underprivileged members of our local community."
-    = render "welcome/sections/section_li", panel_type: panel_type, parent_id: ul_id, heading_id: "#{ ul_name }-heading#{ li_index }-id", body_id: "#{ ul_name }-body#{ li_index }-id", accordian_heading: accordian_heading.html_safe, accordian_body: accordian_body.html_safe
+    %ul{ id: ul_id }
+
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "Siteler Wash is focused on giving you a high quality wash, wax or detail. Our work is always 100% guaranteed. If you are ever unhappy with your service, just let us know and we will wash, wax and detail your vehicle until you are satisfied." )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "What is Siteler Wash's 100% satisfaction guarantee?" )
+      = render "welcome/sections/section_li", accordian: accordian
+
+      - li_index += 1
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = content_tag( :p, "At Siteler Wash, you buy Siteler Dollars to pay for services. You can earn up to 45% savings every time you schedule services with Siteler Wash. You earn this through two forms of Bonuses:" )
+        = li_lead_content( "Volume Ordering", "You can earn up to 40% more Siteler Dollars for Free, depending on the amount of Siteler Dollars you purchase at one time!" )
+        = li_lead_content( "Advanced Scheduling", "Every time you schedule a service more than one day in advance, we give you 5% of the price of that service in Free Siteler Dollars!" )
+        = li_lead_content( "The bottom line is this", "The more services you use, the more you earn, and the more you save!" )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "How do you get discounts on Siteler’s services?" )
+      = render "welcome/sections/section_li", accordian: accordian
+
+      - li_index += 1
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "At Siteler Wash we are very concerned about protecting the environment. That’s why when we wash your vehicles, we only wash with 100% non-toxic, environmentally friendly products. In fact, the products we use not only ensure that dirt and grease are deeply dissolved and removed, but also ensure that the rinse from your vehicle is safer for the environment." )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "How does Siteler Wash help protect the environment?" )
+      = render "welcome/sections/section_li", accordian: accordian
+
+  .col-xs-12
+    - li_index = 1
+    - ul_name = "questions_bottom"
+    - ul_id = "#{ ul_name }_id"
+    - accordian = { panel_type: panel_type, parent_id: ul_id }
+
+    %ul{ id: ul_id }
+
+      - accordian[ :heading_id ] = "#{ ul_name }-heading#{ li_index }-id"
+      - accordian[ :body_id ] = "#{ ul_name }-body#{ li_index }-id"
+      - accordian[ :accordian_body ] = content_tag :ul do
+        = li_content( "Siteler Wash cares about the community. In fact, with every wash, wax and detail, we contribute to help underprivileged members of our local community." )
+      - accordian[ :accordian_heading ] = content_tag( :h3, "How does Siteler Wash help the community?" )
+      = render "welcome/sections/section_li", accordian: accordian
 

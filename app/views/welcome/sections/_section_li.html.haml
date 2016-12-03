@@ -1,8 +1,9 @@
-%li{ class: "panel panel-#{ panel_type }-outline splash-page", data: {  parent: "##{ parent_id }" } }
-  %a.text-center{ aria: { controls: body_id, expanded: true }, data: {  parent: "##{ parent_id }", toggle: "collapse" }, href: "##{ body_id }" }
-    %div{ id: heading_id, class: "splash-page" }
+%li{ class: "panel panel-#{ accordian[ :panel_type ] }-outline splash-page" }
+  %a.text-center{ aria: { controls: accordian[ :body_id ], expanded: true }, data: {  parent: "##{ accordian[ :parent_id ] }", toggle: "collapse" }, href: "##{ accordian[ :body_id ] }" }
+    %div{ id: accordian[ :heading_id ], class: "splash-page" }
       %h3
-        = accordian_heading
-  %div.panel-collapse.collapse{ id: body_id, aria: { labelledby: heading_id },  role: "tabpanel"}
-    = accordian_body
+        = accordian[ :accordian_heading ]
+  %div.panel-collapse.collapse{ id: accordian[ :body_id ], aria: { labelledby: accordian[ :heading_id ] },  role: "tabpanel"}
+    = accordian[ :accordian_body ]
+
 
