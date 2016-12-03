@@ -18,16 +18,29 @@ class LineItemsController < ApplicationController
     line_item = LineItem.find( params_line_item )
     plan = line_item.service_plan
     name = plan.name
-
+    line_item_destroyed = false
     if current_cart.line_items.destroy( line_item )
       plan.destroy
+      line_item_destroyed = true
+    end
+
+    unless line_item_destroyed
       respond_to do |format|
-        format.html { redirect_to cart_url, notice: "Service Plan #{name} was removed from your cart." }
+        format.html { redirect_to root_url, notice: "Service Plan #{name} was removed from your cart." }
+        format.json { head :no_content }
+      end
+    end
+
+    if current_cart.line_items.size == 0
+      Cart.delete( session[ :cart_id ] )
+      session[:cart_id] = nil
+      respond_to do |format|
+        format.html { redirect_to root_url, notice: "Service Plan #{name} was removed from your cart." }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to root_url, notice: "Service Plan #{name} wasn't removed from your cart." }
+        format.html { redirect_to cart_url, notice: "Service Plan #{name} was removed from your cart." }
         format.json { head :no_content }
       end
     end

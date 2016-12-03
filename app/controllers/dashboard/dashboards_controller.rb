@@ -18,8 +18,16 @@ class Dashboard::DashboardsController < ApplicationController
         format.html { redirect_to service_plan_purchase_path, alert: "#{@account.user.first_name}, you must first purchase a plan" }
       end
     else
-      @service_plan = @account.service_plan
-      @service_plan.set_prices if @service_plan.price == 0
+      puts
+      puts
+      puts @current_cart.nil?
+      puts
+      puts
+
+      if @current_cart.nil?
+        @service_plan = @account.service_plan
+        @service_plan.set_prices if @service_plan.price == 0
+      end
       @account.status = Account::STATUS.first
       @appointments = @account.appointments || []
       @sites        = @account.sites        || []

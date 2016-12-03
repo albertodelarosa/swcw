@@ -21,18 +21,19 @@
           .panel-body
             = render partial: 'dashboard/appointments/form'
 
-    .col-xs-12.col-md-6
-      .panel.panel-primary
-        .panel-heading
-          .panel-title
-            %h3=@service_plan.name
-        .panel-body
-          .col-xs-12
-            .canvas
-              %canvas.ant{ data_chart }
-          .col-xs-12
-            %br
-            %p what!
+    - if @current_cart.nil?
+      .col-xs-12.col-md-6
+        .panel.panel-primary
+          .panel-heading
+            .panel-title
+              %h3=@service_plan.name
+          .panel-body
+            .col-xs-12
+              .canvas
+                %canvas.ant{ data_chart }
+            .col-xs-12
+              %br
+              %p what!
 
     .col-xs-12.col-md-6
       .panel.panel-primary

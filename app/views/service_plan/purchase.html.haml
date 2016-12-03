@@ -1,3 +1,4 @@
+- my_price = 0.00
 .section.section-default.row
   .col-xs-12
     .h2
@@ -16,9 +17,10 @@
                 =plan.name
             %img.img.img-responsive{src: plan.image_url, alt: ""}
             %p
-              =number_to_currency(plan.price)
+              - @vehicle.my_size.include?("Small") ? my_price = plan.price_small : my_price = plan.price_large
+              = number_to_currency( my_price )
             %p
-              = link_to "Add to Cart", line_items_path( service_plan: { name: plan.name, plan_type: plan.plan_type, price: plan.price, status: plan.status, vehicle: @vehicle } ), class: "btn btn-success btn-raised btn-block", method: :post
+              = link_to "Add to Cart", line_items_path( service_plan: { name: plan.name, plan_type: plan.plan_type, price: my_price, status: plan.status, vehicle: @vehicle } ), class: "btn btn-warning btn-outline btn-block", method: :post
 
 .section.section-default.row
   .col-xs-12
@@ -38,8 +40,8 @@
                 =plan.name
             %img.img.img-responsive{src: plan.image_url, alt: ""}
             %p
-              =number_to_currency(plan.price)
+              - @vehicle.my_size.include?("Small") ? my_price = plan.price_small : my_price = plan.price_large
+              = number_to_currency( my_price )
             %p
-              %button.btn.btn-success.btn-raised.btn-block
-                ="add to cart"
+              = link_to "Add to Cart", line_items_path( service_plan: { name: plan.name, plan_type: plan.plan_type, price: my_price, status: plan.status, vehicle: @vehicle } ), class: "btn btn-warning btn-outline btn-block", method: :post
 
